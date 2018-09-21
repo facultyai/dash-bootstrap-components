@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   Alert,
   Badge,
+  Button,
 } from '../src';
 
 class Demo extends Component {
@@ -36,7 +37,7 @@ class Demo extends Component {
         </div>
 
         <br/>
-        
+
         <h2>Badges</h2>
         <h4>{"A heading with a badge "}
           <Badge color="primary">New!</Badge>
@@ -46,7 +47,36 @@ class Demo extends Component {
           {" or the "}
           <Badge pill={true} color="primary">blue pill</Badge>
         </p>
-        
+
+        <br/>
+
+        <h2>Buttons</h2>
+        <div>
+          <Button color="primary">primary</Button>{' '}
+          <Button color="secondary">secondary</Button>{' '}
+          <Button color="success">success</Button>{' '}
+          <Button color="info">info</Button>{' '}
+          <Button color="warning">warning</Button>{' '}
+          <Button color="danger">danger</Button>{' '}
+          <Button color="link">link</Button>
+        </div>
+        <br/>
+        <h4>Outline buttons</h4>
+        <div>
+          <Button outline={true} color="primary">primary</Button>{' '}
+          <Button outline={true} color="secondary">secondary</Button>{' '}
+          <Button outline={true} color="success">success</Button>{' '}
+          <Button outline={true} color="info">info</Button>{' '}
+          <Button outline={true} color="warning">warning</Button>{' '}
+          <Button outline={true} color="danger">danger</Button>{' '}
+          <Button outline={true} color="link">link</Button>
+        </div>
+        <br/>
+        <h4>Block button</h4>
+        <div>
+          <Button block={true} color="primary">primary block</Button>{' '}
+        </div>
+
         <br/>
         <div style={{
             'height' : '200px'
