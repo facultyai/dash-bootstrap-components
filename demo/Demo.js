@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
   Alert,
+  Badge,
 } from '../src';
 
 class Demo extends Component {
@@ -34,6 +35,18 @@ class Demo extends Component {
           </Alert>
         </div>
 
+        <br/>
+        
+        <h2>Badges</h2>
+        <h4>{"A heading with a badge "}
+          <Badge color="primary">New!</Badge>
+        </h4>
+        <p>{"Do you take the "}
+          <Badge pill={true} color="danger">red pill</Badge>
+          {" or the "}
+          <Badge pill={true} color="primary">blue pill</Badge>
+        </p>
+        
         <br/>
         <div style={{
             'height' : '200px'
