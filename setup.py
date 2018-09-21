@@ -15,7 +15,7 @@ def _get_version():
 
 
 setup(
-    name="sherlockml-dash",
+    name="dash-bootstrap-components",
     version=_get_version(),
     description="""
 Bootstrap themed components for use in Plotly Dash
