@@ -1,0 +1,2 @@
+include dash_bootstrap_components/bundle.js
+include dash_bootstrap_components/metadata.json
