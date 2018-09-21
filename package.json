@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "webpack-dev-server --hot --inline --port=8888 --public cube-${SHERLOCKML_SERVER_ID}.workspace.asi.sherlockml.net --content-base demo --config=webpack.config.demo.js"
+    "demo": "webpack-dev-server --hot --inline --port=8888 --disable-host-check --content-base demo --config=webpack.config.demo.js"
   },
   "author": "ASI Data Science",
   "license": "Apache-2.0",
