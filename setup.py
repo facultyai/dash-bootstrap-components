@@ -25,4 +25,5 @@ Bootstrap themed components for use in Plotly Dash
     url="https://www.asidatascience.com/",
     packages=find_packages(),
     install_requires=["dash"],
+    include_package_data=True,
 )
