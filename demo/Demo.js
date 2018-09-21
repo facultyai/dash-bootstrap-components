@@ -3,6 +3,7 @@ import {
   Alert,
   Badge,
   Button,
+  ButtonGroup,
 } from '../src';
 
 class Demo extends Component {
@@ -75,6 +76,14 @@ class Demo extends Component {
         <h4>Block button</h4>
         <div>
           <Button block={true} color="primary">primary block</Button>{' '}
+        </div>
+        <h4>Button Group</h4>
+        <div>
+          <ButtonGroup size="sm">
+            <Button color="danger">Left</Button>
+            <Button color="warning">Middle</Button>
+            <Button color="success">Right</Button>
+          </ButtonGroup>
         </div>
 
         <br/>
