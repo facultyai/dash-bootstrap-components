@@ -5,3 +5,4 @@ dash_bootstrap_components/bundle.js
 dash_bootstrap_components/metadata.json
 *__pycache__
 *.pyc
+dist
