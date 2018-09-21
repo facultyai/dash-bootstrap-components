@@ -1,5 +1,2 @@
-import Alert from './components/Alert';
-import Badge from './components/Badge';
-
-export {Alert, Badge};
-
+export { default as Alert } from './components/Alert';
+export { default as Badge } from './components/Badge';
