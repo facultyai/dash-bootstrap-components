@@ -4,8 +4,6 @@ import dash_html_components as html
 
 app = dash.Dash()
 
-
-
 alerts = html.Div(
     [
         html.H2("Alerts"),
@@ -26,7 +24,59 @@ badges = html.Div(
     ]
 )
 
-app.layout = html.Div([alerts, badges])
+buttons = html.Div(
+    [
+        html.H2("Buttons"),
+        html.Div(
+            [
+                dbc.Button("Primary", color="primary"),
+                " ",
+                dbc.Button("Secondary", color="secondary"),
+                " ",
+                dbc.Button("Success", color="success"),
+                " ",
+                dbc.Button("Warning", color="warning"),
+                " ",
+                dbc.Button("Danger", color="danger"),
+                " ",
+                dbc.Button("Info", color="info"),
+            ]
+        ),
+        html.Br(),
+        html.H4("Outline buttons"),
+        html.Div(
+            [
+                dbc.Button("Primary", outline=True, color="primary"),
+                " ",
+                dbc.Button("Secondary", outline=True, color="secondary"),
+                " ",
+                dbc.Button("Success", outline=True, color="success"),
+                " ",
+                dbc.Button("Warning", outline=True, color="warning"),
+                " ",
+                dbc.Button("Danger", outline=True, color="danger"),
+                " ",
+                dbc.Button("Info", outline=True, color="info"),
+            ]
+        ),
+        html.Br(),
+        html.H4("Button group"),
+        html.Div(
+            dbc.ButtonGroup(
+                [
+                    dbc.Button("Primary", color="primary"),
+                    dbc.Button("Secondary", color="secondary"),
+                    dbc.Button("Success", color="success"),
+                    dbc.Button("Warning", color="warning"),
+                    dbc.Button("Danger", color="danger"),
+                    dbc.Button("Info", color="info"),
+                ]
+            )
+        ),
+    ]
+)
+
+app.layout = html.Div([alerts, badges, buttons])
 
 
 if __name__ == "__main__":
