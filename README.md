@@ -26,7 +26,7 @@ Once you have a copy of Bootstrap CSS, create a folder called `assets` in the ro
 
 If you prefer not to work with a local copy of the CSS and are happy with Bootstrap defaults you can use the [Bootstrap CDN][bs-cdn]. You can either use the `external_stylesheets` keyword argument in the `dash.Dash` constructor, or add a link to your app's HTML index template. For more details, check the Plotly Dash [user guide][dash-ext-res].
 
-Documentation of the components available in `dash-bootstrap-components` is upcoming, for now you can see some examples in the `examples directory`.
+Documentation of the components available in `dash-bootstrap-components` is upcoming, for now you can see some examples in the `examples` directory.
 
 [dash-homepage]: https://dash.plot.ly/
 [dash-ext-res]: https://dash.plot.ly/external-resources
