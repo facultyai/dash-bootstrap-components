@@ -4,6 +4,18 @@ import dash_html_components as html
 
 app = dash.Dash()
 
+header = html.Div(
+    [
+        html.H1("Dash Bootstrap Components"),
+        html.P(
+            [
+                "This app demonstrates components available in ",
+                html.Code("dash-bootstrap-components"),
+            ]
+        ),
+    ]
+)
+
 alerts = html.Div(
     [
         html.H2("Alerts"),
@@ -76,7 +88,79 @@ buttons = html.Div(
     ]
 )
 
-app.layout = html.Div([alerts, badges, buttons])
+columns = html.Div(
+    [
+        html.H2("Columns"),
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Div(
+                        "This is column 1",
+                        style={"height": "100px", "border-style": "solid"},
+                    ),
+                    md=3,
+                ),
+                dbc.Col(
+                    html.Div(
+                        "This is column 2",
+                        style={"height": "100px", "border-style": "solid"},
+                    ),
+                    md=6,
+                ),
+                dbc.Col(
+                    html.Div(
+                        "This is column 3",
+                        style={"height": "100px", "border-style": "solid"},
+                    ),
+                    md=3,
+                ),
+            ]
+        ),
+        html.Br(),
+        html.H4("Row with no gutters"),
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Div(
+                        "This is column 1",
+                        style={"height": "100px", "border-style": "solid"},
+                    ),
+                    md=3,
+                ),
+                dbc.Col(
+                    html.Div(
+                        "This is column 2",
+                        style={"height": "100px", "border-style": "solid"},
+                    ),
+                    md=6,
+                ),
+                dbc.Col(
+                    html.Div(
+                        "This is column 3",
+                        style={"height": "100px", "border-style": "solid"},
+                    ),
+                    md=3,
+                ),
+            ],
+            noGutters=True,
+        ),
+    ]
+)
+
+app.layout = dbc.Container(
+    [
+        header,
+        html.Br(),
+        alerts,
+        html.Br(),
+        badges,
+        html.Br(),
+        buttons,
+        html.Br(),
+        columns,
+        html.Div(style={"height": "200px"})
+    ]
+)
 
 
 if __name__ == "__main__":
