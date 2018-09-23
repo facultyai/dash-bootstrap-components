@@ -4,6 +4,17 @@ import {
   Badge,
   Button,
   ButtonGroup,
+  Card,
+  CardBody,
+  CardDeck,
+  CardFooter,
+  CardGroup,
+  CardHeader,
+  CardImg,
+  CardImgOverlay,
+  CardSubtitle,
+  CardText,
+  CardTitle,
   Col,
   Container,
   Row,
@@ -89,6 +100,70 @@ class Demo extends Component {
             <Button color="success">Right</Button>
           </ButtonGroup>
         </div>
+
+        <br/>
+
+        <h2>Cards</h2>
+
+        <Row>
+          <Col md={6}>
+            <Card color="dark" outline={true}>
+              <CardHeader>Header</CardHeader>
+              <CardBody>
+                <CardTitle>This card has a header</CardTitle>
+                <CardText>And some text in the body</CardText>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <CardImg top={true} src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"/>
+              <CardBody>
+                <CardTitle>Card with image</CardTitle>
+                <CardText>This card has an image</CardText>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <CardBody>
+                <CardTitle>Here's another card</CardTitle>
+                <CardText>With some text, and a button</CardText>
+                <Button color="success">Click here</Button>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+
+        <h4>Card deck</h4>
+        <CardDeck>
+          <Card>
+            <CardBody>
+              <CardTitle>The first card</CardTitle>
+              <CardText>
+                This is a card with some text on it, it's the first one in the deck.
+              </CardText>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardBody>
+              <CardTitle>The second card</CardTitle>
+              <CardText>
+                This is a card with some text on it, it's the second one in the deck. It has a bit more text in it so that we can see how the vertical spacing will work.
+              </CardText>
+            </CardBody>
+          </Card>
+          <Card outline={true} color="primary">
+            <CardBody>
+              <CardTitle>The third card</CardTitle>
+              <CardSubtitle>...and the last :(</CardSubtitle>
+              <CardText>
+                This card doesn't have much text...
+              </CardText>
+              <Button color="danger">Click me</Button>
+            </CardBody>
+          </Card>
+        </CardDeck>
 
         <br/>
 

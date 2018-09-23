@@ -88,6 +88,62 @@ buttons = html.Div(
     ]
 )
 
+cards = html.Div(
+    [
+        html.H2("Cards"),
+        dbc.CardDeck(
+            [
+                dbc.Card(
+                    [
+                        dbc.CardHeader("Header"),
+                        dbc.CardBody(
+                            [
+                                dbc.CardTitle(
+                                    children="This card has a title"
+                                ),
+                                dbc.CardText(children="and some text"),
+                            ]
+                        ),
+                    ]
+                ),
+                dbc.Card(
+                    [
+                        dbc.CardBody(
+                            [
+                                dbc.CardTitle(
+                                    children="This card has a title"
+                                ),
+                                dbc.CardText(
+                                    children="and some text, but no header"
+                                ),
+                            ]
+                        )
+                    ],
+                    outline=True,
+                    color="primary",
+                ),
+                dbc.Card(
+                    [
+                        dbc.CardBody(
+                            [
+                                dbc.CardTitle(
+                                    children="This card has a title"
+                                ),
+                                dbc.CardText(
+                                    children="and some text, and a footer!"
+                                ),
+                            ]
+                        ),
+                        dbc.CardFooter("Footer"),
+                    ],
+                    outline=True,
+                    color="dark",
+                ),
+            ]
+        ),
+    ]
+)
+
 columns = html.Div(
     [
         html.H2("Columns"),
@@ -157,8 +213,10 @@ app.layout = dbc.Container(
         html.Br(),
         buttons,
         html.Br(),
+        cards,
+        html.Br(),
         columns,
-        html.Div(style={"height": "200px"})
+        html.Div(style={"height": "200px"}),
     ]
 )
 
