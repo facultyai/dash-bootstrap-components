@@ -98,10 +98,8 @@ cards = html.Div(
                         dbc.CardHeader("Header"),
                         dbc.CardBody(
                             [
-                                dbc.CardTitle(
-                                    children="This card has a title"
-                                ),
-                                dbc.CardText(children="and some text"),
+                                dbc.CardTitle("This card has a title"),
+                                dbc.CardText("And some text"),
                             ]
                         ),
                     ]
@@ -110,12 +108,8 @@ cards = html.Div(
                     [
                         dbc.CardBody(
                             [
-                                dbc.CardTitle(
-                                    children="This card has a title"
-                                ),
-                                dbc.CardText(
-                                    children="and some text, but no header"
-                                ),
+                                dbc.CardTitle("This card has a title"),
+                                dbc.CardText("and some text, but no header"),
                             ]
                         )
                     ],
@@ -126,12 +120,8 @@ cards = html.Div(
                     [
                         dbc.CardBody(
                             [
-                                dbc.CardTitle(
-                                    children="This card has a title"
-                                ),
-                                dbc.CardText(
-                                    children="and some text, and a footer!"
-                                ),
+                                dbc.CardTitle("This card has a title"),
+                                dbc.CardText("and some text, and a footer!"),
                             ]
                         ),
                         dbc.CardFooter("Footer"),
