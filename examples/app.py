@@ -209,6 +209,21 @@ columns = html.Div(
     ]
 )
 
+fade = html.Div(
+    [
+        html.H2("Fade"),
+        dbc.Button(
+            "Toggle fade", id="fade-button", style={"margin-bottom": "1rem"}
+        ),
+        dbc.Fade(
+            dbc.Card(
+                dbc.CardBody(dbc.CardText("This content fades in and out"))
+            ),
+            id="fade",
+        ),
+    ]
+)
+
 app.layout = dbc.Container(
     [
         header,
@@ -224,6 +239,8 @@ app.layout = dbc.Container(
         collapse,
         html.Br(),
         columns,
+        html.Br(),
+        fade,
         html.Div(style={"height": "200px"}),
     ]
 )
@@ -240,5 +257,16 @@ def toggle_collapse(n, is_open):
     return is_open
 
 
+@app.callback(
+    Output("fade", "in"),
+    [Input("fade-button", "n_clicks")],
+    [State("fade", "in")],
+)
+def toggle_fade(n, is_in):
+    if n:
+        return not is_in
+    return is_in
+
+
 if __name__ == "__main__":
-    app.run_server(port=8888)
+    app.run_server(port=8888, debug=True)

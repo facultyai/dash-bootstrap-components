@@ -18,6 +18,7 @@ import {
   Col,
   Collapse,
   Container,
+  Fade,
   Row,
 } from '../src';
 
@@ -39,6 +40,27 @@ class CollapseComponent extends Component {
         {this.props.children}
       </Collapse>
     </div>);
+  }
+}
+
+class FadeComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {fadeIn: true};
+  }
+
+  toggle() {
+    this.setState({fadeIn: !this.state.fadeIn });
+  }
+
+  render() {
+    return (<div>
+      <Button onClick={this.toggle} style={{marginBottom: "1rem"}}>Toggle fade</Button>
+      <Fade in={this.state.fadeIn}>
+        {this.props.children}
+      </Fade>
+    </div>)
   }
 }
 
@@ -241,6 +263,18 @@ class Demo extends Component {
         </Row>
 
         <br/>
+
+        <h2>Fade</h2>
+
+        <FadeComponent>
+          <Card>
+            <CardBody>
+              <CardText>This content fades in and out</CardText>
+            </CardBody>
+          </Card>
+        </FadeComponent>
+
+
         <div style={{
             'height' : '200px'
           }}/>

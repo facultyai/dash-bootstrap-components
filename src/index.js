@@ -19,4 +19,5 @@ export { default as Col } from './components/layout/Col';
 export { default as Collapse } from './components/Collapse';
 export { default as Container } from './components/layout/Container';
 export { default as DashLink } from './components/base/DashLink';
+export { default as Fade } from './components/Fade';
 export { default as Row } from './components/layout/Row';
