@@ -225,6 +225,25 @@ fade = html.Div(
 )
 
 
+popover = html.Div(
+    [
+        html.H2("Popover"),
+        html.P(
+            ["Click on the word ", html.Span("popover", id="popover-target")]
+        ),
+        dbc.Popover(
+            [
+                dbc.PopoverHeader("Popover header"),
+                dbc.PopoverBody("Popover body"),
+            ],
+            id="popover",
+            isOpen=False,
+            target="popover-target",
+        ),
+    ]
+)
+
+
 table = html.Div(
     [
         html.H2("Table"),
@@ -290,6 +309,8 @@ app.layout = dbc.Container(
         html.Br(),
         fade,
         html.Br(),
+        popover,
+        html.Br(),
         table,
         html.Div(style={"height": "200px"}),
     ]
@@ -316,6 +337,17 @@ def toggle_fade(n, is_in):
     if n:
         return not is_in
     return is_in
+
+
+@app.callback(
+    Output("popover", "isOpen"),
+    [Input("popover-target", "n_clicks")],
+    [State("popover", "isOpen")],
+)
+def toggle_popover(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 
 if __name__ == "__main__":

@@ -19,6 +19,9 @@ import {
   Collapse,
   Container,
   Fade,
+  Popover,
+  PopoverBody,
+  PopoverHeader,
   Row,
   Table
 } from '../src';
@@ -74,6 +77,30 @@ class FadeComponent extends Component {
         {this.props.children}
       </Fade>
     </div>)
+  }
+}
+
+class PopoverComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {popoverOpen: false};
+  }
+
+  toggle() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    })
+  }
+
+  render() {
+    return(<div>
+      <p>Click on the word <span id="popover-target" onClick={this.toggle}>popover</span></p>
+      <Popover target="popover-target" isOpen={this.state.popoverOpen} toggle={this.toggle}>
+        <PopoverHeader>Popover header</PopoverHeader>
+        <PopoverBody>Popover body</PopoverBody>
+      </Popover>
+    </div>);
   }
 }
 
@@ -304,6 +331,12 @@ class Demo extends Component {
           </CardBody>
         </Card>
       </FadeComponent>
+
+      <br/>
+
+      <h2>Popover</h2>
+      <PopoverComponent/>
+
 
       <br/>
 
