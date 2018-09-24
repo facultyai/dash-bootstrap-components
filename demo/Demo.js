@@ -19,8 +19,12 @@ import {
   Collapse,
   Container,
   Fade,
+  Popover,
+  PopoverBody,
+  PopoverHeader,
   Row,
-  Table
+  Table,
+  Tooltip,
 } from '../src';
 
 class CollapseComponent extends Component {
@@ -74,6 +78,30 @@ class FadeComponent extends Component {
         {this.props.children}
       </Fade>
     </div>)
+  }
+}
+
+class PopoverComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {popoverOpen: false};
+  }
+
+  toggle() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    })
+  }
+
+  render() {
+    return(<div>
+      <p>Click on the word <span id="popover-target" onClick={this.toggle}>popover</span></p>
+      <Popover target="popover-target" isOpen={this.state.popoverOpen} toggle={this.toggle}>
+        <PopoverHeader>Popover header</PopoverHeader>
+        <PopoverBody>Popover body</PopoverBody>
+      </Popover>
+    </div>);
   }
 }
 
@@ -307,6 +335,12 @@ class Demo extends Component {
 
       <br/>
 
+      <h2>Popover</h2>
+      <PopoverComponent/>
+
+
+      <br/>
+
       <h2>Table</h2>
       <Table hover={true} responsive={true} striped={true} size="md">
         <thead>
@@ -335,6 +369,11 @@ class Demo extends Component {
         </tbody>
       </Table>
 
+      <br/>
+
+      <h2>Tooltip</h2>
+      <p>I wonder what <span id="tooltip-target">floccinaucinihilipilification</span> means?</p>
+      <Tooltip target="tooltip-target">Noun: rare, the action or habit of estimating something as worthless.</Tooltip>
       <div style={{
           'height' : '200px'
         }}/>
