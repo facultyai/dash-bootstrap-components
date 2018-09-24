@@ -21,3 +21,4 @@ export { default as Container } from './components/layout/Container';
 export { default as DashLink } from './components/base/DashLink';
 export { default as Fade } from './components/Fade';
 export { default as Row } from './components/layout/Row';
+export { default as Table } from './components/Table';
