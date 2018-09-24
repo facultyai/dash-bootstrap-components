@@ -23,7 +23,8 @@ import {
   PopoverBody,
   PopoverHeader,
   Row,
-  Table
+  Table,
+  Tooltip,
 } from '../src';
 
 class CollapseComponent extends Component {
@@ -368,6 +369,11 @@ class Demo extends Component {
         </tbody>
       </Table>
 
+      <br/>
+
+      <h2>Tooltip</h2>
+      <p>I wonder what <span id="tooltip-target">floccinaucinihilipilification</span> means?</p>
+      <Tooltip target="tooltip-target">Noun: rare, the action or habit of estimating something as worthless.</Tooltip>
       <div style={{
           'height' : '200px'
         }}/>

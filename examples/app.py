@@ -291,6 +291,26 @@ table = html.Div(
     ]
 )
 
+tooltip = html.Div(
+    [
+        html.H2("Tooltip"),
+        html.P(
+            [
+                "I wonder what ",
+                html.Span(
+                    "floccinaucinihilipilification", id="tooltip-target"
+                ),
+                " means?",
+            ]
+        ),
+        dbc.Tooltip(
+            "Noun: rare, "
+            "the action or habit of estimating something as worthless.",
+            target="tooltip-target",
+        ),
+    ]
+)
+
 app.layout = dbc.Container(
     [
         header,
@@ -312,6 +332,8 @@ app.layout = dbc.Container(
         popover,
         html.Br(),
         table,
+        html.Br(),
+        tooltip,
         html.Div(style={"height": "200px"}),
     ]
 )
