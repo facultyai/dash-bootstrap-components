@@ -224,6 +224,54 @@ fade = html.Div(
     ]
 )
 
+
+table = html.Div(
+    [
+        html.H2("Table"),
+        dbc.Table(
+            [
+                html.Thead(
+                    html.Tr(
+                        [
+                            html.Th("#"),
+                            html.Th("First name"),
+                            html.Th("Last name"),
+                        ]
+                    )
+                ),
+                html.Tbody(
+                    [
+                        html.Tr(
+                            [
+                                html.Th("1", scope="row"),
+                                html.Td("Tom"),
+                                html.Td("Cruise"),
+                            ]
+                        ),
+                        html.Tr(
+                            [
+                                html.Th("2", scope="row"),
+                                html.Td("Jodie"),
+                                html.Td("Foster"),
+                            ]
+                        ),
+                        html.Tr(
+                            [
+                                html.Th("3", scope="row"),
+                                html.Td("Chadwick"),
+                                html.Td("Boseman"),
+                            ]
+                        ),
+                    ]
+                ),
+            ],
+            responsive=True,
+            striped=True,
+            hover=True,
+        ),
+    ]
+)
+
 app.layout = dbc.Container(
     [
         header,
@@ -241,6 +289,8 @@ app.layout = dbc.Container(
         columns,
         html.Br(),
         fade,
+        html.Br(),
+        table,
         html.Div(style={"height": "200px"}),
     ]
 )
