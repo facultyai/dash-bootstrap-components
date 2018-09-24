@@ -305,6 +305,8 @@ class Demo extends Component {
         </Card>
       </FadeComponent>
 
+      <br/>
+
       <h2>Table</h2>
       <Table hover={true} responsive={true} striped={true} size="md">
         <thead>
