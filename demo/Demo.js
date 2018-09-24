@@ -16,9 +16,31 @@ import {
   CardText,
   CardTitle,
   Col,
+  Collapse,
   Container,
   Row,
 } from '../src';
+
+class CollapseComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {collapse: false};
+  }
+
+  toggle() {
+    this.setState({collapse: !this.state.collapse});
+  }
+
+  render() {
+    return (<div>
+      <Button onClick={this.toggle} style={{marginBottom: "1rem"}}>Open collapse</Button>
+      <Collapse isOpen={this.state.collapse}>
+        {this.props.children}
+      </Collapse>
+    </div>);
+  }
+}
 
 class Demo extends Component {
   render() {
@@ -164,6 +186,17 @@ class Demo extends Component {
             </CardBody>
           </Card>
         </CardDeck>
+
+        <br/>
+
+        <h2>Collapse</h2>
+        <CollapseComponent>
+          <Card>
+            <CardBody>
+              This content is hidable in the collapse element.
+            </CardBody>
+          </Card>
+        </CollapseComponent>
 
         <br/>
 

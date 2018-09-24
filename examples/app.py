@@ -1,6 +1,7 @@
 import dash
 import dash_bootstrap_components as dbc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State
 
 app = dash.Dash()
 
@@ -134,6 +135,21 @@ cards = html.Div(
     ]
 )
 
+collapse = html.Div(
+    [
+        html.H2("Collapse"),
+        dbc.Button(
+            "Open collapse",
+            id="collapse-button",
+            style={"margin-bottom": "1rem"},
+        ),
+        dbc.Collapse(
+            dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
+            id="collapse",
+        ),
+    ]
+)
+
 columns = html.Div(
     [
         html.H2("Columns"),
@@ -205,10 +221,23 @@ app.layout = dbc.Container(
         html.Br(),
         cards,
         html.Br(),
+        collapse,
+        html.Br(),
         columns,
         html.Div(style={"height": "200px"}),
     ]
 )
+
+
+@app.callback(
+    Output("collapse", "isOpen"),
+    [Input("collapse-button", "n_clicks")],
+    [State("collapse", "isOpen")],
+)
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 
 if __name__ == "__main__":
