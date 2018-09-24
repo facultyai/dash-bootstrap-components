@@ -16,6 +16,7 @@ export { default as CardSubtitle } from './components/card/CardSubtitle';
 export { default as CardText } from './components/card/CardText';
 export { default as CardTitle } from './components/card/CardTitle';
 export { default as Col } from './components/layout/Col';
+export { default as Collapse } from './components/Collapse';
 export { default as Container } from './components/layout/Container';
 export { default as DashLink } from './components/base/DashLink';
 export { default as Row } from './components/layout/Row';
