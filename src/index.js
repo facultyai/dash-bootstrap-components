@@ -23,6 +23,7 @@ export { default as Fade } from './components/Fade';
 export { default as Popover } from './components/Popover';
 export { default as PopoverBody } from './components/PopoverBody';
 export { default as PopoverHeader } from './components/PopoverHeader';
+export { default as Progress } from './components/Progress';
 export { default as Row } from './components/layout/Row';
 export { default as Table } from './components/Table';
 export { default as Tooltip } from './components/Tooltip';
