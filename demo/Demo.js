@@ -22,6 +22,7 @@ import {
   Popover,
   PopoverBody,
   PopoverHeader,
+  Progress,
   Row,
   Table,
   Tooltip,
@@ -338,6 +339,10 @@ class Demo extends Component {
       <h2>Popover</h2>
       <PopoverComponent/>
 
+      <br/>
+
+      <h2>Progress</h2>
+      <Progress value={40} striped={true} animated={true} />
 
       <br/>
 

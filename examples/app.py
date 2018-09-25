@@ -1,5 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
+import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
@@ -243,6 +244,13 @@ popover = html.Div(
     ]
 )
 
+progress = html.Div(
+    [
+        html.H2("Progress"),
+        dbc.Progress(id="progress", value=0, striped=True, animated=True),
+    ]
+)
+
 
 table = html.Div(
     [
@@ -313,6 +321,7 @@ tooltip = html.Div(
 
 app.layout = dbc.Container(
     [
+        dcc.Interval(id="interval", interval=500),
         header,
         html.Br(),
         alerts,
@@ -330,6 +339,8 @@ app.layout = dbc.Container(
         fade,
         html.Br(),
         popover,
+        html.Br(),
+        progress,
         html.Br(),
         table,
         html.Br(),
@@ -370,6 +381,12 @@ def toggle_popover(n, is_open):
     if n:
         return not is_open
     return is_open
+
+
+@app.callback(Output("progress", "value"), [Input("interval", "n_intervals")])
+def advance_progress(n):
+    # advance to 100 then pause for a bit
+    return min(n % 111, 100)
 
 
 if __name__ == "__main__":
