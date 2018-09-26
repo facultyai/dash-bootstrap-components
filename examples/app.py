@@ -225,6 +225,24 @@ fade = html.Div(
     ]
 )
 
+list_group = html.Div(
+    [
+        html.H2("ListGroup"),
+        dbc.ListGroup(
+            [
+                dbc.ListGroupItem("Item 1", color="primary", action=True),
+                dbc.ListGroupItem("Item 2"),
+                dbc.ListGroupItem("Item 3"),
+                dbc.ListGroupItem(
+                    [
+                        dbc.ListGroupItemHeading("Item 4 heading"),
+                        dbc.ListGroupItemText("Item 4 text"),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
 
 popover = html.Div(
     [
@@ -337,6 +355,8 @@ app.layout = dbc.Container(
         columns,
         html.Br(),
         fade,
+        html.Br(),
+        list_group,
         html.Br(),
         popover,
         html.Br(),
