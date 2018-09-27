@@ -29,5 +29,7 @@ export { default as PopoverBody } from './components/PopoverBody';
 export { default as PopoverHeader } from './components/PopoverHeader';
 export { default as Progress } from './components/Progress';
 export { default as Row } from './components/layout/Row';
+export { default as TabContent } from './components/tabs/TabContent';
+export { default as TabPane } from './components/tabs/TabPane';
 export { default as Table } from './components/Table';
 export { default as Tooltip } from './components/Tooltip';
