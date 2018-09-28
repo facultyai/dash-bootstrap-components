@@ -366,7 +366,7 @@ tooltip = html.Div(
 
 app.layout = dbc.Container(
     [
-        dcc.Interval(id="interval", interval=500),
+        dcc.Interval(id="interval", interval=500, n_intervals=0),
         header,
         html.Br(),
         alerts,
