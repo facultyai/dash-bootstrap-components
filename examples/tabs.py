@@ -1,37 +1,40 @@
 import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-from dash.dependencies import Input, Output
+import dash_html_components as html
 
 app = dash.Dash()
 
+tab1_content = html.Div(html.H3("This is tab 1"), style={"margin": "10px"})
+
+tab2_content = html.Div(
+    dbc.Row(
+        [
+            dbc.Col(
+                dbc.Card(
+                    dbc.CardBody(
+                        [
+                            dbc.CardText("This tab has a card!"),
+                            dbc.Button("Click here", color="success"),
+                        ]
+                    )
+                )
+            )
+        ]
+    ),
+    style={"margin": "10px"},
+)
+
 app.layout = dbc.Container(
     [
-        dcc.Dropdown(
-            id="active-tab",
-            options=[
-                {"label": "Tab 1", "value": "tab1"},
-                {"label": "Tab 2", "value": "tab2"},
-            ],
-            value="tab1",
-        ),
-        dbc.TabContent(
+        html.H1("Tabs example"),
+        dbc.Tabs(
             [
-                dbc.TabPane("Tab 1", tabId="tab1"),
-                dbc.TabPane("Tab 2", tabId="tab2"),
-            ],
-            id="tab-content",
-            activeTab="tab1",
+                dbc.Tab(tab1_content, label="Tab 1"),
+                dbc.Tab(tab2_content, label="Tab 2"),
+            ]
         ),
     ]
 )
-
-
-@app.callback(
-    Output("tab-content", "activeTab"), [Input("active-tab", "value")]
-)
-def tab(activeTab):
-    return activeTab
 
 
 if __name__ == "__main__":
