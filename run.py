@@ -1,9 +1,22 @@
 
 import dash_html_components as html
 import dash
+from flask import Flask, render_template
 
 
-app = dash.Dash(__name__)
+server = Flask(__name__)
+
+
+@server.route('/')
+def index():
+    return render_template('index.html')
+
+
+app = dash.Dash(
+    __name__,
+    server=server,
+    routes_pathname_prefix='/l/'
+)
 
 
 app.layout = html.Div([
