@@ -1,5 +1,7 @@
 /* global window:true */
 
+import isAbsoluteUrl from 'is-absolute-url';
+
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 
@@ -28,9 +30,16 @@ class DashLink extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
+  isExternalLink() {
+    const {external_link, href} = this.props;
+    if (typeof external_link === 'undefined' || external_link === null) {
+      return isAbsoluteUrl(href);
+    }
+    return external_link;
+  }
+
   updateLocation(e) {
-    const {dashLink} = this.props;
-    if (dashLink) {
+    if (!this.isExternalLink()) {
       // prevent anchor from updating location
       e.preventDefault();
       const {href, refresh} = this.props;
@@ -55,6 +64,7 @@ class DashLink extends Component {
     const {
       children,
       refresh,
+      externalLink,
       ...otherProps
     } = this.props;
     /**
@@ -105,7 +115,7 @@ DashLink.propTypes = {
   /**
    * Whether to use this link as a dash core components style link or a HTML anchor
    */
-  dashLink: PropTypes.bool,
+  external_link: PropTypes.bool,
 
   /**
    * An integer that represents the number of times
@@ -125,7 +135,7 @@ DashLink.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
   refresh: false,
-  dashLink: true
+  externalLink: null
 };
 
 export default DashLink;
