@@ -28,6 +28,8 @@ import {
   PopoverHeader,
   Progress,
   Row,
+  Tab,
+  Tabs,
   Table,
   Tooltip,
 } from '../src';
@@ -393,6 +395,16 @@ class Demo extends Component {
       </Table>
 
       <br/>
+
+      <h2>Tabs</h2>
+      <Tabs>
+        {/* wrap in div to replicate dash renderer behavior */}
+        <div><Tab tabId="1" label="Tab 1">Tab 1</Tab></div>
+        <div><Tab tabId="2" label="Tab 2">Tab 2</Tab></div>
+      </Tabs>
+
+      <br/>
+
 
       <h2>Tooltip</h2>
       <p>I wonder what <span id="tooltip-target">floccinaucinihilipilification</span> means?</p>
