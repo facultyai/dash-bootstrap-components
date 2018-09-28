@@ -28,6 +28,8 @@ import {
   ListGroupItemHeading,
   ListGroupItemText,
   Navbar,
+  NavItem,
+  NavLink,
   Popover,
   PopoverBody,
   PopoverHeader,
@@ -121,7 +123,7 @@ class Demo extends Component {
   render() {
     return (<React.Fragment>
       <Navbar fixed="top" brand="Dash Bootstrap Components" brandHref="https://github.com/ASIDataScience/dash-bootstrap-components">
-        TODO
+        <NavItem><NavLink href="https://www.asidatascience.com">A link</NavLink></NavItem>
       </Navbar>
       <Container>
         <h1>Dash Bootstrap Components</h1>

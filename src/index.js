@@ -27,6 +27,8 @@ export { default as ListGroupItem } from './components/listgroup/ListGroupItem';
 export { default as ListGroupItemHeading } from './components/listgroup/ListGroupItemHeading';
 export { default as ListGroupItemText } from './components/listgroup/ListGroupItemText';
 export { default as Navbar } from './components/nav/Navbar'
+export { default as NavItem } from './components/nav/NavItem'
+export { default as NavLink } from './components/nav/NavLink'
 export { default as Popover } from './components/Popover';
 export { default as PopoverBody } from './components/PopoverBody';
 export { default as PopoverHeader } from './components/PopoverHeader';
