@@ -317,6 +317,33 @@ table = html.Div(
     ]
 )
 
+tabs = html.Div(
+    [
+        html.H2("Tabs"),
+        dbc.Tabs(
+            [
+                dbc.Tab(
+                    html.H4("This is tab 1"),
+                    label="Tab 1",
+                    style={"padding": "10px"},
+                ),
+                dbc.Tab(
+                    dbc.Card(
+                        dbc.CardBody(
+                            [
+                                dbc.CardText("This tab has a card!"),
+                                dbc.Button("Click here", color="success"),
+                            ]
+                        )
+                    ),
+                    label="Tab 2",
+                    style={"padding": "10px"},
+                ),
+            ]
+        ),
+    ]
+)
+
 tooltip = html.Div(
     [
         html.H2("Tooltip"),
@@ -363,6 +390,8 @@ app.layout = dbc.Container(
         progress,
         html.Br(),
         table,
+        html.Br(),
+        tabs,
         html.Br(),
         tooltip,
         html.Div(style={"height": "200px"}),
