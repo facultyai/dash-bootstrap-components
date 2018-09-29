@@ -23,11 +23,19 @@ describe('DashLink -- presentation', () => {
 
 describe('DashLink -- behaviour', () => {
 
-  it.only('redirect an internal link', () => {
+  describe('internal link', () => {
     const originalLocation = window.location.toString()
     const link = mount(<DashLink href="/example">inner text</DashLink>);
     window.scrollTo = jest.fn()
     link.simulate('click')
-    expect(window.location.toString()).toEqual(`${originalLocation}example`)
+
+    it('redirect an internal link', () =>
+      expect(window.location.toString()).toEqual(`${originalLocation}example`)
+    )
+
+    it('scroll the window', () =>
+      expect(window.scrollTo).toBeCalledWith(0, 0)
+    )
   })
+
 })
