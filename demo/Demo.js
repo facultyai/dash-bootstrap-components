@@ -21,6 +21,7 @@ import {
   Dropdown,
   DropdownItem,
   Fade,
+  Jumbotron,
   ListGroup,
   ListGroupItem,
   ListGroupItemHeading,
@@ -352,6 +353,15 @@ class Demo extends Component {
           </CardBody>
         </Card>
       </FadeComponent>
+
+      <br/>
+
+      <h2>Jumbotron</h2>
+      <Jumbotron>
+        <h2>This is a jumbotron</h2>
+        <p>Pretty big huh?</p>
+        <Button color="danger">Click here</Button>
+      </Jumbotron>
 
       <br/>
 

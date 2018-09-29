@@ -241,6 +241,15 @@ fade = html.Div(
     ]
 )
 
+jumbotron = html.Div([
+    html.H2("Jumbotron"),
+    dbc.Jumbotron([
+        html.H2("This is a jumbotron"),
+        html.P("It makes things big..."),
+        dbc.Button("Click here", color="danger"),
+    ])
+])
+
 list_group = html.Div(
     [
         html.H2("ListGroup"),
@@ -400,6 +409,8 @@ app.layout = dbc.Container(
         dropdown,
         html.Br(),
         fade,
+        html.Br(),
+        jumbotron,
         html.Br(),
         list_group,
         html.Br(),
