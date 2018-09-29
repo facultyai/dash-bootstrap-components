@@ -22,6 +22,7 @@ export { default as DashLink } from './components/base/DashLink';
 export { default as Dropdown } from './components/Dropdown';
 export { default as DropdownItem } from './components/DropdownItem';
 export { default as Fade } from './components/Fade';
+export { default as Jumbotron } from './components/Jumbotron';
 export { default as ListGroup } from './components/listgroup/ListGroup';
 export { default as ListGroupItem } from './components/listgroup/ListGroupItem';
 export { default as ListGroupItemHeading } from './components/listgroup/ListGroupItemHeading';
