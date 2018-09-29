@@ -18,6 +18,8 @@ import {
   Col,
   Collapse,
   Container,
+  Dropdown,
+  DropdownItem,
   Fade,
   ListGroup,
   ListGroupItem,
@@ -327,6 +329,17 @@ class Demo extends Component {
           </div>
         </Col>
       </Row>
+
+      <br/>
+
+      <h2>Dropdown</h2>
+      <Dropdown label="Toggle" caret={true}>
+        <DropdownItem header={true}>Heading</DropdownItem>
+        <DropdownItem>An item</DropdownItem>
+        <DropdownItem divider={true}/>
+        <DropdownItem header={true}>Another heading</DropdownItem>
+        <DropdownItem>Another item</DropdownItem>
+      </Dropdown>
 
       <br/>
 

@@ -210,6 +210,22 @@ columns = html.Div(
     ]
 )
 
+dropdown = html.Div(
+    [
+        html.H2("Dropdown"),
+        dbc.Dropdown(
+            [
+                dbc.DropdownItem("Heading", header=True),
+                dbc.DropdownItem(dcc.Link("Item 1")),
+                dbc.DropdownItem(divider=True),
+                dbc.DropdownItem("Another heading", header=True),
+                dbc.DropdownItem("Item 2"),
+            ],
+            label="Open dropdown",
+        ),
+    ]
+)
+
 fade = html.Div(
     [
         html.H2("Fade"),
@@ -380,6 +396,8 @@ app.layout = dbc.Container(
         collapse,
         html.Br(),
         columns,
+        html.Br(),
+        dropdown,
         html.Br(),
         fade,
         html.Br(),
