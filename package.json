@@ -10,7 +10,8 @@
     "demo": "webpack-dev-server --hot --inline --port=8888 --disable-host-check --content-base demo --config=webpack.config.demo.js",
     "extract-metadata": "mkdirp lib && react-docgen --pretty -o lib/metadata.json src/components && node -e \"const fs = require('fs'); const path = require('path'); const m = JSON.parse(fs.readFileSync('./lib/metadata.json')); const r = {}; Object.keys(m).forEach(k => r[k.split(path.sep).join('/')] = m[k]); fs.writeFileSync('./lib/metadata.json', JSON.stringify(r, '\t', 2));\"",
     "prepublish": "NODE_ENV=production npm run build-dist && npm run copy-lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "author": "ASI Data Science",
   "license": "Apache-2.0",
@@ -22,6 +23,9 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "copyfiles": "^2.1.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "jest": "^23.6.0",
     "react-docgen": "^2.21.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
@@ -29,9 +33,13 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "is-absolute-url": "^2.1.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "reactstrap": "^6.4.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
   }
 }
