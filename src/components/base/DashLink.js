@@ -42,13 +42,9 @@ class DashLink extends Component {
     if (!this.isExternalLink()) {
       // prevent anchor from updating location
       e.preventDefault();
-      const {href, refresh} = this.props;
-      if (refresh) {
-        window.location.pathname = href;
-      } else {
-        window.history.pushState({}, '', href);
-        window.dispatchEvent(new CustomEvent('onpushstate'));
-      }
+      const {href} = this.props;
+      window.history.pushState({}, '', href);
+      window.dispatchEvent(new CustomEvent('onpushstate'));
       // scroll back to top
       window.scrollTo(0, 0);
     }
@@ -63,7 +59,6 @@ class DashLink extends Component {
   render() {
     const {
       children,
-      refresh,
       externalLink,
       ...otherProps
     } = this.props;
@@ -107,12 +102,6 @@ DashLink.propTypes = {
   href: PropTypes.string,
 
   /**
-   * Whether to refresh the page if using as a dash core components style link.
-   * Default: False
-   */
-  refresh: PropTypes.bool,
-
-  /**
    * Whether to use this link as a dash core components style link or a HTML anchor
    */
   external_link: PropTypes.bool,
@@ -134,7 +123,6 @@ DashLink.propTypes = {
 DashLink.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
-  refresh: false,
   externalLink: null
 };
 
