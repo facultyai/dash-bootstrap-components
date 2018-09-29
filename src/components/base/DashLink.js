@@ -52,8 +52,8 @@ class DashLink extends Component {
       // scroll back to top
       window.scrollTo(0, 0);
     }
-    if (props.setProps) {
-      props.setProps({
+    if (this.props.setProps) {
+      this.props.setProps({
         n_clicks: props.n_clicks + 1,
         n_clicks_timestamp: Date.now()
       })
