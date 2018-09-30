@@ -5,9 +5,12 @@ import {
   Container,
   Nav,
   NavbarToggler,
-  NavbarBrand,
   Navbar as RSNavbar,
 } from 'reactstrap';
+
+import Link from '../../private/Link';
+
+import NavbarBrand from './NavbarBrand'
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -30,6 +33,7 @@ class Navbar extends React.Component {
       brand,
       brandHref,
       brandStyle,
+      brand_external_link,
       linksLeft,
       fluid,
       ...otherProps
@@ -38,7 +42,7 @@ class Navbar extends React.Component {
     return (
       <RSNavbar {...otherProps}>
         <Container fluid={fluid}>
-          {brand && <NavbarBrand href={brandHref} style={brandStyle} >{brand}</NavbarBrand>}
+          {brand && <NavbarBrand href={brandHref} style={brandStyle} external_link={brand_external_link}>{brand}</NavbarBrand>}
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar={true} >
             <Nav
@@ -98,6 +102,16 @@ Navbar.propTypes = {
    * Style options for Brand
    */
   brandStyle: PropTypes.object,
+
+  /**
+   * If true, the browser will treat the brand link as external,
+   * forcing a page refresh at the new location. If false,
+   * this just changes the location without triggering a page
+   * refresh. Use this if you are observing dcc.Location, for
+   * instance. Defaults to true for absolute URLs and false
+   * otherwise.
+   */
+  brand_external_link: PropTypes.bool,
 
   /**
    * Allow menu items to expand to fill width of page
