@@ -28,3 +28,35 @@ describe('NavLink', () => {
   )
   
 })
+
+describe('NavLink -- options', () => {
+  it('active', () => {
+    const navLink = shallow(
+      <NavLink href="http://example.com" active>Some text</NavLink>
+    )
+    const link = navLink.find('Link')
+    expect(link.prop('className').split(' ')).toContain('nav-link')
+    expect(link.prop('className').split(' ')).toContain('active')
+  })
+
+  it('disabled', () => {
+    const navLink = shallow(
+      <NavLink href="http://example.com" disabled>Some text</NavLink>
+    )
+    const link = navLink.find('Link')
+    const classes = link.prop('className').split(' ')
+    expect(classes).toContain('nav-link')
+    expect(classes).toContain('disabled')
+    expect(link.prop('disabled')).toBe(true)
+  })
+
+  it('additional classes', () => {
+    const navLink = shallow(
+      <NavLink href="http://example.com" className="some-class">Some text</NavLink>
+    )
+    const link = navLink.find('Link')
+    const classes = link.prop('className').split(' ')
+    expect(classes).toContain('nav-link')
+    expect(classes).toContain('some-class')
+  })
+})
