@@ -1,28 +1,19 @@
 import PropTypes from 'prop-types';
 import {NavLink as RSNavLink} from 'reactstrap';
+import classNames from 'classnames';
+import DashLink from '../base/DashLink';
 
-const NavLink = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSNavLink {...otherProps} onClick={() => {
-      if (props.setProps) {
-        props.setProps({
-          n_clicks: props.n_clicks + 1,
-          n_clicks_timestamp: Date.now()
-        })
-      }
-      if (props.fireEvent)
-        props.fireEvent({event: 'click'});
-  }}>
-    {children}
-  </RSNavLink>);
-}
-
-NavLink.defaultProps = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1
+const NavLink = ({ children, className, active, ...otherProps }) => {
+  const classes = classNames(
+    className,
+    'nav-link',
+    { active }
+  );
+  return (
+    <DashLink className={classes} {...otherProps}>
+      {children}
+    </DashLink>
+  );
 }
 
 NavLink.propTypes = {
@@ -64,7 +55,7 @@ NavLink.propTypes = {
   tag: PropTypes.string,
 
   /**
-   * Apply the disabled CSS class
+   * Disable the link
    */
   disabled: PropTypes.bool,
 
