@@ -59,7 +59,7 @@ class DashLink extends Component {
   render() {
     const {
       children,
-      externalLink,
+      external_link,
       ...otherProps
     } = this.props;
     /**
@@ -123,7 +123,7 @@ DashLink.propTypes = {
 DashLink.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
-  externalLink: null
+  external_link: null
 };
 
 export default DashLink;
