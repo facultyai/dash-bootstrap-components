@@ -3,16 +3,16 @@ import {shallow} from 'enzyme';
 import NavLink from '../NavLink';
 
 describe('NavLink', () => {
+  let navLink;
   let link;
-  let dashLink;
 
   beforeAll(() => {
-    link = shallow(<NavLink href="http://example.com">Some text</NavLink>)
-    dashLink = link.find('DashLink')
+    navLink = shallow(<NavLink href="http://example.com">Some text</NavLink>)
+    link = navLink.find('Link')
   })
 
-  it('contain a DashLink', () =>
-    expect(dashLink).toHaveLength(1)
+  it('contain a Link', () =>
+    expect(link).toHaveLength(1)
   )
   
 })

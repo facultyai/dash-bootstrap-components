@@ -147,7 +147,7 @@ describe('Link -- behaviour', () => {
 
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
-      link = mount(<DashLink href="http://example.com" disabled={true}>inner text</DashLink>);
+      link = mount(<Link href="http://example.com" disabled={true}>inner text</Link>);
       const anchor = link.find('a')
       clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
       anchor.simulate('click', clickEvent)

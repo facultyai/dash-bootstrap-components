@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
 import classNames from 'classnames';
-import DashLink from '../base/DashLink';
+import Link from '../../private/Link';
 
 const NavLink = ({ children, className, active, ...otherProps }) => {
   const classes = classNames(
@@ -10,9 +10,9 @@ const NavLink = ({ children, className, active, ...otherProps }) => {
     { active, disabled: otherProps.disabled }
   );
   return (
-    <DashLink className={classes} {...otherProps}>
+    <Link className={classes} {...otherProps}>
       {children}
-    </DashLink>
+    </Link>
   );
 }
 
