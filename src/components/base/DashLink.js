@@ -102,7 +102,12 @@ DashLink.propTypes = {
   href: PropTypes.string,
 
   /**
-   * Whether to use this link as a dash core components style link or a HTML anchor
+   * If true, the browser will treat this as an external link,
+   * forcing a page refresh at the new location. If false,
+   * this just changes the location without triggering a page
+   * refresh. Use this if you are observing dcc.Location, for
+   * instance. Defaults to true for absolute URLs and false
+   * otherwise.
    */
   external_link: PropTypes.bool,
 
