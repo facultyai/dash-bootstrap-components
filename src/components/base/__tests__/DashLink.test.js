@@ -39,7 +39,7 @@ describe('DashLink -- behaviour', () => {
     })
 
     it('redirect an internal link', () =>
-      expect(window.location.toString()).toEqual(`http://starting-url.com/example`)
+      expect(window.location.toString()).toEqual('http://starting-url.com/example')
     )
 
     it('scroll the window', () =>
