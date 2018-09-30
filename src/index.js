@@ -18,7 +18,6 @@ export { default as CardTitle } from './components/card/CardTitle';
 export { default as Col } from './components/layout/Col';
 export { default as Collapse } from './components/Collapse';
 export { default as Container } from './components/layout/Container';
-export { default as DashLink } from './components/base/DashLink';
 export { default as Dropdown } from './components/Dropdown';
 export { default as DropdownItem } from './components/DropdownItem';
 export { default as Fade } from './components/Fade';

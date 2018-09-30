@@ -1,11 +1,11 @@
 
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import DashLink from '../DashLink';
+import Link from '../Link';
 
-describe('DashLink -- presentation', () => {
+describe('Link -- presentation', () => {
 
-  const link = shallow(<DashLink href="https://example.com">inner text</DashLink>);
+  const link = shallow(<Link href="https://example.com">inner text</Link>);
   const anchor = link.find('a');
 
   it('contains an anchor', () =>
@@ -21,7 +21,7 @@ describe('DashLink -- presentation', () => {
   )
 })
 
-describe('DashLink -- behaviour', () => {
+describe('Link -- behaviour', () => {
 
   describe('internal link', () => {
     let link;
@@ -30,7 +30,7 @@ describe('DashLink -- behaviour', () => {
 
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
-      link = mount(<DashLink href="/example">inner text</DashLink>);
+      link = mount(<Link href="/example">inner text</Link>);
       const anchor = link.find('a');
       window.scrollTo = jest.fn()
       originalHistoryLength = window.history.length
@@ -69,7 +69,7 @@ describe('DashLink -- behaviour', () => {
 
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
-      link = mount(<DashLink href="https://another-domain.com">inner text</DashLink>);
+      link = mount(<Link href="https://another-domain.com">inner text</Link>);
       const anchor = link.find('a');
       clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
       anchor.simulate('click', clickEvent)
@@ -90,7 +90,7 @@ describe('DashLink -- behaviour', () => {
 
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
-      link = mount(<DashLink href="/example" external_link={true}>inner text</DashLink>);
+      link = mount(<Link href="/example" external_link={true}>inner text</Link>);
       const anchor = link.find('a')
       clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
       anchor.simulate('click', clickEvent)
@@ -112,7 +112,7 @@ describe('DashLink -- behaviour', () => {
 
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
-      link = mount(<DashLink href="http://starting-url.com/example" external_link={false}>inner text</DashLink>);
+      link = mount(<Link href="http://starting-url.com/example" external_link={false}>inner text</Link>);
       const anchor = link.find('a');
       window.scrollTo = jest.fn()
       originalHistoryLength = window.history.length

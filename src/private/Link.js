@@ -20,7 +20,7 @@ function CustomEvent(event, params) {
 }
 CustomEvent.prototype = window.Event.prototype;
 
-class DashLink extends Component {
+class Link extends Component {
   /**
    * This component can be used either as a dash-core-components style link or
    * as a styled HTML anchor
@@ -73,7 +73,7 @@ class DashLink extends Component {
   }
 }
 
-DashLink.propTypes = {
+Link.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -125,10 +125,10 @@ DashLink.propTypes = {
   n_clicks_timestamp: PropTypes.number
 };
 
-DashLink.defaultProps = {
+Link.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
   external_link: null
 };
 
-export default DashLink;
+export default Link;

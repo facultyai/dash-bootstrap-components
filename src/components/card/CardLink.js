@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import DashLink from '../base/DashLink';
+import Link from '../../private/Link';
 
 const CardLink = props => {
   const {
@@ -9,9 +9,9 @@ const CardLink = props => {
     ...otherProps
   } = props;
   const classes = classNames(className, 'card-link');
-  return (<DashLink className={classes} {...otherProps}>
+  return (<Link className={classes} {...otherProps}>
     {children}
-  </DashLink>);
+  </Link>);
 }
 
 CardLink.propTypes = {
