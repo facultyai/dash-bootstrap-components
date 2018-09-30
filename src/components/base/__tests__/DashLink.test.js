@@ -101,5 +101,41 @@ describe('DashLink -- behaviour', () => {
     })
   })
 
+  describe('external link with external_link false', () => {
+    let link;
+    let originalHistoryLength;
+    let clickEvent;
+
+    beforeAll(() => {
+      jsdom.reconfigure({ url: 'http://starting-url.com' })
+      link = mount(<DashLink href="http://starting-url.com/example" external_link={false}>inner text</DashLink>);
+      const anchor = link.find('a');
+      window.scrollTo = jest.fn()
+      originalHistoryLength = window.history.length
+      clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
+      anchor.simulate('click', clickEvent)
+    })
+
+    it('redirect an internal link', () =>
+      expect(window.location.toString()).toEqual(`http://starting-url.com/example`)
+    )
+
+    it('scroll the window', () =>
+      expect(window.scrollTo).toBeCalledWith(0, 0)
+    )
+
+    it('populate the window history', () =>
+      expect(window.history).toHaveLength(originalHistoryLength + 1)
+    )
+
+    it('prevent the default event handler', () =>
+      expect(clickEvent.preventDefault).toHaveBeenCalled()
+    )
+
+    afterAll(() => {
+      link.unmount()
+    })
+  })
+
 })
 
