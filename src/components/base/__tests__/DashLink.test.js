@@ -60,6 +60,10 @@ describe('DashLink -- behaviour', () => {
   })
 
   describe('external link', () => {
+    // Enzyme does translate React synthetic events into real browser events.
+    // We therefore can't easily test that the redirection happen.
+    // Here, we just test that the default behaviour isn't prevented
+    // when clicking on an anchor.
     let link;
     let clickEvent;
 
