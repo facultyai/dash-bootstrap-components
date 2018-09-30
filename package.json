@@ -26,6 +26,7 @@
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "jest": "^23.6.0",
+    "jest-environment-jsdom-global": "^1.1.0",
     "jsdom": "^12.0.0",
     "react-docgen": "^2.21.0",
     "webpack": "^4.19.1",
