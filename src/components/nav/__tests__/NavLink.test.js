@@ -22,5 +22,9 @@ describe('NavLink', () => {
   it('the link should have the correct inner text', () =>
     expect(link.prop('children')).toEqual('Some text')
   )
+
+  it('contain the nav-link class', () =>
+    expect(link.prop('className').split(' ')).toContain('nav-link')
+  )
   
 })
