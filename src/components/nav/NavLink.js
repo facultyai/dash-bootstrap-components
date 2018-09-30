@@ -7,13 +7,18 @@ const NavLink = ({ children, className, active, ...otherProps }) => {
   const classes = classNames(
     className,
     'nav-link',
-    { active }
+    { active, disabled: otherProps.disabled }
   );
   return (
     <DashLink className={classes} {...otherProps}>
       {children}
     </DashLink>
   );
+}
+
+NavLink.defaultProps = {
+  active: false,
+  disabled: false
 }
 
 NavLink.propTypes = {
