@@ -210,6 +210,22 @@ columns = html.Div(
     ]
 )
 
+dropdown = html.Div(
+    [
+        html.H2("Dropdown"),
+        dbc.Dropdown(
+            [
+                dbc.DropdownItem("Heading", header=True),
+                dbc.DropdownItem(dcc.Link("Item 1")),
+                dbc.DropdownItem(divider=True),
+                dbc.DropdownItem("Another heading", header=True),
+                dbc.DropdownItem("Item 2"),
+            ],
+            label="Open dropdown",
+        ),
+    ]
+)
+
 fade = html.Div(
     [
         html.H2("Fade"),
@@ -224,6 +240,15 @@ fade = html.Div(
         ),
     ]
 )
+
+jumbotron = html.Div([
+    html.H2("Jumbotron"),
+    dbc.Jumbotron([
+        html.H2("This is a jumbotron"),
+        html.P("It makes things big..."),
+        dbc.Button("Click here", color="danger"),
+    ])
+])
 
 list_group = html.Div(
     [
@@ -381,7 +406,11 @@ app.layout = dbc.Container(
         html.Br(),
         columns,
         html.Br(),
+        dropdown,
+        html.Br(),
         fade,
+        html.Br(),
+        jumbotron,
         html.Br(),
         list_group,
         html.Br(),

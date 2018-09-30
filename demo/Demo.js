@@ -18,7 +18,10 @@ import {
   Col,
   Collapse,
   Container,
+  Dropdown,
+  DropdownItem,
   Fade,
+  Jumbotron,
   ListGroup,
   ListGroupItem,
   ListGroupItemHeading,
@@ -330,6 +333,17 @@ class Demo extends Component {
 
       <br/>
 
+      <h2>Dropdown</h2>
+      <Dropdown label="Toggle" caret={true}>
+        <DropdownItem header={true}>Heading</DropdownItem>
+        <DropdownItem>An item</DropdownItem>
+        <DropdownItem divider={true}/>
+        <DropdownItem header={true}>Another heading</DropdownItem>
+        <DropdownItem>Another item</DropdownItem>
+      </Dropdown>
+
+      <br/>
+
       <h2>Fade</h2>
 
       <FadeComponent>
@@ -339,6 +353,15 @@ class Demo extends Component {
           </CardBody>
         </Card>
       </FadeComponent>
+
+      <br/>
+
+      <h2>Jumbotron</h2>
+      <Jumbotron>
+        <h2>This is a jumbotron</h2>
+        <p>Pretty big huh?</p>
+        <Button color="danger">Click here</Button>
+      </Jumbotron>
 
       <br/>
 
