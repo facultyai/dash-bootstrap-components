@@ -41,6 +41,7 @@
     "reactstrap": "^6.4.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "testEnvironment": "jest-environment-jsdom-global"
   }
 }
