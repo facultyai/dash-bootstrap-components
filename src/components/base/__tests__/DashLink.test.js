@@ -35,7 +35,7 @@ describe('DashLink -- behaviour', () => {
       window.scrollTo = jest.fn()
       originalHistoryLength = window.history.length
       clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
-      link.simulate('click', clickEvent)
+      anchor.simulate('click', clickEvent)
     })
 
     it('redirect an internal link', () =>
@@ -66,12 +66,17 @@ describe('DashLink -- behaviour', () => {
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
       link = mount(<DashLink href="https://another-domain.com">inner text</DashLink>);
+      const anchor = link.find('a');
       clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
-      link.simulate('click', clickEvent)
+      anchor.simulate('click', clickEvent)
     })
 
     it('not prevent default event behaviour', () => {
       expect(clickEvent.preventDefault).not.toHaveBeenCalled()
+    })
+
+    afterAll(() => {
+      link.unmount()
     })
   })
 
@@ -82,12 +87,17 @@ describe('DashLink -- behaviour', () => {
     beforeAll(() => {
       jsdom.reconfigure({ url: 'http://starting-url.com' })
       link = mount(<DashLink href="/example" external_link={true}>inner text</DashLink>);
+      const anchor = link.find('a')
       clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
-      link.simulate('click', clickEvent)
+      anchor.simulate('click', clickEvent)
     })
 
     it('Not prevent default event behaviour', () => {
       expect(clickEvent.preventDefault).not.toHaveBeenCalled()
+    })
+
+    afterAll(() => {
+      link.unmount()
     })
   })
 
