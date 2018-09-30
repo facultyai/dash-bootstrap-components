@@ -55,19 +55,9 @@ NavLink.propTypes = {
   active: PropTypes.bool,
 
   /**
-   * HTML tag to use for the link, default: a
-   */
-  tag: PropTypes.string,
-
-  /**
    * Disable the link
    */
   disabled: PropTypes.bool,
-
-  /**
-   * A callback for firing events to dash.
-   */
-  fireEvent: PropTypes.func,
 
   dashEvents: PropTypes.oneOf(['click'])
 }
