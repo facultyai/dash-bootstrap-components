@@ -11,7 +11,7 @@
     "extract-metadata": "mkdirp lib && react-docgen --pretty -o lib/metadata.json src/components && node -e \"const fs = require('fs'); const path = require('path'); const m = JSON.parse(fs.readFileSync('./lib/metadata.json')); const r = {}; Object.keys(m).forEach(k => r[k.split(path.sep).join('/')] = m[k]); fs.writeFileSync('./lib/metadata.json', JSON.stringify(r, '\t', 2));\"",
     "prepublish": "NODE_ENV=production npm run build-dist && npm run copy-lib",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watch"
   },
   "author": "ASI Data Science",
   "license": "Apache-2.0",
