@@ -123,7 +123,9 @@ class Demo extends Component {
   render() {
     return (<React.Fragment>
       <Navbar fixed="top" brand="Dash Bootstrap Components" brandHref="https://github.com/ASIDataScience/dash-bootstrap-components">
-        <NavItem><NavLink href="https://www.asidatascience.com">A link</NavLink></NavItem>
+        <NavItem>
+          <NavLink href="https://www.asidatascience.com">A link</NavLink>
+        </NavItem>
       </Navbar>
       <Container>
         <h1>Dash Bootstrap Components</h1>
