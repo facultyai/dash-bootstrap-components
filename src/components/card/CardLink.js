@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { CardLink as RSCardLink } from 'reactstrap';
 import Link from '../../private/Link';
 
 const CardLink = props => {
   const {
     children,
-    className,
     ...otherProps
   } = props;
-  const classes = classNames(className, 'card-link');
-  return (<Link className={classes} {...otherProps}>
+  return (<RSCardLink tag={Link} {...otherProps}>
     {children}
-  </Link>);
+  </RSCardLink>);
 }
 
 CardLink.propTypes = {
