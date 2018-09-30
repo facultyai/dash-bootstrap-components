@@ -14,5 +14,13 @@ describe('NavLink', () => {
   it('contain a Link', () =>
     expect(link).toHaveLength(1)
   )
+
+  it('the link should have the correct href', () =>
+    expect(link.prop('href')).toEqual('http://example.com')
+  )
+
+  it('the link should have the correct inner text', () =>
+    expect(link.prop('children')).toEqual('Some text')
+  )
   
 })
