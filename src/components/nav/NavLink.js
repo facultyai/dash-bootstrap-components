@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {NavLink as RSNavLink} from 'reactstrap';
+import React from 'react'
 import classNames from 'classnames';
 import DashLink from '../base/DashLink';
 
