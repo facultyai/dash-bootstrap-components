@@ -5,6 +5,24 @@ import Navbar from '../Navbar';
 import NavbarBrand from '../NavbarBrand';
 import NavItem from '../NavItem';
 
+describe('Empty Navbar', () => {
+  let navbar;
+  let navbarBrand;
+
+  beforeAll(() => {
+    navbar = shallow(
+      <Navbar>
+        <NavItem>item</NavItem>
+      </Navbar>
+    );
+    navbarBrand = navbar.find(NavbarBrand);
+  })
+
+  it('should not have a brand', () =>
+    expect(navbarBrand).toHaveLength(0)
+  )
+})
+
 describe('Navbar with brand', () => {
   let navbar;
   let navbarBrand;
