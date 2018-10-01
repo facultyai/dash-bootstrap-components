@@ -139,11 +139,6 @@ Navbar.propTypes = {
   color: PropTypes.string,
 
   /**
-   * HTML tag to use for the Navbar, default: nav
-   */
-  tag: PropTypes.string,
-
-  /**
    * Specify screen size at which to expand the menu bar, e.g. sm, md, lg etc.
    */
   expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
