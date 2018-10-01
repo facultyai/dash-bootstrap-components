@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import DashLink from '../base/DashLink';
+import { CardLink as RSCardLink } from 'reactstrap';
+import Link from '../../private/Link';
 
 const CardLink = props => {
   const {
     children,
-    className,
     ...otherProps
   } = props;
-  const classes = classNames(className, 'card-link');
-  return (<DashLink className={classes} {...otherProps}>
+  return (<RSCardLink tag={Link} {...otherProps}>
     {children}
-  </DashLink>);
+  </RSCardLink>);
 }
 
 CardLink.propTypes = {
@@ -43,15 +42,14 @@ CardLink.propTypes = {
   href: PropTypes.string,
 
   /**
-   * Whether to refresh the page if using as a dash core components style link.
-   * Default: False
+   * If true, the browser will treat this as an external link,
+   * forcing a page refresh at the new location. If false,
+   * this just changes the location without triggering a page
+   * refresh. Use this if you are observing dcc.Location, for
+   * instance. Defaults to true for absolute URLs and false
+   * otherwise.
    */
-  refresh: PropTypes.bool,
-
-  /**
-   * Whether to use this link as a dash core components style link or a HTML anchor
-   */
-  dashLink: PropTypes.bool,
+  external_link: PropTypes.bool,
 
   /**
    * An integer that represents the number of times

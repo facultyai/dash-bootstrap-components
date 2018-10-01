@@ -1,5 +1,7 @@
 /* global window:true */
 
+import isAbsoluteUrl from 'is-absolute-url';
+
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 
@@ -18,7 +20,7 @@ function CustomEvent(event, params) {
 }
 CustomEvent.prototype = window.Event.prototype;
 
-class DashLink extends Component {
+class Link extends Component {
   /**
    * This component can be used either as a dash-core-components style link or
    * as a styled HTML anchor
@@ -28,23 +30,26 @@ class DashLink extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
+  isExternalLink() {
+    const {external_link, href} = this.props;
+    if (typeof external_link === 'undefined' || external_link === null) {
+      return isAbsoluteUrl(href);
+    }
+    return external_link;
+  }
+
   updateLocation(e) {
-    const {dashLink} = this.props;
-    if (dashLink) {
+    if (!this.isExternalLink()) {
       // prevent anchor from updating location
       e.preventDefault();
-      const {href, refresh} = this.props;
-      if (refresh) {
-        window.location.pathname = href;
-      } else {
-        window.history.pushState({}, '', href);
-        window.dispatchEvent(new CustomEvent('onpushstate'));
-      }
+      const {href} = this.props;
+      window.history.pushState({}, '', href);
+      window.dispatchEvent(new CustomEvent('onpushstate'));
       // scroll back to top
       window.scrollTo(0, 0);
     }
-    if (props.setProps) {
-      props.setProps({
+    if (this.props.setProps) {
+      this.props.setProps({
         n_clicks: props.n_clicks + 1,
         n_clicks_timestamp: Date.now()
       })
@@ -54,7 +59,7 @@ class DashLink extends Component {
   render() {
     const {
       children,
-      refresh,
+      external_link,
       ...otherProps
     } = this.props;
     /**
@@ -68,7 +73,7 @@ class DashLink extends Component {
   }
 }
 
-DashLink.propTypes = {
+Link.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -97,15 +102,14 @@ DashLink.propTypes = {
   href: PropTypes.string,
 
   /**
-   * Whether to refresh the page if using as a dash core components style link.
-   * Default: False
+   * If true, the browser will treat this as an external link,
+   * forcing a page refresh at the new location. If false,
+   * this just changes the location without triggering a page
+   * refresh. Use this if you are observing dcc.Location, for
+   * instance. Defaults to true for absolute URLs and false
+   * otherwise.
    */
-  refresh: PropTypes.bool,
-
-  /**
-   * Whether to use this link as a dash core components style link or a HTML anchor
-   */
-  dashLink: PropTypes.bool,
+  external_link: PropTypes.bool,
 
   /**
    * An integer that represents the number of times
@@ -121,11 +125,10 @@ DashLink.propTypes = {
   n_clicks_timestamp: PropTypes.number
 };
 
-DashLink.defaultProps = {
+Link.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
-  refresh: false,
-  dashLink: true
+  external_link: null
 };
 
-export default DashLink;
+export default Link;

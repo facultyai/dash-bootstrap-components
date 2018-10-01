@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardImg,
   CardImgOverlay,
+  CardLink,
   CardSubtitle,
   CardText,
   CardTitle,
@@ -201,7 +202,7 @@ class Demo extends Component {
       <h2>Cards</h2>
 
       <Row>
-        <Col md={6}>
+        <Col md={3}>
           <Card color="dark" outline={true}>
             <CardHeader>Header</CardHeader>
             <CardBody>
@@ -225,6 +226,16 @@ class Demo extends Component {
               <CardTitle>Here's another card</CardTitle>
               <CardText>With some text, and a button</CardText>
               <Button color="success">Click here</Button>
+            </CardBody>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card>
+            <CardBody>
+              <CardTitle>Here's yet another card</CardTitle>
+              <CardText>With some text, and some links</CardText>
+              <CardLink href="https://www.asidatascience.com">External</CardLink>
+              <CardLink href="/example">Internal</CardLink>
             </CardBody>
           </Card>
         </Col>
