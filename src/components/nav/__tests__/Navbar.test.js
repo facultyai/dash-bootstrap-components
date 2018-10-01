@@ -59,20 +59,55 @@ describe('Navbar with brand', () => {
   })
 })
 
-describe('Expandable navbar', () => {
-  let navbar;
-  let rsNavbar;
+describe('Pass on attributes to the underlying reactstrap navbar', () => {
 
-  beforeAll(() => {
-    navbar = shallow(
+  it('expand', () => {
+    const navbar = shallow(
       <Navbar expand="xl">
         <NavItem>item</NavItem>
       </Navbar>
     )
-    rsNavbar = navbar.find(RSNavbar)
+    const rsNavbar = navbar.find(RSNavbar)
+    expect(rsNavbar.prop('expand')).toEqual('xl')
   })
 
-  it('pass on expand prop to underlying Reactstrap navbar', () =>
-    expect(rsNavbar.prop('expand')).toEqual('xl')
-  )
+  it('dark', () => {
+    const navbar = shallow(
+      <Navbar dark={true}>
+        <NavItem>item</NavItem>
+      </Navbar>
+    )
+    const rsNavbar = navbar.find(RSNavbar)
+    expect(rsNavbar.prop('dark')).toBe(true)
+  })
+
+  it('light', () => {
+    const navbar = shallow(
+      <Navbar light={true}>
+        <NavItem>item</NavItem>
+      </Navbar>
+    )
+    const rsNavbar = navbar.find(RSNavbar)
+    expect(rsNavbar.prop('light')).toBe(true)
+  })
+
+  it('fixed', () => {
+    const navbar = shallow(
+      <Navbar fixed="top">
+        <NavItem>item</NavItem>
+      </Navbar>
+    )
+    const rsNavbar = navbar.find(RSNavbar)
+    expect(rsNavbar.prop('fixed')).toBe('top')
+  })
+
+  it('color', () => {
+    const navbar = shallow(
+      <Navbar color="secondary">
+        <NavItem>item</NavItem>
+      </Navbar>
+    )
+    const rsNavbar = navbar.find(RSNavbar)
+    expect(rsNavbar.prop('color')).toBe('secondary')
+  })
 })
