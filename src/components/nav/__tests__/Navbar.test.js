@@ -58,3 +58,21 @@ describe('Navbar with brand', () => {
     expect(navbarBrand.prop('external_link')).toBe(true)
   })
 })
+
+describe('Expandable navbar', () => {
+  let navbar;
+  let rsNavbar;
+
+  beforeAll(() => {
+    navbar = shallow(
+      <Navbar expand="xl">
+        <NavItem>item</NavItem>
+      </Navbar>
+    )
+    rsNavbar = navbar.find(RSNavbar)
+  })
+
+  it('pass on expand prop to underlying Reactstrap navbar', () =>
+    expect(rsNavbar.prop('expand')).toEqual('xl')
+  )
+})
