@@ -31,8 +31,8 @@ class Navbar extends React.Component {
     const {
       children,
       brand,
-      brandHref,
-      brandStyle,
+      brand_href,
+      brand_style,
       brand_external_link,
       linksLeft,
       fluid,
@@ -42,7 +42,7 @@ class Navbar extends React.Component {
     return (
       <RSNavbar {...otherProps}>
         <Container fluid={fluid}>
-          {brand && <NavbarBrand href={brandHref} style={brandStyle} external_link={brand_external_link}>{brand}</NavbarBrand>}
+          {brand && <NavbarBrand href={brand_href} style={brand_style} external_link={brand_external_link}>{brand}</NavbarBrand>}
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar={true} >
             <Nav
@@ -96,12 +96,12 @@ Navbar.propTypes = {
   /**
    * Link to attach to brand
    */
-  brandHref: PropTypes.string,
+  brand_href: PropTypes.string,
 
   /**
    * Style options for Brand
    */
-  brandStyle: PropTypes.object,
+  brand_style: PropTypes.object,
 
   /**
    * If true, the browser will treat the brand link as external,
