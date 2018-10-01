@@ -134,6 +134,15 @@ Navbar.propTypes = {
   fixed: PropTypes.string,
 
   /**
+   * Stick the navbar to the top or the bottom of the viewport, options: top, bottom
+   *
+   * With `sticky`, the navbar remains in the viewport when you scroll. By
+   * contrast, with `fixed`, the navbar will remain at the top or bottom of
+   * the page.
+   */
+  sticky: PropTypes.string,
+
+  /**
    * Sets the color of the Navbar, options: primary, secondary, success, warning, danger, info, light.
    */
   color: PropTypes.string,

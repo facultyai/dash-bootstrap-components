@@ -91,8 +91,14 @@ describe('Pass on attributes to the underlying reactstrap navbar', () => {
     expect(rsNavbar.prop('fixed')).toBe('top')
   })
 
+  it('sticky', () => {
+    const {navbar, rsNavbar} = navbarWithProps({sticky: 'top'})
+    expect(rsNavbar.prop('sticky')).toBe('top')
+  })
+
   it('color', () => {
     const {navbar, rsNavbar} = navbarWithProps({color: 'secondary'})
     expect(rsNavbar.prop('color')).toBe('secondary')
   })
+
 })
