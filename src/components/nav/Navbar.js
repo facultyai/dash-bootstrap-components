@@ -44,7 +44,7 @@ class Navbar extends React.Component {
         <Container fluid={fluid}>
           {brand && <NavbarBrand href={brand_href} style={brand_style} external_link={brand_external_link}>{brand}</NavbarBrand>}
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar={true} >
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav
               className={linksLeft ? "mr-auto" : "ml-auto"}
               navbar
