@@ -126,6 +126,12 @@ class Demo extends Component {
         <NavItem>
           <NavLink href="https://www.asidatascience.com">A link</NavLink>
         </NavItem>
+        <Dropdown nav inNavbar label="Menu">
+          <DropdownItem>Entry 1</DropdownItem>
+          <DropdownItem>Entry 2</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Entry 3</DropdownItem>
+        </Dropdown>
       </Navbar>
       <Container>
         <h1>Dash Bootstrap Components</h1>
