@@ -34,11 +34,6 @@ NavItem.propTypes = {
   className: PropTypes.string,
 
   /**
-   * HTML tag to use for the NavItem, default: li
-   */
-  tag: PropTypes.string,
-
-  /**
    * Apply active style to item.
    */
   active: PropTypes.bool
