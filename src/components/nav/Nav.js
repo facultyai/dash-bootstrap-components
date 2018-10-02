@@ -45,19 +45,20 @@ Nav.propTypes = {
   pills: PropTypes.bool,
 
   /**
-   * ...
+   * Apply Card styling to nav items
    */
   card: PropTypes.bool,
 
   /**
-   * ...
-   */
-  justified: PropTypes.bool,
-
-  /**
-   * ...
+   * Expand the nav items to fill the entire space available
    */
   fill: PropTypes.bool,
+
+  /**
+   * Expand the nav items to fill the entire space available, making sure
+   * every nav item has the same width.
+   */
+  justified: PropTypes.bool,
 
   /**
    * Arrange NavItems vertically
@@ -65,7 +66,7 @@ Nav.propTypes = {
   vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
-   * ...
+   * Arrange NavItems horizontally
    */
   horizontal: PropTypes.string,
 
