@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import {
   Collapse,
   Container,
-  Nav,
-  NavbarToggler,
   Navbar as RSNavbar,
 } from 'reactstrap';
 
 import Link from '../../private/Link';
 
-import NavbarBrand from './NavbarBrand'
+import Nav from './Nav';
+import NavbarBrand from './NavbarBrand';
+import NavbarToggler from './NavbarToggler';
 
 class Navbar extends React.Component {
   constructor(props) {
