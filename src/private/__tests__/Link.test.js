@@ -121,7 +121,7 @@ describe('Link -- behaviour', () => {
     })
 
     it('redirect an internal link', () =>
-      expect(window.location.toString()).toEqual(`http://starting-url.com/example`)
+      expect(window.location.toString()).toEqual('http://starting-url.com/example')
     )
 
     it('scroll the window', () =>
@@ -135,6 +135,31 @@ describe('Link -- behaviour', () => {
     it('prevent the default event handler', () =>
       expect(clickEvent.preventDefault).toHaveBeenCalled()
     )
+
+    afterAll(() => {
+      link.unmount()
+    })
+  })
+
+  describe('do nothing if disabled is true', () => {
+    let link;
+    let clickEvent;
+
+    beforeAll(() => {
+      jsdom.reconfigure({ url: 'http://starting-url.com' })
+      link = mount(<Link href="http://example.com" disabled={true}>inner text</Link>);
+      const anchor = link.find('a')
+      clickEvent = {preventDefault: jest.fn()} // spy on preventDefault
+      anchor.simulate('click', clickEvent)
+    })
+
+    it('prevent default event behaviour', () => {
+      expect(clickEvent.preventDefault).toHaveBeenCalled()
+    })
+
+    it('not change the location', () => {
+      expect(window.location.toString()).toEqual('http://starting-url.com/')
+    })
 
     afterAll(() => {
       link.unmount()

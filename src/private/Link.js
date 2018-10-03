@@ -39,6 +39,10 @@ class Link extends Component {
   }
 
   updateLocation(e) {
+    if (this.props.disabled) {
+      e.preventDefault();
+      return
+    }
     if (!this.isExternalLink()) {
       // prevent anchor from updating location
       e.preventDefault();
@@ -102,6 +106,11 @@ Link.propTypes = {
   href: PropTypes.string,
 
   /**
+   * If true, clicking on the link does nothing.
+   */
+  disabled: PropTypes.bool,
+
+  /**
    * If true, the browser will treat this as an external link,
    * forcing a page refresh at the new location. If false,
    * this just changes the location without triggering a page
@@ -128,6 +137,7 @@ Link.propTypes = {
 Link.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
+  disabled: false,
   external_link: null
 };
 

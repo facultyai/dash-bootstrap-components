@@ -6,6 +6,27 @@ from dash.dependencies import Input, Output, State
 
 app = dash.Dash()
 
+
+navbar = dbc.Navbar(
+    brand="Dash Bootstrap components",
+    brand_href="https://github.com/ASIDataScience/dash-bootstrap-components",
+    sticky="top",
+    children=[
+        dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
+        dbc.Dropdown(
+            nav=True,
+            inNavbar=True,
+            label="Menu",
+            children=[
+                dbc.DropdownItem("Entry 1"),
+                dbc.DropdownItem("Entry 2"),
+                dbc.DropdownItem(divider=True),
+                dbc.DropdownItem("Entry 3"),
+            ]
+        )
+    ]
+)
+
 header = html.Div(
     [
         html.H1("Dash Bootstrap Components"),
@@ -389,8 +410,9 @@ tooltip = html.Div(
     ]
 )
 
-app.layout = dbc.Container(
-    [
+app.layout = html.Div([
+    navbar,
+    dbc.Container([
         dcc.Interval(id="interval", interval=500, n_intervals=0),
         header,
         html.Br(),
@@ -424,8 +446,8 @@ app.layout = dbc.Container(
         html.Br(),
         tooltip,
         html.Div(style={"height": "200px"}),
-    ]
-)
+    ])
+])
 
 
 @app.callback(
