@@ -43,6 +43,9 @@ class Link extends Component {
       e.preventDefault();
       return
     }
+    if (this.props.preOnClick) {
+      this.props.preOnClick();
+    }
     if (!this.isExternalLink()) {
       // prevent anchor from updating location
       e.preventDefault();
@@ -52,18 +55,13 @@ class Link extends Component {
       // scroll back to top
       window.scrollTo(0, 0);
     }
-    if (this.props.setProps) {
-      this.props.setProps({
-        n_clicks: props.n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      })
-    }
   }
 
   render() {
     const {
       children,
       external_link,
+      preOnClick,
       ...otherProps
     } = this.props;
     /**
