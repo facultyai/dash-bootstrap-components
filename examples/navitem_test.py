@@ -36,7 +36,6 @@ app.layout = html.Div(
 
 @app.callback(Output("counter", "children"), [Input("dd-button", "n_clicks")])
 def count(n):
-    print(n)
     return str(n)
 
 
@@ -44,7 +43,6 @@ def count(n):
     Output("counter2", "children"), [Input("dd-internal", "n_clicks")]
 )
 def count2(n):
-    print(n)
     return str(n)
 
 
