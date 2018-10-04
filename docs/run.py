@@ -8,6 +8,10 @@ from components import components_page
 
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
+BOOTSTRAP_CSS = (
+    "https://stackpath.bootstrapcdn.com/"
+    "bootstrap/4.1.3/css/bootstrap.min.css"
+)
 
 server = Flask(__name__)
 
@@ -20,7 +24,8 @@ def index():
 app = dash.Dash(
     __name__,
     server=server,
-    routes_pathname_prefix='/l/'
+    routes_pathname_prefix="/l/",
+    external_stylesheets=[BOOTSTRAP_CSS]
 )
 
 
@@ -44,9 +49,6 @@ app.layout = html.Div([
     navbar,
     components_page
 ])
-
-
-app.index_string = open('./index.html.tpl').read()
 
 
 if __name__ == '__main__':
