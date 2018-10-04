@@ -1,33 +1,43 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownItem as RSDropdownItem} from 'reactstrap';
 import Link from '../private/Link';
 import Button from './Button';
 
-const DropdownItem = props => {
-  const {
-    children,
-    href,
-    ...otherProps
-  } = props;
-  return (
-    <RSDropdownItem
-    onClick={() => {
-      if (props.setProps) {
-        props.setProps({
-          n_clicks: props.n_clicks + 1,
+class DropdownItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.incrementClicks = this.incrementClicks.bind(this);
+  }
+
+  incrementClicks() {
+    if (!this.props.disabled) {
+      if (this.props.setProps) {
+        this.props.setProps({
+          n_clicks: this.props.n_clicks + 1,
           n_clicks_timestamp: Date.now()
-        })
-      }
-      if (props.fireEvent)
-        props.fireEvent({event: 'click'});
+        });
       }
     }
-    tag={href ? Link : 'button'}
-    href={href}
-    {...otherProps}>
-      {children}
-    </RSDropdownItem>
-  );
+  }
+
+  render() {
+    let {
+      children,
+      href,
+      ...otherProps
+    } = this.props;
+    otherProps[href ? "preOnClick" : "onClick"] = this.incrementClicks;
+    return (
+      <RSDropdownItem
+      tag={href ? Link : 'button'}
+      href={href}
+      {...otherProps}>
+        {children}
+      </RSDropdownItem>
+    );
+  }
 }
 
 DropdownItem.propTypes = {
@@ -99,14 +109,7 @@ DropdownItem.propTypes = {
    * at which n_clicks changed. This can be used to tell
    * which button was changed most recently.
    */
-  n_clicks_timestamp: PropTypes.number,
-
-  /**
-   * A callback for firing events to dash.
-   */
-  fireEvent: PropTypes.func,
-
-  dashEvents: PropTypes.oneOf(['click'])
+  n_clicks_timestamp: PropTypes.number
 };
 
 DropdownItem.defaultProps = {
