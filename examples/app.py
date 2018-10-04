@@ -4,12 +4,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
+DBC_GITHUB = "https://github.com/ASIDataScience/dash-bootstrap-components"
+
 app = dash.Dash()
 
 
 navbar = dbc.Navbar(
     brand="Dash Bootstrap components",
-    brand_href="https://github.com/ASIDataScience/dash-bootstrap-components",
+    brand_href=DBC_GITHUB,
     sticky="top",
     children=[
         dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
@@ -241,7 +243,7 @@ dropdown = html.Div(
         dbc.Dropdown(
             [
                 dbc.DropdownItem("Heading", header=True),
-                dbc.DropdownItem(dcc.Link("Item 1")),
+                dbc.DropdownItem("Item 1", href=DBC_GITHUB),
                 dbc.DropdownItem(divider=True),
                 dbc.DropdownItem("Another heading", header=True),
                 dbc.DropdownItem("Item 2"),
