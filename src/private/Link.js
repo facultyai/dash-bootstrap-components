@@ -129,7 +129,12 @@ Link.propTypes = {
    * at which n_clicks changed. This can be used to tell
    * which button was changed most recently.
    */
-  n_clicks_timestamp: PropTypes.number
+  n_clicks_timestamp: PropTypes.number,
+
+  /**
+   * Function to be executed on click before the redirect logic of Link.
+   */
+  preOnClick: PropTypes.func
 };
 
 Link.defaultProps = {
