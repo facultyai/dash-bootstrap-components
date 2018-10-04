@@ -1,12 +1,13 @@
 
 import dash_html_components as html
 import dash
-from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from flask import Flask, render_template
 
 from components.alerts import alerts
+
+GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
 alerts_source = open('components/alerts.py').read()
 
@@ -25,6 +26,22 @@ app = dash.Dash(
 )
 
 
+navbar = dbc.Navbar(
+    brand="Dash Bootstrap Components",
+    brand_href="/",
+    brand_external_link=True,
+    sticky="top",
+    children=[
+        dbc.NavItem(
+            dbc.NavLink(
+                "GitHub",
+                href=GITHUB_LINK
+            )
+        )
+    ]
+)
+
+
 header = html.Div(
     [
         html.H1("Dash Bootstrap Components"),
@@ -38,14 +55,15 @@ header = html.Div(
 )
 
 
-app.layout = dbc.Container(
-    [
+app.layout = html.Div([
+    navbar,
+    dbc.Container([
         header,
         alerts,
         dcc.SyntaxHighlighter(alerts_source, language='python', theme='dark'),
         html.Br()
-    ]
-)
+    ])
+])
 
 
 app.index_string = open('./index.html.tpl').read()
