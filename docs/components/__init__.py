@@ -1,2 +1,2 @@
 
-from .page import components_page
+from .page import ComponentsPage
