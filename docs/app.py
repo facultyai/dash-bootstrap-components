@@ -43,7 +43,7 @@ class App:
     def __init__(self, app):
         self._app = app
         self.pages = {
-            'components': ComponentsPage()
+            'components': ComponentsPage(self._app)
         }
         self._create_layout()
         self._create_callbacks()
@@ -54,7 +54,10 @@ class App:
             __name__,
             server=server,
             routes_pathname_prefix=routes_prefix,
-            external_stylesheets=[BOOTSTRAP_CSS]
+            external_stylesheets=[BOOTSTRAP_CSS],
+            # We need to define callbacks before the components are actually
+            # bound onto the page.
+            suppress_callback_exceptions=True
         )
         return cls(app)
 
