@@ -1,14 +1,46 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {Input as RSInput} from 'reactstrap';
 
-const Input = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSInput {...otherProps}>
-    {children}
-  </RSInput>);
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: props.value};
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({value: nextProps.value});
+  }
+
+  render() {
+    const {fireEvent, setProps, type, ...otherProps} = this.props;
+    const {value} = this.state;
+    return (
+      <RSInput
+        onChange={e => {
+          this.setState({value: e.target.value});
+          if (setProps) {
+            if (type === 'number') {
+              setProps({value: Number(e.target.value)});
+            } else {
+              setProps({value: e.target.value});
+            }
+          }
+          if (fireEvent) {
+            fireEvent({event: 'change'});
+          }
+        }}
+        onBlur={() => {
+          if (fireEvent) {
+            fireEvent({event: 'blur'});
+          }
+        }}
+        value={value}
+        type={type}
+        {...otherProps}
+      />
+    );
+  }
 }
 
 Input.propTypes = {
@@ -37,13 +69,29 @@ Input.propTypes = {
   /**
    *
    */
-  type: PropTypes.string,
+  type: PropTypes.oneOf([
+    // Only allowing the input types with wide browser compatability
+    'text',
+    'textarea',
+    'number',
+    'password',
+    'email',
+    'range',
+    'search',
+    'tel',
+    'url',
+    'hidden',
+  ]),
+
+  value: PropTypes.string,
   size: PropTypes.string,
   bsSize: PropTypes.string,
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
   plaintext: PropTypes.bool,
-  addon: PropTypes.bool
+  addon: PropTypes.bool,
+  placeholder: PropTypes.string,
+  name: PropTypes.string
 }
 
 export default Input;
