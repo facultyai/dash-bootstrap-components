@@ -21,38 +21,23 @@ def _get_collapse(app):
     return exec_namespace['collapse']
 
 
-header = html.Div(
-    [
-        html.H1("Dash Bootstrap Components"),
-        html.P(
-            [
-                "This app demonstrates components available in ",
-                html.Code("dash-bootstrap-components"),
-            ]
-        ),
-    ]
-)
-
 sidebar = [
     html.H1('Components', className='h5'),
     dbc.Nav(
         [
             dbc.NavItem(dbc.NavLink('Alerts', href='/l/components/alerts')),
             dbc.NavItem(dbc.NavLink('Badges', href='/l/components/badges')),
+            dbc.NavItem(dbc.NavLink('Collapse', href='/l/components/collapse'))
         ],
         className='flex-column'
     )
 ]
 
 
-def component_container(contents):
-    return [header] + contents
-
-
 def component_page(contents):
     return dbc.Container(
         dbc.Row([
-            dbc.Col(component_container(contents), md=9),
+            dbc.Col(contents, md=9),
             dbc.Col(sidebar, md=3)
         ])
     )
