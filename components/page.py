@@ -49,23 +49,24 @@ def component_page(contents):
     )
 
 
+def component_body(component_layout, source):
+    return [
+        component_layout,
+        dcc.SyntaxHighlighter(source, language='python', theme='dark')
+    ]
+
+
 class ComponentsPage:
 
     def __init__(self, app):
         self._app = app
         self._contents = {
-            'alerts': [
-                alerts,
-                dcc.SyntaxHighlighter(alerts_source, language='python', theme='dark')
-            ],
-            'badges': [
-                badges,
-                dcc.SyntaxHighlighter(badges_source, language='python', theme='dark')
-            ],
-            'collapse': [
+            'alerts': component_body(alerts, alerts_source),
+            'badges': component_body(badges, badges_source),
+            'collapse': component_body(
                 _load_source_with_app(self._app, collapse_source, 'collapse'),
-                dcc.SyntaxHighlighter(collapse_source, language='python', theme='dark')
-            ]
+                collapse_source
+            )
         }
 
     def for_path(self, path_components):
