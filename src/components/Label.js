@@ -4,9 +4,10 @@ import {Label as RSLabel} from 'reactstrap';
 const Label = props => {
   const {
     children,
+    html_for,
     ...otherProps
   } = props;
-  return (<RSLabel {...otherProps}>
+  return (<RSLabel for={html_for} {...otherProps}>
     {children}
   </RSLabel>);
 }
@@ -48,7 +49,7 @@ Label.propTypes = {
 
   check: PropTypes.bool,
   size: PropTypes.string,
-  for: PropTypes.string,
+  html_for: PropTypes.string,
   xs: columnProps,
   sm: columnProps,
   md: columnProps,
