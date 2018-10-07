@@ -15,10 +15,16 @@ badges_source = (HERE / "badges.py").open().read()
 collapse_source = (HERE / "collapse.py").open().read()
 
 
-def _get_collapse(app):
+def _load_source_with_app(app, source, component_name):
+    """
+    Execute a source snippet, injecting the `app` local variable.
+
+    Return the local variable defined by `component_name`. This should
+    be used for source files that need to register `@app` callbacks.
+    """
     exec_namespace = {'app': app}
-    exec(collapse_source, {}, exec_namespace)
-    return exec_namespace['collapse']
+    exec(source, {}, exec_namespace)
+    return exec_namespace[component_name]
 
 
 sidebar = [
@@ -57,7 +63,7 @@ class ComponentsPage:
                 dcc.SyntaxHighlighter(badges_source, language='python', theme='dark')
             ],
             'collapse': [
-                _get_collapse(self._app),
+                _load_source_with_app(self._app, collapse_source, 'collapse'),
                 dcc.SyntaxHighlighter(collapse_source, language='python', theme='dark')
             ]
         }
