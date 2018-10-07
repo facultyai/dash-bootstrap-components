@@ -7,9 +7,7 @@ collapse = html.Div(
     [
         html.H2("Collapse"),
         dbc.Button(
-            "Open collapse",
-            id="collapse-button",
-            style={"margin-bottom": "1rem"},
+            "Open collapse", id="collapse-button", style={"margin-bottom": "1rem"}
         ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody("This content is hidden in the collapse")),

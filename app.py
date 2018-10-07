@@ -10,8 +10,7 @@ from components import ComponentsPage
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
 BOOTSTRAP_CSS = (
-    "https://stackpath.bootstrapcdn.com/"
-    "bootstrap/4.1.3/css/bootstrap.min.css"
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 )
 
 
@@ -20,31 +19,19 @@ _navbar = dbc.Navbar(
     brand_href="/",
     brand_external_link=True,
     sticky="top",
-    children=[
-        dbc.NavItem(
-            dbc.NavLink(
-                "GitHub",
-                href=GITHUB_LINK
-            )
-        )
-    ]
+    children=[dbc.NavItem(dbc.NavLink("GitHub", href=GITHUB_LINK))],
 )
 
 
-_layout = html.Div([
-    dcc.Location(id='docs-location'),
-    _navbar,
-    html.Div(id='docs-contents')
-])
+_layout = html.Div(
+    [dcc.Location(id="docs-location"), _navbar, html.Div(id="docs-contents")]
+)
 
 
 class App:
-
     def __init__(self, app):
         self._app = app
-        self.pages = {
-            'components': ComponentsPage(self._app)
-        }
+        self.pages = {"components": ComponentsPage(self._app)}
         self._create_layout()
         self._create_callbacks()
 
@@ -57,7 +44,7 @@ class App:
             external_stylesheets=[BOOTSTRAP_CSS],
             # We need to define callbacks before the components are actually
             # bound onto the page.
-            suppress_callback_exceptions=True
+            suppress_callback_exceptions=True,
         )
         return cls(app)
 
@@ -66,16 +53,15 @@ class App:
 
     def _create_callbacks(self):
         self._app.callback(
-            Output('docs-contents', 'children'),
-            [Input('docs-location', 'pathname')]
+            Output("docs-contents", "children"), [Input("docs-location", "pathname")]
         )(self._on_location_change)
 
     def _on_location_change(self, location):
         if location is not None:
-            path_components = location.lstrip('/l/').split('/')
+            path_components = location.lstrip("/l/").split("/")
             try:
                 page_name = path_components[0]
                 page = self.pages[page_name]
                 return page.for_path(path_components[1:])
             except (IndexError, KeyError):
-                return self._on_location_change('/l/components')
+                return self._on_location_change("/l/components")
