@@ -24,7 +24,11 @@ _navbar = dbc.Navbar(
 
 
 _layout = html.Div(
-    [dcc.Location(id="docs-location"), _navbar, html.Div(id="docs-contents")]
+    [
+        dcc.Location(id="docs-location"),
+        _navbar,
+        html.Div(id="docs-content", className="docs-content"),
+    ]
 )
 
 
@@ -53,7 +57,7 @@ class App:
 
     def _create_callbacks(self):
         self._app.callback(
-            Output("docs-contents", "children"), [Input("docs-location", "pathname")]
+            Output("docs-content", "children"), [Input("docs-location", "pathname")]
         )(self._on_location_change)
 
     def _on_location_change(self, location):

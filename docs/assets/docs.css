@@ -1,0 +1,28 @@
+
+.docs-content {
+    margin-top: 2rem;
+}
+
+.docs-sidebar .nav-item {
+    padding: 0 .2rem 0 .2rem;
+}
+
+.docs-sidebar .nav-link {
+    color: #888;
+    padding: .3rem .5rem .3rem 1rem;
+    border-left: 2px solid transparent;
+}
+
+.docs-sidebar .nav-link:hover {
+    color: #777;
+    border-left: 2px solid #aaa;
+}
+
+.docs-sidebar .nav-link.active {
+    color: #666;
+    border-left: 2px solid #d9534f;
+}
+
+.docs-sidebar .nav-link.active:hover {
+    border-left: 2px solid #d9534f;
+}
