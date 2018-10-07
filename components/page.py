@@ -31,7 +31,7 @@ sidebar = [
     html.H1("Components", className="h5"),
     dbc.Nav(
         [
-            dbc.NavItem(dbc.NavLink("Alerts", href="/l/components/alerts")),
+            dbc.NavItem(dbc.NavLink("Alerts", href="/l/components/alerts", active=True)),
             dbc.NavItem(dbc.NavLink("Badges", href="/l/components/badges")),
             dbc.NavItem(dbc.NavLink("Collapse", href="/l/components/collapse")),
         ],
@@ -41,7 +41,11 @@ sidebar = [
 
 
 def component_page(contents):
-    return dbc.Container(dbc.Row([dbc.Col(contents, md=9), dbc.Col(sidebar, md=3)]))
+    return dbc.Container(
+        dbc.Row(
+            [dbc.Col(contents, md=9), dbc.Col(sidebar, md=3, className="docs-sidebar")]
+        )
+    )
 
 
 def component_body(component_layout, source):
