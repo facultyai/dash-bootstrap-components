@@ -1,4 +1,28 @@
 
+.main-header {
+    background-color: white;
+}
+
+.main-header h1 {
+    margin-bottom: 1rem;
+}
+
+.main-header p.lead {
+    margin-bottom: 1.5rem;
+}
+
+.main-header .btn {
+    margin-right: 1rem;
+}
+
+.main-header .btn + .btn {
+    margin-right: 0;
+}
+
+.section-header {
+    font-weight: 300;
+}
+
 .docs-content {
     margin-top: 2rem;
 }
