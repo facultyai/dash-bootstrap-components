@@ -34,18 +34,32 @@
           <h2 class="section-header">Installation</h2>
           <hr />
           <p>
-            Install dash-bootstrap-components via pip:
+            Install <em>dash-bootstrap-components</em> via pip:
           </p>
           <pre><code class="language-bash">pip install dash-bootstrap-components</code> </pre>
           <h2 class="section-header mt-5">Getting started</h2>
           <hr />
-          <p>Lorem ipsum</p>
-          <h2 class="section-header mt-5">Customising the stylesheet</h2>
+          <p>
+            <em>dash-bootstrap-components</em> relies on <a>Twitter
+            Bootstrap</a>. To use this package, inject the Bootstrap
+            stylesheet into your application:
+          </p>
+          <pre><code class="language-python">external_stylesheets = ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"]
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre>
+          <h2 class="section-header mt-5">Layout</h2>
           <hr />
-          <p>Lorem ipsum</p>
+          <p><em>dash-bootstrap-components</em> makes it easy to
+          structure your application visually. The following template
+          creates a basic app structure with a navbar:</p>
+          <div class="demo-layout-container">
+            <iframe class="demo-layout" src="/l/demo-layout"></iframe>
+          </div>
         </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-bash.min.js"></script>
   </body>
 </html>

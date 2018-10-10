@@ -6,6 +6,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 from components import ComponentsPage
+from demos.demo_layout import DemoLayoutPage
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
@@ -35,7 +36,10 @@ _layout = html.Div(
 class App:
     def __init__(self, app):
         self._app = app
-        self.pages = {"components": ComponentsPage(self._app)}
+        self.pages = {
+            "components": ComponentsPage(self._app),
+            "demo-layout": DemoLayoutPage()
+        }
         self._create_layout()
         self._create_callbacks()
 
