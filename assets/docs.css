@@ -24,14 +24,15 @@
 }
 
 .demo-layout-container {
-    height: 450px;
-    margin-right: 3rem;
-    margin-left: 3rem;
+    height: 600px;
+    margin-right: 0rem;
+    margin-left: 0rem;
     margin-bottom: 3rem;
     margin-top: 2rem;
     display: block;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
     border-radius: 6px;
+    overflow: none;
 }
 
 .demo-layout {
