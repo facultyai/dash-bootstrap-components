@@ -1,12 +1,39 @@
 import PropTypes from 'prop-types';
 import {Row as RSRow} from 'reactstrap';
+import classNames from 'classnames';
+
+const alignMap = {
+  start: 'align-items-start',
+  center: 'align-items-center',
+  end: 'align-items-end'
+}
+
+const justifyMap = {
+  start: 'justify-content-start',
+  center: 'justify-content-center',
+  end: 'justify-content-end',
+  around: 'justify-content-around',
+  between: 'justify-content-between'
+}
 
 const Row = props => {
   const {
     children,
+    className,
+    align,
+    justify,
     ...otherProps
   } = props;
-  return (<RSRow {...otherProps}>
+
+  const alignClass = align && alignMap[align];
+  const justifyClass = justify && justifyMap[justify];
+
+  const classes = classNames(
+    className,
+    alignClass,
+    justifyClass
+  );
+  return (<RSRow className={classes} {...otherProps}>
     {children}
   </RSRow>);
 }
@@ -41,9 +68,14 @@ Row.propTypes = {
   noGutters: PropTypes.bool,
 
   /**
-   * HTML tag to use for the row, default: div
+   * Set vertical alignment of columns
    */
-  tag: PropTypes.string
+  align: PropTypes.oneOf(['start', 'center', 'end']),
+
+  /**
+   * Set horizontal spacing of columns.
+   */
+  justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between'])
 }
 
 export default Row;
