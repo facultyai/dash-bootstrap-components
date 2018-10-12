@@ -85,6 +85,22 @@ _body = dbc.Container(
     ]
 )
           </code></pre>
+          <h2 class="section-header mt-5">Customising the stylesheet</h2>
+          <hr />
+          <p>
+            The easiest way to get started with <em>dash-bootstrap-components</em> is to include the Bootstrap stylesheet from a CDN, as described above. If you want to use a custom stylesheet, you will need to include it in your <code>assets/</code> directory, as described in the <a href="https://dash.plot.ly/external-resources">Plotly Dash documentation</a>.
+          </p>
+          <p>
+            A good way to start customising the stylesheet is to use an alternative pre-compiled theme. <a href="https://bootswatch.com/">Bootswatch</a> is a great place to find new themes. To use one of these themes, you can use <a href="https://www.bootstrapcdn.com/bootswatch/">a CDN</a> with the <code>external_stylesheets</code> argument:
+          </p>
+          <pre><code class="language-python">external_stylesheets = ["https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cerulean/bootstrap.min.css"]
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre>
+          <p>
+            You can also download the base CSS from <a href="https://github.com/thomaspark/bootswatch/tree/master/dist/">GitHub</a>, place it in the <code>assets/</code> directory for your application and modify it. For instance, to use the <em>Cerulean</em> theme, you would download <code>/dist/cerulean/bootstrap.css</code> from the Bootswatch GitHub repository.
+          </p>
+            <h2 class="section-header mt-5">Contributing</h2>
+          <hr />
         </div>
       </div>
     </div>
