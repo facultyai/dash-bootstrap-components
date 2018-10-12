@@ -66,7 +66,7 @@ app.layout = dbc.Container(
             cols_horizontal_align, justify="between", style=row_style_no_height
         ),
         # add some spacing at the bottom of the page for scrolling
-        html.Div(style={"height": "150px"})
+        html.Div(style={"height": "150px"}),
     ]
 )
 
