@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 import dash_core_components as dcc
@@ -78,8 +77,7 @@ def component_page(body_entry, active_item):
     body_column = dbc.Col(body, md=9)
     sidebar_column = dbc.Col(sidebar_contents, md=3, className="docs-sidebar")
     page_body = dbc.Container(
-        dbc.Row([body_column, sidebar_column]),
-        className="docs-content"
+        dbc.Row([body_column, sidebar_column]), className="docs-content"
     )
     return [NAVBAR, page_body]
 

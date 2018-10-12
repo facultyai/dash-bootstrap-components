@@ -1,2 +1,1 @@
-
 from .page import ComponentsPage
