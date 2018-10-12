@@ -16,10 +16,10 @@ _navbar = dbc.Navbar(
                 dbc.DropdownItem("Entry 2"),
                 dbc.DropdownItem(divider=True),
                 dbc.DropdownItem("Entry 3"),
-            ]
+            ],
         ),
         dbc.NavItem(dbc.NavLink("Link", href="#")),
-    ]
+    ],
 )
 
 _body = dbc.Container(
@@ -28,31 +28,32 @@ _body = dbc.Container(
             [
                 dbc.Col(
                     [
-                        html.H2('Heading'),
-                        html.P('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'),
-                        dbc.Button('View details', color='secondary')
+                        html.H2("Heading"),
+                        html.P(
+                            "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."
+                        ),
+                        dbc.Button("View details", color="secondary"),
                     ],
-                    md=4
+                    md=4,
                 ),
                 dbc.Col(
                     [
-                        html.H2('Graph'),
+                        html.H2("Graph"),
                         dcc.Graph(
-                            id='dash-docs-graph',
-                            figure={'data': [{'x': [1, 2, 3], 'y': [1, 4, 9]}]}
-                        )
+                            id="dash-docs-graph",
+                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]},
+                        ),
                     ]
-                )
+                ),
             ]
         )
     ],
-    className="docs-content"
+    className="docs-content",
 )
 
 _layout = html.Div([_navbar, _body])
 
 
 class DemoLayoutPage:
-
     def for_path(self, component):
         return _layout

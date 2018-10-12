@@ -1,4 +1,3 @@
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -18,12 +17,11 @@ _layout = html.Div(
     [
         dcc.Location(id="docs-location"),
         html.Div(id="docs-content"),
-
         # For some reason, Dash doesn't work if, at app start-up,
         # a third-party dependency doesn't have at least one component
         # displayed in the DOM tree.
         # Therefore inject a dummy container.
-        dbc.Container()
+        dbc.Container(),
     ]
 )
 
@@ -33,7 +31,7 @@ class App:
         self._app = app
         self.pages = {
             "components": ComponentsPage(self._app),
-            "demo-layout": DemoLayoutPage()
+            "demo-layout": DemoLayoutPage(),
         }
         self._create_layout()
         self._create_callbacks()
