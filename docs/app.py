@@ -8,27 +8,22 @@ from dash.dependencies import Input, Output
 from components import ComponentsPage
 from demos.demo_layout import DemoLayoutPage
 
-GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
 BOOTSTRAP_CSS = (
     "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 )
 
 
-_navbar = dbc.Navbar(
-    brand="Dash Bootstrap Components",
-    brand_href="/",
-    brand_external_link=True,
-    sticky="top",
-    children=[dbc.NavItem(dbc.NavLink("GitHub", href=GITHUB_LINK))],
-)
-
-
 _layout = html.Div(
     [
         dcc.Location(id="docs-location"),
-        _navbar,
-        html.Div(id="docs-content", className="docs-content"),
+        html.Div(id="docs-content"),
+
+        # For some reason, Dash doesn't work if, at app start-up,
+        # a third-party dependency doesn't have at least one component
+        # displayed in the DOM tree.
+        # Therefore inject a dummy container.
+        dbc.Container()
     ]
 )
 

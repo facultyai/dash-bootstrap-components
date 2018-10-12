@@ -12,9 +12,19 @@ from typing import NamedTuple, List
 
 HERE = Path(__file__).parent
 
+GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
+
 alerts_source = (HERE / "alerts.py").open().read()
 badges_source = (HERE / "badges.py").open().read()
 collapse_source = (HERE / "collapse.py").open().read()
+
+NAVBAR = dbc.Navbar(
+    brand="Dash Bootstrap Components",
+    brand_href="/",
+    brand_external_link=True,
+    sticky="top",
+    children=[dbc.NavItem(dbc.NavLink("GitHub", href=GITHUB_LINK))],
+)
 
 
 class SidebarEntry(NamedTuple):
@@ -67,7 +77,11 @@ def component_page(body_entry, active_item):
     sidebar_contents = sidebar(active_item)
     body_column = dbc.Col(body, md=9)
     sidebar_column = dbc.Col(sidebar_contents, md=3, className="docs-sidebar")
-    return dbc.Container(dbc.Row([body_column, sidebar_column]))
+    page_body = dbc.Container(
+        dbc.Row([body_column, sidebar_column]),
+        className="docs-content"
+    )
+    return [NAVBAR, page_body]
 
 
 def component_body(body_entry):
