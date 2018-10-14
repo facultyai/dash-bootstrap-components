@@ -147,14 +147,14 @@ def set_jsversion(version):
         package_json = f.readlines()
     for iline, line in enumerate(package_json):
         if '"version"' in line:
-            package_json[iline] = '  "version": "{}",\n'.format(version)
+            package_json[iline] = f'  "version": "{version}",\n'
     with open(package_json_path, "w") as f:
         f.writelines(package_json)
 
 
 def get_release_notes(version):
     version = normalize_version(version)
-    underline = "=" * len("Version {}".format(version))
+    underline = "=" * len(f"Version {version}")
     initial_message = RELEASE_NOTES_TEMPLATE.format(
         version_string=version, underline=underline
     )
@@ -195,7 +195,7 @@ def normalize_version(version):
 def run(command, **kwargs):
     result = invoke_run(command, hide=True, warn=True, **kwargs)
     if result.exited != 0:
-        error("Error running {}".format(command))
+        error(f"Error running {command}")
         print(result.stdout)
         print()
         print(result.stderr)
