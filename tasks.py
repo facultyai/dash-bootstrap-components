@@ -62,6 +62,36 @@ def release(ctx, version):
 
     build_publish(version)
 
+    info("Committing version changes")
+    run('git add dash_bootstrap_components/_version.py')
+    run('git add package.json')
+    run(f'git commit -m "Bump version to {version}"')
+    info(f"Tagging version {version}")
+    run('git tag -a "{version}" -F changelog.tmp')
+    run('git push origin master --tags')
+
+
+@task(help={
+    'version': 'Version number to finalize. Must be '
+    'the same version number that was used in the release.'
+})
+def postrelease(ctx, version):
+    '''
+    Finalise the release
+    Running this task will:
+     - commit the version changes to source control
+     - tag the commit
+     - push changes to master
+    '''
+    new_version = semver.bump_patch(version) + '-dev'
+    info(f"Bumping version numbers to {new_version} and committing")
+    set_pyversion(new_version)
+    set_jsversion(new_version)
+    run('git add dash_bootstrap_components/_version.py')
+    run('git add package.json')
+    run('git commit -m "Back to dev"')
+    run('git push origin master')
+
 
 def build_publish(version):
     info("Cleaning")
