@@ -1,4 +1,3 @@
-
 import os
 import tempfile
 from subprocess import call
@@ -12,11 +11,11 @@ VERSION_TEMPLATE = """
 __version__ = "{version_string}"
 """
 
-RELEASE_NOTES_TEMPLATE = '''# Write the release notes here
+RELEASE_NOTES_TEMPLATE = """# Write the release notes here
 # Delete the version title to cancel
 Version {version_string}
 {underline}
-'''
+"""
 
 HERE = Path(__file__).parent
 
@@ -24,34 +23,36 @@ DASH_BOOTSTRAP_DIR = HERE / "dash_bootstrap_components"
 JS_DIR = HERE / "src"
 
 
-@task(help={'version': 'Version number to release'})
+@task(help={"version": "Version number to release"})
 def prerelease(ctx, version):
-    '''
+    """
     Release a pre-release version
     Running this task will:
      - Bump the version number
-     - Push a release to pypi and npm
-    '''
+     - Push a release to pypi
+    """
     info(f"Releasing version {version} as prerelease")
     build_publish(version)
 
 
-@task(help={'version': 'Version number to release'})
+@task(help={"version": "Version number to release"})
 def release(ctx, version):
-    '''
+    """
     Release a new version
     Running this task will:
      - Prompt the user for a changelog and write it to
        the release notes
      - Commit the release notes
      - Bump the version number
-     - Push a release to pypi and npm
-    '''
+     - Push a release to pypi
+     - commit the version changes to source control
+     - tag the commit
+    """
     info(f"Releasing version {version} as full release")
     release_notes_lines = get_release_notes(version)
 
     if release_notes_lines is None:
-        error('No release notes: exiting')
+        error("No release notes: exiting")
         exit()
 
     info("Writing release notes to changelog.tmp")
@@ -63,34 +64,35 @@ def release(ctx, version):
     build_publish(version)
 
     info("Committing version changes")
-    run('git add dash_bootstrap_components/_version.py')
-    run('git add package.json')
+    run("git add dash_bootstrap_components/_version.py")
+    run("git add package.json")
     run(f'git commit -m "Bump version to {version}"')
     info(f"Tagging version {version}")
     run('git tag -a "{version}" -F changelog.tmp')
-    run('git push origin master --tags')
+    run("git push origin master --tags")
 
 
-@task(help={
-    'version': 'Version number to finalize. Must be '
-    'the same version number that was used in the release.'
-})
+@task(
+    help={
+        "version": "Version number to finalize. Must be "
+        "the same version number that was used in the release."
+    }
+)
 def postrelease(ctx, version):
-    '''
+    """
     Finalise the release
     Running this task will:
-     - commit the version changes to source control
-     - tag the commit
+     - bump the version to the next dev version
      - push changes to master
-    '''
-    new_version = semver.bump_patch(version) + '-dev'
+    """
+    new_version = semver.bump_patch(version) + "-dev"
     info(f"Bumping version numbers to {new_version} and committing")
     set_pyversion(new_version)
     set_jsversion(new_version)
-    run('git add dash_bootstrap_components/_version.py')
-    run('git add package.json')
+    run("git add dash_bootstrap_components/_version.py")
+    run("git add package.json")
     run('git commit -m "Back to dev"')
-    run('git push origin master')
+    run("git push origin master")
 
 
 def build_publish(version):
@@ -111,7 +113,7 @@ def clean():
         "dash_bootstrap_components/bundle.js",
         "dash_bootstrap_components/metadata.json",
         "dist/",
-        "lib/"
+        "lib/",
     ]
     for path in paths_to_clean:
         run(f"rm -rf {path}")
@@ -146,38 +148,39 @@ def set_jsversion(version):
     for iline, line in enumerate(package_json):
         if '"version"' in line:
             package_json[iline] = '  "version": "{}",\n'.format(version)
-    with open(package_json_path, 'w') as f:
+    with open(package_json_path, "w") as f:
         f.writelines(package_json)
 
 
 def get_release_notes(version):
     version = normalize_version(version)
-    underline = '=' * len('Version {}'.format(version))
+    underline = "=" * len("Version {}".format(version))
     initial_message = RELEASE_NOTES_TEMPLATE.format(
-        version_string=version, underline=underline)
+        version_string=version, underline=underline
+    )
     lines = open_editor(initial_message)
-    non_commented_lines = [line for line in lines if not line.startswith('#')]
-    changelog = ''.join(non_commented_lines)
+    non_commented_lines = [line for line in lines if not line.startswith("#")]
+    changelog = "".join(non_commented_lines)
     if version in changelog:
         if not non_commented_lines[-1].isspace():
-            non_commented_lines.append('\n')
+            non_commented_lines.append("\n")
         return non_commented_lines
     else:
         return None
 
 
 def open_editor(initial_message):
-    editor = os.environ.get('EDITOR', 'vim')
-    tmp = tempfile.NamedTemporaryFile(suffix='.tmp')
+    editor = os.environ.get("EDITOR", "vim")
+    tmp = tempfile.NamedTemporaryFile(suffix=".tmp")
     fname = tmp.name
 
-    with open(fname, 'w') as f:
+    with open(fname, "w") as f:
         f.write(initial_message)
         f.flush()
 
     call([editor, fname], close_fds=True)
 
-    with open(fname, 'r') as f:
+    with open(fname, "r") as f:
         lines = f.readlines()
 
     return lines
