@@ -68,7 +68,7 @@ def release(ctx, version):
     run("git add package.json")
     run(f'git commit -m "Bump version to {version}"')
     info(f"Tagging version {version} and pushing to GitHub")
-    run('git tag -a "{version}" -F changelog.tmp')
+    run(f'git tag -a "{version}" -F changelog.tmp')
     run("git push origin master --tags")
 
 
