@@ -45,6 +45,7 @@ app.layout = dbc.Container(
                 ),
             ]
         ),
+        html.Br(),
         html.H2("Radio items"),
         dbc.RadioItems(
             options=[
@@ -60,6 +61,23 @@ app.layout = dbc.Container(
             ],
             values=[],
         ),
+        html.H2("Inline RadioItems and Checklist"),
+        dbc.RadioItems(
+            options=[
+                {"label": "Option 1", "value": 1},
+                {"label": "Option 2", "value": 2},
+            ],
+            inline=True,
+        ),
+        dbc.Checklist(
+            options=[
+                {"label": "Option 1", "value": 1},
+                {"label": "Option 2", "value": 2},
+            ],
+            values=[],
+            inline=True,
+        ),
+        html.Br(),
         html.H2("Input groups and addons"),
         dbc.InputGroup(
             [
@@ -87,20 +105,90 @@ app.layout = dbc.Container(
                 dbc.Input(type="text", placeholder="Enter username"),
             ]
         ),
+        html.Br(),
         html.H2("Form Group Rows"),
         dbc.FormGroup(
             [
                 dbc.Label("Email", html_for="example-email-row", width=2),
-                dbc.Input(
-                    type="email",
-                    id="example-email-row",
-                    placeholder="Enter email",
+                dbc.Col(
+                    dbc.Input(
+                        type="email",
+                        id="example-email-row",
+                        placeholder="Enter email",
+                    ),
                     width=10,
                 ),
             ],
             row=True,
         ),
-    ]
+        dbc.FormGroup(
+            [
+                dbc.Label(
+                    "Password", html_for="example-password-row", width=2
+                ),
+                dbc.Col(
+                    dbc.Input(
+                        type="password",
+                        id="example-password-row",
+                        placeholder="Enter password",
+                    ),
+                    width=10,
+                ),
+            ],
+            row=True,
+        ),
+        dbc.FormGroup(
+            [
+                dbc.Label("Email", html_for="example-email-row", width=2),
+                dbc.Col(
+                    dcc.Dropdown(
+                        options=[
+                            {"label": "Option 1", "value": 1},
+                            {"label": "Option 2", "value": 2},
+                        ]
+                    ),
+                    width=10,
+                ),
+            ],
+            row=True,
+        ),
+        html.Br(),
+        html.H2("Form grid with form row"),
+        dbc.Row(
+            [
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Email", html_for="example-email-col"),
+                            dbc.Input(
+                                type="email",
+                                id="example-email-col",
+                                placeholder="Enter email",
+                            ),
+                        ]
+                    ),
+                    width=6,
+                ),
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label(
+                                "Password", html_for="example-password-col"
+                            ),
+                            dbc.Input(
+                                type="password",
+                                id="example-password-col",
+                                placeholder="Enter password",
+                            ),
+                        ]
+                    ),
+                    width=6,
+                ),
+            ],
+            form=True,
+        ),
+    ],
+    style={"margin-bottom": "200px"},
 )
 
 
