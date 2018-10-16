@@ -4,12 +4,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
+DBC_GITHUB = "https://github.com/ASIDataScience/dash-bootstrap-components"
+
 app = dash.Dash()
 
 
 navbar = dbc.Navbar(
     brand="Dash Bootstrap components",
-    brand_href="https://github.com/ASIDataScience/dash-bootstrap-components",
+    brand_href=DBC_GITHUB,
     sticky="top",
     children=[
         dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
@@ -18,13 +20,17 @@ navbar = dbc.Navbar(
             inNavbar=True,
             label="Menu",
             children=[
-                dbc.DropdownItem("Entry 1"),
-                dbc.DropdownItem("Entry 2"),
+                dbc.DropdownItem("Entry 1", href="https://google.com"),
+                dbc.DropdownItem("Entry 2", href="/test"),
                 dbc.DropdownItem(divider=True),
-                dbc.DropdownItem("Entry 3"),
-            ]
-        )
-    ]
+                dbc.DropdownItem("A heading", header=True),
+                dbc.DropdownItem(
+                    "Entry 3", href="/external-test", external_link=True
+                ),
+                dbc.DropdownItem("Entry 4 - does nothing"),
+            ],
+        ),
+    ],
 )
 
 header = html.Div(
@@ -237,7 +243,7 @@ dropdown = html.Div(
         dbc.Dropdown(
             [
                 dbc.DropdownItem("Heading", header=True),
-                dbc.DropdownItem(dcc.Link("Item 1")),
+                dbc.DropdownItem("Item 1", href=DBC_GITHUB),
                 dbc.DropdownItem(divider=True),
                 dbc.DropdownItem("Another heading", header=True),
                 dbc.DropdownItem("Item 2"),
@@ -262,14 +268,18 @@ fade = html.Div(
     ]
 )
 
-jumbotron = html.Div([
-    html.H2("Jumbotron"),
-    dbc.Jumbotron([
-        html.H2("This is a jumbotron"),
-        html.P("It makes things big..."),
-        dbc.Button("Click here", color="danger"),
-    ])
-])
+jumbotron = html.Div(
+    [
+        html.H2("Jumbotron"),
+        dbc.Jumbotron(
+            [
+                html.H2("This is a jumbotron"),
+                html.P("It makes things big..."),
+                dbc.Button("Click here", color="danger"),
+            ]
+        ),
+    ]
+)
 
 list_group = html.Div(
     [
@@ -410,44 +420,48 @@ tooltip = html.Div(
     ]
 )
 
-app.layout = html.Div([
-    navbar,
-    dbc.Container([
-        dcc.Interval(id="interval", interval=500, n_intervals=0),
-        header,
-        html.Br(),
-        alerts,
-        html.Br(),
-        badges,
-        html.Br(),
-        buttons,
-        html.Br(),
-        cards,
-        html.Br(),
-        collapse,
-        html.Br(),
-        columns,
-        html.Br(),
-        dropdown,
-        html.Br(),
-        fade,
-        html.Br(),
-        jumbotron,
-        html.Br(),
-        list_group,
-        html.Br(),
-        popover,
-        html.Br(),
-        progress,
-        html.Br(),
-        table,
-        html.Br(),
-        tabs,
-        html.Br(),
-        tooltip,
-        html.Div(style={"height": "200px"}),
-    ])
-])
+app.layout = html.Div(
+    [
+        navbar,
+        dbc.Container(
+            [
+                dcc.Interval(id="interval", interval=500, n_intervals=0),
+                header,
+                html.Br(),
+                alerts,
+                html.Br(),
+                badges,
+                html.Br(),
+                buttons,
+                html.Br(),
+                cards,
+                html.Br(),
+                collapse,
+                html.Br(),
+                columns,
+                html.Br(),
+                dropdown,
+                html.Br(),
+                fade,
+                html.Br(),
+                jumbotron,
+                html.Br(),
+                list_group,
+                html.Br(),
+                popover,
+                html.Br(),
+                progress,
+                html.Br(),
+                table,
+                html.Br(),
+                tabs,
+                html.Br(),
+                tooltip,
+                html.Div(style={"height": "200px"}),
+            ]
+        ),
+    ]
+)
 
 
 @app.callback(
