@@ -1,12 +1,30 @@
 import PropTypes from 'prop-types';
 import {Col as RSCol} from 'reactstrap';
+import classNames from 'classnames';
+
+const alignMap = {
+  start: 'align-self-start',
+  center: 'align-self-center',
+  end: 'align-self-end'
+}
 
 const Col = props => {
   const {
     children,
+    xs,
+    width,
+    align,
+    className,
     ...otherProps
   } = props;
-  return (<RSCol {...otherProps}>
+
+  const alignClass = align && alignMap[align];
+  const classes = classNames(
+    className,
+    alignClass
+  )
+
+  return (<RSCol xs={xs || width} className={classes} {...otherProps}>
     {children}
   </RSCol>);
 }
@@ -76,9 +94,14 @@ Col.propTypes = {
   xl: columnProps,
 
   /**
-   * HTML tag to apply the col classes to, default: div
+   * Specify the width of the column. Is overriden if xs is specified
    */
-  tag: PropTypes.string
+  width: columnProps,
+
+  /**
+   * Set vertical alignment of this column in row
+   */
+  align: PropTypes.oneOf(['start', 'center', 'end'])
 }
 
 export default Col;
