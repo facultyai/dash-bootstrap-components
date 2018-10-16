@@ -5,9 +5,11 @@ const Label = props => {
   const {
     children,
     html_for,
+    width,
+    xs,
     ...otherProps
   } = props;
-  return (<RSLabel for={html_for} {...otherProps}>
+  return (<RSLabel for={html_for} xs={xs || width} {...otherProps}>
     {children}
   </RSLabel>);
 }
@@ -50,6 +52,7 @@ Label.propTypes = {
   check: PropTypes.bool,
   size: PropTypes.string,
   html_for: PropTypes.string,
+  width: columnProps,
   xs: columnProps,
   sm: columnProps,
   md: columnProps,
