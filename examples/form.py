@@ -61,7 +61,8 @@ app.layout = dbc.Container(
             ],
             values=[],
         ),
-        html.H2("Inline RadioItems and Checklist"),
+        html.Br(),
+        html.H3("Inline RadioItems and Checklist"),
         dbc.RadioItems(
             options=[
                 {"label": "Option 1", "value": 1},
