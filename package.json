@@ -37,6 +37,7 @@
     "classnames": "^2.2.6",
     "is-absolute-url": "^2.1.0",
     "prop-types": "^15.6.2",
+    "ramda": "^0.25.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "reactstrap": "^6.4.0"
