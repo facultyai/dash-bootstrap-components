@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Input as RSInput} from 'reactstrap';
+import {omit} from 'ramda';
+import classNames from 'classnames';
 
 class Input extends React.Component {
   constructor(props) {
@@ -13,10 +14,24 @@ class Input extends React.Component {
   }
 
   render() {
-    const {fireEvent, setProps, type, ...otherProps} = this.props;
+    const {fireEvent, setProps, type, className, valid, invalid, bsSize, plaintext} = this.props;
     const {value} = this.state;
+
+    let formControlClass = 'form-control';
+
+    if (plaintext) {
+      formControlClass = `${formControlClass}-plaintext`;
+    }
+
+    const classes = classNames(
+      className,
+      invalid && 'is-invalid',
+      valid && 'is-valid',
+      bsSize ? `form-control-${bsSize}` : false,
+      formControlClass
+    )
     return (
-      <RSInput
+      <input
         onChange={e => {
           this.setState({value: e.target.value});
           if (setProps) {
@@ -35,9 +50,12 @@ class Input extends React.Component {
             fireEvent({event: 'blur'});
           }
         }}
+        className={classes}
         value={value}
-        type={type}
-        {...otherProps}
+        {...omit(
+          ['fireEvent', 'setProps', 'value', 'className', 'valid', 'invalid', 'bsSize', 'plaintext'],
+          this.props
+        )}
       />
     );
   }
@@ -50,11 +68,6 @@ Input.propTypes = {
    * components in an app.
    */
   id: PropTypes.string,
-
-  /**
-   * The children of this component
-   */
-  children: PropTypes.node,
 
   /**
    * Defines CSS styles which will override styles previously set.
