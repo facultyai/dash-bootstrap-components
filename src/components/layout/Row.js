@@ -75,7 +75,12 @@ Row.propTypes = {
   /**
    * Set horizontal spacing of columns.
    */
-  justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between'])
+  justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between']),
+
+  /**
+   * For use in forms. Reduces the spacing between columns for a tighter look
+   */
+  form: PropTypes.bool
 }
 
 export default Row;
