@@ -31,13 +31,14 @@ class Checklist extends React.Component {
       options,
       setProps,
       style,
+      inline,
     } = this.props;
     const {values} = this.state;
 
     return (
       <div id={id} style={style} className={className}>
         {options.map(option => (
-          <div className="form-check" key={option.value}>
+          <div className={classNames("form-check", inline && "form-check-inline")} key={option.value}>
             <input
               checked={contains(option.value, values)}
               className={classNames("form-check-input", inputClassName)}
@@ -61,9 +62,9 @@ class Checklist extends React.Component {
               }}
             />
             <label
-              key={option.value}
               style={labelStyle}
-              className={labelClassName}
+              className={classNames(labelClassName, 'form-check-label')}
+              key={option.value}
             >
               {option.label}
             </label>
@@ -147,6 +148,11 @@ Checklist.propTypes = {
      * Dash-assigned callback that gets fired when the value changes.
      */
     setProps: PropTypes.func,
+
+    /**
+     * Arrange Checklist inline
+     */
+    inline: PropTypes.bool,
 
     dashEvents: PropTypes.oneOf(['change']),
 };

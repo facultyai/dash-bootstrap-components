@@ -31,6 +31,7 @@ class RadioItems extends React.Component {
       labelStyle,
       options,
       setProps,
+      inline,
     } = this.props;
     const {value} = this.state;
 
@@ -41,7 +42,7 @@ class RadioItems extends React.Component {
     return (
       <div {...ids} className={className} style={style}>
         {options.map(option => (
-          <div className="form-check" key={option.value}>
+          <div className={classNames("form-check", inline && "form-check-inline")} key={option.value}>
             <input
               checked={option.value === value}
               className={classNames("form-check-input", inputClassName)}
@@ -60,7 +61,7 @@ class RadioItems extends React.Component {
             />
             <label
               style={labelStyle}
-              className={labelClassName}
+              className={classNames(labelClassName, 'form-check-label')}
               key={option.value}
             >
               {option.label}
@@ -145,6 +146,11 @@ RadioItems.propTypes = {
      * Dash-assigned callback that gets fired when the value changes.
      */
     setProps: PropTypes.func,
+
+    /**
+     * Arrange RadioItems inline
+     */
+    inline: PropTypes.bool,
 
     dashEvents: PropTypes.oneOf(['change']),
 };
