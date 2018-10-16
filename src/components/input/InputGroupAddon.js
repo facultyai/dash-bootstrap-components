@@ -1,17 +1,31 @@
 import PropTypes from 'prop-types';
-import {InputGroup as RSInputGroup} from 'reactstrap';
+import classNames from 'classnames';
+import InputGroupText from './InputGroupText';
 
-const InputGroup = props => {
+const InputGroupAddon = props => {
   const {
     children,
+    className,
+    addonType,
     ...otherProps
   } = props;
-  return (<RSInputGroup {...otherProps}>
+  const classes = classNames(className, 'input-group-' + addonType);
+
+  if (typeof children === 'string') {
+   return (
+     <div className={classes} {...otherProps} >
+       <InputGroupText children={children} />
+     </div>
+   );
+ }
+
+
+  return (<div className={classes} {...otherProps}>
     {children}
-  </RSInputGroup>);
+  </div>);
 }
 
-InputGroup.propTypes = {
+InputGroupAddon.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -40,4 +54,4 @@ InputGroup.propTypes = {
   addonType: PropTypes.oneOf(['prepend', 'append'])
 }
 
-export default InputGroup;
+export default InputGroupAddon;
