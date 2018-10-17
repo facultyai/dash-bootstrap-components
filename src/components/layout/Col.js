@@ -102,6 +102,6 @@ Col.propTypes = {
    * Set vertical alignment of this column in row
    */
   align: PropTypes.oneOf(['start', 'center', 'end'])
-}
+};
 
 export default Col;

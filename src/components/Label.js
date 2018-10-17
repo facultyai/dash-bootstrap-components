@@ -1,15 +1,33 @@
 import PropTypes from 'prop-types';
 import {Label as RSLabel} from 'reactstrap';
+import classNames from 'classnames';
+
+const alignMap = {
+  start: 'align-self-start',
+  center: 'align-self-center',
+  end: 'align-self-end'
+}
+
+const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl'];
 
 const Label = props => {
   const {
     children,
     html_for,
     width,
+    align,
     xs,
+    className,
     ...otherProps
   } = props;
-  return (<RSLabel for={html_for} xs={xs || width} {...otherProps}>
+
+  // check if column width has been specified, use alignment attribute if so
+  const cols = colWidths.filter(colWidth => props[colWidth] || props[colWidth] === '');
+
+  const alignClass = align && alignMap[align];
+  const classes = classNames(className, cols.length && alignClass);
+
+  return (<RSLabel for={html_for} xs={xs || width} className={classes} {...otherProps}>
     {children}
   </RSLabel>);
 }
@@ -57,7 +75,12 @@ Label.propTypes = {
   sm: columnProps,
   md: columnProps,
   lg: columnProps,
-  xl: columnProps
+  xl: columnProps,
+  align: PropTypes.oneOf(['start', 'center', 'end']),
+};
+
+Label.defaultProps = {
+  align: 'center',
 }
 
 export default Label;
