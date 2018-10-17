@@ -19,6 +19,9 @@ app.layout = dbc.Container(
                 dbc.Input(
                     type="email", id="example-email", placeholder="Enter email"
                 ),
+                dbc.FormText(
+                    "Are you on email? You simply have to be these days"
+                ),
             ]
         ),
         dbc.FormGroup(
@@ -30,6 +33,10 @@ app.layout = dbc.Container(
                     id="example-password",
                     placeholder="Enter password",
                     value="",
+                ),
+                dbc.FormText(
+                    "A password stops mean people taking your stuff",
+                    color="info",
                 ),
                 dbc.FormFeedback(
                     "Password is valid :-)",
@@ -181,6 +188,40 @@ app.layout = dbc.Container(
             ],
             form=True,
         ),
+        html.Br(),
+        html.H2("Inline forms"),
+        dbc.Form(
+            [
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Email", className="mr-sm-2"),
+                        dbc.Input(type="email", placeholder="Enter email"),
+                    ],
+                    className="mb-2 mr-sm-2 mb-sm-0",
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Password", className="mr-sm-2"),
+                        dbc.Input(
+                            type="password", placeholder="Enter password"
+                        ),
+                    ],
+                    className="mb-2 mr-sm-2 mb-sm-0",
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Date", className="mr-sm-2"),
+                        dcc.DatePickerSingle(
+                            id="date-picker-inline",
+                            date=datetime(2018, 10, 17),
+                        ),
+                    ],
+                    className="mb-2 mr-sm-2 mb-sm-0",
+                ),
+            ],
+            inline=True,
+        ),
+        html.Br(),
         html.H2("Dash core components"),
         dbc.FormGroup(
             [
