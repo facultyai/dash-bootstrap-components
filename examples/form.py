@@ -237,7 +237,6 @@ app.layout = dbc.Container(
                     "DatePickerSingle",
                     html_for="date-picker-range-row",
                     width=2,
-                    className="align-self-center",  # TODO add this to api
                 ),
                 dbc.Col(
                     dcc.DatePickerRange(
