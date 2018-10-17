@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 import dash
 import dash_bootstrap_components as dbc
@@ -34,14 +35,6 @@ app.layout = dbc.Container(
                     "Password is valid :-)",
                     id="example-password-feedback",
                     valid=True,
-                ),
-            ]
-        ),
-        dbc.FormGroup(
-            [
-                dbc.Label("Dropdown", html_for="dropdown"),
-                dcc.Dropdown(
-                    id="dropdown", options=[{"label": "Option 1", "value": 1}]
                 ),
             ]
         ),
@@ -187,6 +180,57 @@ app.layout = dbc.Container(
                 ),
             ],
             form=True,
+        ),
+        html.H2("Dash core components"),
+        dbc.FormGroup(
+            [
+                dbc.Label("Dropdown", html_for="dropdown"),
+                dcc.Dropdown(
+                    id="dropdown",
+                    options=[
+                        {"label": "Option 1", "value": 1},
+                        {"label": "Option 2", "value": 2},
+                    ],
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.FormGroup(
+            [
+                dbc.Label("Slider", html_for="slider"),
+                dcc.Slider(id="slider", min=0, max=10, step=0.5, value=3),
+            ]
+        ),
+        html.Br(),
+        dbc.FormGroup(
+            [
+                dbc.Label("RangeSlider", html_for="range-slider"),
+                dcc.RangeSlider(
+                    id="range-slider", min=0, max=10, value=[3, 7]
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.FormGroup(
+            [
+                dbc.Label("DatePickerSingle", html_for="date-picker-single"),
+                dcc.DatePickerSingle(
+                    id="date-picker-single",
+                    date=datetime(2018, 10, 17),
+                    style={"display": "table"},
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.FormGroup(
+            [
+                dbc.Label("DatePickerSingle", html_for="date-picker-range"),
+                dcc.DatePickerRange(
+                    id="date-picker-range",
+                    start_date=datetime(2018, 10, 17),
+                    end_date_placeholder_text="Select a date!",
+                ),
+            ]
         ),
     ],
     style={"margin-bottom": "200px"},
