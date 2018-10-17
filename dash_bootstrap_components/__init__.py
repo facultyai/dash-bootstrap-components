@@ -3,7 +3,7 @@ import sys
 
 import dash
 
-from ._version import __version__
+from ._version import __version__  # noqa
 
 # Dash automatic class creation from `metadata.json` file.
 # There's so much magic here it's a bit scary.
@@ -17,7 +17,12 @@ _js_dist = [
     }
 ]
 
-_css_dist = []
+_css_dist = [
+    {
+        "relative_package_path": "react-dates-shim.css",
+        "namespace": "dash_bootstrap_components",
+    }
+]
 
 
 def setup_js_components(module, path_to_metadata):
