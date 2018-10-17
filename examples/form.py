@@ -215,9 +215,7 @@ app.layout = dbc.Container(
             [
                 dbc.Label("DatePickerSingle", html_for="date-picker-single"),
                 dcc.DatePickerSingle(
-                    id="date-picker-single",
-                    date=datetime(2018, 10, 17),
-                    style={"display": "table"},
+                    id="date-picker-single", date=datetime(2018, 10, 17)
                 ),
             ]
         ),
@@ -228,9 +226,29 @@ app.layout = dbc.Container(
                 dcc.DatePickerRange(
                     id="date-picker-range",
                     start_date=datetime(2018, 10, 17),
-                    end_date_placeholder_text="Select a date!",
+                    end_date_placeholder_text="Select date!",
                 ),
             ]
+        ),
+        html.Br(),
+        dbc.FormGroup(
+            [
+                dbc.Label(
+                    "DatePickerSingle",
+                    html_for="date-picker-range-row",
+                    width=2,
+                    className="align-self-center",  # TODO add this to api
+                ),
+                dbc.Col(
+                    dcc.DatePickerRange(
+                        id="date-picker-range-row",
+                        start_date=datetime(2018, 10, 17),
+                        end_date_placeholder_text="Select date!",
+                    ),
+                    width=10,
+                ),
+            ],
+            row=True,
         ),
     ],
     style={"margin-bottom": "200px"},
