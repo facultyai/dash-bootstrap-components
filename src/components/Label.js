@@ -63,19 +63,54 @@ Label.propTypes = {
   className: PropTypes.string,
 
   /**
-   *
+   * Hide label from UI, but allow it to be discovered by screen-readers.
    */
   hidden: PropTypes.bool,
 
-  check: PropTypes.bool,
+  /**
+   * Set size of label. Options 'sm', 'md' (default) or 'lg'.
+   */
   size: PropTypes.string,
+
+  /**
+   * Set the `for` attribute of the label to bind it to a particular element
+   */
   html_for: PropTypes.string,
+
+  /**
+   * Specify width of label for use in grid layouts. Accepts the same values
+   * as the Col component.
+   */
   width: columnProps,
+
+  /**
+   * Specify label width on extra small screen
+   */
   xs: columnProps,
+
+  /**
+   * Specify label width on a small screen
+   */
   sm: columnProps,
+
+  /**
+   * Specify label width on a medium screen
+   */
   md: columnProps,
+
+  /**
+   * Specify label width on a large screen
+   */
   lg: columnProps,
+
+  /**
+   * Specify label width on an extra large screen
+   */
   xl: columnProps,
+
+  /**
+   * Set vertical alignement of the label, default: `center`
+   */
   align: PropTypes.oneOf(['start', 'center', 'end']),
 };
 
