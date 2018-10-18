@@ -40,7 +40,8 @@ FormText.propTypes = {
   inline: PropTypes.bool,
 
   /**
-   * Text color, options: primary, secondary, success, warning, danger, info
+   * Text color, options: primary, secondary, success, warning, danger, info,
+   * muted, light, dark, body, white, black-50, white-50.
    */
   color: PropTypes.string
 }
