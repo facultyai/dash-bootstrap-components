@@ -85,7 +85,12 @@ def component_page(body_entry, active_item):
 def component_body(body_entry):
     return [
         body_entry.layout,
-        dcc.SyntaxHighlighter(body_entry.source, language="python", theme="dark"),
+        dcc.SyntaxHighlighter(
+            body_entry.source,
+            language="python",
+            theme="dark",
+            useInlineStyles=False
+        ),
     ]
 
 
