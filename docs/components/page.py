@@ -88,7 +88,6 @@ def component_body(body_entry):
         dcc.SyntaxHighlighter(
             body_entry.source,
             language="python",
-            theme="dark",
             useInlineStyles=False
         ),
     ]
