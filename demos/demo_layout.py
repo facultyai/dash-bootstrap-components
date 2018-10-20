@@ -63,7 +63,9 @@ class DemoLayoutPage:
 if __name__ == "__main__":
     app = Dash(
         __name__,
-        external_stylesheets=["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"]
+        external_stylesheets=[
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        ],
     )
     app.layout = _layout
     app.run_server(port=8888, debug=True)
