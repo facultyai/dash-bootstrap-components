@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import {ListGroupItemText as RSListGroupItemText} from 'reactstrap';
+import classNames from 'classnames';
 
 const ListGroupItemText = props => {
   const {
     children,
+    className,
+    color,
     ...otherProps
   } = props;
-  return (<RSListGroupItemText {...otherProps}>
+  const classes = classNames(className, color && `text-${color}`);
+  return (<RSListGroupItemText className={classes} {...otherProps}>
     {children}
   </RSListGroupItemText>);
 }
@@ -37,7 +41,13 @@ ListGroupItemText.propTypes = {
   /**
    * HTML tag to use for the text, default: p
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * Text color, options: primary, secondary, success, warning, danger, info,
+   * muted, light, dark, body, white, black-50, white-50.
+   */
+  color: PropTypes.string
 }
 
 export default ListGroupItemText;

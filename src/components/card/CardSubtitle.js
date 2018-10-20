@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import {CardSubtitle as RSCardSubtitle} from 'reactstrap';
+import classNames from 'classnames';
 
 const CardSubtitle = props => {
   const {
     children,
+    className,
+    color,
     ...otherProps
   } = props;
-  return (<RSCardSubtitle {...otherProps}>
+  const classes = classNames(className, color && `text-${color}`);
+  return (<RSCardSubtitle className={classes} {...otherProps}>
     {children}
   </RSCardSubtitle>);
 }
@@ -37,7 +41,13 @@ CardSubtitle.propTypes = {
   /**
    * HTML tag to use for the card subtitle, default: h6
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * Text color, options: primary, secondary, success, warning, danger, info,
+   * muted, light, dark, body, white, black-50, white-50.
+   */
+  color: PropTypes.string
 }
 
 export default CardSubtitle;

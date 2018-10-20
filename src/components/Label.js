@@ -18,6 +18,7 @@ const Label = props => {
     align,
     xs,
     className,
+    color,
     ...otherProps
   } = props;
 
@@ -25,7 +26,11 @@ const Label = props => {
   const cols = colWidths.filter(colWidth => props[colWidth] || props[colWidth] === '');
 
   const alignClass = align && alignMap[align];
-  const classes = classNames(className, cols.length && alignClass);
+  const classes = classNames(
+    className,
+    cols.length && alignClass,
+    color && `text-${color}`
+  );
 
   return (<RSLabel for={html_for} xs={xs || width} className={classes} {...otherProps}>
     {children}
@@ -112,6 +117,12 @@ Label.propTypes = {
    * Set vertical alignement of the label, default: `center`
    */
   align: PropTypes.oneOf(['start', 'center', 'end']),
+
+  /**
+   * Text color, options: primary, secondary, success, warning, danger, info,
+   * muted, light, dark, body, white, black-50, white-50.
+   */
+  color: PropTypes.string
 };
 
 Label.defaultProps = {
