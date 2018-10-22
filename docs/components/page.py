@@ -1,14 +1,13 @@
 from pathlib import Path
 
-import dash_html_components as html
 import dash_bootstrap_components as dbc
 
 from .components.alerts import alerts
 from .components.badges import badges
 
 from .helpers import HighlightedSource, load_source_with_app
+from .sidebar import Sidebar, SidebarEntry
 
-from typing import NamedTuple
 
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
@@ -28,11 +27,6 @@ NAVBAR = dbc.Navbar(
 )
 
 
-class SidebarEntry(NamedTuple):
-    slug: str  # identifier corresponding to this entry
-    heading: str
-
-
 sidebar_entries = [
     SidebarEntry("alerts", "Alerts"),
     SidebarEntry("badges", "Badges"),
@@ -40,26 +34,8 @@ sidebar_entries = [
 ]
 
 
-def sidebar(active_item):
-    header = html.H1("Components", className="h5")
-    items = [
-        sidebar_item(
-            entry.heading,
-            f"/l/components/{entry.slug}",
-            active_item == entry.slug,
-        )
-        for entry in sidebar_entries
-    ]
-    nav = dbc.Nav(items, className="flex-column")
-    return [header, nav]
-
-
-def sidebar_item(heading, location, is_active):
-    return dbc.NavItem(dbc.NavLink(heading, href=location, active=is_active))
-
-
 def component_page(body_elements, active_item):
-    sidebar_contents = sidebar(active_item)
+    sidebar_contents = Sidebar(sidebar_entries, active_item)
     body_column = dbc.Col(body_elements, md=9)
     sidebar_column = dbc.Col(sidebar_contents, md=3, className="docs-sidebar")
     page_body = dbc.Container(
