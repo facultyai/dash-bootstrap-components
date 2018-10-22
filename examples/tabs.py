@@ -1,6 +1,7 @@
 import dash
 import dash_bootstrap_components as dbc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 
 app = dash.Dash()
 
@@ -31,10 +32,17 @@ app.layout = dbc.Container(
             [
                 dbc.Tab(tab1_content, label="Tab 1"),
                 dbc.Tab(tab2_content, label="Tab 2"),
-            ]
+            ],
+            id="tabs",
         ),
+        html.Div(id="active-tab")
     ]
 )
+
+
+@app.callback(Output("active-tab", "children"), [Input("tabs", "activeTab")])
+def foo(at):
+    return at
 
 
 if __name__ == "__main__":
