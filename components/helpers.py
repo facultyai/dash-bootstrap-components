@@ -1,0 +1,20 @@
+
+import dash_core_components as dcc
+
+
+def HighlightedSource(source):
+    return dcc.SyntaxHighlighter(
+        source, language="python", useInlineStyles=False
+    )
+
+
+def load_source_with_app(app, source, component_name):
+    """
+    Execute a source snippet, injecting the `app` local variable.
+
+    Return the local variable defined by `component_name`. This should
+    be used for source files that need to register `@app` callbacks.
+    """
+    exec_namespace = {"app": app}
+    exec(source, {}, exec_namespace)
+    return exec_namespace[component_name]

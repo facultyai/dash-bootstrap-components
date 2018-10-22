@@ -1,13 +1,14 @@
 from pathlib import Path
 
-import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
 from .alerts import alerts
 from .badges import badges
 
-from typing import NamedTuple, List
+from .helpers import HighlightedSource, load_source_with_app
+
+from typing import NamedTuple
 
 HERE = Path(__file__).parent
 
@@ -31,28 +32,11 @@ class SidebarEntry(NamedTuple):
     heading: str
 
 
-class Body(NamedTuple):
-    layout: List  # dash node demonstrating a component
-    source: str  # source code for that node
-
-
 sidebar_entries = [
     SidebarEntry("alerts", "Alerts"),
     SidebarEntry("badges", "Badges"),
     SidebarEntry("collapse", "Collapse"),
 ]
-
-
-def _load_source_with_app(app, source, component_name):
-    """
-    Execute a source snippet, injecting the `app` local variable.
-
-    Return the local variable defined by `component_name`. This should
-    be used for source files that need to register `@app` callbacks.
-    """
-    exec_namespace = {"app": app}
-    exec(source, {}, exec_namespace)
-    return exec_namespace[component_name]
 
 
 def sidebar(active_item):
@@ -73,10 +57,9 @@ def sidebar_item(heading, location, is_active):
     return dbc.NavItem(dbc.NavLink(heading, href=location, active=is_active))
 
 
-def component_page(body_entry, active_item):
-    body = component_body(body_entry)
+def component_page(body_elements, active_item):
     sidebar_contents = sidebar(active_item)
-    body_column = dbc.Col(body, md=9)
+    body_column = dbc.Col(body_elements, md=9)
     sidebar_column = dbc.Col(sidebar_contents, md=3, className="docs-sidebar")
     page_body = dbc.Container(
         dbc.Row([body_column, sidebar_column]), className="docs-content"
@@ -84,25 +67,16 @@ def component_page(body_entry, active_item):
     return [NAVBAR, page_body]
 
 
-def component_body(body_entry):
-    return [
-        body_entry.layout,
-        dcc.SyntaxHighlighter(
-            body_entry.source, language="python", useInlineStyles=False
-        ),
-    ]
-
-
 class ComponentsPage:
     def __init__(self, app):
         self._app = app
         self._component_bodies = {
-            "alerts": Body(alerts, alerts_source),
-            "badges": Body(badges, badges_source),
-            "collapse": Body(
-                _load_source_with_app(self._app, collapse_source, "collapse"),
-                collapse_source,
-            ),
+            "alerts": [alerts, HighlightedSource(alerts_source)],
+            "badges": [badges, HighlightedSource(badges_source)],
+            "collapse": [
+                load_source_with_app(self._app, collapse_source, "collapse"),
+                HighlightedSource(collapse_source)
+            ]
         }
 
     def for_path(self, path_components):
