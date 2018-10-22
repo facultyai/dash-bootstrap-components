@@ -3,20 +3,21 @@ from pathlib import Path
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from .alerts import alerts
-from .badges import badges
+from .components.alerts import alerts
+from .components.badges import badges
 
 from .helpers import HighlightedSource, load_source_with_app
 
 from typing import NamedTuple
 
 HERE = Path(__file__).parent
+COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-alerts_source = (HERE / "alerts.py").open().read()
-badges_source = (HERE / "badges.py").open().read()
-collapse_source = (HERE / "collapse.py").open().read()
+alerts_source = (COMPONENTS / "alerts.py").open().read()
+badges_source = (COMPONENTS / "badges.py").open().read()
+collapse_source = (COMPONENTS / "collapse.py").open().read()
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
