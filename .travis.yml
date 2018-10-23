@@ -1,10 +1,18 @@
-language: node_js
-node_js:
-  - "8"
+language: python
 cache:
   directories:
     - "node_modules"
 install:
-  - npm install
+  - "if [[ \"$GROUP\" == js ]] ; then npm -v ; fi"
+  - "if [[ \"$GROUP\" == js ]] ; then npm install ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then pip install black flake8 ; fi"
 script:
-  - npm run test
+  - "if [[ \"$GROUP\" == js ]] ; then npm run test ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then black . --check ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then flake8 ; fi"
+matrix:
+  include:
+    - python: 3.6
+      env: GROUP=python-linting
+    - python: 3.6
+      env: GROUP=js
