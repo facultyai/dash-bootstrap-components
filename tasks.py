@@ -7,8 +7,7 @@ from termcolor import cprint
 from invoke import task, run as invoke_run
 import semver
 
-VERSION_TEMPLATE = """
-__version__ = "{version_string}"
+VERSION_TEMPLATE = """__version__ = "{version_string}"
 """
 
 RELEASE_NOTES_TEMPLATE = """# Write the release notes here
