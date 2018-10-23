@@ -30,9 +30,15 @@ _body = dbc.Container(
                 dbc.Col(
                     [
                         html.H2("Heading"),
-                        html.P(
-                            "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."
-                        ),
+                        html.P("""\
+Donec id elit non mi porta gravida at eget metus.
+Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non
+mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
+amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+odio dui."""),
                         dbc.Button("View details", color="secondary"),
                     ],
                     md=4,
@@ -66,7 +72,8 @@ if __name__ == "__main__":
     app = Dash(
         __name__,
         external_stylesheets=[
-            "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            "https://stackpath.bootstrapcdn.com/bootstrap/"
+            "4.1.3/css/bootstrap.min.css"
         ],
     )
     app.layout = _layout
