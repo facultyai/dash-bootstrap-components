@@ -11,7 +11,10 @@ from demos.demo_layout import DemoLayoutPage
 BOOTSTRAP_CSS = (
     "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 )
-HIGHLIGHT_JS_CSS = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/monokai-sublime.min.css"
+HIGHLIGHT_JS_CSS = (
+    "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/"
+    "build/styles/monokai-sublime.min.css"
+)
 
 
 _layout = html.Div(
