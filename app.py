@@ -55,7 +55,8 @@ class App:
 
     def _create_callbacks(self):
         self._app.callback(
-            Output("docs-content", "children"), [Input("docs-location", "pathname")]
+            Output("docs-content", "children"),
+            [Input("docs-location", "pathname")],
         )(self._on_location_change)
 
     def _on_location_change(self, location):

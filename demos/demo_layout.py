@@ -42,7 +42,9 @@ _body = dbc.Container(
                         html.H2("Graph"),
                         dcc.Graph(
                             id="dash-docs-graph",
-                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]},
+                            figure={
+                                "data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]
+                            },
                         ),
                     ]
                 ),
