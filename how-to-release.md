@@ -20,6 +20,6 @@ This is a set of instructions for releasing to Pypi. The release process is some
 The documentation is currently hosted on Heroku. To push documentation updates:
 
 ```
-git remote add heroku https://git.heroku.com/thawing-hamlet-32470.git
+git remote add heroku https://git.heroku.com/dash-bootstrap-components.git
 git subtree push --prefix docs/ heroku master
 ```
