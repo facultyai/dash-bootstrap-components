@@ -1,12 +1,14 @@
 from pathlib import Path
 
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
 from .components.alerts import alerts
 from .components.badges import badges
 from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
+from .components.layout.simple import row as layout_simple
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -43,6 +45,7 @@ sidebar_entries = [
     SidebarEntry("badges", "Badges"),
     SidebarEntry("buttons", "Buttons"),
     SidebarEntry("collapse", "Collapse"),
+    SidebarEntry("layout", "Layout"),
 ]
 
 
@@ -94,6 +97,10 @@ class ComponentsPage:
                 HighlightedSource(collapse_source),
                 ApiDoc(component_metadata.get("src/components/Collapse.js")),
             ],
+            "layout": html.Div(
+                [layout_simple, HighlightedSource(layout_simple_source)],
+                className="layout-demo",
+            ),
         }
 
     def for_path(self, path_components):
