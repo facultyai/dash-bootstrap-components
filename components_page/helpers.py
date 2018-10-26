@@ -1,8 +1,16 @@
+import dash_html_components as html
 import dash_core_components as dcc
 
 
 def HighlightedSource(source):
-    return dcc.SyntaxHighlighter(source, language="python", useInlineStyles=False)
+    return html.Div(
+        dcc.SyntaxHighlighter(source, language="python", useInlineStyles=False),
+        className="example-source-container"
+    )
+
+
+def ExampleContainer(component):
+    return html.Div(component, className="example-container")
 
 
 def load_source_with_app(app, source, component_name):
