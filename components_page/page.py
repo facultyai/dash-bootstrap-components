@@ -4,6 +4,8 @@ import dash_bootstrap_components as dbc
 
 from .components.alerts import alerts
 from .components.badges import badges
+from .components.buttons.simple import buttons as buttons_simple
+from .components.buttons.outline import buttons as buttons_outline
 
 from .helpers import HighlightedSource, load_source_with_app
 from .sidebar import Sidebar, SidebarEntry
@@ -17,6 +19,8 @@ GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 alerts_source = (COMPONENTS / "alerts.py").open().read()
 badges_source = (COMPONENTS / "badges.py").open().read()
 collapse_source = (COMPONENTS / "collapse.py").open().read()
+buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
+buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -30,6 +34,7 @@ NAVBAR = dbc.Navbar(
 sidebar_entries = [
     SidebarEntry("alerts", "Alerts"),
     SidebarEntry("badges", "Badges"),
+    SidebarEntry("buttons", "Buttons"),
     SidebarEntry("collapse", "Collapse"),
 ]
 
@@ -50,10 +55,16 @@ class ComponentsPage:
         self._component_bodies = {
             "alerts": [alerts, HighlightedSource(alerts_source)],
             "badges": [badges, HighlightedSource(badges_source)],
+            "buttons": [
+                buttons_simple,
+                HighlightedSource(buttons_simple_source),
+                buttons_outline,
+                HighlightedSource(buttons_outline_source),
+            ],
             "collapse": [
                 load_source_with_app(self._app, collapse_source, "collapse"),
-                HighlightedSource(collapse_source)
-            ]
+                HighlightedSource(collapse_source),
+            ],
         }
 
     def for_path(self, path_components):
