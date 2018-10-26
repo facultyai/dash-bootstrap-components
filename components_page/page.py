@@ -14,6 +14,7 @@ from .components.layout.order_offset import row as layout_order_offset
 from .components.layout.breakpoints import row as layout_breakpoints
 from .components.layout.no_gutters import row as layout_no_gutters
 from .components.layout.vertical import row as layout_vertical
+from .components.layout.horizontal import row as layout_horizontal
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -47,6 +48,9 @@ layout_no_gutters_source = (
     (COMPONENTS / "layout" / "no_gutters.py").open().read()
 )
 layout_vertical_source = (COMPONENTS / "layout" / "vertical.py").open().read()
+layout_horizontal_source = (
+    (COMPONENTS / "layout" / "horizontal.py").open().read()
+)
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -133,6 +137,8 @@ class ComponentsPage:
                         ],
                         className="pad-row",
                     ),
+                    layout_horizontal,
+                    HighlightedSource(layout_horizontal_source),
                 ],
                 className="layout-demo",
             ),
