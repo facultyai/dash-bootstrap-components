@@ -11,6 +11,7 @@ from .components.buttons.group import buttons as buttons_group
 from .components.layout.simple import row as layout_simple
 from .components.layout.width import row as layout_width
 from .components.layout.order_offset import row as layout_order_offset
+from .components.layout.breakpoints import row as layout_breakpoints
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -36,6 +37,9 @@ layout_simple_source = (COMPONENTS / "layout" / "simple.py").open().read()
 layout_width_source = (COMPONENTS / "layout" / "width.py").open().read()
 layout_order_offset_source = (
     (COMPONENTS / "layout" / "order_offset.py").open().read()
+)
+layout_breakpoints_source = (
+    (COMPONENTS / "layout" / "breakpoints.py").open().read()
 )
 
 NAVBAR = dbc.Navbar(
@@ -112,6 +116,8 @@ class ComponentsPage:
                     HighlightedSource(layout_width_source),
                     layout_order_offset,
                     HighlightedSource(layout_order_offset_source),
+                    layout_breakpoints,
+                    HighlightedSource(layout_breakpoints_source)
                 ],
                 className="layout-demo",
             ),
