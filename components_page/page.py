@@ -75,7 +75,7 @@ class ComponentsPage:
                 HighlightedSource(buttons_group_source),
             ],
             "collapse": [
-                load_source_with_app(self._app, collapse_source, "collapse"),
+                ExampleContainer(load_source_with_app(self._app, collapse_source, "collapse")),
                 HighlightedSource(collapse_source),
             ],
         }
