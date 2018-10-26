@@ -6,6 +6,7 @@ from .components.alerts import alerts
 from .components.badges import badges
 from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
+from .components.buttons.group import buttons as buttons_group
 
 from .helpers import HighlightedSource, load_source_with_app
 from .sidebar import Sidebar, SidebarEntry
@@ -21,6 +22,7 @@ badges_source = (COMPONENTS / "badges.py").open().read()
 collapse_source = (COMPONENTS / "collapse.py").open().read()
 buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
+buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -60,6 +62,8 @@ class ComponentsPage:
                 HighlightedSource(buttons_simple_source),
                 buttons_outline,
                 HighlightedSource(buttons_outline_source),
+                buttons_group,
+                HighlightedSource(buttons_group_source),
             ],
             "collapse": [
                 load_source_with_app(self._app, collapse_source, "collapse"),
