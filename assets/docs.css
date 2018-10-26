@@ -101,7 +101,7 @@ span.hljs-meta {
   height: 100px;
 }
 
-.layout-demo .col>div {
+.layout-demo .col>div, .layout-demo [class*="col-"]>div {
   padding: 0.75rem;
   background-color: rgba(86,61,124,.15);
   border: 1px solid rgba(86,61,124,.2);
