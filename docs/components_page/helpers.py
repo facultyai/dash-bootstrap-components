@@ -1,11 +1,8 @@
-
 import dash_core_components as dcc
 
 
 def HighlightedSource(source):
-    return dcc.SyntaxHighlighter(
-        source, language="python", useInlineStyles=False
-    )
+    return dcc.SyntaxHighlighter(source, language="python", useInlineStyles=False)
 
 
 def load_source_with_app(app, source, component_name):

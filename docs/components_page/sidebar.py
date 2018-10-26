@@ -1,4 +1,3 @@
-
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
@@ -18,9 +17,7 @@ def Sidebar(sidebar_entries, active_item):
     header = html.H1("Components", className="h5")
     items = [
         SidebarItem(
-            entry.heading,
-            f"/l/components/{entry.slug}",
-            active_item == entry.slug
+            entry.heading, f"/l/components/{entry.slug}", active_item == entry.slug
         )
         for entry in sidebar_entries
     ]
