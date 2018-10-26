@@ -1,1 +1,1 @@
-from .page import ComponentsPage
+from .page import ComponentsPage  # noqa: F401
