@@ -79,3 +79,11 @@ span.hljs-meta {
 .docs-sidebar .nav-link.active:hover {
     border-left: 2px solid #d9534f;
 }
+
+.example-container {
+    margin-bottom: 1rem;
+}
+
+.example-source-container {
+    margin-bottom: 2rem;
+}

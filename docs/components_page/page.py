@@ -8,7 +8,7 @@ from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
 
-from .helpers import HighlightedSource, load_source_with_app
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .sidebar import Sidebar, SidebarEntry
 
 
@@ -55,14 +55,20 @@ class ComponentsPage:
     def __init__(self, app):
         self._app = app
         self._component_bodies = {
-            "alerts": [alerts, HighlightedSource(alerts_source)],
-            "badges": [badges, HighlightedSource(badges_source)],
+            "alerts": [
+                ExampleContainer(alerts),
+                HighlightedSource(alerts_source)
+            ],
+            "badges": [
+                ExampleContainer(badges),
+                HighlightedSource(badges_source)
+            ],
             "buttons": [
-                buttons_simple,
+                ExampleContainer(buttons_simple),
                 HighlightedSource(buttons_simple_source),
-                buttons_outline,
+                ExampleContainer(buttons_outline),
                 HighlightedSource(buttons_outline_source),
-                buttons_group,
+                ExampleContainer(buttons_group),
                 HighlightedSource(buttons_group_source),
             ],
             "collapse": [
