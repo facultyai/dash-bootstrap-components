@@ -21,6 +21,7 @@ alerts_source = (COMPONENTS / "alerts.py").open().read()
 badges_source = (COMPONENTS / "badges.py").open().read()
 collapse_source = (COMPONENTS / "collapse.py").open().read()
 buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
+buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
 
@@ -66,6 +67,8 @@ class ComponentsPage:
             "buttons": [
                 ExampleContainer(buttons_simple),
                 HighlightedSource(buttons_simple_source),
+                ExampleContainer(load_source_with_app(self._app, buttons_usage_source, "button")),
+                HighlightedSource(buttons_usage_source),
                 ExampleContainer(buttons_outline),
                 HighlightedSource(buttons_outline_source),
                 ExampleContainer(buttons_group),
