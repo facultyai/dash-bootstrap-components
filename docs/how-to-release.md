@@ -14,3 +14,12 @@ This is a set of instructions for releasing to Pypi. The release process is some
  - Verify that the new version is available by running ``pip install dash-bootstrap-components`` in a new virtual environment.
 
  - Run ``invoke postrelease <version>``, where ``version`` is the version number of the new release. This will change the version numbers back to a `-dev` version.
+
+# Releasing documentation changes
+
+The documentation is currently hosted on Heroku. To push documentation updates:
+
+```
+git remote add heroku https://git.heroku.com/dash-bootstrap-components.git
+git subtree push --prefix docs/ heroku master
+```
