@@ -58,16 +58,20 @@ class ComponentsPage:
         self._component_bodies = {
             "alerts": [
                 ExampleContainer(alerts),
-                HighlightedSource(alerts_source)
+                HighlightedSource(alerts_source),
             ],
             "badges": [
                 ExampleContainer(badges),
-                HighlightedSource(badges_source)
+                HighlightedSource(badges_source),
             ],
             "buttons": [
                 ExampleContainer(buttons_simple),
                 HighlightedSource(buttons_simple_source),
-                ExampleContainer(load_source_with_app(self._app, buttons_usage_source, "button")),
+                ExampleContainer(
+                    load_source_with_app(
+                        self._app, buttons_usage_source, "button"
+                    )
+                ),
                 HighlightedSource(buttons_usage_source),
                 ExampleContainer(buttons_outline),
                 HighlightedSource(buttons_outline_source),
@@ -75,7 +79,11 @@ class ComponentsPage:
                 HighlightedSource(buttons_group_source),
             ],
             "collapse": [
-                ExampleContainer(load_source_with_app(self._app, collapse_source, "collapse")),
+                ExampleContainer(
+                    load_source_with_app(
+                        self._app, collapse_source, "collapse"
+                    )
+                ),
                 HighlightedSource(collapse_source),
             ],
         }
