@@ -35,7 +35,7 @@ app.layout = dbc.Container(
             ],
             id="tabs",
         ),
-        html.Div(id="active-tab")
+        html.Div(id="active-tab"),
     ]
 )
 

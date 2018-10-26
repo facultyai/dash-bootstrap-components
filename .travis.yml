@@ -1,10 +1,25 @@
-language: node_js
-node_js:
-  - "8"
+language: python
 cache:
   directories:
     - "node_modules"
 install:
-  - npm install
+  - "if [[ \"$GROUP\" == js ]] ; then npm -v ; fi"
+  - "if [[ \"$GROUP\" == js ]] ; then npm install ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then pip install black flake8 ; fi"
 script:
-  - npm run test
+  - "if [[ \"$GROUP\" == js ]] ; then npm run test ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then black . --check ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then flake8 ; fi"
+  - "if [[ \"$GROUP\" == python-test ]] ; then python -m compileall dash_bootstrap_components ; fi"
+matrix:
+  include:
+    - python: 3.6
+      env: GROUP=python-linting
+    - python: 3.6
+      env: GROUP=js
+    - python: 2.7
+      env: GROUP=python-test
+    - python: 3.5
+      env: GROUP=python-test
+    - python: 3.6
+      env: GROUP=python-test
