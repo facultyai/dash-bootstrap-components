@@ -9,6 +9,7 @@ from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
 from .components.layout.simple import row as layout_simple
+from .components.layout.width import row as layout_width
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -30,6 +31,8 @@ buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
 buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
+layout_simple_source = (COMPONENTS / "layout" / "simple.py").open().read()
+layout_width_source = (COMPONENTS / "layout" / "width.py").open().read()
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -98,7 +101,12 @@ class ComponentsPage:
                 ApiDoc(component_metadata.get("src/components/Collapse.js")),
             ],
             "layout": html.Div(
-                [layout_simple, HighlightedSource(layout_simple_source)],
+                [
+                    layout_simple,
+                    HighlightedSource(layout_simple_source),
+                    layout_width,
+                    HighlightedSource(layout_width_source),
+                ],
                 className="layout-demo",
             ),
         }
