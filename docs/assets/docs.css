@@ -110,6 +110,11 @@ span.hljs-meta {
     linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
+.layout-demo .row.no-gutters {
+  background: linear-gradient(to right, #eeeeee, #eeeeee);
+}
+
+
 .layout-demo.pad-row .row {
   height: 100px;
 }
