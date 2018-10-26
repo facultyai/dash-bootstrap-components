@@ -4,8 +4,10 @@ import dash_core_components as dcc
 
 def HighlightedSource(source):
     return html.Div(
-        dcc.SyntaxHighlighter(source, language="python", useInlineStyles=False),
-        className="example-source-container"
+        dcc.SyntaxHighlighter(
+            source, language="python", useInlineStyles=False
+        ),
+        className="example-source-container",
     )
 
 
