@@ -5,10 +5,11 @@ import dash
 
 from ._version import __version__  # noqa
 
-# Dash automatic class creation from `metadata.json` file.
-# There's so much magic here it's a bit scary.
-
 _current_path = os.path.dirname(os.path.abspath(__file__))
+
+METADATA_PATH = os.path.join(_current_path, "metadata.json")
+
+# Dash automatic class creation from `metadata.json` file.
 
 _js_dist = [
     {
@@ -25,7 +26,7 @@ _css_dist = [
 ]
 
 
-def setup_js_components(module, path_to_metadata):
+def _setup_js_components(module, path_to_metadata):
     components = dash.development.component_loader.load_components(
         path_to_metadata, "dash_bootstrap_components"
     )
@@ -35,6 +36,4 @@ def setup_js_components(module, path_to_metadata):
         component._css_dist = _css_dist
 
 
-setup_js_components(
-    sys.modules[__name__], os.path.join(_current_path, "metadata.json")
-)
+_setup_js_components(sys.modules[__name__], METADATA_PATH)
