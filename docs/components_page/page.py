@@ -67,6 +67,7 @@ class ComponentsPage:
             "badges": [
                 ExampleContainer(badges),
                 HighlightedSource(badges_source),
+                ApiDoc(component_metadata.get("src/components/Badge.js"))
             ],
             "buttons": [
                 ExampleContainer(buttons_simple),
@@ -81,6 +82,7 @@ class ComponentsPage:
                 HighlightedSource(buttons_outline_source),
                 ExampleContainer(buttons_group),
                 HighlightedSource(buttons_group_source),
+                ApiDoc(component_metadata.get("src/components/Button.js")),
             ],
             "collapse": [
                 ExampleContainer(
@@ -89,6 +91,7 @@ class ComponentsPage:
                     )
                 ),
                 HighlightedSource(collapse_source),
+                ApiDoc(component_metadata.get("src/components/Collapse.js")),
             ],
         }
 
