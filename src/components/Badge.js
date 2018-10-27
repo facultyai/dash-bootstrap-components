@@ -20,7 +20,7 @@ Badge.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
@@ -36,12 +36,12 @@ Badge.propTypes = {
 
   /**
    * Badge color, options: primary, secondary, success, info, warning, danger,
-   * link. Default is secondary
+   * link. Default: secondary.
    */
   color: PropTypes.string,
 
   /**
-   * Make badge "pill" shaped (rounded ends, like a pill), default: false
+   * Make badge "pill" shaped (rounded ends, like a pill). Default: False.
    */
   pill: PropTypes.bool,
 
@@ -51,7 +51,7 @@ Badge.propTypes = {
   href: PropTypes.string,
 
   /**
-   * HTML tag to use for the Badge, default: span
+   * HTML tag to use for the Badge. Default: span.
    */
   tag: PropTypes.string
 }
