@@ -35,7 +35,7 @@ Button.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
@@ -65,12 +65,12 @@ Button.propTypes = {
   /**
    * A unique identifier for the component, used to improve
    * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   * See https://reactjs.org/docs/lists-and-keys.html for more info.
    */
   key: PropTypes.string,
 
   /**
-   * Whether button is in active state
+   * Whether button is in active state. Default: False.
    */
   active: PropTypes.bool,
 
@@ -81,12 +81,12 @@ Button.propTypes = {
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,
-   * link. Default is secondary
+   * link. Default: secondary.
    */
   color: PropTypes.string,
 
   /**
-   * Disable button (make unclickable).
+   * Disable button (make unclickable). Default: False.
    */
   disabled: PropTypes.bool,
 
@@ -96,7 +96,7 @@ Button.propTypes = {
   size: PropTypes.string,
 
   /**
-   * Set outline button style
+   * Set outline button style.
    */
   outline: PropTypes.bool,
 
