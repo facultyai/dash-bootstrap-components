@@ -8,11 +8,7 @@ from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
 
-from .helpers import (
-    ExampleContainer,
-    HighlightedSource,
-    load_source_with_app,
-)
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
 from .metadata import load_metadata
 from .sidebar import Sidebar, SidebarEntry
