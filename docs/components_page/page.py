@@ -12,8 +12,8 @@ from .helpers import (
     ExampleContainer,
     HighlightedSource,
     load_source_with_app,
-    ApiDoc,
 )
+from .api_doc import ApiDoc
 from .metadata import load_metadata
 from .sidebar import Sidebar, SidebarEntry
 
