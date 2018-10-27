@@ -8,7 +8,8 @@ from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
 
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_app, ApiDoc
+from .metadata import load_metadata
 from .sidebar import Sidebar, SidebarEntry
 
 
@@ -16,6 +17,8 @@ HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
+
+component_metadata = load_metadata()
 
 alerts_source = (COMPONENTS / "alerts.py").open().read()
 badges_source = (COMPONENTS / "badges.py").open().read()
@@ -59,6 +62,7 @@ class ComponentsPage:
             "alerts": [
                 ExampleContainer(alerts),
                 HighlightedSource(alerts_source),
+                ApiDoc(component_metadata.get("src/components/Alert.js"))
             ],
             "badges": [
                 ExampleContainer(badges),

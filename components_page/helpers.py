@@ -25,3 +25,24 @@ def load_source_with_app(app, source, component_name):
     exec_namespace = {"app": app}
     exec(source, {}, exec_namespace)
     return exec_namespace[component_name]
+
+
+def ApiDoc(component_metadata):
+    return html.Div([
+        html.H4("API", className="mt-5"),
+        ArgumentsList(component_metadata)
+    ])
+
+
+def ArgumentsList(component_metadata):
+    props_metadata = component_metadata.get("props", {})
+    arguments = [
+        Argument(name, metadata)
+        for name, metadata in props_metadata.items()
+    ]
+    return html.Div(arguments)
+
+
+def Argument(argument_name, argument_metadata):
+    description = argument_metadata.get("description", "")
+    return html.Div(f"{argument_name}: {description}")
