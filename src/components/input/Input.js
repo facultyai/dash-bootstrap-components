@@ -14,7 +14,16 @@ class Input extends React.Component {
   }
 
   render() {
-    const {fireEvent, setProps, type, className, valid, invalid, bsSize, plaintext} = this.props;
+    const {
+      fireEvent,
+      setProps,
+      type,
+      className,
+      valid,
+      invalid,
+      bsSize,
+      plaintext
+    } = this.props;
     const {value} = this.state;
 
     let formControlClass = 'form-control';
@@ -29,7 +38,7 @@ class Input extends React.Component {
       valid && 'is-valid',
       bsSize ? `form-control-${bsSize}` : false,
       formControlClass
-    )
+    );
     return (
       <input
         onChange={e => {
@@ -53,7 +62,16 @@ class Input extends React.Component {
         className={classes}
         value={value}
         {...omit(
-          ['fireEvent', 'setProps', 'value', 'className', 'valid', 'invalid', 'bsSize', 'plaintext'],
+          [
+            'fireEvent',
+            'setProps',
+            'value',
+            'className',
+            'valid',
+            'invalid',
+            'bsSize',
+            'plaintext'
+          ],
           this.props
         )}
       />
@@ -93,7 +111,7 @@ Input.propTypes = {
     'search',
     'tel',
     'url',
-    'hidden',
+    'hidden'
   ]),
 
   value: PropTypes.string,
@@ -105,6 +123,6 @@ Input.propTypes = {
   addon: PropTypes.bool,
   placeholder: PropTypes.string,
   name: PropTypes.string
-}
+};
 
 export default Input;

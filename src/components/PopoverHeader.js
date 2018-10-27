@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {PopoverHeader as RSPopoverHeader} from 'reactstrap';
 
 const PopoverHeader = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSPopoverHeader {...otherProps}>
-    {children}
-  </RSPopoverHeader>);
-}
+  const {children, ...otherProps} = props;
+  return <RSPopoverHeader {...otherProps}>{children}</RSPopoverHeader>;
+};
 
 PopoverHeader.propTypes = {
   /**
@@ -37,6 +32,6 @@ PopoverHeader.propTypes = {
    * HTML tag to use for the PopoverHeader, default: h3
    */
   tag: PropTypes.string
-}
+};
 
 export default PopoverHeader;

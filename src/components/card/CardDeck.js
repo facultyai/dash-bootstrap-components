@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardDeck as RSCardDeck} from 'reactstrap';
 
 const CardDeck = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardDeck {...otherProps}>
-    {children}
-  </RSCardDeck>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardDeck {...otherProps}>{children}</RSCardDeck>;
+};
 
 CardDeck.propTypes = {
   /**
@@ -38,6 +33,6 @@ CardDeck.propTypes = {
    * HTML tag to use for the card deck, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default CardDeck;

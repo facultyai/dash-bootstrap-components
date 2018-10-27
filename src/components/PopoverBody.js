@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {PopoverBody as RSPopoverBody} from 'reactstrap';
 
 const PopoverBody = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSPopoverBody {...otherProps}>
-    {children}
-  </RSPopoverBody>);
-}
+  const {children, ...otherProps} = props;
+  return <RSPopoverBody {...otherProps}>{children}</RSPopoverBody>;
+};
 
 PopoverBody.propTypes = {
   /**
@@ -37,6 +32,6 @@ PopoverBody.propTypes = {
    * HTML tag to use for the PopoverBody, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default PopoverBody;

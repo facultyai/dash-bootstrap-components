@@ -41,7 +41,7 @@ class Link extends Component {
   updateLocation(e) {
     if (this.props.disabled) {
       e.preventDefault();
-      return
+      return;
     }
     if (this.props.preOnClick) {
       this.props.preOnClick();
@@ -58,20 +58,17 @@ class Link extends Component {
   }
 
   render() {
-    const {
-      children,
-      external_link,
-      preOnClick,
-      ...otherProps
-    } = this.props;
+    const {children, external_link, preOnClick, ...otherProps} = this.props;
     /**
-       * ideally, we would use cloneElement however
-       * that doesn't work with dash's recursive
-       * renderTree implementation for some reason
-       */
-    return (<a {...otherProps} onClick={e => this.updateLocation(e)}>
-      {children}
-    </a>);
+     * ideally, we would use cloneElement however
+     * that doesn't work with dash's recursive
+     * renderTree implementation for some reason
+     */
+    return (
+      <a {...otherProps} onClick={e => this.updateLocation(e)}>
+        {children}
+      </a>
+    );
   }
 }
 

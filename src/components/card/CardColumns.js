@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardColumns as RSCardColumns} from 'reactstrap';
 
 const CardColumns = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardColumns {...otherProps}>
-    {children}
-  </RSCardColumns>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardColumns {...otherProps}>{children}</RSCardColumns>;
+};
 
 CardColumns.propTypes = {
   /**
@@ -38,6 +33,6 @@ CardColumns.propTypes = {
    * HTML tag to use for the card columns container, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default CardColumns;

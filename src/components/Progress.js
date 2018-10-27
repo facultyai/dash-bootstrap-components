@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Progress as RSProgress} from 'reactstrap';
 
 const Progress = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSProgress {...otherProps}>
-    {children}
-  </RSProgress>);
-}
+  const {children, ...otherProps} = props;
+  return <RSProgress {...otherProps}>{children}</RSProgress>;
+};
 
 Progress.propTypes = {
   /**
@@ -79,6 +74,6 @@ Progress.propTypes = {
    * CSS classes to apply to the bar.
    */
   barClassName: PropTypes.string
-}
+};
 
 export default Progress;

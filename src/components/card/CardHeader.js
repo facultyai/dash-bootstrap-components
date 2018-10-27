@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardHeader as RSCardHeader} from 'reactstrap';
 
 const CardHeader = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardHeader {...otherProps}>
-    {children}
-  </RSCardHeader>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardHeader {...otherProps}>{children}</RSCardHeader>;
+};
 
 CardHeader.propTypes = {
   /**
@@ -38,6 +33,6 @@ CardHeader.propTypes = {
    * HTML tag to use for the card header, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default CardHeader;

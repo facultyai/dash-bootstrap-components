@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardImg as RSCardImg} from 'reactstrap';
 
 const CardImg = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardImg {...otherProps}>
-    {children}
-  </RSCardImg>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardImg {...otherProps}>{children}</RSCardImg>;
+};
 
 CardImg.propTypes = {
   /**
@@ -63,6 +58,6 @@ CardImg.propTypes = {
    * Text to be displayed as a tooltip when hovering
    */
   title: PropTypes.string
-}
+};
 
 export default CardImg;

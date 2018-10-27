@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Card as RSCard} from 'reactstrap';
 
 const Card = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCard {...otherProps}>
-    {children}
-  </RSCard>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCard {...otherProps}>{children}</RSCard>;
+};
 
 Card.propTypes = {
   /**
@@ -54,6 +49,6 @@ Card.propTypes = {
    * Invert text colours for use with a dark color background.
    */
   inverse: PropTypes.bool
-}
+};
 
 export default Card;

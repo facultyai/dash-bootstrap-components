@@ -3,27 +3,23 @@ import classNames from 'classnames';
 import InputGroupText from './InputGroupText';
 
 const InputGroupAddon = props => {
-  const {
-    children,
-    className,
-    addonType,
-    ...otherProps
-  } = props;
+  const {children, className, addonType, ...otherProps} = props;
   const classes = classNames(className, 'input-group-' + addonType);
 
   if (typeof children === 'string') {
-   return (
-     <div className={classes} {...otherProps} >
-       <InputGroupText children={children} />
-     </div>
-   );
- }
+    return (
+      <div className={classes} {...otherProps}>
+        <InputGroupText children={children} />
+      </div>
+    );
+  }
 
-
-  return (<div className={classes} {...otherProps}>
-    {children}
-  </div>);
-}
+  return (
+    <div className={classes} {...otherProps}>
+      {children}
+    </div>
+  );
+};
 
 InputGroupAddon.propTypes = {
   /**
@@ -52,6 +48,6 @@ InputGroupAddon.propTypes = {
    * Whether to prepend or append the addon.
    */
   addonType: PropTypes.oneOf(['prepend', 'append'])
-}
+};
 
 export default InputGroupAddon;

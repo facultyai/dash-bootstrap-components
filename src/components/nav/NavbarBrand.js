@@ -3,14 +3,13 @@ import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
 import Link from '../../private/Link';
 
 const NavbarBrand = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSNavbarBrand {...otherProps} tag={Link}>
-    {children}
-  </RSNavbarBrand>);
-}
+  const {children, ...otherProps} = props;
+  return (
+    <RSNavbarBrand {...otherProps} tag={Link}>
+      {children}
+    </RSNavbarBrand>
+  );
+};
 
 NavbarBrand.propTypes = {
   /**
@@ -48,6 +47,6 @@ NavbarBrand.propTypes = {
    * URL of the linked resource
    */
   href: PropTypes.string
-}
+};
 
 export default NavbarBrand;

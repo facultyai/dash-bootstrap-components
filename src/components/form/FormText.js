@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {FormText as RSFormText} from 'reactstrap';
 
 const FormText = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSFormText {...otherProps}>
-    {children}
-  </RSFormText>);
-}
+  const {children, ...otherProps} = props;
+  return <RSFormText {...otherProps}>{children}</RSFormText>;
+};
 
 FormText.propTypes = {
   /**
@@ -44,6 +39,6 @@ FormText.propTypes = {
    * muted, light, dark, body, white, black-50, white-50.
    */
   color: PropTypes.string
-}
+};
 
 export default FormText;

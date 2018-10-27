@@ -2,24 +2,24 @@ import PropTypes from 'prop-types';
 import {Button as RSButton} from 'reactstrap';
 
 const Button = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSButton onClick={() => {
-      if (props.setProps) {
-        props.setProps({
-          n_clicks: props.n_clicks + 1,
-          n_clicks_timestamp: Date.now()
-        })
-      }
-      if (props.fireEvent)
-        props.fireEvent({event: 'click'});
-      }
-} {...otherProps}>
-    {children}
-  </RSButton>);
-}
+  const {children, ...otherProps} = props;
+  return (
+    <RSButton
+      onClick={() => {
+        if (props.setProps) {
+          props.setProps({
+            n_clicks: props.n_clicks + 1,
+            n_clicks_timestamp: Date.now()
+          });
+        }
+        if (props.fireEvent) props.fireEvent({event: 'click'});
+      }}
+      {...otherProps}
+    >
+      {children}
+    </RSButton>
+  );
+};
 
 Button.defaultProps = {
   n_clicks: 0,
@@ -50,16 +50,16 @@ Button.propTypes = {
   style: PropTypes.object,
 
   /**
-    * An integer that represents the number of times
-    * that this element has been clicked on.
-    */
+   * An integer that represents the number of times
+   * that this element has been clicked on.
+   */
   n_clicks: PropTypes.number,
 
   /**
-    * An integer that represents the time (in ms since 1970)
-    * at which n_clicks changed. This can be used to tell
-    * which button was changed most recently.
-    */
+   * An integer that represents the time (in ms since 1970)
+   * at which n_clicks changed. This can be used to tell
+   * which button was changed most recently.
+   */
   n_clicks_timestamp: PropTypes.number,
 
   /**
@@ -106,6 +106,6 @@ Button.propTypes = {
   fireEvent: PropTypes.func,
 
   dashEvents: PropTypes.oneOf(['click'])
-}
+};
 
 export default Button;

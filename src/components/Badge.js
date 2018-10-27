@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Badge as RSBadge} from 'reactstrap';
 
 const Badge = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSBadge {...otherProps}>
-    {children}
-  </RSBadge>);
-}
+  const {children, ...otherProps} = props;
+  return <RSBadge {...otherProps}>{children}</RSBadge>;
+};
 
 Badge.propTypes = {
   /**
@@ -54,6 +49,6 @@ Badge.propTypes = {
    * HTML tag to use for the Badge. Default: span.
    */
   tag: PropTypes.string
-}
+};
 
 export default Badge;

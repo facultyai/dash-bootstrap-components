@@ -3,17 +3,14 @@ import {ListGroupItemText as RSListGroupItemText} from 'reactstrap';
 import classNames from 'classnames';
 
 const ListGroupItemText = props => {
-  const {
-    children,
-    className,
-    color,
-    ...otherProps
-  } = props;
+  const {children, className, color, ...otherProps} = props;
   const classes = classNames(className, color && `text-${color}`);
-  return (<RSListGroupItemText className={classes} {...otherProps}>
-    {children}
-  </RSListGroupItemText>);
-}
+  return (
+    <RSListGroupItemText className={classes} {...otherProps}>
+      {children}
+    </RSListGroupItemText>
+  );
+};
 
 ListGroupItemText.propTypes = {
   /**
@@ -48,6 +45,6 @@ ListGroupItemText.propTypes = {
    * muted, light, dark, body, white, black-50, white-50.
    */
   color: PropTypes.string
-}
+};
 
 export default ListGroupItemText;

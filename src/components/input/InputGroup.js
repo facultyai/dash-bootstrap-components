@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {InputGroup as RSInputGroup} from 'reactstrap';
 
 const InputGroup = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSInputGroup {...otherProps}>
-    {children}
-  </RSInputGroup>);
-}
+  const {children, ...otherProps} = props;
+  return <RSInputGroup {...otherProps}>{children}</RSInputGroup>;
+};
 
 InputGroup.propTypes = {
   /**
@@ -38,6 +33,6 @@ InputGroup.propTypes = {
    * Size of the input group
    */
   size: PropTypes.string
-}
+};
 
 export default InputGroup;

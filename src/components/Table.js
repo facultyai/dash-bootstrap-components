@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Table as RSTable} from 'reactstrap';
 
 const Table = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSTable {...otherProps}>
-    {children}
-  </RSTable>);
-}
+  const {children, ...otherProps} = props;
+  return <RSTable {...otherProps}>{children}</RSTable>;
+};
 
 Table.propTypes = {
   /**

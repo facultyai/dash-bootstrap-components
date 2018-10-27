@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {FormFeedback as RSFormFeedback} from 'reactstrap';
 
 const FormFeedback = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSFormFeedback {...otherProps}>
-    {children}
-  </RSFormFeedback>);
-}
+  const {children, ...otherProps} = props;
+  return <RSFormFeedback {...otherProps}>{children}</RSFormFeedback>;
+};
 
 FormFeedback.propTypes = {
   /**
@@ -43,6 +38,6 @@ FormFeedback.propTypes = {
    * ...
    */
   tooltip: PropTypes.bool
-}
+};
 
 export default FormFeedback;

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Fade as RSFade} from 'reactstrap';
 
 const Fade = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSFade {...otherProps}>
-    {children}
-  </RSFade>);
-}
+  const {children, ...otherProps} = props;
+  return <RSFade {...otherProps}>{children}</RSFade>;
+};
 
 Fade.propTypes = {
   /**
@@ -32,7 +27,8 @@ Fade.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
-  className: PropTypes.string, in: PropTypes.bool,
+  className: PropTypes.string,
+  in: PropTypes.bool,
 
   /**
    * The duration of the transition, in milliseconds.
@@ -42,7 +38,8 @@ Fade.propTypes = {
    */
   timeout: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.shape({enter: PropTypes.number, exit: PropTypes.number}).isRequired
+    PropTypes.shape({enter: PropTypes.number, exit: PropTypes.number})
+      .isRequired
   ]),
 
   /**
@@ -66,6 +63,6 @@ Fade.propTypes = {
   tag: PropTypes.string,
   baseClass: PropTypes.string,
   baseClassActive: PropTypes.string
-}
+};
 
 export default Fade;

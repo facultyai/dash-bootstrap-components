@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {FormGroup as RSFormGroup} from 'reactstrap';
 
 const FormGroup = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSFormGroup {...otherProps}>
-    {children}
-  </RSFormGroup>);
-}
+  const {children, ...otherProps} = props;
+  return <RSFormGroup {...otherProps}>{children}</RSFormGroup>;
+};
 
 FormGroup.propTypes = {
   /**
@@ -53,6 +48,6 @@ FormGroup.propTypes = {
    * Apply disabled CSS class to form group
    */
   disabled: PropTypes.bool
-}
+};
 
 export default FormGroup;

@@ -6,42 +6,41 @@ const alignMap = {
   start: 'align-self-start',
   center: 'align-self-center',
   end: 'align-self-end'
-}
+};
 
 const Col = props => {
-  const {
-    children,
-    xs,
-    width,
-    align,
-    className,
-    ...otherProps
-  } = props;
+  const {children, xs, width, align, className, ...otherProps} = props;
 
   const alignClass = align && alignMap[align];
-  const classes = classNames(
-    className,
-    alignClass
-  )
+  const classes = classNames(className, alignClass);
 
-  return (<RSCol xs={xs || width} className={classes} {...otherProps}>
-    {children}
-  </RSCol>);
-}
+  return (
+    <RSCol xs={xs || width} className={classes} {...otherProps}>
+      {children}
+    </RSCol>
+  );
+};
 
-const stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+const stringOrNumberProp = PropTypes.oneOfType([
+  PropTypes.number,
+  PropTypes.string
+]);
 const columnProps = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.number,
   PropTypes.bool,
   PropTypes.shape({
-    'size': PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
+    size: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.number,
+      PropTypes.string
+    ]),
     // example size values:
     // 12 || "12" => col-12 or col-`width`-12
     // auto => col-auto or col-`width`-auto
     // true => col or col-`width`
-    'order': stringOrNumberProp,
-    'offset': stringOrNumberProp
+    order: stringOrNumberProp,
+    offset: stringOrNumberProp
   })
 ]);
 

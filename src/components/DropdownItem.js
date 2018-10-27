@@ -23,17 +23,10 @@ class DropdownItem extends React.Component {
   }
 
   render() {
-    let {
-      children,
-      href,
-      ...otherProps
-    } = this.props;
-    otherProps[href ? "preOnClick" : "onClick"] = this.incrementClicks;
+    let {children, href, ...otherProps} = this.props;
+    otherProps[href ? 'preOnClick' : 'onClick'] = this.incrementClicks;
     return (
-      <RSDropdownItem
-      tag={href ? Link : 'button'}
-      href={href}
-      {...otherProps}>
+      <RSDropdownItem tag={href ? Link : 'button'} href={href} {...otherProps}>
         {children}
       </RSDropdownItem>
     );

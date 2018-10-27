@@ -6,7 +6,7 @@ const alignMap = {
   start: 'align-items-start',
   center: 'align-items-center',
   end: 'align-items-end'
-}
+};
 
 const justifyMap = {
   start: 'justify-content-start',
@@ -14,29 +14,21 @@ const justifyMap = {
   end: 'justify-content-end',
   around: 'justify-content-around',
   between: 'justify-content-between'
-}
+};
 
 const Row = props => {
-  const {
-    children,
-    className,
-    align,
-    justify,
-    ...otherProps
-  } = props;
+  const {children, className, align, justify, ...otherProps} = props;
 
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
 
-  const classes = classNames(
-    className,
-    alignClass,
-    justifyClass
+  const classes = classNames(className, alignClass, justifyClass);
+  return (
+    <RSRow className={classes} {...otherProps}>
+      {children}
+    </RSRow>
   );
-  return (<RSRow className={classes} {...otherProps}>
-    {children}
-  </RSRow>);
-}
+};
 
 Row.propTypes = {
   /**
@@ -81,6 +73,6 @@ Row.propTypes = {
    * For use in forms. Reduces the spacing between columns for a tighter look
    */
   form: PropTypes.bool
-}
+};
 
 export default Row;

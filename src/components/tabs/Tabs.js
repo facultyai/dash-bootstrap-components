@@ -13,9 +13,9 @@ class Tabs extends React.Component {
     const children = this.parseChildrenToArray();
 
     if (!this.props.activeTab) {
-      const activeTab = children[0].props.children.props.tabId || "tab-0";
+      const activeTab = children[0].props.children.props.tabId || 'tab-0';
       this.state = {
-        activeTab: activeTab,
+        activeTab: activeTab
       };
       if (this.props.setProps) {
         this.props.setProps({
@@ -24,7 +24,7 @@ class Tabs extends React.Component {
       }
     } else {
       this.state = {
-        activeTab: this.props.activeTab,
+        activeTab: this.props.activeTab
       };
     }
   }
@@ -55,15 +55,20 @@ class Tabs extends React.Component {
     const links = children.map((child, idx) => {
       child = child.props.children;
       const tabId = child.props.tabId || 'tab-' + idx;
-      return (<NavItem key={tabId}>
-        <NavLink className={classnames({
-            active: this.state.activeTab === tabId
-          })} onClick={() => {
-            this.toggle(tabId)
-          }}>
-          {child.props.label}
-        </NavLink>
-      </NavItem>);
+      return (
+        <NavItem key={tabId}>
+          <NavLink
+            className={classnames({
+              active: this.state.activeTab === tabId
+            })}
+            onClick={() => {
+              this.toggle(tabId);
+            }}
+          >
+            {child.props.label}
+          </NavLink>
+        </NavItem>
+      );
     });
 
     // create tab content by extracting children from children
@@ -71,16 +76,18 @@ class Tabs extends React.Component {
       child = child.props.children;
       const {children, tabId: tempTabId, label, ...otherProps} = child.props;
       const tabId = tempTabId || 'tab-' + idx;
-      return (<TabPane tabId={tabId} key={tabId} {...otherProps}>
-        {children}
-      </TabPane>);
+      return (
+        <TabPane tabId={tabId} key={tabId} {...otherProps}>
+          {children}
+        </TabPane>
+      );
     });
-    return (<div>
-      <Nav tabs={true}>{links}</Nav>
-      <TabContent activeTab={this.state.activeTab}>
-        {tabs}
-      </TabContent>
-    </div>)
+    return (
+      <div>
+        <Nav tabs={true}>{links}</Nav>
+        <TabContent activeTab={this.state.activeTab}>{tabs}</TabContent>
+      </div>
+    );
   }
 }
 
@@ -112,6 +119,6 @@ Tabs.propTypes = {
    * 'tab-i' where i is the index of the tab (indexed from zero)
    */
   activeTab: PropTypes.string
-}
+};
 
 export default Tabs;

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardFooter as RSCardFooter} from 'reactstrap';
 
 const CardFooter = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardFooter {...otherProps}>
-    {children}
-  </RSCardFooter>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardFooter {...otherProps}>{children}</RSCardFooter>;
+};
 
 CardFooter.propTypes = {
   /**
@@ -38,6 +33,6 @@ CardFooter.propTypes = {
    * HTML tag to use for the card footer, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default CardFooter;
