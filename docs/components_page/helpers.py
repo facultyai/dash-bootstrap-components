@@ -2,7 +2,12 @@ from itertools import chain
 
 import dash_html_components as html
 import dash_core_components as dcc
-from dash.development.base_component import js_to_py_type, reorder_props, filter_props, parse_events
+from dash.development.base_component import (
+    js_to_py_type,
+    reorder_props,
+    filter_props,
+    parse_events,
+)
 
 
 def HighlightedSource(source):
@@ -34,16 +39,12 @@ def ApiDoc(component_metadata):
     component_props = component_metadata.get("props", {})
     return html.Div(
         ArgumentsList(component_props) + EventsList(component_props),
-        className="api-documentation"
+        className="api-documentation",
     )
 
 
 def ArgumentsList(component_props):
-    component_props = reorder_props(
-        filter_props(
-            component_props
-        )
-    )
+    component_props = reorder_props(filter_props(component_props))
     arguments = []
     for name, metadata in component_props.items():
         arguments.append(Argument(name, metadata))
@@ -51,27 +52,22 @@ def ArgumentsList(component_props):
         return []
     return [
         html.H4("Keyword arguments", className="mt-5 mb-2"),
-        html.Ul(arguments, className="list-unstyled")
+        html.Ul(arguments, className="list-unstyled"),
     ]
 
 
 def Argument(argument_name, argument_metadata):
     description = argument_metadata.get("description", "")
-    required = (
-        ""
-        if argument_metadata.get("required", False)
-        else ", optional"
-    )
+    required = "" if argument_metadata.get("required", False) else ", optional"
     argument_type = argument_metadata.get("type", {})
     argument_type = js_to_py_type(argument_type)
     if argument_type is not None:
         type_string = f" ({argument_type}{required})"
     else:
         type_string = ""
-    return html.Li([
-        html.Code(argument_name), html.I(type_string), ": ",
-        description
-    ])
+    return html.Li(
+        [html.Code(argument_name), html.I(type_string), ": ", description]
+    )
 
 
 def EventsList(component_props):
@@ -81,10 +77,13 @@ def EventsList(component_props):
     else:
         event_components = [Event(event) for event in events]
         events_list = list(
-            chain.from_iterable([
-            (component, " ") for component in event_components
-        ]))
-        return [html.H4("Available events", className="mt-5 mb-2")] + events_list
+            chain.from_iterable(
+                [(component, " ") for component in event_components]
+            )
+        )
+        return [
+            html.H4("Available events", className="mt-5 mb-2")
+        ] + events_list
 
 
 def Event(event):
