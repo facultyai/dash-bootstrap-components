@@ -8,7 +8,12 @@ from .components.buttons.simple import buttons as buttons_simple
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
 
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app, ApiDoc
+from .helpers import (
+    ExampleContainer,
+    HighlightedSource,
+    load_source_with_app,
+    ApiDoc,
+)
 from .metadata import load_metadata
 from .sidebar import Sidebar, SidebarEntry
 
@@ -62,12 +67,12 @@ class ComponentsPage:
             "alerts": [
                 ExampleContainer(alerts),
                 HighlightedSource(alerts_source),
-                ApiDoc(component_metadata.get("src/components/Alert.js"))
+                ApiDoc(component_metadata.get("src/components/Alert.js")),
             ],
             "badges": [
                 ExampleContainer(badges),
                 HighlightedSource(badges_source),
-                ApiDoc(component_metadata.get("src/components/Badge.js"))
+                ApiDoc(component_metadata.get("src/components/Badge.js")),
             ],
             "buttons": [
                 ExampleContainer(buttons_simple),
