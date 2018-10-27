@@ -20,7 +20,7 @@ Alert.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
@@ -36,12 +36,12 @@ Alert.propTypes = {
 
   /**
    * Alert color, options: primary, secondary, success, info, warning, danger,
-   * link. Default is secondary
+   * link. Default: secondary.
    */
   color: PropTypes.string,
 
   /**
-   * Whether alert is open, default: true
+   * Whether alert is open. Default: True.
    */
   isOpen: PropTypes.bool,
 
