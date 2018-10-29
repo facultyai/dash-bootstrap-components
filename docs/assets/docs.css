@@ -1,91 +1,90 @@
-
 .main-header {
-    background-color: white;
+  background-color: white;
 }
 
 .main-header h1 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .main-header p.lead {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .main-header .btn {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
-.main-header .btn + .btn {
-    margin-right: 0;
+.main-header .btn+.btn {
+  margin-right: 0;
 }
 
 .section-header {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 code.hljs {
-    padding: 1em;
-    border-radius: 3px;
+  padding: 1em;
+  border-radius: 3px;
 }
 
 span.hljs-meta {
-    color: #66d9ef;
+  color: #66d9ef;
 }
 
 .demo-layout-container {
-    height: 600px;
-    margin-right: 0rem;
-    margin-left: 0rem;
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-    display: block;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
-    overflow: none;
+  height: 600px;
+  margin-right: 0rem;
+  margin-left: 0rem;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  display: block;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  overflow: none;
 }
 
 .demo-layout {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border: 0;
-    border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  border-radius: 6px;
 }
 
 .docs-content {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .docs-sidebar .nav-item {
-    padding: 0 .2rem 0 .2rem;
+  padding: 0 .2rem 0 .2rem;
 }
 
 .docs-sidebar .nav-link {
-    color: #888;
-    padding: .3rem .5rem .3rem 1rem;
-    border-left: 2px solid transparent;
+  color: #888;
+  padding: .3rem .5rem .3rem 1rem;
+  border-left: 2px solid transparent;
 }
 
 .docs-sidebar .nav-link:hover {
-    color: #777;
-    border-left: 2px solid #aaa;
+  color: #777;
+  border-left: 2px solid #aaa;
 }
 
 .docs-sidebar .nav-link.active {
-    color: #666;
-    border-left: 2px solid #d9534f;
+  color: #666;
+  border-left: 2px solid #d9534f;
 }
 
 .docs-sidebar .nav-link.active:hover {
-    border-left: 2px solid #d9534f;
+  border-left: 2px solid #d9534f;
 }
 
 .example-container {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .example-source-container {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .api-documentation {
@@ -94,18 +93,14 @@ span.hljs-meta {
 
 .layout-demo .row {
   margin-bottom: 10px;
-  background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0) calc(100% - 15px),
-      #fff calc(100% - 15px)
-    ),
-    linear-gradient(
-      to right,
-      #fff,
-      #fff 15px,
-      rgba(0, 0, 0, 0) 15px
-    ),
+  background: linear-gradient(to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) calc(100% - 15px),
+    #fff calc(100% - 15px)),
+    linear-gradient(to right,
+    #fff,
+    #fff 15px,
+    rgba(0, 0, 0, 0) 15px),
     linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
@@ -113,13 +108,12 @@ span.hljs-meta {
   background: linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
-
 .layout-demo .pad-row .row {
   height: 100px;
 }
 
 .layout-demo .col>div, .layout-demo [class*="col-"]>div {
   padding: 0.75rem;
-  background-color: rgba(86,61,124,.15);
-  border: 1px solid rgba(86,61,124,.2);
+  background-color: rgba(86, 61, 124, .15);
+  border: 1px solid rgba(86, 61, 124, .2);
 }
