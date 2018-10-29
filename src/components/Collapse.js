@@ -20,7 +20,7 @@ Collapse.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
@@ -35,7 +35,7 @@ Collapse.propTypes = {
   className: PropTypes.string,
 
   /**
-   * HTML tag to use for the card body, default: div
+   * HTML tag to use for the card body. Default: div.
    */
   tag: PropTypes.string,
 
@@ -45,7 +45,7 @@ Collapse.propTypes = {
   isOpen: PropTypes.bool,
 
   /**
-   * Enable for use in a navbar
+   * Enable for use in a navbar.
    */
   navbar: PropTypes.bool
 }
