@@ -5,16 +5,16 @@ import dash_html_components as html
 
 from .components.alerts import alerts
 from .components.badges import badges
-from .components.buttons.simple import buttons as buttons_simple
-from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.group import buttons as buttons_group
-from .components.layout.simple import row as layout_simple
-from .components.layout.width import row as layout_width
-from .components.layout.order_offset import row as layout_order_offset
+from .components.buttons.outline import buttons as buttons_outline
+from .components.buttons.simple import buttons as buttons_simple
 from .components.layout.breakpoints import row as layout_breakpoints
-from .components.layout.no_gutters import row as layout_no_gutters
-from .components.layout.vertical import row as layout_vertical
 from .components.layout.horizontal import row as layout_horizontal
+from .components.layout.no_gutters import row as layout_no_gutters
+from .components.layout.order_offset import row as layout_order_offset
+from .components.layout.simple import row as layout_simple
+from .components.layout.vertical import row as layout_vertical
+from .components.layout.width import row as layout_width
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -139,8 +139,12 @@ class ComponentsPage:
                     ),
                     layout_horizontal,
                     HighlightedSource(layout_horizontal_source),
-                    ApiDoc(component_metadata.get("src/components/layout/Row.js")),
-                    ApiDoc(component_metadata.get("src/components/layout/Col.js")),
+                    ApiDoc(
+                        component_metadata.get("src/components/layout/Row.js")
+                    ),
+                    ApiDoc(
+                        component_metadata.get("src/components/layout/Col.js")
+                    ),
                 ],
                 className="layout-demo",
             ),
