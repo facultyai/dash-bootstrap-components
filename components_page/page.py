@@ -139,6 +139,8 @@ class ComponentsPage:
                     ),
                     layout_horizontal,
                     HighlightedSource(layout_horizontal_source),
+                    ApiDoc(component_metadata.get("src/components/layout/Row.js")),
+                    ApiDoc(component_metadata.get("src/components/layout/Col.js")),
                 ],
                 className="layout-demo",
             ),
