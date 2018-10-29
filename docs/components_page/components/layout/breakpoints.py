@@ -11,11 +11,13 @@ row = html.Div(
                 dbc.Col(html.Div("One of three columns"), md=4),
             ]
         ),
-        dbc.Row([
-            dbc.Col(html.Div("One of four columns"), width=6, lg=3),
-            dbc.Col(html.Div("One of four columns"), width=6, lg=3),
-            dbc.Col(html.Div("One of four columns"), width=6, lg=3),
-            dbc.Col(html.Div("One of four columns"), width=6, lg=3),
-        ])
+        dbc.Row(
+            [
+                dbc.Col(html.Div("One of four columns"), width=6, lg=3),
+                dbc.Col(html.Div("One of four columns"), width=6, lg=3),
+                dbc.Col(html.Div("One of four columns"), width=6, lg=3),
+                dbc.Col(html.Div("One of four columns"), width=6, lg=3),
+            ]
+        ),
     ]
 )
