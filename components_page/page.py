@@ -140,10 +140,12 @@ class ComponentsPage:
                     ExampleContainer(layout_horizontal),
                     HighlightedSource(layout_horizontal_source),
                     ApiDoc(
-                        component_metadata.get("src/components/layout/Row.js")
+                        component_metadata.get("src/components/layout/Row.js"),
+                        component_name="Row",
                     ),
                     ApiDoc(
-                        component_metadata.get("src/components/layout/Col.js")
+                        component_metadata.get("src/components/layout/Col.js"),
+                        component_name="Col",
                     ),
                 ],
                 className="layout-demo",
