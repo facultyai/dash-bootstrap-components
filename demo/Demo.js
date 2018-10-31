@@ -67,7 +67,7 @@ class CollapseComponent extends Component {
       <Button onClick={this.toggle} style={{
           marginBottom: "1rem"
         }}>Open collapse</Button>
-      <Collapse isOpen={this.state.collapse}>
+      <Collapse is_open={this.state.collapse}>
         {this.props.children}
       </Collapse>
     </div>);
@@ -117,7 +117,7 @@ class PopoverComponent extends Component {
   render() {
     return(<div>
       <p>Click on the word <span id="popover-target" onClick={this.toggle}>popover</span></p>
-      <Popover target="popover-target" isOpen={this.state.popoverOpen} toggle={this.toggle}>
+      <Popover target="popover-target" is_open={this.state.popoverOpen} toggle={this.toggle}>
         <PopoverHeader>Popover header</PopoverHeader>
         <PopoverBody>Popover body</PopoverBody>
       </Popover>
@@ -132,7 +132,7 @@ class Demo extends Component {
         <NavItem>
           <NavLink href="https://www.asidatascience.com">A link</NavLink>
         </NavItem>
-        <Dropdown nav inNavbar label="Menu">
+        <Dropdown nav in_navbar label="Menu">
           <DropdownItem>Entry 1</DropdownItem>
           <DropdownItem>Entry 2</DropdownItem>
           <DropdownItem divider />
@@ -335,7 +335,7 @@ class Demo extends Component {
         </Row>
 
         <h4>Row with no gutters</h4>
-        <Row noGutters={true}>
+        <Row no_gutters={true}>
           <Col md={3}>
             <div style={{
               borderStyle: "solid",
@@ -475,8 +475,8 @@ class Demo extends Component {
       <h2>Tabs</h2>
       <Tabs>
         {/* wrap in div to replicate dash renderer behavior */}
-        <div><Tab tabId="1" label="Tab 1">Tab 1</Tab></div>
-        <div><Tab tabId="2" label="Tab 2">Tab 2</Tab></div>
+        <div><Tab tab_id="1" label="Tab 1">Tab 1</Tab></div>
+        <div><Tab tab_id="2" label="Tab 2">Tab 2</Tab></div>
       </Tabs>
 
       <br/>
