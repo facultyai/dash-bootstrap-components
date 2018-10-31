@@ -3,7 +3,11 @@ import {Collapse as RSCollapse} from 'reactstrap';
 
 const Collapse = props => {
   const {children, is_open, ...otherProps} = props;
-  return <RSCollapse isOpen={is_open} {...otherProps}>{children}</RSCollapse>;
+  return (
+    <RSCollapse isOpen={is_open} {...otherProps}>
+      {children}
+    </RSCollapse>
+  );
 };
 
 Collapse.propTypes = {

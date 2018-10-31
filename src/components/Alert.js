@@ -3,7 +3,11 @@ import {Alert as RSAlert} from 'reactstrap';
 
 const Alert = props => {
   const {children, is_open, ...otherProps} = props;
-  return <RSAlert isOpen={is_open} {...otherProps}>{children}</RSAlert>;
+  return (
+    <RSAlert isOpen={is_open} {...otherProps}>
+      {children}
+    </RSAlert>
+  );
 };
 
 Alert.propTypes = {

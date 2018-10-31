@@ -3,7 +3,11 @@ import {Popover as RSPopover} from 'reactstrap';
 
 const Popover = props => {
   const {children, is_open, hide_arrow, ...otherProps} = props;
-  return <RSPopover isOpen={is_open} hideArrow={hide_arrow} {...otherProps}>{children}</RSPopover>;
+  return (
+    <RSPopover isOpen={is_open} hideArrow={hide_arrow} {...otherProps}>
+      {children}
+    </RSPopover>
+  );
 };
 
 Popover.propTypes = {

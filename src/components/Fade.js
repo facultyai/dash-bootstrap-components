@@ -3,7 +3,15 @@ import {Fade as RSFade} from 'reactstrap';
 
 const Fade = props => {
   const {children, base_class, base_class_active, ...otherProps} = props;
-  return <RSFade baseClass={base_class} baseClassActive={base_class_active} {...otherProps}>{children}</RSFade>;
+  return (
+    <RSFade
+      baseClass={base_class}
+      baseClassActive={base_class_active}
+      {...otherProps}
+    >
+      {children}
+    </RSFade>
+  );
 };
 
 Fade.propTypes = {

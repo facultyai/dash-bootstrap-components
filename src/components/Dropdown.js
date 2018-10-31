@@ -22,7 +22,15 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const {children, nav, label, disabled, caret, in_navbar, ...otherProps} = this.props;
+    const {
+      children,
+      nav,
+      label,
+      disabled,
+      caret,
+      in_navbar,
+      ...otherProps
+    } = this.props;
     return (
       <RSDropdown
         isOpen={this.state.dropdownOpen}

@@ -19,7 +19,13 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const {id, children, hide_arrow, boundaries_element, ...otherProps} = this.props;
+    const {
+      id,
+      children,
+      hide_arrow,
+      boundaries_element,
+      ...otherProps
+    } = this.props;
     return (
       <RSTooltip
         toggle={this.toggle}
