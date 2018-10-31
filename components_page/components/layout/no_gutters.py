@@ -10,7 +10,7 @@ row = html.Div(
                 dbc.Col(html.Div("One of three columns")),
                 dbc.Col(html.Div("One of three columns")),
             ],
-            noGutters=True,
+            no_gutters=True,
         ),
     ]
 )
