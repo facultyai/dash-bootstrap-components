@@ -10,7 +10,7 @@ _navbar = dbc.Navbar(
     children=[
         dbc.Dropdown(
             nav=True,
-            inNavbar=True,
+            in_navbar=True,
             label="Menu",
             children=[
                 dbc.DropdownItem("Entry 1"),
