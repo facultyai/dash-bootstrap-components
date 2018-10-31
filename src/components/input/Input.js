@@ -21,7 +21,7 @@ class Input extends React.Component {
       className,
       valid,
       invalid,
-      bsSize,
+      bs_size,
       plaintext
     } = this.props;
     const {value} = this.state;
@@ -36,7 +36,7 @@ class Input extends React.Component {
       className,
       invalid && 'is-invalid',
       valid && 'is-valid',
-      bsSize ? `form-control-${bsSize}` : false,
+      bs_size ? `form-control-${bs_size}` : false,
       formControlClass
     );
     return (
@@ -69,7 +69,7 @@ class Input extends React.Component {
             'className',
             'valid',
             'invalid',
-            'bsSize',
+            'bs_size',
             'plaintext'
           ],
           this.props
@@ -116,7 +116,7 @@ Input.propTypes = {
 
   value: PropTypes.string,
   size: PropTypes.string,
-  bsSize: PropTypes.string,
+  bs_size: PropTypes.string,
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
   plaintext: PropTypes.bool,

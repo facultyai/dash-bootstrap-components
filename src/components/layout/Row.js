@@ -17,14 +17,14 @@ const justifyMap = {
 };
 
 const Row = props => {
-  const {children, className, align, justify, ...otherProps} = props;
+  const {children, className, align, justify, no_gutters, ...otherProps} = props;
 
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
 
   const classes = classNames(className, alignClass, justifyClass);
   return (
-    <RSRow className={classes} {...otherProps}>
+    <RSRow className={classes} noGutters={no_gutters} {...otherProps}>
       {children}
     </RSRow>
   );
@@ -57,7 +57,7 @@ Row.propTypes = {
    * Remove the "gutters" between columns in this row.
    * see https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
    */
-  noGutters: PropTypes.bool,
+  no_gutters: PropTypes.bool,
 
   /**
    * Set vertical alignment of columns

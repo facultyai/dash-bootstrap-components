@@ -12,19 +12,19 @@ class Tabs extends React.Component {
 
     const children = this.parseChildrenToArray();
 
-    if (!this.props.activeTab) {
-      const activeTab = children[0].props.children.props.tabId || 'tab-0';
+    if (!this.props.active_tab) {
+      const activeTab = children[0].props.children.props.tab_id || 'tab-0';
       this.state = {
         activeTab: activeTab
       };
       if (this.props.setProps) {
         this.props.setProps({
-          activeTab: activeTab
+          active_tab: activeTab
         });
       }
     } else {
       this.state = {
-        activeTab: this.props.activeTab
+        activeTab: this.props.active_tab
       };
     }
   }
@@ -42,7 +42,7 @@ class Tabs extends React.Component {
     if (this.state.activeTab !== tab) {
       this.setState({activeTab: tab});
       if (this.props.setProps) {
-        this.props.setProps({activeTab: tab});
+        this.props.setProps({active_tab: tab});
       }
     }
   }
@@ -54,7 +54,7 @@ class Tabs extends React.Component {
     // create tab links by extracting labels from children
     const links = children.map((child, idx) => {
       child = child.props.children;
-      const tabId = child.props.tabId || 'tab-' + idx;
+      const tabId = child.props.tab_id || 'tab-' + idx;
       return (
         <NavItem key={tabId}>
           <NavLink
@@ -74,8 +74,8 @@ class Tabs extends React.Component {
     // create tab content by extracting children from children
     const tabs = children.map((child, idx) => {
       child = child.props.children;
-      const {children, tabId: tempTabId, label, ...otherProps} = child.props;
-      const tabId = tempTabId || 'tab-' + idx;
+      const {children, tab_id, label, ...otherProps} = child.props;
+      const tabId = tab_id || 'tab-' + idx;
       return (
         <TabPane tabId={tabId} key={tabId} {...otherProps}>
           {children}
@@ -118,7 +118,7 @@ Tabs.propTypes = {
    * Determine which tab is currently showing. Will be the id of the tab or
    * 'tab-i' where i is the index of the tab (indexed from zero)
    */
-  activeTab: PropTypes.string
+  active_tab: PropTypes.string
 };
 
 export default Tabs;

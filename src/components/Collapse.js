@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import {Collapse as RSCollapse} from 'reactstrap';
 
 const Collapse = props => {
-  const {children, ...otherProps} = props;
-  return <RSCollapse {...otherProps}>{children}</RSCollapse>;
+  const {children, is_open, ...otherProps} = props;
+  return <RSCollapse isOpen={is_open} {...otherProps}>{children}</RSCollapse>;
 };
 
 Collapse.propTypes = {
@@ -37,7 +37,7 @@ Collapse.propTypes = {
   /**
    * Whether collapse is currently open.
    */
-  isOpen: PropTypes.bool,
+  is_open: PropTypes.bool,
 
   /**
    * Enable for use in a navbar.

@@ -39,7 +39,7 @@ Tab.propTypes = {
    * will be set to "tab-i" where i is (zero indexed) position of tab in list
    * tabs pased to Tabs component.
    */
-  tabId: PropTypes.string
+  tab_id: PropTypes.string
 };
 
 export default Tab;
