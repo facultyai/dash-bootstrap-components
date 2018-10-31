@@ -22,28 +22,27 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const {
-      children,
-      nav,
-      label,
-      disabled,
-      caret,
-      ...otherProps
-    } = this.props;
-    return (<RSDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} nav={nav} disabled={disabled} {...otherProps}>
-      <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
-        {label}
-      </DropdownToggle>
-      <DropdownMenu>
-        {this.props.children}
-      </DropdownMenu>
-    </RSDropdown>);
+    const {children, nav, label, disabled, caret, ...otherProps} = this.props;
+    return (
+      <RSDropdown
+        isOpen={this.state.dropdownOpen}
+        toggle={this.toggle}
+        nav={nav}
+        disabled={disabled}
+        {...otherProps}
+      >
+        <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
+          {label}
+        </DropdownToggle>
+        <DropdownMenu>{this.props.children}</DropdownMenu>
+      </RSDropdown>
+    );
   }
 }
 
 Dropdown.defaultProps = {
   caret: true
-}
+};
 
 Dropdown.propTypes = {
   /**

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {InputGroupText as RSInputGroupText} from 'reactstrap';
 
 const InputGroupText = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSInputGroupText {...otherProps}>
-    {children}
-  </RSInputGroupText>);
-}
+  const {children, ...otherProps} = props;
+  return <RSInputGroupText {...otherProps}>{children}</RSInputGroupText>;
+};
 
 InputGroupText.propTypes = {
   /**
@@ -33,6 +28,6 @@ InputGroupText.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string
-}
+};
 
 export default InputGroupText;

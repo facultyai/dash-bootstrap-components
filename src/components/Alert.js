@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Alert as RSAlert} from 'reactstrap';
 
 const Alert = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSAlert {...otherProps}>
-    {children}
-  </RSAlert>);
-}
+  const {children, ...otherProps} = props;
+  return <RSAlert {...otherProps}>{children}</RSAlert>;
+};
 
 Alert.propTypes = {
   /**
@@ -49,6 +44,6 @@ Alert.propTypes = {
    * Fade on close.
    */
   fade: PropTypes.bool
-}
+};
 
 export default Alert;

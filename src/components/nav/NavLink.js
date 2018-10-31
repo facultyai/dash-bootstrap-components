@@ -1,25 +1,24 @@
 import PropTypes from 'prop-types';
-import React from 'react'
+import React from 'react';
 import classNames from 'classnames';
 import Link from '../../private/Link';
 
-const NavLink = ({ children, className, active, ...otherProps }) => {
-  const classes = classNames(
-    className,
-    'nav-link',
-    { active, disabled: otherProps.disabled }
-  );
+const NavLink = ({children, className, active, ...otherProps}) => {
+  const classes = classNames(className, 'nav-link', {
+    active,
+    disabled: otherProps.disabled
+  });
   return (
     <Link className={classes} {...otherProps}>
       {children}
     </Link>
   );
-}
+};
 
 NavLink.defaultProps = {
   active: false,
   disabled: false
-}
+};
 
 NavLink.propTypes = {
   /**
@@ -60,6 +59,6 @@ NavLink.propTypes = {
   disabled: PropTypes.bool,
 
   dashEvents: PropTypes.oneOf(['click'])
-}
+};
 
 export default NavLink;

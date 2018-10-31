@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
-import { NavItem as RSNavItem } from 'reactstrap';
+import {NavItem as RSNavItem} from 'reactstrap';
 
 const NavItem = props => {
   const {children, ...otherProps} = props;
-  return (
-    <RSNavItem {...otherProps}>
-      {children}
-    </RSNavItem>
-  );
-}
+  return <RSNavItem {...otherProps}>{children}</RSNavItem>;
+};
 
 NavItem.propTypes = {
   /**
@@ -37,6 +33,6 @@ NavItem.propTypes = {
    * Apply active style to item.
    */
   active: PropTypes.bool
-}
+};
 
 export default NavItem;

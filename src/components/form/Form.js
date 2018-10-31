@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Form as RSForm} from 'reactstrap';
 
 const Form = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSForm {...otherProps}>
-    {children}
-  </RSForm>);
-}
+  const {children, ...otherProps} = props;
+  return <RSForm {...otherProps}>{children}</RSForm>;
+};
 
 Form.propTypes = {
   /**
@@ -38,6 +33,6 @@ Form.propTypes = {
    * Create inline form
    */
   inline: PropTypes.bool
-}
+};
 
 export default Form;

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Tab = props => {
-  return (<div>{props.children}</div>);
-}
+  return <div>{props.children}</div>;
+};
 
 Tab.propTypes = {
   /**
@@ -40,6 +40,6 @@ Tab.propTypes = {
    * tabs pased to Tabs component.
    */
   tabId: PropTypes.string
-}
+};
 
 export default Tab;

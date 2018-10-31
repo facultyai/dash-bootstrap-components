@@ -2,14 +2,11 @@ import PropTypes from 'prop-types';
 import {ListGroupItemHeading as RSListGroupItemHeading} from 'reactstrap';
 
 const ListGroupItemHeading = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSListGroupItemHeading {...otherProps}>
-    {children}
-  </RSListGroupItemHeading>);
-}
+  const {children, ...otherProps} = props;
+  return (
+    <RSListGroupItemHeading {...otherProps}>{children}</RSListGroupItemHeading>
+  );
+};
 
 ListGroupItemHeading.propTypes = {
   /**
@@ -38,6 +35,6 @@ ListGroupItemHeading.propTypes = {
    * HTML tag to use for the heading, default: h5
    */
   tag: PropTypes.string
-}
+};
 
 export default ListGroupItemHeading;

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardGroup as RSCardGroup} from 'reactstrap';
 
 const CardGroup = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardGroup {...otherProps}>
-    {children}
-  </RSCardGroup>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardGroup {...otherProps}>{children}</RSCardGroup>;
+};
 
 CardGroup.propTypes = {
   /**
@@ -38,6 +33,6 @@ CardGroup.propTypes = {
    * HTML tag to use for the card group, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default CardGroup;

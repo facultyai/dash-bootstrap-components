@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {shallow} from 'enzyme';
 import {Navbar as RSNavbar} from 'reactstrap';
@@ -17,18 +16,15 @@ describe('Empty Navbar', () => {
         <NavItem>item</NavItem>
       </Navbar>
     );
-    rsNavbar = navbar.find(RSNavbar)
+    rsNavbar = navbar.find(RSNavbar);
     navbarBrand = navbar.find(NavbarBrand);
-  })
+  });
 
   it('should contain a reactstrap Navbar', () =>
-    expect(rsNavbar).toHaveLength(1)
-  )
+    expect(rsNavbar).toHaveLength(1));
 
-  it('should not have a brand', () =>
-    expect(navbarBrand).toHaveLength(0)
-  )
-})
+  it('should not have a brand', () => expect(navbarBrand).toHaveLength(0));
+});
 
 describe('Navbar with brand', () => {
   let navbar;
@@ -46,59 +42,55 @@ describe('Navbar with brand', () => {
       </Navbar>
     );
     navbarBrand = navbar.find(NavbarBrand);
-  })
+  });
 
-  it('contain a NavbarBrand', () =>
-    expect(navbarBrand).toHaveLength(1)
-  )
+  it('contain a NavbarBrand', () => expect(navbarBrand).toHaveLength(1));
 
   it('pass props onto the NavbarBrand', () => {
-    expect(navbarBrand.prop('href')).toEqual('https://example.com')
-    expect(navbarBrand.prop('style')).toEqual({'background-color': 'red'})
-    expect(navbarBrand.prop('external_link')).toBe(true)
-  })
-})
+    expect(navbarBrand.prop('href')).toEqual('https://example.com');
+    expect(navbarBrand.prop('style')).toEqual({'background-color': 'red'});
+    expect(navbarBrand.prop('external_link')).toBe(true);
+  });
+});
 
 describe('Pass on attributes to the underlying reactstrap navbar', () => {
-
   function navbarWithProps(props) {
     const navbar = shallow(
       <Navbar {...props}>
         <NavItem>item</NavItem>
       </Navbar>
-    )
-    const rsNavbar = navbar.find(RSNavbar)
-    return {navbar, rsNavbar}
+    );
+    const rsNavbar = navbar.find(RSNavbar);
+    return {navbar, rsNavbar};
   }
 
   it('expand', () => {
-    const {navbar, rsNavbar} = navbarWithProps({expand: 'xl'})
-    expect(rsNavbar.prop('expand')).toEqual('xl')
-  })
+    const {navbar, rsNavbar} = navbarWithProps({expand: 'xl'});
+    expect(rsNavbar.prop('expand')).toEqual('xl');
+  });
 
   it('dark', () => {
-    const {navbar, rsNavbar} = navbarWithProps({dark: true})
-    expect(rsNavbar.prop('dark')).toBe(true)
-  })
+    const {navbar, rsNavbar} = navbarWithProps({dark: true});
+    expect(rsNavbar.prop('dark')).toBe(true);
+  });
 
   it('light', () => {
-    const {navbar, rsNavbar} = navbarWithProps({light: true})
-    expect(rsNavbar.prop('light')).toBe(true)
-  })
+    const {navbar, rsNavbar} = navbarWithProps({light: true});
+    expect(rsNavbar.prop('light')).toBe(true);
+  });
 
   it('fixed', () => {
-    const {navbar, rsNavbar} = navbarWithProps({fixed: 'top'})
-    expect(rsNavbar.prop('fixed')).toBe('top')
-  })
+    const {navbar, rsNavbar} = navbarWithProps({fixed: 'top'});
+    expect(rsNavbar.prop('fixed')).toBe('top');
+  });
 
   it('sticky', () => {
-    const {navbar, rsNavbar} = navbarWithProps({sticky: 'top'})
-    expect(rsNavbar.prop('sticky')).toBe('top')
-  })
+    const {navbar, rsNavbar} = navbarWithProps({sticky: 'top'});
+    expect(rsNavbar.prop('sticky')).toBe('top');
+  });
 
   it('color', () => {
-    const {navbar, rsNavbar} = navbarWithProps({color: 'secondary'})
-    expect(rsNavbar.prop('color')).toBe('secondary')
-  })
-
-})
+    const {navbar, rsNavbar} = navbarWithProps({color: 'secondary'});
+    expect(rsNavbar.prop('color')).toBe('secondary');
+  });
+});

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {ListGroupItem as RSListGroupItem} from 'reactstrap';
 
 const ListGroupItem = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSListGroupItem {...otherProps}>
-    {children}
-  </RSListGroupItem>);
-}
+  const {children, ...otherProps} = props;
+  return <RSListGroupItem {...otherProps}>{children}</RSListGroupItem>;
+};
 
 ListGroupItem.propTypes = {
   /**
@@ -59,6 +54,6 @@ ListGroupItem.propTypes = {
    * Apply list-group-item-action class for hover animation etc.
    */
   action: PropTypes.bool
-}
+};
 
 export default ListGroupItem;

@@ -3,17 +3,14 @@ import {CardTitle as RSCardTitle} from 'reactstrap';
 import classNames from 'classnames';
 
 const CardTitle = props => {
-  const {
-    children,
-    className,
-    color,
-    ...otherProps
-  } = props;
+  const {children, className, color, ...otherProps} = props;
   const classes = classNames(className, color && `text-${color}`);
-  return (<RSCardTitle className={classes} {...otherProps}>
-    {children}
-  </RSCardTitle>);
-}
+  return (
+    <RSCardTitle className={classes} {...otherProps}>
+      {children}
+    </RSCardTitle>
+  );
+};
 
 CardTitle.propTypes = {
   /**
@@ -48,6 +45,6 @@ CardTitle.propTypes = {
    * muted, light, dark, body, white, black-50, white-50.
    */
   color: PropTypes.string
-}
+};
 
 export default CardTitle;

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Popover as RSPopover} from 'reactstrap';
 
 const Popover = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSPopover {...otherProps}>
-    {children}
-  </RSPopover>);
-}
+  const {children, ...otherProps} = props;
+  return <RSPopover {...otherProps}>{children}</RSPopover>;
+};
 
 Popover.propTypes = {
   /**
@@ -91,6 +86,6 @@ Popover.propTypes = {
    * Popover offset
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-}
+};
 
 export default Popover;

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Collapse as RSCollapse} from 'reactstrap';
 
 const Collapse = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCollapse {...otherProps}>
-    {children}
-  </RSCollapse>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCollapse {...otherProps}>{children}</RSCollapse>;
+};
 
 Collapse.propTypes = {
   /**
@@ -48,6 +43,6 @@ Collapse.propTypes = {
    * Enable for use in a navbar.
    */
   navbar: PropTypes.bool
-}
+};
 
 export default Collapse;

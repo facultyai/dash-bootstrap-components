@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {ButtonGroup as RSButtonGroup} from 'reactstrap';
 
 const ButtonGroup = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSButtonGroup {...otherProps}>
-    {children}
-  </RSButtonGroup>);
-}
+  const {children, ...otherProps} = props;
+  return <RSButtonGroup {...otherProps}>{children}</RSButtonGroup>;
+};
 
 ButtonGroup.propTypes = {
   /**
@@ -38,6 +33,6 @@ ButtonGroup.propTypes = {
    * Size of button group
    */
   size: PropTypes.string
-}
+};
 
 export default ButtonGroup;

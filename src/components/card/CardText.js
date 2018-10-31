@@ -4,17 +4,14 @@ import {CardText as RSCardText} from 'reactstrap';
 import classNames from 'classnames';
 
 const CardText = props => {
-  const {
-    children,
-    className,
-    color,
-    ...otherProps
-  } = props;
+  const {children, className, color, ...otherProps} = props;
   const classes = classNames(className, color && `text-${color}`);
-  return (<RSCardText className={classes} {...otherProps}>
-    {children}
-  </RSCardText>);
-}
+  return (
+    <RSCardText className={classes} {...otherProps}>
+      {children}
+    </RSCardText>
+  );
+};
 
 CardText.propTypes = {
   /**
@@ -49,6 +46,6 @@ CardText.propTypes = {
    * muted, light, dark, body, white, black-50, white-50.
    */
   color: PropTypes.string
-}
+};
 
 export default CardText;

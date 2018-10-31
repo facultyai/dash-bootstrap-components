@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Nav as RSNav} from 'reactstrap';
 
 const Nav = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSNav {...otherProps}>
-    {children}
-  </RSNav>);
-}
+  const {children, ...otherProps} = props;
+  return <RSNav {...otherProps}>{children}</RSNav>;
+};
 
 Nav.propTypes = {
   /**
@@ -74,6 +69,6 @@ Nav.propTypes = {
    * Set to true if using Nav in Navbar component.
    */
   navbar: PropTypes.bool
-}
+};
 
 export default Nav;

@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Container as RSContainer} from 'reactstrap';
 
 const Container = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSContainer {...otherProps}>
-    {children}
-  </RSContainer>);
-}
+  const {children, ...otherProps} = props;
+  return <RSContainer {...otherProps}>{children}</RSContainer>;
+};
 
 Container.propTypes = {
   /**
@@ -43,6 +38,6 @@ Container.propTypes = {
    * HTML tag to apply the container class to, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default Container;

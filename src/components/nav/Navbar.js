@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Collapse,
-  Container,
-  Navbar as RSNavbar,
-} from 'reactstrap';
+import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
 
 import Link from '../../private/Link';
 
@@ -16,7 +12,7 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      isOpen: false
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -42,28 +38,33 @@ class Navbar extends React.Component {
     return (
       <RSNavbar {...otherProps}>
         <Container fluid={fluid}>
-          {brand && <NavbarBrand href={brand_href} style={brand_style} external_link={brand_external_link}>{brand}</NavbarBrand>}
+          {brand && (
+            <NavbarBrand
+              href={brand_href}
+              style={brand_style}
+              external_link={brand_external_link}
+            >
+              {brand}
+            </NavbarBrand>
+          )}
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav
-              className={linksLeft ? "mr-auto" : "ml-auto"}
-              navbar
-            >
+            <Nav className={linksLeft ? 'mr-auto' : 'ml-auto'} navbar>
               {children}
             </Nav>
           </Collapse>
         </Container>
       </RSNavbar>
-    )
+    );
   }
 }
 
 Navbar.defaultProps = {
   fluid: false,
-  color: "light",
+  color: 'light',
   light: true,
-  expand: "md"
-}
+  expand: 'md'
+};
 
 Navbar.propTypes = {
   /**
@@ -151,6 +152,6 @@ Navbar.propTypes = {
    * Specify screen size at which to expand the menu bar, e.g. sm, md, lg etc.
    */
   expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
-}
+};
 
 export default Navbar;

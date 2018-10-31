@@ -7,6 +7,7 @@ install:
   - "if [[ \"$GROUP\" == js ]] ; then npm install ; fi"
   - "if [[ \"$GROUP\" == python-linting ]] ; then pip install black flake8 ; fi"
 script:
+  - "if [[ \"$GROUP\" == js ]] ; then npm run lint ; fi"
   - "if [[ \"$GROUP\" == js ]] ; then npm run test ; fi"
   - "if [[ \"$GROUP\" == python-linting ]] ; then black . --check ; fi"
   - "if [[ \"$GROUP\" == python-linting ]] ; then flake8 ; fi"

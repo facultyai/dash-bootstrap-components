@@ -6,7 +6,7 @@ const alignMap = {
   start: 'align-self-start',
   center: 'align-self-center',
   end: 'align-self-end'
-}
+};
 
 const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -23,7 +23,9 @@ const Label = props => {
   } = props;
 
   // check if column width has been specified, use alignment attribute if so
-  const cols = colWidths.filter(colWidth => props[colWidth] || props[colWidth] === '');
+  const cols = colWidths.filter(
+    colWidth => props[colWidth] || props[colWidth] === ''
+  );
 
   const alignClass = align && alignMap[align];
   const classes = classNames(
@@ -32,16 +34,30 @@ const Label = props => {
     color && `text-${color}`
   );
 
-  return (<RSLabel for={html_for} xs={xs || width} className={classes} {...otherProps}>
-    {children}
-  </RSLabel>);
-}
+  return (
+    <RSLabel
+      for={html_for}
+      xs={xs || width}
+      className={classes}
+      {...otherProps}
+    >
+      {children}
+    </RSLabel>
+  );
+};
 
-const stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+const stringOrNumberProp = PropTypes.oneOfType([
+  PropTypes.number,
+  PropTypes.string
+]);
 const columnProps = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.number,
-  PropTypes.shape({size: stringOrNumberProp, order: stringOrNumberProp, offset: stringOrNumberProp})
+  PropTypes.shape({
+    size: stringOrNumberProp,
+    order: stringOrNumberProp,
+    offset: stringOrNumberProp
+  })
 ]);
 
 Label.propTypes = {
@@ -126,7 +142,7 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-  align: 'center',
-}
+  align: 'center'
+};
 
 export default Label;

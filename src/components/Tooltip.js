@@ -19,15 +19,16 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const {
-      id,
-      children,
-      isOpen,
-      ...otherProps
-    } = this.props;
-    return (<RSTooltip toggle={this.toggle} isOpen={this.state.tooltipOpen} {...otherProps}>
-      {children}
-    </RSTooltip>);
+    const {id, children, isOpen, ...otherProps} = this.props;
+    return (
+      <RSTooltip
+        toggle={this.toggle}
+        isOpen={this.state.tooltipOpen}
+        {...otherProps}
+      >
+        {children}
+      </RSTooltip>
+    );
   }
 }
 

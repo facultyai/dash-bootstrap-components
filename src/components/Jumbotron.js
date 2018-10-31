@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {Jumbotron as RSJumbotron} from 'reactstrap';
 
 const Jumbotron = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSJumbotron {...otherProps}>
-    {children}
-  </RSJumbotron>);
-}
+  const {children, ...otherProps} = props;
+  return <RSJumbotron {...otherProps}>{children}</RSJumbotron>;
+};
 
 Jumbotron.propTypes = {
   /**
@@ -39,6 +34,6 @@ Jumbotron.propTypes = {
    * HTML tag to use for the Jumbotron, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default Jumbotron;

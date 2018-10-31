@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { CardLink as RSCardLink } from 'reactstrap';
+import {CardLink as RSCardLink} from 'reactstrap';
 import Link from '../../private/Link';
 
 const CardLink = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardLink tag={Link} {...otherProps}>
-    {children}
-  </RSCardLink>);
-}
+  const {children, ...otherProps} = props;
+  return (
+    <RSCardLink tag={Link} {...otherProps}>
+      {children}
+    </RSCardLink>
+  );
+};
 
 CardLink.propTypes = {
   /**
@@ -63,6 +62,6 @@ CardLink.propTypes = {
    * which button was changed most recently.
    */
   n_clicks_timestamp: PropTypes.number
-}
+};
 
 export default CardLink;

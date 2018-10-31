@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {ListGroup as RSListGroup} from 'reactstrap';
 
 const ListGroup = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSListGroup {...otherProps}>
-    {children}
-  </RSListGroup>);
-}
+  const {children, ...otherProps} = props;
+  return <RSListGroup {...otherProps}>{children}</RSListGroup>;
+};
 
 ListGroup.propTypes = {
   /**
@@ -43,6 +38,6 @@ ListGroup.propTypes = {
    * Apply "flush" styling to list
    */
   flush: PropTypes.bool
-}
+};
 
 export default ListGroup;

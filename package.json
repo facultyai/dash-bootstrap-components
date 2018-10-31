@@ -9,6 +9,8 @@
     "copy-lib": "copyfiles -u 1 lib/* dash_bootstrap_components",
     "demo": "webpack-dev-server --hot --inline --port=8888 --disable-host-check --content-base demo --config=webpack.config.demo.js",
     "extract-metadata": "mkdirp lib && react-docgen --pretty -o lib/metadata.json src/components && node -e \"const fs = require('fs'); const path = require('path'); const m = JSON.parse(fs.readFileSync('./lib/metadata.json')); const r = {}; Object.keys(m).forEach(k => r[k.split(path.sep).join('/')] = m[k]); fs.writeFileSync('./lib/metadata.json', JSON.stringify(r, '\t', 2));\"",
+    "format": "prettier src/**/*.js --write",
+    "lint": "prettier src/**/*.js --list-different",
     "prepublish": "NODE_ENV=production npm run build-dist && npm run copy-lib",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -28,6 +30,7 @@
     "jest": "^23.6.0",
     "jest-environment-jsdom-global": "^1.1.0",
     "jsdom": "^12.0.0",
+    "prettier": "^1.14.3",
     "react-docgen": "^2.21.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",

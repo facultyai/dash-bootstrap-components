@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {CardImgOverlay as RSCardImgOverlay} from 'reactstrap';
 
 const CardImgOverlay = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSCardImgOverlay {...otherProps}>
-    {children}
-  </RSCardImgOverlay>);
-}
+  const {children, ...otherProps} = props;
+  return <RSCardImgOverlay {...otherProps}>{children}</RSCardImgOverlay>;
+};
 
 CardImgOverlay.propTypes = {
   /**
@@ -38,6 +33,6 @@ CardImgOverlay.propTypes = {
    * HTML tag to use for the card image overlay, default: div
    */
   tag: PropTypes.string
-}
+};
 
 export default CardImgOverlay;

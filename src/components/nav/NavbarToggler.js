@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import {NavbarToggler as RSNavbarToggler} from 'reactstrap';
 
 const NavbarToggler = props => {
-  const {
-    children,
-    ...otherProps
-  } = props;
-  return (<RSNavbarToggler {...otherProps}>
-    {children}
-  </RSNavbarToggler>);
-}
+  const {children, ...otherProps} = props;
+  return <RSNavbarToggler {...otherProps}>{children}</RSNavbarToggler>;
+};
 
 NavbarToggler.propTypes = {
   /**
@@ -37,6 +32,6 @@ NavbarToggler.propTypes = {
    * Toggle type, default: button.
    */
   type: PropTypes.string
-}
+};
 
 export default NavbarToggler;
