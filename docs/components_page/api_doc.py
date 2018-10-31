@@ -9,15 +9,19 @@ from dash.development.base_component import (
 )
 
 
-def ApiDoc(component_metadata):
+def ApiDoc(component_metadata, component_name=None):
     component_props = component_metadata.get("props", {})
     return html.Div(
-        ArgumentsList(component_props) + EventsList(component_props),
+        ArgumentsList(component_props, component_name) + EventsList(component_props),
         className="api-documentation",
     )
 
 
-def ArgumentsList(component_props):
+def ArgumentsList(component_props, component_name):
+    if component_name is not None:
+        heading = f"Keyword arguments for {component_name}"
+    else:
+        heading = "Keyword arguments"
     component_props = reorder_props(filter_props(component_props))
     arguments = []
     for name, metadata in component_props.items():
@@ -25,7 +29,7 @@ def ArgumentsList(component_props):
     if not arguments:
         return []
     return [
-        html.H4("Keyword arguments", className="mt-5 mb-2"),
+        html.H4(heading, className="mt-5 mb-2"),
         html.Ul(arguments, className="list-unstyled"),
     ]
 
