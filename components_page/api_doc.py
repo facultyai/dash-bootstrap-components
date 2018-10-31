@@ -12,7 +12,8 @@ from dash.development.base_component import (
 def ApiDoc(component_metadata, component_name=None):
     component_props = component_metadata.get("props", {})
     return html.Div(
-        ArgumentsList(component_props, component_name) + EventsList(component_props),
+        ArgumentsList(component_props, component_name)
+        + EventsList(component_props),
         className="api-documentation",
     )
 
