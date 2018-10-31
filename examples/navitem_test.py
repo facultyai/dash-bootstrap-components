@@ -13,7 +13,7 @@ navbar = dbc.Navbar(
         dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
         dbc.Dropdown(
             nav=True,
-            inNavbar=True,
+            in_navbar=True,
             label="Menu",
             children=[
                 dbc.DropdownItem("Entry 1", href="https://google.com"),

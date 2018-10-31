@@ -40,7 +40,7 @@ app.layout = dbc.Container(
 )
 
 
-@app.callback(Output("active-tab", "children"), [Input("tabs", "activeTab")])
+@app.callback(Output("active-tab", "children"), [Input("tabs", "active_tab")])
 def foo(at):
     return at
 
