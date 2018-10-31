@@ -120,24 +120,24 @@ class ComponentsPage:
             ],
             "layout": html.Div(
                 [
-                    layout_simple,
+                    ExampleContainer(layout_simple),
                     HighlightedSource(layout_simple_source),
-                    layout_width,
+                    ExampleContainer(layout_width),
                     HighlightedSource(layout_width_source),
-                    layout_order_offset,
+                    ExampleContainer(layout_order_offset),
                     HighlightedSource(layout_order_offset_source),
-                    layout_breakpoints,
+                    ExampleContainer(layout_breakpoints),
                     HighlightedSource(layout_breakpoints_source),
-                    layout_no_gutters,
+                    ExampleContainer(layout_no_gutters),
                     HighlightedSource(layout_no_gutters_source),
                     html.Div(
                         [
-                            layout_vertical,
+                            ExampleContainer(layout_vertical),
                             HighlightedSource(layout_vertical_source),
                         ],
                         className="pad-row",
                     ),
-                    layout_horizontal,
+                    ExampleContainer(layout_horizontal),
                     HighlightedSource(layout_horizontal_source),
                     ApiDoc(
                         component_metadata.get("src/components/layout/Row.js")
