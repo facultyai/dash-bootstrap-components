@@ -9,6 +9,7 @@ from .components.buttons.group import buttons as buttons_group
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.simple import buttons as buttons_simple
 from .components.cards.simple import cards as cards_simple
+from .components.cards.content_types import cards as cards_content_types
 from .components.cards.group import cards as cards_group
 from .components.cards.columns import cards as cards_columns
 from .components.layout.breakpoints import row as layout_breakpoints
@@ -40,6 +41,7 @@ buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
 cards_simple_source = (COMPONENTS / "cards" / "simple.py").open().read()
+cards_content_type_source = (COMPONENTS / "cards" / "content_types.py").open().read()
 cards_group_source = (COMPONENTS / "cards" / "group.py").open().read()
 cards_columns_source = (COMPONENTS / "cards" / "columns.py").open().read()
 layout_simple_source = (COMPONENTS / "layout" / "simple.py").open().read()
@@ -119,6 +121,8 @@ class ComponentsPage:
             "cards": [
                 ExampleContainer(cards_simple),
                 HighlightedSource(cards_simple_source),
+                ExampleContainer(cards_content_types),
+                HighlightedSource(cards_content_type_source),
                 ExampleContainer(cards_group),
                 HighlightedSource(cards_group_source),
                 ExampleContainer(cards_columns),
