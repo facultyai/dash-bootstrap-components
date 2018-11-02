@@ -12,7 +12,7 @@ cards = html.Div(
                         dbc.CardBody(
                             [
                                 dbc.CardTitle("This is a title"),
-                                dbc.CardText("And some text")
+                                dbc.CardText("And some text"),
                             ]
                         ),
                     ]
@@ -23,14 +23,14 @@ cards = html.Div(
                         dbc.CardBody(
                             [
                                 dbc.CardTitle("This is a title"),
-                                dbc.CardText("And some text")
-                            ],
+                                dbc.CardText("And some text"),
+                            ]
                         ),
                     ],
                     color="dark",
-                    inverse=True
-                )
+                    inverse=True,
+                ),
             ]
-        )
+        ),
     ]
 )

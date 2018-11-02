@@ -12,7 +12,9 @@ cards = html.Div(
                         dbc.CardBody(
                             [
                                 dbc.CardTitle("This is a title"),
-                                dbc.CardText("And some text\nmore text\nmore text")
+                                dbc.CardText(
+                                    "And some text\nmore text\nmore text"
+                                ),
                             ]
                         ),
                     ]
@@ -23,12 +25,12 @@ cards = html.Div(
                         dbc.CardBody(
                             [
                                 dbc.CardTitle("This is a title"),
-                                dbc.CardText("And some text")
-                            ],
+                                dbc.CardText("And some text"),
+                            ]
                         ),
                     ],
                     color="dark",
-                    inverse=True
+                    inverse=True,
                 ),
                 dbc.Card(
                     [
@@ -36,12 +38,12 @@ cards = html.Div(
                         dbc.CardBody(
                             [
                                 dbc.CardTitle("This is a title"),
-                                dbc.CardText("And some text")
+                                dbc.CardText("And some text"),
                             ]
                         ),
                     ],
                     color="primary",
-                    inverse=True
+                    inverse=True,
                 ),
                 dbc.Card(
                     [
@@ -49,14 +51,14 @@ cards = html.Div(
                         dbc.CardBody(
                             [
                                 dbc.CardTitle("This is a title"),
-                                dbc.CardText("And some text")
-                            ],
+                                dbc.CardText("And some text"),
+                            ]
                         ),
                     ],
                     color="primary",
-                    outline=True
-                )
+                    outline=True,
+                ),
             ]
-        )
+        ),
     ]
 )
