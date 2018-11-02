@@ -17,7 +17,7 @@ navbar = dbc.Navbar(
         dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
         dbc.Dropdown(
             nav=True,
-            inNavbar=True,
+            in_navbar=True,
             label="Menu",
             children=[
                 dbc.DropdownItem("Entry 1", href="https://google.com"),
@@ -232,7 +232,7 @@ columns = html.Div(
                     md=3,
                 ),
             ],
-            noGutters=True,
+            no_gutters=True,
         ),
     ]
 )
@@ -312,7 +312,7 @@ popover = html.Div(
                 dbc.PopoverBody("Popover body"),
             ],
             id="popover",
-            isOpen=False,
+            is_open=False,
             target="popover-target",
         ),
     ]
@@ -465,9 +465,9 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output("collapse", "isOpen"),
+    Output("collapse", "is_open"),
     [Input("collapse-button", "n_clicks")],
-    [State("collapse", "isOpen")],
+    [State("collapse", "is_open")],
 )
 def toggle_collapse(n, is_open):
     if n:
@@ -487,9 +487,9 @@ def toggle_fade(n, is_in):
 
 
 @app.callback(
-    Output("popover", "isOpen"),
+    Output("popover", "is_open"),
     [Input("popover-target", "n_clicks")],
-    [State("popover", "isOpen")],
+    [State("popover", "is_open")],
 )
 def toggle_popover(n, is_open):
     if n:

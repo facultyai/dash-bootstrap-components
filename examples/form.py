@@ -84,7 +84,7 @@ app.layout = dbc.Container(
             [
                 dbc.InputGroupAddon(
                     dbc.Button("To the left!", color="danger"),
-                    addonType="prepend",
+                    addon_type="prepend",
                 ),
                 dbc.Input(type="text"),
             ]
@@ -95,14 +95,14 @@ app.layout = dbc.Container(
                 dbc.Input(type="text"),
                 dbc.InputGroupAddon(
                     dbc.Button("To the right!", color="success"),
-                    addonType="append",
+                    addon_type="append",
                 ),
             ]
         ),
         html.Br(),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon("@", addonType="prepend"),
+                dbc.InputGroupAddon("@", addon_type="prepend"),
                 dbc.Input(type="text", placeholder="Enter username"),
             ]
         ),

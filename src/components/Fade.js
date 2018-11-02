@@ -2,8 +2,16 @@ import PropTypes from 'prop-types';
 import {Fade as RSFade} from 'reactstrap';
 
 const Fade = props => {
-  const {children, ...otherProps} = props;
-  return <RSFade {...otherProps}>{children}</RSFade>;
+  const {children, base_class, base_class_active, ...otherProps} = props;
+  return (
+    <RSFade
+      baseClass={base_class}
+      baseClassActive={base_class_active}
+      {...otherProps}
+    >
+      {children}
+    </RSFade>
+  );
 };
 
 Fade.propTypes = {
@@ -61,8 +69,8 @@ Fade.propTypes = {
    * HTML tag to use for the fade component, default div.
    */
   tag: PropTypes.string,
-  baseClass: PropTypes.string,
-  baseClassActive: PropTypes.string
+  base_class: PropTypes.string,
+  base_class_active: PropTypes.string
 };
 
 export default Fade;

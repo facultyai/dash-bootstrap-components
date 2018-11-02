@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 import {Popover as RSPopover} from 'reactstrap';
 
 const Popover = props => {
-  const {children, ...otherProps} = props;
-  return <RSPopover {...otherProps}>{children}</RSPopover>;
+  const {children, is_open, hide_arrow, ...otherProps} = props;
+  return (
+    <RSPopover isOpen={is_open} hideArrow={hide_arrow} {...otherProps}>
+      {children}
+    </RSPopover>
+  );
 };
 
 Popover.propTypes = {
@@ -62,12 +66,12 @@ Popover.propTypes = {
   /**
    * Whether the Popover is open or not.
    */
-  isOpen: PropTypes.bool,
+  is_open: PropTypes.bool,
 
   /**
    * Hide popover arrow
    */
-  hideArrow: PropTypes.bool,
+  hide_arrow: PropTypes.bool,
 
   /**
    * CSS class to apply to the popover

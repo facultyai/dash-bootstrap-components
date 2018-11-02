@@ -19,11 +19,19 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const {id, children, isOpen, ...otherProps} = this.props;
+    const {
+      id,
+      children,
+      hide_arrow,
+      boundaries_element,
+      ...otherProps
+    } = this.props;
     return (
       <RSTooltip
         toggle={this.toggle}
         isOpen={this.state.tooltipOpen}
+        hideArrow={hide_arrow}
+        boundariesElement={boundaries_element}
         {...otherProps}
       >
         {children}
@@ -63,12 +71,12 @@ Tooltip.propTypes = {
   /**
    * boundaries for popper, can be scrollParent, window, viewport, or any DOM element
    */
-  boundariesElement: PropTypes.string,
+  boundaries_element: PropTypes.string,
 
   /**
    * Hide arrow on tooltip
    */
-  hideArrow: PropTypes.bool,
+  hide_arrow: PropTypes.bool,
 
   /**
    * Where to inject the popper DOM node, default body

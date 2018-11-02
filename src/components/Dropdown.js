@@ -22,13 +22,22 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const {children, nav, label, disabled, caret, ...otherProps} = this.props;
+    const {
+      children,
+      nav,
+      label,
+      disabled,
+      caret,
+      in_navbar,
+      ...otherProps
+    } = this.props;
     return (
       <RSDropdown
         isOpen={this.state.dropdownOpen}
         toggle={this.toggle}
         nav={nav}
         disabled={disabled}
+        inNavbar={in_navbar}
         {...otherProps}
       >
         <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
@@ -80,7 +89,7 @@ Dropdown.propTypes = {
   /**
    * For Dropdown usage inside a Navbar (disables popper)
    */
-  inNavbar: PropTypes.bool,
+  in_navbar: PropTypes.bool,
 
   /**
    * Disable the dropdown.

@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 import {Alert as RSAlert} from 'reactstrap';
 
 const Alert = props => {
-  const {children, ...otherProps} = props;
-  return <RSAlert {...otherProps}>{children}</RSAlert>;
+  const {children, is_open, ...otherProps} = props;
+  return (
+    <RSAlert isOpen={is_open} {...otherProps}>
+      {children}
+    </RSAlert>
+  );
 };
 
 Alert.propTypes = {
@@ -38,7 +42,7 @@ Alert.propTypes = {
   /**
    * Whether alert is open. Default: True.
    */
-  isOpen: PropTypes.bool,
+  is_open: PropTypes.bool,
 
   /**
    * Fade on close.
