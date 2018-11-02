@@ -33,11 +33,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
-      }, {
+      },
+      {
         test: /\.jsx?$/,
-        include: [
-          SRC, DEMO
-        ],
+        include: [SRC, DEMO],
         /*
          * Use require.resolve to get a deterministic path
          * and avoid webpack's magick loader resolution
@@ -47,6 +46,10 @@ module.exports = {
             loader: 'babel-loader'
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [{loader: 'style-loader'}, {loader: 'css-loader'}]
       }
     ]
   },
@@ -63,4 +66,4 @@ module.exports = {
     path: BUILD_PATH,
     filename: '[name].js'
   }
-}
+};

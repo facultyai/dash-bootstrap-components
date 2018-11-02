@@ -27,11 +27,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
-      }, {
+      },
+      {
         test: /\.jsx?$/,
-        include: [
-          SRC, DEMO
-        ],
+        include: [SRC, DEMO],
         /*
          * Use require.resolve to get a deterministic path
          * and avoid webpack's magick loader resolution
@@ -41,14 +40,20 @@ module.exports = {
             loader: 'babel-loader'
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [{loader: 'style-loader'}, {loader: 'css-loader'}]
       }
     ]
   },
-  plugins: [new webpack.DefinePlugin({
+  plugins: [
+    new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: environment
       }
-    })],
+    })
+  ],
   entry: {
     bundle: [path.join(ROOT, 'demo/index.js')]
   },
@@ -60,4 +65,4 @@ module.exports = {
     publicPath: '/lib/', // For loading from webpack dev server
     filename: '[name].js'
   }
-}
+};
