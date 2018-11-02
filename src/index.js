@@ -19,6 +19,7 @@ export {default as Checklist} from './components/input/Checklist';
 export {default as Col} from './components/layout/Col';
 export {default as Collapse} from './components/Collapse';
 export {default as Container} from './components/layout/Container';
+export {default as DatePickerSingle} from './components/input/DatePickerSingle';
 export {default as DropdownMenu} from './components/DropdownMenu';
 export {default as DropdownMenuItem} from './components/DropdownMenuItem';
 export {default as Fade} from './components/Fade';
