@@ -24,10 +24,11 @@ cards = html.Div(
                             [
                                 dbc.CardTitle("This is a title"),
                                 dbc.CardText("And some text")
-                            ]
+                            ],
                         ),
                     ],
-                    color="secondary"
+                    color="dark",
+                    inverse=True
                 )
             ]
         )
