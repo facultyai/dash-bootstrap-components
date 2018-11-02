@@ -8,7 +8,8 @@ from .components.badges import badges
 from .components.buttons.group import buttons as buttons_group
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.simple import buttons as buttons_simple
-from .components.cards import cards
+from .components.cards.simple import cards as cards_simple
+from .components.cards.group import cards as cards_group
 from .components.layout.breakpoints import row as layout_breakpoints
 from .components.layout.horizontal import row as layout_horizontal
 from .components.layout.no_gutters import row as layout_no_gutters
@@ -37,7 +38,8 @@ buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
 buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
-cards_source = (COMPONENTS / "cards.py").open().read()
+cards_simple_source = (COMPONENTS / "cards" / "simple.py").open().read()
+cards_group_source = (COMPONENTS / "cards" / "group.py").open().read()
 layout_simple_source = (COMPONENTS / "layout" / "simple.py").open().read()
 layout_width_source = (COMPONENTS / "layout" / "width.py").open().read()
 layout_order_offset_source = (
@@ -113,11 +115,17 @@ class ComponentsPage:
                 ApiDoc(component_metadata.get("src/components/Button.js")),
             ],
             "cards": [
-                ExampleContainer(cards),
-                HighlightedSource(cards_source),
+                ExampleContainer(cards_simple),
+                HighlightedSource(cards_simple_source),
+                ExampleContainer(cards_group),
+                HighlightedSource(cards_group_source),
                 ApiDoc(
                     component_metadata.get("src/components/card/CardDeck.js"),
                     component_name="CardDeck"
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardGroup.js"),
+                    component_name="CardGroup"
                 ),
                 ApiDoc(
                     component_metadata.get("src/components/card/Card.js"),
