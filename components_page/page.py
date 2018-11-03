@@ -8,6 +8,10 @@ from .components.badges import badges
 from .components.buttons.group import buttons as buttons_group
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.simple import buttons as buttons_simple
+from .components.cards.simple import cards as cards_simple
+from .components.cards.content_types import cards as cards_content_types
+from .components.cards.group import cards as cards_group
+from .components.cards.columns import cards as cards_columns
 from .components.layout.breakpoints import row as layout_breakpoints
 from .components.layout.horizontal import row as layout_horizontal
 from .components.layout.no_gutters import row as layout_no_gutters
@@ -36,6 +40,12 @@ buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
 buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
+cards_simple_source = (COMPONENTS / "cards" / "simple.py").open().read()
+cards_content_type_source = (
+    (COMPONENTS / "cards" / "content_types.py").open().read()
+)
+cards_group_source = (COMPONENTS / "cards" / "group.py").open().read()
+cards_columns_source = (COMPONENTS / "cards" / "columns.py").open().read()
 layout_simple_source = (COMPONENTS / "layout" / "simple.py").open().read()
 layout_width_source = (COMPONENTS / "layout" / "width.py").open().read()
 layout_order_offset_source = (
@@ -65,6 +75,7 @@ sidebar_entries = [
     SidebarEntry("alerts", "Alerts"),
     SidebarEntry("badges", "Badges"),
     SidebarEntry("buttons", "Buttons"),
+    SidebarEntry("cards", "Cards"),
     SidebarEntry("collapse", "Collapse"),
     SidebarEntry("layout", "Layout"),
 ]
@@ -108,6 +119,74 @@ class ComponentsPage:
                 ExampleContainer(buttons_group),
                 HighlightedSource(buttons_group_source),
                 ApiDoc(component_metadata.get("src/components/Button.js")),
+            ],
+            "cards": [
+                ExampleContainer(cards_simple),
+                HighlightedSource(cards_simple_source),
+                ExampleContainer(cards_content_types),
+                HighlightedSource(cards_content_type_source),
+                ExampleContainer(cards_group),
+                HighlightedSource(cards_group_source),
+                ExampleContainer(cards_columns),
+                HighlightedSource(cards_columns_source),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardDeck.js"),
+                    component_name="CardDeck",
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardGroup.js"),
+                    component_name="CardGroup",
+                ),
+                ApiDoc(
+                    component_metadata.get(
+                        "src/components/card/CardColumns.js"
+                    ),
+                    component_name="CardColumns",
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/Card.js"),
+                    component_name="Card",
+                ),
+                ApiDoc(
+                    component_metadata.get(
+                        "src/components/card/CardHeader.js"
+                    ),
+                    component_name="CardHeader",
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardBody.js"),
+                    component_name="CardBody",
+                ),
+                ApiDoc(
+                    component_metadata.get(
+                        "src/components/card/CardFooter.js"
+                    ),
+                    component_name="CardFooter",
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardTitle.js"),
+                    component_name="CardTitle",
+                ),
+                ApiDoc(
+                    component_metadata.get(
+                        "src/components/card/CardSubtitle.js"
+                    ),
+                    component_name="CardSubtitle",
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardLink.js"),
+                    component_name="CardLink",
+                ),
+                ApiDoc(
+                    component_metadata.get("src/components/card/CardImg.js"),
+                    component_name="CardImg",
+                ),
+                ApiDoc(
+                    component_metadata.get(
+                        "src/components/card/CardImgOverlay.js"
+                    ),
+                    component_name="CardImgOverlay",
+                ),
             ],
             "collapse": [
                 ExampleContainer(
