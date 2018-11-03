@@ -2,11 +2,9 @@ from pathlib import Path
 
 import dash_bootstrap_components as dbc
 
-from .components.badges import badges
-from .components.buttons.group import buttons as buttons_group
-from .components.buttons.outline import buttons as buttons_outline
-from .components.buttons.simple import buttons as buttons_simple
 from .alerts_content import content as alerts_content
+from .buttons_content import get_content as get_buttons_content
+from .badges_content import content as badges_content
 from .cards_content import content as cards_content
 from .layout_content import content as layout_content
 
@@ -21,12 +19,7 @@ COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-badges_source = (COMPONENTS / "badges.py").open().read()
 collapse_source = (COMPONENTS / "collapse.py").open().read()
-buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
-buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
-buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
-buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -62,26 +55,8 @@ class ComponentsPage:
         self._app = app
         self._component_bodies = {
             "alerts": alerts_content,
-            "badges": [
-                ExampleContainer(badges),
-                HighlightedSource(badges_source),
-                ApiDoc(get_component_metadata("src/components/Badge.js")),
-            ],
-            "buttons": [
-                ExampleContainer(buttons_simple),
-                HighlightedSource(buttons_simple_source),
-                ExampleContainer(
-                    load_source_with_app(
-                        self._app, buttons_usage_source, "button"
-                    )
-                ),
-                HighlightedSource(buttons_usage_source),
-                ExampleContainer(buttons_outline),
-                HighlightedSource(buttons_outline_source),
-                ExampleContainer(buttons_group),
-                HighlightedSource(buttons_group_source),
-                ApiDoc(get_component_metadata("src/components/Button.js")),
-            ],
+            "badges": badges_content,
+            "buttons": get_buttons_content(self._app),
             "cards": cards_content,
             "collapse": [
                 ExampleContainer(
