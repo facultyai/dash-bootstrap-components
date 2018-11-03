@@ -10,6 +10,7 @@ HERE = Path(__file__).parent
 
 badges_source = (HERE / "components" / "badges.py").open().read()
 
+
 content = [
     ExampleContainer(badges),
     HighlightedSource(badges_source),
