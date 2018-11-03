@@ -14,9 +14,7 @@ HERE = Path(__file__).parent
 CARDS = HERE / "components" / "cards"
 
 cards_simple_source = (CARDS / "simple.py").open().read()
-cards_content_type_source = (
-    (CARDS / "content_types.py").open().read()
-)
+cards_content_type_source = (CARDS / "content_types.py").open().read()
 cards_group_source = (CARDS / "group.py").open().read()
 cards_columns_source = (CARDS / "columns.py").open().read()
 
@@ -39,9 +37,7 @@ content = [
         component_name="CardGroup",
     ),
     ApiDoc(
-        get_component_metadata(
-            "src/components/card/CardColumns.js"
-        ),
+        get_component_metadata("src/components/card/CardColumns.js"),
         component_name="CardColumns",
     ),
     ApiDoc(
@@ -49,9 +45,7 @@ content = [
         component_name="Card",
     ),
     ApiDoc(
-        get_component_metadata(
-            "src/components/card/CardHeader.js"
-        ),
+        get_component_metadata("src/components/card/CardHeader.js"),
         component_name="CardHeader",
     ),
     ApiDoc(
@@ -59,9 +53,7 @@ content = [
         component_name="CardBody",
     ),
     ApiDoc(
-        get_component_metadata(
-            "src/components/card/CardFooter.js"
-        ),
+        get_component_metadata("src/components/card/CardFooter.js"),
         component_name="CardFooter",
     ),
     ApiDoc(
@@ -69,9 +61,7 @@ content = [
         component_name="CardTitle",
     ),
     ApiDoc(
-        get_component_metadata(
-            "src/components/card/CardSubtitle.js"
-        ),
+        get_component_metadata("src/components/card/CardSubtitle.js"),
         component_name="CardSubtitle",
     ),
     ApiDoc(
@@ -83,9 +73,7 @@ content = [
         component_name="CardImg",
     ),
     ApiDoc(
-        get_component_metadata(
-            "src/components/card/CardImgOverlay.js"
-        ),
+        get_component_metadata("src/components/card/CardImgOverlay.js"),
         component_name="CardImgOverlay",
     ),
 ]
