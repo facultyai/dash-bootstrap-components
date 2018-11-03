@@ -3,14 +3,12 @@ from pathlib import Path
 import dash_bootstrap_components as dbc
 
 from .alerts_content import content as alerts_content
-from .buttons_content import get_content as get_buttons_content
 from .badges_content import content as badges_content
+from .buttons_content import get_content as get_buttons_content
 from .cards_content import content as cards_content
+from .collapse_content import get_content as get_collapse_content
 from .layout_content import content as layout_content
 
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
-from .api_doc import ApiDoc
-from .metadata import get_component_metadata
 from .sidebar import Sidebar, SidebarEntry
 
 
@@ -18,8 +16,6 @@ HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
-
-collapse_source = (COMPONENTS / "collapse.py").open().read()
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -58,15 +54,7 @@ class ComponentsPage:
             "badges": badges_content,
             "buttons": get_buttons_content(self._app),
             "cards": cards_content,
-            "collapse": [
-                ExampleContainer(
-                    load_source_with_app(
-                        self._app, collapse_source, "collapse"
-                    )
-                ),
-                HighlightedSource(collapse_source),
-                ApiDoc(get_component_metadata("src/components/Collapse.js")),
-            ],
+            "collapse": get_collapse_content(self._app),
             "layout": layout_content
         }
 
