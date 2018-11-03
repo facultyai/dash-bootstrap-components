@@ -23,9 +23,7 @@ def get_content(app):
         ExampleContainer(buttons_simple),
         HighlightedSource(buttons_simple_source),
         ExampleContainer(
-            load_source_with_app(
-                app, buttons_usage_source, "button"
-            )
+            load_source_with_app(app, buttons_usage_source, "button")
         ),
         HighlightedSource(buttons_usage_source),
         ExampleContainer(buttons_outline),

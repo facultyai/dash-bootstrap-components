@@ -20,19 +20,11 @@ LAYOUT = HERE / "components" / "layout"
 
 layout_simple_source = (LAYOUT / "simple.py").open().read()
 layout_width_source = (LAYOUT / "width.py").open().read()
-layout_order_offset_source = (
-    (LAYOUT / "order_offset.py").open().read()
-)
-layout_breakpoints_source = (
-    (LAYOUT / "breakpoints.py").open().read()
-)
-layout_no_gutters_source = (
-    (LAYOUT / "no_gutters.py").open().read()
-)
+layout_order_offset_source = (LAYOUT / "order_offset.py").open().read()
+layout_breakpoints_source = (LAYOUT / "breakpoints.py").open().read()
+layout_no_gutters_source = (LAYOUT / "no_gutters.py").open().read()
 layout_vertical_source = (LAYOUT / "vertical.py").open().read()
-layout_horizontal_source = (
-    (LAYOUT / "horizontal.py").open().read()
-)
+layout_horizontal_source = (LAYOUT / "horizontal.py").open().read()
 
 
 content = html.Div(

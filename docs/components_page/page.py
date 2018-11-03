@@ -55,7 +55,7 @@ class ComponentsPage:
             "buttons": get_buttons_content(self._app),
             "cards": cards_content,
             "collapse": get_collapse_content(self._app),
-            "layout": layout_content
+            "layout": layout_content,
         }
 
     def for_path(self, path_components):
