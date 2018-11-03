@@ -19,7 +19,7 @@ from .cards_page import page as cards_page
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
-from .metadata import load_metadata
+from .metadata import get_component_metadata
 from .sidebar import Sidebar, SidebarEntry
 
 
@@ -27,8 +27,6 @@ HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
-
-component_metadata = load_metadata()
 
 alerts_source = (COMPONENTS / "alerts.py").open().read()
 badges_source = (COMPONENTS / "badges.py").open().read()
@@ -89,12 +87,12 @@ class ComponentsPage:
             "alerts": [
                 ExampleContainer(alerts),
                 HighlightedSource(alerts_source),
-                ApiDoc(component_metadata.get("src/components/Alert.js")),
+                ApiDoc(get_component_metadata("src/components/Alert.js")),
             ],
             "badges": [
                 ExampleContainer(badges),
                 HighlightedSource(badges_source),
-                ApiDoc(component_metadata.get("src/components/Badge.js")),
+                ApiDoc(get_component_metadata("src/components/Badge.js")),
             ],
             "buttons": [
                 ExampleContainer(buttons_simple),
@@ -109,7 +107,7 @@ class ComponentsPage:
                 HighlightedSource(buttons_outline_source),
                 ExampleContainer(buttons_group),
                 HighlightedSource(buttons_group_source),
-                ApiDoc(component_metadata.get("src/components/Button.js")),
+                ApiDoc(get_component_metadata("src/components/Button.js")),
             ],
             "cards": cards_page,
             "collapse": [
@@ -119,7 +117,7 @@ class ComponentsPage:
                     )
                 ),
                 HighlightedSource(collapse_source),
-                ApiDoc(component_metadata.get("src/components/Collapse.js")),
+                ApiDoc(get_component_metadata("src/components/Collapse.js")),
             ],
             "layout": html.Div(
                 [
@@ -143,11 +141,11 @@ class ComponentsPage:
                     ExampleContainer(layout_horizontal),
                     HighlightedSource(layout_horizontal_source),
                     ApiDoc(
-                        component_metadata.get("src/components/layout/Row.js"),
+                        get_component_metadata("src/components/layout/Row.js"),
                         component_name="Row",
                     ),
                     ApiDoc(
-                        component_metadata.get("src/components/layout/Col.js"),
+                        get_component_metadata("src/components/layout/Col.js"),
                         component_name="Col",
                     ),
                 ],
