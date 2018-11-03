@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 from .components.badges import badges
