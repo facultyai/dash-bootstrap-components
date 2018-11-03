@@ -8,14 +8,8 @@ from .components.badges import badges
 from .components.buttons.group import buttons as buttons_group
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.simple import buttons as buttons_simple
-from .components.layout.breakpoints import row as layout_breakpoints
-from .components.layout.horizontal import row as layout_horizontal
-from .components.layout.no_gutters import row as layout_no_gutters
-from .components.layout.order_offset import row as layout_order_offset
-from .components.layout.simple import row as layout_simple
-from .components.layout.vertical import row as layout_vertical
-from .components.layout.width import row as layout_width
 from .cards_content import content as cards_content
+from .layout_content import content as layout_content
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -35,21 +29,6 @@ buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
 buttons_usage_source = (COMPONENTS / "buttons" / "usage.py").open().read()
 buttons_outline_source = (COMPONENTS / "buttons" / "outline.py").open().read()
 buttons_group_source = (COMPONENTS / "buttons" / "group.py").open().read()
-layout_simple_source = (COMPONENTS / "layout" / "simple.py").open().read()
-layout_width_source = (COMPONENTS / "layout" / "width.py").open().read()
-layout_order_offset_source = (
-    (COMPONENTS / "layout" / "order_offset.py").open().read()
-)
-layout_breakpoints_source = (
-    (COMPONENTS / "layout" / "breakpoints.py").open().read()
-)
-layout_no_gutters_source = (
-    (COMPONENTS / "layout" / "no_gutters.py").open().read()
-)
-layout_vertical_source = (COMPONENTS / "layout" / "vertical.py").open().read()
-layout_horizontal_source = (
-    (COMPONENTS / "layout" / "horizontal.py").open().read()
-)
 
 NAVBAR = dbc.Navbar(
     brand="Dash Bootstrap Components",
@@ -119,38 +98,7 @@ class ComponentsPage:
                 HighlightedSource(collapse_source),
                 ApiDoc(get_component_metadata("src/components/Collapse.js")),
             ],
-            "layout": html.Div(
-                [
-                    ExampleContainer(layout_simple),
-                    HighlightedSource(layout_simple_source),
-                    ExampleContainer(layout_width),
-                    HighlightedSource(layout_width_source),
-                    ExampleContainer(layout_order_offset),
-                    HighlightedSource(layout_order_offset_source),
-                    ExampleContainer(layout_breakpoints),
-                    HighlightedSource(layout_breakpoints_source),
-                    ExampleContainer(layout_no_gutters),
-                    HighlightedSource(layout_no_gutters_source),
-                    html.Div(
-                        [
-                            ExampleContainer(layout_vertical),
-                            HighlightedSource(layout_vertical_source),
-                        ],
-                        className="pad-row",
-                    ),
-                    ExampleContainer(layout_horizontal),
-                    HighlightedSource(layout_horizontal_source),
-                    ApiDoc(
-                        get_component_metadata("src/components/layout/Row.js"),
-                        component_name="Row",
-                    ),
-                    ApiDoc(
-                        get_component_metadata("src/components/layout/Col.js"),
-                        component_name="Col",
-                    ),
-                ],
-                className="layout-demo",
-            ),
+            "layout": layout_content
         }
 
     def for_path(self, path_components):

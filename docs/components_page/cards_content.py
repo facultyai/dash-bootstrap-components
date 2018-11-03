@@ -9,6 +9,7 @@ from .components.cards.content_types import cards as cards_content_types
 from .components.cards.group import cards as cards_group
 from .components.cards.columns import cards as cards_columns
 
+
 HERE = Path(__file__).parent
 CARDS = HERE / "components" / "cards"
 
@@ -18,6 +19,7 @@ cards_content_type_source = (
 )
 cards_group_source = (CARDS / "group.py").open().read()
 cards_columns_source = (CARDS / "columns.py").open().read()
+
 
 content = [
     ExampleContainer(cards_simple),
