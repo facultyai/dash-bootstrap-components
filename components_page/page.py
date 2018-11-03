@@ -1,13 +1,12 @@
 from pathlib import Path
 
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
-from .components.alerts import alerts
 from .components.badges import badges
 from .components.buttons.group import buttons as buttons_group
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.simple import buttons as buttons_simple
+from .alerts_content import content as alerts_content
 from .cards_content import content as cards_content
 from .layout_content import content as layout_content
 
@@ -22,7 +21,6 @@ COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-alerts_source = (COMPONENTS / "alerts.py").open().read()
 badges_source = (COMPONENTS / "badges.py").open().read()
 collapse_source = (COMPONENTS / "collapse.py").open().read()
 buttons_simple_source = (COMPONENTS / "buttons" / "simple.py").open().read()
@@ -63,11 +61,7 @@ class ComponentsPage:
     def __init__(self, app):
         self._app = app
         self._component_bodies = {
-            "alerts": [
-                ExampleContainer(alerts),
-                HighlightedSource(alerts_source),
-                ApiDoc(get_component_metadata("src/components/Alert.js")),
-            ],
+            "alerts": alerts_content,
             "badges": [
                 ExampleContainer(badges),
                 HighlightedSource(badges_source),
