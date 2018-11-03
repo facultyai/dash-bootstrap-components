@@ -15,7 +15,7 @@ from .components.layout.order_offset import row as layout_order_offset
 from .components.layout.simple import row as layout_simple
 from .components.layout.vertical import row as layout_vertical
 from .components.layout.width import row as layout_width
-from .cards_page import page as cards_page
+from .cards_content import content as cards_content
 
 from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
@@ -109,7 +109,7 @@ class ComponentsPage:
                 HighlightedSource(buttons_group_source),
                 ApiDoc(get_component_metadata("src/components/Button.js")),
             ],
-            "cards": cards_page,
+            "cards": cards_content,
             "collapse": [
                 ExampleContainer(
                     load_source_with_app(

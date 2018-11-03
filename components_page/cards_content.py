@@ -19,7 +19,7 @@ cards_content_type_source = (
 cards_group_source = (CARDS / "group.py").open().read()
 cards_columns_source = (CARDS / "columns.py").open().read()
 
-page = [
+content = [
     ExampleContainer(cards_simple),
     HighlightedSource(cards_simple_source),
     ExampleContainer(cards_content_types),
