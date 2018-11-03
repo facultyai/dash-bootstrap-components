@@ -1,10 +1,17 @@
 import json
+from functools import lru_cache
 import collections
 
 import dash_bootstrap_components as dbc
 
 
-def load_metadata():
+def get_component_metadata(component_path):
+    metadata = _load_metadata()
+    return metadata.get(component_path)
+
+
+@lru_cache(maxsize=1)
+def _load_metadata():
     return _get_metadata(dbc.METADATA_PATH)
 
 
