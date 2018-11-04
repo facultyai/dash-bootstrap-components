@@ -264,6 +264,7 @@ fade = html.Div(
                 dbc.CardBody(dbc.CardText("This content fades in and out"))
             ),
             id="fade",
+            is_in=True,
         ),
     ]
 )
@@ -476,9 +477,9 @@ def toggle_collapse(n, is_open):
 
 
 @app.callback(
-    Output("fade", "in"),
+    Output("fade", "is_in"),
     [Input("fade-button", "n_clicks")],
-    [State("fade", "in")],
+    [State("fade", "is_in")],
 )
 def toggle_fade(n, is_in):
     if n:
