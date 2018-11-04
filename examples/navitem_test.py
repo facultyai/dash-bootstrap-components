@@ -11,19 +11,19 @@ navbar = dbc.Navbar(
     sticky="top",
     children=[
         dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
-        dbc.Dropdown(
+        dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
             label="Menu",
             children=[
-                dbc.DropdownItem("Entry 1", href="https://google.com"),
-                dbc.DropdownItem("Entry 2", href="/test", id="dd-internal"),
-                dbc.DropdownItem(divider=True),
-                dbc.DropdownItem("A heading", header=True),
-                dbc.DropdownItem(
+                dbc.DropdownMenuItem("Entry 1", href="https://google.com"),
+                dbc.DropdownMenuItem("Entry 2", href="/test", id="dd-internal"),
+                dbc.DropdownMenuItem(divider=True),
+                dbc.DropdownMenuItem("A heading", header=True),
+                dbc.DropdownMenuItem(
                     "Entry 3", href="/external-test", external_link=True
                 ),
-                dbc.DropdownItem("Entry 4 - does nothing", id="dd-button"),
+                dbc.DropdownMenuItem("Entry 4 - does nothing", id="dd-button"),
             ],
         ),
     ],
