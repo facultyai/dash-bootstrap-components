@@ -94,7 +94,7 @@ class FadeComponent extends Component {
       <Button onClick={this.toggle} style={{
           marginBottom: "1rem"
         }}>Toggle fade</Button>
-      <Fade in={this.state.fadeIn}>
+      <Fade is_in={this.state.fadeIn}>
         {this.props.children}
       </Fade>
     </div>)
