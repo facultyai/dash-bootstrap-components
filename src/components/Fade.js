@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import {Fade as RSFade} from 'reactstrap';
 
 const Fade = props => {
-  const {children, base_class, base_class_active, ...otherProps} = props;
+  const {children, base_class, base_class_active, is_in, ...otherProps} = props;
   return (
     <RSFade
       baseClass={base_class}
       baseClassActive={base_class_active}
+      in={is_in}
       {...otherProps}
     >
       {children}
@@ -36,7 +37,12 @@ Fade.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
-  in: PropTypes.bool,
+
+  /**
+   * Controls whether the children of the Fade component are currently visible
+   * or not.
+   */
+  is_in: PropTypes.bool,
 
   /**
    * The duration of the transition, in milliseconds.
