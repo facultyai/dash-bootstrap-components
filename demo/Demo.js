@@ -19,8 +19,8 @@ import {
   Col,
   Collapse,
   Container,
-  Dropdown,
-  DropdownItem,
+  DropdownMenu,
+  DropdownMenuItem,
   Fade,
   Form,
   FormFeedback,
@@ -132,7 +132,7 @@ class Demo extends Component {
         <NavItem>
           <NavLink href="https://www.asidatascience.com">A link</NavLink>
         </NavItem>
-        <Dropdown nav in_navbar label="Menu">
+        <DropdownMenu nav in_navbar label="Menu">
           <DropdownItem>Entry 1</DropdownItem>
           <DropdownItem>Entry 2</DropdownItem>
           <DropdownItem divider />
