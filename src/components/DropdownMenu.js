@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {DropdownToggle, DropdownMenu} from 'reactstrap';
-import {Dropdown as RSDropdown} from 'reactstrap';
+import {Dropdown, DropdownToggle} from 'reactstrap';
+import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
 
-class Dropdown extends React.Component {
+class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,7 @@ class Dropdown extends React.Component {
       ...otherProps
     } = this.props;
     return (
-      <RSDropdown
+      <Dropdown
         isOpen={this.state.dropdownOpen}
         toggle={this.toggle}
         nav={nav}
@@ -43,17 +43,17 @@ class Dropdown extends React.Component {
         <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
           {label}
         </DropdownToggle>
-        <DropdownMenu>{this.props.children}</DropdownMenu>
-      </RSDropdown>
+        <RSDropdownMenu>{this.props.children}</RSDropdownMenu>
+      </Dropdown>
     );
   }
 }
 
-Dropdown.defaultProps = {
+DropdownMenu.defaultProps = {
   caret: true
 };
 
-Dropdown.propTypes = {
+DropdownMenu.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -107,4 +107,4 @@ Dropdown.propTypes = {
   caret: PropTypes.bool
 };
 
-export default Dropdown;
+export default DropdownMenu;
