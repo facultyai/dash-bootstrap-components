@@ -8,15 +8,15 @@ _navbar = dbc.Navbar(
     brand_href="#",
     sticky="top",
     children=[
-        dbc.Dropdown(
+        dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
             label="Menu",
             children=[
-                dbc.DropdownItem("Entry 1"),
-                dbc.DropdownItem("Entry 2"),
-                dbc.DropdownItem(divider=True),
-                dbc.DropdownItem("Entry 3"),
+                dbc.DropdownMenuItem("Entry 1"),
+                dbc.DropdownMenuItem("Entry 2"),
+                dbc.DropdownMenuItem(divider=True),
+                dbc.DropdownMenuItem("Entry 3"),
             ],
         ),
         dbc.NavItem(dbc.NavLink("Link", href="#")),
