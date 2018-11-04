@@ -17,7 +17,9 @@ navbar = dbc.Navbar(
             label="Menu",
             children=[
                 dbc.DropdownMenuItem("Entry 1", href="https://google.com"),
-                dbc.DropdownMenuItem("Entry 2", href="/test", id="dd-internal"),
+                dbc.DropdownMenuItem(
+                    "Entry 2", href="/test", id="dd-internal"
+                ),
                 dbc.DropdownMenuItem(divider=True),
                 dbc.DropdownMenuItem("A heading", header=True),
                 dbc.DropdownMenuItem(
