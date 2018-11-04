@@ -4,7 +4,7 @@ import {DropdownItem as RSDropdownItem} from 'reactstrap';
 import Link from '../private/Link';
 import Button from './Button';
 
-class DropdownItem extends React.Component {
+class DropdownMenuItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -33,7 +33,7 @@ class DropdownItem extends React.Component {
   }
 }
 
-DropdownItem.propTypes = {
+DropdownMenuItem.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -105,9 +105,9 @@ DropdownItem.propTypes = {
   n_clicks_timestamp: PropTypes.number
 };
 
-DropdownItem.defaultProps = {
+DropdownMenuItem.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1
 };
 
-export default DropdownItem;
+export default DropdownMenuItem;
