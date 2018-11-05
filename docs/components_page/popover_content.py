@@ -11,11 +11,12 @@ popover_source = (HERE / "components" / "popover.py").open().read()
 
 def get_content(app):
     return [
-        ExampleContainer(
-            load_source_with_app(app, popover_source, "popover")
-        ),
+        ExampleContainer(load_source_with_app(app, popover_source, "popover")),
         HighlightedSource(popover_source),
-        ApiDoc(get_component_metadata("src/components/Popover.js"), component_name="Popover"),
+        ApiDoc(
+            get_component_metadata("src/components/Popover.js"),
+            component_name="Popover",
+        ),
         ApiDoc(
             get_component_metadata("src/components/PopoverHeader.js"),
             component_name="PopoverHeader",
@@ -23,5 +24,5 @@ def get_content(app):
         ApiDoc(
             get_component_metadata("src/components/PopoverBody.js"),
             component_name="PopoverBody",
-        )
+        ),
     ]
