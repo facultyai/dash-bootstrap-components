@@ -15,5 +15,13 @@ def get_content(app):
             load_source_with_app(app, popover_source, "popover")
         ),
         HighlightedSource(popover_source),
-        ApiDoc(get_component_metadata("src/components/Popover.js")),
+        ApiDoc(get_component_metadata("src/components/Popover.js"), component_name="Popover"),
+        ApiDoc(
+            get_component_metadata("src/components/PopoverHeader.js"),
+            component_name="PopoverHeader",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/PopoverBody.js"),
+            component_name="PopoverBody",
+        )
     ]
