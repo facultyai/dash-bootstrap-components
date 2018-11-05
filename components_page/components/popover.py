@@ -14,7 +14,7 @@ popover = html.Div(
                 dbc.PopoverBody("Popover body"),
             ],
             id="popover",
-            isOpen=False,
+            is_open=False,
             target="popover-target",
         ),
     ]
