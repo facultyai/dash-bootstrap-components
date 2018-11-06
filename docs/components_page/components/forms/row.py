@@ -6,9 +6,7 @@ email_input = dbc.FormGroup(
         dbc.Label("Email", html_for="example-email-row", width=2),
         dbc.Col(
             dbc.Input(
-                type="email",
-                id="example-email-row",
-                placeholder="Enter email",
+                type="email", id="example-email-row", placeholder="Enter email"
             ),
             width=10,
         ),
@@ -18,9 +16,7 @@ email_input = dbc.FormGroup(
 
 password_input = dbc.FormGroup(
     [
-        dbc.Label(
-            "Password", html_for="example-password-row", width=2
-        ),
+        dbc.Label("Password", html_for="example-password-row", width=2),
         dbc.Col(
             dbc.Input(
                 type="password",

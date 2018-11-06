@@ -26,6 +26,4 @@ password_input = dbc.FormGroup(
     ]
 )
 
-form = html.Div(
-    [html.H2("Simple form"), email_input, password_input]
-)
+form = html.Div([html.H2("Simple form"), email_input, password_input])

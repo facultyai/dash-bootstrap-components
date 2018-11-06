@@ -19,9 +19,7 @@ grid = dbc.Row(
         dbc.Col(
             dbc.FormGroup(
                 [
-                    dbc.Label(
-                        "Password", html_for="example-password-grid"
-                    ),
+                    dbc.Label("Password", html_for="example-password-grid"),
                     dbc.Input(
                         type="password",
                         id="example-password-grid",
