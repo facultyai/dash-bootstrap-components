@@ -38,8 +38,80 @@ app.layout = dbc.Container(
             initial_visible_month=datetime(2018, 1, 1), bs_size="lg"
         ),
         html.Br(),
-        html.H3("Date Core Components"),
+        html.H3("Dash Core Components"),
         dcc.DatePickerRange(initial_visible_month=datetime(2018, 1, 1)),
+        html.Br(),
+        html.H3("FormGroup"),
+        dbc.Row(
+            [
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Type a thing"),
+                            dbc.Input(type="text", bs_size="sm"),
+                        ]
+                    )
+                ),
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Choose a date"),
+                            dbc.DatePickerSingle(
+                                initial_visible_month=datetime(2018, 1, 1),
+                                bs_size="sm",
+                            ),
+                        ]
+                    ),
+                    width="auto",
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.Row(
+            [
+                dbc.Col(
+                    dbc.FormGroup(
+                        [dbc.Label("Type a thing"), dbc.Input(type="text")]
+                    )
+                ),
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Choose a date"),
+                            dbc.DatePickerSingle(
+                                initial_visible_month=datetime(2018, 1, 1)
+                            ),
+                        ]
+                    ),
+                    width="auto",
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.Row(
+            [
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Type a thing"),
+                            dbc.Input(type="text", bs_size="lg"),
+                        ]
+                    )
+                ),
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Choose a date"),
+                            dbc.DatePickerSingle(
+                                initial_visible_month=datetime(2018, 1, 1),
+                                bs_size="lg",
+                            ),
+                        ]
+                    ),
+                    width="auto",
+                ),
+            ]
+        ),
     ]
 )
 
