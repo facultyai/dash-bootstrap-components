@@ -16,9 +16,7 @@ inline_form = dbc.Form(
         dbc.FormGroup(
             [
                 dbc.Label("Password", className="mr-2"),
-                dbc.Input(
-                    type="password", placeholder="Enter password"
-                ),
+                dbc.Input(type="password", placeholder="Enter password"),
             ],
             className="mr-2",
         ),
@@ -26,8 +24,7 @@ inline_form = dbc.Form(
             [
                 dbc.Label("Date", className="mr-2"),
                 dcc.DatePickerSingle(
-                    id="date-picker-inline",
-                    date=datetime(2018, 10, 17),
+                    id="date-picker-inline", date=datetime(2018, 10, 17)
                 ),
             ],
             className="mr-2",
