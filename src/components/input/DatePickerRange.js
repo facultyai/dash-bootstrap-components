@@ -3,6 +3,13 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import React, {Component} from 'react';
+import classNames from 'classnames';
+import './react-dates@12.3.0.css';
+
+const sizeMap = {
+  sm: 'dbc-datepicker-sm',
+  lg: 'dbc-datepicker-lg'
+};
 
 /**
  * DatePickerRange is a tailor made component designed for selecting
@@ -126,46 +133,51 @@ export default class DatePickerRange extends Component {
       start_date_placeholder_text,
       stay_open_on_select,
       with_full_screen_portal,
-      with_portal
+      with_portal,
+      bs_size
     } = this.props;
+
+    const sizeClass = classNames('dbc-datepicker', sizeMap[bs_size]);
 
     const verticalFlag = calendar_orientation !== 'vertical';
 
     return (
-      <DateRangePicker
-        daySize={day_size}
-        disabled={disabled}
-        displayFormat={display_format}
-        enableOutsideDays={show_outside_days}
-        endDate={end_date}
-        endDatePlaceholderText={end_date_placeholder_text}
-        firstDayOfWeek={first_day_of_week}
-        focusedInput={focusedInput}
-        initialVisibleMonth={() => {
-          if (initial_visible_month) {
-            return initial_visible_month;
-          }
-          if (focusedInput === 'endDate') {
-            return end_date;
-          }
-          return start_date;
-        }}
-        isOutsideRange={this.isOutsideRange}
-        isRTL={is_RTL}
-        keepOpenOnDateSelect={stay_open_on_select}
-        minimumNights={minimum_nights}
-        monthFormat={month_format}
-        numberOfMonths={number_of_months_shown}
-        onDatesChange={this.onDatesChange}
-        onFocusChange={focusedInput => this.setState({focusedInput})}
-        orientation={calendar_orientation}
-        reopenPickerOnClearDates={reopen_calendar_on_clear}
-        showClearDates={clearable}
-        startDate={start_date}
-        startDatePlaceholderText={start_date_placeholder_text}
-        withFullScreenPortal={with_full_screen_portal && verticalFlag}
-        withPortal={with_portal && verticalFlag}
-      />
+      <div className={sizeClass}>
+        <DateRangePicker
+          daySize={day_size}
+          disabled={disabled}
+          displayFormat={display_format}
+          enableOutsideDays={show_outside_days}
+          endDate={end_date}
+          endDatePlaceholderText={end_date_placeholder_text}
+          firstDayOfWeek={first_day_of_week}
+          focusedInput={focusedInput}
+          initialVisibleMonth={() => {
+            if (initial_visible_month) {
+              return initial_visible_month;
+            }
+            if (focusedInput === 'endDate') {
+              return end_date;
+            }
+            return start_date;
+          }}
+          isOutsideRange={this.isOutsideRange}
+          isRTL={is_RTL}
+          keepOpenOnDateSelect={stay_open_on_select}
+          minimumNights={minimum_nights}
+          monthFormat={month_format}
+          numberOfMonths={number_of_months_shown}
+          onDatesChange={this.onDatesChange}
+          onFocusChange={focusedInput => this.setState({focusedInput})}
+          orientation={calendar_orientation}
+          reopenPickerOnClearDates={reopen_calendar_on_clear}
+          showClearDates={clearable}
+          startDate={start_date}
+          startDatePlaceholderText={start_date_placeholder_text}
+          withFullScreenPortal={with_full_screen_portal && verticalFlag}
+          withPortal={with_portal && verticalFlag}
+        />
+      </div>
     );
   }
 }
@@ -336,6 +348,11 @@ DatePickerRange.propTypes = {
    * as one date is picked.
    */
   updatemode: PropTypes.oneOf(['singledate', 'bothdates']),
+
+  /**
+   * Set the size of the DatePickerSingle
+   */
+  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
 
   fireEvent: PropTypes.func
 };
