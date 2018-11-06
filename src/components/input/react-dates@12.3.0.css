@@ -1,3 +1,7 @@
+.form-group > .SingleDatePicker, .form-group > .DateRangePicker {
+  display: table;
+}
+
 .CalendarDay {
   border: 1px solid #e4e7e7;
   padding: 0;
