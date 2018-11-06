@@ -3,7 +3,12 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import React, {Component} from 'react';
-import './react-dates@12.3.0.css'
+import './react-dates@12.3.0.css';
+
+const sizeMap = {
+  sm: 'date-picker-sm',
+  lg: 'date-picker-lg'
+};
 
 /**
  * DatePickerSingle is a tailor made component designed for selecting
@@ -102,35 +107,40 @@ export default class DatePickerSingle extends Component {
       show_outside_days,
       stay_open_on_select,
       with_full_screen_portal,
-      with_portal
+      with_portal,
+      bs_size
     } = this.props;
+
+    const sizeClass = sizeMap[bs_size];
 
     const verticalFlag = calendar_orientation !== 'vertical';
 
     return (
-      <SingleDatePicker
-        date={date}
-        onDateChange={this.onDateChange}
-        focused={focused}
-        onFocusChange={({focused}) => this.setState({focused})}
-        initialVisibleMonth={() => date || initial_visible_month}
-        isOutsideRange={this.isOutsideRange}
-        numberOfMonths={number_of_months_shown}
-        withPortal={with_portal && verticalFlag}
-        withFullScreenPortal={with_full_screen_portal && verticalFlag}
-        firstDayOfWeek={first_day_of_week}
-        enableOutsideDays={show_outside_days}
-        monthFormat={month_format}
-        displayFormat={display_format}
-        placeholder={placeholder}
-        showClearDate={clearable}
-        disabled={disabled}
-        keepOpenOnDateSelect={stay_open_on_select}
-        reopenPickerOnClearDate={reopen_calendar_on_clear}
-        isRTL={is_RTL}
-        orientation={calendar_orientation}
-        daySize={day_size}
-      />
+      <div className={sizeClass}>
+        <SingleDatePicker
+          date={date}
+          onDateChange={this.onDateChange}
+          focused={focused}
+          onFocusChange={({focused}) => this.setState({focused})}
+          initialVisibleMonth={() => date || initial_visible_month}
+          isOutsideRange={this.isOutsideRange}
+          numberOfMonths={number_of_months_shown}
+          withPortal={with_portal && verticalFlag}
+          withFullScreenPortal={with_full_screen_portal && verticalFlag}
+          firstDayOfWeek={first_day_of_week}
+          enableOutsideDays={show_outside_days}
+          monthFormat={month_format}
+          displayFormat={display_format}
+          placeholder={placeholder}
+          showClearDate={clearable}
+          disabled={disabled}
+          keepOpenOnDateSelect={stay_open_on_select}
+          reopenPickerOnClearDate={reopen_calendar_on_clear}
+          isRTL={is_RTL}
+          orientation={calendar_orientation}
+          daySize={day_size}
+        />
+      </div>
     );
   }
 }
@@ -271,6 +281,11 @@ DatePickerSingle.propTypes = {
    * Dash-assigned callback that gets fired when the value changes.
    */
   dashEvents: PropTypes.oneOf(['change']),
+
+  /**
+   * Set the size of the DatePickerSingle
+   */
+  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
 
   fireEvent: PropTypes.func
 };
