@@ -18,12 +18,7 @@ _js_dist = [
     }
 ]
 
-_css_dist = [
-    {
-        "relative_package_path": "react-dates-shim.css",
-        "namespace": "dash_bootstrap_components",
-    }
-]
+_css_dist = []
 
 
 def _setup_js_components(module, path_to_metadata):
