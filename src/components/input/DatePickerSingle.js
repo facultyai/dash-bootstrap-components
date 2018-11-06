@@ -3,11 +3,12 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import React, {Component} from 'react';
+import classNames from 'classnames';
 import './react-dates@12.3.0.css';
 
 const sizeMap = {
-  sm: 'date-picker-sm',
-  lg: 'date-picker-lg'
+  sm: 'dbc-datepicker-sm',
+  lg: 'dbc-datepicker-lg'
 };
 
 /**
@@ -111,7 +112,7 @@ export default class DatePickerSingle extends Component {
       bs_size
     } = this.props;
 
-    const sizeClass = sizeMap[bs_size];
+    const sizeClass = classNames('dbc-datepicker', sizeMap[bs_size]);
 
     const verticalFlag = calendar_orientation !== 'vertical';
 

@@ -2,28 +2,59 @@
   display: table;
 }
 
-.date-picker-sm .SingleDatePickerInput {
+.dbc-datepicker .SingleDatePickerInput {
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  border-radius: .25rem;
+  height: calc(2.25rem + 2px);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.dbc-datepicker .DateRangePickerInput {
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  height: calc(2.25rem + 2px);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.dbc-datepicker .DateInput {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: .125rem .75rem;
+  border-radius: .25rem;
+  font-weight: 200;
+}
+
+.dbc-datepicker.dbc-datepicker-sm .SingleDatePickerInput, .dbc-datepicker.dbc-datepicker-sm .DateRangePickerInput {
   height: calc(1.8125rem + 2px);
   font-size: .875rem;
   line-height: 1.5;
   border-radius: .2rem;
 }
 
-.date-picker-sm .DateInput {
+.dbc-datepicker.dbc-datepicker-sm .DateInput {
   font-size: .875rem;
   line-height: 1.5;
   padding: 0 .5rem;
   width: 110px;
 }
 
-.date-picker-lg .SingleDatePickerInput {
+.dbc-datepicker.dbc-datepicker-lg .SingleDatePickerInput, .dbc-datepicker.dbc-datepicker-lg .DateRangePickerInput {
   height: calc(2.875rem + 2px);
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: .3rem;
 }
 
-.date-picker-lg .DateInput {
+.dbc-datepicker.dbc-datepicker-lg .DateInput {
   font-size: 1.25rem;
   line-height: 1.5;
   padding: .25rem 1rem;
@@ -615,13 +646,12 @@
 }
 
 .DateInput {
-  font-size: 1rem;
-  line-height: 1.5;
-  padding: .125rem .75rem;
-  border-radius: .25rem;
   font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
   color: #757575;
   margin: 0;
+  padding: 8px;
   background: #fff;
   position: relative;
   display: inline-block;
@@ -911,16 +941,8 @@
 }
 
 .SingleDatePickerInput {
-  border: 1px solid #ced4da;
   background-color: #fff;
-  border-radius: .25rem;
-  height: calc(2.25rem + 2px);
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-clip: padding-box;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  /* background-color: #fff;border: 1px solid #dbdbdb; */
+  border: 1px solid #dbdbdb;
 }
 
 .SingleDatePickerInput--rtl {
