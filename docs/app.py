@@ -51,6 +51,7 @@ class App:
             # bound onto the page.
             suppress_callback_exceptions=True,
         )
+        app.title = "Dash Bootstrap Components"
         return cls(app)
 
     def _create_layout(self):
