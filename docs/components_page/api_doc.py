@@ -13,7 +13,7 @@ def ApiDoc(component_metadata, component_name=None):
     component_props = component_metadata.get("props", {})
     return html.Div(
         ArgumentsList(component_props, component_name)
-        + EventsList(component_props),
+        + EventsList(component_props, component_name),
         className="api-documentation",
     )
 
@@ -49,7 +49,11 @@ def Argument(argument_name, argument_metadata):
     )
 
 
-def EventsList(component_props):
+def EventsList(component_props, component_name):
+    if component_name is not None:
+        heading = f"Available events for {component_name}"
+    else:
+        heading = "Available events"
     events = parse_events(component_props)
     if not events:
         return []
@@ -60,9 +64,7 @@ def EventsList(component_props):
                 [(component, " ") for component in event_components]
             )
         )
-        return [
-            html.H4("Available events", className="mt-5 mb-2")
-        ] + events_list
+        return [html.H4(heading, className="mt-5 mb-2")] + events_list
 
 
 def Event(event):
