@@ -31,7 +31,6 @@ export default class DatePickerSingle extends Component {
   }
 
   propsToState(newProps) {
-    console.log(R);
     /*
          * state includes:
          * - user modifiable attributes
