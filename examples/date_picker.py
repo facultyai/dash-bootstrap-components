@@ -1,9 +1,11 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+
+SUNDAYS = [datetime(2018, 11, 4) + timedelta(7 * i) for i in range(4)]
 
 app = dash.Dash()
 
@@ -36,6 +38,21 @@ app.layout = dbc.Container(
         html.H6("Large"),
         dbc.DatePickerRange(
             initial_visible_month=datetime(2018, 1, 1), bs_size="lg"
+        ),
+        html.Br(),
+        html.H3("Disabled days"),
+        dbc.DatePickerSingle(
+            initial_visible_month=datetime(2018, 11, 8),
+            min_date_allowed=datetime(2018, 11, 1),
+            max_date_allowed=datetime(2018, 11, 30),
+            disabled_days=SUNDAYS,
+        ),
+        html.Br(),
+        dbc.DatePickerRange(
+            initial_visible_month=datetime(2018, 11, 8),
+            min_date_allowed=datetime(2018, 11, 1),
+            max_date_allowed=datetime(2018, 11, 30),
+            disabled_days=SUNDAYS,
         ),
         html.Br(),
         html.H3("Dash Core Components"),
