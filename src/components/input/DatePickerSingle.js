@@ -51,6 +51,10 @@ export default class DatePickerSingle extends Component {
         newState[prop].add(1, 'days');
       }
     });
+    const disabled_days = newProps['disabled_days'];
+    if (R.type(disabled_days) != 'Undefined') {
+      newState['disabled_days'] = disabled_days.map(d => moment(d));
+    }
     this.setState(newState);
   }
 
@@ -63,7 +67,7 @@ export default class DatePickerSingle extends Component {
   }
 
   isOutsideRange(date) {
-    const {min_date_allowed, max_date_allowed} = this.state;
+    const {min_date_allowed, max_date_allowed, disabled_days} = this.state;
 
     const notUndefined = R.complement(
       R.pipe(
@@ -73,7 +77,8 @@ export default class DatePickerSingle extends Component {
     );
     return (
       (notUndefined(min_date_allowed) && date < min_date_allowed) ||
-      (notUndefined(max_date_allowed) && date >= max_date_allowed)
+      (notUndefined(max_date_allowed) && date >= max_date_allowed) ||
+      (notUndefined(disabled_days) && disabled_days.some(d => d.isSame(date, 'day')))
     );
   }
 
@@ -286,6 +291,12 @@ DatePickerSingle.propTypes = {
    * Set the size of the DatePickerSingle
    */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
+
+  /**
+   * A list of days to disable in addition to any that fall outside of the range
+   * specified by min_date_allowed and max_date_allowed.
+   */
+  disabled_days: PropTypes.arrayOf(PropTypes.string),
 
   fireEvent: PropTypes.func
 };
