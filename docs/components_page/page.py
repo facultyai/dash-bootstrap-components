@@ -15,6 +15,7 @@ from .popover_content import get_content as get_popover_content
 from .progress_content import get_content as get_progress_content
 from .sidebar import Sidebar, SidebarEntry
 from .table_content import content as table_content
+from .tabs_content import content as tabs_content
 from .tooltip_content import content as tooltip_content
 
 HERE = Path(__file__).parent
@@ -44,6 +45,7 @@ sidebar_entries = [
     SidebarEntry("popover", "Popover"),
     SidebarEntry("progress", "Progress"),
     SidebarEntry("table", "Table"),
+    SidebarEntry("tabs", "Tabs"),
     SidebarEntry("tooltip", "Tooltip"),
 ]
 
@@ -74,6 +76,7 @@ class ComponentsPage:
             "popover": get_popover_content(self._app),
             "progress": get_progress_content(self._app),
             "table": table_content,
+            "tabs": tabs_content,
             "tooltip": tooltip_content,
         }
 
