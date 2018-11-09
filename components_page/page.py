@@ -7,6 +7,7 @@ from .badges_content import content as badges_content
 from .buttons_content import get_content as get_buttons_content
 from .cards_content import content as cards_content
 from .collapse_content import get_content as get_collapse_content
+from .forms_content import content as forms_content
 from .layout_content import content as layout_content
 from .popover_content import get_content as get_popover_content
 from .tooltip_content import content as tooltip_content
@@ -34,6 +35,7 @@ sidebar_entries = [
     SidebarEntry("buttons", "Buttons"),
     SidebarEntry("cards", "Cards"),
     SidebarEntry("collapse", "Collapse"),
+    SidebarEntry("forms", "Forms"),
     SidebarEntry("layout", "Layout"),
     SidebarEntry("popover", "Popover"),
     SidebarEntry("tooltip", "Tooltip"),
@@ -59,6 +61,7 @@ class ComponentsPage:
             "buttons": get_buttons_content(self._app),
             "cards": cards_content,
             "collapse": get_collapse_content(self._app),
+            "forms": forms_content,
             "layout": layout_content,
             "popover": get_popover_content(self._app),
             "tooltip": tooltip_content,
