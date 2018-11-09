@@ -45,7 +45,7 @@
     "ramda": "^0.25.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "reactstrap": "^6.4.0"
+    "reactstrap": "^6.5.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
