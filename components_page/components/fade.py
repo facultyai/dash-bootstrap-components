@@ -15,7 +15,7 @@ fade = html.Div(
             ),
             id="fade",
             is_in=True,
-            appear=False
+            appear=False,
         ),
     ]
 )
