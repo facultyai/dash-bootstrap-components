@@ -13,6 +13,7 @@
     "lint": "prettier src/**/*.js --list-different",
     "prepublish": "NODE_ENV=production npm run build-dist && npm run copy-lib",
     "test": "jest",
+    "test:demo": "webpack --content-base=demo --config=webpack.config.demo.js",
     "test:watch": "jest --watch"
   },
   "author": "ASI Data Science",
