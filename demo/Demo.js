@@ -133,11 +133,11 @@ class Demo extends Component {
           <NavLink href="https://www.asidatascience.com">A link</NavLink>
         </NavItem>
         <DropdownMenu nav in_navbar label="Menu">
-          <DropdownItem>Entry 1</DropdownItem>
-          <DropdownItem>Entry 2</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>Entry 3</DropdownItem>
-        </Dropdown>
+          <DropdownMenuItem>Entry 1</DropdownMenuItem>
+          <DropdownMenuItem>Entry 2</DropdownMenuItem>
+          <DropdownMenuItem divider />
+          <DropdownMenuItem>Entry 3</DropdownMenuItem>
+        </DropdownMenu>
       </Navbar>
       <Container>
         <h1>Dash Bootstrap Components</h1>
@@ -365,14 +365,14 @@ class Demo extends Component {
 
       <br/>
 
-      <h2>Dropdown</h2>
-      <Dropdown label="Toggle" caret={true}>
-        <DropdownItem header={true}>Heading</DropdownItem>
-        <DropdownItem>An item</DropdownItem>
-        <DropdownItem divider={true}/>
-        <DropdownItem header={true}>Another heading</DropdownItem>
-        <DropdownItem>Another item</DropdownItem>
-      </Dropdown>
+      <h2>DropdownMenu</h2>
+      <DropdownMenu label="Toggle" caret={true}>
+        <DropdownMenuItem header={true}>Heading</DropdownMenuItem>
+        <DropdownMenuItem>An item</DropdownMenuItem>
+        <DropdownMenuItem divider={true}/>
+        <DropdownMenuItem header={true}>Another heading</DropdownMenuItem>
+        <DropdownMenuItem>Another item</DropdownMenuItem>
+      </DropdownMenu>
 
       <br/>
 
