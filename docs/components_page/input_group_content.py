@@ -21,5 +21,21 @@ content = [
     ExampleContainer(input_group_size),
     HighlightedSource(input_group_size_source),
     ExampleContainer(input_group_button),
-    HighlightedSource(input_group_button_source)
+    HighlightedSource(input_group_button_source),
+    ApiDoc(
+        get_component_metadata("src/components/input/InputGroup.js"),
+        component_name="InputGroup"
+    ),
+    ApiDoc(
+        get_component_metadata("src/components/input/Input.js"),
+        component_name="Input"
+    ),
+    ApiDoc(
+        get_component_metadata("src/components/input/InputGroupAddon.js"),
+        component_name="InputGroupAddon"
+    ),
+    ApiDoc(
+        get_component_metadata("src/components/input/InputGroupText.js"),
+        component_name="InputGroupText"
+    ),
 ]
