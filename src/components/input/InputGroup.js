@@ -15,7 +15,7 @@ InputGroup.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
