@@ -9,6 +9,7 @@ from .cards_content import content as cards_content
 from .collapse_content import get_content as get_collapse_content
 from .fade_content import get_content as get_fade_content
 from .forms_content import content as forms_content
+from .input_group_content import content as input_group_content
 from .layout_content import content as layout_content
 from .popover_content import get_content as get_popover_content
 from .progress_content import get_content as get_progress_content
@@ -37,6 +38,7 @@ sidebar_entries = [
     SidebarEntry("collapse", "Collapse"),
     SidebarEntry("fade", "Fade"),
     SidebarEntry("forms", "Forms"),
+    SidebarEntry("input_group", "Input Group"),
     SidebarEntry("layout", "Layout"),
     SidebarEntry("popover", "Popover"),
     SidebarEntry("progress", "Progress"),
@@ -65,6 +67,7 @@ class ComponentsPage:
             "collapse": get_collapse_content(self._app),
             "fade": get_fade_content(self._app),
             "forms": forms_content,
+            "input_group": input_group_content,
             "layout": layout_content,
             "popover": get_popover_content(self._app),
             "progress": get_progress_content(self._app),
