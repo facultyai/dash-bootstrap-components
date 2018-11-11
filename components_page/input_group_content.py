@@ -24,14 +24,14 @@ content = [
     HighlightedSource(input_group_button_source),
     ApiDoc(
         get_component_metadata("src/components/input/InputGroup.js"),
-        component_name="InputGroup"
+        component_name="InputGroup",
     ),
     ApiDoc(
         get_component_metadata("src/components/input/InputGroupAddon.js"),
-        component_name="InputGroupAddon"
+        component_name="InputGroupAddon",
     ),
     ApiDoc(
         get_component_metadata("src/components/input/InputGroupText.js"),
-        component_name="InputGroupText"
+        component_name="InputGroupText",
     ),
 ]

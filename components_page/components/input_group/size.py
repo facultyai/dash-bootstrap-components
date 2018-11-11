@@ -9,26 +9,26 @@ input_group = html.Div(
                 dbc.InputGroup(
                     [
                         dbc.InputGroupAddon("@lg", addon_type="prepend"),
-                        dbc.Input()
+                        dbc.Input(),
                     ],
-                    size="lg"
+                    size="lg",
                 ),
                 html.Br(),
                 dbc.InputGroup(
                     [
                         dbc.InputGroupAddon("@normal", addon_type="prepend"),
-                        dbc.Input()
+                        dbc.Input(),
                     ]
                 ),
                 html.Br(),
                 dbc.InputGroup(
                     [
                         dbc.InputGroupAddon("@sm", addon_type="prepend"),
-                        dbc.Input()
+                        dbc.Input(),
                     ],
-                    size="sm"
+                    size="sm",
                 ),
             ]
-        )
+        ),
     ]
 )
