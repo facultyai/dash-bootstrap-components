@@ -27,10 +27,6 @@ content = [
         component_name="InputGroup"
     ),
     ApiDoc(
-        get_component_metadata("src/components/input/Input.js"),
-        component_name="Input"
-    ),
-    ApiDoc(
         get_component_metadata("src/components/input/InputGroupAddon.js"),
         component_name="InputGroupAddon"
     ),
