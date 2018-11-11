@@ -57,25 +57,34 @@ Fade.propTypes = {
   ]),
 
   /**
-   * Make component appear when page loads.
+   * Show fade-in animation on initial page load. Default: True.
    */
   appear: PropTypes.bool,
 
   /**
-   * Enable or disable enter transitions.
+   * Enable or disable enter transitions. Default: True.
    */
   enter: PropTypes.bool,
 
   /**
-   * Enable or disable exit transitions.
+   * Enable or disable exit transitions. Default: True.
    */
   exit: PropTypes.bool,
 
   /**
-   * HTML tag to use for the fade component, default div.
+   * HTML tag to use for the fade component. Default: div.
    */
   tag: PropTypes.string,
+
+  /**
+   * CSS base class. Note that this class is always used, whether the
+   * components are showing or hidden. Default: 'fade'
+   */
   base_class: PropTypes.string,
+
+  /**
+   * CSS class used when the fade contents are displayed. Default: 'show'.
+   */
   base_class_active: PropTypes.string
 };
 
