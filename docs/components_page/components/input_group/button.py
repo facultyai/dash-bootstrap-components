@@ -9,13 +9,12 @@ input_group = html.Div(
                 dbc.InputGroup(
                     [
                         dbc.InputGroupAddon(
-                            dbc.Button("Button text"),
-                            addon_type="prepend"
+                            dbc.Button("Button text"), addon_type="prepend"
                         ),
-                        dbc.Input()
+                        dbc.Input(),
                     ]
                 )
             ]
-        )
+        ),
     ]
 )
