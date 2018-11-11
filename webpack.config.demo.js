@@ -13,8 +13,11 @@ var environment = JSON.stringify(NODE_ENV);
 var LIBRARY_NAME = 'dash_bootstrap_components';
 var BUILD_PATH = path.join(ROOT, 'lib');
 
+var publicHost = process.env.DEMO_PUBLIC_HOST || undefined;
+
 /* eslint-disable no-console */
 console.log('Current environment: ' + environment);
+console.log('Using public host: ' + publicHost || '<default>');
 /* eslint-enable no-console */
 
 module.exports = {
@@ -56,6 +59,9 @@ module.exports = {
   ],
   entry: {
     bundle: [path.join(ROOT, 'demo/index.js')]
+  },
+  devServer: {
+    public: publicHost,
   },
   output: {
     library: LIBRARY_NAME,
