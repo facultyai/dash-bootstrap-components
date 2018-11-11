@@ -9,9 +9,17 @@ input_group = html.Div(
                 dbc.InputGroup(
                     [
                         dbc.InputGroupAddon("@", addon_type="prepend"),
-                        dbc.Input(placeholder="username")
+                        dbc.Input(placeholder="username"),
+                    ]
+                ),
+                html.Br(),
+                dbc.InputGroup(
+                    [
+                        dbc.Input(placeholder="username"),
+                        dbc.InputGroupAddon("@example.com", addon_type="append"),
                     ]
                 )
+
             ]
         )
     ]
