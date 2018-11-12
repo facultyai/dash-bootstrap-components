@@ -20,5 +20,13 @@ content = [
     ExampleContainer(dropdown_size),
     HighlightedSource(dropdown_size_source),
     ExampleContainer(dropdown_direction),
-    HighlightedSource(dropdown_direction_source)
+    HighlightedSource(dropdown_direction_source),
+    ApiDoc(
+        get_component_metadata("src/components/DropdownMenu.js"),
+        component_name="DropdownMenu"
+    ),
+    ApiDoc(
+        get_component_metadata("src/components/DropdownMenuItem.js"),
+        component_name="DropdownMenuItem"
+    )
 ]
