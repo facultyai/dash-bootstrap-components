@@ -9,7 +9,7 @@ items = [
 
 dropdown = html.Div(
     [
-        html.H2("Dropdown sizing"),
+        html.H4("Dropdown sizing"),
         html.Div(
             [
                 dbc.DropdownMenu(label="lg dropdown", children=items, style={"margin-bottom": "1rem"}),
