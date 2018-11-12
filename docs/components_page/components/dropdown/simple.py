@@ -9,7 +9,12 @@ dropdown = html.Div(
             children=[
                 dbc.DropdownMenuItem("First"),
                 dbc.DropdownMenuItem(divider=True),
+                dbc.DropdownMenuItem("Links", header=True),
                 dbc.DropdownMenuItem("Internal link", href="/l/components/alerts"),
+                dbc.DropdownMenuItem("External link", href="https://github.com/asidatascience/dash-bootstrap-components"),
+                dbc.DropdownMenuItem(divider=True),
+                dbc.DropdownMenuItem("Disabled", disabled=True),
+                dbc.DropdownMenuItem("Active", active=True),
             ]
         )
     ]
