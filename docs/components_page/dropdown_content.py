@@ -4,13 +4,17 @@ from .helpers import ExampleContainer, HighlightedSource
 from .api_doc import ApiDoc
 from .metadata import get_component_metadata
 from .components.dropdown.simple import dropdown as dropdown_simple
+from .components.dropdown.size import dropdown as dropdown_size
 
 HERE = Path(__file__).parent
 DROPDOWN = HERE / "components" / "dropdown"
 
 dropdown_simple_source = (DROPDOWN / "simple.py").open().read()
+dropdown_size_source = (DROPDOWN / "size.py").open().read()
 
 content = [
     ExampleContainer(dropdown_simple),
-    HighlightedSource(dropdown_simple_source)
+    HighlightedSource(dropdown_simple_source),
+    ExampleContainer(dropdown_size),
+    HighlightedSource(dropdown_size_source)
 ]
