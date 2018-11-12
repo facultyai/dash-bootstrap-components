@@ -11,5 +11,6 @@ jumbotron_source = (HERE / "components" / "jumbotron.py").open().read()
 
 content = [
     ExampleContainer(jumbotron),
-    HighlightedSource(jumbotron_source)
+    HighlightedSource(jumbotron_source),
+    ApiDoc(get_component_metadata("src/components/Jumbotron.js"))
 ]
