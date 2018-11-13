@@ -1,14 +1,12 @@
 from pathlib import Path
 
-from .helpers import ExampleContainer, HighlightedSource
 from .api_doc import ApiDoc
-from .metadata import get_component_metadata
-
-from .components.cards.simple import cards as cards_simple
+from .components.cards.columns import cards as cards_columns
 from .components.cards.content_types import cards as cards_content_types
 from .components.cards.group import cards as cards_group
-from .components.cards.columns import cards as cards_columns
-
+from .components.cards.simple import cards as cards_simple
+from .helpers import ExampleContainer, HighlightedSource
+from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 CARDS = HERE / "components" / "cards"

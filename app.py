@@ -1,12 +1,11 @@
 import dash
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 from components_page import ComponentsPage
 from demos.demo_layout import DemoLayoutPage
-
 
 BOOTSTRAP_CSS = (
     "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"

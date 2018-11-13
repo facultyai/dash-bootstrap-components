@@ -1,10 +1,9 @@
 from pathlib import Path
 
+from .api_doc import ApiDoc
 from .components.badges import badges
 from .helpers import ExampleContainer, HighlightedSource
-from .api_doc import ApiDoc
 from .metadata import get_component_metadata
-
 
 HERE = Path(__file__).parent
 
