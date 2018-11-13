@@ -16,7 +16,7 @@ describe('Simple DropdownMenu', () => {
 
   beforeAll(() => {
     dropdownMenu = shallow(
-      <DropdownMenu>
+      <DropdownMenu label="Label">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
     )
@@ -33,4 +33,16 @@ describe('Simple DropdownMenu', () => {
 
   it('should create a reactstrap dropdown menu', () =>
     expect(rsDropdownMenu).toHaveLength(1));
+
+  it('should set the caret option in the toggle', () =>
+    expect(rsDropdownToggle.prop('caret')).toBe(true))
+
+  it('should pass the label onto the toggle', () =>
+    expect(rsDropdownToggle.prop('children')).toEqual('Label'))
+
+  it('should pass its own children onto the reactstrap dropdown menu', () => {
+    const dropdownMenuChildren = rsDropdownMenu.find(DropdownMenuItem)
+    expect(dropdownMenuChildren).toHaveLength(1)
+    expect(dropdownMenuChildren.prop('children')).toEqual('Item 1')
+  })
 })
