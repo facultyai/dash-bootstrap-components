@@ -1,13 +1,11 @@
 from pathlib import Path
 
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
-from .metadata import get_component_metadata
-
 from .components.buttons.group import buttons as buttons_group
 from .components.buttons.outline import buttons as buttons_outline
 from .components.buttons.simple import buttons as buttons_simple
-
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
+from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 BUTTONS = HERE / "components" / "buttons"

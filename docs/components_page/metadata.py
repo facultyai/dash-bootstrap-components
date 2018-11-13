@@ -1,6 +1,6 @@
+import collections
 import json
 from functools import lru_cache
-import collections
 
 import dash_bootstrap_components as dbc
 

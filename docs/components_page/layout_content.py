@@ -2,10 +2,7 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .helpers import ExampleContainer, HighlightedSource
 from .api_doc import ApiDoc
-from .metadata import get_component_metadata
-
 from .components.layout.breakpoints import row as layout_breakpoints
 from .components.layout.horizontal import row as layout_horizontal
 from .components.layout.no_gutters import row as layout_no_gutters
@@ -13,7 +10,8 @@ from .components.layout.order_offset import row as layout_order_offset
 from .components.layout.simple import row as layout_simple
 from .components.layout.vertical import row as layout_vertical
 from .components.layout.width import row as layout_width
-
+from .helpers import ExampleContainer, HighlightedSource
+from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 LAYOUT = HERE / "components" / "layout"
