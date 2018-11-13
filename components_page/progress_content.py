@@ -1,9 +1,8 @@
 from pathlib import Path
 
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .metadata import get_component_metadata
-
 
 HERE = Path(__file__).parent
 
