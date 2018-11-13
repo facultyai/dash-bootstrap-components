@@ -11,10 +11,8 @@ from .fade_content import get_content as get_fade_content
 from .forms_content import content as forms_content
 from .layout_content import content as layout_content
 from .popover_content import get_content as get_popover_content
-from .tooltip_content import content as tooltip_content
-
 from .sidebar import Sidebar, SidebarEntry
-
+from .tooltip_content import content as tooltip_content
 
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"

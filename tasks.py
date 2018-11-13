@@ -1,11 +1,12 @@
 import os
 import tempfile
-from subprocess import call
 from pathlib import Path
+from subprocess import call
 
-from termcolor import cprint
-from invoke import task, run as invoke_run
 import semver
+from invoke import run as invoke_run
+from invoke import task
+from termcolor import cprint
 
 VERSION_TEMPLATE = """__version__ = "{version_string}"
 """

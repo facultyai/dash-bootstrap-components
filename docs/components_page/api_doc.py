@@ -1,11 +1,11 @@
 from itertools import chain
-import dash_html_components as html
 
+import dash_html_components as html
 from dash.development.base_component import (
-    js_to_py_type,
-    reorder_props,
     filter_props,
+    js_to_py_type,
     parse_events,
+    reorder_props,
 )
 
 
