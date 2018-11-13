@@ -9,7 +9,7 @@ tab1_content = dbc.Card(
         ]
     ),
     # add small margin to the top of the card
-    className="mt-3"
+    className="mt-3",
 )
 
 tab2_content = dbc.Card(
@@ -20,7 +20,7 @@ tab2_content = dbc.Card(
         ]
     ),
     # add small margin to the top of the card
-    className="mt-3"
+    className="mt-3",
 )
 
 
