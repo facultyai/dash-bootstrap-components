@@ -12,7 +12,6 @@ from .forms_content import content as forms_content
 from .layout_content import content as layout_content
 from .popover_content import get_content as get_popover_content
 from .progress_content import get_content as get_progress_content
-
 from .sidebar import Sidebar, SidebarEntry
 from .tooltip_content import content as tooltip_content
 
