@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import {
   Dropdown as RSDropdown,
   DropdownToggle as RSDropdownToggle,
@@ -45,4 +45,11 @@ describe('Simple DropdownMenu', () => {
     expect(dropdownMenuChildren).toHaveLength(1)
     expect(dropdownMenuChildren.prop('children')).toEqual('Item 1')
   })
+
+  it('should open when the `toggle` callback is called', () => {
+    expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(false)
+    rsDropdown.prop('toggle')();
+    expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(true)
+  })
+
 })

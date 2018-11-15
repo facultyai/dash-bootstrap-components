@@ -50,7 +50,8 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.defaultProps = {
-  caret: true
+  caret: true,
+  disabled: false
 };
 
 DropdownMenu.propTypes = {
