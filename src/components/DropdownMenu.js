@@ -97,7 +97,10 @@ DropdownMenu.propTypes = {
   /**
    * Set this to 'prepend' or 'append' if the dropdown menu is being used in an input group.
    */
-  addon_type: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['prepend', 'append'])]),
+  addon_type: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['prepend', 'append'])
+  ]),
 
   /**
    * Disable the dropdown.
