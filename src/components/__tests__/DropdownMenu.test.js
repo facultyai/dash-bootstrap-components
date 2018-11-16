@@ -54,4 +54,58 @@ describe('Simple DropdownMenu', () => {
     expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(false)
   })
 
+  afterAll(() => {
+    dropdownMenu.unmount()
+  })
+
+})
+
+describe('DropdownMenu - options', () => {
+
+  let dropdownMenu;
+  let rsDropdown;
+  let rsDropdownToggle;
+  let rsDropdownMenu;
+
+  it('in_navbar', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" in_navbar={true}>
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown);
+
+    expect(rsDropdown.prop('inNavbar')).toBe(true)
+  })
+
+  it('disabled', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" disabled={true}>
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown);
+    rsDropdownToggle = dropdownMenu.find(RSDropdownToggle);
+
+    expect(rsDropdown.prop('disabled')).toBe(true)
+    expect(rsDropdownToggle.prop('disabled')).toBe(true)
+  })
+
+  it('nav', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" nav={true}>
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown);
+    rsDropdownToggle = dropdownMenu.find(RSDropdownToggle);
+
+    expect(rsDropdown.prop('nav')).toBe(true)
+    expect(rsDropdownToggle.prop('nav')).toBe(true)
+  })
+
+  afterEach(() => {
+    dropdownMenu.unmount();
+  })
+
 })
