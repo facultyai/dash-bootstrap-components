@@ -104,6 +104,22 @@ describe('DropdownMenu - options', () => {
     expect(rsDropdownToggle.prop('nav')).toBe(true)
   })
 
+  it('multiple items', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" nav={true}>
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+        <DropdownMenuItem>Item 2</DropdownMenuItem>
+        <DropdownMenuItem>Item 3</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdownMenu = dropdownMenu.find(RSDropdownMenu);
+
+    expect(rsDropdownMenu.children()).toHaveLength(3)
+    expect(rsDropdownMenu.childAt(0).prop('children')).toEqual('Item 1')
+    expect(rsDropdownMenu.childAt(1).prop('children')).toEqual('Item 2')
+    expect(rsDropdownMenu.childAt(2).prop('children')).toEqual('Item 3')
+  })
+
   afterEach(() => {
     dropdownMenu.unmount();
   })
