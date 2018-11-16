@@ -46,10 +46,12 @@ describe('Simple DropdownMenu', () => {
     expect(dropdownMenuChildren.prop('children')).toEqual('Item 1')
   })
 
-  it('should open when the `toggle` callback is called', () => {
+  it('should open and close when the `toggle` callback is called', () => {
     expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(false)
     rsDropdown.prop('toggle')();
     expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(true)
+    rsDropdown.prop('toggle')();
+    expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(false)
   })
 
 })
