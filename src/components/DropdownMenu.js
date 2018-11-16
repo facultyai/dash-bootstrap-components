@@ -29,6 +29,7 @@ class DropdownMenu extends React.Component {
       disabled,
       caret,
       in_navbar,
+      addon_type,
       ...otherProps
     } = this.props;
     return (
@@ -38,6 +39,7 @@ class DropdownMenu extends React.Component {
         nav={nav}
         disabled={disabled}
         inNavbar={in_navbar}
+        addonType={addon_type}
         {...otherProps}
       >
         <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
@@ -91,6 +93,11 @@ DropdownMenu.propTypes = {
    * For Dropdown usage inside a Navbar (disables popper)
    */
   in_navbar: PropTypes.bool,
+
+  /**
+   * Set this to 'prepend' or 'append' if the dropdown menu is being used in an input group.
+   */
+  addon_type: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['prepend', 'append'])]),
 
   /**
    * Disable the dropdown.

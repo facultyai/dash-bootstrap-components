@@ -106,7 +106,7 @@ describe('DropdownMenu - options', () => {
 
   it('multiple items', () => {
     dropdownMenu = shallow(
-      <DropdownMenu label="Label" nav={true}>
+      <DropdownMenu label="Label">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
         <DropdownMenuItem>Item 2</DropdownMenuItem>
         <DropdownMenuItem>Item 3</DropdownMenuItem>
@@ -118,6 +118,50 @@ describe('DropdownMenu - options', () => {
     expect(rsDropdownMenu.childAt(0).prop('children')).toEqual('Item 1')
     expect(rsDropdownMenu.childAt(1).prop('children')).toEqual('Item 2')
     expect(rsDropdownMenu.childAt(2).prop('children')).toEqual('Item 3')
+  })
+
+  it('addon_type -- undefined', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label">
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown)
+
+    expect(rsDropdown.prop('addonType')).toBeFalsy()
+  })
+
+  it('addon_type -- true', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" addon_type={true}>
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown)
+
+    expect(rsDropdown.prop('addonType')).toBe(true)
+  })
+
+  it('addon_type -- prepend', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" addon_type="prepend">
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown)
+
+    expect(rsDropdown.prop('addonType')).toEqual('prepend')
+  })
+
+  it('addon_type -- append', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" addon_type="append">
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown)
+
+    expect(rsDropdown.prop('addonType')).toEqual('append')
   })
 
   afterEach(() => {
