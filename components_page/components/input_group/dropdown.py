@@ -48,7 +48,6 @@ def on_button_click(n_clicks_t1, n_clicks_t2, n_clicks_tclear):
     n_clicks_t2 = n_clicks_t2 if n_clicks_t2 is not None else -1
     n_clicks_tclear = n_clicks_tclear if n_clicks_tclear is not None else -1
     latest_timestamp = max(n_clicks_tclear, n_clicks_t1, n_clicks_t2)
-    print(latest_timestamp)
     if latest_timestamp == n_clicks_tclear:
         return ""
     elif latest_timestamp == n_clicks_t1:
