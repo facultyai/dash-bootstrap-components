@@ -119,6 +119,10 @@ DropdownMenu.propTypes = {
    */
   caret: PropTypes.bool,
 
+  /**
+   * Size of the dropdown. `sm` corresponds to small, `md` to medium
+   * and `lg` to large.
+   */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
