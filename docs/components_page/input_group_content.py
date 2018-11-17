@@ -22,9 +22,15 @@ def get_content(app):
         HighlightedSource(input_group_simple_source),
         ExampleContainer(input_group_size),
         HighlightedSource(input_group_size_source),
-        ExampleContainer(load_source_with_app(app, input_group_button_source, "input_group")),
+        ExampleContainer(
+            load_source_with_app(app, input_group_button_source, "input_group")
+        ),
         HighlightedSource(input_group_button_source),
-        ExampleContainer(load_source_with_app(app, input_group_dropdown_source, "input_group")),
+        ExampleContainer(
+            load_source_with_app(
+                app, input_group_dropdown_source, "input_group"
+            )
+        ),
         HighlightedSource(input_group_dropdown_source),
         ApiDoc(
             get_component_metadata("src/components/input/InputGroup.js"),

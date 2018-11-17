@@ -2,6 +2,15 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
+
+dropdown_menu_items = [
+    dbc.DropdownMenuItem("Deep thought", id="dropdown-menu-item-1"),
+    dbc.DropdownMenuItem("Hal", id="dropdown-menu-item-2"),
+    dbc.DropdownMenuItem(divider=True),
+    dbc.DropdownMenuItem("Clear", id="dropdown-menu-item-clear"),
+]
+
+
 input_group = html.Div(
     [
         html.H4("DropdownMenu"),
@@ -10,16 +19,13 @@ input_group = html.Div(
                 dbc.InputGroup(
                     [
                         dbc.DropdownMenu(
-                            [
-                                dbc.DropdownMenuItem("Deep thought", id="dropdown-menu-item-1"),
-                                dbc.DropdownMenuItem("Hal", id="dropdown-menu-item-2"),
-                                dbc.DropdownMenuItem(divider=True),
-                                dbc.DropdownMenuItem("Clear", id="dropdown-menu-item-clear"),
-                            ],
+                            dropdown_menu_items,
                             label="Generate",
-                            addon_type="prepend"
+                            addon_type="prepend",
                         ),
-                        dbc.Input(id="input-group-dropdown-input", placeholder="name"),
+                        dbc.Input(
+                            id="input-group-dropdown-input", placeholder="name"
+                        ),
                     ]
                 )
             ]
@@ -30,7 +36,11 @@ input_group = html.Div(
 
 @app.callback(
     Output("input-group-dropdown-input", "value"),
-    [Input("dropdown-menu-item-1", "n_clicks_timestamp"), Input("dropdown-menu-item-2", "n_clicks_timestamp"), Input("dropdown-menu-item-clear", "n_clicks_timestamp")]
+    [
+        Input("dropdown-menu-item-1", "n_clicks_timestamp"),
+        Input("dropdown-menu-item-2", "n_clicks_timestamp"),
+        Input("dropdown-menu-item-clear", "n_clicks_timestamp"),
+    ],
 )
 def on_button_click(n_clicks_t1, n_clicks_t2, n_clicks_tclear):
     if n_clicks_t1 is None and n_clicks_t2 is None:

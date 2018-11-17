@@ -11,9 +11,11 @@ input_group = html.Div(
                     [
                         dbc.InputGroupAddon(
                             dbc.Button("Random name", id="input-group-button"),
-                            addon_type="prepend"
+                            addon_type="prepend",
                         ),
-                        dbc.Input(id="input-group-button-input", placeholder="name"),
+                        dbc.Input(
+                            id="input-group-button-input", placeholder="name"
+                        ),
                     ]
                 )
             ]
@@ -21,9 +23,10 @@ input_group = html.Div(
     ]
 )
 
+
 @app.callback(
     Output("input-group-button-input", "value"),
-    [Input("input-group-button", "n_clicks")]
+    [Input("input-group-button", "n_clicks")],
 )
 def on_button_click(n_clicks):
     if n_clicks:
