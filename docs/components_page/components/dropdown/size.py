@@ -12,10 +12,19 @@ dropdown = html.Div(
         html.H4("Dropdown sizing"),
         html.Div(
             [
-                dbc.DropdownMenu(label="lg dropdown", children=items, style={"margin-bottom": "1rem"}),
-                dbc.DropdownMenu(label="normal dropdown", children=items, style={"margin-bottom": "1rem"}),
-                dbc.DropdownMenu(label="sm dropdown", children=items),
+                dbc.DropdownMenu(
+                    label="large dropdown",
+                    bs_size="lg",
+                    children=items,
+                    className="mb-3",
+                ),
+                dbc.DropdownMenu(
+                    label="normal dropdown", children=items, className="mb-3"
+                ),
+                dbc.DropdownMenu(
+                    label="small dropdown", bs_size="sm", children=items
+                ),
             ]
-        )
+        ),
     ]
 )
