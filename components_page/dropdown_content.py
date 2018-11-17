@@ -23,10 +23,10 @@ content = [
     HighlightedSource(dropdown_direction_source),
     ApiDoc(
         get_component_metadata("src/components/DropdownMenu.js"),
-        component_name="DropdownMenu"
+        component_name="DropdownMenu",
     ),
     ApiDoc(
         get_component_metadata("src/components/DropdownMenuItem.js"),
-        component_name="DropdownMenuItem"
-    )
+        component_name="DropdownMenuItem",
+    ),
 ]
