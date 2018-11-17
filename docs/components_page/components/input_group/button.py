@@ -1,11 +1,10 @@
-
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 input_group = html.Div(
     [
-        html.H4("Buttons"),
+        html.H4("Button"),
         html.Div(
             [
                 dbc.InputGroup(
