@@ -123,7 +123,7 @@ DropdownMenu.propTypes = {
    * Size of the dropdown. `sm` corresponds to small, `md` to medium
    * and `lg` to large.
    */
-  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  bs_size: PropTypes.oneOf(['sm', 'md', 'lg'])
 };
 
 export default DropdownMenu;
