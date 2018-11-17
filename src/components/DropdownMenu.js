@@ -30,6 +30,7 @@ class DropdownMenu extends React.Component {
       caret,
       in_navbar,
       addon_type,
+      bs_size,
       ...otherProps
     } = this.props;
     return (
@@ -40,6 +41,7 @@ class DropdownMenu extends React.Component {
         disabled={disabled}
         inNavbar={in_navbar}
         addonType={addon_type}
+        size={bs_size}
         {...otherProps}
       >
         <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
@@ -115,7 +117,9 @@ DropdownMenu.propTypes = {
   /**
    * Add caret to dropdown toggle
    */
-  caret: PropTypes.bool
+  caret: PropTypes.bool,
+
+  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default DropdownMenu;
