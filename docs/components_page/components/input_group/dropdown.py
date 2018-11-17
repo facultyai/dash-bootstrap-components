@@ -1,7 +1,6 @@
-import dash_html_components as html
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 from dash.dependencies import Input, Output
-
 
 dropdown_menu_items = [
     dbc.DropdownMenuItem("Deep thought", id="dropdown-menu-item-1"),

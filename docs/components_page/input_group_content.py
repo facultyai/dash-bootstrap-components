@@ -1,11 +1,10 @@
 from pathlib import Path
 
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
 from .api_doc import ApiDoc
-from .metadata import get_component_metadata
-
 from .components.input_group.simple import input_group as input_group_simple
 from .components.input_group.size import input_group as input_group_size
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
+from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 INPUT_GROUP = HERE / "components" / "input_group"
