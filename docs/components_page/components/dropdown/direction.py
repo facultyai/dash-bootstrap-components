@@ -14,7 +14,9 @@ dropdown = html.Div(
             [
                 dbc.Col(
                     dbc.DropdownMenu(
-                        label="Dropup", children=items, direction="up"
+                        label="Dropdown (default)",
+                        children=items,
+                        direction="down",
                     )
                 ),
                 dbc.Col(
