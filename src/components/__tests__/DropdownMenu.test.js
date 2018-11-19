@@ -164,6 +164,28 @@ describe('DropdownMenu - options', () => {
     expect(rsDropdown.prop('addonType')).toEqual('append')
   })
 
+  it('bs_size -- undefined', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label">
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown)
+
+    expect(rsDropdown.prop('size')).toBeUndefined()
+  })
+
+  it('bs_size -- defined', () => {
+    dropdownMenu = shallow(
+      <DropdownMenu label="Label" bs_size="sm">
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+      </DropdownMenu>
+    )
+    rsDropdown = dropdownMenu.find(RSDropdown)
+
+    expect(rsDropdown.prop('size')).toEqual('sm')
+  })
+
   afterEach(() => {
     dropdownMenu.unmount();
   })
