@@ -15,9 +15,7 @@ def ExampleContainer(component):
     return html.Div(component, className="example-container")
 
 
-def load_source_with_locals(
-    source, component_name, globals_dict=None
-):
+def load_source_with_locals(source, component_name, globals_dict=None):
     """
     Execute a source snippet, injecting the variables specified in globals_dict
 
