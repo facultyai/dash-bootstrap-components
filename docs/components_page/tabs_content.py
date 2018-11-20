@@ -37,7 +37,6 @@ def get_content(app):
                 tabs_active_source,
                 "tabs",
                 {
-                    "dbc": dbc,
                     "tab1_content": tab1_content,
                     "tab2_content": tab2_content,
                 },
