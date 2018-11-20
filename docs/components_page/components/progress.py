@@ -7,7 +7,7 @@ progress = html.Div(
     [
         html.H2("Progress"),
         dbc.Progress(id="progress", value=0, striped=True, animated=True),
-        dcc.Interval(id="interval", interval=250),
+        dcc.Interval(id="interval", interval=250, n_intervals=0),
     ]
 )
 
