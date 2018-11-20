@@ -6,7 +6,7 @@ import dash_html_components as html
 from .api_doc import ApiDoc
 from .components.tabs.simple import tab1_content, tab2_content
 from .components.tabs.simple import tabs as tabs_simple
-from .helpers import ExampleContainer, HighlightedSource, load_source_with_app
+from .helpers import ExampleContainer, HighlightedSource, load_source_with_locals
 from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
@@ -32,11 +32,11 @@ def get_content(app):
         HighlightedSource(tabs_simple_source),
         active_tab_blurb,
         ExampleContainer(
-            load_source_with_app(
-                app,
+            load_source_with_locals(
                 tabs_active_source,
                 "tabs",
                 {
+                    "app": app,
                     "tab1_content": tab1_content,
                     "tab2_content": tab2_content,
                 },
