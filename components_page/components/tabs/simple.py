@@ -8,7 +8,6 @@ tab1_content = dbc.Card(
             dbc.Button("Click here", color="success"),
         ]
     ),
-    # add small margin to the top of the card
     className="mt-3",
 )
 
@@ -19,7 +18,6 @@ tab2_content = dbc.Card(
             dbc.Button("Don't click here", color="danger"),
         ]
     ),
-    # add small margin to the top of the card
     className="mt-3",
 )
 
