@@ -87,9 +87,10 @@ DropdownMenu.propTypes = {
   label: PropTypes.string,
 
   /**
-   * Direction in which to expand the dropdown.
+   * Direction in which to expand the dropdown. Note that expanding
+   * the dropdown upwards is currently unsupported.
    */
-  direction: PropTypes.oneOf(['up', 'down', 'left', 'right']),
+  direction: PropTypes.oneOf(['down', 'left', 'right']),
 
   /**
    * For Dropdown usage inside a Navbar (disables popper)
