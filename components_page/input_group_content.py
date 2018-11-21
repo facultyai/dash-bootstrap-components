@@ -6,7 +6,7 @@ from .components.input_group.size import input_group as input_group_size
 from .helpers import (
     ExampleContainer,
     HighlightedSource,
-    load_source_with_locals,
+    load_source_with_environment,
 )
 from .metadata import get_component_metadata
 
@@ -26,13 +26,13 @@ def get_content(app):
         ExampleContainer(input_group_size),
         HighlightedSource(input_group_size_source),
         ExampleContainer(
-            load_source_with_locals(
+            load_source_with_environment(
                 input_group_button_source, "input_group", {"app": app}
             )
         ),
         HighlightedSource(input_group_button_source),
         ExampleContainer(
-            load_source_with_locals(
+            load_source_with_environment(
                 input_group_dropdown_source, "input_group", {"app": app}
             )
         ),
