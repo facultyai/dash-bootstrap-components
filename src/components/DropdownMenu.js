@@ -67,7 +67,7 @@ DropdownMenu.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
@@ -82,18 +82,18 @@ DropdownMenu.propTypes = {
   className: PropTypes.string,
 
   /**
-   * Label for the toggle
+   * Label for the toggle.
    */
   label: PropTypes.string,
 
   /**
    * Direction in which to expand the dropdown. Note that expanding
-   * the dropdown upwards is currently unsupported.
+   * the dropdown upwards is currently unsupported. Default: 'down'.
    */
   direction: PropTypes.oneOf(['down', 'left', 'right']),
 
   /**
-   * For Dropdown usage inside a Navbar (disables popper)
+   * Set this to True if the dropdown is inside a navbar. Default: False.
    */
   in_navbar: PropTypes.bool,
 
@@ -111,18 +111,18 @@ DropdownMenu.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * For Dropdown usage inside a Nav
+   * Set this to True if the dropdown is inside a nav. Default: False.
    */
   nav: PropTypes.bool,
 
   /**
-   * Add caret to dropdown toggle
+   * Add a caret to the dropdown toggle. Default: True.
    */
   caret: PropTypes.bool,
 
   /**
-   * Size of the dropdown. `sm` corresponds to small, `md` to medium
-   * and `lg` to large.
+   * Size of the dropdown. 'sm' corresponds to small, 'md' to medium
+   * and 'lg' to large.
    */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg'])
 };

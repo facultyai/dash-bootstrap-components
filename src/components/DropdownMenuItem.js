@@ -42,7 +42,7 @@ DropdownMenuItem.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
@@ -57,27 +57,29 @@ DropdownMenuItem.propTypes = {
   className: PropTypes.string,
 
   /**
-   * Set active CSS style
+   * Style this as 'active'.
    */
   active: PropTypes.bool,
 
   /**
-   * Set disabled CSS style
+   * Style this as 'disabled'.
    */
   disabled: PropTypes.bool,
 
   /**
-   * Create menu divider
+   * Set to True if this entry is a divider. Typically, it will have
+   * no children.
    */
   divider: PropTypes.bool,
 
   /**
-   * Create menu header
+   * Set to True if this is a header, rather than a conventional
+   * menu item.
    */
   header: PropTypes.bool,
 
   /**
-   * Link for the menu item
+   * Pass a URL (relative or absolute) to make the menu entry a link.
    */
   href: PropTypes.string,
 
