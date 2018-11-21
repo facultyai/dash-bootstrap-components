@@ -8,7 +8,7 @@ from .components.tabs.simple import tabs as tabs_simple
 from .helpers import (
     ExampleContainer,
     HighlightedSource,
-    load_source_with_locals,
+    load_source_with_environment,
 )
 from .metadata import get_component_metadata
 
@@ -35,7 +35,7 @@ def get_content(app):
         HighlightedSource(tabs_simple_source),
         active_tab_blurb,
         ExampleContainer(
-            load_source_with_locals(
+            load_source_with_environment(
                 tabs_active_source,
                 "tabs",
                 {

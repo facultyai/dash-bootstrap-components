@@ -7,7 +7,7 @@ from .components.buttons.simple import buttons as buttons_simple
 from .helpers import (
     ExampleContainer,
     HighlightedSource,
-    load_source_with_locals,
+    load_source_with_environment,
 )
 from .metadata import get_component_metadata
 
@@ -25,7 +25,7 @@ def get_content(app):
         ExampleContainer(buttons_simple),
         HighlightedSource(buttons_simple_source),
         ExampleContainer(
-            load_source_with_locals(
+            load_source_with_environment(
                 buttons_usage_source, "button", {"app": app}
             )
         ),
