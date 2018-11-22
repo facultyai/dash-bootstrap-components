@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
@@ -31,49 +29,4 @@ range_slider = dbc.FormGroup(
     ]
 )
 
-datepickersingle = dbc.FormGroup(
-    [
-        dbc.Label("DatePickerSingle", html_for="date-picker-single"),
-        dcc.DatePickerSingle(
-            id="date-picker-single", date=datetime(2018, 10, 17)
-        ),
-    ]
-)
-
-datepickerrange = dbc.FormGroup(
-    [
-        dbc.Label("DatePickerSingle", html_for="date-picker-range"),
-        dcc.DatePickerRange(
-            id="date-picker-range",
-            start_date=datetime(2018, 10, 17),
-            end_date_placeholder_text="Select date!",
-        ),
-    ]
-)
-
-datepicker_row = dbc.FormGroup(
-    [
-        dbc.Label(
-            "DatePickerRange", html_for="date-picker-range-row", width=2
-        ),
-        dbc.Col(
-            dcc.DatePickerRange(
-                id="date-picker-range-row",
-                start_date=datetime(2018, 10, 17),
-                end_date_placeholder_text="Select date!",
-            ),
-            width=10,
-        ),
-    ],
-    row=True,
-)
-
-form = [
-    html.H2("Dash Core Components"),
-    dropdown,
-    slider,
-    range_slider,
-    datepickersingle,
-    datepickerrange,
-    datepicker_row,
-]
+form = [html.H2("Dash Core Components"), dropdown, slider, range_slider]
