@@ -5,8 +5,8 @@ from dash.dependencies import Input, Output
 button = html.Div(
     [
         html.H4("Using buttons"),
-        dbc.Button("Click me", id="example-button"),
-        html.Span(id="example-output", className="ml-2"),
+        dbc.Button("Click me", id="example-button", className="mr-2"),
+        html.Span(id="example-output", style={"vertical-align": "middle"}),
     ]
 )
 
