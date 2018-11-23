@@ -1,38 +1,73 @@
 # dash-bootstrap-components
 
-This package provides [Bootstrap][bs-homepage] components for use in [Plotly Dash][dash-homepage]. It is built on top of [reactstrap][reactstrap-homepage].
+[Plotly Dash][dash-homepage] is great! However, creating the initial
+layout can create a lot of boilerplate. *dash-bootstrap-components*
+reduces this boilerplate by providing standard layouts and high-level
+components.
+
+*dash-bootstrap-components* provides [Bootstrap][bootstrap-homepage]
+components. It is built on top of [reactstrap][reactstrap-homepage].
 
 ## Installation
 
-`dash-bootstrap-components` is hosted on PyPI, and can be installed by running
+*dash-bootstrap-components* is hosted on PyPI, and can be installed by
+running
 
 ```
 pip install dash-bootstrap-components
 ```
 
-## Usage
+## Documentation
 
-`dash-bootstrap-components` uses Bootstrap CSS classes to style its components, but Bootstrap CSS is not bundled with the python package. This is so that users are able to compile Bootstrap CSS themselves and override defaults to acheive the styling they want. Consequently when using `dash-bootstrap-components` in your dashboard, you must link the CSS you wish to use yourself. There are multiple ways of doing this.
+Head over to the [*documentation*][docs-homepage] for tutorials and
+the API reference.
 
-### Link local copy of Bootstrap CSS
+## Layouts and components
 
-You can download compiled Bootstrap CSS from the [Bootstrap website][bs-download], there's also a copy in the `examples` directory of the `dash-bootstrap-components` [repository][dbc-repo].
+*dash-bootstrap-components* includes several high-level components
+that can be composed with each other or with components in
+[dash-core-components](https://dash.plot.ly/dash-core-components).
 
-Alternatively you can [download the source files][bs-source] and compile them yourself. This lets you override default styling such as colours and margin sizes.
+### Standard row and column-based layouts
 
-Once you have a copy of Bootstrap CSS, create a folder called `assets` in the root of your app directory and place the CSS inside. Your Dash app will then automatically serve and link any stylesheets saved in this directory.
+![layout](./readme-images/layout.png)
 
-### Use Bootstrap CDN
+---
 
-If you prefer not to work with a local copy of the CSS and are happy with Bootstrap defaults you can use the [Bootstrap CDN][bs-cdn]. You can either use the `external_stylesheets` keyword argument in the `dash.Dash` constructor, or add a link to your app's HTML index template. For more details, check the Plotly Dash [user guide][dash-ext-res].
+### Cards
 
-Documentation of the components available in `dash-bootstrap-components` is upcoming, for now you can see some examples in the `examples` directory.
+![cards](./readme-images/cards.png)
+
+---
+
+### Tabs
+
+![tabs](./readme-images/tabs.png)
+
+---
+
+### Forms
+
+![forms](./readme-images/forms.png)
+
+---
+
+### Dropdowns
+
+<img src="./readme-images/dropdown.png" width="200"/>
+
+---
+
+### Tooltips
+
+<img src="./readme-images/tooltips.png" width="400"/>
+
+
+... and many more. For a full list of components, head over to [the documentation][docs-components].
 
 [dash-homepage]: https://dash.plot.ly/
-[dash-ext-res]: https://dash.plot.ly/external-resources
-[bs-homepage]: https://getbootstrap.com/
-[bs-download]: https://getbootstrap.com/docs/4.1/getting-started/download/
-[bs-source]: https://getbootstrap.com/docs/4.1/getting-started/download/#source-files
-[bs-cdn]: https://getbootstrap.com/docs/4.1/getting-started/download/#bootstrapcdn
+[bootstrap-homepage]: https://getbootstrap.com/
 [dbc-repo]: https://github.com/ASIDataScience/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/
+[docs-homepage]: https://dash-bootstrap-components.opensource.asidatascience.com
+[docs-components]: https://dash-bootstrap-components.opensource.asidatascience.com/l/components
