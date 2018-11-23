@@ -3,8 +3,8 @@ from pathlib import Path
 import dash_html_components as html
 
 from .api_doc import ApiDoc
-from .components.tabs.simple import tabs as tabs_simple
 from .components.tabs.simple import tab1_content, tab2_content
+from .components.tabs.simple import tabs as tabs_simple
 from .helpers import (
     ExampleContainer,
     HighlightedSource,
