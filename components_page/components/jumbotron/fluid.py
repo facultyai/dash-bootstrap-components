@@ -1,5 +1,5 @@
-import dash_html_components as html
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
 jumbotron = dbc.Jumbotron(
     [
@@ -9,16 +9,16 @@ jumbotron = dbc.Jumbotron(
                 html.P(
                     "This jumbotron occupies the entire horizontal "
                     "space of its parent.",
-                    className="lead"
+                    className="lead",
                 ),
                 html.P(
                     "You will need to embed a fluid container in "
                     "the jumbotron.",
-                    className="lead"
-                )
+                    className="lead",
+                ),
             ],
-            fluid=True
+            fluid=True,
         )
     ],
-    fluid=True
+    fluid=True,
 )
