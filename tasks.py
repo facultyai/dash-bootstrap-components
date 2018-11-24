@@ -31,6 +31,7 @@ def prerelease(ctx, version):
      - Bump the version number
      - Push a release to pypi
     """
+    check_prerequisites()
     info(f"Releasing version {version} as prerelease")
     build_publish(version)
 
@@ -48,6 +49,7 @@ def release(ctx, version):
      - commit the version changes to source control
      - tag the commit
     """
+    check_prerequisites()
     info(f"Releasing version {version} as full release")
     release_notes_lines = get_release_notes(version)
 
@@ -188,6 +190,23 @@ def open_editor(initial_message):
         lines = f.readlines()
 
     return lines
+
+
+def check_prerequisites():
+    result = invoke_run("which twine", hide=True)
+    if result.exited != 0:
+        error(
+            "twine executable not found. "
+            "You must have twine to run this command."
+        )
+        exit(result.exited)
+    result = invoke_run("which npm", hide=True)
+    if result.exited != 0:
+        error(
+            "npm executable not found. "
+            "You must have npm to run this command."
+        )
+        exit(result.exited)
 
 
 def normalize_version(version):
