@@ -3,6 +3,7 @@ from pathlib import Path
 import dash_html_components as html
 
 from .api_doc import ApiDoc
+from .components.listgroup.colors import listgroup as listgroup_colors
 from .components.listgroup.simple import listgroup as listgroup_simple
 from .helpers import (
     ExampleContainer,
@@ -16,6 +17,7 @@ LISTGROUP = HERE / "components" / "listgroup"
 
 listgroup_simple_source = (LISTGROUP / "simple.py").open().read()
 listgroup_links_source = (LISTGROUP / "links.py").open().read()
+listgroup_colors_source = (LISTGROUP / "colors.py").open().read()
 
 links_explainer = html.P(
     [
@@ -43,6 +45,9 @@ def get_content(app):
             )
         ),
         HighlightedSource(listgroup_links_source),
+        html.H2("Colors"),
+        ExampleContainer(listgroup_colors),
+        HighlightedSource(listgroup_colors_source),
         ApiDoc(
             get_component_metadata("src/components/listgroup/ListGroup.js"),
             component_name="ListGroup",
