@@ -24,9 +24,16 @@ class DropdownMenuItem extends React.Component {
 
   render() {
     let {children, href, ...otherProps} = this.props;
-    otherProps[href ? 'preOnClick' : 'onClick'] = this.incrementClicks;
+    const useLink = href && !this.props.disabled;
+    otherProps[useLink ? 'preOnClick' : 'onClick'] = this.incrementClicks;
     return (
-      <RSDropdownItem tag={href ? Link : 'button'} href={href} {...otherProps}>
+      <RSDropdownItem
+        tag={useLink ? Link : 'button'}
+        // don't pass href if disabled otherwise reactstrap renders item
+        // as link and the cursor becomes a pointer on hover
+        href={this.props.disabled ? null : href}
+        {...otherProps}
+      >
         {children}
       </RSDropdownItem>
     );
