@@ -2,6 +2,7 @@ import os
 import tempfile
 from pathlib import Path
 from subprocess import call
+from shutil import which
 
 import semver
 from invoke import run as invoke_run
@@ -193,20 +194,14 @@ def open_editor(initial_message):
 
 
 def check_prerequisites():
-    result = invoke_run("which twine", hide=True)
-    if result.exited != 0:
-        error(
-            "twine executable not found. "
-            "You must have twine to run this command."
-        )
-        exit(result.exited)
-    result = invoke_run("which npm", hide=True)
-    if result.exited != 0:
-        error(
-            "npm executable not found. "
-            "You must have npm to run this command."
-        )
-        exit(result.exited)
+    for executable in ["twine", "npm"]:
+        if which(executable) is None:
+            error(
+                f"{executable} executable not found. "
+                f"You must have {executable} to release "
+                "dash-bootstrap-components."
+            )
+            exit(127)
 
 
 def normalize_version(version):
