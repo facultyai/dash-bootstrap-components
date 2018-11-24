@@ -16,7 +16,7 @@ class ListGroupItem extends React.Component {
         this.props.setProps({
           n_clicks: this.props.n_clicks + 1,
           n_clicks_timestamp: Date.now()
-        })
+        });
       }
     }
   }
