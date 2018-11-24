@@ -1,10 +1,36 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {ListGroupItem as RSListGroupItem} from 'reactstrap';
+import Link from '../../private/Link';
 
-const ListGroupItem = props => {
-  const {children, ...otherProps} = props;
-  return <RSListGroupItem {...otherProps}>{children}</RSListGroupItem>;
-};
+class ListGroupItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.incrementClicks = this.incrementClicks.bind(this);
+  }
+
+  incrementClicks() {
+    if (!this.props.disabled) {
+      if (this.props.setProps) {
+        this.props.setProps({
+          n_clicks: this.props.n_clicks + 1,
+          n_clicks_timestamp: Date.now()
+        })
+      }
+    }
+  }
+
+  render() {
+    let {children, href, ...otherProps} = this.props;
+    otherProps[href ? 'preOnClick' : 'onClick'] = this.incrementClicks;
+    return (
+      <RSListGroupItem tag={href ? Link : 'li'} href={href} {...otherProps}>
+        {children}
+      </RSListGroupItem>
+    );
+  }
+}
 
 ListGroupItem.propTypes = {
   /**
@@ -53,7 +79,35 @@ ListGroupItem.propTypes = {
   /**
    * Apply list-group-item-action class for hover animation etc.
    */
-  action: PropTypes.bool
+  action: PropTypes.bool,
+
+  /**
+   * Pass a URL (relative or absolute) to make the list group item a link.
+   */
+  href: PropTypes.string,
+
+  /**
+   * If true, the browser will treat this as an external link,
+   * forcing a page refresh at the new location. If false,
+   * this just changes the location without triggering a page
+   * refresh. Use this if you are observing dcc.Location, for
+   * instance. Defaults to true for absolute URLs and false
+   * otherwise.
+   */
+  external_link: PropTypes.bool,
+
+  /**
+   * An integer that represents the number of times
+   * that this element has been clicked on.
+   */
+  n_clicks: PropTypes.number,
+
+  /**
+   * An integer that represents the time (in ms since 1970)
+   * at which n_clicks changed. This can be used to tell
+   * which button was changed most recently.
+   */
+  n_clicks_timestamp: PropTypes.number
 };
 
 export default ListGroupItem;
