@@ -4,6 +4,7 @@ import dash_html_components as html
 
 from .api_doc import ApiDoc
 from .components.listgroup.colors import listgroup as listgroup_colors
+from .components.listgroup.content import listgroup as listgroup_content
 from .components.listgroup.simple import listgroup as listgroup_simple
 from .helpers import (
     ExampleContainer,
@@ -18,6 +19,7 @@ LISTGROUP = HERE / "components" / "listgroup"
 listgroup_simple_source = (LISTGROUP / "simple.py").open().read()
 listgroup_links_source = (LISTGROUP / "links.py").open().read()
 listgroup_colors_source = (LISTGROUP / "colors.py").open().read()
+listgroup_content_source = (LISTGROUP / "content.py").open().read()
 
 links_explainer = html.P(
     [
@@ -28,6 +30,19 @@ links_explainer = html.P(
         " prop in callbacks. Use the ",
         html.Code("disabled"),
         " prop to disable the link / button behaviour."
+    ]
+)
+
+content_explainer = html.P(
+    [
+        "You can pass any Dash components to the children of ",
+        html.Code("ListGroupItem"),
+        ". The components ",
+        html.Code("ListGroupItemHeading"),
+        " and ",
+        html.Code("ListGroupItemText"),
+        " automatically apply the relevant Bootstrap classes for styling "
+        "text content in list groups."
     ]
 )
 
@@ -48,6 +63,10 @@ def get_content(app):
         html.H2("Colors"),
         ExampleContainer(listgroup_colors),
         HighlightedSource(listgroup_colors_source),
+        html.H2("Custom content"),
+        content_explainer,
+        ExampleContainer(listgroup_content),
+        HighlightedSource(listgroup_content_source),
         ApiDoc(
             get_component_metadata("src/components/listgroup/ListGroup.js"),
             component_name="ListGroup",
