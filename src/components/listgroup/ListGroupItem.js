@@ -22,10 +22,11 @@ class ListGroupItem extends React.Component {
   }
 
   render() {
-    let {children, href, ...otherProps} = this.props;
+    let {children, ...otherProps} = this.props;
+    const {href, disabled} = this.props;
     otherProps[href ? 'preOnClick' : 'onClick'] = this.incrementClicks;
     return (
-      <RSListGroupItem tag={href ? Link : 'li'} href={href} {...otherProps}>
+      <RSListGroupItem tag={href && !disabled ? Link : 'li'} {...otherProps}>
         {children}
       </RSListGroupItem>
     );
