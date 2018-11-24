@@ -11,10 +11,10 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 CARDS = HERE / "components" / "cards"
 
-cards_simple_source = (CARDS / "simple.py").open().read()
-cards_content_type_source = (CARDS / "content_types.py").open().read()
-cards_group_source = (CARDS / "group.py").open().read()
-cards_columns_source = (CARDS / "columns.py").open().read()
+cards_simple_source = (CARDS / "simple.py").read_text()
+cards_content_type_source = (CARDS / "content_types.py").read_text()
+cards_group_source = (CARDS / "group.py").read_text()
+cards_columns_source = (CARDS / "columns.py").read_text()
 
 
 content = [

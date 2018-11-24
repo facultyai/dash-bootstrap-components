@@ -9,8 +9,8 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 JUMBOTRON = HERE / "components" / "jumbotron"
 
-jumbotron_simple_source = (JUMBOTRON / "simple.py").open().read()
-jumbotron_fluid_source = (JUMBOTRON / "fluid.py").open().read()
+jumbotron_simple_source = (JUMBOTRON / "simple.py").read_text()
+jumbotron_fluid_source = (JUMBOTRON / "fluid.py").read_text()
 
 content = [
     ExampleContainer(jumbotron_simple),

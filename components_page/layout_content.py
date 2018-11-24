@@ -16,13 +16,13 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 LAYOUT = HERE / "components" / "layout"
 
-layout_simple_source = (LAYOUT / "simple.py").open().read()
-layout_width_source = (LAYOUT / "width.py").open().read()
-layout_order_offset_source = (LAYOUT / "order_offset.py").open().read()
-layout_breakpoints_source = (LAYOUT / "breakpoints.py").open().read()
-layout_no_gutters_source = (LAYOUT / "no_gutters.py").open().read()
-layout_vertical_source = (LAYOUT / "vertical.py").open().read()
-layout_horizontal_source = (LAYOUT / "horizontal.py").open().read()
+layout_simple_source = (LAYOUT / "simple.py").read_text()
+layout_width_source = (LAYOUT / "width.py").read_text()
+layout_order_offset_source = (LAYOUT / "order_offset.py").read_text()
+layout_breakpoints_source = (LAYOUT / "breakpoints.py").read_text()
+layout_no_gutters_source = (LAYOUT / "no_gutters.py").read_text()
+layout_vertical_source = (LAYOUT / "vertical.py").read_text()
+layout_horizontal_source = (LAYOUT / "horizontal.py").read_text()
 
 
 content = html.Div(

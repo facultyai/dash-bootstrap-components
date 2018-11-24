@@ -10,7 +10,7 @@ from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 
-collapse_source = (HERE / "components" / "collapse.py").open().read()
+collapse_source = (HERE / "components" / "collapse.py").read_text()
 
 
 def get_content(app):

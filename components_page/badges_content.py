@@ -7,7 +7,7 @@ from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 
-badges_source = (HERE / "components" / "badges.py").open().read()
+badges_source = (HERE / "components" / "badges.py").read_text()
 
 
 content = [
