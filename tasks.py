@@ -1,8 +1,8 @@
 import os
 import tempfile
 from pathlib import Path
-from subprocess import call
 from shutil import which
+from subprocess import call
 
 import semver
 from invoke import run as invoke_run
