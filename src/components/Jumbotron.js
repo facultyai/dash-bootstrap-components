@@ -15,23 +15,23 @@ Jumbotron.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component.
    */
   children: PropTypes.node,
 
   /**
-   * Alert color, options: primary, secondary, success, info, warning, danger,
-   * link. Default is secondary
+   * If True, the jumbotron will grow to use the entire
+   * horizontal space of its parent. Default: False.
    */
   fluid: PropTypes.bool,
 
   /**
-   * Whether alert is open, default: true
+   * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
 
   /**
-   * HTML tag to use for the Jumbotron, default: div
+   * HTML tag to use for the Jumbotron. Default: div.
    */
   tag: PropTypes.string
 };
