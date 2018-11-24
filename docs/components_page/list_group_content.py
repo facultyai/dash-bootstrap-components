@@ -3,9 +3,9 @@ from pathlib import Path
 import dash_html_components as html
 
 from .api_doc import ApiDoc
-from .components.listgroup.colors import listgroup as listgroup_colors
-from .components.listgroup.content import listgroup as listgroup_content
-from .components.listgroup.simple import listgroup as listgroup_simple
+from .components.list_group.colors import list_group as list_group_colors
+from .components.list_group.content import list_group as list_group_content
+from .components.list_group.simple import list_group as list_group_simple
 from .helpers import (
     ExampleContainer,
     HighlightedSource,
@@ -14,12 +14,12 @@ from .helpers import (
 from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
-LISTGROUP = HERE / "components" / "listgroup"
+LISTGROUP = HERE / "components" / "list_group"
 
-listgroup_simple_source = (LISTGROUP / "simple.py").open().read()
-listgroup_links_source = (LISTGROUP / "links.py").open().read()
-listgroup_colors_source = (LISTGROUP / "colors.py").open().read()
-listgroup_content_source = (LISTGROUP / "content.py").open().read()
+list_group_simple_source = (LISTGROUP / "simple.py").open().read()
+list_group_links_source = (LISTGROUP / "links.py").open().read()
+list_group_colors_source = (LISTGROUP / "colors.py").open().read()
+list_group_content_source = (LISTGROUP / "content.py").open().read()
 
 links_explainer = html.P(
     [
@@ -50,23 +50,23 @@ content_explainer = html.P(
 def get_content(app):
     return [
         html.H2("List Group"),
-        ExampleContainer(listgroup_simple),
-        HighlightedSource(listgroup_simple_source),
+        ExampleContainer(list_group_simple),
+        HighlightedSource(list_group_simple_source),
         html.H2("Links"),
         links_explainer,
         ExampleContainer(
             load_source_with_environment(
-                listgroup_links_source, "listgroup", {"app": app}
+                list_group_links_source, "list_group", {"app": app}
             )
         ),
-        HighlightedSource(listgroup_links_source),
+        HighlightedSource(list_group_links_source),
         html.H2("Colors"),
-        ExampleContainer(listgroup_colors),
-        HighlightedSource(listgroup_colors_source),
+        ExampleContainer(list_group_colors),
+        HighlightedSource(list_group_colors_source),
         html.H2("Custom content"),
         content_explainer,
-        ExampleContainer(listgroup_content),
-        HighlightedSource(listgroup_content_source),
+        ExampleContainer(list_group_content),
+        HighlightedSource(list_group_content_source),
         ApiDoc(
             get_component_metadata("src/components/listgroup/ListGroup.js"),
             component_name="ListGroup",

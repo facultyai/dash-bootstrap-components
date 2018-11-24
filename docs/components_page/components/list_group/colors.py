@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 
-listgroup = dbc.ListGroup(
+list_group = dbc.ListGroup(
     [
         dbc.ListGroupItem("The primary item", color="primary"),
         dbc.ListGroupItem("A secondary item", color="secondary"),
