@@ -29,7 +29,7 @@ links_explainer = html.P(
         html.Code("n_clicks"),
         " prop in callbacks. Use the ",
         html.Code("disabled"),
-        " prop to disable the link / button behaviour."
+        " prop to disable the link / button behaviour.",
     ]
 )
 
@@ -42,7 +42,7 @@ content_explainer = html.P(
         " and ",
         html.Code("ListGroupItemText"),
         " automatically apply the relevant Bootstrap classes for styling "
-        "text content in list groups."
+        "text content in list groups.",
     ]
 )
 
