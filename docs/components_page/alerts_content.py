@@ -7,7 +7,7 @@ from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 
-source = (HERE / "components" / "alerts.py").open().read()
+source = (HERE / "components" / "alerts.py").read_text()
 
 
 content = [

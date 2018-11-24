@@ -10,7 +10,7 @@ from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 
-popover_source = (HERE / "components" / "popover.py").open().read()
+popover_source = (HERE / "components" / "popover.py").read_text()
 
 
 def get_content(app):

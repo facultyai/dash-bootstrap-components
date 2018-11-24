@@ -14,10 +14,10 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 BUTTONS = HERE / "components" / "buttons"
 
-buttons_simple_source = (BUTTONS / "simple.py").open().read()
-buttons_usage_source = (BUTTONS / "usage.py").open().read()
-buttons_outline_source = (BUTTONS / "outline.py").open().read()
-buttons_group_source = (BUTTONS / "group.py").open().read()
+buttons_simple_source = (BUTTONS / "simple.py").read_text()
+buttons_usage_source = (BUTTONS / "usage.py").read_text()
+buttons_outline_source = (BUTTONS / "outline.py").read_text()
+buttons_group_source = (BUTTONS / "group.py").read_text()
 
 
 def get_content(app):

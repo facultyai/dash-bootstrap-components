@@ -13,10 +13,10 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 INPUT_GROUP = HERE / "components" / "input_group"
 
-input_group_simple_source = (INPUT_GROUP / "simple.py").open().read()
-input_group_size_source = (INPUT_GROUP / "size.py").open().read()
-input_group_button_source = (INPUT_GROUP / "button.py").open().read()
-input_group_dropdown_source = (INPUT_GROUP / "dropdown.py").open().read()
+input_group_simple_source = (INPUT_GROUP / "simple.py").read_text()
+input_group_size_source = (INPUT_GROUP / "size.py").read_text()
+input_group_button_source = (INPUT_GROUP / "button.py").read_text()
+input_group_dropdown_source = (INPUT_GROUP / "dropdown.py").read_text()
 
 
 def get_content(app):

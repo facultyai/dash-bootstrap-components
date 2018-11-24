@@ -15,12 +15,12 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 FORMS = HERE / "components" / "forms"
 
-form_simple_source = (FORMS / "simple.py").open().read()
-form_radio_check_source = (FORMS / "radio_check.py").open().read()
-form_row_source = (FORMS / "row.py").open().read()
-form_grid_source = (FORMS / "grid.py").open().read()
-form_inline_source = (FORMS / "inline.py").open().read()
-form_dcc_source = (FORMS / "dcc.py").open().read()
+form_simple_source = (FORMS / "simple.py").read_text()
+form_radio_check_source = (FORMS / "radio_check.py").read_text()
+form_row_source = (FORMS / "row.py").read_text()
+form_grid_source = (FORMS / "grid.py").read_text()
+form_inline_source = (FORMS / "inline.py").read_text()
+form_dcc_source = (FORMS / "dcc.py").read_text()
 
 content = [
     ExampleContainer(form_simple),
