@@ -16,10 +16,10 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 LISTGROUP = HERE / "components" / "list_group"
 
-list_group_simple_source = (LISTGROUP / "simple.py").open().read()
-list_group_links_source = (LISTGROUP / "links.py").open().read()
-list_group_colors_source = (LISTGROUP / "colors.py").open().read()
-list_group_content_source = (LISTGROUP / "content.py").open().read()
+list_group_simple_source = (LISTGROUP / "simple.py").read_text()
+list_group_links_source = (LISTGROUP / "links.py").read_text()
+list_group_colors_source = (LISTGROUP / "colors.py").read_text()
+list_group_content_source = (LISTGROUP / "content.py").read_text()
 
 links_explainer = html.P(
     [
