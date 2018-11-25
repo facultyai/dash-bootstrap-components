@@ -10,7 +10,7 @@ from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 
-fade_source = (HERE / "components" / "fade.py").open().read()
+fade_source = (HERE / "components" / "fade.py").read_text()
 
 
 def get_content(app):

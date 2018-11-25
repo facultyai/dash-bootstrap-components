@@ -10,9 +10,9 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 DROPDOWN = HERE / "components" / "dropdown"
 
-dropdown_simple_source = (DROPDOWN / "simple.py").open().read()
-dropdown_size_source = (DROPDOWN / "size.py").open().read()
-dropdown_direction_source = (DROPDOWN / "direction.py").open().read()
+dropdown_simple_source = (DROPDOWN / "simple.py").read_text()
+dropdown_size_source = (DROPDOWN / "size.py").read_text()
+dropdown_direction_source = (DROPDOWN / "direction.py").read_text()
 
 content = [
     ExampleContainer(dropdown_simple),

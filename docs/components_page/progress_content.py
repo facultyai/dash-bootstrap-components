@@ -10,7 +10,7 @@ from .metadata import get_component_metadata
 
 HERE = Path(__file__).parent
 
-progress_source = (HERE / "components" / "progress.py").open().read()
+progress_source = (HERE / "components" / "progress.py").read_text()
 
 
 def get_content(app):

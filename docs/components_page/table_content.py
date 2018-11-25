@@ -9,8 +9,8 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 TABLE = HERE / "components" / "table"
 
-table_simple_source = (TABLE / "simple.py").open().read()
-table_kwargs_source = (TABLE / "kwargs.py").open().read()
+table_simple_source = (TABLE / "simple.py").read_text()
+table_kwargs_source = (TABLE / "kwargs.py").read_text()
 
 
 content = [

@@ -15,8 +15,8 @@ from .metadata import get_component_metadata
 HERE = Path(__file__).parent
 TABS = HERE / "components" / "tabs"
 
-tabs_simple_source = (TABS / "simple.py").open().read()
-tabs_active_source = (TABS / "active_tab.py").open().read()
+tabs_simple_source = (TABS / "simple.py").read_text()
+tabs_active_source = (TABS / "active_tab.py").read_text()
 
 active_tab_blurb = html.P(
     [
