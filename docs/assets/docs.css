@@ -80,11 +80,19 @@ span.hljs-meta {
 }
 
 .example-container {
-  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #d8d8d8;
+  margin: 2rem 0 0;
+  border-radius: 3px 3px 0px 0px;
+  border-bottom: 0px;
 }
 
 .example-source-container {
   margin-bottom: 2rem;
+}
+
+.example-source-container>pre.hljs {
+  border-radius: 0px 0px 3px 3px;
 }
 
 .api-documentation {
