@@ -1,6 +1,6 @@
 {
   "name": "dash-bootstrap-components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Bootstrap components for Plotly Dash",
   "main": "lib/index.js",
   "scripts": {
