@@ -4,7 +4,6 @@ from dash.dependencies import Input, Output, State
 
 popover = html.Div(
     [
-        html.H2("Popover"),
         html.P(
             ["Click on the word ", html.Span("popover", id="popover-target")]
         ),

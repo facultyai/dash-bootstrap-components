@@ -3,29 +3,13 @@ import dash_html_components as html
 
 buttons = html.Div(
     [
-        html.H4("Outline buttons"),
-        html.Div(
-            [
-                dbc.Button(
-                    "Primary", outline=True, color="primary", className="mr-1"
-                ),
-                dbc.Button(
-                    "Secondary",
-                    outline=True,
-                    color="secondary",
-                    className="mr-1",
-                ),
-                dbc.Button(
-                    "Success", outline=True, color="success", className="mr-1"
-                ),
-                dbc.Button(
-                    "Warning", outline=True, color="warning", className="mr-1"
-                ),
-                dbc.Button(
-                    "Danger", outline=True, color="danger", className="mr-1"
-                ),
-                dbc.Button("Info", outline=True, color="info"),
-            ]
+        dbc.Button("Primary", outline=True, color="primary", className="mr-1"),
+        dbc.Button(
+            "Secondary", outline=True, color="secondary", className="mr-1"
         ),
+        dbc.Button("Success", outline=True, color="success", className="mr-1"),
+        dbc.Button("Warning", outline=True, color="warning", className="mr-1"),
+        dbc.Button("Danger", outline=True, color="danger", className="mr-1"),
+        dbc.Button("Info", outline=True, color="info"),
     ]
 )

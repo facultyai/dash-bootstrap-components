@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import dash_html_components as html
+
 from .api_doc import ApiDoc
 from .components.input_group.simple import input_group as input_group_simple
 from .components.input_group.size import input_group as input_group_size
@@ -21,16 +23,20 @@ input_group_dropdown_source = (INPUT_GROUP / "dropdown.py").read_text()
 
 def get_content(app):
     return [
+        html.H2("Input group"),
         ExampleContainer(input_group_simple),
         HighlightedSource(input_group_simple_source),
+        html.H4("Addon sizing"),
         ExampleContainer(input_group_size),
         HighlightedSource(input_group_size_source),
+        html.H4("Button"),
         ExampleContainer(
             load_source_with_environment(
                 input_group_button_source, "input_group", {"app": app}
             )
         ),
         HighlightedSource(input_group_button_source),
+        html.H4("DropdownMenu"),
         ExampleContainer(
             load_source_with_environment(
                 input_group_dropdown_source, "input_group", {"app": app}

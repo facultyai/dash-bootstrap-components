@@ -1,6 +1,5 @@
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
-import dash_html_components as html
 
 dropdown = dbc.FormGroup(
     [
@@ -29,4 +28,4 @@ range_slider = dbc.FormGroup(
     ]
 )
 
-form = [html.H2("Dash Core Components"), dropdown, slider, range_slider]
+form = dbc.Form([dropdown, slider, range_slider])

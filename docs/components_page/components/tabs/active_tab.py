@@ -18,7 +18,7 @@ tabs = html.Div(
 
 
 @app.callback(Output("content", "children"), [Input("tabs", "active_tab")])
-def foo(at):
+def switch_tab(at):
     if at == "tab-1":
         return tab1_content
     elif at == "tab-2":

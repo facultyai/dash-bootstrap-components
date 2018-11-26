@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import dash_html_components as html
+
 from .api_doc import ApiDoc
 from .components.cards.columns import cards as cards_columns
 from .components.cards.content_types import cards as cards_content_types
@@ -18,12 +20,16 @@ cards_columns_source = (CARDS / "columns.py").read_text()
 
 
 content = [
+    html.H2("Cards"),
     ExampleContainer(cards_simple),
     HighlightedSource(cards_simple_source),
+    html.H4("Card content types"),
     ExampleContainer(cards_content_types),
     HighlightedSource(cards_content_type_source),
+    html.H4("Card group"),
     ExampleContainer(cards_group),
     HighlightedSource(cards_group_source),
+    html.H4("Card columns"),
     ExampleContainer(cards_columns),
     HighlightedSource(cards_columns_source),
     ApiDoc(

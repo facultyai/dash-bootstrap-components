@@ -27,16 +27,22 @@ layout_horizontal_source = (LAYOUT / "horizontal.py").read_text()
 
 content = html.Div(
     [
+        html.H2("Row with columns"),
         ExampleContainer(layout_simple),
         HighlightedSource(layout_simple_source),
+        html.H4("Specify width"),
         ExampleContainer(layout_width),
         HighlightedSource(layout_width_source),
+        html.H4("Specify order and offset"),
         ExampleContainer(layout_order_offset),
         HighlightedSource(layout_order_offset_source),
+        html.H4("Specify width for different screen sizes"),
         ExampleContainer(layout_breakpoints),
         HighlightedSource(layout_breakpoints_source),
+        html.H4("Row without 'gutters'"),
         ExampleContainer(layout_no_gutters),
         HighlightedSource(layout_no_gutters_source),
+        html.H4("Vertical alignment"),
         html.Div(
             [
                 ExampleContainer(layout_vertical),
@@ -44,6 +50,7 @@ content = html.Div(
             ],
             className="pad-row",
         ),
+        html.H4("Horizontal alignment"),
         ExampleContainer(layout_horizontal),
         HighlightedSource(layout_horizontal_source),
         ApiDoc(
