@@ -13,6 +13,7 @@ from .forms_content import content as forms_content
 from .input_group_content import get_content as get_input_group_content
 from .jumbotron_content import content as jumbotron_content
 from .layout_content import content as layout_content
+from .list_group_content import get_content as get_list_group_content
 from .popover_content import get_content as get_popover_content
 from .progress_content import get_content as get_progress_content
 from .sidebar import Sidebar, SidebarEntry
@@ -46,6 +47,7 @@ sidebar_entries = [
     SidebarEntry("input_group", "Input Group"),
     SidebarEntry("jumbotron", "Jumbotron"),
     SidebarEntry("layout", "Layout"),
+    SidebarEntry("list_group", "List Group"),
     SidebarEntry("popover", "Popover"),
     SidebarEntry("progress", "Progress"),
     SidebarEntry("table", "Table"),
@@ -79,6 +81,7 @@ class ComponentsPage:
             "input_group": get_input_group_content(self._app),
             "jumbotron": jumbotron_content,
             "layout": layout_content,
+            "list_group": get_list_group_content(self._app),
             "popover": get_popover_content(self._app),
             "progress": get_progress_content(self._app),
             "table": table_content,
