@@ -2,25 +2,23 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .api_doc import ApiDoc
-from .components.cards.columns import cards as cards_columns
-from .components.cards.content_types import cards as cards_content_types
-from .components.cards.group import cards as cards_group
-from .components.cards.simple import cards as cards_simple
-from .helpers import ExampleContainer, HighlightedSource
-from .metadata import get_component_metadata
+from ...api_doc import ApiDoc
+from ...helpers import ExampleContainer, HighlightedSource
+from ...metadata import get_component_metadata
+from .columns import cards as cards_columns
+from .content_types import cards as cards_content_types
+from .group import cards as cards_group
+from .simple import cards as cards_simple
 
 HERE = Path(__file__).parent
-CARDS = HERE / "components" / "cards"
 
-cards_simple_source = (CARDS / "simple.py").read_text()
-cards_content_type_source = (CARDS / "content_types.py").read_text()
-cards_group_source = (CARDS / "group.py").read_text()
-cards_columns_source = (CARDS / "columns.py").read_text()
-
+cards_simple_source = (HERE / "simple.py").read_text()
+cards_content_type_source = (HERE / "content_types.py").read_text()
+cards_group_source = (HERE / "group.py").read_text()
+cards_columns_source = (HERE / "columns.py").read_text()
 
 content = [
-    html.H2("Cards"),
+    html.H2("Card"),
     ExampleContainer(cards_simple),
     HighlightedSource(cards_simple_source),
     html.H4("Card content types"),

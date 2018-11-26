@@ -2,21 +2,20 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .api_doc import ApiDoc
-from .components.tabs.simple import tab1_content, tab2_content
-from .components.tabs.simple import tabs as tabs_simple
-from .helpers import (
+from ...api_doc import ApiDoc
+from ...helpers import (
     ExampleContainer,
     HighlightedSource,
     load_source_with_environment,
 )
-from .metadata import get_component_metadata
+from ...metadata import get_component_metadata
+from .simple import tab1_content, tab2_content
+from .simple import tabs as tabs_simple
 
 HERE = Path(__file__).parent
-TABS = HERE / "components" / "tabs"
 
-tabs_simple_source = (TABS / "simple.py").read_text()
-tabs_active_source = (TABS / "active_tab.py").read_text()
+tabs_simple_source = (HERE / "simple.py").read_text()
+tabs_active_source = (HERE / "active_tab.py").read_text()
 
 active_tab_blurb = html.P(
     [

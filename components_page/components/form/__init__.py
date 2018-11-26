@@ -2,25 +2,24 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .api_doc import ApiDoc
-from .components.forms.dcc import form as form_dcc
-from .components.forms.grid import form as form_grid
-from .components.forms.inline import form as form_inline
-from .components.forms.radio_check import form as form_radio_check
-from .components.forms.row import form as form_row
-from .components.forms.simple import form as form_simple
-from .helpers import ExampleContainer, HighlightedSource
-from .metadata import get_component_metadata
+from ...api_doc import ApiDoc
+from ...helpers import ExampleContainer, HighlightedSource
+from ...metadata import get_component_metadata
+from .dcc import form as form_dcc
+from .grid import form as form_grid
+from .inline import form as form_inline
+from .radio_check import form as form_radio_check
+from .row import form as form_row
+from .simple import form as form_simple
 
 HERE = Path(__file__).parent
-FORMS = HERE / "components" / "forms"
 
-form_simple_source = (FORMS / "simple.py").read_text()
-form_radio_check_source = (FORMS / "radio_check.py").read_text()
-form_row_source = (FORMS / "row.py").read_text()
-form_grid_source = (FORMS / "grid.py").read_text()
-form_inline_source = (FORMS / "inline.py").read_text()
-form_dcc_source = (FORMS / "dcc.py").read_text()
+form_simple_source = (HERE / "simple.py").read_text()
+form_radio_check_source = (HERE / "radio_check.py").read_text()
+form_row_source = (HERE / "row.py").read_text()
+form_grid_source = (HERE / "grid.py").read_text()
+form_inline_source = (HERE / "inline.py").read_text()
+form_dcc_source = (HERE / "dcc.py").read_text()
 
 content = [
     html.H2("Simple form"),
@@ -35,12 +34,18 @@ content = [
     html.H4("Using grid layout with forms"),
     ExampleContainer(form_grid),
     HighlightedSource(form_grid_source),
-    html.H4("Inline forms"),
+    html.H4("Inline form"),
     ExampleContainer(form_inline),
     HighlightedSource(form_inline_source),
     html.H4("Dash Core Components"),
     html.P(
-        "The Form and FormGroup components work well with Dash core components"
+        [
+            "The ",
+            html.Code("Form"),
+            " and ",
+            html.Code("FormGroup"),
+            " components work well with Dash core components",
+        ]
     ),
     ExampleContainer(form_dcc),
     HighlightedSource(form_dcc_source),
