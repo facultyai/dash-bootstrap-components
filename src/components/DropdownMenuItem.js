@@ -12,13 +12,11 @@ class DropdownMenuItem extends React.Component {
   }
 
   incrementClicks() {
-    if (!this.props.disabled) {
-      if (this.props.setProps) {
-        this.props.setProps({
-          n_clicks: this.props.n_clicks + 1,
-          n_clicks_timestamp: Date.now()
-        });
-      }
+    if (!this.props.disabled && this.props.setProps) {
+      this.props.setProps({
+        n_clicks: this.props.n_clicks + 1,
+        n_clicks_timestamp: Date.now()
+      });
     }
   }
 

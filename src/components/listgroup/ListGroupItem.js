@@ -11,21 +11,20 @@ class ListGroupItem extends React.Component {
   }
 
   incrementClicks() {
-    if (!this.props.disabled) {
-      if (this.props.setProps) {
-        this.props.setProps({
-          n_clicks: this.props.n_clicks + 1,
-          n_clicks_timestamp: Date.now()
-        });
-      }
+    if (!this.props.disabled && this.props.setProps) {
+      this.props.setProps({
+        n_clicks: this.props.n_clicks + 1,
+        n_clicks_timestamp: Date.now()
+      });
     }
   }
 
   render() {
-    let {children, href, ...otherProps} = this.props;
-    otherProps[href ? 'preOnClick' : 'onClick'] = this.incrementClicks;
+    let {children, ...otherProps} = this.props;
+    const useLink = this.props.href && !this.props.disabled;
+    otherProps[useLink ? 'preOnClick' : 'onClick'] = this.incrementClicks;
     return (
-      <RSListGroupItem tag={href ? Link : 'li'} href={href} {...otherProps}>
+      <RSListGroupItem tag={useLink ? Link : 'li'} {...otherProps}>
         {children}
       </RSListGroupItem>
     );
