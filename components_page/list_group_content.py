@@ -52,7 +52,7 @@ def get_content(app):
         html.H2("List Group"),
         ExampleContainer(list_group_simple),
         HighlightedSource(list_group_simple_source),
-        html.H2("Links"),
+        html.H4("Links"),
         links_explainer,
         ExampleContainer(
             load_source_with_environment(
@@ -60,10 +60,10 @@ def get_content(app):
             )
         ),
         HighlightedSource(list_group_links_source),
-        html.H2("Colors"),
+        html.H4("Colors"),
         ExampleContainer(list_group_colors),
         HighlightedSource(list_group_colors_source),
-        html.H2("Custom content"),
+        html.H4("Custom content"),
         content_explainer,
         ExampleContainer(list_group_content),
         HighlightedSource(list_group_content_source),
