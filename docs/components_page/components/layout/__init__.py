@@ -2,28 +2,26 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .api_doc import ApiDoc
-from .components.layout.breakpoints import row as layout_breakpoints
-from .components.layout.horizontal import row as layout_horizontal
-from .components.layout.no_gutters import row as layout_no_gutters
-from .components.layout.order_offset import row as layout_order_offset
-from .components.layout.simple import row as layout_simple
-from .components.layout.vertical import row as layout_vertical
-from .components.layout.width import row as layout_width
-from .helpers import ExampleContainer, HighlightedSource
-from .metadata import get_component_metadata
+from ...api_doc import ApiDoc
+from ...helpers import ExampleContainer, HighlightedSource
+from ...metadata import get_component_metadata
+from .breakpoints import row as layout_breakpoints
+from .horizontal import row as layout_horizontal
+from .no_gutters import row as layout_no_gutters
+from .order_offset import row as layout_order_offset
+from .simple import row as layout_simple
+from .vertical import row as layout_vertical
+from .width import row as layout_width
 
 HERE = Path(__file__).parent
-LAYOUT = HERE / "components" / "layout"
 
-layout_simple_source = (LAYOUT / "simple.py").read_text()
-layout_width_source = (LAYOUT / "width.py").read_text()
-layout_order_offset_source = (LAYOUT / "order_offset.py").read_text()
-layout_breakpoints_source = (LAYOUT / "breakpoints.py").read_text()
-layout_no_gutters_source = (LAYOUT / "no_gutters.py").read_text()
-layout_vertical_source = (LAYOUT / "vertical.py").read_text()
-layout_horizontal_source = (LAYOUT / "horizontal.py").read_text()
-
+layout_simple_source = (HERE / "simple.py").read_text()
+layout_width_source = (HERE / "width.py").read_text()
+layout_order_offset_source = (HERE / "order_offset.py").read_text()
+layout_breakpoints_source = (HERE / "breakpoints.py").read_text()
+layout_no_gutters_source = (HERE / "no_gutters.py").read_text()
+layout_vertical_source = (HERE / "vertical.py").read_text()
+layout_horizontal_source = (HERE / "horizontal.py").read_text()
 
 content = html.Div(
     [

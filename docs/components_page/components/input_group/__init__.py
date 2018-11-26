@@ -2,23 +2,22 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .api_doc import ApiDoc
-from .components.input_group.simple import input_group as input_group_simple
-from .components.input_group.size import input_group as input_group_size
-from .helpers import (
+from ...api_doc import ApiDoc
+from ...helpers import (
     ExampleContainer,
     HighlightedSource,
     load_source_with_environment,
 )
-from .metadata import get_component_metadata
+from ...metadata import get_component_metadata
+from .simple import input_group as input_group_simple
+from .size import input_group as input_group_size
 
 HERE = Path(__file__).parent
-INPUT_GROUP = HERE / "components" / "input_group"
 
-input_group_simple_source = (INPUT_GROUP / "simple.py").read_text()
-input_group_size_source = (INPUT_GROUP / "size.py").read_text()
-input_group_button_source = (INPUT_GROUP / "button.py").read_text()
-input_group_dropdown_source = (INPUT_GROUP / "dropdown.py").read_text()
+input_group_simple_source = (HERE / "simple.py").read_text()
+input_group_size_source = (HERE / "size.py").read_text()
+input_group_button_source = (HERE / "button.py").read_text()
+input_group_dropdown_source = (HERE / "dropdown.py").read_text()
 
 
 def get_content(app):

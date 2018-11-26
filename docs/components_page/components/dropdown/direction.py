@@ -23,5 +23,5 @@ dropdown = dbc.Row(
                 label="Dropright", children=items, direction="right"
             )
         ),
-    ],
+    ]
 )

@@ -2,24 +2,23 @@ from pathlib import Path
 
 import dash_html_components as html
 
-from .api_doc import ApiDoc
-from .components.list_group.colors import list_group as list_group_colors
-from .components.list_group.content import list_group as list_group_content
-from .components.list_group.simple import list_group as list_group_simple
-from .helpers import (
+from ...api_doc import ApiDoc
+from ...helpers import (
     ExampleContainer,
     HighlightedSource,
     load_source_with_environment,
 )
-from .metadata import get_component_metadata
+from ...metadata import get_component_metadata
+from .colors import list_group as list_group_colors
+from .content import list_group as list_group_content
+from .simple import list_group as list_group_simple
 
 HERE = Path(__file__).parent
-LISTGROUP = HERE / "components" / "list_group"
 
-list_group_simple_source = (LISTGROUP / "simple.py").read_text()
-list_group_links_source = (LISTGROUP / "links.py").read_text()
-list_group_colors_source = (LISTGROUP / "colors.py").read_text()
-list_group_content_source = (LISTGROUP / "content.py").read_text()
+list_group_simple_source = (HERE / "simple.py").read_text()
+list_group_links_source = (HERE / "links.py").read_text()
+list_group_colors_source = (HERE / "colors.py").read_text()
+list_group_content_source = (HERE / "content.py").read_text()
 
 links_explainer = html.P(
     [
