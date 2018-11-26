@@ -3,7 +3,6 @@ import dash_html_components as html
 
 row = html.Div(
     [
-        html.H4("Specify width"),
         dbc.Row(dbc.Col(html.Div("A single, half-width column"), width=6)),
         dbc.Row(
             dbc.Col(html.Div("An automatically sized column"), width="auto")

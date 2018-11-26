@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import dash_html_components as html
+
 from .api_doc import ApiDoc
 from .helpers import (
     ExampleContainer,
@@ -15,6 +17,7 @@ popover_source = (HERE / "components" / "popover.py").read_text()
 
 def get_content(app):
     return [
+        html.H2("Popover"),
         ExampleContainer(
             load_source_with_environment(
                 popover_source, "popover", {"app": app}

@@ -4,7 +4,6 @@ from dash.dependencies import Input, Output, State
 
 fade = html.Div(
     [
-        html.H2("Fade"),
         dbc.Button("Toggle fade", id="fade-button", className="mb-3"),
         dbc.Fade(
             dbc.Card(

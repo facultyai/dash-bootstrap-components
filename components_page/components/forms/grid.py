@@ -1,7 +1,6 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
-grid = dbc.Row(
+form = dbc.Row(
     [
         dbc.Col(
             dbc.FormGroup(
@@ -32,5 +31,3 @@ grid = dbc.Row(
     ],
     form=True,
 )
-
-form = [html.H2("Using grid layout with forms"), grid]

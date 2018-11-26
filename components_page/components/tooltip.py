@@ -3,7 +3,6 @@ import dash_html_components as html
 
 tooltip = html.Div(
     [
-        html.H2("Tooltip"),
         html.P(
             [
                 "I wonder what ",

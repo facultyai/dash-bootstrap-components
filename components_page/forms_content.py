@@ -23,16 +23,22 @@ form_inline_source = (FORMS / "inline.py").read_text()
 form_dcc_source = (FORMS / "dcc.py").read_text()
 
 content = [
+    html.H2("Simple form"),
     ExampleContainer(form_simple),
     HighlightedSource(form_simple_source),
+    html.H4("RadioItems and Checklist"),
     ExampleContainer(form_radio_check),
     HighlightedSource(form_radio_check_source),
+    html.H4("FormGroup row"),
     ExampleContainer(form_row),
     HighlightedSource(form_row_source),
+    html.H4("Using grid layout with forms"),
     ExampleContainer(form_grid),
     HighlightedSource(form_grid_source),
+    html.H4("Inline forms"),
     ExampleContainer(form_inline),
     HighlightedSource(form_inline_source),
+    html.H4("Dash Core Components"),
     html.P(
         "The Form and FormGroup components work well with Dash core components"
     ),

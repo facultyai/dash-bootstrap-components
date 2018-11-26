@@ -1,9 +1,8 @@
 from datetime import datetime
 
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
-inline_form = dbc.Form(
+form = dbc.Form(
     [
         dbc.FormGroup(
             [
@@ -31,5 +30,3 @@ inline_form = dbc.Form(
     ],
     inline=True,
 )
-
-form = [html.H2("Inline forms"), inline_form]

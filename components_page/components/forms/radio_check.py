@@ -1,5 +1,4 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
 radioitems = dbc.FormGroup(
     [
@@ -27,4 +26,4 @@ checklist = dbc.FormGroup(
     ]
 )
 
-form = [html.H2("RadioItems and Checklist"), radioitems, checklist]
+form = dbc.Form([radioitems, checklist])

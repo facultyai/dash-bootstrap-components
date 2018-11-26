@@ -1,5 +1,4 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
 tab1_content = dbc.Card(
     dbc.CardBody(
@@ -22,12 +21,9 @@ tab2_content = dbc.Card(
 )
 
 
-tabs = [
-    html.H1("Tabs"),
-    dbc.Tabs(
-        [
-            dbc.Tab(tab1_content, label="Tab 1"),
-            dbc.Tab(tab2_content, label="Tab 2"),
-        ]
-    ),
-]
+tabs = dbc.Tabs(
+    [
+        dbc.Tab(tab1_content, label="Tab 1"),
+        dbc.Tab(tab2_content, label="Tab 2"),
+    ]
+)

@@ -24,13 +24,14 @@ active_tab_blurb = html.P(
         html.Code("active_tab"),
         " prop of ",
         html.Code("Tabs"),
-        " in your callbacks to switch between tabs",
+        " in your callbacks to switch between tabs.",
     ]
 )
 
 
 def get_content(app):
     return [
+        html.H2("Tabs"),
         ExampleContainer(tabs_simple),
         HighlightedSource(tabs_simple_source),
         active_tab_blurb,

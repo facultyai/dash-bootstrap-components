@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import dash_html_components as html
+
 from .api_doc import ApiDoc
 from .helpers import (
     ExampleContainer,
@@ -15,6 +17,7 @@ collapse_source = (HERE / "components" / "collapse.py").read_text()
 
 def get_content(app):
     return [
+        html.H2("Collapse"),
         ExampleContainer(
             load_source_with_environment(
                 collapse_source, "collapse", {"app": app}

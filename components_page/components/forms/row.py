@@ -1,5 +1,4 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
 email_input = dbc.FormGroup(
     [
@@ -29,4 +28,4 @@ password_input = dbc.FormGroup(
     row=True,
 )
 
-form = [html.H2("FormGroup row"), email_input, password_input]
+form = dbc.Form([email_input, password_input])
