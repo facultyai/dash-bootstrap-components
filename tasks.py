@@ -1,6 +1,7 @@
 import os
 import tempfile
 from pathlib import Path
+from shutil import which
 from subprocess import call
 
 import semver
@@ -31,6 +32,7 @@ def prerelease(ctx, version):
      - Bump the version number
      - Push a release to pypi
     """
+    check_prerequisites()
     info(f"Releasing version {version} as prerelease")
     build_publish(version)
 
@@ -48,6 +50,7 @@ def release(ctx, version):
      - commit the version changes to source control
      - tag the commit
     """
+    check_prerequisites()
     info(f"Releasing version {version} as full release")
     release_notes_lines = get_release_notes(version)
 
@@ -188,6 +191,17 @@ def open_editor(initial_message):
         lines = f.readlines()
 
     return lines
+
+
+def check_prerequisites():
+    for executable in ["twine", "npm"]:
+        if which(executable) is None:
+            error(
+                f"{executable} executable not found. "
+                f"You must have {executable} to release "
+                "dash-bootstrap-components."
+            )
+            exit(127)
 
 
 def normalize_version(version):
