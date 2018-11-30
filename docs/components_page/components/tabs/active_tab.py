@@ -12,7 +12,7 @@ tabs = html.Div(
             id="tabs",
             active_tab="tab-1",
         ),
-        html.P(id="content"),
+        html.Div(id="content"),
     ]
 )
 
