@@ -1,7 +1,7 @@
 from itertools import chain
 
 import dash_html_components as html
-from dash.development.base_component import (
+from dash.development._py_components_generation import (
     filter_props,
     js_to_py_type,
     parse_events,
