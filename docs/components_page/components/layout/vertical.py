@@ -3,7 +3,6 @@ import dash_html_components as html
 
 row = html.Div(
     [
-        html.H4("Vertical alignment"),
         dbc.Row(
             [
                 dbc.Col(html.Div("One of three columns")),

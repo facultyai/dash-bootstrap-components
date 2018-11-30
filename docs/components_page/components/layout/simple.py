@@ -3,7 +3,6 @@ import dash_html_components as html
 
 row = html.Div(
     [
-        html.H2("Row with columns"),
         dbc.Row(dbc.Col(html.Div("A single column"))),
         dbc.Row(
             [

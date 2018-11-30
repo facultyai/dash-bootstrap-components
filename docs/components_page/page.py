@@ -2,24 +2,24 @@ from pathlib import Path
 
 import dash_bootstrap_components as dbc
 
-from .alerts_content import content as alerts_content
-from .badges_content import content as badges_content
-from .buttons_content import get_content as get_buttons_content
-from .cards_content import content as cards_content
-from .collapse_content import get_content as get_collapse_content
-from .dropdown_content import content as dropdown_content
-from .fade_content import get_content as get_fade_content
-from .forms_content import content as forms_content
-from .input_group_content import get_content as get_input_group_content
-from .jumbotron_content import content as jumbotron_content
-from .layout_content import content as layout_content
-from .list_group_content import get_content as get_list_group_content
-from .popover_content import get_content as get_popover_content
-from .progress_content import get_content as get_progress_content
+from .components.alert import content as alert_content
+from .components.badge import content as badge_content
+from .components.button import get_content as get_button_content
+from .components.card import content as card_content
+from .components.collapse import get_content as get_collapse_content
+from .components.dropdown import content as dropdown_content
+from .components.fade import get_content as get_fade_content
+from .components.form import content as form_content
+from .components.input_group import get_content as get_input_group_content
+from .components.jumbotron import content as jumbotron_content
+from .components.layout import content as layout_content
+from .components.list_group import get_content as get_list_group_content
+from .components.popover import get_content as get_popover_content
+from .components.progress import get_content as get_progress_content
+from .components.table import content as table_content
+from .components.tabs import get_content as get_tabs_content
+from .components.tooltip import content as tooltip_content
 from .sidebar import Sidebar, SidebarEntry
-from .table_content import content as table_content
-from .tabs_content import get_content as get_tabs_content
-from .tooltip_content import content as tooltip_content
 
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
@@ -36,14 +36,14 @@ NAVBAR = dbc.Navbar(
 
 
 sidebar_entries = [
-    SidebarEntry("alerts", "Alerts"),
-    SidebarEntry("badges", "Badges"),
-    SidebarEntry("buttons", "Buttons"),
-    SidebarEntry("cards", "Cards"),
+    SidebarEntry("alert", "Alert"),
+    SidebarEntry("badge", "Badge"),
+    SidebarEntry("button", "Button"),
+    SidebarEntry("card", "Card"),
     SidebarEntry("collapse", "Collapse"),
     SidebarEntry("dropdown_menu", "Dropdown Menu"),
     SidebarEntry("fade", "Fade"),
-    SidebarEntry("forms", "Forms"),
+    SidebarEntry("form", "Form"),
     SidebarEntry("input_group", "Input Group"),
     SidebarEntry("jumbotron", "Jumbotron"),
     SidebarEntry("layout", "Layout"),
@@ -70,14 +70,14 @@ class ComponentsPage:
     def __init__(self, app):
         self._app = app
         self._component_bodies = {
-            "alerts": alerts_content,
-            "badges": badges_content,
-            "buttons": get_buttons_content(self._app),
-            "cards": cards_content,
+            "alert": alert_content,
+            "badge": badge_content,
+            "button": get_button_content(self._app),
+            "card": card_content,
             "collapse": get_collapse_content(self._app),
             "dropdown_menu": dropdown_content,
             "fade": get_fade_content(self._app),
-            "forms": forms_content,
+            "form": form_content,
             "input_group": get_input_group_content(self._app),
             "jumbotron": jumbotron_content,
             "layout": layout_content,
@@ -95,4 +95,4 @@ class ComponentsPage:
             component_body = self._component_bodies[component_name]
             return component_page(component_body, component_name)
         except IndexError:
-            return self.for_path(["alerts"])
+            return self.for_path(["alert"])

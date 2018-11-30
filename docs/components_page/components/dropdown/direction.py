@@ -1,5 +1,4 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 
 items = [
     dbc.DropdownMenuItem("First"),
@@ -7,29 +6,22 @@ items = [
     dbc.DropdownMenuItem("Second"),
 ]
 
-dropdown = html.Div(
+dropdown = dbc.Row(
     [
-        html.H4("Dropdown direction"),
-        dbc.Row(
-            [
-                dbc.Col(
-                    dbc.DropdownMenu(
-                        label="Dropdown (default)",
-                        children=items,
-                        direction="down",
-                    )
-                ),
-                dbc.Col(
-                    dbc.DropdownMenu(
-                        label="Dropleft", children=items, direction="left"
-                    )
-                ),
-                dbc.Col(
-                    dbc.DropdownMenu(
-                        label="Dropright", children=items, direction="right"
-                    )
-                ),
-            ]
+        dbc.Col(
+            dbc.DropdownMenu(
+                label="Dropdown (default)", children=items, direction="down"
+            )
+        ),
+        dbc.Col(
+            dbc.DropdownMenu(
+                label="Dropleft", children=items, direction="left"
+            )
+        ),
+        dbc.Col(
+            dbc.DropdownMenu(
+                label="Dropright", children=items, direction="right"
+            )
         ),
     ]
 )

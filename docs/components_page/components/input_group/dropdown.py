@@ -1,5 +1,4 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 from dash.dependencies import Input, Output
 
 dropdown_menu_items = [
@@ -10,25 +9,12 @@ dropdown_menu_items = [
 ]
 
 
-input_group = html.Div(
+input_group = dbc.InputGroup(
     [
-        html.H4("DropdownMenu"),
-        html.Div(
-            [
-                dbc.InputGroup(
-                    [
-                        dbc.DropdownMenu(
-                            dropdown_menu_items,
-                            label="Generate",
-                            addon_type="prepend",
-                        ),
-                        dbc.Input(
-                            id="input-group-dropdown-input", placeholder="name"
-                        ),
-                    ]
-                )
-            ]
+        dbc.DropdownMenu(
+            dropdown_menu_items, label="Generate", addon_type="prepend"
         ),
+        dbc.Input(id="input-group-dropdown-input", placeholder="name"),
     ]
 )
 

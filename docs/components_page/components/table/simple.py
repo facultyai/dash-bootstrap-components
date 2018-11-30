@@ -22,6 +22,4 @@ table_body = [
     )
 ]
 
-table = html.Div(
-    [html.H2("Table"), dbc.Table(table_header + table_body, bordered=True)]
-)
+table = dbc.Table(table_header + table_body, bordered=True)
