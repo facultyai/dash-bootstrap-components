@@ -3,6 +3,7 @@ import sys
 
 import dash
 
+from . import themes  # noqa
 from ._version import __version__  # noqa
 
 _current_path = os.path.dirname(os.path.abspath(__file__))
