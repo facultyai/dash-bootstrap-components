@@ -10,7 +10,7 @@ def _generate_table_from_df(
     index=False,
     index_label=None,
     date_format=None,
-    **table_kwargs,
+    **table_kwargs
 ):
     """
     Generate a Table component from a dataframe.
