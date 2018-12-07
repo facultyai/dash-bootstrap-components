@@ -43,9 +43,12 @@
           <p>
             <em>dash-bootstrap-components</em> relies on <a>Twitter
             Bootstrap</a>. To use this package, inject the Bootstrap
-            stylesheet into your application:
+            stylesheet into your application. For convenience, links to
+            Bootstrap CSS hosted on
+            <a href=https://www.bootstrapcdn.com/>bootstrapcdn</a>
+            are included as part of the <code>themes</code> module:
           </p>
-          <pre><code class="language-python">external_stylesheets = ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"]
+          <pre><code class="language-python">external_stylesheets = [dbc.themes.BOOTSTRAP]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre>
           <h2 class="section-header mt-5">Layout</h2>
@@ -60,8 +63,6 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-
-external_stylesheets = ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"]
 
 _navbar = dbc.Navbar(
     brand="Demo",
@@ -114,7 +115,7 @@ _body = dbc.Container(
 
 app = Dash(
     __name__,
-    external_stylesheets=external_stylesheets
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
 )
 
 app.layout = html.Div([_navbar, _body])
@@ -137,12 +138,12 @@ if __name__ == "__main__":
             A good way to start customising the stylesheet is to use
             an alternative pre-compiled theme. <a
             href="https://bootswatch.com/">Bootswatch</a> is a great
-            place to find new themes. To use one of these themes, you
-            can use <a
-            href="https://www.bootstrapcdn.com/bootswatch/">a CDN</a>
-            with the <code>external_stylesheets</code> argument:
+            place to find new themes. Links to CDNs for each of the Bootswatch
+            styles are also included in <code>themes</code>, and can be used
+            with the <code>external_stylesheets</code> argument of the
+            <code>Dash</code> constructor:
           </p>
-          <pre><code class="language-python">external_stylesheets = ["https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cerulean/bootstrap.min.css"]
+          <pre><code class="language-python">external_stylesheets = [dbc.themes.CERULEAN]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre>
           <p>
