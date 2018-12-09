@@ -1,7 +1,12 @@
+import os
 
 from . import themes  # noqa
 from ._version import __version__  # noqa
 from . import _components
+
+_current_path = os.path.dirname(os.path.abspath(__file__))
+
+METADATA_PATH = os.path.join(_current_path, "_components", "metadata.json")
 
 _js_dist = [
     {
