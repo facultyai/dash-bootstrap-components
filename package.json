@@ -2,7 +2,7 @@
   "name": "dash-bootstrap-components",
   "version": "0.2.3",
   "description": "Bootstrap components for Plotly Dash",
-  "main": "src/index.js",
+  "main": "demo-lib/index.js",
   "scripts": {
     "build-dist": "npm run clean:py && npm run build:py && webpack --config=webpack.config.dist.js",
     "clean:py": "mkdirp dash_bootstrap_components/_components && rimraf dash_bootstrap_components/_components",

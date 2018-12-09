@@ -11,7 +11,7 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 var environment = JSON.stringify(NODE_ENV);
 
 var LIBRARY_NAME = 'dash_bootstrap_components';
-var BUILD_PATH = path.join(ROOT, 'lib');
+var BUILD_PATH = path.join(ROOT, 'demo-lib');
 
 var publicHost = process.env.DEMO_PUBLIC_HOST || undefined;
 
@@ -68,7 +68,7 @@ module.exports = {
     libraryTarget: 'this', // Could be 'umd'
     path: BUILD_PATH,
     pathinfo: true,
-    publicPath: '/lib/', // For loading from webpack dev server
+    publicPath: '/demo-lib/', // For loading from webpack dev server
     filename: '[name].js'
   }
 };
