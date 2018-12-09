@@ -62,6 +62,7 @@ module.exports = {
   },
   devServer: {
     public: publicHost,
+    contentBase: 'demo'
   },
   output: {
     library: LIBRARY_NAME,
