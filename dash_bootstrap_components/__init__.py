@@ -10,7 +10,7 @@ METADATA_PATH = os.path.join(_current_path, "_components", "metadata.json")
 
 _js_dist = [
     {
-        "relative_package_path": "dash_bootstrap_components.min.js",
+        "relative_package_path": "_components/dash_bootstrap_components.min.js",
         "namespace": "dash_bootstrap_components",
     }
 ]

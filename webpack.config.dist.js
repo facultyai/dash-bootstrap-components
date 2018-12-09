@@ -13,7 +13,7 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 var environment = JSON.stringify(NODE_ENV);
 
 var LIBRARY_NAME = 'dash_bootstrap_components';
-var BUILD_PATH = path.join(ROOT, LIBRARY_NAME);
+var BUILD_PATH = path.join(ROOT, LIBRARY_NAME, '_components');
 
 /* eslint-disable no-console */
 console.log('Current environment: ' + environment);
@@ -61,7 +61,7 @@ module.exports = {
     main: './index.js'
   },
   output: {
-    library: LIBRARY_NAME + "/_components",
+    library: LIBRARY_NAME + '/_components',
     libraryTarget: 'window',
     path: BUILD_PATH,
     filename: LIBRARY_NAME + '.min.js'
