@@ -1,11 +1,7 @@
-import os
-import sys
-
-import dash
 
 from . import themes  # noqa
 from ._version import __version__  # noqa
-from . import components
+from . import _components
 
 _js_dist = [
     {
@@ -17,10 +13,10 @@ _js_dist = [
 _css_dist = []
 
 
-for _component_name in components.__all__:
-    _component = getattr(components, _component_name)
+for _component_name in _components.__all__:
+    _component = getattr(_components, _component_name)
     _component._js_dist = _js_dist
     _component._css_dist = _css_dist
 
 
-from .components import *  # noqa
+from ._components import *  # noqa
