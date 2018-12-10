@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output, State
 
 DBC_GITHUB = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-app = dash.Dash()
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
 navbar = dbc.Navbar(
