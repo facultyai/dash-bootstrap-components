@@ -194,7 +194,7 @@ def open_editor(initial_message):
 
 
 def check_prerequisites():
-    for executable in ["twine", "npm"]:
+    for executable in ["twine", "npm", "dash-generate-components"]:
         if which(executable) is None:
             error(
                 f"{executable} executable not found. "
