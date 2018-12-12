@@ -1,2 +1,2 @@
-include dash_bootstrap_components/bundle.js
-include dash_bootstrap_components/metadata.json
+include dash_bootstrap_components/_components/dash_bootstrap_components.min.js
+include dash_bootstrap_components/_components/metadata.json

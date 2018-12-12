@@ -13,7 +13,7 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 var environment = JSON.stringify(NODE_ENV);
 
 var LIBRARY_NAME = 'dash_bootstrap_components';
-var BUILD_PATH = path.join(ROOT, 'lib');
+var BUILD_PATH = path.join(ROOT, LIBRARY_NAME, '_components');
 
 /* eslint-disable no-console */
 console.log('Current environment: ' + environment);
@@ -25,7 +25,7 @@ module.exports = {
   mode: NODE_ENV,
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/, // used to get `request` to work: https://github.com/request/request/issues/1920#issuecomment-171246043
@@ -49,7 +49,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{loader: 'style-loader'}, {loader: 'css-loader'}]
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
       }
     ]
   },
@@ -58,12 +65,12 @@ module.exports = {
     minimize: true
   },
   entry: {
-    bundle: ['./index.js']
+    main: './index.js'
   },
   output: {
-    library: LIBRARY_NAME,
-    libraryTarget: 'this', // Could be 'umd'
+    library: LIBRARY_NAME + '/_components',
+    libraryTarget: 'window',
     path: BUILD_PATH,
-    filename: '[name].js'
+    filename: LIBRARY_NAME + '.min.js'
   }
 };

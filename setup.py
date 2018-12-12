@@ -32,6 +32,6 @@ setup(
     author_email="engineering@asidatascience.com",
     url="https://github.com/ASIDataScience/dash-bootstrap-components",
     packages=find_packages(),
-    install_requires=["dash"],
+    install_requires=["dash>=0.32.1"],
     include_package_data=True,
 )
