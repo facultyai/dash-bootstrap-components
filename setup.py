@@ -29,7 +29,7 @@ setup(
     long_description_content_type="text/markdown",
     license="Apache Software License",
     author="ASI Data Science",
-    author_email="engineering@asidatascience.com",
+    author_email="opensource@asidatascience.com",
     url="https://github.com/ASIDataScience/dash-bootstrap-components",
     packages=find_packages(),
     install_requires=["dash>=0.32.1"],
