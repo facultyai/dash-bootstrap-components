@@ -32,6 +32,14 @@ setup(
     author_email="opensource@asidatascience.com",
     url="https://github.com/ASIDataScience/dash-bootstrap-components",
     packages=find_packages(),
-    install_requires=["dash>=0.32.1"],
+    install_requires=["dash>=0.32.1", "dash-html-components"],
     include_package_data=True,
+    classifiers=[
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+    ],
+    extras_require={"pandas": ["numpy", "pandas"]},
 )

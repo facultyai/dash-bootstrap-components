@@ -1,8 +1,11 @@
 import os
+import sys
 
 from . import themes  # noqa
-from ._version import __version__  # noqa
 from . import _components
+from ._components import *  # noqa
+from ._version import __version__  # noqa
+from .table import _generate_table_from_df
 
 _current_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -26,4 +29,6 @@ for _component_name in _components.__all__:
     _component._css_dist = _css_dist
 
 
-from ._components import *  # noqa
+sys.modules[__name__].Table.from_dataframe = classmethod(
+    _generate_table_from_df
+)
