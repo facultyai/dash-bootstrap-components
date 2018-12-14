@@ -49,17 +49,14 @@ odio dui."""
                     [
                         html.H2("Graph"),
                         dcc.Graph(
-                            id="dash-docs-graph",
-                            figure={
-                                "data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]
-                            },
+                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]}
                         ),
                     ]
                 ),
             ]
         )
     ],
-    className="docs-content",
+    className="mt-4",
 )
 
 _layout = html.Div([_navbar, _body])
