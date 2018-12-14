@@ -48,9 +48,7 @@
             <a href=https://www.bootstrapcdn.com/>bootstrapcdn</a>
             are included as part of the <code>themes</code> module:
           </p>
-          <pre><code class="language-python">external_stylesheets = [dbc.themes.BOOTSTRAP]
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre>
+          <pre><code class="language-python">app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])</code></pre>
           <h2 class="section-header mt-5">Layout</h2>
           <hr />
           <p><em>dash-bootstrap-components</em> makes it easy to
@@ -59,16 +57,14 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre
           <div class="demo-layout-container">
             <iframe class="demo-layout" src="/l/demo-layout"></iframe>
           </div>
-          <pre><code class="language-python">from dash import Dash
+          <pre><code class="language-python">import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 
-_navbar = dbc.Navbar(
-    brand="Demo",
-    brand_href="#",
-    sticky="top",
+navbar = dbc.Navbar(
     children=[
+        dbc.NavItem(dbc.NavLink("Link", href="#")),
         dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
@@ -80,11 +76,13 @@ _navbar = dbc.Navbar(
                 dbc.DropdownMenuItem("Entry 3"),
             ],
         ),
-        dbc.NavItem(dbc.NavLink("Link", href="#")),
     ],
+    brand="Demo",
+    brand_href="#",
+    sticky="top",
 )
 
-_body = dbc.Container(
+body = dbc.Container(
     [
         dbc.Row(
             [
@@ -92,7 +90,15 @@ _body = dbc.Container(
                     [
                         html.H2("Heading"),
                         html.P(
-                            "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."
+                            """\
+Donec id elit non mi porta gravida at eget metus.
+Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non
+mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
+amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+odio dui."""
                         ),
                         dbc.Button("View details", color="secondary"),
                     ],
@@ -102,26 +108,22 @@ _body = dbc.Container(
                     [
                         html.H2("Graph"),
                         dcc.Graph(
-                            id="dash-docs-graph",
-                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]},
+                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]}
                         ),
                     ]
                 ),
             ]
         )
     ],
-    className="docs-content",
+    className="mt-4",
 )
 
-app = Dash(
-    __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
-)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = html.Div([_navbar, _body])
+app.layout = html.Div([navbar, body])
 
 if __name__ == "__main__":
-    app.run_server(debug=True)</code></pre>
+    app.run_server()</code></pre>
           <h2 class="section-header mt-5">Customising the stylesheet</h2>
           <hr />
           <p>
