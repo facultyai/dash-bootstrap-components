@@ -18,6 +18,12 @@
     "test:demo": "webpack --content-base=demo --config=webpack.config.demo.js",
     "test:watch": "jest --watch"
   },
+  "files": [
+    "lib",
+    "src",
+    "LICENSE.txt",
+    "README.md"
+  ],
   "author": "ASI Data Science",
   "license": "Apache-2.0",
   "devDependencies": {
