@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
 import Link from '../../private/Link';
