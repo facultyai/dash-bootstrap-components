@@ -21,7 +21,7 @@ Version {version_string}
 HERE = Path(__file__).parent
 
 DASH_BOOTSTRAP_DIR = HERE / "dash_bootstrap_components"
-JS_DIR = HERE / "src"
+JS_DIR = HERE
 
 
 @task(help={"version": "Version number to release"})
@@ -111,6 +111,7 @@ def build_publish(version):
     info("Building JavaScript components")
     build_js()
     info("Building and uploading Python source distribution")
+    info("Pypi credentials:")
     release_python_sdist()
 
 
@@ -129,7 +130,7 @@ def clean():
 def build_js():
     os.chdir(JS_DIR)
     try:
-        run("npm install")
+        run("npm publish")
     finally:
         os.chdir(HERE)
 
