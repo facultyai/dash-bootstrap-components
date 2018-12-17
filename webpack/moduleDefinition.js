@@ -12,15 +12,7 @@ module.exports = {
     {
       test: /\.jsx?$/,
       include: [directories.SRC, directories.DEMO],
-      /*
-       * Use require.resolve to get a deterministic path
-       * and avoid webpack's magick loader resolution
-       */
-      use: [
-        {
-          loader: 'babel-loader'
-        }
-      ]
+      loader: 'babel-loader'
     },
     {
       test: /\.css$/,
