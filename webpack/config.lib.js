@@ -51,7 +51,6 @@ module.exports = {
     library: LIBRARY_NAME,
     libraryTarget: 'umd',
     path: path.join(directories.ROOT, 'lib/'),
-    filename: LIBRARY_NAME + '.min.js',
-    umdNamedDefine: true
+    filename: LIBRARY_NAME + '.min.js'
   }
 };
