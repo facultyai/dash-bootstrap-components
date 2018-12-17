@@ -111,7 +111,7 @@ def build_publish(version):
     info("Building JavaScript components")
     build_js()
     info("Building and uploading Python source distribution")
-    info("Pypi credentials:")
+    info("PyPI credentials:")
     release_python_sdist()
 
 
