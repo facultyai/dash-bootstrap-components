@@ -1,6 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {append, contains, without} from 'ramda';
-import React from 'react';
 import classNames from 'classnames';
 
 /**

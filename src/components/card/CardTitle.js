@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {CardTitle as RSCardTitle} from 'reactstrap';
 import classNames from 'classnames';

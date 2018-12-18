@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {CardDeck as RSCardDeck} from 'reactstrap';
 

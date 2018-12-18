@@ -1,8 +1,8 @@
+import React from 'react';
 import {DateRangePicker} from 'react-dates';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
-import React, {Component} from 'react';
 import classNames from 'classnames';
 import './react-dates@12.3.0.css';
 
@@ -22,7 +22,7 @@ const sizeMap = {
  * This component is based off of Airbnb's react-dates react component
  * which can be found here: https://github.com/airbnb/react-dates
  */
-export default class DatePickerRange extends Component {
+export default class DatePickerRange extends React.Component {
   constructor() {
     super();
     this.propsToState = this.propsToState.bind(this);

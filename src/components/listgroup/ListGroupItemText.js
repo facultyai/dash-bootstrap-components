@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {ListGroupItemText as RSListGroupItemText} from 'reactstrap';
 import classNames from 'classnames';
