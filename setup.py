@@ -17,7 +17,7 @@ def _get_version():
 
 
 def _get_long_description():
-    with open(os.path.join(HERE, "README.md")) as f:
+    with open(os.path.join(HERE, "landing-page.md")) as f:
         return f.read()
 
 
