@@ -10,6 +10,7 @@ from ...helpers import (
     load_source_with_environment,
 )
 from ...metadata import get_component_metadata
+from .radio_check import inputs as input_radio_check
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
 from .validation import inputs as input_validation
@@ -20,18 +21,28 @@ input_simple_source = (HERE / "simple.py").read_text()
 input_text_label_source = (HERE / "text_label.py").read_text()
 input_size_source = (HERE / "size.py").read_text()
 input_validation_source = (HERE / "validation.py").read_text()
-input_feedback_source = (HERE / "feedback.py").read_text()
+input_radio_check_source = (HERE / "radio_check.py").read_text()
 
 
 def get_content(app):
     return [
-        html.H2("Input"),
+        html.H2("Input components"),
         html.P(
             dcc.Markdown(
-                "`dash-bootstrap-components` has its own `Input` component "
-                "that allows input related Bootstrap styles to be set through "
-                "the Python interface. The basic usage is the same as "
-                "`dash-core-components`"
+                "`dash-bootstrap-components` has its own versions of some of "
+                "the input components available in `dash-core-components`. "
+                "They have been designed to share the same interface as the "
+                "corresponding components in `dash-core-components` for "
+                "familiarity, but have a few additional Bootstrap specific "
+                "features."
+            )
+        ),
+        html.H4("Input"),
+        html.P(
+            dcc.Markdown(
+                "The input component allows for text or numeric input, its "
+                "basic usage is the same as `dcc.Input`, but Bootstrap styles "
+                "will be applied for you."
             )
         ),
         ExampleContainer(
@@ -74,34 +85,29 @@ def get_content(app):
         ),
         ExampleContainer(input_validation),
         HighlightedSource(input_validation_source),
-        html.H4("Form Feedback"),
+        html.H4("RadioItems and Checklist"),
         html.P(
             dcc.Markdown(
-                "You can combine the valid / invalid styling with the "
-                "`FormFeeback` component to give actionable feedback for "
-                "user supplied inputs."
+                "`RadioItems` and `Checklist` components also work like "
+                "`dash-core-components` but again with Bootstrap styles "
+                "added. In addition the `inline` keyword can be used to "
+                "easily make inline checklists or radioitems. Use these "
+                "components with `FormGroup` for automatic spacing and "
+                "padding."
             )
         ),
-        html.P(
-            dcc.Markdown(
-                "For the `Input` component, `valid` and `invalid` are not "
-                "complements of each other (a particular input could be "
-                "neither valid nor invalid), so we must set them both "
-                "appropriately. For the `FormFeedback` component, we must "
-                "set the `valid` property. The feedback will display if its "
-                "validity matches the validity of the `Input`. For this to "
-                "work you must wrap your `Input` and `FormFeedback` in a "
-                "`FormGroup` component."
-            )
-        ),
-        ExampleContainer(
-            load_source_with_environment(
-                input_feedback_source, "email_input", {"app": app}
-            )
-        ),
-        HighlightedSource(input_feedback_source),
+        ExampleContainer(input_radio_check),
+        HighlightedSource(input_radio_check_source),
         ApiDoc(
             get_component_metadata("src/components/input/Input.js"),
             component_name="Input",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/input/RadioItems.js"),
+            component_name="RadioItems",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/input/Checklist.js"),
+            component_name="Checklist",
         ),
     ]

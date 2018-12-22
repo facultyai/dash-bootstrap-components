@@ -9,7 +9,7 @@ from .components.card import content as card_content
 from .components.collapse import get_content as get_collapse_content
 from .components.dropdown import content as dropdown_content
 from .components.fade import get_content as get_fade_content
-from .components.form import content as form_content
+from .components.form import get_content as get_form_content
 from .components.input import get_content as get_input_content
 from .components.input_group import get_content as get_input_group_content
 from .components.jumbotron import content as jumbotron_content
@@ -79,7 +79,7 @@ class ComponentsPage:
             "collapse": get_collapse_content(self._app),
             "dropdown_menu": dropdown_content,
             "fade": get_fade_content(self._app),
-            "form": form_content,
+            "form": get_form_content(self._app),
             "input": get_input_content(self._app),
             "input_group": get_input_group_content(self._app),
             "jumbotron": jumbotron_content,
