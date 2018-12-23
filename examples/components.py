@@ -11,7 +11,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 navbar = dbc.Navbar(
     children=[
-        dbc.NavItem(dbc.NavLink("Github", href=DBC_GITHUB)),
+        dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
         dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
