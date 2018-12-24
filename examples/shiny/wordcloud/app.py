@@ -15,12 +15,12 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 from wordcloud import WordCloud
 
-BASE_URL = "https://cdn.opensource.faculty.ai/wordcloud/"
+BASE_URL = "https://cdn.opensource.faculty.ai/wordcloud"
 
 DOCUMENT_URLS = {
-    "midsummer": BASE_URL + "a-midsummer-nights-dream.txt",
-    "venice": BASE_URL + "the-merchant-of-venice.txt",
-    "randj": BASE_URL + "romeo-and-juliet.txt"
+    "midsummer": f"{BASE_URL}/a-midsummer-nights-dream.txt",
+    "venice": f"{BASE_URL}/the-merchant-of-venice.txt",
+    "randj": f"{BASE_URL}/romeo-and-juliet.txt",
 }
 
 
@@ -30,7 +30,7 @@ def load_word_frequencies(book):
     url = DOCUMENT_URLS[book]
     WC = WordCloud(width=1000, height=600)
     with urlopen(url) as f:
-        text = f.read().decode('utf-8')
+        text = f.read().decode("utf-8")
     return WC.process_text(text)
 
 
