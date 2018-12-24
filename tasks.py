@@ -117,9 +117,7 @@ def build_publish(version):
 
 def clean():
     paths_to_clean = [
-        "src/node_modules",
-        "dash_bootstrap_components/bundle.js",
-        "dash_bootstrap_components/metadata.json",
+        "dash_bootstrap_components/_components",
         "dist/",
         "lib/",
     ]
@@ -130,6 +128,7 @@ def clean():
 def build_js():
     os.chdir(JS_DIR)
     try:
+        run("npm install")
         run("npm publish")
     finally:
         os.chdir(HERE)
