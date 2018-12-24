@@ -116,11 +116,7 @@ def build_publish(version):
 
 
 def clean():
-    paths_to_clean = [
-        "dash_bootstrap_components/_components",
-        "dist/",
-        "lib/",
-    ]
+    paths_to_clean = ["dash_bootstrap_components/_components", "dist/", "lib/"]
     for path in paths_to_clean:
         run(f"rm -rf {path}")
 
