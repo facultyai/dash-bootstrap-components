@@ -102,6 +102,15 @@ def postrelease(ctx, version):
     run("git push origin master")
 
 
+@task
+def documentation(ctx):
+    """
+    Push documentation to Heroku
+    """
+    info("Pushing documentation to Heroku")
+    run("git subtree push --prefix docs/ heroku master")
+
+
 def build_publish(version):
     info("Cleaning")
     clean()
