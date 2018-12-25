@@ -15,7 +15,7 @@ import pandas as pd
 import plotly.figure_factory as ff
 from dash.dependencies import Input, Output
 
-DATA = pd.read_csv("old_faithful.csv")
+DATA = pd.read_csv("https://cdn.opensource.faculty.ai/old-faithful/data.csv")
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
