@@ -1,0 +1,7 @@
+dash
+dash-bootstrap-components
+dash-core-components
+dash-html-components
+pandas
+plotly
+scikit-learn

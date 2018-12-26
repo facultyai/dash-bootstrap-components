@@ -4,17 +4,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
+DBC_DOCS = "https://dash-bootstrap-components.opensource.asidatascience.com/"
 DBC_GITHUB = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-app = dash.Dash()
-
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 navbar = dbc.Navbar(
-    brand="Dash Bootstrap components",
-    brand_href=DBC_GITHUB,
-    sticky="top",
     children=[
-        dbc.NavItem(dbc.NavLink("ASI", href="https://www.asidatascience.com")),
+        dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
         dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
@@ -25,24 +22,27 @@ navbar = dbc.Navbar(
                 dbc.DropdownMenuItem(divider=True),
                 dbc.DropdownMenuItem("A heading", header=True),
                 dbc.DropdownMenuItem(
-                    "Entry 3", href="/external-test", external_link=True
+                    "Entry 3", href="/external-relative", external_link=True
                 ),
                 dbc.DropdownMenuItem("Entry 4 - does nothing"),
             ],
         ),
     ],
+    brand="Dash Bootstrap Components",
+    brand_href=DBC_DOCS,
+    sticky="top",
 )
 
 header = html.Div(
     [
-        html.H1("Dash Bootstrap Components"),
         html.P(
             [
                 "This app demonstrates components available in ",
                 html.Code("dash-bootstrap-components"),
             ]
-        ),
-    ]
+        )
+    ],
+    className="mt-4",
 )
 
 alerts = html.Div(
@@ -70,16 +70,11 @@ buttons = html.Div(
         html.H2("Buttons"),
         html.Div(
             [
-                dbc.Button("Primary", color="primary"),
-                " ",
-                dbc.Button("Secondary", color="secondary"),
-                " ",
-                dbc.Button("Success", color="success"),
-                " ",
-                dbc.Button("Warning", color="warning"),
-                " ",
-                dbc.Button("Danger", color="danger"),
-                " ",
+                dbc.Button("Primary", color="primary", className="mr-1"),
+                dbc.Button("Secondary", color="secondary", className="mr-1"),
+                dbc.Button("Success", color="success", className="mr-1"),
+                dbc.Button("Warning", color="warning", className="mr-1"),
+                dbc.Button("Danger", color="danger", className="mr-1"),
                 dbc.Button("Info", color="info"),
             ]
         ),
@@ -87,16 +82,24 @@ buttons = html.Div(
         html.H4("Outline buttons"),
         html.Div(
             [
-                dbc.Button("Primary", outline=True, color="primary"),
-                " ",
-                dbc.Button("Secondary", outline=True, color="secondary"),
-                " ",
-                dbc.Button("Success", outline=True, color="success"),
-                " ",
-                dbc.Button("Warning", outline=True, color="warning"),
-                " ",
-                dbc.Button("Danger", outline=True, color="danger"),
-                " ",
+                dbc.Button(
+                    "Primary", outline=True, color="primary", className="mr-1"
+                ),
+                dbc.Button(
+                    "Secondary",
+                    outline=True,
+                    color="secondary",
+                    className="mr-1",
+                ),
+                dbc.Button(
+                    "Success", outline=True, color="success", className="mr-1"
+                ),
+                dbc.Button(
+                    "Warning", outline=True, color="warning", className="mr-1"
+                ),
+                dbc.Button(
+                    "Danger", outline=True, color="danger", className="mr-1"
+                ),
                 dbc.Button("Info", outline=True, color="info"),
             ]
         ),
@@ -248,7 +251,7 @@ dropdownmenu = html.Div(
                 dbc.DropdownMenuItem("Another heading", header=True),
                 dbc.DropdownMenuItem("Item 2"),
             ],
-            label="Open dropdownmenu",
+            label="Open DropdownMenu",
         ),
     ]
 )
@@ -265,6 +268,137 @@ fade = html.Div(
             ),
             id="fade",
             is_in=True,
+        ),
+    ]
+)
+
+form = html.Div(
+    [
+        html.H2("Form"),
+        dbc.Form(
+            [
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Username"),
+                        dbc.Input(
+                            placeholder="Enter your username", type="text"
+                        ),
+                        dbc.FormText(
+                            [
+                                "Can't remember your username? ",
+                                html.A(
+                                    "Click here.",
+                                    href="#",
+                                    className="text-muted",
+                                    style={"text-decoration": "underline"},
+                                ),
+                            ]
+                        ),
+                    ]
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Username"),
+                        dbc.Input(
+                            placeholder="Enter your password", type="password"
+                        ),
+                        dbc.FormText(
+                            [
+                                "Can't remember your password? ",
+                                html.A(
+                                    "Click here.",
+                                    href="#",
+                                    className="text-muted",
+                                    style={"text-decoration": "underline"},
+                                ),
+                            ]
+                        ),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+input_ = html.Div(
+    [
+        html.H2("Input"),
+        dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
+        dbc.FormGroup(
+            [
+                dbc.Label("Valid text input"),
+                dbc.Input(type="text", valid=True),
+                dbc.FormFeedback("That's a valid input!", valid=True),
+            ]
+        ),
+        dbc.FormGroup(
+            [
+                dbc.Label("Invalid text input"),
+                dbc.Input(type="text", invalid=True),
+                dbc.FormFeedback("That's an invalid input..."),
+            ]
+        ),
+        html.H4("Checklist"),
+        dbc.Checklist(
+            options=[
+                {"label": "Option {}".format(i), "value": i} for i in range(5)
+            ],
+            values=[],
+        ),
+        html.H5("Inline checklist", className="mt-3"),
+        dbc.Checklist(
+            options=[
+                {"label": "Option {}".format(i), "value": i} for i in range(5)
+            ],
+            values=[],
+            inline=True,
+        ),
+        html.H4("RadioItems", className="mt-5"),
+        dbc.RadioItems(
+            options=[
+                {"label": "Option {}".format(i), "value": i} for i in range(5)
+            ],
+            value=0,
+        ),
+        html.H5("Inline radioitems", className="mt-3"),
+        dbc.RadioItems(
+            options=[
+                {"label": "Option {}".format(i), "value": i} for i in range(5)
+            ],
+            value=0,
+            inline=True,
+        ),
+    ]
+)
+
+input_group = html.Div(
+    [
+        html.H2("Input groups and addons"),
+        dbc.InputGroup(
+            [
+                dbc.InputGroupAddon(
+                    dbc.Button("To the left!", color="danger"),
+                    addon_type="prepend",
+                ),
+                dbc.Input(type="text"),
+            ]
+        ),
+        html.Br(),
+        dbc.InputGroup(
+            [
+                dbc.Input(type="text"),
+                dbc.InputGroupAddon(
+                    dbc.Button("To the right!", color="success"),
+                    addon_type="append",
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.InputGroup(
+            [
+                dbc.InputGroupAddon("@", addon_type="prepend"),
+                dbc.Input(type="text", placeholder="Enter username"),
+            ]
         ),
     ]
 )
@@ -444,6 +578,12 @@ app.layout = html.Div(
                 dropdownmenu,
                 html.Br(),
                 fade,
+                html.Br(),
+                form,
+                html.Br(),
+                input_,
+                html.Br(),
+                input_group,
                 html.Br(),
                 jumbotron,
                 html.Br(),
