@@ -1,10 +1,5 @@
 # README
 
-In this directory we recreate some of the examples from the [shiny gallery](https://shiny.rstudio.com/gallery/) using Dash Bootstrap Components. Shiny is also based on Bootstrap, so we can construct similar apps very easily. Some of the visual differences are due to `shiny` using Bootstrap 3 whereas `dash-bootstrap-components` uses Bootstrap 4.
+This directory contains a collection of example apps that demonstrate usage of `dash-bootstrap-components`. Many of the apps have dependencies that are not dependencies of `dash-bootstrap-components` itself, each app has its own `requirements.txt` file containing these dependencies. You can easily install them with `pip install -r requirements.txt`.
 
-Some apps have additional dependencies that aren't installed automatically with `dash-bootstrap-components`. You may need to install a subset of the following packages to get the examples to run:
-
-*   `dash-core-components`
-*   `pandas`
-*   `scikit-learn`
-*   `wordcloud`
+Apps are written for Python 3.6+, they may happen to work with older versions of Python, but this is not tested or guaranteed.
