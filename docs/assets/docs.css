@@ -95,6 +95,10 @@ span.hljs-meta {
   border-radius: 0px 0px 3px 3px;
 }
 
+.source-container>pre.hljs {
+  border-radius: 3px;
+}
+
 .api-documentation {
   margin-bottom: 4rem;
 }
