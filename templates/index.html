@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="container">
-      <div class="row justify-content-sm-center">
+      <div class="row justify-content-sm-center pb-5">
         <div class="col">
           <h2 class="section-header">Installation</h2>
           <hr />
@@ -124,6 +124,32 @@ app.layout = html.Div([navbar, body])
 
 if __name__ == "__main__":
     app.run_server()</code></pre>
+          <h2 class="section-header mt-5">Using just the grid system</h2>
+          <hr />
+          <p>
+            Sometimes you may wish to take advantage of Bootstrap's grid system
+            for controlling the layout of your app, without including all of the
+            typography changes and additional CSS classes that come with it. In
+            such scenarios, it's possible to link just the
+            <code>bootstrap-grid.css</code> stylesheet. The easiest way to do this
+            is to use the CDN link in the <code>themes</code> module:
+          </p>
+          <pre><code class="language-python">app = dash.Dash(__name__, external_stylesheets=[dbc.themes.GRID])</code></pre>
+          <p>
+            If you prefer, you can also
+            <a href="https://getbootstrap.com/docs/4.2/getting-started/download/">download</a>
+            <code>bootstrap-grid.css</code> yourself, and place it in your
+            <code>assets/</code> directory, as described in the
+            <a href="https://dash.plot.ly/external-resources">
+              Plotly Dash documentation
+            </a>.
+          </p>
+          <p>
+            With just the grid CSS, you should only expect the layout components
+            <code>Container</code>, <code>Row</code> and <code>Col</code> to
+            work properly. Other components require additional classes and styles
+            that are not included in the Bootstrap grid stylesheet.
+          </p>
           <h2 class="section-header mt-5">Customising the stylesheet</h2>
           <hr />
           <p>
@@ -145,9 +171,7 @@ if __name__ == "__main__":
             with the <code>external_stylesheets</code> argument of the
             <code>Dash</code> constructor:
           </p>
-          <pre><code class="language-python">external_stylesheets = [dbc.themes.CERULEAN]
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)</code></pre>
+          <pre><code class="language-python">app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CERULEAN])</code></pre>
           <p>
             You can also download the base CSS from <a
             href="https://github.com/thomaspark/bootswatch/tree/master/dist/">GitHub</a>,
