@@ -19,6 +19,7 @@ export {default as Checklist} from './components/input/Checklist';
 export {default as Col} from './components/layout/Col';
 export {default as Collapse} from './components/Collapse';
 export {default as Container} from './components/layout/Container';
+export {default as CustomNavbar} from './components/nav/CustomNavbar';
 export {default as DatePickerRange} from './components/input/DatePickerRange';
 export {default as DatePickerSingle} from './components/input/DatePickerSingle';
 export {default as DropdownMenu} from './components/DropdownMenu';
@@ -44,7 +45,7 @@ export {
 } from './components/listgroup/ListGroupItemText';
 export {default as Nav} from './components/nav/Nav';
 export {default as Navbar} from './components/nav/Navbar';
-export {default as NavbarBrand} from './components/nav/Navbar';
+export {default as NavbarBrand} from './components/nav/NavbarBrand';
 export {default as NavbarToggler} from './components/nav/NavbarToggler';
 export {default as NavItem} from './components/nav/NavItem';
 export {default as NavLink} from './components/nav/NavLink';
