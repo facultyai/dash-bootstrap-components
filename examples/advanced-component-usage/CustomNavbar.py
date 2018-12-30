@@ -64,14 +64,17 @@ custom_default = dbc.CustomNavbar(
 logo = dbc.CustomNavbar(
     dbc.Container(
         [
-            # Use row and col to control vertical alignment of logo and brand
-            dbc.Row(
-                [
-                    dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                    dbc.Col(html.Span("Logo", className="ml-2 navbar-brand")),
-                ],
-                align="center",
-                no_gutters=True,
+            html.A(
+                # Use row and col to control vertical alignment of logo / brand
+                dbc.Row(
+                    [
+                        dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                        dbc.Col(dbc.NavbarBrand("Logo", className="ml-2")),
+                    ],
+                    align="center",
+                    no_gutters=True,
+                ),
+                href="https://plot.ly",
             ),
             dbc.NavbarToggler(id="navbar-toggler2"),
             dbc.Collapse(
