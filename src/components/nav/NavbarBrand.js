@@ -6,7 +6,7 @@ import Link from '../../private/Link';
 const NavbarBrand = props => {
   const {children, ...otherProps} = props;
   return (
-    <RSNavbarBrand {...otherProps} tag={Link}>
+    <RSNavbarBrand {...otherProps} tag={props.href ? Link : "span"}>
       {children}
     </RSNavbarBrand>
   );
