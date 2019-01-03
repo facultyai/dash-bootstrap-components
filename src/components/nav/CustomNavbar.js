@@ -84,12 +84,22 @@ CustomNavbar.propTypes = {
   sticky: PropTypes.string,
 
   /**
-   * Sets the color of the Navbar, options: primary, secondary, success, warning, danger, info, light.
+   * Sets the color of the Navbar. Main options are primary, light and dark, default light.
+   *
+   * You can also choose one of the other contextual classes provided by Bootstrap
+   * (secondary, success, warning, danger, info, white) or any color of your choice
+   * specified either by its HTML color name or by its hex code.
    */
   color: PropTypes.string,
 
+  /**
+   * The ARIA role attribute.
+   */
   role: PropTypes.string,
 
+  /**
+   * HTML tag to use for the CustomNavbar, default 'nav'
+   */
   tag: PropTypes.string,
 
   /**
