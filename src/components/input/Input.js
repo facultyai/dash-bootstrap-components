@@ -103,7 +103,6 @@ Input.propTypes = {
   type: PropTypes.oneOf([
     // Only allowing the input types with wide browser compatability
     'text',
-    'textarea',
     'number',
     'password',
     'email',

@@ -57,4 +57,5 @@ export {default as Row} from './components/layout/Row';
 export {default as Tab} from './components/tabs/Tab';
 export {default as Tabs} from './components/tabs/Tabs';
 export {default as Table} from './components/Table';
+export {default as Textarea} from './components/input/Textarea';
 export {default as Tooltip} from './components/Tooltip';

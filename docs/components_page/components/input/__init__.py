@@ -13,6 +13,7 @@ from ...metadata import get_component_metadata
 from .radio_check import inputs as input_radio_check
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
+from .textarea import textareas as input_textarea
 from .validation import inputs as input_validation
 
 HERE = Path(__file__).parent
@@ -22,6 +23,7 @@ input_text_label_source = (HERE / "text_label.py").read_text()
 input_size_source = (HERE / "size.py").read_text()
 input_validation_source = (HERE / "validation.py").read_text()
 input_radio_check_source = (HERE / "radio_check.py").read_text()
+input_textarea_source = (HERE / "textarea.py").read_text()
 
 
 def get_content(app):
@@ -85,6 +87,17 @@ def get_content(app):
         ),
         ExampleContainer(input_validation),
         HighlightedSource(input_validation_source),
+        html.H4("Textarea"),
+        html.P(
+            dcc.Markdown(
+                "The `Textarea` component works like the "
+                "`dash-core-components` analogue, but accepts the additional "
+                "arguments `valid`, `invalid`, and `bs_size` much like "
+                "`Input`."
+            )
+        ),
+        ExampleContainer(input_textarea),
+        HighlightedSource(input_textarea_source),
         html.H4("RadioItems and Checklist"),
         html.P(
             dcc.Markdown(
@@ -101,6 +114,10 @@ def get_content(app):
         ApiDoc(
             get_component_metadata("src/components/input/Input.js"),
             component_name="Input",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/input/Textarea.js"),
+            component_name="Textarea",
         ),
         ApiDoc(
             get_component_metadata("src/components/input/RadioItems.js"),
