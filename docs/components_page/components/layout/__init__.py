@@ -47,7 +47,7 @@ content = html.Div(
         html.P(
             dcc.Markdown(
                 "There are three main layout components in "
-                "`dash-bootstrap-components`: `Container`, `Row`, and `Col`."
+                "*dash-bootstrap-components*: `Container`, `Row`, and `Col`."
             )
         ),
         html.P(
@@ -55,7 +55,7 @@ content = html.Div(
                 "The `Container` component can be used to center and "
                 "horizontally pad your app's content. The docs you are "
                 "currently reading are themselves a Dash app built with "
-                "`dash-bootstrap-components`. The content on this page has "
+                "*dash-bootstrap-components*. The content on this page has "
                 "been centered by wrapping it in a `Container` component. By "
                 "default the container has a responsive pixel width. Use the "
                 "keyword argument `fluid=True` if you want your `Container` "
@@ -64,7 +64,7 @@ content = html.Div(
         ),
         html.P(
             dcc.Markdown(
-                "The `Row` component is a wrapper for columns, the layout of "
+                "The `Row` component is a wrapper for columns. The layout of "
                 "your app should be built as a series of rows of columns."
             )
         ),
@@ -94,34 +94,17 @@ content = html.Div(
         HighlightedSource(layout_simple_source),
         html.H4("Specify width"),
         html.P(
-            [
+            dcc.Markdown(
                 "Specify the desired width of each column using the `width` "
-                "keyword argument. The basic options are:",
-                html.Ul(
-                    [
-                        html.Li(
-                            dcc.Markdown(
-                                "`True`, the default, column will expand to "
-                                "fill the available space."
-                            )
-                        ),
-                        html.Li(
-                            dcc.Markdown(
-                                '`"auto"`, column will be sized according to '
-                                "the natural width of its content."
-                            )
-                        ),
-                        html.Li(
-                            dcc.Markdown(
-                                "An integer `1`,...,`12`. Column will span "
-                                "this many of the 12 grid columns. For a half "
-                                "width column, set `width=6`, for a third "
-                                "width column, set `width=4`, and so on."
-                            )
-                        ),
-                    ]
-                ),
-            ]
+                "keyword argument. The basic options are:\n\n"
+                "- `True`, the default, column will expand to fill the "
+                "available space.\n"
+                '- `"auto"`, column will be sized according to the natural '
+                "width of its content.\n"
+                "- An integer `1`,...,`12`. Column will span this many of the "
+                "12 grid columns. For a half width column, set `width=6`, for "
+                "a third width column, set `width=4`, and so on."
+            )
         ),
         ExampleContainer(layout_width),
         HighlightedSource(layout_width_source),
@@ -168,7 +151,7 @@ content = html.Div(
                 "or extra large devices using the `xs`, `sm`, `md`, `lg`, and "
                 "`xl` keyword arguments. Each takes the same arguments as "
                 "`width` and specifies the column behaviour for that size of "
-                "screen or larger. `width` secretly just sets `xs`, if you "
+                "screen or larger. `width` secretly just sets `xs`. If you "
                 "specify both, `xs` will override `width`."
             )
         ),
@@ -203,7 +186,7 @@ content = html.Div(
         html.H4("Row without 'gutters'"),
         html.P(
             dcc.Markdown(
-                "By default, horizontal spacing is added between the columns."
+                "By default, horizontal spacing is added between the columns. "
                 "Use `no_gutters=True` to disable this."
             )
         ),
