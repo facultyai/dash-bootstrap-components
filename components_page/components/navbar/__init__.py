@@ -26,7 +26,7 @@ def get_content(app):
         html.P(
             dcc.Markdown(
                 "There are two navbar components in "
-                "`dash-bootstrap-components`, `Navbar` and `CustomNavbar`. "
+                "*dash-bootstrap-components*, `Navbar` and `CustomNavbar`. "
                 "`Navbar` is simpler but less flexible, whereas "
                 "`CustomNavbar` is fully customisable, but requires more "
                 "boilerplate to get working."
