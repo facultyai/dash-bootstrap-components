@@ -31,10 +31,10 @@ def get_content(app):
         html.H2("Input components"),
         html.P(
             dcc.Markdown(
-                "`dash-bootstrap-components` has its own versions of some of "
-                "the input components available in `dash-core-components`. "
+                "*dash-bootstrap-components* has its own versions of some of "
+                "the input components available in *dash-core-components*. "
                 "They have been designed to share the same interface as the "
-                "corresponding components in `dash-core-components` for "
+                "corresponding components in *dash-core-components* for "
                 "familiarity, but have a few additional Bootstrap specific "
                 "features."
             )
@@ -91,7 +91,7 @@ def get_content(app):
         html.P(
             dcc.Markdown(
                 "The `Textarea` component works like the "
-                "`dash-core-components` analogue, but accepts the additional "
+                "*dash-core-components* analogue, but accepts the additional "
                 "arguments `valid`, `invalid`, and `bs_size` much like "
                 "`Input`."
             )
@@ -102,7 +102,7 @@ def get_content(app):
         html.P(
             dcc.Markdown(
                 "`RadioItems` and `Checklist` components also work like "
-                "`dash-core-components` but again with Bootstrap styles "
+                "*dash-core-components* but again with Bootstrap styles "
                 "added. In addition the `inline` keyword can be used to "
                 "easily make inline checklists or radioitems. Use these "
                 "components with `FormGroup` for automatic spacing and "
