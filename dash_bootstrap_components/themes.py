@@ -2,6 +2,9 @@ BOOTSTRAP = (
     "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 )
 
+# Grid only
+GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"  # noqa
+
 _BOOTSWATCH_BASE = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/"
 
 CERULEAN = _BOOTSWATCH_BASE + "cerulean/bootstrap.min.css"
