@@ -8,6 +8,18 @@ import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
 import NavbarToggler from './NavbarToggler';
 
+const navbarColors = new Set([
+  'primary',
+  'light',
+  'dark',
+  'secondary',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'white'
+]);
+
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -32,11 +44,18 @@ class Navbar extends React.Component {
       brand_external_link,
       linksLeft,
       fluid,
+      color,
+      style,
       ...otherProps
     } = this.props;
+    const isNavbarColor = navbarColors.has(color);
 
     return (
-      <RSNavbar {...otherProps}>
+      <RSNavbar
+        color={isNavbarColor && color}
+        style={{...style, backgroundColor: !isNavbarColor && color}}
+        {...otherProps}
+      >
         <Container fluid={fluid}>
           {brand && (
             <NavbarBrand

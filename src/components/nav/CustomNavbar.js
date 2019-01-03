@@ -2,10 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Navbar as RSNavbar} from 'reactstrap';
 
-const CustomNavbar = props => {
-  const {children, ...otherProps} = props;
+const navbarColors = new Set([
+  'primary',
+  'light',
+  'dark',
+  'secondary',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'white'
+]);
 
-  return <RSNavbar {...otherProps}>{children}</RSNavbar>;
+const CustomNavbar = props => {
+  const {children, color, style, ...otherProps} = props;
+  const isNavbarColor = navbarColors.has(color);
+
+  return (
+    <RSNavbar
+      color={isNavbarColor && color}
+      style={{...style, backgroundColor: !isNavbarColor && color}}
+      {...otherProps}
+    >
+      {children}
+    </RSNavbar>
+  );
 };
 
 CustomNavbar.defaultProps = {
