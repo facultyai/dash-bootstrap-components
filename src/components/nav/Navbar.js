@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
-
-import Link from '../../private/Link';
-
-import Nav from './Nav';
-import NavbarBrand from './NavbarBrand';
-import NavbarToggler from './NavbarToggler';
+import {Navbar as RSNavbar} from 'reactstrap';
 
 const navbarColors = new Set([
   'primary',
@@ -20,63 +14,20 @@ const navbarColors = new Set([
   'white'
 ]);
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-    this.toggle = this.toggle.bind(this);
-  }
+const Navbar = props => {
+  const {children, color, style, ...otherProps} = props;
+  const isNavbarColor = navbarColors.has(color);
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-  render() {
-    const {
-      children,
-      brand,
-      brand_href,
-      brand_style,
-      brand_external_link,
-      linksLeft,
-      fluid,
-      color,
-      style,
-      ...otherProps
-    } = this.props;
-    const isNavbarColor = navbarColors.has(color);
-
-    return (
-      <RSNavbar
-        color={isNavbarColor && color}
-        style={{backgroundColor: !isNavbarColor && color, ...style}}
-        {...otherProps}
-      >
-        <Container fluid={fluid}>
-          {brand && (
-            <NavbarBrand
-              href={brand_href}
-              style={brand_style}
-              external_link={brand_external_link}
-            >
-              {brand}
-            </NavbarBrand>
-          )}
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className={linksLeft ? 'mr-auto' : 'ml-auto'} navbar>
-              {children}
-            </Nav>
-          </Collapse>
-        </Container>
-      </RSNavbar>
-    );
-  }
-}
+  return (
+    <RSNavbar
+      color={isNavbarColor && color}
+      style={{backgroundColor: !isNavbarColor && color, ...style}}
+      {...otherProps}
+    >
+      {children}
+    </RSNavbar>
+  );
+};
 
 Navbar.defaultProps = {
   fluid: false,
@@ -107,36 +58,6 @@ Navbar.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
-
-  /**
-   * Branding text, to go top left of the navbar
-   */
-  brand: PropTypes.string,
-
-  /**
-   * Link to attach to brand
-   */
-  brand_href: PropTypes.string,
-
-  /**
-   * Style options for Brand
-   */
-  brand_style: PropTypes.object,
-
-  /**
-   * If true, the browser will treat the brand link as external,
-   * forcing a page refresh at the new location. If false,
-   * this just changes the location without triggering a page
-   * refresh. Use this if you are observing dcc.Location, for
-   * instance. Defaults to true for absolute URLs and false
-   * otherwise.
-   */
-  brand_external_link: PropTypes.bool,
-
-  /**
-   * Allow menu items to expand to fill width of page
-   */
-  fluid: PropTypes.bool,
 
   /**
    * Apply light styling to the navbar
@@ -170,6 +91,16 @@ Navbar.propTypes = {
    * your choice (e.g. a hex code, a decimal code or a CSS color name)
    */
   color: PropTypes.string,
+
+  /**
+   * The ARIA role attribute.
+   */
+  role: PropTypes.string,
+
+  /**
+   * HTML tag to use for the Navbar, default 'nav'
+   */
+  tag: PropTypes.string,
 
   /**
    * Specify screen size at which to expand the menu bar, e.g. sm, md, lg etc.

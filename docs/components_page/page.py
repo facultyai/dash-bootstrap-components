@@ -28,7 +28,7 @@ COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-NAVBAR = dbc.Navbar(
+NAVBAR = dbc.NavbarSimple(
     brand="Dash Bootstrap Components",
     brand_href="/",
     brand_external_link=True,

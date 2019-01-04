@@ -1,7 +1,7 @@
 """
 A simple app demonstrating how to manually construct a navbar with a customised
-layout using the CustomNavbar component and the supporting Nav, NavItem,
-NavLink, NavbarBrand, and NavbarToggler components.
+layout using the Navbar component and the supporting Nav, NavItem, NavLink,
+NavbarBrand, and NavbarToggler components.
 """
 import dash
 import dash_bootstrap_components as dbc
@@ -31,8 +31,8 @@ dropdown = dbc.DropdownMenu(
     label="Menu",
 )
 
-# this is the default navbar style created by the Navbar component
-default = dbc.Navbar(
+# this is the default navbar style created by the NavbarSimple component
+default = dbc.NavbarSimple(
     children=[nav_item, dropdown],
     brand="Default",
     brand_href="#",
@@ -40,9 +40,9 @@ default = dbc.Navbar(
     className="mb-5",
 )
 
-# here's how you can recreate the same thing using CustomNavbar
+# here's how you can recreate the same thing using Navbar
 # (see also required callback at the end of the file)
-custom_default = dbc.CustomNavbar(
+custom_default = dbc.Navbar(
     dbc.Container(
         [
             dbc.NavbarBrand("Custom default", href="#"),
@@ -61,7 +61,7 @@ custom_default = dbc.CustomNavbar(
 
 
 # this example that adds a logo to the navbar brand
-logo = dbc.CustomNavbar(
+logo = dbc.Navbar(
     dbc.Container(
         [
             html.A(
@@ -92,7 +92,7 @@ logo = dbc.CustomNavbar(
 )
 
 # this example has a search bar and button instead of navitems / dropdowns
-search_navbar = dbc.CustomNavbar(
+search_navbar = dbc.Navbar(
     dbc.Container(
         [
             dbc.NavbarBrand("Search", href="#"),
@@ -130,7 +130,7 @@ search_navbar = dbc.CustomNavbar(
 )
 
 # custom navbar based on https://getbootstrap.com/docs/4.1/examples/dashboard/
-dashboard = dbc.CustomNavbar(
+dashboard = dbc.Navbar(
     [
         dbc.Col(dbc.NavbarBrand("Dashboard", href="#"), sm=3, md=2),
         dbc.Col(dbc.Input(type="search", placeholder="Search here")),
