@@ -78,7 +78,17 @@ def release(ctx, version):
     run("git push origin master --tags")
 
 
+@task
+def documentation(ctx):
+    """
+    Push documentation to Heroku
+    """
+    info("Pushing documentation to Heroku")
+    run("git subtree push --prefix docs/ heroku master")
+
+
 @task(
+    documentation,
     help={
         "version": "Version number to finalize. Must be "
         "the same version number that was used in the release."
@@ -101,15 +111,6 @@ def postrelease(ctx, version):
     )
     run('git commit -m "Back to dev"')
     run("git push origin master")
-
-
-@task
-def documentation(ctx):
-    """
-    Push documentation to Heroku
-    """
-    info("Pushing documentation to Heroku")
-    run("git subtree push --prefix docs/ heroku master")
 
 
 def build_publish(version):
