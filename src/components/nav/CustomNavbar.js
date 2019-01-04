@@ -21,7 +21,7 @@ const CustomNavbar = props => {
   return (
     <RSNavbar
       color={isNavbarColor && color}
-      style={{...style, backgroundColor: !isNavbarColor && color}}
+      style={{backgroundColor: !isNavbarColor && color, ...style}}
       {...otherProps}
     >
       {children}
@@ -87,8 +87,8 @@ CustomNavbar.propTypes = {
    * Sets the color of the Navbar. Main options are primary, light and dark, default light.
    *
    * You can also choose one of the other contextual classes provided by Bootstrap
-   * (secondary, success, warning, danger, info, white) or any color of your choice
-   * specified either by its HTML color name or by its hex code.
+   * (secondary, success, warning, danger, info, white) or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name)
    */
   color: PropTypes.string,
 
