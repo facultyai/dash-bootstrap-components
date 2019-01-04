@@ -92,7 +92,7 @@ def documentation(ctx):
     help={
         "version": "Version number to finalize. Must be "
         "the same version number that was used in the release."
-    }
+    },
 )
 def postrelease(ctx, version):
     """
@@ -173,7 +173,8 @@ def set_documentation_version(version):
         docs_requirements = f.readlines()
     for iline, line in enumerate(docs_requirements):
         if "dash_bootstrap_components" in line:
-            docs_requirements[iline] = f"dash_bootstrap_components=={version}\n"
+            updated_line = f"dash_bootstrap_components=={version}\n"
+            docs_requirements[iline] = updated_line
     with open(docs_requirements_path, "w") as f:
         f.writelines(docs_requirements)
 
