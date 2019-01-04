@@ -9,7 +9,7 @@ DBC_GITHUB = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-navbar = dbc.Navbar(
+navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
         dbc.DropdownMenu(

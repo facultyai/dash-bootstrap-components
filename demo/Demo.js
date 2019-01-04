@@ -33,7 +33,7 @@ import {
   ListGroupItem,
   ListGroupItemHeading,
   ListGroupItemText,
-  Navbar,
+  NavbarSimple,
   NavItem,
   NavLink,
   Popover,
@@ -128,7 +128,7 @@ class PopoverComponent extends Component {
 class Demo extends Component {
   render() {
     return (<React.Fragment>
-      <Navbar sticky="top" brand="Dash Bootstrap Components" brand_href="https://github.com/ASIDataScience/dash-bootstrap-components">
+      <NavbarSimple sticky="top" brand="Dash Bootstrap Components" brand_href="https://github.com/ASIDataScience/dash-bootstrap-components">
         <NavItem>
           <NavLink href="https://www.asidatascience.com">A link</NavLink>
         </NavItem>
@@ -138,7 +138,7 @@ class Demo extends Component {
           <DropdownMenuItem divider />
           <DropdownMenuItem>Entry 3</DropdownMenuItem>
         </DropdownMenu>
-      </Navbar>
+      </NavbarSimple>
       <Container>
         <h1>Dash Bootstrap Components</h1>
         <h2>Alerts</h2>
