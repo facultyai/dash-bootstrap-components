@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {Navbar as RSNavbar} from 'reactstrap';
-import Navbar from '../Navbar';
+import NavbarSimple from '../NavbarSimple';
 import NavbarBrand from '../NavbarBrand';
 import NavItem from '../NavItem';
 
@@ -12,9 +12,9 @@ describe('Empty Navbar', () => {
 
   beforeAll(() => {
     navbar = shallow(
-      <Navbar>
+      <NavbarSimple>
         <NavItem>item</NavItem>
-      </Navbar>
+      </NavbarSimple>
     );
     rsNavbar = navbar.find(RSNavbar);
     navbarBrand = navbar.find(NavbarBrand);
@@ -32,14 +32,14 @@ describe('Navbar with brand', () => {
 
   beforeAll(() => {
     navbar = shallow(
-      <Navbar
+      <NavbarSimple
         brand="some-brand"
         brand_href="https://example.com"
         brand_style={{'background-color': 'red'}}
         brand_external_link={true}
       >
         <NavItem>item</NavItem>
-      </Navbar>
+      </NavbarSimple>
     );
     navbarBrand = navbar.find(NavbarBrand);
   });
@@ -56,9 +56,9 @@ describe('Navbar with brand', () => {
 describe('Pass on attributes to the underlying reactstrap navbar', () => {
   function navbarWithProps(props) {
     const navbar = shallow(
-      <Navbar {...props}>
+      <NavbarSimple {...props}>
         <NavItem>item</NavItem>
-      </Navbar>
+      </NavbarSimple>
     );
     const rsNavbar = navbar.find(RSNavbar);
     return {navbar, rsNavbar};
