@@ -34,7 +34,7 @@ controls = dbc.Card(
         ),
         dbc.FormGroup(
             [
-                dbc.Label("X variable"),
+                dbc.Label("Y variable"),
                 dcc.Dropdown(
                     id="y-variable",
                     options=[
