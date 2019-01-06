@@ -52,6 +52,7 @@ def release(ctx, version):
     """
     check_prerequisites()
     info(f"Releasing version {version} as full release")
+    set_documentation_version(version)
     release_notes_lines = get_release_notes(version)
 
     if release_notes_lines is None:
@@ -77,11 +78,21 @@ def release(ctx, version):
     run("git push origin master --tags")
 
 
+@task
+def documentation(ctx):
+    """
+    Push documentation to Heroku
+    """
+    info("Pushing documentation to Heroku")
+    run("git subtree push --prefix docs/ heroku master")
+
+
 @task(
+    documentation,
     help={
         "version": "Version number to finalize. Must be "
         "the same version number that was used in the release."
-    }
+    },
 )
 def postrelease(ctx, version):
     """
@@ -153,6 +164,19 @@ def set_jsversion(version):
             package_json[iline] = f'  "version": "{version}",\n'
     with open(package_json_path, "w") as f:
         f.writelines(package_json)
+
+
+def set_documentation_version(version):
+    version = normalize_version(version)
+    docs_requirements_path = HERE / "docs" / "requirements.txt"
+    with docs_requirements_path.open() as f:
+        docs_requirements = f.readlines()
+    for iline, line in enumerate(docs_requirements):
+        if "dash_bootstrap_components" in line:
+            updated_line = f"dash_bootstrap_components=={version}\n"
+            docs_requirements[iline] = updated_line
+    with open(docs_requirements_path, "w") as f:
+        f.writelines(docs_requirements)
 
 
 def get_release_notes(version):
