@@ -70,6 +70,7 @@ def release(ctx, version):
     info("Committing version changes")
     run(
         "git add package.json package-lock.json "
+        "docs/requirements.txt "
         "dash_bootstrap_components/_version.py"
     )
     run(f'git commit -m "Bump version to {version}"')
