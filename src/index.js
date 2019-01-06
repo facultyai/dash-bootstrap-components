@@ -44,7 +44,8 @@ export {
 } from './components/listgroup/ListGroupItemText';
 export {default as Nav} from './components/nav/Nav';
 export {default as Navbar} from './components/nav/Navbar';
-export {default as NavbarBrand} from './components/nav/Navbar';
+export {default as NavbarBrand} from './components/nav/NavbarBrand';
+export {default as NavbarSimple} from './components/nav/NavbarSimple';
 export {default as NavbarToggler} from './components/nav/NavbarToggler';
 export {default as NavItem} from './components/nav/NavItem';
 export {default as NavLink} from './components/nav/NavLink';

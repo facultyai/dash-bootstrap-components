@@ -4,7 +4,30 @@ import {NavbarToggler as RSNavbarToggler} from 'reactstrap';
 
 const NavbarToggler = props => {
   const {children, ...otherProps} = props;
-  return <RSNavbarToggler {...otherProps}>{children}</RSNavbarToggler>;
+  return (
+    <RSNavbarToggler
+      onClick={() => {
+        if (props.setProps) {
+          props.setProps({
+            n_clicks: props.n_clicks + 1,
+            n_clicks_timestamp: Date.now()
+          });
+        }
+        if (props.fireEvent)
+          props.fireEvent({
+            event: 'click'
+          });
+      }}
+      {...otherProps}
+    >
+      {children}
+    </RSNavbarToggler>
+  );
+};
+
+NavbarToggler.defaultProps = {
+  n_clicks: 0,
+  n_clicks_timestamp: -1
 };
 
 NavbarToggler.propTypes = {
@@ -32,7 +55,20 @@ NavbarToggler.propTypes = {
   /**
    * Toggle type, default: button.
    */
-  type: PropTypes.string
+  type: PropTypes.string,
+
+  /**
+   * An integer that represents the number of times
+   * that this element has been clicked on.
+   */
+  n_clicks: PropTypes.number,
+
+  /**
+   * An integer that represents the time (in ms since 1970)
+   * at which n_clicks changed. This can be used to tell
+   * which button was changed most recently.
+   */
+  n_clicks_timestamp: PropTypes.number
 };
 
 export default NavbarToggler;

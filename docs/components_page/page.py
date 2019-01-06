@@ -15,6 +15,7 @@ from .components.input_group import get_content as get_input_group_content
 from .components.jumbotron import content as jumbotron_content
 from .components.layout import content as layout_content
 from .components.list_group import get_content as get_list_group_content
+from .components.navbar import get_content as get_navbar_content
 from .components.popover import get_content as get_popover_content
 from .components.progress import get_content as get_progress_content
 from .components.table import content as table_content
@@ -27,7 +28,7 @@ COMPONENTS = HERE / "components"
 
 GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
 
-NAVBAR = dbc.Navbar(
+NAVBAR = dbc.NavbarSimple(
     brand="Dash Bootstrap Components",
     brand_href="/",
     brand_external_link=True,
@@ -50,6 +51,7 @@ sidebar_entries = [
     SidebarEntry("jumbotron", "Jumbotron"),
     SidebarEntry("layout", "Layout"),
     SidebarEntry("list_group", "List Group"),
+    SidebarEntry("navbar", "Navbar"),
     SidebarEntry("popover", "Popover"),
     SidebarEntry("progress", "Progress"),
     SidebarEntry("table", "Table"),
@@ -85,6 +87,7 @@ class ComponentsPage:
             "jumbotron": jumbotron_content,
             "layout": layout_content,
             "list_group": get_list_group_content(self._app),
+            "navbar": get_navbar_content(self._app),
             "popover": get_popover_content(self._app),
             "progress": get_progress_content(self._app),
             "table": table_content,
