@@ -7,9 +7,8 @@ from dash.dependencies import Input, Output
 from components_page import ComponentsPage
 from demos.demo_layout import DemoLayoutPage
 
-BOOTSTRAP_CSS = (
-    "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-)
+BOOTSTRAP_CSS = dbc.themes.BOOTSTRAP
+
 HIGHLIGHT_JS_CSS = (
     "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/"
     "build/styles/monokai-sublime.min.css"
