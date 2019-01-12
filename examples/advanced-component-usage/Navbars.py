@@ -2,6 +2,8 @@
 A simple app demonstrating how to manually construct a navbar with a customised
 layout using the Navbar component and the supporting Nav, NavItem, NavLink,
 NavbarBrand, and NavbarToggler components.
+
+Requires dash-bootstrap-components 0.3.0 or later
 """
 import dash
 import dash_bootstrap_components as dbc
