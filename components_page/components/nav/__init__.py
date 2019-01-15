@@ -107,6 +107,14 @@ def get_content(app):
         ),
         ExampleContainer(nav_pill),
         HighlightedSource(nav_pill_source),
+        html.H4("Tabs"),
+        html.P(
+            dcc.Markdown(
+                "Bootstrap also lets you apply tab styling to navs, check out "
+                "our self-contained `Tabs` component "
+                "[here](/l/components/tabs)."
+            )
+        ),
         ApiDoc(
             get_component_metadata("src/components/nav/Nav.js"),
             component_name="Nav",
