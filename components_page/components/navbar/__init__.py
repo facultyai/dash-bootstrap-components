@@ -58,7 +58,9 @@ def get_content(app):
                 "navbar you can use the `Navbar` component. This gives you "
                 "full control over the children, but you will have to write "
                 "your own callbacks to achieve things like the toggle "
-                "behaviour on small screens."
+                "behaviour on small screens. We recommend using a `Nav` "
+                "component to wrap the navigation items, check the "
+                "[docs here](/l/components/nav)."
             )
         ),
         html.P(
