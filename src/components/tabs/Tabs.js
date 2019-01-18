@@ -84,7 +84,15 @@ class Tabs extends React.Component {
     });
     return (
       <div>
-        <Nav tabs={true}>{links}</Nav>
+        <Nav
+          id={this.props.id}
+          tabs={true}
+          card={this.props.card}
+          className={this.props.className}
+          style={this.props.style}
+        >
+          {links}
+        </Nav>
         <TabContent activeTab={this.state.activeTab}>{tabs}</TabContent>
       </div>
     );
@@ -118,7 +126,12 @@ Tabs.propTypes = {
    * Determine which tab is currently showing. Will be the id of the tab or
    * 'tab-i' where i is the index of the tab (indexed from zero)
    */
-  active_tab: PropTypes.string
+  active_tab: PropTypes.string,
+
+  /**
+   * Set to True to use the card header style for tabs.
+   */
+  card: PropTypes.bool
 };
 
 export default Tabs;
