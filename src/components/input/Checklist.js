@@ -30,12 +30,13 @@ class Checklist extends React.Component {
       options,
       setProps,
       style,
-      inline
+      inline,
+      key
     } = this.props;
     const {values} = this.state;
 
     return (
-      <div id={id} style={style} className={className}>
+      <div id={id} style={style} className={className} key={key}>
         {options.map(option => (
           <div
             className={classNames('form-check', inline && 'form-check-inline')}
@@ -115,6 +116,13 @@ Checklist.propTypes = {
    * The style of the container (div)
    */
   style: PropTypes.object,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * The style of the <input> checkbox element

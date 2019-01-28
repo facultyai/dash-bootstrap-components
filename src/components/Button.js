@@ -50,6 +50,13 @@ Button.propTypes = {
   style: PropTypes.object,
 
   /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
+
+  /**
    * An integer that represents the number of times
    * that this element has been clicked on.
    */

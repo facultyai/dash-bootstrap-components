@@ -32,10 +32,10 @@ export default class DatePickerSingle extends React.Component {
 
   propsToState(newProps) {
     /*
-         * state includes:
-         * - user modifiable attributes
-         * - moment converted attributes
-         */
+     * state includes:
+     * - user modifiable attributes
+     * - moment converted attributes
+     */
     const newState = {};
     const momentProps = [
       'date',
@@ -78,7 +78,8 @@ export default class DatePickerSingle extends React.Component {
     return (
       (notUndefined(min_date_allowed) && date < min_date_allowed) ||
       (notUndefined(max_date_allowed) && date >= max_date_allowed) ||
-      (notUndefined(disabled_days) && disabled_days.some(d => d.isSame(date, 'day')))
+      (notUndefined(disabled_days) &&
+        disabled_days.some(d => d.isSame(date, 'day')))
     );
   }
 
@@ -110,7 +111,8 @@ export default class DatePickerSingle extends React.Component {
       stay_open_on_select,
       with_full_screen_portal,
       with_portal,
-      bs_size
+      bs_size,
+      key
     } = this.props;
 
     const sizeClass = classNames('dbc-datepicker', sizeMap[bs_size]);
@@ -118,7 +120,7 @@ export default class DatePickerSingle extends React.Component {
     const verticalFlag = calendar_orientation !== 'vertical';
 
     return (
-      <div className={sizeClass}>
+      <div className={sizeClass} key={key}>
         <SingleDatePicker
           date={date}
           onDateChange={this.onDateChange}
@@ -149,6 +151,13 @@ export default class DatePickerSingle extends React.Component {
 
 DatePickerSingle.propTypes = {
   id: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * Specifies the starting date for the component, best practice is to pass

@@ -85,6 +85,13 @@ Label.propTypes = {
   className: PropTypes.string,
 
   /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
+
+  /**
    * Hide label from UI, but allow it to be discovered by screen-readers.
    */
   hidden: PropTypes.bool,

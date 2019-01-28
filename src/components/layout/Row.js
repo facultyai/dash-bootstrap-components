@@ -18,7 +18,14 @@ const justifyMap = {
 };
 
 const Row = props => {
-  const {children, className, align, justify, no_gutters, ...otherProps} = props;
+  const {
+    children,
+    className,
+    align,
+    justify,
+    no_gutters,
+    ...otherProps
+  } = props;
 
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
@@ -53,6 +60,13 @@ Row.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * Remove the "gutters" between columns in this row.

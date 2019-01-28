@@ -46,6 +46,13 @@ InputGroupAddon.propTypes = {
   className: PropTypes.string,
 
   /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
+
+  /**
    * Whether to prepend or append the addon.
    */
   addon_type: PropTypes.oneOf(['prepend', 'append'])

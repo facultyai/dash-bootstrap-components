@@ -54,7 +54,7 @@ class Tabs extends React.Component {
     // create tab links by extracting labels from children
     const links = children.map((child, idx) => {
       child = child.props.children;
-      const tabId = child.props.tab_id || 'tab-' + idx;
+      const tabId = child.props.key || child.props.tab_id || 'tab-' + idx;
       return (
         <NavItem key={tabId}>
           <NavLink
@@ -83,7 +83,7 @@ class Tabs extends React.Component {
       );
     });
     return (
-      <div>
+      <div key={this.props.key}>
         <Nav
           id={this.props.id}
           tabs={true}
@@ -121,6 +121,13 @@ Tabs.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * Determine which tab is currently showing. Will be the id of the tab or

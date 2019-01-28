@@ -35,6 +35,13 @@ Collapse.propTypes = {
   className: PropTypes.string,
 
   /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
+
+  /**
    * HTML tag to use for the card body. Default: div.
    */
   tag: PropTypes.string,

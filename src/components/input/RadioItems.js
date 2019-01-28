@@ -30,16 +30,13 @@ class RadioItems extends React.Component {
       labelStyle,
       options,
       setProps,
-      inline
+      inline,
+      key
     } = this.props;
     const {value} = this.state;
 
-    let ids = {};
-    if (id) {
-      ids = {id, key: id};
-    }
     return (
-      <div {...ids} className={className} style={style}>
+      <div id={id} className={className} style={style} key={key}>
         {options.map(option => (
           <div
             className={classNames('form-check', inline && 'form-check-inline')}
@@ -74,6 +71,13 @@ class RadioItems extends React.Component {
 
 RadioItems.propTypes = {
   id: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * An array of options

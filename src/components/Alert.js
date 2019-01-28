@@ -35,6 +35,13 @@ Alert.propTypes = {
   className: PropTypes.string,
 
   /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
+
+  /**
    * Alert color, options: primary, secondary, success, info, warning, danger,
    * link. Default: secondary.
    */
