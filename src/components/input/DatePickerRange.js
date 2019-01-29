@@ -66,6 +66,7 @@ export default class DatePickerRange extends React.Component {
   componentWillMount() {
     this.propsToState(this.props);
   }
+
   onDatesChange({startDate: start_date, endDate: end_date}) {
     const {setProps, updatemode} = this.props;
     const old_start_date = this.state.start_date;

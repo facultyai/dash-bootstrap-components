@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
+import {omit, isEmpty} from 'ramda';
 import classNames from 'classnames';
 
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: props.value};
+    if (!props.setProps || props.debounce) {
+      this.state = {value: props.value};
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.value});
+    if (this.props.setProps) {
+      this.props = nextProps;
+      if (this.props.debounce) {
+        this.setState({value: nextProps.value});
+      }
+    }
   }
 
   render() {
@@ -21,9 +28,17 @@ class Input extends React.Component {
       valid,
       invalid,
       bs_size,
-      plaintext
+      plaintext,
+      key,
+      debounce,
+      min,
+      max
     } = this.props;
-    const {value} = this.state;
+    const {value} = setProps
+      ? debounce
+        ? this.state
+        : this.props
+      : this.state;
 
     let formControlClass = 'form-control';
 
@@ -36,24 +51,64 @@ class Input extends React.Component {
       invalid && 'is-invalid',
       valid && 'is-valid',
       bs_size ? `form-control-${bs_size}` : false,
-      formControlClass
+      formControlClass,
+      debounce
     );
     return (
       <input
         onChange={e => {
-          this.setState({value: e.target.value});
+          const newValue = e.target.value;
+          if (
+            (!isEmpty(min) && Number(newValue) < min) ||
+            (!isEmpty(max) && Number(newValue) > max)
+          ) {
+            return;
+          }
+          if (!debounce && setProps) {
+            const castValue = type === 'number' ? Number(newValue) : newValue;
+            setProps({
+              value: castValue
+            });
+          } else {
+            this.setState({value: newValue});
+          }
+        }}
+        onBlur={() => {
           if (setProps) {
-            if (type === 'number') {
-              setProps({value: Number(e.target.value)});
-            } else {
-              setProps({value: e.target.value});
+            const payload = {
+              n_blur: this.props.n_blur + 1,
+              n_blur_timestamp: new Date()
+            };
+            if (debounce) {
+              payload.value = type === 'number' ? Number(value) : value;
             }
+            setProps(payload);
+          }
+        }}
+        onKeyPress={e => {
+          if (setProps && e.key === 'Enter') {
+            const payload = {
+              n_submit: this.props.n_submit + 1,
+              n_submit_timestamp: new Date()
+            };
+            if (debounce) {
+              payload.value = type === 'number' ? Number(value) : value;
+            }
+            setProps(payload);
           }
         }}
         className={classes}
         value={value}
         {...omit(
           [
+            'debounce',
+            'n_blur',
+            'n_blur_timestamp',
+            'n_submit',
+            'n_submit_timestamp',
+            'selectionDirection',
+            'selectionEnd',
+            'selectionStart',
             'setProps',
             'value',
             'className',
@@ -111,7 +166,39 @@ Input.propTypes = {
   plaintext: PropTypes.bool,
   addon: PropTypes.bool,
   placeholder: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+
+  /**
+   * Number of times the `Enter` key was pressed while the input had focus.
+   */
+  n_submit: PropTypes.number,
+  /**
+   * Last time that `Enter` was pressed.
+   */
+  n_submit_timestamp: PropTypes.number,
+
+  /**
+   * Number of times the input lost focus.
+   */
+  n_blur: PropTypes.number,
+  /**
+   * Last time the input lost focus.
+   */
+  n_blur_timestamp: PropTypes.number,
+
+  /**
+   * If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
+   * If it's false, it will sent the value back on every change.
+   */
+  debounce: PropTypes.bool
+};
+
+Input.defaultProps = {
+  n_blur: 0,
+  n_blur_timestamp: -1,
+  n_submit: 0,
+  n_submit_timestamp: -1,
+  debounce: false
 };
 
 export default Input;
