@@ -1,10 +1,7 @@
-from itertools import chain
-
 import dash_html_components as html
 from dash.development._py_components_generation import (
     filter_props,
     js_to_py_type,
-    parse_events,
     reorder_props,
 )
 
@@ -12,8 +9,7 @@ from dash.development._py_components_generation import (
 def ApiDoc(component_metadata, component_name=None):
     component_props = component_metadata.get("props", {})
     return html.Div(
-        ArgumentsList(component_props, component_name)
-        + EventsList(component_props, component_name),
+        ArgumentsList(component_props, component_name),
         className="api-documentation",
     )
 
@@ -47,25 +43,3 @@ def Argument(argument_name, argument_metadata):
     return html.Li(
         [html.Code(argument_name), html.I(type_string), ": ", description]
     )
-
-
-def EventsList(component_props, component_name):
-    if component_name is not None:
-        heading = f"Available events for {component_name}"
-    else:
-        heading = "Available events"
-    events = parse_events(component_props)
-    if not events:
-        return []
-    else:
-        event_components = [Event(event) for event in events]
-        events_list = list(
-            chain.from_iterable(
-                [(component, " ") for component in event_components]
-            )
-        )
-        return [html.H4(heading, className="mt-5 mb-2")] + events_list
-
-
-def Event(event):
-    return html.Code(event.lstrip("'").rstrip("'"))

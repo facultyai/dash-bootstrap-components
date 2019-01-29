@@ -19,14 +19,7 @@ export default class Textarea extends React.Component {
   }
 
   render() {
-    const {
-      fireEvent,
-      setProps,
-      className,
-      invalid,
-      valid,
-      bs_size
-    } = this.props;
+    const {setProps, className, invalid, valid, bs_size} = this.props;
     const {value} = this.state;
 
     const classes = classNames(
@@ -46,30 +39,9 @@ export default class Textarea extends React.Component {
           if (setProps) {
             setProps({value: e.target.value});
           }
-          if (fireEvent) {
-            fireEvent({event: 'change'});
-          }
-        }}
-        onBlur={() => {
-          if (fireEvent) {
-            fireEvent({event: 'blur'});
-          }
-        }}
-        onClick={() => {
-          if (fireEvent) {
-            fireEvent({event: 'click'});
-          }
         }}
         {...omit(
-          [
-            'fireEvent',
-            'setProps',
-            'value',
-            'valid',
-            'invalid',
-            'bs_size',
-            'className'
-          ],
+          ['setProps', 'value', 'valid', 'invalid', 'bs_size', 'className'],
           this.props
         )}
       />
@@ -216,11 +188,6 @@ Textarea.propTypes = {
   setProps: PropTypes.func,
 
   /**
-   * A callback for firing events to dash.
-   */
-  fireEvent: PropTypes.func,
-
-  /**
    * Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'
    */
   bs_size: PropTypes.string,
@@ -233,7 +200,5 @@ Textarea.propTypes = {
   /**
    * Apply invalid style to the Textarea
    */
-  invalid: PropTypes.bool,
-
-  dashEvents: PropTypes.oneOf(['click', 'blur', 'change'])
+  invalid: PropTypes.bool
 };

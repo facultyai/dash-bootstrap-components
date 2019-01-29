@@ -15,7 +15,6 @@ class Input extends React.Component {
 
   render() {
     const {
-      fireEvent,
       setProps,
       type,
       className,
@@ -50,20 +49,11 @@ class Input extends React.Component {
               setProps({value: e.target.value});
             }
           }
-          if (fireEvent) {
-            fireEvent({event: 'change'});
-          }
-        }}
-        onBlur={() => {
-          if (fireEvent) {
-            fireEvent({event: 'blur'});
-          }
         }}
         className={classes}
         value={value}
         {...omit(
           [
-            'fireEvent',
             'setProps',
             'value',
             'className',

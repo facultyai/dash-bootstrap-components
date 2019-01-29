@@ -2,7 +2,7 @@ from flask import Flask, render_template
 
 from app import App
 
-server = Flask(__name__)
+server = Flask(__name__, static_folder="assets")
 
 
 @server.route("/")
