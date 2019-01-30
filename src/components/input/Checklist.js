@@ -22,7 +22,6 @@ class Checklist extends React.Component {
   render() {
     const {
       className,
-      fireEvent,
       id,
       inputClassName,
       inputStyle,
@@ -58,9 +57,6 @@ class Checklist extends React.Component {
                 this.setState({values: newValues});
                 if (setProps) {
                   setProps({values: newValues});
-                }
-                if (fireEvent) {
-                  fireEvent({event: 'change'});
                 }
               }}
             />
@@ -143,11 +139,6 @@ Checklist.propTypes = {
   labelClassName: PropTypes.string,
 
   /**
-   * Dash-assigned callback that gets fired when the checkbox item gets selected.
-   */
-  fireEvent: PropTypes.func,
-
-  /**
    * Dash-assigned callback that gets fired when the value changes.
    */
   setProps: PropTypes.func,
@@ -155,9 +146,7 @@ Checklist.propTypes = {
   /**
    * Arrange Checklist inline
    */
-  inline: PropTypes.bool,
-
-  dashEvents: PropTypes.oneOf(['change'])
+  inline: PropTypes.bool
 };
 
 Checklist.defaultProps = {

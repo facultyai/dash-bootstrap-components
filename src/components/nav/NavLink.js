@@ -104,9 +104,7 @@ NavLink.propTypes = {
    * at which n_clicks changed. This can be used to tell
    * which button was changed most recently.
    */
-  n_clicks_timestamp: PropTypes.number,
-
-  dashEvents: PropTypes.oneOf(['click'])
+  n_clicks_timestamp: PropTypes.number
 };
 
 export default NavLink;

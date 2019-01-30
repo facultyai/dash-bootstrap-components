@@ -83,14 +83,11 @@ export default class DatePickerSingle extends React.Component {
   }
 
   onDateChange(date) {
-    const {setProps, fireEvent} = this.props;
+    const {setProps} = this.props;
     if (setProps && date !== null) {
       setProps({date: date.format('YYYY-MM-DD')});
     } else {
       this.setState({date});
-    }
-    if (fireEvent) {
-      fireEvent('change');
     }
   }
 
@@ -283,11 +280,6 @@ DatePickerSingle.propTypes = {
   setProps: PropTypes.func,
 
   /**
-   * Dash-assigned callback that gets fired when the value changes.
-   */
-  dashEvents: PropTypes.oneOf(['change']),
-
-  /**
    * Set the size of the DatePickerSingle
    */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
@@ -296,9 +288,7 @@ DatePickerSingle.propTypes = {
    * A list of days to disable in addition to any that fall outside of the range
    * specified by min_date_allowed and max_date_allowed.
    */
-  disabled_days: PropTypes.arrayOf(PropTypes.string),
-
-  fireEvent: PropTypes.func
+  disabled_days: PropTypes.arrayOf(PropTypes.string)
 };
 
 DatePickerSingle.defaultProps = {

@@ -8,7 +8,7 @@ import classNames from 'classnames';
  * component in dash-core-components
  *
  */
-export default class Textarea extends React.Component {
+class Textarea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: props.value};
@@ -19,14 +19,7 @@ export default class Textarea extends React.Component {
   }
 
   render() {
-    const {
-      fireEvent,
-      setProps,
-      className,
-      invalid,
-      valid,
-      bs_size
-    } = this.props;
+    const {setProps, className, invalid, valid, bs_size, debounce} = this.props;
     const {value} = this.state;
 
     const classes = classNames(
@@ -42,33 +35,46 @@ export default class Textarea extends React.Component {
         value={value}
         className={classes}
         onChange={e => {
-          this.setState({value: e.target.value});
-          if (setProps) {
-            setProps({value: e.target.value});
-          }
-          if (fireEvent) {
-            fireEvent({event: 'change'});
+          const newValue = e.target.value;
+          if (!debounce && setProps) {
+            setProps({value: newValue});
+          } else {
+            this.setState({value: newValue});
           }
         }}
         onBlur={() => {
-          if (fireEvent) {
-            fireEvent({event: 'blur'});
+          if (setProps) {
+            const payload = {
+              n_blur: this.props.n_blur + 1,
+              n_blur_timestamp: new Date()
+            };
+            if (debounce) {
+              payload.value = value;
+            }
+            setProps(payload);
           }
         }}
         onClick={() => {
-          if (fireEvent) {
-            fireEvent({event: 'click'});
+          if (setProps) {
+            setProps({
+              n_clicks: this.props.n_clicks + 1,
+              n_clicks_timestamp: new Date()
+            });
           }
         }}
         {...omit(
           [
-            'fireEvent',
             'setProps',
             'value',
             'valid',
             'invalid',
             'bs_size',
-            'className'
+            'className',
+            'n_blur',
+            'n_blur_timestamp',
+            'n_submit',
+            'n_submit_timestamp',
+            'debounce'
           ],
           this.props
         )}
@@ -216,11 +222,6 @@ Textarea.propTypes = {
   setProps: PropTypes.func,
 
   /**
-   * A callback for firing events to dash.
-   */
-  fireEvent: PropTypes.func,
-
-  /**
    * Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'
    */
   bs_size: PropTypes.string,
@@ -235,5 +236,41 @@ Textarea.propTypes = {
    */
   invalid: PropTypes.bool,
 
-  dashEvents: PropTypes.oneOf(['click', 'blur', 'change'])
+  /**
+   * Number of times the input lost focus.
+   */
+  n_blur: PropTypes.number,
+  /**
+   * Last time the input lost focus.
+   */
+  n_blur_timestamp: PropTypes.number,
+
+  /**
+   * An integer that represents the number of times
+   * that this element has been clicked on.
+   */
+  n_clicks: PropTypes.number,
+
+  /**
+   * An integer that represents the time (in ms since 1970)
+   * at which n_clicks changed. This can be used to tell
+   * which button was changed most recently.
+   */
+  n_clicks_timestamp: PropTypes.number,
+
+  /**
+   * If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
+   * If it's false, it will sent the value back on every change.
+   */
+  debounce: PropTypes.bool
 };
+
+Textarea.defaultProps = {
+  n_blur: 0,
+  n_blur_timestamp: -1,
+  n_clicks: 0,
+  n_clicks_timestamp: -1,
+  debounce: false
+};
+
+export default Textarea;

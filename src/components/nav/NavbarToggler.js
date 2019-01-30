@@ -13,10 +13,6 @@ const NavbarToggler = props => {
             n_clicks_timestamp: Date.now()
           });
         }
-        if (props.fireEvent)
-          props.fireEvent({
-            event: 'click'
-          });
       }}
       {...otherProps}
     >

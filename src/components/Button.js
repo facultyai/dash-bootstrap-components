@@ -13,7 +13,6 @@ const Button = props => {
             n_clicks_timestamp: Date.now()
           });
         }
-        if (props.fireEvent) props.fireEvent({event: 'click'});
       }}
       {...otherProps}
     >
@@ -99,14 +98,7 @@ Button.propTypes = {
   /**
    * Set outline button style.
    */
-  outline: PropTypes.bool,
-
-  /**
-   * A callback for firing events to dash.
-   */
-  fireEvent: PropTypes.func,
-
-  dashEvents: PropTypes.oneOf(['click'])
+  outline: PropTypes.bool
 };
 
 export default Button;
