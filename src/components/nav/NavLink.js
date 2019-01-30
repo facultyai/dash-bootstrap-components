@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Link from '../../private/Link';
 
-
 class NavLink extends React.Component {
   constructor(props) {
     super(props);
@@ -67,6 +66,13 @@ NavLink.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * The URL of the linked resource.

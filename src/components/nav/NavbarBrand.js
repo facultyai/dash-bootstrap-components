@@ -6,7 +6,7 @@ import Link from '../../private/Link';
 const NavbarBrand = props => {
   const {children, ...otherProps} = props;
   return (
-    <RSNavbarBrand {...otherProps} tag={props.href ? Link : "span"}>
+    <RSNavbarBrand {...otherProps} tag={props.href ? Link : 'span'}>
       {children}
     </RSNavbarBrand>
   );
@@ -33,6 +33,13 @@ NavbarBrand.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * If true, the browser will treat this as an external link,
