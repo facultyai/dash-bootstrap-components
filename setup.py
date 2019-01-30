@@ -4,6 +4,8 @@ from setuptools import find_packages, setup
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+GITHUB_URL = "https://github.com/facultyai/dash-bootstrap-components/"
+
 
 def _get_version():
     """ Get version by parsing _version programmatically """
@@ -30,7 +32,11 @@ setup(
     license="Apache Software License",
     author="Faculty",
     author_email="opensource@faculty.ai",
-    url="https://github.com/facultyai/dash-bootstrap-components",
+    url="https://dash-bootstrap-components.opensource.faculty.ai/",
+    project_urls={
+        "Bug Reports": os.path.join(GITHUB_URL, "issues"),
+        "Source": GITHUB_URL,
+    },
     packages=find_packages(),
     install_requires=["dash>=0.40.0"],
     include_package_data=True,
