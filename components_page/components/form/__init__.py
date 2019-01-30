@@ -57,7 +57,11 @@ def get_content(app):
                 "set the `valid` property. The feedback will display if its "
                 "validity matches the validity of the `Input`. For this to "
                 "work you must wrap your `Input` and `FormFeedback` in a "
-                "`FormGroup` component."
+                "`FormGroup` component. In the below example we create two "
+                "`FormFeedback` components, one valid, one not valid. "
+                "They will appear / disappear automatically as the `valid` "
+                "and `invalid` properties of `Input` are set to `True` / "
+                "`False` respectively."
             )
         ),
         ExampleContainer(
