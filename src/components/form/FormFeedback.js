@@ -38,12 +38,13 @@ FormFeedback.propTypes = {
   key: PropTypes.string,
 
   /**
-   * ...
+   * If True apply the valid styling to the feedback, else apply invalid
+   * styling.
    */
   valid: PropTypes.bool,
 
   /**
-   * ...
+   * Use styled tooltips to display validation feedback.
    */
   tooltip: PropTypes.bool
 };

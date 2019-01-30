@@ -82,7 +82,8 @@ Button.propTypes = {
   active: PropTypes.bool,
 
   /**
-   * Create block button.
+   * Create block level button, one that spans the full width of its parent.
+   * Default: False
    */
   block: PropTypes.bool,
 
@@ -98,12 +99,13 @@ Button.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * Button size, options: lg, md, sm.
+   * Button size, options: 'lg', 'md', 'sm'.
    */
   size: PropTypes.string,
 
   /**
-   * Set outline button style.
+   * Set outline button style, which removes background images and colors for a
+   * lightweight style.
    */
   outline: PropTypes.bool
 };

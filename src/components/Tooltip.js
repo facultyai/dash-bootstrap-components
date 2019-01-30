@@ -76,7 +76,8 @@ Tooltip.propTypes = {
   target: PropTypes.string,
 
   /**
-   * boundaries for popper, can be scrollParent, window, viewport, or any DOM element
+   * Boundaries for popper, can be scrollParent, window, viewport, or any DOM
+   * element
    */
   boundaries_element: PropTypes.string,
 

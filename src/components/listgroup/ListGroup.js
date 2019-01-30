@@ -43,7 +43,9 @@ ListGroup.propTypes = {
   tag: PropTypes.string,
 
   /**
-   * Apply "flush" styling to list
+   * When True the `list-group-flush` class is applied which removes some borders
+   * and rounded corners from the list group in order that they can be rendered
+   * edge-to-edge in the parent container (e.g. a Card).
    */
   flush: PropTypes.bool
 };

@@ -89,7 +89,7 @@ DropdownMenu.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Label for the toggle.
+   * Label for the DropdownMenu toggle.
    */
   label: PropTypes.string,
 
@@ -118,7 +118,8 @@ DropdownMenu.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * Set this to True if the dropdown is inside a nav. Default: False.
+   * Set this to True if the dropdown is inside a nav for styling consistent
+   * with other nav items. Default: False.
    */
   nav: PropTypes.bool,
 

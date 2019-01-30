@@ -38,7 +38,9 @@ Form.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Create inline form
+   * Use inline=True to apply the `form-inline` class, allowing you to display
+   * a series of labels, form controls, and buttons on a single horizontal row.
+   * Form controls within inline forms vary slightly from their default states.
    */
   inline: PropTypes.bool
 };

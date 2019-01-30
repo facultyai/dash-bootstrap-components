@@ -67,12 +67,14 @@ Navbar.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Apply light styling to the navbar
+   * Applies the `navbar-light` class to the Navbar, causing text in the children
+   * of the Navbar to use dark colors for contrast / visibility.
    */
   light: PropTypes.bool,
 
   /**
-   * Apply dark styling to the navbar
+   * Applies the `navbar-dark` class to the Navbar, causing text in the children
+   * of the Navbar to use light colors for contrast / visibility.
    */
   dark: PropTypes.bool,
 

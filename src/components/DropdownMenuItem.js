@@ -69,12 +69,12 @@ DropdownMenuItem.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Style this as 'active'.
+   * Style this item as 'active'.
    */
   active: PropTypes.bool,
 
   /**
-   * Style this as 'disabled'.
+   * Style this item as 'disabled'.
    */
   disabled: PropTypes.bool,
 

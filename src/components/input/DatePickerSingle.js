@@ -289,7 +289,8 @@ DatePickerSingle.propTypes = {
   setProps: PropTypes.func,
 
   /**
-   * Set the size of the DatePickerSingle
+   * Set the size of the DatePickerSingle. Options: 'sm' (small), 'md' (medium)
+   * or 'lg' (large). Default is 'md'.
    */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
 

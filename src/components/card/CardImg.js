@@ -43,12 +43,15 @@ CardImg.propTypes = {
   tag: PropTypes.string,
 
   /**
-   * Place image at top of card (round corners etc.)
+   * Set to True if image is at top of card. This will apply the card-img-top
+   * class which rounds the top corners to match the corners of the card.
    */
   top: PropTypes.bool,
 
   /**
-   * Place image at bottom of card (round corners etc.)
+   * Set to True if image is at bottom of card. This will apply the
+   * card-img-bottom class which rounds the bottom corners to match the corners
+   * of the card.
    */
   bottom: PropTypes.bool,
 

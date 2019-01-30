@@ -76,37 +76,63 @@ Col.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Specify column behaviour on an extra small screen
-   */
-  xs: columnProps,
-
-  /**
-   * Specify column behaviour on a small screen
-   */
-  sm: columnProps,
-
-  /**
-   * Specify column behaviour on a medium screen
-   */
-  md: columnProps,
-
-  /**
-   * Specify column behaviour on a large screen
-   */
-  lg: columnProps,
-
-  /**
-   * Specify column behaviour on an extra large screen
-   */
-  xl: columnProps,
-
-  /**
-   * Specify the width of the column. Is overriden if xs is specified
+   * Specify the width of the column. Behind the scenes this sets behaviour at
+   * the xs breakpoint, and will be overriden if xs is specified.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
    */
   width: columnProps,
 
   /**
-   * Set vertical alignment of this column in row
+   * Specify column behaviour on an extra small screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  xs: columnProps,
+
+  /**
+   * Specify column behaviour on a small screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  sm: columnProps,
+
+  /**
+   * Specify column behaviour on a medium screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  md: columnProps,
+
+  /**
+   * Specify column behaviour on a large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  lg: columnProps,
+
+  /**
+   * Specify column behaviour on an extra large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  xl: columnProps,
+
+  /**
+   * Set vertical alignment of this column's content in the parent row. Options
+   * are 'start', 'center', 'end'.
    */
   align: PropTypes.oneOf(['start', 'center', 'end'])
 };

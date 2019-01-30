@@ -150,7 +150,7 @@ Input.propTypes = {
   key: PropTypes.string,
 
   /**
-   *
+   * The type of control to render
    */
   type: PropTypes.oneOf([
     // Only allowing the input types with wide browser compatability
@@ -165,20 +165,67 @@ Input.propTypes = {
     'hidden'
   ]),
 
+  /**
+   * The value of the Input
+   */
   value: PropTypes.string,
+
+  /**
+   * The initial size of the control. This value is in pixels unless the value
+   * of the type attribute is text or password, in which case it is an integer
+   * number of characters. This attribute applies only when the type attribute
+   * is set to text, search, tel, url, email, or password, otherwise it is
+   * ignored. In addition, the size must be greater than zero. If you do not
+   * specify a size, a default value of 20 is used.
+   */
   size: PropTypes.string,
+
+  /**
+   * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
+   * or 'lg' (large). Default is 'md'.
+   */
   bs_size: PropTypes.string,
+
+  /**
+   * Apply valid style to the Input for feedback purposes. This will cause
+   * any FormFeedback in the enclosing FormGroup with valid=True to display.
+   */
   valid: PropTypes.bool,
+
+  /**
+   * Apply invalid style to the Input for feedback purposes. This will cause
+   * any FormFeedback in the enclosing FormGroup with valid=False to display.
+   */
   invalid: PropTypes.bool,
+
+  /**
+   * Set to true for a readonly input styled as plain text with the default
+   * form field styling removed and the correct margins and padding preserved.
+   */
   plaintext: PropTypes.bool,
-  addon: PropTypes.bool,
+
+  /**
+   * A hint to the user of what can be entered in the control . The placeholder
+   * text must not contain carriage returns or line-feeds. Note: Do not use the
+   * placeholder attribute instead of a <label> element, their purposes are
+   * different. The <label> attribute describes the role of the form element
+   * (i.e. it indicates what kind of information is expected), and the
+   * placeholder attribute is a hint about the format that the content should
+   * take. There are cases in which the placeholder attribute is never
+   * displayed to the user, so the form must be understandable without it.
+   */
   placeholder: PropTypes.string,
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
   name: PropTypes.string,
 
   /**
    * Number of times the `Enter` key was pressed while the input had focus.
    */
   n_submit: PropTypes.number,
+
   /**
    * Last time that `Enter` was pressed.
    */
@@ -188,6 +235,7 @@ Input.propTypes = {
    * Number of times the input lost focus.
    */
   n_blur: PropTypes.number,
+
   /**
    * Last time the input lost focus.
    */

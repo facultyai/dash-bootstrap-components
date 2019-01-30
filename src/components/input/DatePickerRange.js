@@ -362,7 +362,8 @@ DatePickerRange.propTypes = {
   disabled_days: PropTypes.arrayOf(PropTypes.string),
 
   /**
-   * Set the size of the DatePickerSingle
+   * Set the size of the DatePickerRange. Options: 'sm' (small), 'md' (medium)
+   * or 'lg' (large). Default is 'md'.
    */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg'])
 };

@@ -38,11 +38,6 @@ FormText.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Create inline form
-   */
-  inline: PropTypes.bool,
-
-  /**
    * Text color, options: primary, secondary, success, warning, danger, info,
    * muted, light, dark, body, white, black-50, white-50.
    */

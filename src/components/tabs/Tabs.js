@@ -136,7 +136,7 @@ Tabs.propTypes = {
   active_tab: PropTypes.string,
 
   /**
-   * Set to True to use the card header style for tabs.
+   * Set to True if using tabs inside a CardHeader.
    */
   card: PropTypes.bool
 };
