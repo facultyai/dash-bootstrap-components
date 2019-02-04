@@ -53,7 +53,8 @@ Alert.propTypes = {
   is_open: PropTypes.bool,
 
   /**
-   * Fade on close.
+   * If True, a fade animation will be applied when `is_open` is toggled. If
+   * False the Alert will simply appear and disappear.
    */
   fade: PropTypes.bool
 };

@@ -42,7 +42,7 @@ Collapse.propTypes = {
   key: PropTypes.string,
 
   /**
-   * HTML tag to use for the card body. Default: div.
+   * HTML tag to use for the collapse contents. Default: div.
    */
   tag: PropTypes.string,
 
@@ -52,7 +52,7 @@ Collapse.propTypes = {
   is_open: PropTypes.bool,
 
   /**
-   * Enable for use in a navbar.
+   * Set to True when using a collapse inside a navbar.
    */
   navbar: PropTypes.bool
 };

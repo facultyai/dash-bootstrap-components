@@ -36,7 +36,7 @@ Tab.propTypes = {
   key: PropTypes.string,
 
   /**
-   * The tab's label
+   * The tab's label, displayed in the tab itself.
    */
   label: PropTypes.string,
 

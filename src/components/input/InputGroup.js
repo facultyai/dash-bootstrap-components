@@ -38,7 +38,8 @@ InputGroup.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Size of the input group
+   * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
+   * or 'lg' (large). Default is 'md'.
    */
   size: PropTypes.string
 };

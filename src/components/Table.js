@@ -43,39 +43,44 @@ Table.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 
   /**
-   * Specify table size, options: sm, md, lg
+   * Specify table size, options: 'sm', 'md', 'lg'
    */
   size: PropTypes.string,
 
   /**
-   * Set bordered style
+   * Apply the `table-bordered` class which adds borders on all sides of the
+   * table and cells.
    */
   bordered: PropTypes.bool,
 
   /**
-   * Set borderless style
+   * Apply the `table-borderless` class which removes all borders from the
+   * table and cells.
    */
   borderless: PropTypes.bool,
 
   /**
-   * Apply striped style
+   * Apply the `table-striped` class which applies 'zebra striping' to rows in
+   * the table body.
    */
   striped: PropTypes.bool,
 
   /**
-   * set 'dark' style
+   * Apply the `table-dark` class for dark cell backgrounds and light text.
    */
   dark: PropTypes.bool,
 
   /**
-   * Add hover animation
+   * Apply the `table-hover` class which enables a hover state on table rows
+   * within the table body.
    */
   hover: PropTypes.bool,
 
   /**
-   * Allow horizontal scrolling if parent is too small to contain table.
+   * Set to True or one of the breakpoints 'sm', 'md', 'lg', 'xl' to make table
+   * scroll horizontally at lower breakpoints.
    */
-  responsive: PropTypes.bool
+  responsive: PropTypes.oneOf([PropTypes.bool, PropTypes.string])
 };
 
 export default Table;

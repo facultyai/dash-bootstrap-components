@@ -234,12 +234,14 @@ Textarea.propTypes = {
   bs_size: PropTypes.string,
 
   /**
-   * Apply valid style to the Textarea
+   * Apply valid style to the Textarea for feedback purposes. This will cause
+   * any FormFeedback in the enclosing FormGroup with valid=True to display.
    */
   valid: PropTypes.bool,
 
   /**
-   * Apply invalid style to the Textarea
+   * Apply invalid style to the Textarea for feedback purposes. This will cause
+   * any FormFeedback in the enclosing FormGroup with valid=False to display.
    */
   invalid: PropTypes.bool,
 

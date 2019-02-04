@@ -39,22 +39,23 @@ Card.propTypes = {
 
   /**
    * Card color, options: primary, secondary, success, info, warning, danger,
-   * link. Default is secondary
+   * light, dark. Default is light.
    */
   color: PropTypes.string,
 
   /**
-   * Wrap all children in a CardBody element (basically add some padding)
+   * Apply the `card-body` class to the card, so that there is no need to also
+   * include a CardBody component in the children of this Card. Default: False
    */
   body: PropTypes.bool,
 
   /**
-   * Use outline style.
+   * Apply color styling to just the border of the card.
    */
   outline: PropTypes.bool,
 
   /**
-   * Invert text colours for use with a dark color background.
+   * Invert text colours for use with a darker background.
    */
   inverse: PropTypes.bool
 };

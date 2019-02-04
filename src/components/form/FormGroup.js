@@ -38,24 +38,26 @@ FormGroup.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Apply row class to FormGroup
+   * Apply row class to FormGroup to allow labels and inputs to be displayed
+   * horizontally in a row.
    */
   row: PropTypes.bool,
 
   /**
-   * Set to true for groups with checkboxes or radio buttons for improved layout
+   * Apply `form-check` class instead of `form-group`. Useful when positioning
+   * labels with checkbox / radio inputs. Usually it will be better to use the
+   * pre-built dbc.Checklist or dbc.RadioItems components.
    */
   check: PropTypes.bool,
 
   /**
-   * Create inline group
+   * If check is True, apply the `form-check-inline` class in addition to
+   * `form-check`. If you want to make an inline list of checkboxes / radios
+   * we recommend using either dbc.Checklist or dbc.RadioItems with inline=True
+   *
+   * This prop has no effect if check=False.
    */
-  inline: PropTypes.bool,
-
-  /**
-   * Apply disabled CSS class to form group
-   */
-  disabled: PropTypes.bool
+  inline: PropTypes.bool
 };
 
 export default FormGroup;

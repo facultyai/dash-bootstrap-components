@@ -67,7 +67,7 @@ Popover.propTypes = {
   target: PropTypes.string,
 
   /**
-   * Where to inject the popper DOM node, default body
+   * Where to inject the popper DOM node, default body.
    */
   container: PropTypes.string,
 
@@ -77,17 +77,17 @@ Popover.propTypes = {
   is_open: PropTypes.bool,
 
   /**
-   * Hide popover arrow
+   * Hide popover arrow.
    */
   hide_arrow: PropTypes.bool,
 
   /**
-   * CSS class to apply to the popover
+   * CSS class to apply to the popover.
    */
   innerClassName: PropTypes.string,
 
   /**
-   * Optionally override show/hide delays - defualt {show: 0, hide: 250}
+   * Optionally override show/hide delays - default {show: 0, hide: 250}
    */
   delay: PropTypes.oneOfType([
     PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
@@ -95,7 +95,7 @@ Popover.propTypes = {
   ]),
 
   /**
-   * Popover offset
+   * Popover offset.
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };

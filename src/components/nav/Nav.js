@@ -38,43 +38,44 @@ Nav.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Apply Tab styling to nav items
-   */
-  tabs: PropTypes.bool,
-
-  /**
-   * Apply Pill styling to nav items
+   * Apply pill styling to nav items. Active items will be indicated by a pill.
    */
   pills: PropTypes.bool,
 
   /**
-   * Apply Card styling to nav items
+   * Set to True when using Nav with pills styling inside a CardHeader.
    */
   card: PropTypes.bool,
 
   /**
-   * Expand the nav items to fill the entire space available
+   * Expand the nav items to fill available horizontal space.
    */
   fill: PropTypes.bool,
 
   /**
-   * Expand the nav items to fill the entire space available, making sure
+   * Expand the nav items to fill available horizontal space, making sure
    * every nav item has the same width.
    */
   justified: PropTypes.bool,
 
   /**
-   * Arrange NavItems vertically
+   * Stack NavItems vertically. Set to True for a vertical Nav on all screen
+   * sizes, or pass one of the Bootstrap breakpoints ('xs', 'sm', 'md', 'lg',
+   * 'xl') for a Nav which is vertical at that breakpoint and above, and
+   * horizontal on smaller screens.
    */
   vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
-   * Arrange NavItems horizontally
+   * Specify the horizontal alignment of the NavItems. Options are 'start',
+   * 'center', or 'end'.
    */
-  horizontal: PropTypes.string,
+  horizontal: PropTypes.oneOf(["start", "center", "end"]),
 
   /**
-   * Set to true if using Nav in Navbar component.
+   * Set to True if using Nav in Navbar component. This applies the `navbar-nav`
+   * class to the Nav which uses more lightweight styles to match the parent
+   * Navbar better.
    */
   navbar: PropTypes.bool
 };

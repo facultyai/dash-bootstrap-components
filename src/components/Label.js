@@ -114,31 +114,52 @@ Label.propTypes = {
 
   /**
    * Specify label width on extra small screen
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
    */
   xs: columnProps,
 
   /**
    * Specify label width on a small screen
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
    */
   sm: columnProps,
 
   /**
    * Specify label width on a medium screen
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
    */
   md: columnProps,
 
   /**
    * Specify label width on a large screen
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
    */
   lg: columnProps,
 
   /**
    * Specify label width on an extra large screen
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
    */
   xl: columnProps,
 
   /**
-   * Set vertical alignement of the label, default: `center`
+   * Set vertical alignment of the label, options: 'start', 'center', 'end',
+   * default: 'center'
    */
   align: PropTypes.oneOf(['start', 'center', 'end']),
 

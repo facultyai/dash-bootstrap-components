@@ -21,7 +21,7 @@ ButtonGroup.propTypes = {
   children: PropTypes.node,
 
   /**
-   * Class for the button group
+   * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
 
@@ -33,12 +33,12 @@ ButtonGroup.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Stack buttons vertically
+   * Group buttons vertically.
    */
   vertical: PropTypes.bool,
 
   /**
-   * Size of button group
+   * Size of button group, options: 'sm', 'md', 'lg'.
    */
   size: PropTypes.string
 };

@@ -38,7 +38,9 @@ Container.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Should container be fluid or not
+   * If True the container-fluid class will be applied, and the Container will
+   * expand to fill available space. A non-fluid container resizes responsively
+   * to a fixed width at the different breakpoints.
    */
   fluid: PropTypes.bool,
 

@@ -116,17 +116,17 @@ NavbarSimple.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Branding text, to go top left of the navbar
+   * Brand text, to go top left of the navbar.
    */
   brand: PropTypes.string,
 
   /**
-   * Link to attach to brand
+   * Link to attach to brand.
    */
   brand_href: PropTypes.string,
 
   /**
-   * Style options for Brand
+   * CSS style options for brand.
    */
   brand_style: PropTypes.object,
 
@@ -141,22 +141,27 @@ NavbarSimple.propTypes = {
   brand_external_link: PropTypes.bool,
 
   /**
-   * Allow menu items to expand to fill width of page
+   * The contents of the Navbar are wrapped in a container, use fluid=True to
+   * make this container fluid, so that in particular, the contents of the
+   * navbar fill the available horizontal space.
    */
   fluid: PropTypes.bool,
 
   /**
-   * Apply light styling to the navbar
+   * Applies the `navbar-light` class to the NavbarSimple, causing text in the
+   * children of the Navbar to use dark colors for contrast / visibility.
    */
   light: PropTypes.bool,
 
   /**
-   * Apply dark styling to the navbar
+   * Applies the `navbar-dark` class to the NavbarSimple, causing text in the
+   * children of the Navbar to use light colors for contrast / visibility.
    */
   dark: PropTypes.bool,
 
   /**
-   * Fix the navbar's position at the top or bottom of the page, options: top, bottom
+   * Fix the navbar's position at the top or bottom of the page, options: top,
+   * bottom
    */
   fixed: PropTypes.string,
 
@@ -179,7 +184,9 @@ NavbarSimple.propTypes = {
   color: PropTypes.string,
 
   /**
-   * Specify screen size at which to expand the menu bar, e.g. sm, md, lg etc.
+   * Specify breakpoint at which to expand the menu bar. Options are: 'xs',
+   * 'sm', 'md', 'lg', or 'xl'. Below this breakpoint the navbar will collapse
+   * and navitems will be placed in a togglable collapse element.
    */
   expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };

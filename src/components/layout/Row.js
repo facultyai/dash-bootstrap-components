@@ -75,17 +75,20 @@ Row.propTypes = {
   no_gutters: PropTypes.bool,
 
   /**
-   * Set vertical alignment of columns
+   * Set vertical alignment of columns in this row. Options are 'start',
+   * 'center' and 'end'.
    */
   align: PropTypes.oneOf(['start', 'center', 'end']),
 
   /**
-   * Set horizontal spacing of columns.
+   * Set horizontal spacing and alignment of columns in this row. Options are
+   * 'start', 'center', 'end', 'around' and 'between'.
    */
   justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between']),
 
   /**
-   * For use in forms. Reduces the spacing between columns for a tighter look
+   * For use in forms. When set to True the `form-row` class is applied, which
+   * overrides the default column gutters for a tighter, more compact layout.
    */
   form: PropTypes.bool
 };

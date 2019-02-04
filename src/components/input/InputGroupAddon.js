@@ -53,7 +53,7 @@ InputGroupAddon.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Whether to prepend or append the addon.
+   * Whether to prepend or append the addon. Options: 'prepend', or 'append'.
    */
   addon_type: PropTypes.oneOf(['prepend', 'append'])
 };
