@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 
-external_url = "https://github.com/asidatascience/dash-bootstrap-components"
+external_url = "https://github.com/facultyai/dash-bootstrap-components"
 
 dropdown = dbc.DropdownMenu(
     label="Menu",
