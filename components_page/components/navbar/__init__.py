@@ -12,7 +12,7 @@ from ...helpers import (
 from ...metadata import get_component_metadata
 from .simple import navbar as navbar_simple
 
-GITHUB_EXAMPLES = "https://github.com/ASIDataScience/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py"  # noqa
+GITHUB_EXAMPLES = "https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py"  # noqa
 
 HERE = Path(__file__).parent
 
