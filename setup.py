@@ -29,7 +29,7 @@ setup(
     long_description_content_type="text/markdown",
     license="Apache Software License",
     author="Faculty",
-    author_email="opensource@asidatascience.com",
+    author_email="opensource@faculty.ai",
     url="https://github.com/facultyai/dash-bootstrap-components",
     packages=find_packages(),
     install_requires=["dash>=0.32.1", "dash-html-components"],
