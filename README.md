@@ -67,7 +67,7 @@ that can be composed with each other or with components in
 
 [dash-homepage]: https://dash.plot.ly/
 [bootstrap-homepage]: https://getbootstrap.com/
-[dbc-repo]: https://github.com/ASIDataScience/dash-bootstrap-components
+[dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/
 [docs-homepage]: https://dash-bootstrap-components.opensource.asidatascience.com
 [docs-components]: https://dash-bootstrap-components.opensource.asidatascience.com/l/components
