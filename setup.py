@@ -28,7 +28,7 @@ setup(
     long_description=_get_long_description(),
     long_description_content_type="text/markdown",
     license="Apache Software License",
-    author="ASI Data Science",
+    author="Faculty",
     author_email="opensource@asidatascience.com",
     url="https://github.com/facultyai/dash-bootstrap-components",
     packages=find_packages(),
