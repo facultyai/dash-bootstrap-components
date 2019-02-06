@@ -24,7 +24,7 @@
     "LICENSE.txt",
     "README.md"
   ],
-  "author": "ASI Data Science",
+  "author": "Faculty",
   "license": "Apache-2.0",
   "devDependencies": {
     "babel-core": "^6.26.3",

@@ -5,7 +5,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
 DBC_DOCS = "https://dash-bootstrap-components.opensource.asidatascience.com/"
-DBC_GITHUB = "https://github.com/ASIDataScience/dash-bootstrap-components"
+DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 

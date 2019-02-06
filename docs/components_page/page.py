@@ -27,7 +27,7 @@ from .sidebar import Sidebar, SidebarEntry
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 
-GITHUB_LINK = "https://github.com/ASIDataScience/dash-bootstrap-components"
+GITHUB_LINK = "https://github.com/facultyai/dash-bootstrap-components"
 
 NAVBAR = dbc.NavbarSimple(
     brand="Dash Bootstrap Components",

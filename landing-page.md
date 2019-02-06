@@ -31,7 +31,7 @@ repository and open a [pull request][dbc-pulls].
 
 [dash-homepage]: https://dash.plot.ly/
 [bootstrap-homepage]: https://getbootstrap.com/
-[dbc-repo]: https://github.com/ASIDataScience/dash-bootstrap-components
+[dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/
 [docs-homepage]: https://dash-bootstrap-components.opensource.asidatascience.com
-[dbc-pulls]: https://github.com/ASIDataScience/dash-bootstrap-components/pulls
+[dbc-pulls]: https://github.com/facultyai/dash-bootstrap-components/pulls
