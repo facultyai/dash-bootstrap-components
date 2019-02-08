@@ -69,5 +69,5 @@ that can be composed with each other or with components in
 [bootstrap-homepage]: https://getbootstrap.com/
 [dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/
-[docs-homepage]: https://dash-bootstrap-components.opensource.asidatascience.com
-[docs-components]: https://dash-bootstrap-components.opensource.asidatascience.com/l/components
+[docs-homepage]: https://dash-bootstrap-components.opensource.faculty.ai
+[docs-components]: https://dash-bootstrap-components.opensource.faculty.ai/l/components
