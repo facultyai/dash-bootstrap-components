@@ -33,5 +33,5 @@ repository and open a [pull request][dbc-pulls].
 [bootstrap-homepage]: https://getbootstrap.com/
 [dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/
-[docs-homepage]: https://dash-bootstrap-components.opensource.asidatascience.com
+[docs-homepage]: https://dash-bootstrap-components.opensource.faculty.ai
 [dbc-pulls]: https://github.com/facultyai/dash-bootstrap-components/pulls
