@@ -10,7 +10,6 @@ from ...helpers import (
     load_source_with_environment,
 )
 from ...metadata import get_component_metadata
-from .radio_check import inputs as input_radio_check
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
 from .textarea import textareas as input_textarea
@@ -109,7 +108,7 @@ def get_content(app):
                 "padding."
             )
         ),
-        ExampleContainer(input_radio_check),
+        ExampleContainer(load_source_with_environment(input_radio_check_source, "inputs", {"app": app})),
         HighlightedSource(input_radio_check_source),
         ApiDoc(
             get_component_metadata("src/components/input/Input.js"),
