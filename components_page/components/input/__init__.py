@@ -126,7 +126,15 @@ def get_content(app):
         ExampleContainer(inline_inputs),
         HighlightedSource(input_radio_check_inline_source),
         html.P(
-            dcc.Markdown("standalone")
+            dcc.Markdown(
+                "If you need more granular control over checkboxes "
+                "and radio buttons, you can also create standalone "
+                "components. Bind callbacks to the `checked` keyword "
+                "to react to changes in the input state. To attach "
+                "a label, create a FormGroup with `check=True` and "
+                "use the label's `html_for` keyword to bind it to "
+                "the checkbox."
+            )
         ),
         ExampleContainer(
             load_source_with_environment(
