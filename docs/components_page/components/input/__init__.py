@@ -162,4 +162,12 @@ def get_content(app):
             get_component_metadata("src/components/input/Checklist.js"),
             component_name="Checklist",
         ),
+        ApiDoc(
+            get_component_metadata("src/components/input/Checkbox.js"),
+            component_name="Checkbox",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/input/RadioButton.js"),
+            component_name="RadioButton",
+        ),
     ]
