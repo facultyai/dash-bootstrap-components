@@ -14,6 +14,7 @@ from .size import inputs as input_size
 from .text_label import text_input as input_text_label
 from .textarea import textareas as input_textarea
 from .validation import inputs as input_validation
+from .radio_check_inline import inline_inputs
 
 HERE = Path(__file__).parent
 
@@ -23,6 +24,7 @@ input_size_source = (HERE / "size.py").read_text()
 input_validation_source = (HERE / "validation.py").read_text()
 input_radio_check_source = (HERE / "radio_check.py").read_text()
 input_textarea_source = (HERE / "textarea.py").read_text()
+input_radio_check_inline_source = (HERE / "radio_check_inline.py").read_text()
 
 
 def get_content(app):
@@ -108,8 +110,20 @@ def get_content(app):
                 "padding."
             )
         ),
-        ExampleContainer(load_source_with_environment(input_radio_check_source, "inputs", {"app": app})),
+        ExampleContainer(
+            load_source_with_environment(
+                input_radio_check_source, "inputs", {"app": app}
+            )
+        ),
         HighlightedSource(input_radio_check_source),
+        html.P(
+            dcc.Markdown(
+                "Use the `inline` keyword to make the radioitems or "
+                "checklists fit next to each other on a line."
+            )
+        ),
+        ExampleContainer(inline_inputs),
+        HighlightedSource(input_radio_check_inline_source),
         ApiDoc(
             get_component_metadata("src/components/input/Input.js"),
             component_name="Input",
