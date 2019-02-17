@@ -25,6 +25,7 @@ input_validation_source = (HERE / "validation.py").read_text()
 input_radio_check_source = (HERE / "radio_check.py").read_text()
 input_textarea_source = (HERE / "textarea.py").read_text()
 input_radio_check_inline_source = (HERE / "radio_check_inline.py").read_text()
+input_radio_check_standalone_source = (HERE / "radio_check_standalone.py").read_text()
 
 
 def get_content(app):
@@ -124,6 +125,15 @@ def get_content(app):
         ),
         ExampleContainer(inline_inputs),
         HighlightedSource(input_radio_check_inline_source),
+        html.P(
+            dcc.Markdown("standalone")
+        ),
+        ExampleContainer(
+            load_source_with_environment(
+                input_radio_check_standalone_source, "standalone_radio_check", {"app": app}
+                )
+            ),
+        HighlightedSource(input_radio_check_standalone_source),
         ApiDoc(
             get_component_metadata("src/components/input/Input.js"),
             component_name="Input",
