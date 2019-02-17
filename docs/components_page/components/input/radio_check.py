@@ -43,7 +43,6 @@ inputs = html.Div(
     [Input("radioitems-input", "value"), Input("checklist-input", "values")],
 )
 def on_form_change(radio_items_value, checklist_values):
-    output_string = "Radio button {} and {} checklist items are selected.".format(
-        radio_items_value, len(checklist_values)
-    )
+    template = "Radio button {} and {} checklist items are selected."
+    output_string = template.format(radio_items_value, len(checklist_values))
     return output_string
