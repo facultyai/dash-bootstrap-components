@@ -6,34 +6,42 @@ standalone_radio_check = html.Div(
     [
         dbc.FormGroup(
             [
-                dbc.Checkbox(id="standalone-checkbox", className="form-check-input"),
+                dbc.Checkbox(
+                    id="standalone-checkbox", className="form-check-input"
+                ),
                 dbc.Label(
                     "This is a checkbox",
                     html_for="standalone-checkbox",
-                    className="form-check-label"
-                )
+                    className="form-check-label",
+                ),
             ],
-            check=True
+            check=True,
         ),
         dbc.FormGroup(
             [
-                dbc.RadioButton(id="standalone-radio", className="form-check-input"),
+                dbc.RadioButton(
+                    id="standalone-radio", className="form-check-input"
+                ),
                 dbc.Label(
                     "This is a radio button",
                     html_for="standalone-radio",
-                    className="form-check-label"
-                )
+                    className="form-check-label",
+                ),
             ],
-            check=True
+            check=True,
         ),
         html.Br(),
-        html.P(id="standalone-radio-check-output")
+        html.P(id="standalone-radio-check-output"),
     ]
 )
 
+
 @app.callback(
     Output("standalone-radio-check-output", "children"),
-    [Input("standalone-checkbox", "checked"), Input("standalone-radio", "checked")]
+    [
+        Input("standalone-checkbox", "checked"),
+        Input("standalone-radio", "checked"),
+    ],
 )
 def on_form_change(checkbox_checked, radio_checked):
     if checkbox_checked and radio_checked:
@@ -42,4 +50,3 @@ def on_form_change(checkbox_checked, radio_checked):
         return "One checked."
     else:
         return "None checked."
-        
