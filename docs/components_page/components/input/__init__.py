@@ -10,11 +10,11 @@ from ...helpers import (
     load_source_with_environment,
 )
 from ...metadata import get_component_metadata
-from .radio_check import inputs as input_radio_check
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
 from .textarea import textareas as input_textarea
 from .validation import inputs as input_validation
+from .radio_check_inline import inline_inputs
 
 HERE = Path(__file__).parent
 
@@ -24,6 +24,10 @@ input_size_source = (HERE / "size.py").read_text()
 input_validation_source = (HERE / "validation.py").read_text()
 input_radio_check_source = (HERE / "radio_check.py").read_text()
 input_textarea_source = (HERE / "textarea.py").read_text()
+input_radio_check_inline_source = (HERE / "radio_check_inline.py").read_text()
+input_radio_check_standalone_source = (
+    HERE / "radio_check_standalone.py"
+).read_text()
 
 
 def get_content(app):
@@ -109,8 +113,39 @@ def get_content(app):
                 "padding."
             )
         ),
-        ExampleContainer(input_radio_check),
+        ExampleContainer(
+            load_source_with_environment(
+                input_radio_check_source, "inputs", {"app": app}
+            )
+        ),
         HighlightedSource(input_radio_check_source),
+        html.P(
+            dcc.Markdown(
+                "Use the `inline` keyword to make the radioitems or "
+                "checklists fit next to each other on a line."
+            )
+        ),
+        ExampleContainer(inline_inputs),
+        HighlightedSource(input_radio_check_inline_source),
+        html.P(
+            dcc.Markdown(
+                "If you need more granular control over checkboxes "
+                "and radio buttons, you can also create standalone "
+                "components. Bind callbacks to the `checked` keyword "
+                "to react to changes in the input state. To attach "
+                "a label, create a FormGroup with `check=True` and "
+                "use the label's `html_for` keyword to bind it to "
+                "the checkbox."
+            )
+        ),
+        ExampleContainer(
+            load_source_with_environment(
+                input_radio_check_standalone_source,
+                "standalone_radio_check",
+                {"app": app},
+            )
+        ),
+        HighlightedSource(input_radio_check_standalone_source),
         ApiDoc(
             get_component_metadata("src/components/input/Input.js"),
             component_name="Input",
@@ -126,5 +161,13 @@ def get_content(app):
         ApiDoc(
             get_component_metadata("src/components/input/Checklist.js"),
             component_name="Checklist",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/input/Checkbox.js"),
+            component_name="Checkbox",
+        ),
+        ApiDoc(
+            get_component_metadata("src/components/input/RadioButton.js"),
+            component_name="RadioButton",
         ),
     ]

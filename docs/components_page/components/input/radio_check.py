@@ -1,4 +1,6 @@
 import dash_bootstrap_components as dbc
+import dash_html_components as html
+from dash.dependencies import Input, Output
 
 radioitems = dbc.FormGroup(
     [
@@ -9,6 +11,7 @@ radioitems = dbc.FormGroup(
                 {"label": "Option 2", "value": 2},
             ],
             value=1,
+            id="radioitems-input",
         ),
     ]
 )
@@ -22,36 +25,24 @@ checklist = dbc.FormGroup(
                 {"label": "Option 2", "value": 2},
             ],
             values=[],
+            id="checklist-input",
         ),
     ]
 )
 
-inline_radioitems = dbc.FormGroup(
+inputs = html.Div(
     [
-        dbc.Label("Choose one"),
-        dbc.RadioItems(
-            options=[
-                {"label": "Option 1", "value": 1},
-                {"label": "Option 2", "value": 2},
-            ],
-            value=1,
-            inline=True,
-        ),
+        dbc.Form([radioitems, checklist]),
+        html.P(id="radioitems-checklist-output"),
     ]
 )
 
-inline_checklist = dbc.FormGroup(
-    [
-        dbc.Label("Choose a bunch"),
-        dbc.Checklist(
-            options=[
-                {"label": "Option 1", "value": 1},
-                {"label": "Option 2", "value": 2},
-            ],
-            values=[],
-            inline=True,
-        ),
-    ]
-)
 
-inputs = dbc.Form([radioitems, checklist, inline_radioitems, inline_checklist])
+@app.callback(
+    Output("radioitems-checklist-output", "children"),
+    [Input("radioitems-input", "value"), Input("checklist-input", "values")],
+)
+def on_form_change(radio_items_value, checklist_values):
+    template = "Radio button {} and {} checklist items are selected."
+    output_string = template.format(radio_items_value, len(checklist_values))
+    return output_string
