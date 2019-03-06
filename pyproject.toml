@@ -1,3 +1,3 @@
 [tool.black]
 line-length = 79
-exclude = "dash_bootstrap_components/_components"
+exclude = "dash_bootstrap_components/_components|node_modules"
