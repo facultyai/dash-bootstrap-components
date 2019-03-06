@@ -15,6 +15,7 @@ from .components.input_group import get_content as get_input_group_content
 from .components.jumbotron import content as jumbotron_content
 from .components.layout import content as layout_content
 from .components.list_group import get_content as get_list_group_content
+from .components.modal import get_content as get_modal_content
 from .components.nav import get_content as get_nav_content
 from .components.navbar import get_content as get_navbar_content
 from .components.popover import get_content as get_popover_content
@@ -52,6 +53,7 @@ sidebar_entries = [
     SidebarEntry("jumbotron", "Jumbotron"),
     SidebarEntry("layout", "Layout"),
     SidebarEntry("list_group", "List Group"),
+    SidebarEntry("modal", "Modal"),
     SidebarEntry("nav", "Navs"),
     SidebarEntry("navbar", "Navbar"),
     SidebarEntry("popover", "Popover"),
@@ -89,6 +91,7 @@ class ComponentsPage:
             "jumbotron": jumbotron_content,
             "layout": layout_content,
             "list_group": get_list_group_content(self._app),
+            "modal": get_modal_content(self._app),
             "nav": get_nav_content(self._app),
             "navbar": get_navbar_content(self._app),
             "popover": get_popover_content(self._app),
