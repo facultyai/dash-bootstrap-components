@@ -10,11 +10,11 @@ from ...helpers import (
     load_source_with_environment,
 )
 from ...metadata import get_component_metadata
+from .radio_check_inline import inline_inputs
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
 from .textarea import textareas as input_textarea
 from .validation import inputs as input_validation
-from .radio_check_inline import inline_inputs
 
 HERE = Path(__file__).parent
 
