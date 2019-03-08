@@ -1,0 +1,95 @@
+.dash-bootstrap {
+  .Select-control {
+    height: $input-height;
+    @include font-size($input-font-size);
+    font-family: $input-font-family;
+    font-weight: $input-font-weight;
+    line-height: $input-line-height;
+    color: $input-color;
+    background-color: $input-bg;
+    background-clip: padding-box;
+    border: $input-border-width solid $input-border-color;
+    @include border-radius($input-border-radius, 0);
+    @include transition($input-transition);
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .is-open > .Select-control {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .is-focused:not(.is-open) > .Select-control {
+    border-color: $input-focus-border-color;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  .Select.is-disabled > .Select-control {
+    background-color: $input-disabled-bg;
+  }
+
+  .Select--multi {
+    .Select-value {
+      @include border-radius($input-border-radius / 2, 0);
+      color: theme-color("primary");
+      border-color: rgba(theme-color("primary"), 0.25);
+      background-color: rgba(theme-color("primary"), 0.1);
+    }
+
+    .Select-value-icon {
+      border-right-color: rgba(theme-color("primary"), 0.25);
+    }
+  }
+
+  .has-value.Select--single > .Select-control .Select-value .Select-value-label,
+  .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+    color: $input-color;
+  }
+
+  .Select-multi-value-wrapper {
+    height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
+  }
+
+  .Select-placeholder {
+    color: $input-placeholder-color;
+    padding-left: $input-padding-x;
+    padding-right: $input-padding-x;
+  }
+
+  .Select--single > .Select-control .Select-value,
+  .Select-placeholder {
+    line-height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
+  }
+
+  .Select-input {
+    height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
+  }
+
+  .Select-menu-outer {
+    @if $enable-rounded {
+      border-bottom-right-radius: $input-border-radius;
+      border-bottom-left-radius: $input-border-radius;
+    } @else {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    background-color: $input-bg;
+    background-clip: padding-box;
+    border: $input-border-width solid $input-border-color;
+    border-top-color: $input-border-color;
+    box-shadow: none;
+    color: $input-color;
+  }
+  // !important is necessary to override inline styles
+  .VirtualizedSelectOption {
+    height: calc(1.5em + 0.75rem)!important;
+  }
+
+  .VirtualizedSelectFocusedOption {
+    background-color: rgba(theme-color("primary"), 0.1)!important;
+  }
+}

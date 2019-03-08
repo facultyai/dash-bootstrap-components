@@ -1,0 +1,14 @@
+// Color contrast with threshold
+@function color-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light, $threshold: $yiq-contrasted-threshold) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= $threshold) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
