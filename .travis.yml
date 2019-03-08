@@ -6,7 +6,7 @@ install:
   - "if [[ \"$GROUP\" == js ]] ; then pip install dash ; fi"
   - "if [[ \"$GROUP\" == js ]] ; then npm -v ; fi"
   - "if [[ \"$GROUP\" == js ]] ; then npm install ; fi"
-  - "if [[ \"$GROUP\" == python-linting ]] ; then pip install black flake8 isort ; fi"
+  - "if [[ \"$GROUP\" == python-linting ]] ; then pip install black flake8 isort>=4.3.5 ; fi"
 script:
   - "if [[ \"$GROUP\" == js ]] ; then npm run lint ; fi"
   - "if [[ \"$GROUP\" == js ]] ; then npm run test ; fi"
