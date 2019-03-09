@@ -5,10 +5,10 @@ import dash_html_components as html
 from ...api_doc import ApiDoc
 from ...helpers import ExampleContainer, HighlightedSource
 from ...metadata import get_component_metadata
+from .alignment import dropdown as dropdown_alignment
+from .direction import dropdown as dropdown_direction
 from .simple import dropdown as dropdown_simple
 from .size import dropdown as dropdown_size
-from .direction import dropdown as dropdown_direction
-from .alignment import dropdown as dropdown_alignment
 
 HERE = Path(__file__).parent
 
