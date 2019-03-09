@@ -31,6 +31,7 @@ class DropdownMenu extends React.Component {
       in_navbar,
       addon_type,
       bs_size,
+      right,
       loading_state,
       ...otherProps
     } = this.props;
@@ -51,7 +52,7 @@ class DropdownMenu extends React.Component {
         <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
           {label}
         </DropdownToggle>
-        <RSDropdownMenu>{this.props.children}</RSDropdownMenu>
+        <RSDropdownMenu right={right}>{this.props.children}</RSDropdownMenu>
       </Dropdown>
     );
   }
@@ -102,6 +103,11 @@ DropdownMenu.propTypes = {
    * the DropdownMenu upwards is currently unsupported. Default: 'down'.
    */
   direction: PropTypes.oneOf(['down', 'left', 'right']),
+
+  /**
+   * Align the DropdownMenu along the right side of its parent. Default: False.
+   */
+  right: PropTypes.bool,
 
   /**
    * Set this to True if the DropdownMenu is inside a navbar. Default: False.
