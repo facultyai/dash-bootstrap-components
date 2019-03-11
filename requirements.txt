@@ -1,5 +1,5 @@
 dash==0.31.1
-dash_bootstrap_components==0.3.4
+dash_bootstrap_components==0.3.5
 dash_core_components
 dash_html_components
 gunicorn
