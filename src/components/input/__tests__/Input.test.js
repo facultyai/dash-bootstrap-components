@@ -85,5 +85,27 @@ describe('Input', () => {
       expect(n_blur).toEqual(1)
       expect(n_blur_timestamp).toBeValidDate()
     })
+
+    it('dispatch the value if debounce is true', () => {
+      const setProps = jest.fn()
+      const input = shallow(
+        <Input
+          n_blur={0}
+          n_blur_timestamp={-1}
+          setProps={setProps}
+          debounce={true}
+          value="some-value"
+        />
+      )
+      const htmlInput = input.find('input')
+      htmlInput.simulate('blur')
+      expect(setProps.mock.calls).toHaveLength(1)
+      const [call] = setProps.mock.calls
+      const [arg] = call
+      const { n_blur, n_blur_timestamp, value } = arg
+      expect(n_blur).toEqual(1)
+      expect(n_blur_timestamp).toBeValidDate()
+      expect(value).toEqual('some-value')
+    })
   })
 })
