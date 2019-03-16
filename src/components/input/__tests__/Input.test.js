@@ -48,5 +48,15 @@ describe('Input', () => {
       htmlInput.simulate('change', {target: {value: 'some-value'}})
       expect(setProps.mock.calls).toEqual([[{value: 'some-value'}]])
     })
+
+    it('update the input and not setProps if debounce is true', () => {
+      const setProps = jest.fn()
+      const input = shallow(<Input debounce={true} setProps={setProps} />)
+      const htmlInputBeforeChange = input.find('input')
+      htmlInputBeforeChange.simulate('change', {target: {value: 'some-value'}})
+      const htmlInputAfterChange = input.find('input')
+      expect(htmlInputAfterChange.prop('value')).toEqual('some-value')
+      expect(setProps.mock.calls).toHaveLength(0)
+    })
   })
 })
