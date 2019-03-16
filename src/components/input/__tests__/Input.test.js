@@ -33,10 +33,16 @@ describe('Input', () => {
   })
 
   describe('onChange for input', () => {
+    const mockEvent = {
+      target: {
+        value: 'some-value'
+      }
+    }
+
     it('update the input if setProps is undefined', () => {
       const input = shallow(<Input />)
       const htmlInputBeforeChange = input.find('input')
-      htmlInputBeforeChange.simulate('change', {target: {value: 'some-value'}})
+      htmlInputBeforeChange.simulate('change', mockEvent)
       const htmlInputAfterChange = input.find('input')
       expect(htmlInputAfterChange.prop('value')).toEqual('some-value')
     })
@@ -45,7 +51,7 @@ describe('Input', () => {
       const setProps = jest.fn()
       const input = shallow(<Input setProps={setProps} />)
       const htmlInput = input.find('input')
-      htmlInput.simulate('change', {target: {value: 'some-value'}})
+      htmlInput.simulate('change', mockEvent)
       expect(setProps.mock.calls).toEqual([[{value: 'some-value'}]])
     })
 
@@ -53,7 +59,7 @@ describe('Input', () => {
       const setProps = jest.fn()
       const input = shallow(<Input debounce={true} setProps={setProps} />)
       const htmlInputBeforeChange = input.find('input')
-      htmlInputBeforeChange.simulate('change', {target: {value: 'some-value'}})
+      htmlInputBeforeChange.simulate('change', mockEvent)
       const htmlInputAfterChange = input.find('input')
       expect(htmlInputAfterChange.prop('value')).toEqual('some-value')
       expect(setProps.mock.calls).toHaveLength(0)
