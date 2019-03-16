@@ -8,3 +8,4 @@ dash_bootstrap_components/metadata.json
 dist
 changelog.tmp
 dash_bootstrap_components/_components/
+.sass-cache
