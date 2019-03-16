@@ -23,5 +23,12 @@ describe('Input', () => {
       const htmlInput = input.find('input')
       expect(htmlInput.prop('value')).toEqual('some-value')
     })
+
+    it('pass on changes in the value prop', () => {
+      const input = shallow(<Input />)
+      input.setProps({value: 'some-value'})
+      const htmlInput = input.find('input')
+      expect(htmlInput.prop('value')).toEqual('some-value')
+    })
   })
 })

@@ -12,11 +12,9 @@ class Input extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({value: nextProps.value})
     if (this.props.setProps) {
       this.props = nextProps;
-      if (this.props.debounce) {
-        this.setState({value: nextProps.value});
-      }
     }
   }
 
