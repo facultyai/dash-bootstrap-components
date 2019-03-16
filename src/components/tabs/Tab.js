@@ -19,9 +19,22 @@ Tab.propTypes = {
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * Defines CSS styles which will override styles previously set. The styles
+   * set here apply to the content of the Tab
    */
   style: PropTypes.object,
+
+  /**
+   * Defines CSS styles which will override styles previously set. The styles
+   * set here apply to the NavItem in the tab.
+   */
+  tab_style: PropTypes.object,
+
+  /**
+   * Defines CSS styles which will override styles previously set. The styles
+   * set here apply to the NavLink in the tab.
+   */
+  label_style: PropTypes.object,
 
   /**
    * Often used with CSS to style elements with common properties.
