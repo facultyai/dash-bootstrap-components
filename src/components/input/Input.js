@@ -240,8 +240,10 @@ Input.propTypes = {
   n_blur_timestamp: PropTypes.number,
 
   /**
-   * If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
-   * If it's false, it will sent the value back on every change.
+   * If true, changes to input will be sent back to the Dash server
+   * only when the enter key is pressed or when the component loses
+   * focus.  If it's false, it will sent the value back on every
+   * change.
    */
   debounce: PropTypes.bool
 };
