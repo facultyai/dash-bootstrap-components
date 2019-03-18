@@ -34,7 +34,10 @@ def get_content(app):
                 "`Tab` components as children. Use the `label` argument to "
                 "specify the label in the tab. `Tabs` will automatically "
                 "switch between tabs for you by displaying and hiding the "
-                "content of each `Tab` below the tab pane."
+                "content of each `Tab` below the tab pane. You can also use "
+                "the `disabled` argument to disable individual tabs. This "
+                "will cause the label to be grayed out and make the tab "
+                "unresponsive to being clicked."
             )
         ),
         ExampleContainer(tabs_simple),
