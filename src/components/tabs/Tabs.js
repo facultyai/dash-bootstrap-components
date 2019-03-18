@@ -62,8 +62,11 @@ class Tabs extends React.Component {
               active: this.state.activeTab === tabId
             })}
             style={child.props.label_style}
+            disabled={child.props.disabled}
             onClick={() => {
-              this.toggle(tabId);
+              if (!child.props.disabled) {
+                this.toggle(tabId);
+              }
             }}
           >
             {child.props.label}
