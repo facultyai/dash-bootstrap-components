@@ -2,13 +2,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Alert as RSAlert} from 'reactstrap';
 
-const Alert = props => {
-  const {children, is_open, ...otherProps} = props;
-  return (
-    <RSAlert isOpen={is_open} {...otherProps}>
-      {children}
-    </RSAlert>
-  );
+class Alert extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onDismiss = this.onDismiss.bind(this);
+
+    this.state = {
+      alertOpen: props.is_open
+    };
+  }
+
+  onDismiss() {
+    if (this.props.setProps) {
+      this.props.setProps({is_open: false});
+    } else {
+      this.setState({alertOpen: false});
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.is_open != this.state.alertOpen) {
+      this.setState({alertOpen: nextProps.is_open});
+    }
+  }
+
+  render() {
+    const {children, dismissable, is_open, ...otherProps} = this.props;
+    return (
+      <RSAlert
+        isOpen={this.state.alertOpen}
+        toggle={dismissable && this.onDismiss}
+        {...otherProps}
+      >
+        {children}
+      </RSAlert>
+    );
+  }
+}
+
+Alert.defaultProps = {
+  is_open: true
 };
 
 Alert.propTypes = {
@@ -56,7 +90,12 @@ Alert.propTypes = {
    * If True, a fade animation will be applied when `is_open` is toggled. If
    * False the Alert will simply appear and disappear.
    */
-  fade: PropTypes.bool
+  fade: PropTypes.bool,
+
+  /**
+   * If true, add a close button that allows Alert to be dismissed.
+   */
+  dismissable: PropTypes.bool
 };
 
 export default Alert;
