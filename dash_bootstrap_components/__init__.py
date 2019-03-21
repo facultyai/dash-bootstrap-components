@@ -32,3 +32,20 @@ for _component_name in _components.__all__:
 sys.modules[__name__].Table.from_dataframe = classmethod(
     _generate_table_from_df
 )
+
+
+# DatePicker deprecation warnings
+class DatePickerSingle(object):
+    def __init__(self, *args, **kwargs):
+        raise AttributeError(
+            "DatePickerSingle has been removed from dash-bootstrap-components."
+            " Use DatePickerSingle from dash-core-components instead."
+        )
+
+
+class DatePickerRange(object):
+    def __init__(self, *args, **kwargs):
+        raise AttributeError(
+            "DatePickerRange has been removed from dash-bootstrap-components. "
+            "Use DatePickerRange from dash-core-components instead."
+        )

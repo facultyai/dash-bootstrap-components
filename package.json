@@ -68,7 +68,6 @@
     "ramda": "^0.25.0",
     "react": "^16.5.2",
     "react-addons-shallow-compare": "^15.6.0",
-    "react-dates": "^12.3.0",
     "react-dom": "^16.5.2",
     "reactstrap": "^6.5.0"
   },
