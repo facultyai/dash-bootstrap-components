@@ -42,6 +42,18 @@ Tab.propTypes = {
   className: PropTypes.string,
 
   /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavItem in the tab.
+   */
+  tabClassName: PropTypes.string,
+
+  /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavLink in the tab.
+   */
+  labelClassName: PropTypes.string,
+
+  /**
    * A unique identifier for the component, used to improve
    * performance by React.js while rendering components
    * See https://reactjs.org/docs/lists-and-keys.html for more info

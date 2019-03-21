@@ -56,9 +56,13 @@ class Tabs extends React.Component {
       child = child.props.children;
       const tabId = child.props.key || child.props.tab_id || 'tab-' + idx;
       return (
-        <NavItem key={tabId} style={child.props.tab_style}>
+        <NavItem
+          key={tabId}
+          style={child.props.tab_style}
+          className={child.props.tabClassName}
+        >
           <NavLink
-            className={classnames({
+            className={classnames(child.props.labelClassName, {
               active: this.state.activeTab === tabId
             })}
             style={child.props.label_style}
@@ -75,7 +79,16 @@ class Tabs extends React.Component {
     // create tab content by extracting children from children
     const tabs = children.map((child, idx) => {
       child = child.props.children;
-      const {children, tab_id, label, tab_style, label_style, ...otherProps} = child.props;
+      const {
+        children,
+        tab_id,
+        label,
+        tab_style,
+        label_style,
+        tabClassName,
+        labelClassName,
+        ...otherProps
+      } = child.props;
       const tabId = tab_id || 'tab-' + idx;
       return (
         <TabPane tabId={tabId} key={tabId} {...otherProps}>
