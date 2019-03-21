@@ -20,6 +20,7 @@ from .components.nav import get_content as get_nav_content
 from .components.navbar import get_content as get_navbar_content
 from .components.popover import get_content as get_popover_content
 from .components.progress import get_content as get_progress_content
+from .components.spinner import content as spinner_content
 from .components.table import content as table_content
 from .components.tabs import get_content as get_tabs_content
 from .components.tooltip import content as tooltip_content
@@ -58,6 +59,7 @@ sidebar_entries = [
     SidebarEntry("navbar", "Navbar"),
     SidebarEntry("popover", "Popover"),
     SidebarEntry("progress", "Progress"),
+    SidebarEntry("spinner", "Spinners"),
     SidebarEntry("table", "Table"),
     SidebarEntry("tabs", "Tabs"),
     SidebarEntry("tooltip", "Tooltip"),
@@ -96,6 +98,7 @@ class ComponentsPage:
             "navbar": get_navbar_content(self._app),
             "popover": get_popover_content(self._app),
             "progress": get_progress_content(self._app),
+            "spinner": spinner_content,
             "table": table_content,
             "tabs": get_tabs_content(self._app),
             "tooltip": tooltip_content,
