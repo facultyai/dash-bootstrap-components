@@ -32,7 +32,7 @@ setup(
     author_email="opensource@faculty.ai",
     url="https://github.com/facultyai/dash-bootstrap-components",
     packages=find_packages(),
-    install_requires=["dash>=0.32.1", "dash-html-components"],
+    install_requires=["dash>=0.40.0"],
     include_package_data=True,
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
