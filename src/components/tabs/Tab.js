@@ -5,6 +5,10 @@ const Tab = props => {
   return <div>{props.children}</div>;
 };
 
+Tab.defaultProps = {
+  disabled: false
+}
+
 Tab.propTypes = {
   /**
    * The ID of this component, used to identify dash components
@@ -59,7 +63,12 @@ Tab.propTypes = {
    * will be set to "tab-i" where i is (zero indexed) position of tab in list
    * tabs pased to Tabs component.
    */
-  tab_id: PropTypes.string
+  tab_id: PropTypes.string,
+
+  /**
+   * Determines if tab is disabled or not - defaults to false
+   */
+  disabled: PropTypes.bool
 };
 
 export default Tab;
