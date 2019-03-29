@@ -44,6 +44,7 @@ import {
   Tab,
   Tabs,
   Table,
+  Textarea,
   Tooltip,
 } from '../src';
 
@@ -402,7 +403,7 @@ class Demo extends Component {
         </FormGroup>
         <FormGroup>
           <Label for="exampleText">Text Area</Label>
-          <Input type="textarea" name="text" id="exampleText"/>
+          <Textarea id="exampleText"/>
         </FormGroup>
         <Button>Submit</Button>
       </Form>
@@ -474,9 +475,8 @@ class Demo extends Component {
 
       <h2>Tabs</h2>
       <Tabs>
-        {/* wrap in div to replicate dash renderer behavior */}
-        <div><Tab tab_id="1" label="Tab 1">Tab 1</Tab></div>
-        <div><Tab tab_id="2" label="Tab 2">Tab 2</Tab></div>
+        <Tab tab_id="1" label="Tab 1"><p>This is tab 1</p></Tab>
+        <Tab tab_id="2" label="Tab 2">Tab 2</Tab>
       </Tabs>
 
       <br/>

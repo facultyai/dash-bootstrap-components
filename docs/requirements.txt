@@ -1,4 +1,4 @@
-dash==0.31.1
+dash>=0.40.0
 dash_bootstrap_components==0.3.5
 dash_core_components
 dash_html_components

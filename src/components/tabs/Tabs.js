@@ -2,6 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import {isNil} from 'ramda';
+
+function resolveChildProps(child) {
+  // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
+  if (
+    // disabled is a defaultProp (so it's always set)
+    // meaning that if it's not set on child.props, the actual
+    // props we want are lying a bit deeper - which means they
+    // are coming from Dash
+    isNil(child.props.disabled) &&
+    child.props._dashprivate_layout &&
+    child.props._dashprivate_layout.props
+  ) {
+    // props are coming from Dash
+    return child.props._dashprivate_layout.props;
+  } else {
+    // else props are coming from React (e.g. Demo.js, or Tabs.test.js)
+    return child.props;
+  }
+}
 
 class Tabs extends React.Component {
   constructor(props) {
@@ -13,7 +33,7 @@ class Tabs extends React.Component {
     const children = this.parseChildrenToArray();
 
     if (!this.props.active_tab) {
-      const activeTab = children[0].props.children.props.tab_id || 'tab-0';
+      const activeTab = resolveChildProps(children[0]).tab_id || 'tab-0';
       this.state = {
         activeTab: activeTab
       };
@@ -53,27 +73,27 @@ class Tabs extends React.Component {
 
     // create tab links by extracting labels from children
     const links = children.map((child, idx) => {
-      child = child.props.children;
-      const tabId = child.props.key || child.props.tab_id || 'tab-' + idx;
+      const childProps = resolveChildProps(child);
+      const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
       return (
         <NavItem
           key={tabId}
-          style={child.props.tab_style}
-          className={child.props.tabClassName}
+          style={childProps.tab_style}
+          className={childProps.tabClassName}
         >
           <NavLink
-            className={classnames(child.props.labelClassName, {
+            className={classnames(childProps.labelClassName, {
               active: this.state.activeTab === tabId
             })}
-            style={child.props.label_style}
-            disabled={child.props.disabled}
+            style={childProps.label_style}
+            disabled={childProps.disabled}
             onClick={() => {
-              if (!child.props.disabled) {
+              if (!childProps.disabled) {
                 this.toggle(tabId);
               }
             }}
           >
-            {child.props.label}
+            {childProps.label}
           </NavLink>
         </NavItem>
       );
@@ -81,7 +101,7 @@ class Tabs extends React.Component {
 
     // create tab content by extracting children from children
     const tabs = children.map((child, idx) => {
-      child = child.props.children;
+      const childProps = resolveChildProps(child);
       const {
         children,
         tab_id,
@@ -91,11 +111,11 @@ class Tabs extends React.Component {
         tabClassName,
         labelClassName,
         ...otherProps
-      } = child.props;
+      } = childProps;
       const tabId = tab_id || 'tab-' + idx;
       return (
         <TabPane tabId={tabId} key={tabId} {...otherProps}>
-          {children}
+          {child}
         </TabPane>
       );
     });
