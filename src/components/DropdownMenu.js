@@ -31,6 +31,7 @@ class DropdownMenu extends React.Component {
       in_navbar,
       addon_type,
       bs_size,
+      loading_state,
       ...otherProps
     } = this.props;
     return (
@@ -43,6 +44,9 @@ class DropdownMenu extends React.Component {
         addonType={addon_type}
         size={bs_size}
         {...otherProps}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
       >
         <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
           {label}
@@ -132,7 +136,25 @@ DropdownMenu.propTypes = {
    * Size of the dropdown. 'sm' corresponds to small, 'md' to medium
    * and 'lg' to large.
    */
-  bs_size: PropTypes.oneOf(['sm', 'md', 'lg'])
+  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default DropdownMenu;

@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {Container as RSContainer} from 'reactstrap';
 
 const Container = props => {
-  const {children, ...otherProps} = props;
-  return <RSContainer {...otherProps}>{children}</RSContainer>;
+  const {children, loading_state, ...otherProps} = props;
+  return (
+    <RSContainer
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSContainer>
+  );
 };
 
 Container.propTypes = {
@@ -47,7 +56,25 @@ Container.propTypes = {
   /**
    * HTML tag to apply the container class to, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Container;

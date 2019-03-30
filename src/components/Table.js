@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {Table as RSTable} from 'reactstrap';
 
 const Table = props => {
-  const {children, ...otherProps} = props;
-  return <RSTable {...otherProps}>{children}</RSTable>;
+  const {children, loading_state, ...otherProps} = props;
+  return (
+    <RSTable
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSTable>
+  );
 };
 
 Table.propTypes = {
@@ -80,7 +89,25 @@ Table.propTypes = {
    * Set to True or one of the breakpoints 'sm', 'md', 'lg', 'xl' to make table
    * scroll horizontally at lower breakpoints.
    */
-  responsive: PropTypes.oneOf([PropTypes.bool, PropTypes.string])
+  responsive: PropTypes.oneOf([PropTypes.bool, PropTypes.string]),
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Table;

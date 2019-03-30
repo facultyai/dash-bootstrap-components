@@ -31,12 +31,21 @@ class Checklist extends React.Component {
       setProps,
       style,
       inline,
-      key
+      key,
+      loading_state
     } = this.props;
     const {values} = this.state;
 
     return (
-      <div id={id} style={style} className={className} key={key}>
+      <div
+        id={id}
+        style={style}
+        className={className}
+        key={key}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
+      >
         {options.map(option => (
           <div
             className={classNames('form-check', inline && 'form-check-inline')}
@@ -154,7 +163,25 @@ Checklist.propTypes = {
   /**
    * Arrange Checklist inline
    */
-  inline: PropTypes.bool
+  inline: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 Checklist.defaultProps = {

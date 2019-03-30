@@ -28,12 +28,21 @@ class Alert extends React.Component {
   }
 
   render() {
-    const {children, dismissable, is_open, ...otherProps} = this.props;
+    const {
+      children,
+      dismissable,
+      is_open,
+      loading_state,
+      ...otherProps
+    } = this.props;
     return (
       <RSAlert
         isOpen={this.state.alertOpen}
         toggle={dismissable && this.onDismiss}
         {...otherProps}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
       >
         {children}
       </RSAlert>
@@ -95,7 +104,25 @@ Alert.propTypes = {
   /**
    * If true, add a close button that allows Alert to be dismissed.
    */
-  dismissable: PropTypes.bool
+  dismissable: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Alert;

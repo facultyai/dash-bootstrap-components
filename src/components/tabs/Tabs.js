@@ -110,17 +110,31 @@ class Tabs extends React.Component {
         label_style,
         tabClassName,
         labelClassName,
+        loading_state,
         ...otherProps
       } = childProps;
       const tabId = tab_id || 'tab-' + idx;
       return (
-        <TabPane tabId={tabId} key={tabId} {...otherProps}>
+        <TabPane
+          tabId={tabId}
+          key={tabId}
+          {...otherProps}
+          data-dash-is-loading={
+            (loading_state && loading_state.is_loading) || undefined
+          }
+        >
           {child}
         </TabPane>
       );
     });
     return (
-      <div key={this.props.key}>
+      <div
+        key={this.props.key}
+        data-dash-is-loading={
+          (this.props.loading_state && this.props.loading_state.is_loading) ||
+          undefined
+        }
+      >
         <Nav
           id={this.props.id}
           tabs={true}
@@ -175,7 +189,25 @@ Tabs.propTypes = {
   /**
    * Set to True if using tabs inside a CardHeader.
    */
-  card: PropTypes.bool
+  card: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Tabs;

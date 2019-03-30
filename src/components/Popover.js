@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 import {Popover as RSPopover} from 'reactstrap';
 
 const Popover = props => {
-  const {children, is_open, hide_arrow, ...otherProps} = props;
+  const {children, is_open, hide_arrow, loading_state, ...otherProps} = props;
   return (
-    <RSPopover isOpen={is_open} hideArrow={hide_arrow} {...otherProps}>
+    <RSPopover
+      isOpen={is_open}
+      hideArrow={hide_arrow}
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
       {children}
     </RSPopover>
   );
@@ -97,7 +104,25 @@ Popover.propTypes = {
   /**
    * Popover offset.
    */
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Popover;

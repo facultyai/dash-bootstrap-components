@@ -24,6 +24,7 @@ const Row = props => {
     align,
     justify,
     no_gutters,
+    loading_state,
     ...otherProps
   } = props;
 
@@ -32,7 +33,14 @@ const Row = props => {
 
   const classes = classNames(className, alignClass, justifyClass);
   return (
-    <RSRow className={classes} noGutters={no_gutters} {...otherProps}>
+    <RSRow
+      className={classes}
+      noGutters={no_gutters}
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
       {children}
     </RSRow>
   );
@@ -90,7 +98,25 @@ Row.propTypes = {
    * For use in forms. When set to True the `form-row` class is applied, which
    * overrides the default column gutters for a tighter, more compact layout.
    */
-  form: PropTypes.bool
+  form: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Row;

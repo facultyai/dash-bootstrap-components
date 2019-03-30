@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {CardImg as RSCardImg} from 'reactstrap';
 
 const CardImg = props => {
-  const {children, ...otherProps} = props;
-  return <RSCardImg {...otherProps}>{children}</RSCardImg>;
+  const {children, loading_state, ...otherProps} = props;
+  return (
+    <RSCardImg
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+      {...otherProps}
+    >
+      {children}
+    </RSCardImg>
+  );
 };
 
 CardImg.propTypes = {
@@ -68,7 +77,25 @@ CardImg.propTypes = {
   /**
    * Text to be displayed as a tooltip when hovering
    */
-  title: PropTypes.string
+  title: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default CardImg;

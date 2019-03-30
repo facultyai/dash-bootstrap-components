@@ -3,13 +3,23 @@ import PropTypes from 'prop-types';
 import {Fade as RSFade} from 'reactstrap';
 
 const Fade = props => {
-  const {children, base_class, base_class_active, is_in, ...otherProps} = props;
+  const {
+    children,
+    base_class,
+    base_class_active,
+    is_in,
+    loading_state,
+    ...otherProps
+  } = props;
   return (
     <RSFade
       baseClass={base_class}
       baseClassActive={base_class_active}
       in={is_in}
       {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
     >
       {children}
     </RSFade>
@@ -93,7 +103,25 @@ Fade.propTypes = {
   /**
    * CSS class used when the fade contents are displayed. Default: 'show'.
    */
-  base_class_active: PropTypes.string
+  base_class_active: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Fade;
