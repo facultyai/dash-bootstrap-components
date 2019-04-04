@@ -60,7 +60,7 @@
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.3.0",
     "react-dom": "^16.5.2",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^8.0.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
