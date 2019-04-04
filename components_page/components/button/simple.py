@@ -8,6 +8,9 @@ buttons = html.Div(
         dbc.Button("Success", color="success", className="mr-1"),
         dbc.Button("Warning", color="warning", className="mr-1"),
         dbc.Button("Danger", color="danger", className="mr-1"),
-        dbc.Button("Info", color="info"),
+        dbc.Button("Info", color="info", className="mr-1"),
+        dbc.Button("Light", color="light", className="mr-1"),
+        dbc.Button("Dark", color="dark", className="mr-1"),
+        dbc.Button("Link", color="link"),
     ]
 )
