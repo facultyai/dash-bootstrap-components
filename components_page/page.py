@@ -2,7 +2,7 @@ from pathlib import Path
 
 import dash_bootstrap_components as dbc
 
-from .components.alert import content as alert_content
+from .components.alert import get_content as get_alert_content
 from .components.badge import content as badge_content
 from .components.button import get_content as get_button_content
 from .components.card import content as card_content
@@ -76,7 +76,7 @@ class ComponentsPage:
     def __init__(self, app):
         self._app = app
         self._component_bodies = {
-            "alert": alert_content,
+            "alert": get_alert_content(self._app),
             "badge": badge_content,
             "button": get_button_content(self._app),
             "card": card_content,
