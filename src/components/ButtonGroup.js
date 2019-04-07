@@ -21,6 +21,11 @@ ButtonGroup.propTypes = {
   children: PropTypes.node,
 
   /**
+   * Defines CSS styles which will override styles previously set.
+   */
+  style: PropTypes.object,
+
+  /**
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
