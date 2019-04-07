@@ -5,6 +5,7 @@ import dash_bootstrap_components as dbc
 from .components.alert import get_content as get_alert_content
 from .components.badge import content as badge_content
 from .components.button import get_content as get_button_content
+from .components.button_group import content as button_group_content
 from .components.card import content as card_content
 from .components.collapse import get_content as get_collapse_content
 from .components.dropdown import content as dropdown_content
@@ -41,7 +42,8 @@ NAVBAR = dbc.NavbarSimple(
 sidebar_entries = [
     SidebarEntry("alert", "Alert"),
     SidebarEntry("badge", "Badge"),
-    SidebarEntry("button", "Button"),
+    SidebarEntry("button", "Buttons"),
+    SidebarEntry("button_group", "Button Group"),
     SidebarEntry("card", "Card"),
     SidebarEntry("collapse", "Collapse"),
     SidebarEntry("dropdown_menu", "Dropdown Menu"),
@@ -79,6 +81,7 @@ class ComponentsPage:
             "alert": get_alert_content(self._app),
             "badge": badge_content,
             "button": get_button_content(self._app),
+            "button_group": button_group_content,
             "card": card_content,
             "collapse": get_collapse_content(self._app),
             "dropdown_menu": dropdown_content,
