@@ -1,3 +1,4 @@
+import dash
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
@@ -22,25 +23,26 @@ input_group = dbc.InputGroup(
 @app.callback(
     Output("input-group-dropdown-input", "value"),
     [
-        Input("dropdown-menu-item-1", "n_clicks_timestamp"),
-        Input("dropdown-menu-item-2", "n_clicks_timestamp"),
-        Input("dropdown-menu-item-clear", "n_clicks_timestamp"),
+        Input("dropdown-menu-item-1", "n_clicks"),
+        Input("dropdown-menu-item-2", "n_clicks"),
+        Input("dropdown-menu-item-clear", "n_clicks"),
     ],
 )
-def on_button_click(n_clicks_t1, n_clicks_t2, n_clicks_tclear):
-    if n_clicks_t1 is None and n_clicks_t2 is None:
+def on_button_click(n1, n2, n_clear):
+    ctx = dash.callback_context
+
+    if not ctx.triggered:
         return ""
-    n_clicks_t1 = n_clicks_t1 if n_clicks_t1 is not None else -1
-    n_clicks_t2 = n_clicks_t2 if n_clicks_t2 is not None else -1
-    n_clicks_tclear = n_clicks_tclear if n_clicks_tclear is not None else -1
-    latest_timestamp = max(n_clicks_tclear, n_clicks_t1, n_clicks_t2)
-    if latest_timestamp == n_clicks_tclear:
+    else:
+        button_id = ctx.triggered[0]["prop_id"].split(".")[0]
+
+    if button_id == "dropdown-menu-item-clear":
         return ""
-    elif latest_timestamp == n_clicks_t1:
+    elif button_id == "dropdown-menu-item-1":
         names = ["Arthur Dent", "Ford Prefect", "Trillian Astra"]
-        which = n_clicks_t1 % len(names)
+        which = n1 % len(names)
         return names[which]
     else:
         names = ["David Bowman", "Frank Poole", "Dr. Heywood Floyd"]
-        which = n_clicks_t2 % len(names)
+        which = n2 % len(names)
         return names[which]
