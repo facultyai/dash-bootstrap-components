@@ -66,6 +66,9 @@ Button.propTypes = {
   n_clicks: PropTypes.number,
 
   /**
+   * Use of *_timestamp props has been deprecated in Dash in favour of dash.callback_context.
+   * See "How do I determine which Input has changed?" in the Dash FAQs https://dash.plot.ly/faqs.
+   *
    * An integer that represents the time (in ms since 1970)
    * at which n_clicks changed. This can be used to tell
    * which button was changed most recently.

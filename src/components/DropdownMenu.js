@@ -98,18 +98,18 @@ DropdownMenu.propTypes = {
   label: PropTypes.string,
 
   /**
-   * Direction in which to expand the dropdown. Note that expanding
-   * the dropdown upwards is currently unsupported. Default: 'down'.
+   * Direction in which to expand the DropdownMenu. Note that expanding
+   * the DropdownMenu upwards is currently unsupported. Default: 'down'.
    */
   direction: PropTypes.oneOf(['down', 'left', 'right']),
 
   /**
-   * Set this to True if the dropdown is inside a navbar. Default: False.
+   * Set this to True if the DropdownMenu is inside a navbar. Default: False.
    */
   in_navbar: PropTypes.bool,
 
   /**
-   * Set this to 'prepend' or 'append' if the dropdown menu is being used in an input group.
+   * Set this to 'prepend' or 'append' if the DropdownMenu is being used in an input group.
    */
   addon_type: PropTypes.oneOfType([
     PropTypes.bool,
@@ -122,18 +122,18 @@ DropdownMenu.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * Set this to True if the dropdown is inside a nav for styling consistent
+   * Set this to True if the DropdownMenu is inside a nav for styling consistent
    * with other nav items. Default: False.
    */
   nav: PropTypes.bool,
 
   /**
-   * Add a caret to the dropdown toggle. Default: True.
+   * Add a caret to the DropdownMenu toggle. Default: True.
    */
   caret: PropTypes.bool,
 
   /**
-   * Size of the dropdown. 'sm' corresponds to small, 'md' to medium
+   * Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
    * and 'lg' to large.
    */
   bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
@@ -154,7 +154,12 @@ DropdownMenu.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * Set group to True if the DropdownMenu is inside a ButtonGroup.
+   */
+  group: PropTypes.bool
 };
 
 export default DropdownMenu;
