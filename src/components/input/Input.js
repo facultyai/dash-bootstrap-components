@@ -12,7 +12,7 @@ class Input extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.value})
+    this.setState({value: nextProps.value});
     if (this.props.setProps) {
       this.props = nextProps;
     }
@@ -167,6 +167,11 @@ Input.propTypes = {
    * The value of the Input
    */
   value: PropTypes.string,
+
+  /**
+   * If true, the input is disabled and can't be clicked on.
+   */
+  disabled: PropTypes.bool,
 
   /**
    * The initial size of the control. This value is in pixels unless the value
