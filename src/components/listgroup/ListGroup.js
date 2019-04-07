@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {ListGroup as RSListGroup} from 'reactstrap';
 
 const ListGroup = props => {
-  const {children, ...otherProps} = props;
-  return <RSListGroup {...otherProps}>{children}</RSListGroup>;
+  const {children, loading_state, ...otherProps} = props;
+  return (
+    <RSListGroup
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSListGroup>
+  );
 };
 
 ListGroup.propTypes = {
@@ -47,7 +56,25 @@ ListGroup.propTypes = {
    * and rounded corners from the list group in order that they can be rendered
    * edge-to-edge in the parent container (e.g. a Card).
    */
-  flush: PropTypes.bool
+  flush: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default ListGroup;

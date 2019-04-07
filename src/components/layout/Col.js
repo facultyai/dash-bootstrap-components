@@ -10,13 +10,28 @@ const alignMap = {
 };
 
 const Col = props => {
-  const {children, xs, width, align, className, ...otherProps} = props;
+  const {
+    children,
+    xs,
+    width,
+    align,
+    className,
+    loading_state,
+    ...otherProps
+  } = props;
 
   const alignClass = align && alignMap[align];
   const classes = classNames(className, alignClass);
 
   return (
-    <RSCol xs={xs || width} className={classes} {...otherProps}>
+    <RSCol
+      xs={xs || width}
+      className={classes}
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
       {children}
     </RSCol>
   );
@@ -134,7 +149,25 @@ Col.propTypes = {
    * Set vertical alignment of this column's content in the parent row. Options
    * are 'start', 'center', 'end'.
    */
-  align: PropTypes.oneOf(['start', 'center', 'end'])
+  align: PropTypes.oneOf(['start', 'center', 'end']),
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Col;

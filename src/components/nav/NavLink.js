@@ -20,7 +20,13 @@ class NavLink extends React.Component {
   }
 
   render() {
-    const {children, className, active, ...otherProps} = this.props;
+    const {
+      children,
+      className,
+      active,
+      loading_state,
+      ...otherProps
+    } = this.props;
     const classes = classNames(className, 'nav-link', {
       active,
       disabled: otherProps.disabled
@@ -30,6 +36,9 @@ class NavLink extends React.Component {
         className={classes}
         preOnClick={this.incrementClicks}
         {...otherProps}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
       >
         {children}
       </Link>
@@ -110,7 +119,25 @@ NavLink.propTypes = {
    * at which n_clicks changed. This can be used to tell
    * which button was changed most recently.
    */
-  n_clicks_timestamp: PropTypes.number
+  n_clicks_timestamp: PropTypes.number,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default NavLink;

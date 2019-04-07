@@ -19,7 +19,15 @@ class Textarea extends React.Component {
   }
 
   render() {
-    const {setProps, className, invalid, valid, bs_size, debounce} = this.props;
+    const {
+      setProps,
+      className,
+      invalid,
+      valid,
+      bs_size,
+      debounce,
+      loading_state
+    } = this.props;
     const {value} = this.state;
 
     const classes = classNames(
@@ -74,10 +82,14 @@ class Textarea extends React.Component {
             'n_blur_timestamp',
             'n_submit',
             'n_submit_timestamp',
-            'debounce'
+            'debounce',
+            'loading_state'
           ],
           this.props
         )}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
       />
     );
   }
@@ -271,7 +283,25 @@ Textarea.propTypes = {
    * If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
    * If it's false, it will sent the value back on every change.
    */
-  debounce: PropTypes.bool
+  debounce: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 Textarea.defaultProps = {

@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {Nav as RSNav} from 'reactstrap';
 
 const Nav = props => {
-  const {children, ...otherProps} = props;
-  return <RSNav {...otherProps}>{children}</RSNav>;
+  const {children, loading_state, ...otherProps} = props;
+  return (
+    <RSNav
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSNav>
+  );
 };
 
 Nav.propTypes = {
@@ -70,14 +79,32 @@ Nav.propTypes = {
    * Specify the horizontal alignment of the NavItems. Options are 'start',
    * 'center', or 'end'.
    */
-  horizontal: PropTypes.oneOf(["start", "center", "end"]),
+  horizontal: PropTypes.oneOf(['start', 'center', 'end']),
 
   /**
    * Set to True if using Nav in Navbar component. This applies the `navbar-nav`
    * class to the Nav which uses more lightweight styles to match the parent
    * Navbar better.
    */
-  navbar: PropTypes.bool
+  navbar: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Nav;

@@ -4,10 +4,16 @@ import {CardText as RSCardText} from 'reactstrap';
 import classNames from 'classnames';
 
 const CardText = props => {
-  const {children, className, color, ...otherProps} = props;
+  const {children, loading_state, className, color, ...otherProps} = props;
   const classes = classNames(className, color && `text-${color}`);
   return (
-    <RSCardText className={classes} {...otherProps}>
+    <RSCardText
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+      className={classes}
+      {...otherProps}
+    >
       {children}
     </RSCardText>
   );
@@ -52,7 +58,25 @@ CardText.propTypes = {
    * Text color, options: primary, secondary, success, warning, danger, info,
    * muted, light, dark, body, white, black-50, white-50.
    */
-  color: PropTypes.string
+  color: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default CardText;

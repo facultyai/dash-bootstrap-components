@@ -24,6 +24,7 @@ class Tooltip extends React.Component {
       children,
       hide_arrow,
       boundaries_element,
+      loading_state,
       ...otherProps
     } = this.props;
     return (
@@ -33,6 +34,9 @@ class Tooltip extends React.Component {
         hideArrow={hide_arrow}
         boundariesElement={boundaries_element}
         {...otherProps}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
       >
         {children}
       </RSTooltip>
@@ -138,7 +142,25 @@ Tooltip.propTypes = {
   /**
    * Tooltip offset
    */
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Tooltip;

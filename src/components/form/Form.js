@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {Form as RSForm} from 'reactstrap';
 
 const Form = props => {
-  const {children, ...otherProps} = props;
-  return <RSForm {...otherProps}>{children}</RSForm>;
+  const {children, loading_state, ...otherProps} = props;
+  return (
+    <RSForm
+      {...otherProps}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSForm>
+  );
 };
 
 Form.propTypes = {
@@ -42,7 +51,25 @@ Form.propTypes = {
    * a series of labels, form controls, and buttons on a single horizontal row.
    * Form controls within inline forms vary slightly from their default states.
    */
-  inline: PropTypes.bool
+  inline: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Form;

@@ -30,7 +30,8 @@ class Input extends React.Component {
       key,
       debounce,
       min,
-      max
+      max,
+      loading_state
     } = this.props;
     const {value} = setProps
       ? debounce
@@ -113,10 +114,14 @@ class Input extends React.Component {
             'valid',
             'invalid',
             'bs_size',
-            'plaintext'
+            'plaintext',
+            'loading_state'
           ],
           this.props
         )}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
       />
     );
   }
@@ -250,7 +255,25 @@ Input.propTypes = {
    * focus.  If it's false, it will sent the value back on every
    * change.
    */
-  debounce: PropTypes.bool
+  debounce: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 Input.defaultProps = {

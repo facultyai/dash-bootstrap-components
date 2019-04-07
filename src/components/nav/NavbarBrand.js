@@ -4,9 +4,15 @@ import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
 import Link from '../../private/Link';
 
 const NavbarBrand = props => {
-  const {children, ...otherProps} = props;
+  const {children, loading_state, ...otherProps} = props;
   return (
-    <RSNavbarBrand {...otherProps} tag={props.href ? Link : 'span'}>
+    <RSNavbarBrand
+      {...otherProps}
+      tag={props.href ? Link : 'span'}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
       {children}
     </RSNavbarBrand>
   );
@@ -54,7 +60,25 @@ NavbarBrand.propTypes = {
   /**
    * URL of the linked resource
    */
-  href: PropTypes.string
+  href: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default NavbarBrand;
