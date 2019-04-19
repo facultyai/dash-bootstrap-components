@@ -41,6 +41,10 @@ export {
 export {
   default as ListGroupItemText
 } from './components/listgroup/ListGroupItemText';
+export {default as Modal} from './components/modal/Modal';
+export {default as ModalBody} from './components/modal/ModalBody';
+export {default as ModalFooter} from './components/modal/ModalFooter';
+export {default as ModalHeader} from './components/modal/ModalHeader';
 export {default as Nav} from './components/nav/Nav';
 export {default as Navbar} from './components/nav/Navbar';
 export {default as NavbarBrand} from './components/nav/NavbarBrand';
@@ -55,6 +59,7 @@ export {default as Progress} from './components/Progress';
 export {default as RadioItems} from './components/input/RadioItems';
 export {default as RadioButton} from './components/input/RadioButton';
 export {default as Row} from './components/layout/Row';
+export {default as Spinner} from './components/Spinner';
 export {default as Tab} from './components/tabs/Tab';
 export {default as Tabs} from './components/tabs/Tabs';
 export {default as Table} from './components/Table';
