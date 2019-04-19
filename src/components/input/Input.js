@@ -171,12 +171,140 @@ Input.propTypes = {
   /**
    * The value of the Input
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * If true, the input is disabled and can't be clicked on.
+   * Set to True to disable the Input.
    */
   disabled: PropTypes.bool,
+
+  /**
+   * This attribute indicates whether the value of the control can be
+   * automatically completed by the browser.
+   */
+  autocomplete: PropTypes.string,
+
+  /**
+   * The element should be automatically focused after the page has loaded.
+   */
+  autofocus: PropTypes.string,
+
+  inputmode: PropTypes.oneOf([
+    /**
+     * Alphanumeric, non-prose content such as usernames and passwords.
+     */
+    'verbatim',
+
+    /**
+     * Latin-script input in the user's preferred language with typing aids
+     * such as text prediction enabled. For human-to-computer communication
+     * such as search boxes.
+     */
+    'latin',
+
+    /**
+     * As latin, but for human names.
+     */
+    'latin-name',
+
+    /**
+     * As latin, but with more aggressive typing aids. For human-to-human
+     * communication such as instant messaging or email.
+     */
+    'latin-prose',
+
+    /**
+     * As latin-prose, but for the user's secondary languages.
+     */
+    'full-width-latin',
+
+    /**
+     * Kana or romaji input, typically hiragana input, using full-width
+     * characters, with support for converting to kanji. Intended for Japanese text input.
+     */
+    'kana',
+
+    /**
+     * Katakana input, using full-width characters, with support for converting
+     * to kanji. Intended for Japanese text input.
+     */
+    'katakana',
+
+    /**
+     * Numeric input, including keys for the digits 0 to 9, the user's preferred
+     * thousands separator character, and the character for indicating negative
+     * numbers. Intended for numeric codes (e.g. credit card numbers). For
+     * actual numbers, prefer using type="number"
+     */
+    'numeric',
+
+    /**
+     * Telephone input, including asterisk and pound key. Use type="tel" if
+     * possible instead.
+     */
+    'tel',
+
+    /**
+     * Email input. Use type="email" if possible instead.
+     */
+    'email',
+
+    /**
+     * URL input. Use type="url" if possible instead.
+     */
+    'url'
+  ]),
+
+  /**
+   * Identifies a list of pre-defined options to suggest to the user.
+   * The value must be the id of a <datalist> element in the same document.
+   * The browser displays only options that are valid values for this
+   * input element.
+   * This attribute is ignored when the type attribute's value is
+   * hidden, checkbox, radio, file, or a button type.
+   */
+  list: PropTypes.string,
+
+  /**
+   * The maximum (numeric or date-time) value for this item, which must not be
+   * less than its minimum (min attribute) value.
+   */
+  max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * If the value of the type attribute is text, email, search, password, tel,
+   * or url, this attribute specifies the maximum number of characters
+   * (in UTF-16 code units) that the user can enter. For other control types,
+   * it is ignored. It can exceed the value of the size attribute. If it is not
+   * specified, the user can enter an unlimited number of characters.
+   * Specifying a negative number results in the default behavior (i.e. the
+   * user can enter an unlimited number of characters). The constraint is
+   * evaluated only when the value of the attribute has been changed.
+   */
+  maxlength: PropTypes.string,
+
+  /**
+   * The minimum (numeric or date-time) value for this item, which must not be
+   * greater than its maximum (max attribute) value.
+   */
+  min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * If the value of the type attribute is text, email, search, password, tel,
+   * or url, this attribute specifies the minimum number of characters (in
+   * Unicode code points) that the user can enter. For other control types, it
+   * is ignored.
+   */
+  minlength: PropTypes.string,
+
+  /**
+   * Works with the min and max attributes to limit the increments at which a
+   * numeric or date-time value can be set. It can be the string any or a
+   * positive floating point number. If this attribute is not set to any, the
+   * control accepts only values at multiples of the step value greater than
+   * the minimum.
+   */
+  step: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * The initial size of the control. This value is in pixels unless the value
@@ -228,6 +356,18 @@ Input.propTypes = {
    * The name of the control, which is submitted with the form data.
    */
   name: PropTypes.string,
+
+  /**
+   * A regular expression that the control's value is checked against. The
+   * pattern must match the entire value, not just some subset. Use the title
+   * attribute to describe the pattern to help the user. This attribute applies
+   * when the value of the type attribute is text, search, tel, url, email, or
+   * password, otherwise it is ignored. The regular expression language is the
+   * same as JavaScript RegExp algorithm, with the 'u' parameter that makes it
+   * treat the pattern as a sequence of unicode code points. The pattern is not
+   * surrounded by forward slashes.
+   */
+  pattern: PropTypes.string,
 
   /**
    * Number of times the `Enter` key was pressed while the input had focus.
