@@ -1,6 +1,4 @@
-dash>=0.40.0
+dash>=0.41.0
 dash_bootstrap_components==0.5.0
-dash_core_components
-dash_html_components
 gunicorn
 pandas
