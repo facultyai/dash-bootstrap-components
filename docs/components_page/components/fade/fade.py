@@ -7,7 +7,11 @@ fade = html.Div(
         dbc.Button("Toggle fade", id="fade-button", className="mb-3"),
         dbc.Fade(
             dbc.Card(
-                dbc.CardBody(dbc.CardText("This content fades in and out"))
+                dbc.CardBody(
+                    html.P(
+                        "This content fades in and out", className="card-text"
+                    )
+                )
             ),
             id="fade",
             is_in=True,
