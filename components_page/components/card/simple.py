@@ -1,42 +1,20 @@
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
-cards = dbc.CardDeck(
+card = dbc.Card(
     [
-        dbc.Card(
+        dbc.CardImg(src="/assets/images/placeholder286x180.png", top=True),
+        dbc.CardBody(
             [
-                dbc.CardHeader("Header"),
-                dbc.CardBody(
-                    [
-                        dbc.CardTitle("This card has a title"),
-                        dbc.CardText("And some text"),
-                    ]
+                html.H4("Card title", className="card-title"),
+                html.P(
+                    "Some quick example text to build on the card title and "
+                    "make up the bulk of the card's content.",
+                    className="card-text",
                 ),
+                dbc.Button("Go somewhere", color="primary"),
             ]
         ),
-        dbc.Card(
-            [
-                dbc.CardBody(
-                    [
-                        dbc.CardTitle("This card has a title"),
-                        dbc.CardText("and some text, but no header"),
-                    ]
-                )
-            ],
-            outline=True,
-            color="primary",
-        ),
-        dbc.Card(
-            [
-                dbc.CardBody(
-                    [
-                        dbc.CardTitle("This card has a title"),
-                        dbc.CardText("and some text, and a footer!"),
-                    ]
-                ),
-                dbc.CardFooter("Footer"),
-            ],
-            outline=True,
-            color="dark",
-        ),
-    ]
+    ],
+    style={"width": "18rem"},
 )
