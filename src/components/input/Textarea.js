@@ -54,7 +54,7 @@ class Textarea extends React.Component {
           if (setProps) {
             const payload = {
               n_blur: this.props.n_blur + 1,
-              n_blur_timestamp: new Date()
+              n_blur_timestamp: Date.now()
             };
             if (debounce) {
               payload.value = value;
@@ -66,7 +66,7 @@ class Textarea extends React.Component {
           if (setProps) {
             setProps({
               n_clicks: this.props.n_clicks + 1,
-              n_clicks_timestamp: new Date()
+              n_clicks_timestamp: Date.now()
             });
           }
         }}
