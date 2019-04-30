@@ -130,8 +130,11 @@ cards = html.Div(
                         dbc.CardHeader("Header"),
                         dbc.CardBody(
                             [
-                                dbc.CardTitle("This card has a title"),
-                                dbc.CardText("And some text"),
+                                html.H5(
+                                    "This card has a title",
+                                    className="card-title",
+                                ),
+                                html.P("And some text", className="card-text"),
                             ]
                         ),
                     ]
@@ -140,8 +143,14 @@ cards = html.Div(
                     [
                         dbc.CardBody(
                             [
-                                dbc.CardTitle("This card has a title"),
-                                dbc.CardText("and some text, but no header"),
+                                html.H5(
+                                    "This card has a title",
+                                    className="card-title",
+                                ),
+                                html.P(
+                                    "and some text, but no header",
+                                    className="card-text",
+                                ),
                             ]
                         )
                     ],
@@ -152,8 +161,14 @@ cards = html.Div(
                     [
                         dbc.CardBody(
                             [
-                                dbc.CardTitle("This card has a title"),
-                                dbc.CardText("and some text, and a footer!"),
+                                html.H5(
+                                    "This card has a title",
+                                    className="card-title",
+                                ),
+                                html.P(
+                                    "and some text, and a footer!",
+                                    className="card-text",
+                                ),
                             ]
                         ),
                         dbc.CardFooter("Footer"),
@@ -264,7 +279,11 @@ fade = html.Div(
         ),
         dbc.Fade(
             dbc.Card(
-                dbc.CardBody(dbc.CardText("This content fades in and out"))
+                dbc.CardBody(
+                    html.P(
+                        "This content fades in and out", className="card-text"
+                    )
+                )
             ),
             id="fade",
             is_in=True,
@@ -522,7 +541,10 @@ tabs = html.Div(
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                dbc.CardText("This tab has a card!"),
+                                html.P(
+                                    "This tab has a card!",
+                                    className="card-text",
+                                ),
                                 dbc.Button("Click here", color="success"),
                             ]
                         )
