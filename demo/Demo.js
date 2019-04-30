@@ -225,8 +225,8 @@ class Demo extends Component {
             <Card color="dark" outline={true}>
               <CardHeader>Header</CardHeader>
               <CardBody>
-                <CardTitle>This card has a header</CardTitle>
-                <CardText>And some text in the body</CardText>
+                <h5 className="card-title">This card has a header</h5>
+                <p className="card-text">And some text in the body</p>
               </CardBody>
             </Card>
           </Col>
@@ -234,16 +234,16 @@ class Demo extends Component {
             <Card>
               <CardImg top={true} src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"/>
               <CardBody>
-                <CardTitle>Card with image</CardTitle>
-                <CardText>This card has an image</CardText>
+                <h5 className="card-title">Card with image</h5>
+                <p className="card-text">This card has an image</p>
               </CardBody>
             </Card>
           </Col>
           <Col md={3}>
             <Card>
               <CardBody>
-                <CardTitle>Here's another card</CardTitle>
-                <CardText>With some text, and a button</CardText>
+                <h5 className="card-title">Here's another card</h5>
+                <p className="card-text">With some text, and a button</p>
                 <Button color="success">Click here</Button>
               </CardBody>
             </Card>
@@ -251,8 +251,8 @@ class Demo extends Component {
           <Col md={3}>
             <Card>
               <CardBody>
-                <CardTitle>Here's yet another card</CardTitle>
-                <CardText>With some text, and some links</CardText>
+                <h5 className="card-title">Here's yet another card</h5>
+                <p className="card-text">With some text, and some links</p>
                 <CardLink href="https://www.asidatascience.com">External</CardLink>
                 <CardLink href="/example">Internal</CardLink>
               </CardBody>
@@ -264,27 +264,27 @@ class Demo extends Component {
         <CardDeck>
           <Card>
             <CardBody>
-              <CardTitle>The first card</CardTitle>
-              <CardText>
+              <h5 className="card-title">The first card</h5>
+              <p className="card-text">
                 This is a card with some text on it, it's the first one in the deck.
-              </CardText>
+              </p>
             </CardBody>
           </Card>
           <Card>
             <CardBody>
-              <CardTitle>The second card</CardTitle>
-              <CardText>
+              <h5 className="card-title">The second card</h5>
+              <p className="card-text">
                 This is a card with some text on it, it's the second one in the deck. It has a bit more text in it so that we can see how the vertical spacing will work.
-              </CardText>
+              </p>
             </CardBody>
           </Card>
           <Card outline={true} color="primary">
             <CardBody>
-              <CardTitle>The third card</CardTitle>
-              <CardSubtitle>...and the last :(</CardSubtitle>
-              <CardText>
+              <h5 className="card-title">The third card</h5>
+              <h6 className="card-subtitle">...and the last :(</h6>
+              <p className="card-text">
                 This card doesn't have much text...
-              </CardText>
+              </p>
               <Button color="danger">Click me</Button>
             </CardBody>
           </Card>
@@ -379,7 +379,7 @@ class Demo extends Component {
       <FadeComponent>
         <Card>
           <CardBody>
-            <CardText>This content fades in and out</CardText>
+            <p className="card-text">This content fades in and out</p>
           </CardBody>
         </Card>
       </FadeComponent>
