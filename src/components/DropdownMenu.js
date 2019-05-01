@@ -99,10 +99,9 @@ DropdownMenu.propTypes = {
   label: PropTypes.string,
 
   /**
-   * Direction in which to expand the DropdownMenu. Note that expanding
-   * the DropdownMenu upwards is currently unsupported. Default: 'down'.
+   * Direction in which to expand the DropdownMenu. Default: 'down'.
    */
-  direction: PropTypes.oneOf(['down', 'left', 'right']),
+  direction: PropTypes.oneOf(['down', 'left', 'right', 'up']),
 
   /**
    * Align the DropdownMenu along the right side of its parent. Default: False.
