@@ -68,6 +68,7 @@ def release(ctx, version):
     build_publish(version)
 
     info("Committing version changes")
+    run(f"git checkout -b release-{version}")
     run(
         "git add package.json package-lock.json "
         "docs/requirements.txt "
@@ -76,7 +77,7 @@ def release(ctx, version):
     run(f'git commit -m "Bump version to {version}"')
     info(f"Tagging version {version} and pushing to GitHub")
     run(f'git tag -a "{version}" -F changelog.tmp')
-    run("git push origin master --tags")
+    run(f"git push origin release-{version} --tags")
 
 
 @task
@@ -106,12 +107,13 @@ def postrelease(ctx, version):
     info(f"Bumping version numbers to {new_version} and committing")
     set_pyversion(new_version)
     set_jsversion(new_version)
+    run(f"git checkout -b postrelease-{version}")
     run(
         "git add package.json package-lock.json "
         "dash_bootstrap_components/_version.py"
     )
     run('git commit -m "Back to dev"')
-    run("git push origin master")
+    run(f"git push origin postrelease-{version}")
 
 
 def build_publish(version):
