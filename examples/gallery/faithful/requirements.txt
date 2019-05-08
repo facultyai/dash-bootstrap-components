@@ -4,3 +4,4 @@ dash-core-components
 dash-html-components
 pandas
 plotly
+scipy
