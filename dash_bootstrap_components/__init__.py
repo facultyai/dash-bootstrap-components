@@ -49,3 +49,30 @@ class DatePickerRange(object):
             "DatePickerRange has been removed from dash-bootstrap-components. "
             "Use DatePickerRange from dash-core-components instead."
         )
+
+
+class CardTitle(object):
+    def __init__(self, *args, **kwargs):
+        raise AttributeError(
+            "CardTitle has been removed from dash-bootstrap-components. Set "
+            "className='card-title' on a html.H* component instead. CardTitle "
+            "originally used H5."
+        )
+
+
+class CardSubtitle(object):
+    def __init__(self, *args, **kwargs):
+        raise AttributeError(
+            "CardSubtitle has been removed from dash-bootstrap-components. "
+            "Set className='card-subtitle' on a html.H* component instead. "
+            "CardSubtitle originally used H6."
+        )
+
+
+class CardText(object):
+    def __init__(self, *args, **kwargs):
+        raise AttributeError(
+            "CardText has been removed from dash-bootstrap-components. Set "
+            "className='card-text' on a html component such as Div, or P "
+            "instead. CardText originally used P."
+        )
