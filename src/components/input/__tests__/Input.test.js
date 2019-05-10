@@ -77,13 +77,16 @@ describe('Input', () => {
         />
       )
       const htmlInput = input.find('input')
+      const before = Date.now()
       htmlInput.simulate('blur')
+      const after = Date.now()
       expect(setProps.mock.calls).toHaveLength(1)
       const [call] = setProps.mock.calls
       const [arg] = call
       const { n_blur, n_blur_timestamp } = arg
       expect(n_blur).toEqual(1)
-      expect(n_blur_timestamp).toBeValidDate()
+      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before)
+      expect(n_blur_timestamp).toBeLessThanOrEqual(after)
     })
 
     it('dispatch the value if debounce is true', () => {
@@ -98,13 +101,16 @@ describe('Input', () => {
         />
       )
       const htmlInput = input.find('input')
+      const before = Date.now()
       htmlInput.simulate('blur')
+      const after = Date.now()
       expect(setProps.mock.calls).toHaveLength(1)
       const [call] = setProps.mock.calls
       const [arg] = call
       const { n_blur, n_blur_timestamp, value } = arg
       expect(n_blur).toEqual(1)
-      expect(n_blur_timestamp).toBeValidDate()
+      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before)
+      expect(n_blur_timestamp).toBeLessThanOrEqual(after)
       expect(value).toEqual('some-value')
     })
   })
@@ -121,11 +127,14 @@ describe('Input', () => {
           setProps={setProps}
         />
       )
+      const before = Date.now()
       input.simulate('keyPress', event)
+      const after = Date.now()
       expect(setProps.mock.calls).toHaveLength(1)
       const [[{n_submit, n_submit_timestamp}]] = setProps.mock.calls
       expect(n_submit).toEqual(1)
-      expect(n_submit_timestamp).toBeValidDate()
+      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before)
+      expect(n_submit_timestamp).toBeLessThanOrEqual(after)
     })
 
     it('dispatch the value if debounce is true', () => {
@@ -139,11 +148,14 @@ describe('Input', () => {
           value="some-value"
         />
       )
+      const before = Date.now()
       input.simulate('keyPress', event)
+      const after = Date.now()
       expect(setProps.mock.calls).toHaveLength(1)
       const [[{n_submit, n_submit_timestamp, value}]] = setProps.mock.calls
       expect(n_submit).toEqual(1)
-      expect(n_submit_timestamp).toBeValidDate()
+      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before)
+      expect(n_submit_timestamp).toBeLessThanOrEqual(after)
       expect(value).toEqual("some-value")
     })
 
