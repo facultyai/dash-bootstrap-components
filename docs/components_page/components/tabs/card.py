@@ -1,4 +1,5 @@
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 from dash.dependencies import Input, Output
 
 card = dbc.Card(
@@ -14,7 +15,7 @@ card = dbc.Card(
                 active_tab="tab-1",
             )
         ),
-        dbc.CardBody(dbc.CardText(id="card-content")),
+        dbc.CardBody(html.P(id="card-content", className="card-text")),
     ]
 )
 

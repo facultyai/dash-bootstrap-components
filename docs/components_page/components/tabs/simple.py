@@ -1,9 +1,10 @@
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
 tab1_content = dbc.Card(
     dbc.CardBody(
         [
-            dbc.CardText("This is tab 1!"),
+            html.P("This is tab 1!", className="card-text"),
             dbc.Button("Click here", color="success"),
         ]
     ),
@@ -13,7 +14,7 @@ tab1_content = dbc.Card(
 tab2_content = dbc.Card(
     dbc.CardBody(
         [
-            dbc.CardText("This is tab 2!"),
+            html.P("This is tab 2!", className="card-text"),
             dbc.Button("Don't click here", color="danger"),
         ]
     ),
