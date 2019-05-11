@@ -6,7 +6,9 @@ import classNames from 'classnames';
 const alignMap = {
   start: 'align-self-start',
   center: 'align-self-center',
-  end: 'align-self-end'
+  end: 'align-self-end',
+  stretch: 'align-self-stretch',
+  baseline: 'align-self-baseline'
 };
 
 const Col = props => {
@@ -147,9 +149,9 @@ Col.propTypes = {
 
   /**
    * Set vertical alignment of this column's content in the parent row. Options
-   * are 'start', 'center', 'end'.
+   * are 'start', 'center', 'end', 'stretch', 'baseline'.
    */
-  align: PropTypes.oneOf(['start', 'center', 'end']),
+  align: PropTypes.oneOf(['start', 'center', 'end', 'stretch', 'baseline']),
 
   /**
    * Object that holds the loading state object coming from dash-renderer
