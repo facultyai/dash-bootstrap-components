@@ -91,11 +91,11 @@ span.hljs-meta {
   margin-bottom: 2rem;
 }
 
-.example-source-container>pre.hljs {
+.example-source-container pre.hljs {
   border-radius: 0px 0px 3px 3px;
 }
 
-.source-container>pre.hljs {
+.source-container pre.hljs {
   border-radius: 3px;
 }
 
