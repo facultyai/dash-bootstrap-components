@@ -4,7 +4,12 @@ from dash.dependencies import Input, Output, State
 
 collapse = html.Div(
     [
-        dbc.Button("Open collapse", id="collapse-button", className="mb-3"),
+        dbc.Button(
+            "Open collapse",
+            id="collapse-button",
+            className="mb-3",
+            color="primary",
+        ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
             id="collapse",
