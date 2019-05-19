@@ -6,7 +6,9 @@ import classNames from 'classnames';
 const alignMap = {
   start: 'align-items-start',
   center: 'align-items-center',
-  end: 'align-items-end'
+  end: 'align-items-end',
+  stretch: 'align-items-stretch',
+  baseline: 'align-items-baseline'
 };
 
 const justifyMap = {
@@ -84,9 +86,9 @@ Row.propTypes = {
 
   /**
    * Set vertical alignment of columns in this row. Options are 'start',
-   * 'center' and 'end'.
+   * 'center', 'end', 'stretch' and 'baseline'.
    */
-  align: PropTypes.oneOf(['start', 'center', 'end']),
+  align: PropTypes.oneOf(['start', 'center', 'end', 'stretch', 'baseline']),
 
   /**
    * Set horizontal spacing and alignment of columns in this row. Options are
