@@ -59,12 +59,21 @@ class Tabs extends React.Component {
   }
 
   toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({activeTab: tab});
-      if (this.props.setProps) {
+    if (this.props.setProps) {
+      if (this.props.active_tab !== tab) {
         this.props.setProps({active_tab: tab});
       }
+    } else {
+      if (this.state.activeTab !== tab) {
+        this.setState({activeTab: tab});
+      }
     }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.active_tab && nextProps.active_tab != prevState.activeTab) {
+      return {activeTab: nextProps.active_tab};
+    } else return null;
   }
 
   render() {
