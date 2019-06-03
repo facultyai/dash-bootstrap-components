@@ -190,8 +190,9 @@ Tabs.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Determine which tab is currently showing. Will be the id of the tab or
-   * 'tab-i' where i is the index of the tab (indexed from zero)
+   * The tab_id of the currently active tab. If tab_id has not been specified
+   * for the active tab, this will default to tab-i, where i is the index
+   * (starting from 0) of the tab.
    */
   active_tab: PropTypes.string,
 
