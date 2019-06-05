@@ -53,7 +53,7 @@ min_freq_slider = html.Div(
         max=50,
         step=1,
         value=15,
-        marks={1: 1, **{i: i for i in range(5, 51, 5)}},
+        marks={1: "1", **{i: str(i) for i in range(5, 51, 5)}},
     ),
     className="p-3 mb-2",
 )
@@ -65,7 +65,7 @@ max_vocab_slider = html.Div(
         max=300,
         step=1,
         value=100,
-        marks={1: 1, **{i: i for i in range(30, 301, 30)}},
+        marks={1: "1", **{i: str(i) for i in range(30, 301, 30)}},
     ),
     className="p-3",
 )
@@ -135,4 +135,4 @@ def make_wordcloud(book, min_freq, max_vocab):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=8888)
