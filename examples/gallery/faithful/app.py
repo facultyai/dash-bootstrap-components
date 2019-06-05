@@ -87,4 +87,4 @@ def make_graph(dropdown_value, checklist_values):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=8888)
