@@ -1,7 +1,7 @@
 # dash-bootstrap-components
 
 [Plotly Dash][dash-homepage] is great! However, creating the initial
-layout can create a lot of boilerplate. *dash-bootstrap-components*
+layout can require a lot of boilerplate. *dash-bootstrap-components*
 reduces this boilerplate by providing standard layouts and high-level
 components.
 
