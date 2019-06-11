@@ -1,151 +1,73 @@
 .dash-bootstrap {
-  .DateRangePickerInput,
+  // DatePicker* are wrapped in a div with display: inline-block
+  // inside FormGroup we want display: block instead.
+  .form-group > div {
+    display: block !important;
+  }
+
+  &.form-group > div {
+    display: block !important;
+  }
+
   .SingleDatePickerInput {
-    height: $input-height;
-    @include font-size($input-font-size);
-    font-family: $input-font-family;
-    font-weight: $input-font-weight;
     color: $input-color;
     background-color: $input-bg;
-    background-clip: padding-box;
-    border: $input-border-width solid $input-border-color;
-    @include border-radius($input-border-radius, 0);
-    @include transition($input-transition);
+  }
 
-    &:hover {
-      box-shadow: none;
-    }
+  .SingleDatePickerInput__withBorder {
+    @include border-radius($input-border-radius, 0);
+    border: $input-border-width solid $input-border-color;
   }
 
   .DateInput {
+    background: transparent;
+    width: 150px;
+  }
+
+  .DateInput_input {
+    padding: $input-padding-y $input-padding-x;
+    height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
     @include font-size($input-font-size);
-    font-weight: $input-font-weight;
-    color: $input-color;
-    background-color: transparent;
-    background-clip: padding-box;
-    padding: 0;
-    height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
-  }
-
-  .DateInput__input {
-    padding: $input-padding-y $input-padding-x;
-    height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
-  }
-
-  .DateInput__display-text {
-    padding: $input-padding-y $input-padding-x;
-    height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
-    line-height: $input-line-height;
-    color: $input-color;
     font-family: $input-font-family;
     font-weight: $input-font-weight;
+    border-bottom: 0;
+    background: transparent;
   }
 
-  .DateInput__display-text--focused {
-    background: rgba(theme-color("primary"), 0.1);
+  .DateInput_fang.DateInput_fang_1 {
+    top: calc(#{$input-height} + 10px) !important;
+
+    .DateInput_fangShape {
+      fill: $popover-bg;
+    }
+
+    .DateInput_fangStroke {
+      stroke: $popover-border-color;
+    }
   }
 
-  .DateRangePicker__picker,
-  .SingleDatePicker__picker {
-    top: calc(#{$input-height} + 15px);
+  .SingleDatePicker_picker {
+    top: calc(#{$input-height} + 21px) !important;
     background-color: transparent;
   }
 
   .DayPicker {
-    @include reset-text();
-    @include font-size($popover-font-size);
-    background-color: $popover-bg;
-  }
-
-  .DayPicker--horizontal {
-    @include border-radius($popover-border-radius, 0);
-    @if $enable-shadows {
-      @include box-shadow($popover-box-shadow);
-    } @else {
-      box-shadow: none;
-    }
-    border: $popover-border-width solid $popover-border-color;
-  }
-
-  .transition-container {
-    @include border-radius($popover-border-radius, 0);
-    width: calc(318px - 2 * #{$popover-border-width})!important;
-  }
-
-  .DateInput--with-caret::after {
-    top: calc(#{$input-height} + 6px);
-    border-bottom-color: $popover-bg;
-  }
-
-  .DateInput--with-caret::before {
-    top: calc(#{$input-height} + 5px);
-    border-bottom-color: $popover-border-color;
-  }
-
-  .CalendarMonth__caption {
-    color: $popover-body-color;
-  }
-
-  .CalendarMonthGrid {
-    background-color: $popover-bg;
-  }
-
-  .CalendarDay {
-    color: $popover-body-color;
-    border-color: color-yiq($popover-bg, gray("200"), gray("600"));
-  }
-
-  .CalendarDay--outside {
-    border: 0;
-    cursor: default;
-  }
-
-  .CalendarDay--hovered {
-    background: color-yiq($popover-bg, gray("100"), gray("600"));
-    border: 1px solid color-yiq($popover-bg, gray("300"), gray("500"));
-    color: color-yiq(gray("100"), $yiq-text-dark, $yiq-text-light, 200);
-  }
-
-  .CalendarDay--selected-span {
-    $span-color: color-yiq($popover-bg, lighten(theme-color("primary"), 10), darken(theme-color("primary"), 10));
-    background: $span-color;
-    border: 1px double $span-color;
-    color: color-yiq($span-color);
-  }
-
-  .CalendarDay--hovered-span {
-    $span-color: color-yiq($popover-bg, lighten(theme-color("primary"), 5), darken(theme-color("primary"), 5));
-    background: $span-color;
-    color: color-yiq($span-color);
-  }
-
-  .CalendarDay--after-hovered-start {
-    $span-color: color-yiq($popover-bg, lighten(theme-color("info"), 15), darken(theme-color("info"), 15));
-    background: $span-color;
-    color: color-yiq($span-color);
-  }
-
-  .CalendarDay--selected,
-  .CalendarDay--selected-end,
-  .CalendarDay--selected-start {
-    background: theme-color("primary");
-    border-color: theme-color("primary");
-    color: color-yiq(theme-color("primary"));
-  }
-
-  .CalendarDay--blocked-out-of-range {
-    color: color-yiq($popover-bg, gray("200"), gray("700"));
-    border-color: color-yiq($popover-bg, gray("200"), gray("700"));
     background: $popover-bg;
-    cursor: default;
+
+    &.DayPicker__withBorder {
+      @include border-radius($popover-border-radius, 0);
+    }
   }
 
-  .DayPickerNavigation--horizontal .DayPickerNavigation__next {
-    right: 20px;
+  .DayPicker_weekHeader {
+    color: color-yiq(
+      $popover-bg,
+      darken($popover-bg, 50%),
+      lighten($popover-bg, 50%)
+    );
   }
 
-  .DayPickerNavigation--horizontal .DayPickerNavigation__next,
-  .DayPickerNavigation--horizontal .DayPickerNavigation__prev {
+  .DayPickerNavigation_button {
     @include border-radius($input-border-radius, 0);
     border: $input-border-width solid $popover-border-color;
     background: $popover-bg;
@@ -155,40 +77,143 @@
     }
 
     &:hover {
-      background: color-yiq($popover-bg, gray("200"), gray("800"));
+      $navigation-hover-bg: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 5%),
+        lighten($popover-bg, 5%)
+      );
+      background: $navigation-hover-bg;
 
       svg {
-        fill: color-yiq(gray("100"), $yiq-text-dark, $yiq-text-light, 200);
+        fill: color-yiq(
+          $navigation-hover-bg,
+          $yiq-text-dark,
+          $yiq-text-light,
+          200
+        );
       }
     }
   }
 
-  .DayPickerKeyboardShortcuts__show--bottom-right {
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid theme-color("primary");
-    border-left: 16px solid transparent;
-    border-right: 16px solid theme-color("primary");
+  .CalendarMonth_caption {
+    color: $popover-body-color;
+  }
+
+  .CalendarMonthGrid {
+    background-color: $popover-bg;
+  }
+
+  .CalendarMonth {
+    background-color: $popover-bg;
+  }
+
+  .CalendarDay__default {
+    $calendar-day-border-color: color-yiq(
+      $popover-bg,
+      darken($popover-bg, 10%),
+      lighten($popover-bg, 10%)
+    );
+    color: $popover-body-color;
+    border-color: $calendar-day-border-color;
+    background-color: transparent;
+
+    &:hover {
+      $day-hover-bg: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 5%),
+        lighten($popover-bg, 5%)
+      );
+
+      background: $day-hover-bg;
+      border-color: $calendar-day-border-color;
+      color: color-yiq($day-hover-bg, $yiq-text-dark, $yiq-text-light, 200);
+    }
+
+    &.CalendarDay__selected,
+    &.CalendarDay__selected:hover {
+      background: theme-color('primary');
+      border: 1px double theme-color('primary');
+      color: color-yiq(theme-color('primary'));
+    }
+
+    &.CalendarDay__blocked_out_of_range,
+    &.CalendarDay__blocked_out_of_range:hover {
+      color: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 10%),
+        lighten($popover-bg, 10%)
+      );
+      border-color: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 10%),
+        lighten($popover-bg, 10%)
+      );
+      background: $popover-bg;
+      cursor: default;
+    }
+  }
+
+  .CalendarDay__outside {
+    border: 0;
+    cursor: default;
+  }
+
+  .DayPicker_transitionContainer {
     @if $enable-rounded {
-      border-bottom-right-radius: calc(#{$popover-border-radius} - #{$popover-border-width});
+      border-radius: calc(#{$popover-border-radius} - #{$popover-border-width});
+    } @else {
+      border-radius: 0;
+    }
+  }
+  .DayPickerKeyboardShortcuts_show {
+    &::before {
+      content: none;
+    }
+  }
+
+  .DayPickerKeyboardShortcuts_show__bottomRight {
+    width: 0;
+    height: 0;
+
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid theme-color('primary');
+    border-left: 16px solid transparent;
+    border-right: 16px solid theme-color('primary');
+    @if $enable-rounded {
+      border-bottom-right-radius: calc(
+        #{$popover-border-radius} - #{$popover-border-width}
+      );
     } @else {
       border-bottom-right-radius: 0;
     }
 
-    &:hover {
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid darken(theme-color("primary"), 7.5%);
-      border-left: 16px solid transparent;
-      border-right: 16px solid darken(theme-color("primary"), 7.5%);
+    &::before {
+      border-right: 0;
+      border-top: 0;
     }
 
-    .DayPickerKeyboardShortcuts__show_span {
+    &:hover {
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid darken(theme-color('primary'), 7.5%);
+      border-left: 16px solid transparent;
+      border-right: 16px solid darken(theme-color('primary'), 7.5%);
+    }
+
+    .DayPickerKeyboardShortcuts_showSpan {
       bottom: -11px;
       right: -12px;
-      color: color-yiq(theme-color("primary"));
+      color: color-yiq(theme-color('primary'));
     }
   }
 
-  .CalendarMonth__caption {
-    color: $popover-header-color;
+  .DayPickerKeyboardShortcuts_panel {
+    background: $popover-bg;
+    border: 1px solid $popover-border-color;
+    @include border-radius($popover-border-radius, 0);
+    color: $popover-body-color;
+
+    .DayPickerKeyboardShortcuts_closeSvg {
+      fill: $popover-body-color;
+    }
   }
 }
