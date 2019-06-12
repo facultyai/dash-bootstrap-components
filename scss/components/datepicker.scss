@@ -9,12 +9,14 @@
     display: block !important;
   }
 
-  .SingleDatePickerInput {
+  .SingleDatePickerInput,
+  .DateRangePickerInput {
     color: $input-color;
     background-color: $input-bg;
   }
 
-  .SingleDatePickerInput__withBorder {
+  .SingleDatePickerInput__withBorder,
+  .DateRangePickerInput__withBorder {
     @include border-radius($input-border-radius, 0);
     border: $input-border-width solid $input-border-color;
   }
@@ -34,6 +36,11 @@
     background: transparent;
   }
 
+  .DateRangePickerInput_arrow {
+    color: $input-color;
+    padding: 0px 10px;
+  }
+
   .DateInput_fang.DateInput_fang_1 {
     top: calc(#{$input-height} + 10px) !important;
 
@@ -46,7 +53,8 @@
     }
   }
 
-  .SingleDatePicker_picker {
+  .SingleDatePicker_picker,
+  .DateRangePicker_picker {
     top: calc(#{$input-height} + 21px) !important;
     background-color: transparent;
   }
@@ -134,6 +142,18 @@
       background: theme-color('primary');
       border: 1px double theme-color('primary');
       color: color-yiq(theme-color('primary'));
+    }
+
+    &.CalendarDay__hovered_span,
+    &.CalendarDay__hovered_span:hover {
+      $hovered-span-bg: color-yiq(
+        $popover-bg,
+        lighten(theme-color('primary'), 10%),
+        darken(theme-color('primary'), 10%)
+      );
+      background: $hovered-span-bg;
+      // border:
+      color: color-yiq($hovered-span-bg);
     }
 
     &.CalendarDay__blocked_out_of_range,
