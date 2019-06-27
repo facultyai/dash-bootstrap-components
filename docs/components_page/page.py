@@ -8,7 +8,7 @@ from .components.button import get_content as get_button_content
 from .components.button_group import content as button_group_content
 from .components.card import content as card_content
 from .components.collapse import get_content as get_collapse_content
-from .components.dropdown import content as dropdown_content
+from .components.dropdown import get_content as get_dropdown_content
 from .components.fade import get_content as get_fade_content
 from .components.form import get_content as get_form_content
 from .components.input import get_content as get_input_content
@@ -88,7 +88,7 @@ class ComponentsPage:
             "button_group": button_group_content,
             "card": card_content,
             "collapse": get_collapse_content(self._app),
-            "dropdown_menu": dropdown_content,
+            "dropdown_menu": get_dropdown_content(self._app),
             "fade": get_fade_content(self._app),
             "form": get_form_content(self._app),
             "input": get_input_content(self._app),
