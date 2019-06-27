@@ -39,7 +39,7 @@ checklist = dbc.FormGroup(
                 {"label": "Show individual observations", "value": "show_ind"},
                 {"label": "Show density estimate", "value": "show_dens"},
             ],
-            values=[],
+            value=[],
             inline=True,
         ),
     ]
@@ -64,16 +64,16 @@ app.layout = dbc.Container(
 
 @app.callback(
     Output("graph", "figure"),
-    [Input("dropdown", "value"), Input("checklist", "values")],
+    [Input("dropdown", "value"), Input("checklist", "value")],
 )
-def make_graph(dropdown_value, checklist_values):
+def make_graph(dropdown_value, checklist_value):
     bin_size = (DATA.eruptions.max() - DATA.eruptions.min()) / dropdown_value
     fig = ff.create_distplot(
         [DATA.eruptions],
         ["Eruption duration"],
         bin_size=bin_size,
-        show_curve="show_dens" in checklist_values,
-        show_rug="show_ind" in checklist_values,
+        show_curve="show_dens" in checklist_value,
+        show_rug="show_ind" in checklist_value,
     )
     fig["layout"].update(
         {

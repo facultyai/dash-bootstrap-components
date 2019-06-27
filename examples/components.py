@@ -362,14 +362,14 @@ input_ = html.Div(
             options=[
                 {"label": "Option {}".format(i), "value": i} for i in range(5)
             ],
-            values=[],
+            value=[],
         ),
         html.H5("Inline checklist", className="mt-3"),
         dbc.Checklist(
             options=[
                 {"label": "Option {}".format(i), "value": i} for i in range(5)
             ],
-            values=[],
+            value=[],
             inline=True,
         ),
         html.H4("RadioItems", className="mt-5"),
