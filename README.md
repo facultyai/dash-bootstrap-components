@@ -20,8 +20,8 @@ pip install dash-bootstrap-components
 
 ### Anaconda
 
-Anaconda users can install *dash-bootstrap-components* through the
-`conda-forge` channel:
+You can also install *dash-bootstrap-components* with `conda` through the
+conda-forge channel:
 
 ```
 conda install -c conda-forge dash-bootstrap-components
