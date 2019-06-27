@@ -27,6 +27,11 @@ code.hljs {
   border-radius: 3px;
 }
 
+.example-source-container code.hljs {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 span.hljs-meta {
   color: #66d9ef;
 }

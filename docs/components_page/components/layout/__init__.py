@@ -234,9 +234,7 @@ content = html.Div(
             )
         ),
         html.Div(
-            dcc.SyntaxHighlighter(
-                grid_only_source, language="python", useInlineStyles=False
-            ),
+            dcc.Markdown(f"```python\n{grid_only_source}\n```"),
             className="source-container",
         ),
         html.P(
