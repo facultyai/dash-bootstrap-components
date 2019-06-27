@@ -33,6 +33,9 @@ class DropdownMenu extends React.Component {
       bs_size,
       right,
       loading_state,
+      color,
+      toggle_style,
+      toggleClassName,
       ...otherProps
     } = this.props;
     return (
@@ -49,7 +52,14 @@ class DropdownMenu extends React.Component {
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        <DropdownToggle nav={nav} caret={caret} disabled={disabled}>
+        <DropdownToggle
+          nav={nav}
+          caret={caret}
+          disabled={disabled}
+          color={color}
+          style={toggle_style}
+          className={toggleClassName}
+        >
           {label}
         </DropdownToggle>
         <RSDropdownMenu right={right}>{this.props.children}</RSDropdownMenu>
@@ -136,6 +146,24 @@ DropdownMenu.propTypes = {
    * Add a caret to the DropdownMenu toggle. Default: True.
    */
   caret: PropTypes.bool,
+
+  /**
+   * Set the color of the DropdownMenu toggle. Available options are: 'primary',
+   * 'secondary', 'success', 'warning', 'danger', 'info', 'link'. Default: 'secondary'
+   */
+  color: PropTypes.string,
+
+  /**
+   * Defines CSS styles which will override styles previously set. The styles
+   * set here apply to the DropdownMenu toggle.
+   */
+  toggle_style: PropTypes.object,
+
+  /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the DropdownMenu toggle.
+   */
+  toggleClassName: PropTypes.string,
 
   /**
    * Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
