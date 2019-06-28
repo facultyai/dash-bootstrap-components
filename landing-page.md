@@ -10,11 +10,21 @@ components. It is built on top of [reactstrap][reactstrap-homepage].
 
 ## Installation
 
-*dash-bootstrap-components* is hosted on PyPI, and can be installed by
-running
+### PyPI
+
+You can install *dash-bootstrap-components* with `pip`:
 
 ```
 pip install dash-bootstrap-components
+```
+
+### Anaconda
+
+You can also install *dash-bootstrap-components* with `conda` through the
+conda-forge channel:
+
+```
+conda install -c conda-forge dash-bootstrap-components
 ```
 
 ## Documentation
