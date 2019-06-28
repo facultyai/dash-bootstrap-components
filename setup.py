@@ -38,7 +38,7 @@ setup(
         "Source": GITHUB_URL,
     },
     packages=find_packages(),
-    install_requires=["dash>=0.41.0"],
+    install_requires=["dash>=1.0.0"],
     include_package_data=True,
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
