@@ -24,6 +24,7 @@ from .components.progress import get_content as get_progress_content
 from .components.spinner import content as spinner_content
 from .components.table import content as table_content
 from .components.tabs import get_content as get_tabs_content
+from .components.toast import get_content as get_toast_content
 from .components.tooltip import content as tooltip_content
 from .sidebar import Sidebar, SidebarEntry
 
@@ -64,6 +65,7 @@ sidebar_entries = [
     SidebarEntry("spinner", "Spinners"),
     SidebarEntry("table", "Table"),
     SidebarEntry("tabs", "Tabs"),
+    SidebarEntry("toast", "Toast"),
     SidebarEntry("tooltip", "Tooltip"),
 ]
 
@@ -104,6 +106,7 @@ class ComponentsPage:
             "spinner": spinner_content,
             "table": table_content,
             "tabs": get_tabs_content(self._app),
+            "toast": get_toast_content(self._app),
             "tooltip": tooltip_content,
         }
 
