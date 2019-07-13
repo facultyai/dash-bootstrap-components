@@ -10,15 +10,6 @@ import classNames from 'classnames';
  */
 
 class RadioItems extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: props.value};
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.setState({value: newProps.value});
-  }
-
   render() {
     const {
       id,
@@ -32,9 +23,9 @@ class RadioItems extends React.Component {
       setProps,
       inline,
       key,
+      value,
       loading_state
     } = this.props;
-    const {value} = this.state;
 
     return (
       <div
@@ -58,15 +49,12 @@ class RadioItems extends React.Component {
               style={inputStyle}
               type="radio"
               onChange={() => {
-                this.setState({value: option.value});
-                if (setProps) {
-                  setProps({value: option.value});
-                }
+                setProps({value: option.value});
               }}
             />
             <label
               style={labelStyle}
-              className={classNames(labelClassName, 'form-check-label')}
+              className={classNames('form-check-label', labelClassName)}
               key={option.value}
             >
               {option.label}
@@ -79,6 +67,10 @@ class RadioItems extends React.Component {
 }
 
 RadioItems.propTypes = {
+  /**
+   * The ID of this component, used to identify dash components in callbacks.
+   * The ID needs to be unique across all of the components in an app.
+   */
   id: PropTypes.string,
 
   /**
@@ -92,18 +84,19 @@ RadioItems.propTypes = {
    * An array of options
    */
   options: PropTypes.arrayOf(
-    PropTypes.shape({
+    PropTypes.exact({
       /**
        * The radio item's label
        */
-      label: PropTypes.string,
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
 
       /**
-       * The value of the radio item. This value
-       * corresponds to the items specified in the
-       * `values` property.
+       * The value of the radio item. This value corresponds to the items
+       * specified in the `value` property.
        */
-      value: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
 
       /**
        * If true, this radio item is disabled and can't be clicked on.
@@ -115,7 +108,7 @@ RadioItems.propTypes = {
   /**
    * The currently selected value
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * The style of the container (div)

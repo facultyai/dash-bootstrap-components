@@ -24,7 +24,7 @@ checklist = dbc.FormGroup(
                 {"label": "Option 1", "value": 1},
                 {"label": "Option 2", "value": 2},
             ],
-            values=[],
+            value=[],
             id="checklist-input",
         ),
     ]
@@ -40,9 +40,9 @@ inputs = html.Div(
 
 @app.callback(
     Output("radioitems-checklist-output", "children"),
-    [Input("radioitems-input", "value"), Input("checklist-input", "values")],
+    [Input("radioitems-input", "value"), Input("checklist-input", "value")],
 )
-def on_form_change(radio_items_value, checklist_values):
+def on_form_change(radio_items_value, checklist_value):
     template = "Radio button {} and {} checklist items are selected."
-    output_string = template.format(radio_items_value, len(checklist_values))
+    output_string = template.format(radio_items_value, len(checklist_value))
     return output_string

@@ -6,19 +6,10 @@ import classNames from 'classnames';
 /**
  * Checklist is a component that encapsulates several checkboxes.
  * The values and labels of the checklist is specified in the `options`
- * property and the checked items are specified with the `values` property.
+ * property and the checked items are specified with the `value` property.
  * Each checkbox is rendered as an input with a surrounding label.
  */
 class Checklist extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {values: props.values};
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.setState({values: newProps.values});
-  }
-
   render() {
     const {
       className,
@@ -32,9 +23,9 @@ class Checklist extends React.Component {
       style,
       inline,
       key,
+      value,
       loading_state
     } = this.props;
-    const {values} = this.state;
 
     return (
       <div
@@ -52,27 +43,24 @@ class Checklist extends React.Component {
             key={option.value}
           >
             <input
-              checked={contains(option.value, values)}
+              checked={contains(option.value, value)}
               className={classNames('form-check-input', inputClassName)}
               disabled={Boolean(option.disabled)}
               style={inputStyle}
               type="checkbox"
               onChange={() => {
-                let newValues;
-                if (contains(option.value, values)) {
-                  newValues = without([option.value], values);
+                let newValue;
+                if (contains(option.value, value)) {
+                  newValue = without([option.value], value);
                 } else {
-                  newValues = append(option.value, values);
+                  newValue = append(option.value, value);
                 }
-                this.setState({values: newValues});
-                if (setProps) {
-                  setProps({values: newValues});
-                }
+                setProps({value: newValue});
               }}
             />
             <label
               style={labelStyle}
-              className={classNames(labelClassName, 'form-check-label')}
+              className={classNames('form-check-label', labelClassName)}
               key={option.value}
             >
               {option.label}
@@ -85,24 +73,29 @@ class Checklist extends React.Component {
 }
 
 Checklist.propTypes = {
+  /**
+   * The ID of this component, used to identify dash components in callbacks.
+   * The ID needs to be unique across all of the components in an app.
+   */
   id: PropTypes.string,
 
   /**
    * An array of options
    */
   options: PropTypes.arrayOf(
-    PropTypes.shape({
+    PropTypes.exact({
       /**
        * The checkbox's label
        */
-      label: PropTypes.string,
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
 
       /**
-       * The value of the checkbox. This value
-       * corresponds to the items specified in the
-       * `values` property.
+       * The value of the checkbox. This value corresponds to the items
+       * specified in the `value` property.
        */
-      value: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
 
       /**
        * If true, this checkbox is disabled and can't be clicked on.
@@ -114,7 +107,9 @@ Checklist.propTypes = {
   /**
    * The currently selected value
    */
-  values: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
 
   /**
    * The class of the container (div)
@@ -189,7 +184,8 @@ Checklist.defaultProps = {
   inputClassName: '',
   labelStyle: {},
   labelClassName: '',
-  options: []
+  options: [],
+  value: []
 };
 
 export default Checklist;
