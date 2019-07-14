@@ -1,15 +1,9 @@
 {
-    "presets": ["es2015", "react"],
-    "plugins": ["transform-object-rest-spread"],
-    "env": {
-        "development": {
-            "presets": ["es2015", "react"],
-            "plugins": [
-                ["transform-es2015-modules-commonjs-simple", {
-                    "noMangle": true
-                }],
-                "transform-object-rest-spread"
-            ]
-        }
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-proposal-object-rest-spread"],
+  "env": {
+    "development": {
+      "plugins": ["@babel/plugin-proposal-object-rest-spread"]
     }
+  }
 }
