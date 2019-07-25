@@ -11,6 +11,7 @@ from ...helpers import (
 )
 from ...metadata import get_component_metadata
 from .radio_check_inline import inline_inputs
+from .selected_styles import checklist as input_selected_styles
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
 from .textarea import textareas as input_textarea
@@ -25,6 +26,7 @@ input_validation_source = (HERE / "validation.py").read_text()
 input_radio_check_source = (HERE / "radio_check.py").read_text()
 input_textarea_source = (HERE / "textarea.py").read_text()
 input_radio_check_inline_source = (HERE / "radio_check_inline.py").read_text()
+input_selected_styles_source = (HERE / "selected_styles.py").read_text()
 input_radio_check_standalone_source = (
     HERE / "radio_check_standalone.py"
 ).read_text()
@@ -32,7 +34,14 @@ input_radio_check_standalone_source = (
 
 def get_content(app):
     return [
-        html.H2("Input components"),
+        html.H2("Input components", className="display-4"),
+        html.P(
+            dcc.Markdown(
+                "Documentation and examples for input components in "
+                "_dash-bootstrap-components_."
+            ),
+            className="lead",
+        ),
         html.P(
             dcc.Markdown(
                 "*dash-bootstrap-components* has its own versions of some of "
@@ -59,16 +68,12 @@ def get_content(app):
         HighlightedSource(input_simple_source),
         html.H4("Labels and Text"),
         html.P(
-            [
-                dcc.Markdown(
-                    "Use the `FormGroup` component along with `Label` and "
-                    "`FormText` to control the layout of your `Input` "
-                    "components."
-                ),
-                "See the ",
-                dcc.Link("documentation for forms", href="/l/components/form"),
-                " for more details.",
-            ]
+            dcc.Markdown(
+                "Use the `FormGroup` component along with `Label` and "
+                "`FormText` to control the layout of your `Input` components. "
+                "See the [documentation for forms](/l/components/form) for "
+                "more details."
+            )
         ),
         ExampleContainer(input_text_label),
         HighlightedSource(input_text_label_source),
@@ -106,11 +111,21 @@ def get_content(app):
         html.P(
             dcc.Markdown(
                 "`RadioItems` and `Checklist` components also work like "
-                "*dash-core-components* but again with Bootstrap styles "
-                "added. In addition the `inline` keyword can be used to "
-                "easily make inline checklists or radioitems. Use these "
-                "components with `FormGroup` for automatic spacing and "
-                "padding."
+                "*dash-core-components*. Provided you specify an `id`, "
+                "_dash-bootstrap-components_ will render custom themed radio "
+                "buttons or checkboxes rather than using the native browser "
+                "buttons. When using `Checklist` you can also specify "
+                "`switch=True` to render toggle-like switches rather than "
+                "checkboxes. If you prefer to use the native buttons and "
+                "checkboxes, set `custom=False`. Note that there is no native "
+                "browser switch, so if you set `custom=False` then `switch` "
+                "will be ignored."
+            )
+        ),
+        html.P(
+            dcc.Markdown(
+                "Use these components with `FormGroup` for automatic spacing "
+                "and padding."
             )
         ),
         ExampleContainer(
@@ -127,15 +142,37 @@ def get_content(app):
         ),
         ExampleContainer(inline_inputs),
         HighlightedSource(input_radio_check_inline_source),
+        html.H4("Checked item styles"),
         html.P(
             dcc.Markdown(
-                "If you need more granular control over checkboxes "
-                "and radio buttons, you can also create standalone "
-                "components. Bind callbacks to the `checked` keyword "
-                "to react to changes in the input state. To attach "
-                "a label, create a FormGroup with `check=True` and "
-                "use the label's `html_for` keyword to bind it to "
-                "the checkbox."
+                "Use the `labelCheckedStyle` and `labelCheckedClassName` "
+                "arguments to apply different styles to the labels of checked "
+                "items. When using custom inputs you can override the styles "
+                "of the inputs using custom CSS. See the below example."
+            )
+        ),
+        dcc.Markdown(
+            """```css
+#checklist-selected-style
+  .custom-control-input:checked
+  ~ .custom-control-label::before {
+  background-color: #fa7268;
+  border-color: #ea6258;
+}
+
+```
+        """
+        ),
+        ExampleContainer(input_selected_styles),
+        HighlightedSource(input_selected_styles_source),
+        html.P(
+            dcc.Markdown(
+                "If you need more granular control over checkboxes and radio "
+                "buttons, you can also create standalone components. Bind "
+                "callbacks to the `checked` keyword to react to changes in "
+                "the input state. To attach a label, create a FormGroup with "
+                "`check=True` and use the label's `html_for` keyword to bind "
+                "it to the checkbox."
             )
         ),
         ExampleContainer(

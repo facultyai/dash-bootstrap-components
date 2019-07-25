@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {append, contains, without} from 'ramda';
 import classNames from 'classnames';
+import CustomInput from '../../private/CustomInput';
 
 /**
  * Checklist is a component that encapsulates several checkboxes.
@@ -10,22 +11,119 @@ import classNames from 'classnames';
  * Each checkbox is rendered as an input with a surrounding label.
  */
 class Checklist extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+
+    this.listItem = this.listItem.bind(this);
+  }
+
+  listItem(option) {
     const {
       className,
       id,
       inputClassName,
       inputStyle,
       labelClassName,
+      labelCheckedClassName,
       labelStyle,
+      labelCheckedStyle,
       options,
       setProps,
       style,
       inline,
       key,
       value,
-      loading_state
+      loading_state,
+      custom,
+      switch: switches
     } = this.props;
+
+    const checked = contains(option.value, value);
+
+    const mergedLabelStyle = checked
+      ? {...labelStyle, ...labelCheckedStyle}
+      : labelStyle;
+
+    if (id && custom) {
+      return (
+        <CustomInput
+          id={`_${id}-${option.value}`}
+          checked={checked}
+          className={inputClassName}
+          disabled={Boolean(option.disabled)}
+          type={switches ? 'switch' : 'checkbox'}
+          label={option.label}
+          labelStyle={mergedLabelStyle}
+          className={classNames(
+            labelClassName,
+            checked && labelCheckedClassName
+          )}
+          inline={inline}
+          onChange={() => {
+            let newValue;
+            if (contains(option.value, value)) {
+              newValue = without([option.value], value);
+            } else {
+              newValue = append(option.value, value);
+            }
+            setProps({value: newValue});
+          }}
+        />
+      );
+    } else {
+      return (
+        <div
+          className={classNames('form-check', inline && 'form-check-inline')}
+          key={option.value}
+        >
+          <input
+            checked={checked}
+            className={classNames('form-check-input', inputClassName)}
+            disabled={Boolean(option.disabled)}
+            style={inputStyle}
+            type="checkbox"
+            onChange={() => {
+              let newValue;
+              if (contains(option.value, value)) {
+                newValue = without([option.value], value);
+              } else {
+                newValue = append(option.value, value);
+              }
+              setProps({value: newValue});
+            }}
+          />
+          <label
+            style={mergedLabelStyle}
+            className={classNames(
+              'form-check-label',
+              labelClassName,
+              checked && labelCheckedClassName
+            )}
+            key={option.value}
+          >
+            {option.label}
+          </label>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    const {
+      className,
+      id,
+      options,
+      style,
+      inline,
+      key,
+      loading_state,
+      custom,
+      switch: switches
+    } = this.props;
+
+    const items = options.map(option => (
+      <React.Fragment>{this.listItem(option)}</React.Fragment>
+    ));
 
     return (
       <div
@@ -37,36 +135,7 @@ class Checklist extends React.Component {
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        {options.map(option => (
-          <div
-            className={classNames('form-check', inline && 'form-check-inline')}
-            key={option.value}
-          >
-            <input
-              checked={contains(option.value, value)}
-              className={classNames('form-check-input', inputClassName)}
-              disabled={Boolean(option.disabled)}
-              style={inputStyle}
-              type="checkbox"
-              onChange={() => {
-                let newValue;
-                if (contains(option.value, value)) {
-                  newValue = without([option.value], value);
-                } else {
-                  newValue = append(option.value, value);
-                }
-                setProps({value: newValue});
-              }}
-            />
-            <label
-              style={labelStyle}
-              className={classNames('form-check-label', labelClassName)}
-              key={option.value}
-            >
-              {option.label}
-            </label>
-          </div>
-        ))}
+        {items}
       </div>
     );
   }
@@ -129,7 +198,7 @@ Checklist.propTypes = {
   key: PropTypes.string,
 
   /**
-   * The style of the <input> checkbox element
+   * The style of the <input> checkbox element. Only used if custom=False
    */
   inputStyle: PropTypes.object,
 
@@ -139,16 +208,26 @@ Checklist.propTypes = {
   inputClassName: PropTypes.string,
 
   /**
-   * The style of the <label> that wraps the checkbox input
-   *  and the option's label
+   * Inline style arguments to apply to the <label> element for each item.
    */
   labelStyle: PropTypes.object,
 
   /**
-   * The class of the <label> that wraps the checkbox input
-   *  and the option's label
+   * Additional inline style arguments to apply to <label> elements on checked
+   * items.
+   */
+  labelCheckedStyle: PropTypes.object,
+
+  /**
+   * CSS classes to apply to the <label> element for each item.
    */
   labelClassName: PropTypes.string,
+
+  /**
+   * Additional CSS classes to apply to the <label> element when the
+   * corresponding checkbox is checked.
+   */
+  labelCheckedClassName: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.
@@ -159,6 +238,18 @@ Checklist.propTypes = {
    * Arrange Checklist inline
    */
   inline: PropTypes.bool,
+
+  /**
+   * Set to True to render toggle-like switches instead of checkboxes. Ignored
+   * if custom=False
+   */
+  switch: PropTypes.bool,
+
+  /**
+   * RadioItems uses custom radio buttons by default. To use native radios set
+   * custom to False.
+   */
+  custom: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
@@ -185,7 +276,8 @@ Checklist.defaultProps = {
   labelStyle: {},
   labelClassName: '',
   options: [],
-  value: []
+  value: [],
+  custom: true
 };
 
 export default Checklist;

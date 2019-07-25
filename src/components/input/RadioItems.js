@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import CustomInput from '../../private/CustomInput';
 
 /**
  * RadioItems is a component that encapsulates several radio item inputs.
  * The values and labels of the RadioItems is specified in the `options`
  * property and the seleced item is specified with the `value` property.
- * Each radio item is rendered as an input with a surrounding label.
+ * Each radio item is rendered as an input and associated label which are
+ * siblings of each other.
  */
 
 class RadioItems extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+
+    this.listItem = this.listItem.bind(this);
+  }
+
+  listItem(option) {
     const {
       id,
       className,
@@ -18,14 +26,92 @@ class RadioItems extends React.Component {
       inputClassName,
       inputStyle,
       labelClassName,
+      labelCheckedClassName,
       labelStyle,
+      labelCheckedStyle,
       options,
       setProps,
       inline,
       key,
       value,
+      custom,
+      switch: switches,
       loading_state
     } = this.props;
+
+    const checked = option.value === value;
+
+    const mergedLabelStyle = checked
+      ? {...labelStyle, ...labelCheckedStyle}
+      : labelStyle;
+
+    if (id && custom) {
+      return (
+        <CustomInput
+          id={`${id}-${option.value}`}
+          checked={checked}
+          className={inputClassName}
+          disabled={Boolean(option.disabled)}
+          type={switches ? 'switch' : 'radio'}
+          label={option.label}
+          labelStyle={mergedLabelStyle}
+          labelClassName={classNames(
+            labelClassName,
+            checked && labelCheckedClassName
+          )}
+          inline={inline}
+          onChange={() => {
+            setProps({value: option.value});
+          }}
+        />
+      );
+    } else {
+      return (
+        <div
+          className={classNames('form-check', inline && 'form-check-inline')}
+          key={option.value}
+        >
+          <input
+            checked={checked}
+            className={classNames('form-check-input', inputClassName)}
+            disabled={Boolean(option.disabled)}
+            style={inputStyle}
+            type="radio"
+            onChange={() => {
+              setProps({value: option.value});
+            }}
+          />
+          <label
+            style={mergedLabelStyle}
+            className={classNames(
+              'form-check-label',
+              labelClassName,
+              checked && labelCheckedClassName
+            )}
+            key={option.value}
+          >
+            {option.label}
+          </label>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    const {
+      id,
+      className,
+      style,
+      options,
+      inline,
+      key,
+      loading_state,
+      custom
+    } = this.props;
+
+    const items = options.map(option => (
+      <React.Fragment>{this.listItem(option)}</React.Fragment>
+    ));
 
     return (
       <div
@@ -37,30 +123,7 @@ class RadioItems extends React.Component {
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        {options.map(option => (
-          <div
-            className={classNames('form-check', inline && 'form-check-inline')}
-            key={option.value}
-          >
-            <input
-              checked={option.value === value}
-              className={classNames('form-check-input', inputClassName)}
-              disabled={Boolean(option.disabled)}
-              style={inputStyle}
-              type="radio"
-              onChange={() => {
-                setProps({value: option.value});
-              }}
-            />
-            <label
-              style={labelStyle}
-              className={classNames('form-check-label', labelClassName)}
-              key={option.value}
-            >
-              {option.label}
-            </label>
-          </div>
-        ))}
+        {items}
       </div>
     );
   }
@@ -131,16 +194,26 @@ RadioItems.propTypes = {
   inputClassName: PropTypes.string,
 
   /**
-   * The style of the <label> that wraps the radio input
-   *  and the option's label
+   * Inline style arguments to apply to the <label> element for each item.
    */
   labelStyle: PropTypes.object,
 
   /**
-   * The class of the <label> that wraps the radio input
-   *  and the option's label
+   * Additional inline style arguments to apply to <label> elements on checked
+   * items.
+   */
+  labelCheckedStyle: PropTypes.object,
+
+  /**
+   * CSS classes to apply to the <label> element for each item.
    */
   labelClassName: PropTypes.string,
+
+  /**
+   * Additional CSS classes to apply to the <label> element when the
+   * corresponding radio is checked.
+   */
+  labelCheckedClassName: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.
@@ -151,6 +224,18 @@ RadioItems.propTypes = {
    * Arrange RadioItems inline
    */
   inline: PropTypes.bool,
+
+  /**
+   * Set to True to render toggle-like switches instead of radios. Ignored if
+   * custom=False
+   */
+  switch: PropTypes.bool,
+
+  /**
+   * RadioItems uses custom radio buttons by default. To use native radios set
+   * custom to False.
+   */
+  custom: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
@@ -176,7 +261,8 @@ RadioItems.defaultProps = {
   inputClassName: '',
   labelStyle: {},
   labelClassName: '',
-  options: []
+  options: [],
+  custom: true
 };
 
 export default RadioItems;

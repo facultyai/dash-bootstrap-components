@@ -14,7 +14,7 @@
   margin-right: 1rem;
 }
 
-.main-header .btn+.btn {
+.main-header .btn + .btn {
   margin-right: 0;
 }
 
@@ -61,12 +61,12 @@ span.hljs-meta {
 }
 
 .docs-sidebar .nav-item {
-  padding: 0 .2rem 0 .2rem;
+  padding: 0 0.2rem 0 0.2rem;
 }
 
 .docs-sidebar .nav-link {
   color: #888;
-  padding: .3rem .5rem .3rem 1rem;
+  padding: 0.3rem 0.5rem 0.3rem 1rem;
   border-left: 2px solid transparent;
 }
 
@@ -110,14 +110,13 @@ span.hljs-meta {
 
 .layout-demo .row {
   margin-bottom: 10px;
-  background: linear-gradient(to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) calc(100% - 15px),
-    #fff calc(100% - 15px)),
-    linear-gradient(to right,
-    #fff,
-    #fff 15px,
-    rgba(0, 0, 0, 0) 15px),
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) calc(100% - 15px),
+      #fff calc(100% - 15px)
+    ),
+    linear-gradient(to right, #fff, #fff 15px, rgba(0, 0, 0, 0) 15px),
     linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
@@ -129,12 +128,21 @@ span.hljs-meta {
   height: 100px;
 }
 
-.layout-demo .col>div, .layout-demo [class*="col-"]>div {
+.layout-demo .col > div,
+.layout-demo [class*='col-'] > div {
   padding: 0.75rem;
-  background-color: rgba(86, 61, 124, .15);
-  border: 1px solid rgba(86, 61, 124, .2);
+  background-color: rgba(86, 61, 124, 0.15);
+  border: 1px solid rgba(86, 61, 124, 0.2);
 }
 
 ._dash-undo-redo {
   display: none;
+}
+
+/* Custom checkbox example CSS */
+#checklist-selected-style
+  .custom-control-input:checked
+  ~ .custom-control-label::before {
+  background-color: #fa7268;
+  border-color: #ea6258;
 }
