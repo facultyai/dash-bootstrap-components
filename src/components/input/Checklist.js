@@ -240,7 +240,8 @@ Checklist.propTypes = {
   inline: PropTypes.bool,
 
   /**
-   * Set to True to render toggle-like switches instead of checkboxes.
+   * Set to True to render toggle-like switches instead of checkboxes. Ignored
+   * if custom=False
    */
   switch: PropTypes.bool,
 

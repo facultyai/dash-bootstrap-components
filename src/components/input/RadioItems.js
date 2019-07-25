@@ -35,6 +35,7 @@ class RadioItems extends React.Component {
       key,
       value,
       custom,
+      switch: switches,
       loading_state
     } = this.props;
 
@@ -51,7 +52,7 @@ class RadioItems extends React.Component {
           checked={checked}
           className={inputClassName}
           disabled={Boolean(option.disabled)}
-          type="radio"
+          type={switches ? 'switch' : 'radio'}
           label={option.label}
           labelStyle={mergedLabelStyle}
           labelClassName={classNames(
@@ -223,6 +224,12 @@ RadioItems.propTypes = {
    * Arrange RadioItems inline
    */
   inline: PropTypes.bool,
+
+  /**
+   * Set to True to render toggle-like switches instead of radios. Ignored if
+   * custom=False
+   */
+  switch: PropTypes.bool,
 
   /**
    * RadioItems uses custom radio buttons by default. To use native radios set
