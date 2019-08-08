@@ -1,43 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit, isEmpty} from 'ramda';
+import isNumeric from 'fast-isnumeric';
 import classNames from 'classnames';
+
+const convert = val => (isNumeric(val) ? +val : NaN);
 
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    if (!props.setProps || props.debounce) {
-      this.state = {value: props.value};
-    }
+
+    this.onBlur = this.onBlur.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
+    this.parseValue = this.parseValue.bind(this);
+
+    this.state = {value: props.value};
+  }
+
+  parseValue(value) {
+    if (this.props.type === 'number') {
+      if (
+        (!isEmpty(this.props.min) &&
+          convert(value) &&
+          convert(value) < this.props.min) ||
+        (!isEmpty(this.props.max) &&
+          convert(value) &&
+          convert(value) > this.props.max)
+      ) {
+        return;
+      }
+      return convert(value) || null;
+    } else return value;
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.value});
-    if (this.props.setProps) {
-      this.props = nextProps;
+    if (nextProps.value != this.state.value) {
+      this.setState({value: nextProps.value});
     }
   }
 
   render() {
     const {
-      setProps,
-      type,
       className,
       valid,
       invalid,
       bs_size,
       plaintext,
-      key,
       debounce,
-      min,
-      max,
       loading_state
     } = this.props;
-    const {value} = setProps
-      ? debounce
-        ? this.state
-        : this.props
-      : this.state;
 
     let formControlClass = 'form-control';
 
@@ -55,49 +67,11 @@ class Input extends React.Component {
     );
     return (
       <input
-        onChange={e => {
-          const newValue = e.target.value;
-          if (
-            (!isEmpty(min) && Number(newValue) < min) ||
-            (!isEmpty(max) && Number(newValue) > max)
-          ) {
-            return;
-          }
-          if (!debounce && setProps) {
-            const castValue = type === 'number' ? Number(newValue) : newValue;
-            setProps({
-              value: castValue
-            });
-          } else {
-            this.setState({value: newValue});
-          }
-        }}
-        onBlur={() => {
-          if (setProps) {
-            const payload = {
-              n_blur: this.props.n_blur + 1,
-              n_blur_timestamp: Date.now()
-            };
-            if (debounce) {
-              payload.value = type === 'number' ? Number(value) : value;
-            }
-            setProps(payload);
-          }
-        }}
-        onKeyPress={e => {
-          if (setProps && e.key === 'Enter') {
-            const payload = {
-              n_submit: this.props.n_submit + 1,
-              n_submit_timestamp: Date.now()
-            };
-            if (debounce) {
-              payload.value = type === 'number' ? Number(value) : value;
-            }
-            setProps(payload);
-          }
-        }}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
+        onKeyPress={this.onKeyPress}
         className={classes}
-        value={value}
+        value={this.state.value}
         {...omit(
           [
             'debounce',
@@ -124,6 +98,45 @@ class Input extends React.Component {
         }
       />
     );
+  }
+
+  onChange(e) {
+    const {debounce, setProps} = this.props;
+    const newValue = e.target.value;
+    const castValue = this.parseValue(newValue);
+    if (!debounce && setProps) {
+      setProps({value: castValue});
+    } else {
+      this.setState({value: castValue});
+    }
+  }
+
+  onKeyPress(e) {
+    const {setProps, debounce} = this.props;
+    if (setProps && e.key === 'Enter') {
+      const payload = {
+        n_submit: this.props.n_submit + 1,
+        n_submit_timestamp: Date.now()
+      };
+      if (debounce) {
+        payload.value = this.state.value;
+      }
+      setProps(payload);
+    }
+  }
+
+  onBlur() {
+    const {setProps, debounce} = this.props;
+    if (setProps) {
+      const payload = {
+        n_blur: this.props.n_blur + 1,
+        n_blur_timestamp: Date.now()
+      };
+      if (debounce) {
+        payload.value = this.state.value;
+      }
+      setProps(payload);
+    }
   }
 }
 
