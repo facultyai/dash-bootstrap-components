@@ -16,6 +16,7 @@ form = dbc.Form(
             ],
             className="mr-3",
         ),
+        dbc.Button("Submit", color="primary"),
     ],
     inline=True,
 )
