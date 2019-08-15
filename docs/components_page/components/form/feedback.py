@@ -23,17 +23,12 @@ email_input = html.Div(
 
 
 # --- Callbacks --- #
-@app.callback(Output("email-input", "valid"), [Input("email-input", "value")])
-def check_valid(text):
-    if text and text.endswith("@gmail.com"):
-        return True
-    return False
-
-
 @app.callback(
-    Output("email-input", "invalid"), [Input("email-input", "value")]
+    [Output("email-input", "valid"), Output("email-input", "invalid")],
+    [Input("email-input", "value")],
 )
-def check_invalid(text):
-    if text and not text.endswith("@gmail.com"):
-        return True
-    return False
+def check_validity(text):
+    if text:
+        is_gmail = text.endswith("@gmail.com")
+        return is_gmail, not is_gmail
+    return False, False
