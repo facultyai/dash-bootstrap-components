@@ -28,4 +28,26 @@ password_input = dbc.FormGroup(
     row=True,
 )
 
-form = dbc.Form([email_input, password_input])
+radios_input = dbc.FormGroup(
+    [
+        dbc.Label("Radios", html_for="example-radios-row", width=2),
+        dbc.Col(
+            dbc.RadioItems(
+                id="example-radios-row",
+                options=[
+                    {"label": "First radio", "value": 1},
+                    {"label": "Second radio", "value": 2},
+                    {
+                        "label": "Third disabled radio",
+                        "value": 3,
+                        "disabled": True,
+                    },
+                ],
+            ),
+            width=10,
+        ),
+    ],
+    row=True,
+)
+
+form = dbc.Form([email_input, password_input, radios_input])
