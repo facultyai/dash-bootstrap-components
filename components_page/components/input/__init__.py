@@ -10,6 +10,7 @@ from ...helpers import (
     load_source_with_environment,
 )
 from ...metadata import get_component_metadata
+from .number_input import number_input as input_numeric
 from .radio_check_inline import inline_inputs
 from .selected_styles import checklist as input_selected_styles
 from .size import inputs as input_size
@@ -20,6 +21,7 @@ from .validation import inputs as input_validation
 HERE = Path(__file__).parent
 
 input_simple_source = (HERE / "simple.py").read_text()
+input_numeric_source = (HERE / "number_input.py").read_text()
 input_text_label_source = (HERE / "text_label.py").read_text()
 input_size_source = (HERE / "size.py").read_text()
 input_validation_source = (HERE / "validation.py").read_text()
@@ -66,6 +68,40 @@ def get_content(app):
             )
         ),
         HighlightedSource(input_simple_source),
+        html.H4("Number inputs"),
+        html.P(
+            dcc.Markdown(
+                "When using `Input` with `type='number'`, the `value` prop "
+                "will be given the value `None` if a non-numeric input is "
+                "given, or if the number falls out of the range specified by "
+                "`min` and `max`. If you are using _dash-core-components_, it "
+                "will inject some CSS that adds a red outline to `input` "
+                "elements with the `:invalid` pseudo-class. You can write "
+                "your own custom CSS to override this and apply styles more "
+                "consistent with Bootstrap if you like. Take the following "
+                "example where we wrap the `Input` component in a component "
+                "with a particular `id` that we then target with the CSS "
+                "selector."
+            )
+        ),
+        html.P(
+            dcc.Markdown(
+                """```css
+#styled-numeric-input input:invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.1875rem);
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  outline: none;
+}
+```
+        """  # noqa
+            )
+        ),
+        ExampleContainer(input_numeric),
+        HighlightedSource(input_numeric_source),
         html.H4("Labels and Text"),
         html.P(
             dcc.Markdown(
