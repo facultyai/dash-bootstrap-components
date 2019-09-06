@@ -6,14 +6,14 @@ class Alert extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onDismiss = this.onDismiss.bind(this);
+    this.dismiss = this.dismiss.bind(this);
 
     this.state = {
       alertOpen: props.is_open
     };
   }
 
-  onDismiss() {
+  dismiss() {
     if (this.props.setProps) {
       this.props.setProps({is_open: false});
     } else {
@@ -24,6 +24,15 @@ class Alert extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.is_open != this.state.alertOpen) {
       this.setState({alertOpen: nextProps.is_open});
+      if (nextProps.is_open && this.props.duration) {
+        setTimeout(this.dismiss, this.props.duration);
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.is_open && this.props.duration) {
+      setTimeout(this.dismiss, this.props.duration);
     }
   }
 
@@ -38,7 +47,7 @@ class Alert extends React.Component {
     return (
       <RSAlert
         isOpen={this.state.alertOpen}
-        toggle={dismissable && this.onDismiss}
+        toggle={dismissable && this.dismiss}
         {...otherProps}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
@@ -51,7 +60,8 @@ class Alert extends React.Component {
 }
 
 Alert.defaultProps = {
-  is_open: true
+  is_open: true,
+  duration: null
 };
 
 Alert.propTypes = {
@@ -105,6 +115,11 @@ Alert.propTypes = {
    * If true, add a close button that allows Alert to be dismissed.
    */
   dismissable: PropTypes.bool,
+
+  /**
+   * Duration in milliseconds after which the Alert dismisses itself.
+   */
+  duration: PropTypes.number,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
