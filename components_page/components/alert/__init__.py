@@ -20,6 +20,7 @@ alerts_simple_source = (HERE / "simple.py").read_text()
 alerts_link_source = (HERE / "link.py").read_text()
 alert_content_source = (HERE / "content.py").read_text()
 alerts_dismiss_source = (HERE / "dismiss.py").read_text()
+alerts_auto_dismiss_source = (HERE / "auto_dismiss.py").read_text()
 
 
 def get_content(app):
@@ -75,5 +76,20 @@ def get_content(app):
             )
         ),
         HighlightedSource(alerts_dismiss_source),
+        html.H4("Automatic dismissal"),
+        html.P(
+            dcc.Markdown(
+                "You can have your `Alert` components dismiss themselves by "
+                "using the `duration` keyword argument. Specify a duration in "
+                "milliseconds after which you would like the `Alert` to "
+                "dismiss itself when it first becomes visible."
+            )
+        ),
+        ExampleContainer(
+            load_source_with_environment(
+                alerts_auto_dismiss_source, "alert", {"app": app}
+            )
+        ),
+        HighlightedSource(alerts_auto_dismiss_source),
         ApiDoc(get_component_metadata("src/components/Alert.js")),
     ]
