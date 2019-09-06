@@ -16,6 +16,7 @@ HERE = Path(__file__).parent
 
 toast_simple_source = (HERE / "simple.py").read_text()
 toast_icon_dismiss_source = (HERE / "icon_dismiss.py").read_text()
+toast_auto_dismiss_source = (HERE / "auto_dismiss.py").read_text()
 toast_position_source = (HERE / "position.py").read_text()
 
 
@@ -61,6 +62,21 @@ def get_content(app):
             )
         ),
         HighlightedSource(toast_icon_dismiss_source),
+        html.H4("Automatic dismissal"),
+        html.P(
+            dcc.Markdown(
+                "You can have your `Toast` components dismiss themselves by "
+                "using the `duration` keyword argument. Specify a duration in "
+                "milliseconds after which you would like the `Toast` to "
+                "dismiss itself when it first becomes visible."
+            )
+        ),
+        ExampleContainer(
+            load_source_with_environment(
+                toast_auto_dismiss_source, "toast", {"app": app}
+            )
+        ),
+        HighlightedSource(toast_auto_dismiss_source),
         html.H4("Positioning"),
         html.P(
             dcc.Markdown(
