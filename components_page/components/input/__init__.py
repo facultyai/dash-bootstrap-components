@@ -12,6 +12,7 @@ from ...helpers import (
 from ...metadata import get_component_metadata
 from .number_input import number_input as input_numeric
 from .radio_check_inline import inline_inputs
+from .select import select as input_select
 from .selected_styles import checklist as input_selected_styles
 from .size import inputs as input_size
 from .text_label import text_input as input_text_label
@@ -25,6 +26,7 @@ input_numeric_source = (HERE / "number_input.py").read_text()
 input_text_label_source = (HERE / "text_label.py").read_text()
 input_size_source = (HERE / "size.py").read_text()
 input_validation_source = (HERE / "validation.py").read_text()
+input_select_source = (HERE / "select.py").read_text()
 input_radio_check_source = (HERE / "radio_check.py").read_text()
 input_textarea_source = (HERE / "textarea.py").read_text()
 input_radio_check_inline_source = (HERE / "radio_check_inline.py").read_text()
@@ -143,6 +145,20 @@ def get_content(app):
         ),
         ExampleContainer(input_textarea),
         HighlightedSource(input_textarea_source),
+        html.H4("Select"),
+        html.P(
+            dcc.Markdown(
+                "The `Select` component can be used to render a Bootstrap "
+                "themed select input. The options are specified with a list "
+                "of dictionaries much like the `Dropdown` component in "
+                "_dash-core-components_, i.e. with keys `'label'`, `'value'` "
+                "and optional key `'disabled'`. Like `Input` it also accepts "
+                "keyword arguments such as `bs_size`, `valid`, `invalid`, all "
+                "of which can be targeted with callbacks."
+            )
+        ),
+        ExampleContainer(input_select),
+        HighlightedSource(input_select_source),
         html.H4("RadioItems and Checklist"),
         html.P(
             dcc.Markdown(
