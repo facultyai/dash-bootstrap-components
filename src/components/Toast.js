@@ -1,33 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Toast, ToastBody, ToastHeader} from 'reactstrap';
+import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
 
-class ToastSimple extends React.Component {
+class Toast extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
+    this.dismiss = this.dismiss.bind(this);
     this.state = {
-      ToastOpen: props.is_open
+      toastOpen: props.is_open
     };
   }
 
-  toggle() {
+  dismiss() {
     if (this.props.setProps) {
       this.props.setProps({
-        is_open: !this.state.ToastOpen,
+        is_open: false,
         n_dismiss: this.props.n_dismiss + 1,
         n_dismiss_timestamp: Date.now()
       });
     } else {
-      this.setState({ToastOpen: !this.state.ToastOpen});
+      this.setState({toastOpen: false});
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.is_open != prevState.ToastOpen) {
-      return {ToastOpen: nextProps.is_open};
-    } else return null;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.is_open != this.state.toastOpen) {
+      this.setState({toastOpen: nextProps.is_open});
+      if (nextProps.is_open && this.props.duration) {
+        setTimeout(this.dismiss, this.props.duration);
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.is_open && this.props.duration) {
+      setTimeout(this.dismiss, this.props.duration);
+    }
   }
 
   render() {
@@ -43,28 +52,28 @@ class ToastSimple extends React.Component {
       ...otherProps
     } = this.props;
     return (
-      <Toast isOpen={this.state.ToastOpen} {...otherProps}>
+      <RSToast isOpen={this.state.toastOpen} {...otherProps}>
         <ToastHeader
           icon={icon}
           style={header_style}
           className={headerClassName}
-          toggle={dismissable && this.toggle}
+          toggle={dismissable && this.dismiss}
         >
           {header}
         </ToastHeader>
         <ToastBody style={body_style} className={bodyClassName}>
           {children}
         </ToastBody>
-      </Toast>
+      </RSToast>
     );
   }
 }
 
-ToastSimple.defaultProps = {
+Toast.defaultProps = {
   is_open: true
 };
 
-ToastSimple.propTypes = {
+Toast.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -145,6 +154,11 @@ ToastSimple.propTypes = {
   dismissable: PropTypes.bool,
 
   /**
+   * Duration in milliseconds after which the Alert dismisses itself.
+   */
+  duration: PropTypes.number,
+
+  /**
    * An integer that represents the number of times that the dismiss button has
    * been clicked on.
    */
@@ -167,4 +181,4 @@ ToastSimple.propTypes = {
   icon: PropTypes.string
 };
 
-export default ToastSimple;
+export default Toast;
