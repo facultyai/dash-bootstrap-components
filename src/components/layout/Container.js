@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Container as RSContainer} from 'reactstrap';
+import {omit} from 'ramda';
 
 const Container = props => {
   const {children, loading_state, ...otherProps} = props;
   return (
     <RSContainer
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
