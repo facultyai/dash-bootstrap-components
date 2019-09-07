@@ -62,8 +62,7 @@ class Input extends React.Component {
       invalid && 'is-invalid',
       valid && 'is-valid',
       bs_size ? `form-control-${bs_size}` : false,
-      formControlClass,
-      debounce
+      formControlClass
     );
     return (
       <input
