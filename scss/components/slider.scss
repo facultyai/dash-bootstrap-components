@@ -1,0 +1,70 @@
+.dash-bootstrap {
+  .rc-slider {
+    height: $custom-range-track-height;
+    padding: 0;
+  }
+
+  .rc-slider-handle {
+    border: $custom-range-thumb-border;
+
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+
+    margin-top: calc(
+      (#{$custom-range-track-height} - #{$custom-range-thumb-height}) / 2
+    );
+    margin-left: -$custom-range-thumb-width / 2;
+    @include gradient-bg($custom-range-thumb-bg);
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
+
+    &:focus {
+      outline: 0;
+      box-shadow: $custom-range-thumb-focus-box-shadow;
+    }
+  }
+
+  .rc-slider-rail {
+    background-color: $custom-range-track-bg;
+    height: $custom-range-track-height;
+
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  .rc-slider-track {
+    background-color: theme-color-level("primary", -5);
+    height: $custom-range-track-height;
+
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  .rc-slider-step {
+    height: $custom-range-track-height;
+  }
+
+  .rc-slider-dot {
+    border: 0;
+    background-color: $custom-range-track-bg;
+    bottom: calc(
+      (#{$custom-range-track-height} - #{$custom-range-thumb-height}) / 2 + 2px
+    );
+    margin-left: -$custom-range-thumb-width / 2;
+    height: calc(#{$custom-range-thumb-height} - 4px);
+    width: calc(#{$custom-range-thumb-width} - 4px);
+
+    &.rc-slider-dot-active {
+      background-color: theme-color-level("primary", -5);
+    }
+  }
+
+  .rc-slider-mark-text {
+    color: gray("600");
+
+    &.rc-slider-mark-text-active {
+      color: color-yiq($body-bg, gray("800"), gray("400"));
+    }
+  }
+}
