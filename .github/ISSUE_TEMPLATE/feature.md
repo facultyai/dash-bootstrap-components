@@ -5,5 +5,6 @@ Before opening:
 
 Feature requests must include:
 
-- As much detail as possible for what we should add and why it's important to Dash Bootstrap Components
+- As much detail as possible for what we should add and why it's important to
+include it in Dash Bootstrap Components
 - Relevant links to prior art, screenshots, or live demos whenever possible
