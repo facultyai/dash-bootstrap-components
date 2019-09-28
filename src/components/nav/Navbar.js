@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Navbar as RSNavbar} from 'reactstrap';
 
 const navbarColors = new Set([
@@ -22,7 +23,7 @@ const Navbar = props => {
     <RSNavbar
       color={isNavbarColor && color}
       style={{backgroundColor: !isNavbarColor && color, ...style}}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
-
-import Link from '../../private/Link';
 
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
@@ -55,7 +54,7 @@ class NavbarSimple extends React.Component {
       <RSNavbar
         color={isNavbarColor && color}
         style={{backgroundColor: !isNavbarColor && color, ...style}}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

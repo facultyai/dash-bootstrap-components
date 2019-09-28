@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {CardImg as RSCardImg} from 'reactstrap';
 
 const CardImg = props => {
@@ -9,7 +10,7 @@ const CardImg = props => {
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
     >
       {children}
     </RSCardImg>

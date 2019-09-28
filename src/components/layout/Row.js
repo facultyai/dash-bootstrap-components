@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Row as RSRow} from 'reactstrap';
 import classNames from 'classnames';
 
@@ -38,7 +39,7 @@ const Row = props => {
     <RSRow
       className={classes}
       noGutters={no_gutters}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

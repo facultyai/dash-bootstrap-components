@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 
 const Spinner = props => {
   const {children, ...otherProps} = props;
-  return <RSSpinner {...otherProps}>{children}</RSSpinner>;
+  return <RSSpinner {...omit(['setProps'], otherProps)}>{children}</RSSpinner>;
 };
 
 Spinner.propTypes = {

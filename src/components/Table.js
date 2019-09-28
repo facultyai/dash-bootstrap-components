@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Table as RSTable} from 'reactstrap';
 
 const Table = props => {
   const {children, loading_state, ...otherProps} = props;
   return (
     <RSTable
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

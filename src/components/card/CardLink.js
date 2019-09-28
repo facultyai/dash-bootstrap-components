@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import classNames from 'classnames';
 import {CardLink as RSCardLink} from 'reactstrap';
 import Link from '../../private/Link';
@@ -12,7 +13,7 @@ const CardLink = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
       tag={Link}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
     >
       {children}
     </RSCardLink>

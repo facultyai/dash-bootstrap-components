@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {ButtonGroup as RSButtonGroup} from 'reactstrap';
 
 const ButtonGroup = props => {
   const {children, loading_state, ...otherProps} = props;
   return (
     <RSButtonGroup
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

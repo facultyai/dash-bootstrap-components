@@ -21,22 +21,17 @@ class RadioItems extends React.Component {
   listItem(option) {
     const {
       id,
-      className,
-      style,
       inputClassName,
       inputStyle,
       labelClassName,
       labelCheckedClassName,
       labelStyle,
       labelCheckedStyle,
-      options,
       setProps,
       inline,
-      key,
       value,
       custom,
       switch: switches,
-      loading_state
     } = this.props;
 
     const checked = option.value === value;
@@ -103,10 +98,8 @@ class RadioItems extends React.Component {
       className,
       style,
       options,
-      inline,
       key,
       loading_state,
-      custom
     } = this.props;
 
     const items = options.map(option => (

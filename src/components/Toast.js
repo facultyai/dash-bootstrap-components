@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
 
 class Toast extends React.Component {
@@ -52,7 +53,10 @@ class Toast extends React.Component {
       ...otherProps
     } = this.props;
     return (
-      <RSToast isOpen={this.state.toastOpen} {...otherProps}>
+      <RSToast
+        isOpen={this.state.toastOpen}
+        {...omit(['setProps'], otherProps)}
+      >
         <ToastHeader
           icon={icon}
           style={header_style}

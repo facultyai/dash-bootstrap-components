@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import classNames from 'classnames';
 import InputGroupText from './InputGroupText';
 
@@ -11,7 +12,7 @@ const InputGroupAddon = props => {
     return (
       <div
         className={classes}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }
@@ -22,7 +23,7 @@ const InputGroupAddon = props => {
   }
 
   return (
-    <div className={classes} {...otherProps}>
+    <div className={classes} {...omit(['setProps'], otherProps)}>
       {children}
     </div>
   );

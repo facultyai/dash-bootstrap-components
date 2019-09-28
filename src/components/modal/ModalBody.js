@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {ModalBody as RSModalBody} from 'reactstrap';
 
 const ModalBody = props => {
   const {children, ...otherProps} = props;
-  return <RSModalBody {...otherProps}>{children}</RSModalBody>;
+  return (
+    <RSModalBody {...omit(['setProps'], otherProps)}>{children}</RSModalBody>
+  );
 };
 
 ModalBody.propTypes = {

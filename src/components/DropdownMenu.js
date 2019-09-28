@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Dropdown, DropdownToggle} from 'reactstrap';
 import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
 
@@ -47,7 +48,7 @@ class DropdownMenu extends React.Component {
         inNavbar={in_navbar}
         addonType={addon_type}
         size={bs_size}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

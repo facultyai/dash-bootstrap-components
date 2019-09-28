@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
 import Link from '../../private/Link';
 
@@ -7,7 +8,7 @@ const NavbarBrand = props => {
   const {children, loading_state, ...otherProps} = props;
   return (
     <RSNavbarBrand
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       tag={props.href ? Link : 'span'}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

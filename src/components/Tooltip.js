@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Tooltip as RSTooltip} from 'reactstrap';
 
 class Tooltip extends React.Component {
@@ -33,7 +34,7 @@ class Tooltip extends React.Component {
         isOpen={this.state.tooltipOpen}
         hideArrow={hide_arrow}
         boundariesElement={boundaries_element}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

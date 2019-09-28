@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Popover as RSPopover} from 'reactstrap';
 
 const Popover = props => {
@@ -8,7 +9,7 @@ const Popover = props => {
     <RSPopover
       isOpen={is_open}
       hideArrow={hide_arrow}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

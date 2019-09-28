@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {Button as RSButton} from 'reactstrap';
 
 const Button = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, setProps, ...otherProps} = props;
   return (
     <RSButton
       onClick={() => {
-        if (props.setProps) {
-          props.setProps({
+        if (setProps) {
+          setProps({
             n_clicks: props.n_clicks + 1,
             n_clicks_timestamp: Date.now()
           });
