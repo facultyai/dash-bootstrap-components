@@ -34,7 +34,8 @@ class Tabs extends React.Component {
     const children = this.parseChildrenToArray();
 
     if (!this.props.active_tab) {
-      const activeTab = resolveChildProps(children[0]).tab_id || 'tab-0';
+      const activeTab =
+        children && (resolveChildProps(children[0]).tab_id || 'tab-0');
       this.state = {
         activeTab: activeTab
       };
@@ -82,61 +83,65 @@ class Tabs extends React.Component {
     const children = this.parseChildrenToArray();
 
     // create tab links by extracting labels from children
-    const links = children.map((child, idx) => {
-      const childProps = resolveChildProps(child);
-      const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
-      return (
-        <NavItem
-          key={tabId}
-          style={childProps.tab_style}
-          className={childProps.tabClassName}
-        >
-          <NavLink
-            className={classnames(childProps.labelClassName, {
-              active: this.state.activeTab === tabId
-            })}
-            style={childProps.label_style}
-            disabled={childProps.disabled}
-            onClick={() => {
-              if (!childProps.disabled) {
-                this.toggle(tabId);
-              }
-            }}
+    const links =
+      children &&
+      children.map((child, idx) => {
+        const childProps = resolveChildProps(child);
+        const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
+        return (
+          <NavItem
+            key={tabId}
+            style={childProps.tab_style}
+            className={childProps.tabClassName}
           >
-            {childProps.label}
-          </NavLink>
-        </NavItem>
-      );
-    });
+            <NavLink
+              className={classnames(childProps.labelClassName, {
+                active: this.state.activeTab === tabId
+              })}
+              style={childProps.label_style}
+              disabled={childProps.disabled}
+              onClick={() => {
+                if (!childProps.disabled) {
+                  this.toggle(tabId);
+                }
+              }}
+            >
+              {childProps.label}
+            </NavLink>
+          </NavItem>
+        );
+      });
 
     // create tab content by extracting children from children
-    const tabs = children.map((child, idx) => {
-      const childProps = resolveChildProps(child);
-      const {
-        children,
-        tab_id,
-        label,
-        tab_style,
-        label_style,
-        tabClassName,
-        labelClassName,
-        loading_state,
-        ...otherProps
-      } = childProps;
-      const tabId = tab_id || 'tab-' + idx;
-      return (
-        <TabPane
-          tabId={tabId}
-          key={tabId}
-          {...omit(['setProps'], otherProps)}
-          data-dash-is-loading={
-            (loading_state && loading_state.is_loading) || undefined
-          }
-        >
-          {child}
-        </TabPane>
-      );
-    });
+    const tabs =
+      children &&
+      children.map((child, idx) => {
+        const childProps = resolveChildProps(child);
+        const {
+          children,
+          tab_id,
+          label,
+          tab_style,
+          label_style,
+          tabClassName,
+          labelClassName,
+          loading_state,
+          ...otherProps
+        } = childProps;
+        const tabId = tab_id || 'tab-' + idx;
+        return (
+          <TabPane
+            tabId={tabId}
+            key={tabId}
+            {...omit(['setProps'], otherProps)}
+            data-dash-is-loading={
+              (loading_state && loading_state.is_loading) || undefined
+            }
+          >
+            {child}
+          </TabPane>
+        );
+      });
     return (
       <div
         key={this.props.key}
