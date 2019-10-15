@@ -6,6 +6,7 @@
 
 #sidebar h2 {
   text-align: left;
+  margin-bottom: 0;
 }
 
 /* Hide the blurb on a small screen */
@@ -13,8 +14,17 @@
   display: none;
 }
 
-#collapse {
+#collapse *:first-child {
   margin-top: 1rem;
+}
+
+#page-content {
+  padding: 2rem 1rem;
+}
+
+/* add the three horizontal bars icon for the toggle */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 @media (min-width: 48em) {
@@ -39,21 +49,12 @@
 
   #collapse {
     display: block;
+  }
+
+  #collapse *:first-child {
     margin-top: 0;
   }
-}
 
-/* add the three horizontal bars icon for the toggle */
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-#page-content {
-  padding: 2rem 1rem;
-}
-
-@media (min-width: 48em) {
-  /* set margins of the main content so that it doesn't overlap the sidebar */
   #page-content {
     margin-left: 18rem;
     margin-right: 2rem;

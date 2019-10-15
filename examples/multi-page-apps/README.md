@@ -30,3 +30,8 @@ This is also like the simple sidebar, but adapts to smaller screen sizes
 device). On smaller screens, the sidebar becomes a top navbar with the links
 becoming collapsible. Visit a deployed version on a mobile device, or toggle
 the device toolbar in your browser's developer tools to check it out!
+
+## `responsive-collapsible-sidebar`
+
+This is like the responsive sidebar example, but on large screens the sidebar
+is also collapsible.
