@@ -4,13 +4,13 @@ from dash.dependencies import Input, Output, State
 
 popover = html.Div(
     [
-        html.P(
-            ["Click on the word ", html.Span("popover", id="popover-target")]
+        dbc.Button(
+            "Click to toggle popover", id="popover-target", color="danger"
         ),
         dbc.Popover(
             [
                 dbc.PopoverHeader("Popover header"),
-                dbc.PopoverBody("Popover body"),
+                dbc.PopoverBody("And here's some amazing content. Cool!"),
             ],
             id="popover",
             is_open=False,
