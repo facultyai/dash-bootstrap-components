@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import dash_core_components as dcc
 import dash_html_components as html
 
 from ...api_doc import ApiDoc
@@ -9,6 +10,7 @@ from ...helpers import (
     load_source_with_environment,
 )
 from ...metadata import get_component_metadata
+from .active import list_group as list_group_active
 from .colors import list_group as list_group_colors
 from .content import list_group as list_group_content
 from .simple import list_group as list_group_simple
@@ -16,43 +18,47 @@ from .simple import list_group as list_group_simple
 HERE = Path(__file__).parent
 
 list_group_simple_source = (HERE / "simple.py").read_text()
+list_group_active_source = (HERE / "active.py").read_text()
 list_group_links_source = (HERE / "links.py").read_text()
 list_group_colors_source = (HERE / "colors.py").read_text()
 list_group_content_source = (HERE / "content.py").read_text()
 
-links_explainer = html.P(
-    [
-        "You can use ",
-        html.Code("ListGroupItem"),
-        " as an internal or external link, or use its ",
-        html.Code("n_clicks"),
-        " prop in callbacks. Use the ",
-        html.Code("disabled"),
-        " prop to disable the link / button behaviour.",
-    ]
-)
-
-content_explainer = html.P(
-    [
-        "You can pass any Dash components to the children of ",
-        html.Code("ListGroupItem"),
-        ". The components ",
-        html.Code("ListGroupItemHeading"),
-        " and ",
-        html.Code("ListGroupItemText"),
-        " automatically apply the relevant Bootstrap classes for styling "
-        "text content in list groups.",
-    ]
-)
-
 
 def get_content(app):
     return [
-        html.H2("List Group"),
+        html.H2("List Group", className="display-4"),
+        html.P(
+            dcc.Markdown(
+                "A simple, flexible component for displaying a series of "
+                "content."
+            ),
+            className="lead",
+        ),
+        html.H4("Simple example"),
+        html.P(
+            dcc.Markdown(
+                "The most basic `ListGroup` is an unordered list of "
+                "`ListGroupItem` components."
+            )
+        ),
         ExampleContainer(list_group_simple),
         HighlightedSource(list_group_simple_source),
+        html.H4("Active items"),
+        html.P(
+            dcc.Markdown(
+                "Set `active=True` to indicate the current active selection."
+            )
+        ),
+        ExampleContainer(list_group_active),
+        HighlightedSource(list_group_active_source),
         html.H4("Links"),
-        links_explainer,
+        html.P(
+            dcc.Markdown(
+                "You can use `ListGroupItem` as an internal, or external "
+                "link, or use its `n_clicks` prop in callbacks. Use the "
+                "`disabled` prop to disable the link / button behaviour."
+            )
+        ),
         ExampleContainer(
             load_source_with_environment(
                 list_group_links_source, "list_group", {"app": app}
@@ -60,10 +66,24 @@ def get_content(app):
         ),
         HighlightedSource(list_group_links_source),
         html.H4("Colors"),
+        html.P(
+            dcc.Markdown(
+                "Pass one of Bootstrap's contextual colors to the `color` "
+                "argument of `ListGroupItem` to set the background and text "
+                "color of the contents."
+            )
+        ),
         ExampleContainer(list_group_colors),
         HighlightedSource(list_group_colors_source),
         html.H4("Custom content"),
-        content_explainer,
+        html.P(
+            dcc.Markdown(
+                "You can pass any Dash components to the children of "
+                "`ListGroupItem`. The components `ListGroupItemHeading` and "
+                "`ListGroupItemText` automatically apply the relevant CSS "
+                "classes for styling text content in list groups."
+            )
+        ),
         ExampleContainer(list_group_content),
         HighlightedSource(list_group_content_source),
         ApiDoc(
