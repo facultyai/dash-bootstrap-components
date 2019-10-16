@@ -31,7 +31,12 @@ grid_only_source = (HERE / "grid_only.py").read_text()
 
 content = html.Div(
     [
-        html.H2("Layout"),
+        html.H2("Layout", className="display-4"),
+        html.P(
+            "Components for laying out your Dash app, including wrapping "
+            "containers, and a powerful, responsive grid system.",
+            className="lead",
+        ),
         html.P(
             dcc.Markdown(
                 "Layout in Bootstrap is controlled using the grid system. The "
