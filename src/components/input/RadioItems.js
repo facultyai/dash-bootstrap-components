@@ -31,7 +31,7 @@ class RadioItems extends React.Component {
       inline,
       value,
       custom,
-      switch: switches,
+      switch: switches
     } = this.props;
 
     const checked = option.value === value;
@@ -58,6 +58,7 @@ class RadioItems extends React.Component {
           onChange={() => {
             setProps({value: option.value});
           }}
+          key={option.value}
         />
       );
     } else {
@@ -93,18 +94,9 @@ class RadioItems extends React.Component {
   }
 
   render() {
-    const {
-      id,
-      className,
-      style,
-      options,
-      key,
-      loading_state,
-    } = this.props;
+    const {id, className, style, options, key, loading_state} = this.props;
 
-    const items = options.map(option => (
-      <React.Fragment>{this.listItem(option)}</React.Fragment>
-    ));
+    const items = options.map(option => this.listItem(option));
 
     return (
       <div
