@@ -4,27 +4,48 @@ import {omit} from 'ramda';
 import classNames from 'classnames';
 import InputGroupText from './InputGroupText';
 
-const InputGroupAddon = props => {
-  const {children, loading_state, className, addon_type, ...otherProps} = props;
-  const classes = classNames(className, 'input-group-' + addon_type);
+const isCheckOrRadio = el => {
+  return (
+    el.props &&
+    el.props._dashprivate_layout &&
+    (el.props._dashprivate_layout.type === 'RadioButton' ||
+      el.props._dashprivate_layout.type === 'Checkbox')
+  );
+};
 
-  if (typeof children === 'string') {
+const parseChildrenToArray = children => {
+  if (children && !Array.isArray(children)) {
+    return [children];
+  }
+  return children;
+};
+
+const wrapChild = (child, i) => {
+  if (typeof child === 'string' || isCheckOrRadio(child)) {
     return (
-      <div
-        className={classes}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        <InputGroupText children={children} />
-      </div>
+      <React.Fragment key={i}>
+        <InputGroupText>{child}</InputGroupText>
+      </React.Fragment>
     );
   }
+  return <React.Fragment key={i}>{child}</React.Fragment>;
+};
+
+const InputGroupAddon = props => {
+  let {children, loading_state, className, addon_type, ...otherProps} = props;
+  const classes = classNames(className, 'input-group-' + addon_type);
+
+  children = parseChildrenToArray(children);
 
   return (
-    <div className={classes} {...omit(['setProps'], otherProps)}>
-      {children}
+    <div
+      className={classes}
+      {...omit(['setProps'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children.map(wrapChild)}
     </div>
   );
 };
