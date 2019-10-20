@@ -19,7 +19,6 @@ class Checklist extends React.Component {
 
   listItem(option) {
     const {
-      className,
       id,
       inputClassName,
       inputStyle,
@@ -27,13 +26,9 @@ class Checklist extends React.Component {
       labelCheckedClassName,
       labelStyle,
       labelCheckedStyle,
-      options,
       setProps,
-      style,
       inline,
-      key,
       value,
-      loading_state,
       custom,
       switch: switches
     } = this.props;
@@ -68,6 +63,7 @@ class Checklist extends React.Component {
             }
             setProps({value: newValue});
           }}
+          key={option.value}
         />
       );
     } else {
@@ -109,21 +105,9 @@ class Checklist extends React.Component {
   }
 
   render() {
-    const {
-      className,
-      id,
-      options,
-      style,
-      inline,
-      key,
-      loading_state,
-      custom,
-      switch: switches
-    } = this.props;
+    const {className, id, options, style, key, loading_state} = this.props;
 
-    const items = options.map(option => (
-      <React.Fragment>{this.listItem(option)}</React.Fragment>
-    ));
+    const items = options.map(option => this.listItem(option));
 
     return (
       <div
