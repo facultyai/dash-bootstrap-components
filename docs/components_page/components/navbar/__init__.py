@@ -22,7 +22,14 @@ navbar_source = (HERE / "navbar.py").read_text()
 
 def get_content(app):
     return [
-        html.H2("Navbar"),
+        html.H2("Navbar", className="display-4"),
+        html.P(
+            dcc.Markdown(
+                "Easily create responsive navigation headers using the "
+                "`NavbarSimple` and `Navbar` components."
+            ),
+            className="lead",
+        ),
         html.P(
             dcc.Markdown(
                 "There are two navbar components in "

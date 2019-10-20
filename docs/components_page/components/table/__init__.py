@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import dash_core_components as dcc
 import dash_html_components as html
 
 from ...api_doc import ApiDoc
@@ -70,29 +71,43 @@ table_kwargs_source = (HERE / "kwargs.py").read_text()
 table_helper_source = (HERE / "helper.py").read_text()
 
 content = [
-    html.H2("Table"),
+    html.H2("Table", className="display-4"),
+    html.P(
+        dcc.Markdown(
+            "Add Bootstrap styled HTML tables to your app with the `Table` "
+            "component."
+        )
+    ),
+    html.H4("Simple example"),
+    html.P(
+        dcc.Markdown(
+            "To add a Bootstrap styled table to your app, use `dbc.Table` as "
+            "a drop-in replacement for `html.Table`, building up the content "
+            "with `html.Thead`, `html.Tbody`, `html.Th`, `html.Tr` and "
+            "`html.Td`."
+        )
+    ),
     ExampleContainer(table_simple),
     HighlightedSource(table_simple_source),
     html.H4("Styling the table"),
+    html.P(
+        dcc.Markdown(
+            "The style of the table can be modified through a number of "
+            "available keyword arguments, such as `dark`, `striped`, "
+            "`bordered` and `hover`."
+        )
+    ),
     ExampleContainer(table_kwargs),
     HighlightedSource(table_kwargs_source),
     html.H4("Table from DataFrame"),
     html.P(
-        [
-            "The ",
-            html.Code("Table"),
-            " component has a ",
-            html.Code("from_dataframe"),
-            " class method which allows you to easily construct a ",
-            html.Code("Table"),
-            " from a pandas DataFrame. You will need to have ",
-            html.Code("pandas"),
-            " and ",
-            html.Code("numpy"),
-            " installed. Either install them yourself, or use the command ",
-            html.Code("pip install -U dash-bootstrap-components[pandas]"),
-            ".",
-        ]
+        dcc.Markdown(
+            "Manually constructing a HTML table can be tedious. The `Table` "
+            "component has a `from_dataframe` method which allows you to "
+            "easily construct a `Table` from a Pandas DataFrame. You will "
+            "need to have Pandas installed. Either install it yourself or run "
+            "`pip install -U dash-bootstrap-components[pandas]`."
+        )
     ),
     ExampleContainer(table_helper),
     HighlightedSource(table_helper_source),
