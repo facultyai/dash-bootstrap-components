@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Progress as RSProgress} from 'reactstrap';
 
 const Progress = props => {
   const {children, loading_state, ...otherProps} = props;
   return (
     <RSProgress
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

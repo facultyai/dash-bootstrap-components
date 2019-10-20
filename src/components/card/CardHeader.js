@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {CardHeader as RSCardHeader} from 'reactstrap';
 
 const CardHeader = props => {
@@ -9,7 +10,7 @@ const CardHeader = props => {
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
     >
       {children}
     </RSCardHeader>

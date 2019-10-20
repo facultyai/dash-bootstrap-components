@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {NavbarToggler as RSNavbarToggler} from 'reactstrap';
 
 const NavbarToggler = props => {
@@ -14,7 +15,7 @@ const NavbarToggler = props => {
           });
         }
       }}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

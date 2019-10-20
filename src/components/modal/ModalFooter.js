@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {ModalFooter as RSModalFooter} from 'reactstrap';
 
 const ModalFooter = props => {
   const {children, ...otherProps} = props;
-  return <RSModalFooter {...otherProps}>{children}</RSModalFooter>;
+  return <RSModalFooter {...omit(['setProps'], otherProps)}>{children}</RSModalFooter>;
 };
 
 ModalFooter.propTypes = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Alert as RSAlert} from 'reactstrap';
 
 class Alert extends React.Component {
@@ -48,7 +49,7 @@ class Alert extends React.Component {
       <RSAlert
         isOpen={this.state.alertOpen}
         toggle={dismissable && this.dismiss}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {ListGroupItemText as RSListGroupItemText} from 'reactstrap';
 import classNames from 'classnames';
 
@@ -9,7 +10,7 @@ const ListGroupItemText = props => {
   return (
     <RSListGroupItemText
       className={classes}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

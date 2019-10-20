@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import classNames from 'classnames';
 import Link from '../../private/Link';
 
@@ -35,7 +36,7 @@ class NavLink extends React.Component {
       <Link
         className={classes}
         preOnClick={this.incrementClicks}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

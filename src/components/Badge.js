@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Badge as RSBadge} from 'reactstrap';
 
 const Badge = props => {
   const {children, loading_state, ...otherProps} = props;
   return (
     <RSBadge
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

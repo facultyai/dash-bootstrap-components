@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Collapse as RSCollapse} from 'reactstrap';
 
 const Collapse = props => {
@@ -7,7 +8,7 @@ const Collapse = props => {
   return (
     <RSCollapse
       isOpen={is_open}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

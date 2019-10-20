@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import classnames from 'classnames';
 import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import {isNil} from 'ramda';
@@ -127,7 +128,7 @@ class Tabs extends React.Component {
         <TabPane
           tabId={tabId}
           key={tabId}
-          {...otherProps}
+          {...omit(['setProps'], otherProps)}
           data-dash-is-loading={
             (loading_state && loading_state.is_loading) || undefined
           }

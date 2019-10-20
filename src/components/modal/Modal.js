@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Modal as RSModal} from 'reactstrap';
 
 class Modal extends React.Component {
@@ -32,7 +33,7 @@ class Modal extends React.Component {
       <RSModal
         isOpen={this.state.modalOpen}
         toggle={this.toggle}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
       >
         {children}
       </RSModal>

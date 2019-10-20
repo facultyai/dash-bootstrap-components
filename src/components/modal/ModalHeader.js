@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {ModalHeader as RSModalHeader} from 'reactstrap';
 
 const ModalHeader = props => {
   const {children, ...otherProps} = props;
-  return <RSModalHeader {...otherProps}>{children}</RSModalHeader>;
+  return <RSModalHeader {...omit(['setProps'], otherProps)}>{children}</RSModalHeader>;
 };
 
 ModalHeader.propTypes = {

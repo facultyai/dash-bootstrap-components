@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {DropdownItem as RSDropdownItem} from 'reactstrap';
 import Link from '../private/Link';
-import Button from './Button';
 
 class DropdownMenuItem extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class DropdownMenuItem extends React.Component {
         // don't pass href if disabled otherwise reactstrap renders item
         // as link and the cursor becomes a pointer on hover
         href={this.props.disabled ? null : href}
-        {...otherProps}
+        {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

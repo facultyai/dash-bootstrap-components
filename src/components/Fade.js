@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Fade as RSFade} from 'reactstrap';
 
 const Fade = props => {
@@ -16,7 +17,7 @@ const Fade = props => {
       baseClass={base_class}
       baseClassActive={base_class_active}
       in={is_in}
-      {...otherProps}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
