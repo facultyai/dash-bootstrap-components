@@ -1,17 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CustomInput} from 'reactstrap';
 
 const Select = props => {
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState('');
 
   const handleChange = e => {
     if (props.setProps) {
       props.setProps({value: e.target.value});
+    } else {
+      setValue(e.target.value);
     }
-    setValue(e.target.value);
   };
+
+  useEffect(() => {
+    if (props.value !== value) {
+      setValue(props.value || '');
+    }
+  }, [props.value]);
 
   return (
     <CustomInput
@@ -21,6 +28,7 @@ const Select = props => {
       value={value}
       bsSize={props.bs_size}
     >
+      <option value="" disabled hidden></option>
       {props.options.map(option => (
         <option
           key={option.value}
