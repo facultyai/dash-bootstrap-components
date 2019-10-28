@@ -41,6 +41,7 @@ setup(
     install_requires=["dash>=1.0.0"],
     include_package_data=True,
     classifiers=[
+        "Framework :: Dash",
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.5",
