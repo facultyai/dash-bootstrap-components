@@ -1,193 +1,144 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
-import {
-  Dropdown as RSDropdown,
-  DropdownToggle as RSDropdownToggle,
-  DropdownMenu as RSDropdownMenu
-} from 'reactstrap';
+import {render} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import DropdownMenu from '../DropdownMenu';
 import DropdownMenuItem from '../DropdownMenuItem';
 
-describe('Simple DropdownMenu', () => {
-  let dropdownMenu;
-  let rsDropdown;
-  let rsDropdownToggle;
-  let rsDropdownMenu;
+jest.mock('popper.js', () => {
+  const PopperJS = jest.requireActual('popper.js');
 
-  beforeAll(() => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label">
+  return class {
+    static placements = PopperJS.placements;
+
+    constructor() {
+      return {
+        destroy: () => {},
+        scheduleUpdate: () => {}
+      };
+    }
+  };
+});
+
+describe('DropdownMenu', () => {
+  test('renders a button with class "dropdown-toggle"', () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown);
-    rsDropdownToggle = dropdownMenu.find(RSDropdownToggle);
-    rsDropdownMenu = dropdownMenu.find(RSDropdownMenu);
-  })
+    );
 
-  it('should create a reacstrap Dropdown', () =>
-    expect(rsDropdown).toHaveLength(1));
+    expect(dropdownMenu.getByText('toggle')).toHaveClass('dropdown-toggle');
+  });
 
-  it('should create a reactstrap toggle', () =>
-    expect(rsDropdownToggle).toHaveLength(1));
+  test('renders the children in order inside the ".dropdown-menu"', () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle">
+        <DropdownMenuItem>Item 1</DropdownMenuItem>
+        <DropdownMenuItem>Test item 2</DropdownMenuItem>
+      </DropdownMenu>
+    );
 
-  it('should create a reactstrap dropdown menu', () =>
-    expect(rsDropdownMenu).toHaveLength(1));
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu').children[0]
+    ).toHaveTextContent('Item 1');
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu').children[1]
+    ).toHaveTextContent('Test item 2');
+  });
 
-  it('should set the caret option in the toggle', () =>
-    expect(rsDropdownToggle.prop('caret')).toBe(true))
-
-  it('should pass the label onto the toggle', () =>
-    expect(rsDropdownToggle.prop('children')).toEqual('Label'))
-
-  it('should pass its own children onto the reactstrap dropdown menu', () => {
-    const dropdownMenuChildren = rsDropdownMenu.find(DropdownMenuItem)
-    expect(dropdownMenuChildren).toHaveLength(1)
-    expect(dropdownMenuChildren.prop('children')).toEqual('Item 1')
-  })
-
-  it('should open and close when the `toggle` callback is called', () => {
-    expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(false)
-    rsDropdown.prop('toggle')();
-    expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(true)
-    rsDropdown.prop('toggle')();
-    expect(dropdownMenu.find(RSDropdown).prop('isOpen')).toBe(false)
-  })
-
-  afterAll(() => {
-    dropdownMenu.unmount()
-  })
-
-})
-
-describe('DropdownMenu - options', () => {
-
-  let dropdownMenu;
-  let rsDropdown;
-  let rsDropdownToggle;
-  let rsDropdownMenu;
-
-  it('in_navbar', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" in_navbar={true}>
+  test('clicking the toggle toggles the menu', () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown);
+    );
 
-    expect(rsDropdown.prop('inNavbar')).toBe(true)
-  })
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu')
+    ).not.toHaveClass('show');
 
-  it('disabled', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" disabled={true}>
+    userEvent.click(dropdownMenu.getByText('toggle'));
+    expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
+      'show'
+    );
+
+    userEvent.click(dropdownMenu.getByText('toggle'));
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu')
+    ).not.toHaveClass('show');
+  });
+
+  test('renders toggle as nav_item if "nav" is true', () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle" nav>
+        DropdownMenu content
+      </DropdownMenu>
+    );
+
+    const dropdownToggle = dropdownMenu.container.querySelector('.dropdown');
+    expect(dropdownToggle.tagName.toLowerCase()).toEqual('li');
+    expect(dropdownToggle).toHaveClass('nav-item');
+    expect(dropdownToggle.firstChild.tagName.toLowerCase()).toEqual('a');
+    expect(dropdownToggle.firstChild).toHaveClass('nav-link');
+  });
+
+  test("clicking the toggle doesn't toggle the menu if 'disabled' is set", () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle" disabled>
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown);
-    rsDropdownToggle = dropdownMenu.find(RSDropdownToggle);
+    );
 
-    expect(rsDropdown.prop('disabled')).toBe(true)
-    expect(rsDropdownToggle.prop('disabled')).toBe(true)
-  })
+    expect(dropdownMenu.getByText('toggle')).toHaveClass('disabled');
 
-  it('nav', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" nav={true}>
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu')
+    ).not.toHaveClass('show');
+
+    userEvent.click(dropdownMenu.getByText('toggle'));
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu')
+    ).not.toHaveClass('show');
+  });
+
+  test("adds input-group classes if 'addon_type' is set", () => {
+    const dropdownMenuPrepend = render(
+      <DropdownMenu label="toggle" addon_type="prepend">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown);
-    rsDropdownToggle = dropdownMenu.find(RSDropdownToggle);
-
-    expect(rsDropdown.prop('nav')).toBe(true)
-    expect(rsDropdownToggle.prop('nav')).toBe(true)
-  })
-
-  it('multiple items', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label">
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-        <DropdownMenuItem>Item 2</DropdownMenuItem>
-        <DropdownMenuItem>Item 3</DropdownMenuItem>
-      </DropdownMenu>
-    )
-    rsDropdownMenu = dropdownMenu.find(RSDropdownMenu);
-
-    expect(rsDropdownMenu.children()).toHaveLength(3)
-    expect(rsDropdownMenu.childAt(0).prop('children')).toEqual('Item 1')
-    expect(rsDropdownMenu.childAt(1).prop('children')).toEqual('Item 2')
-    expect(rsDropdownMenu.childAt(2).prop('children')).toEqual('Item 3')
-  })
-
-  it('addon_type -- undefined', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label">
+    );
+    const dropdownMenuAppend = render(
+      <DropdownMenu label="toggle" addon_type="append">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown)
+    );
 
-    expect(rsDropdown.prop('addonType')).toBeFalsy()
-  })
+    expect(dropdownMenuPrepend.container.firstChild).toHaveClass(
+      'input-group-prepend'
+    );
+    expect(dropdownMenuAppend.container.firstChild).toHaveClass(
+      'input-group-append'
+    );
+  });
 
-  it('addon_type -- true', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" addon_type={true}>
+  test('applies additional CSS classes when props are set', () => {
+    // dropdownMenu sizes
+    const dropdownMenuSm = render(
+      <DropdownMenu bs_size="sm" label="toggle small">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown)
-
-    expect(rsDropdown.prop('addonType')).toBe(true)
-  })
-
-  it('addon_type -- prepend', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" addon_type="prepend">
+    );
+    const dropdownMenuLg = render(
+      <DropdownMenu bs_size="lg" label="toggle large">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown)
+    );
 
-    expect(rsDropdown.prop('addonType')).toEqual('prepend')
-  })
-
-  it('addon_type -- append', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" addon_type="append">
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-      </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown)
-
-    expect(rsDropdown.prop('addonType')).toEqual('append')
-  })
-
-  it('bs_size -- undefined', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label">
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-      </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown)
-
-    expect(rsDropdown.prop('size')).toBeUndefined()
-  })
-
-  it('bs_size -- defined', () => {
-    dropdownMenu = shallow(
-      <DropdownMenu label="Label" bs_size="sm">
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-      </DropdownMenu>
-    )
-    rsDropdown = dropdownMenu.find(RSDropdown)
-
-    expect(rsDropdown.prop('size')).toEqual('sm')
-  })
-
-  afterEach(() => {
-    dropdownMenu.unmount();
-  })
-
-})
+    expect(dropdownMenuSm.getByText('toggle small').parentElement).toHaveClass(
+      'btn-group-sm'
+    );
+    expect(dropdownMenuLg.getByText('toggle large').parentElement).toHaveClass(
+      'btn-group-lg'
+    );
+  });
+});

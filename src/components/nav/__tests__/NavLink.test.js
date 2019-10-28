@@ -1,62 +1,63 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {render} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import NavLink from '../NavLink';
 
 describe('NavLink', () => {
-  let navLink;
-  let link;
+  test('renders an anchor with class "nav-link"', () => {
+    const navLink = render(<NavLink />);
 
-  beforeAll(() => {
-    navLink = shallow(<NavLink href="http://example.com">Some text</NavLink>);
-    link = navLink.find('Link');
+    expect(navLink.container.querySelector('a.nav-link')).not.toBe(null);
   });
 
-  it('contain a Link', () => expect(link).toHaveLength(1));
+  test('renders its content', () => {
+    const navLink = render(<NavLink>Some nav link content</NavLink>);
 
-  it('the link should have the correct href', () =>
-    expect(link.prop('href')).toEqual('http://example.com'));
-
-  it('the link should have the correct inner text', () =>
-    expect(link.prop('children')).toEqual('Some text'));
-
-  it('contain the nav-link class', () =>
-    expect(link.prop('className').split(' ')).toContain('nav-link'));
-});
-
-describe('NavLink -- options', () => {
-  it('active', () => {
-    const navLink = shallow(
-      <NavLink href="http://example.com" active>
-        Some text
-      </NavLink>
-    );
-    const link = navLink.find('Link');
-    expect(link.prop('className').split(' ')).toContain('nav-link');
-    expect(link.prop('className').split(' ')).toContain('active');
+    expect(navLink.container).toHaveTextContent('Some nav link content');
   });
 
-  it('disabled', () => {
-    const navLink = shallow(
-      <NavLink href="http://example.com" disabled>
-        Some text
-      </NavLink>
-    );
-    const link = navLink.find('Link');
-    const classes = link.prop('className').split(' ');
-    expect(classes).toContain('nav-link');
-    expect(classes).toContain('disabled');
-    expect(link.prop('disabled')).toBe(true);
+  test('passes href to the anchor', () => {
+    const href = '/test-href';
+    const {
+      container: {firstChild: navLink}
+    } = render(<NavLink href={href} />);
+    expect(navLink.getAttribute('href')).toBe(href);
   });
 
-  it('additional classes', () => {
-    const navLink = shallow(
-      <NavLink href="http://example.com" className="some-class">
-        Some text
+  test('applies "active" class with "active" prop', () => {
+    const {
+      container: {firstChild: navLink}
+    } = render(<NavLink active />);
+
+    expect(navLink).toHaveClass('active');
+  });
+
+  test('tracks clicks with n_clicks', () => {
+    const mockSetProps = jest.fn();
+    const navLink = render(
+      <NavLink setProps={mockSetProps}>Clickable</NavLink>
+    );
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
+
+    userEvent.click(navLink.getByText('Clickable'));
+
+    expect(mockSetProps.mock.calls).toHaveLength(1);
+    expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
+  });
+
+  test("doesn't track clicks if disabled", () => {
+    const mockSetProps = jest.fn();
+    const navLink = render(
+      <NavLink setProps={mockSetProps} disabled>
+        Clickable
       </NavLink>
     );
-    const link = navLink.find('Link');
-    const classes = link.prop('className').split(' ');
-    expect(classes).toContain('nav-link');
-    expect(classes).toContain('some-class');
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
+
+    userEvent.click(navLink.getByText('Clickable'));
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
   });
 });

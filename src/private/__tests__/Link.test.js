@@ -1,167 +1,141 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {render} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Link from '../Link';
 
-describe('Link -- presentation', () => {
-  const link = shallow(<Link href="https://example.com">inner text</Link>);
-  const anchor = link.find('a');
+describe('Link', () => {
+  test('renders a link with correct href', () => {
+    const {
+      container: {firstChild: internalLink}
+    } = render(<Link href="/internal" />);
+    const {
+      container: {firstChild: externalLink}
+    } = render(<Link href="https://external.com" />);
 
-  it('contains an anchor', () => expect(anchor).toHaveLength(1));
-
-  it('anchor contains the right text', () =>
-    expect(anchor.prop('children')).toEqual('inner text'));
-
-  it('anchor contains the right href', () =>
-    expect(anchor.prop('href')).toEqual('https://example.com'));
-});
-
-describe('Link -- behaviour', () => {
-  describe('internal link', () => {
-    let link;
-    let originalHistoryLength;
-    let clickEvent;
-
-    beforeAll(() => {
-      jsdom.reconfigure({url: 'http://starting-url.com'});
-      link = mount(<Link href="/example">inner text</Link>);
-      const anchor = link.find('a');
-      window.scrollTo = jest.fn();
-      originalHistoryLength = window.history.length;
-      clickEvent = {preventDefault: jest.fn()}; // spy on preventDefault
-      anchor.simulate('click', clickEvent);
-    });
-
-    it('redirect an internal link', () =>
-      expect(window.location.toString()).toEqual(
-        'http://starting-url.com/example'
-      ));
-
-    it('scroll the window', () => expect(window.scrollTo).toBeCalledWith(0, 0));
-
-    it('populate the window history', () =>
-      expect(window.history).toHaveLength(originalHistoryLength + 1));
-
-    it('prevent the default event handler', () =>
-      expect(clickEvent.preventDefault).toHaveBeenCalled());
-
-    afterAll(() => {
-      link.unmount();
-    });
+    expect(internalLink.getAttribute('href')).toEqual('/internal');
+    expect(externalLink.getAttribute('href')).toEqual('https://external.com');
   });
 
-  describe('external link', () => {
-    // Enzyme does translate React synthetic events into real browser events.
-    // We therefore can't easily test that the redirection happen.
-    // Here, we just test that the default behaviour isn't prevented
-    // when clicking on an anchor.
-    let link;
-    let clickEvent;
-
-    beforeAll(() => {
-      jsdom.reconfigure({url: 'http://starting-url.com'});
-      link = mount(<Link href="https://another-domain.com">inner text</Link>);
-      const anchor = link.find('a');
-      clickEvent = {preventDefault: jest.fn()}; // spy on preventDefault
-      anchor.simulate('click', clickEvent);
-    });
-
-    it('not prevent default event behaviour', () => {
-      expect(clickEvent.preventDefault).not.toHaveBeenCalled();
-    });
-
-    afterAll(() => {
-      link.unmount();
-    });
-  });
-
-  describe('relative link with external_link true', () => {
-    let link;
-    let clickEvent;
-
-    beforeAll(() => {
-      jsdom.reconfigure({url: 'http://starting-url.com'});
-      link = mount(
-        <Link href="/example" external_link={true}>
-          inner text
+  test('internal click behaviour', () => {
+    // check that default behaviour wasn't prevented by wrapping in a div
+    // where we have access to the onClick method
+    // https://github.com/testing-library/react-testing-library/issues/572#issuecomment-574804033
+    const mockPreOnClick = jest.fn();
+    const outerOnClick = jest.fn();
+    const link = render(
+      <div onClick={e => outerOnClick(e.defaultPrevented)}>
+        <Link preOnClick={mockPreOnClick} href="/internal">
+          Clickable
         </Link>
-      );
-      const anchor = link.find('a');
-      clickEvent = {preventDefault: jest.fn()}; // spy on preventDefault
-      anchor.simulate('click', clickEvent);
-    });
+      </div>
+    );
 
-    it('Not prevent default event behaviour', () => {
-      expect(clickEvent.preventDefault).not.toHaveBeenCalled();
-    });
+    const mockDispatchEvent = jest.fn();
+    const mockScrollTo = jest.fn();
+    window.dispatchEvent = mockDispatchEvent;
+    window.scrollTo = mockScrollTo;
 
-    afterAll(() => {
-      link.unmount();
-    });
+    const pushStateSpy = jest.spyOn(window.history, 'pushState');
+
+    userEvent.click(link.getByText('Clickable'));
+
+    // default behaviour prevented
+    expect(outerOnClick.mock.calls).toHaveLength(1);
+    expect(outerOnClick.mock.calls[0][0]).toBe(true);
+
+    // dash pushstate event dispatched
+    expect(mockDispatchEvent.mock.calls).toHaveLength(1);
+    expect(mockDispatchEvent.mock.calls[0][0].type).toEqual(
+      '_dashprivate_pushstate'
+    );
+
+    // scroll to top
+    expect(mockScrollTo.mock.calls).toHaveLength(1);
+    expect(mockScrollTo.mock.calls[0]).toEqual([0, 0]);
+
+    // preOnClick function called
+    expect(mockPreOnClick.mock.calls).toHaveLength(1);
+
+    // window history updated
+    expect(pushStateSpy.mock.calls).toHaveLength(1);
+    expect(pushStateSpy.mock.calls[0]).toEqual([{}, '', '/internal']);
   });
 
-  describe('external link with external_link false', () => {
-    let link;
-    let originalHistoryLength;
-    let clickEvent;
+  test('external click behaviour', () => {
+    const outerOnClick = jest.fn();
+    const link = render(
+      <div onClick={e => outerOnClick(e.defaultPrevented)}>
+        <Link href="https://external.com">Clickable</Link>
+      </div>
+    );
 
-    beforeAll(() => {
-      jsdom.reconfigure({url: 'http://starting-url.com'});
-      link = mount(
-        <Link href="http://starting-url.com/example" external_link={false}>
-          inner text
-        </Link>
-      );
-      const anchor = link.find('a');
-      window.scrollTo = jest.fn();
-      originalHistoryLength = window.history.length;
-      clickEvent = {preventDefault: jest.fn()}; // spy on preventDefault
-      anchor.simulate('click', clickEvent);
-    });
+    userEvent.click(link.getByText('Clickable'));
 
-    it('redirect an internal link', () =>
-      expect(window.location.toString()).toEqual(
-        'http://starting-url.com/example'
-      ));
-
-    it('scroll the window', () => expect(window.scrollTo).toBeCalledWith(0, 0));
-
-    it('populate the window history', () =>
-      expect(window.history).toHaveLength(originalHistoryLength + 1));
-
-    it('prevent the default event handler', () =>
-      expect(clickEvent.preventDefault).toHaveBeenCalled());
-
-    afterAll(() => {
-      link.unmount();
-    });
+    // default link behaviour not prevented
+    expect(outerOnClick.mock.calls).toHaveLength(1);
+    expect(outerOnClick.mock.calls[0][0]).toBe(false);
   });
 
-  describe('do nothing if disabled is true', () => {
-    let link;
-    let clickEvent;
-
-    beforeAll(() => {
-      jsdom.reconfigure({url: 'http://starting-url.com'});
-      link = mount(
-        <Link href="http://example.com" disabled={true}>
-          inner text
+  test('"external_link" prop creates external link', () => {
+    const outerOnClick = jest.fn();
+    const link = render(
+      <div onClick={e => outerOnClick(e.defaultPrevented)}>
+        <Link href="/external" external_link>
+          Clickable
         </Link>
+      </div>
+    );
+
+    userEvent.click(link.getByText('Clickable'));
+
+    // default link behaviour not prevented
+    expect(outerOnClick.mock.calls).toHaveLength(1);
+    expect(outerOnClick.mock.calls[0][0]).toBe(false);
+  });
+
+  describe('does nothing if disabled', () => {
+    let outerOnClick;
+
+    beforeEach(() => {
+      outerOnClick = jest.fn();
+    });
+
+    test('internal', () => {
+      const link = render(
+        <div onClick={e => outerOnClick(e.defaultPrevented)}>
+          <Link href="/internal" disabled>
+            Clickable
+          </Link>
+        </div>
       );
-      const anchor = link.find('a');
-      clickEvent = {preventDefault: jest.fn()}; // spy on preventDefault
-      anchor.simulate('click', clickEvent);
+
+      const mockDispatchEvent = jest.fn();
+      const mockScrollTo = jest.fn();
+      window.dispatchEvent = mockDispatchEvent;
+      window.scrollTo = mockScrollTo;
+
+      userEvent.click(link.getByText('Clickable'));
+
+      expect(outerOnClick.mock.calls).toHaveLength(1);
+      expect(outerOnClick.mock.calls[0][0]).toBe(true);
+
+      expect(mockDispatchEvent.mock.calls).toHaveLength(0);
+      expect(mockScrollTo.mock.calls).toHaveLength(0);
     });
 
-    it('prevent default event behaviour', () => {
-      expect(clickEvent.preventDefault).toHaveBeenCalled();
-    });
+    test('external', () => {
+      const link = render(
+        <div onClick={e => outerOnClick(e.defaultPrevented)}>
+          <Link href="https://external.com" disabled>
+            Clickable
+          </Link>
+        </div>
+      );
 
-    it('not change the location', () => {
-      expect(window.location.toString()).toEqual('http://starting-url.com/');
-    });
+      userEvent.click(link.getByText('Clickable'));
 
-    afterAll(() => {
-      link.unmount();
+      expect(outerOnClick.mock.calls).toHaveLength(1);
+      expect(outerOnClick.mock.calls[0][0]).toBe(true);
     });
   });
 });

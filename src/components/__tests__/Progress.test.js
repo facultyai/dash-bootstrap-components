@@ -1,0 +1,88 @@
+import React from 'react';
+import {render} from '@testing-library/react';
+import Progress from '../Progress';
+
+describe('Progress', () => {
+  test('renders a div with class "progress"', () => {
+    const progress = render(<Progress />);
+
+    expect(progress.container.querySelector('div.progress')).not.toBe(null);
+    expect(
+      progress.container.querySelector('div.progress > div.progress-bar')
+    ).not.toBe(null);
+  });
+
+  test('sets progress with the "value" prop', () => {
+    const {
+      container: {firstChild: progress},
+      rerender
+    } = render(<Progress value={50} />);
+
+    expect(progress.firstChild).toHaveStyle({width: '50%'});
+
+    rerender(<Progress value={75} />);
+
+    expect(progress.firstChild).toHaveStyle({width: '75%'});
+  });
+
+  test('renders its content', () => {
+    const {
+      container: {firstChild: progress}
+    } = render(<Progress value={25}>25%</Progress>);
+
+    expect(progress.firstChild).toHaveTextContent('25%');
+  });
+
+  test('applies contextual colors with "color" prop', () => {
+    const {
+      container: {firstChild: progressPrimary}
+    } = render(<Progress color="primary" />);
+    const {
+      container: {firstChild: progressSuccess}
+    } = render(<Progress color="success" />);
+    const {
+      container: {firstChild: progressDark}
+    } = render(<Progress color="dark" />);
+
+    expect(progressPrimary.firstChild).toHaveClass('bg-primary');
+    expect(progressSuccess.firstChild).toHaveClass('bg-success');
+    expect(progressDark.firstChild).toHaveClass('bg-dark');
+  });
+
+  test('bars can be nested with "bar" prop', () => {
+    const {
+      container: {firstChild: progress}
+    } = render(
+      <Progress>
+        <Progress value={25} color="success" bar />
+        <Progress value={25} color="warning" bar />
+        <Progress value={25} color="danger" bar />
+      </Progress>
+    );
+
+    expect(progress.firstChild.children[0]).toHaveClass(
+      'progress-bar bg-success'
+    );
+    expect(progress.firstChild.children[1]).toHaveClass(
+      'progress-bar bg-warning'
+    );
+    expect(progress.firstChild.children[2]).toHaveClass(
+      'progress-bar bg-danger'
+    );
+  });
+
+  test('applies additional CSS classes when props are set', () => {
+    // striped progress
+    const {
+      container: {firstChild: progressStriped}
+    } = render(<Progress striped />);
+
+    expect(progressStriped.firstChild).toHaveClass('progress-bar-striped');
+
+    const {
+      container: {firstChild: progressAnimated}
+    } = render(<Progress striped animated />);
+
+    expect(progressAnimated.firstChild).toHaveClass('progress-bar-animated');
+  });
+});
