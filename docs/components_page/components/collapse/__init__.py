@@ -11,9 +11,7 @@ from ...helpers import (
 )
 from ...metadata import get_component_metadata
 
-ACCORDION = (
-    "https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example"
-)  # noqa
+ACCORDION = "https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example"  # noqa
 
 HERE = Path(__file__).parent
 
