@@ -2,28 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {DropdownItem as RSDropdownItem} from 'reactstrap';
-import Link from '../private/Link';
+
+import Link, {isExternalLink} from '../../private/Link';
+import {DropdownMenuContext} from './DropdownMenuContext';
 
 class DropdownMenuItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.incrementClicks = this.incrementClicks.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  incrementClicks() {
+  handleClick(e) {
     if (!this.props.disabled && this.props.setProps) {
       this.props.setProps({
         n_clicks: this.props.n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
+    const {external_link, href} = this.props;
+    if (href && !isExternalLink(external_link, href)) {
+      if (this.props.toggle && this.context.isOpen) {
+        this.context.toggle(e);
+      }
+    }
   }
 
   render() {
     let {children, href, loading_state, ...otherProps} = this.props;
     const useLink = href && !this.props.disabled;
-    otherProps[useLink ? 'preOnClick' : 'onClick'] = this.incrementClicks;
+    otherProps[useLink ? 'preOnClick' : 'onClick'] = e => this.handleClick(e);
     return (
       <RSDropdownItem
         tag={useLink ? Link : 'button'}
@@ -99,6 +107,11 @@ DropdownMenuItem.propTypes = {
   href: PropTypes.string,
 
   /**
+   * Whether to toggle the DropdownMenu on click. Default: True.
+   */
+  toggle: PropTypes.bool,
+
+  /**
    * If true, the browser will treat this as an external link,
    * forcing a page refresh at the new location. If false,
    * this just changes the location without triggering a page
@@ -142,7 +155,10 @@ DropdownMenuItem.propTypes = {
 
 DropdownMenuItem.defaultProps = {
   n_clicks: 0,
-  n_clicks_timestamp: -1
+  n_clicks_timestamp: -1,
+  toggle: true
 };
+
+DropdownMenuItem.contextType = DropdownMenuContext;
 
 export default DropdownMenuItem;

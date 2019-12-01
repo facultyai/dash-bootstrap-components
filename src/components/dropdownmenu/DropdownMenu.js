@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Dropdown, DropdownToggle} from 'reactstrap';
 import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
+import {DropdownMenuContext} from './DropdownMenuContext';
 
 class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.getContextValue = this.getContextValue.bind(this);
+
     this.state = {
       dropdownOpen: false
     };
@@ -20,6 +23,13 @@ class DropdownMenu extends React.Component {
         dropdownOpen: !prevState.dropdownOpen
       }));
     }
+  }
+
+  getContextValue() {
+    return {
+      toggle: this.toggle,
+      isOpen: this.state.dropdownOpen
+    };
   }
 
   render() {
@@ -40,31 +50,33 @@ class DropdownMenu extends React.Component {
       ...otherProps
     } = this.props;
     return (
-      <Dropdown
-        isOpen={this.state.dropdownOpen}
-        toggle={this.toggle}
-        nav={nav}
-        disabled={disabled}
-        inNavbar={in_navbar}
-        addonType={addon_type}
-        size={bs_size}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        <DropdownToggle
+      <DropdownMenuContext.Provider value={this.getContextValue()}>
+        <Dropdown
+          isOpen={this.state.dropdownOpen}
+          toggle={this.toggle}
           nav={nav}
-          caret={caret}
           disabled={disabled}
-          color={color}
-          style={toggle_style}
-          className={toggleClassName}
+          inNavbar={in_navbar}
+          addonType={addon_type}
+          size={bs_size}
+          {...omit(['setProps'], otherProps)}
+          data-dash-is-loading={
+            (loading_state && loading_state.is_loading) || undefined
+          }
         >
-          {label}
-        </DropdownToggle>
-        <RSDropdownMenu right={right}>{this.props.children}</RSDropdownMenu>
-      </Dropdown>
+          <DropdownToggle
+            nav={nav}
+            caret={caret}
+            disabled={disabled}
+            color={color}
+            style={toggle_style}
+            className={toggleClassName}
+          >
+            {label}
+          </DropdownToggle>
+          <RSDropdownMenu right={right}>{this.props.children}</RSDropdownMenu>
+        </Dropdown>
+      </DropdownMenuContext.Provider>
     );
   }
 }
