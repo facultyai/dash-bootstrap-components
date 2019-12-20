@@ -75,7 +75,16 @@ ListGroup.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * Set to True for a horizontal ListGroup, or supply one of the breakpoints
+   * as a string for a ListGroup that is horizontal at that breakpoint and up.
+   *
+   * Note that horizontal ListGroups cannot be combined with flush ListGroups,
+   * so if flush is True then horizontal has no effect.
+   */
+  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default ListGroup;
