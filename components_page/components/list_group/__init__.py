@@ -13,6 +13,7 @@ from ...metadata import get_component_metadata
 from .active import list_group as list_group_active
 from .colors import list_group as list_group_colors
 from .content import list_group as list_group_content
+from .horizontal import list_group as list_group_horizontal
 from .simple import list_group as list_group_simple
 
 HERE = Path(__file__).parent
@@ -22,6 +23,7 @@ list_group_active_source = (HERE / "active.py").read_text()
 list_group_links_source = (HERE / "links.py").read_text()
 list_group_colors_source = (HERE / "colors.py").read_text()
 list_group_content_source = (HERE / "content.py").read_text()
+list_group_horizontal_source = (HERE / "horizontal.py").read_text()
 
 
 def get_content(app):
@@ -86,6 +88,24 @@ def get_content(app):
         ),
         ExampleContainer(list_group_content),
         HighlightedSource(list_group_content_source),
+        html.H4("Horizontal"),
+        html.P(
+            dcc.Markdown(
+                "You can create a horizontal list group by setting "
+                "`horizontal=True`. Alternatively, supply one of the "
+                "Bootstrap breakpoints for a list group that is horizontal at "
+                "that breakpoint and up."
+            )
+        ),
+        html.P(
+            dcc.Markdown(
+                "In the below example, the first list group is always "
+                "horizontal, the second is horizontal at the large breakpoint "
+                "and up, and stacks vertically on smaller screens."
+            )
+        ),
+        ExampleContainer(list_group_horizontal),
+        HighlightedSource(list_group_horizontal_source),
         ApiDoc(
             get_component_metadata("src/components/listgroup/ListGroup.js"),
             component_name="ListGroup",
