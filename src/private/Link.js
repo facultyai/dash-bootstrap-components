@@ -20,6 +20,13 @@ function CustomEvent(event, params) {
 }
 CustomEvent.prototype = window.Event.prototype;
 
+function isExternalLink(external_link, href) {
+  if (typeof external_link === 'undefined' || external_link === null) {
+    return isAbsoluteUrl(href);
+  }
+  return external_link;
+}
+
 class Link extends Component {
   /**
    * This component can be used either as a dash-core-components style link or
@@ -30,14 +37,6 @@ class Link extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
-  isExternalLink() {
-    const {external_link, href} = this.props;
-    if (typeof external_link === 'undefined' || external_link === null) {
-      return isAbsoluteUrl(href);
-    }
-    return external_link;
-  }
-
   updateLocation(e) {
     if (this.props.disabled) {
       e.preventDefault();
@@ -46,7 +45,8 @@ class Link extends Component {
     if (this.props.preOnClick) {
       this.props.preOnClick();
     }
-    if (!this.isExternalLink()) {
+    const {external_link, href} = this.props;
+    if (!isExternalLink(external_link, href)) {
       // prevent anchor from updating location
       e.preventDefault();
       const {href} = this.props;
@@ -141,4 +141,4 @@ Link.defaultProps = {
   external_link: null
 };
 
-export default Link;
+export {Link as default, isExternalLink};
