@@ -1,14 +1,16 @@
 .dash-bootstrap {
   .Select-control {
-    height: $input-height;
-    @include font-size($input-font-size);
-    font-family: $input-font-family;
-    font-weight: $input-font-weight;
-    line-height: $input-line-height;
-    color: $input-color;
     background-color: $input-bg;
     background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
+    color: $input-color;
+
+    font-family: $input-font-family;
+    @include font-size($input-font-size);
+    font-weight: $input-font-weight;
+    height: $input-height;
+    line-height: $input-line-height;
+
     @include border-radius($input-border-radius, 0);
     @include transition($input-transition);
 
@@ -32,21 +34,11 @@
     background-color: $input-disabled-bg;
   }
 
-  .Select--multi {
-    .Select-value {
-      @include border-radius($input-border-radius / 2, 0);
-      color: theme-color("primary");
-      border-color: rgba(theme-color("primary"), 0.25);
-      background-color: rgba(theme-color("primary"), 0.1);
-    }
-
-    .Select-value-icon {
-      border-right-color: rgba(theme-color("primary"), 0.25);
-    }
-  }
-
   .has-value.Select--single > .Select-control .Select-value .Select-value-label,
-  .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+  .has-value.is-pseudo-focused.Select--single
+    > .Select-control
+    .Select-value
+    .Select-value-label {
     color: $input-color;
   }
 
@@ -63,10 +55,55 @@
   .Select--single > .Select-control .Select-value,
   .Select-placeholder {
     line-height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
+    padding-left: $input-padding-x;
+    padding-right: $input-padding-x;
   }
 
   .Select-input {
     height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2});
+    padding: 0;
+    margin-left: $input-padding-x;
+
+    & > input {
+      line-height: $input-line-height;
+      padding-top: $input-padding-y;
+      padding-bottom: $input-padding-y;
+    }
+  }
+
+  .Select--multi {
+    .Select-value {
+      background-color: rgba(theme-color("primary"), 0.1);
+      border-color: rgba(theme-color("primary"), 0.25);
+      @include border-radius($input-border-radius / 2, 0);
+      box-sizing: content-box;
+      font-size: $input-font-size;
+      color: theme-color("primary");
+      height: calc(#{$input-font-size} * #{$input-line-height});
+      margin-top: calc(#{$input-padding-y} - 1px);
+    }
+
+    .Select-value-icon {
+      border-right-color: rgba(theme-color("primary"), 0.25);
+      line-height: calc(#{$input-font-size} * #{$input-line-height});
+      padding-top: 0;
+      padding-bottom: 0;
+
+      &:hover {
+        background-color: rgba(theme-color("primary"), 0.2);
+        color: theme-color("primary");
+        @include border-radius($input-border-radius / 2, 0);
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+
+    .Select-value-label {
+      padding-top: 0;
+      padding-bottom: 0;
+      line-height: calc(#{$input-font-size} * #{$input-line-height});
+      height: calc(#{$input-font-size} * #{$input-line-height});
+    }
   }
 
   .Select-menu-outer {
@@ -84,12 +121,14 @@
     box-shadow: none;
     color: $input-color;
   }
+
   // !important is necessary to override inline styles
   .VirtualizedSelectOption {
-    height: calc(1.5em + 0.75rem)!important;
+    height: calc(1.5em + 0.75rem) !important;
+    padding-left: $input-padding-x;
   }
 
   .VirtualizedSelectFocusedOption {
-    background-color: rgba(theme-color("primary"), 0.1)!important;
+    background-color: rgba(theme-color("primary"), 0.1) !important;
   }
 }

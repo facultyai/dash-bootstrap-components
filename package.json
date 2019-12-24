@@ -12,6 +12,7 @@
     "build:lib": "webpack --config=webpack/config.lib.js",
     "build:py": "mkdirp dash_bootstrap_components/_components && dash-generate-components ./src/components dash_bootstrap_components/_components && move-cli dash_bootstrap_components/_components/_imports_.py dash_bootstrap_components/_components/__init__.py",
     "build:css": "grunt build",
+    "grunt": "grunt",
     "format": "prettier src/**/*.js --write",
     "lint": "prettier src/**/*.js --list-different",
     "prepublish": "NODE_ENV=production npm run build-dist && NODE_ENV=production npm run build:lib",
