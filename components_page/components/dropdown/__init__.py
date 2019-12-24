@@ -137,11 +137,15 @@ def get_content(app):
         ExampleContainer(dropdown_content),
         HighlightedSource(dropdown_content_source),
         ApiDoc(
-            get_component_metadata("src/components/DropdownMenu.js"),
+            get_component_metadata(
+                "src/components/dropdownmenu/DropdownMenu.js"
+            ),
             component_name="DropdownMenu",
         ),
         ApiDoc(
-            get_component_metadata("src/components/DropdownMenuItem.js"),
+            get_component_metadata(
+                "src/components/dropdownmenu/DropdownMenuItem.js"
+            ),
             component_name="DropdownMenuItem",
         ),
     ]
