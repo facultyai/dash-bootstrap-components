@@ -30,7 +30,9 @@ class Input extends React.Component {
       ) {
         return;
       }
-      return convert(value) || null;
+      else if (isNaN(convert(value))) {
+        return null;
+      } else return convert(value);
     } else return value;
   }
 
