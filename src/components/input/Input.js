@@ -20,17 +20,17 @@ class Input extends React.Component {
 
   parseValue(value) {
     if (this.props.type === 'number') {
-      if (
-        (!isEmpty(this.props.min) &&
-          convert(value) &&
-          convert(value) < this.props.min) ||
-        (!isEmpty(this.props.max) &&
-          convert(value) &&
-          convert(value) > this.props.max)
+      const convertedValue = convert(value);
+      if (isNaN(convertedValue)) {
+        return;
+      }
+      else if (
+        (!isEmpty(this.props.min) && convertedValue < this.props.min) ||
+        (!isEmpty(this.props.max) && convertedValue > this.props.max)
       ) {
         return;
       }
-      return convert(value) || null;
+      else return convertedValue;
     } else return value;
   }
 
