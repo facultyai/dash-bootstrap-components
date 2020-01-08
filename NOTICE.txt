@@ -1,0 +1,6 @@
+dash-bootstrap-components
+Copyright 2018-2020 Faculty Science Limited
+
+This product includes software developed at Faculty Science Limited (https://faculty.ai/).
+
+The dash-bootstrap-components logo was designed by Bureau Bureau (https://bureaubureau.uk/).
