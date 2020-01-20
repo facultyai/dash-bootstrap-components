@@ -1,0 +1,11 @@
+.dbcd-masthead {
+    position: relative;
+    padding: 3rem 15px;
+}
+
+@media (min-width: 576px) {
+  .dbcd-masthead {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}

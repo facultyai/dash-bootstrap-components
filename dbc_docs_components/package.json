@@ -1,0 +1,56 @@
+{
+  "name": "dbc_docs_components",
+  "version": "0.0.1",
+  "description": "Components for dash-bootstrap-components-docs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/facultyai/dbc-docs-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/facultyai/dbc-docs-components/issues"
+  },
+  "homepage": "https://github.com/facultyai/dbc-docs-components",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "webpack-serve --config ./webpack.serve.config.js --open",
+    "validate-init": "python _validate_init.py",
+    "build:js": "webpack --mode production",
+    "build:py": "dash-generate-components ./src/components dbc_docs_components -p package-info.json",
+    "build": "npm run build:js && npm run build:py"
+  },
+  "author": "Tom Begley <tom@faculty.ai>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "prismjs": "^1.19.0",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-prismjs": "^2.0.1",
+    "copyfiles": "^2.1.1",
+    "css-loader": "^3.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-react": "^7.14.2",
+    "npm": "^6.1.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-docgen": "^4.1.1",
+    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "styled-jsx": "^3.2.1",
+    "webpack": "4.36.1",
+    "webpack-cli": "3.3.6",
+    "webpack-serve": "3.1.0"
+  },
+  "engines": {
+    "node": ">=8.11.0",
+    "npm": ">=6.1.0"
+  }
+}
