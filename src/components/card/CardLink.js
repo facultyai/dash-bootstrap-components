@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import classNames from 'classnames';
 import {CardLink as RSCardLink} from 'reactstrap';
 import Link from '../../private/Link';
 
@@ -94,7 +93,12 @@ CardLink.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * Target attribute to pass on to the link. Only applies to external links.
+   */
+  target: PropTypes.string
 };
 
 export default CardLink;

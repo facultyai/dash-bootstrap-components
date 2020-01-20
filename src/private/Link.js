@@ -131,7 +131,9 @@ Link.propTypes = {
   /**
    * Function to be executed on click before the redirect logic of Link.
    */
-  preOnClick: PropTypes.func
+  preOnClick: PropTypes.func,
+
+  target: PropTypes.string
 };
 
 Link.defaultProps = {

@@ -4,7 +4,14 @@ import {Badge as RSBadge} from 'reactstrap';
 import Link from '../private/Link';
 
 const Badge = props => {
-  const {children, href, loading_state, setProps, ...otherProps} = props;
+  const {
+    children,
+    href,
+    loading_state,
+    setProps,
+    target,
+    ...otherProps
+  } = props;
 
   const incrementClicks = () => {
     if (setProps) {
@@ -126,7 +133,12 @@ Badge.propTypes = {
    * at which n_clicks changed. This can be used to tell
    * which button was changed most recently.
    */
-  n_clicks_timestamp: PropTypes.number
+  n_clicks_timestamp: PropTypes.number,
+
+  /**
+   * Target attribute to pass on to the link. Only applies to external links.
+   */
+  target: PropTypes.string
 };
 
 export default Badge;

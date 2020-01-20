@@ -21,12 +21,13 @@ class ListGroupItem extends React.Component {
   }
 
   render() {
-    let {children, loading_state, ...otherProps} = this.props;
+    let {children, loading_state, target, ...otherProps} = this.props;
     const useLink = this.props.href && !this.props.disabled;
     otherProps[useLink ? 'preOnClick' : 'onClick'] = this.incrementClicks;
     return (
       <RSListGroupItem
         tag={useLink ? Link : 'li'}
+        target={useLink && target}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
@@ -138,7 +139,12 @@ ListGroupItem.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * Target attribute to pass on to the link. Only applies to external links.
+   */
+  target: PropTypes.string
 };
 
 export default ListGroupItem;
