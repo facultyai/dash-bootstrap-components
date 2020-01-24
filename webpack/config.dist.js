@@ -34,7 +34,7 @@ module.exports = {
     main: './index.js'
   },
   output: {
-    library: LIBRARY_NAME + '/_components',
+    library: LIBRARY_NAME,
     libraryTarget: 'window',
     path: BUILD_PATH,
     filename: LIBRARY_NAME + '.min.js'

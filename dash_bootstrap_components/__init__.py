@@ -4,8 +4,8 @@ import sys
 from . import themes  # noqa
 from . import _components
 from ._components import *  # noqa
+from ._table import _generate_table_from_df
 from ._version import __version__  # noqa
-from .table import _generate_table_from_df
 
 _current_path = os.path.dirname(os.path.abspath(__file__))
 
