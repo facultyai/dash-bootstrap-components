@@ -10,6 +10,7 @@ const Button = props => {
     loading_state,
     setProps,
     n_clicks,
+    target,
     ...otherProps
   } = props;
 
@@ -27,6 +28,7 @@ const Button = props => {
   return (
     <RSButton
       tag={useLink ? Link : 'button'}
+      target={useLink && target}
       href={props.disabled ? null : href}
       {...otherProps}
       data-dash-is-loading={
@@ -160,7 +162,12 @@ Button.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * Target attribute to pass on to link if using Button as an external link.
+   */
+  target: PropTypes.string
 };
 
 export default Button;

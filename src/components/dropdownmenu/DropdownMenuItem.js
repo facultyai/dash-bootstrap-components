@@ -29,7 +29,7 @@ class DropdownMenuItem extends React.Component {
   }
 
   render() {
-    let {children, href, loading_state, ...otherProps} = this.props;
+    let {children, href, loading_state, target, ...otherProps} = this.props;
     const useLink = href && !this.props.disabled;
     otherProps[useLink ? 'preOnClick' : 'onClick'] = e => this.handleClick(e);
     return (
@@ -38,6 +38,7 @@ class DropdownMenuItem extends React.Component {
         // don't pass href if disabled otherwise reactstrap renders item
         // as link and the cursor becomes a pointer on hover
         href={this.props.disabled ? null : href}
+        target={useLink && target}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
@@ -150,7 +151,12 @@ DropdownMenuItem.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * Target attribute to pass on to the link. Only applies to external links.
+   */
+  target: PropTypes.string
 };
 
 DropdownMenuItem.defaultProps = {

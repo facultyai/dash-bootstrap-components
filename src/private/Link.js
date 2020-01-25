@@ -58,14 +58,26 @@ class Link extends Component {
   }
 
   render() {
-    const {children, external_link, preOnClick, ...otherProps} = this.props;
+    const {
+      children,
+      external_link,
+      preOnClick,
+      target,
+      href,
+      ...otherProps
+    } = this.props;
     /**
      * ideally, we would use cloneElement however
      * that doesn't work with dash's recursive
      * renderTree implementation for some reason
      */
     return (
-      <a {...otherProps} onClick={e => this.updateLocation(e)}>
+      <a
+        href={href}
+        target={isExternalLink(external_link, href) && target}
+        {...otherProps}
+        onClick={e => this.updateLocation(e)}
+      >
         {children}
       </a>
     );
@@ -131,7 +143,9 @@ Link.propTypes = {
   /**
    * Function to be executed on click before the redirect logic of Link.
    */
-  preOnClick: PropTypes.func
+  preOnClick: PropTypes.func,
+
+  target: PropTypes.string
 };
 
 Link.defaultProps = {
