@@ -34,7 +34,6 @@ const Navbar = props => {
 };
 
 Navbar.defaultProps = {
-  fluid: false,
   color: 'light',
   light: true,
   expand: 'md'

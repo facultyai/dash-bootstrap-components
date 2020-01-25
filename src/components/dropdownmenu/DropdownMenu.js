@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Dropdown, DropdownToggle} from 'reactstrap';
 import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
-import {DropdownMenuContext} from './DropdownMenuContext';
+import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 
 class DropdownMenu extends React.Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import {omit} from 'ramda';
 import {DropdownItem as RSDropdownItem} from 'reactstrap';
 
 import Link, {isExternalLink} from '../../private/Link';
-import {DropdownMenuContext} from './DropdownMenuContext';
+import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 
 class DropdownMenuItem extends React.Component {
   constructor(props) {
