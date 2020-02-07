@@ -51,7 +51,7 @@ class Link extends Component {
       e.preventDefault();
       const {href} = this.props;
       window.history.pushState({}, '', href);
-      window.dispatchEvent(new CustomEvent('onpushstate'));
+      window.dispatchEvent(new CustomEvent('_dashprivate_pushstate'));
       // scroll back to top
       window.scrollTo(0, 0);
     }
