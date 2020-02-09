@@ -4,20 +4,17 @@ import {omit, type} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 
 const Spinner = props => {
-  const {children, loading_state, spinnerStyle, ...otherProps} = props;
-  let modSpinnerStyle;
-  if (children) {
-    // this spacing is consistent with the behaviour of dcc.Loading
-    // it can be overridden with spinnerStyle
-    modSpinnerStyle = {display: 'block', margin: '1rem auto'};
-  } else {
-    modSpinnerStyle = {};
-  }
-  modSpinnerStyle = {...modSpinnerStyle, ...spinnerStyle};
+  const {children, loading_state, spinner_style, ...otherProps} = props;
+  // this spacing is consistent with the behaviour of dcc.Loading
+  // it can be overridden with spinnerStyle
+  const defaultSpinnerStyle = children
+    ? {display: 'block', margin: '1rem auto'}
+    : {};
+  const spinnerStyle = {...defaultSpinnerStyle, ...spinner_style};
   if (!children || (loading_state && loading_state.is_loading)) {
     return (
       <RSSpinner
-        style={modSpinnerStyle}
+        style={spinnerStyle}
         {...omit(['setProps', 'className', 'style'], otherProps)}
       />
     );
@@ -51,7 +48,7 @@ Spinner.propTypes = {
   /**
    * Inline CSS styles to apply to the spinner.
    */
-  spinnerStyle: PropTypes.object,
+  spinner_style: PropTypes.object,
 
   /**
    * Often used with CSS to style elements with common properties.
