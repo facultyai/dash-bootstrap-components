@@ -21,7 +21,7 @@ from .components.nav import get_content as get_nav_content
 from .components.navbar import get_content as get_navbar_content
 from .components.popover import get_content as get_popover_content
 from .components.progress import get_content as get_progress_content
-from .components.spinner import content as spinner_content
+from .components.spinner import get_content as get_spinner_content
 from .components.table import content as table_content
 from .components.tabs import get_content as get_tabs_content
 from .components.toast import get_content as get_toast_content
@@ -103,7 +103,7 @@ class ComponentsPage:
             "navbar": get_navbar_content(self._app),
             "popover": get_popover_content(self._app),
             "progress": get_progress_content(self._app),
-            "spinner": spinner_content,
+            "spinner": get_spinner_content(self._app),
             "table": table_content,
             "tabs": get_tabs_content(self._app),
             "toast": get_toast_content(self._app),
