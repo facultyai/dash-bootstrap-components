@@ -4,14 +4,46 @@ import {omit, type} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 
 const Spinner = props => {
-  const {children, loading_state, spinner_style, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    spinner_style,
+    fullscreen,
+    ...otherProps
+  } = props;
   // this spacing is consistent with the behaviour of dcc.Loading
   // it can be overridden with spinnerStyle
-  const defaultSpinnerStyle = children
+  let defaultSpinnerStyle = children
     ? {display: 'block', margin: '1rem auto'}
     : {};
-  const spinnerStyle = {...defaultSpinnerStyle, ...spinner_style};
+
+  const spinnerStyle = children
+    ? {...defaultSpinnerStyle, ...spinner_style}
+    : spinner_style;
   if (!children || (loading_state && loading_state.is_loading)) {
+    if (fullscreen) {
+      return (
+        <div
+          style={{
+            position: 'fixed',
+            width: '100vw',
+            height: '100vh',
+            top: 0,
+            left: 0,
+            backgroundColor: 'white',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 99
+          }}
+        >
+          <RSSpinner
+            style={spinnerStyle}
+            {...omit(['setProps', 'className', 'style'], otherProps)}
+          />
+        </div>
+      );
+    }
     return (
       <RSSpinner
         style={spinnerStyle}
@@ -74,7 +106,13 @@ Spinner.propTypes = {
   /**
    * The spinner size. Options are 'sm', 'md' and 'lg'.
    */
-  size: PropTypes.string
+  size: PropTypes.string,
+
+  /**
+   * Boolean that determines if the loading spinner will be displayed
+   * full-screen or not.
+   */
+  fullscreen: PropTypes.bool
 };
 
 export default Spinner;
