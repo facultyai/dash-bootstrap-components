@@ -99,8 +99,9 @@ def get_content(app):
         html.H4("Buttons"),
         html.P(
             dcc.Markdown(
-                "The `Spinner` component can be used inside buttons to indicate "
-                "that an action is currently processing or taking place."
+                "The `Spinner` component can be used inside buttons to "
+                "indicate that an action is currently processing or taking "
+                "place."
             )
         ),
         ExampleContainer(spinners_button),
