@@ -2,7 +2,6 @@ from pathlib import Path
 
 import dash_bootstrap_components as dbc
 
-from .components.alert import get_content as get_alert_content
 from .components.badge import content as badge_content
 from .components.button import get_content as get_button_content
 from .components.button_group import content as button_group_content
@@ -26,7 +25,7 @@ from .components.table import content as table_content
 from .components.tabs import get_content as get_tabs_content
 from .components.toast import get_content as get_toast_content
 from .components.tooltip import content as tooltip_content
-from .markdown_parser import parse
+from .markdown_parser import MarkdownParser
 from .sidebar import Sidebar, SidebarEntry
 
 HERE = Path(__file__).parent
@@ -84,8 +83,9 @@ def component_page(body_elements, active_item):
 class ComponentsPage:
     def __init__(self, app):
         self._app = app
+        md_parser = MarkdownParser(self._app)
         self._component_bodies = {
-            "alert": parse(COMPONENTS / "alert.md"),
+            "alert": md_parser.parse(COMPONENTS / "alert.md"),
             "badge": badge_content,
             "button": get_button_content(self._app),
             "button_group": button_group_content,
