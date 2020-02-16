@@ -26,6 +26,7 @@ from .components.table import content as table_content
 from .components.tabs import get_content as get_tabs_content
 from .components.toast import get_content as get_toast_content
 from .components.tooltip import content as tooltip_content
+from .markdown_parser import parse
 from .sidebar import Sidebar, SidebarEntry
 
 HERE = Path(__file__).parent
@@ -84,7 +85,7 @@ class ComponentsPage:
     def __init__(self, app):
         self._app = app
         self._component_bodies = {
-            "alert": get_alert_content(self._app),
+            "alert": parse(COMPONENTS / "alert.md"),
             "badge": badge_content,
             "button": get_button_content(self._app),
             "button_group": button_group_content,
