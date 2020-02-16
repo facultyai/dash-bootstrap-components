@@ -4,7 +4,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-from components_page import ComponentsPage
 from demos.demo_layout import DemoLayoutPage
 
 BOOTSTRAP_CSS = dbc.themes.BOOTSTRAP
@@ -32,7 +31,6 @@ class App:
     def __init__(self, app):
         self._app = app
         self.pages = {
-            "components": ComponentsPage(self._app),
             "demo-layout": DemoLayoutPage(),
         }
         self._create_layout()

@@ -11,57 +11,10 @@ from .sidebar import Sidebar, SidebarEntry
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 
-GITHUB_LINK = "https://github.com/facultyai/dash-bootstrap-components"
-
-NAVBAR = dbc.NavbarSimple(
-    brand="Dash Bootstrap Components",
-    brand_href="/",
-    brand_external_link=True,
-    sticky="top",
-    children=[dbc.NavItem(dbc.NavLink("GitHub", href=GITHUB_LINK))],
-)
 LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text()
 
 
-sidebar_entries = [
-    SidebarEntry("alert", "Alert"),
-    SidebarEntry("badge", "Badge"),
-    SidebarEntry("button", "Buttons"),
-    SidebarEntry("button_group", "Button Group"),
-    SidebarEntry("card", "Card"),
-    SidebarEntry("collapse", "Collapse"),
-    SidebarEntry("dropdown_menu", "Dropdown Menu"),
-    SidebarEntry("fade", "Fade"),
-    SidebarEntry("form", "Form"),
-    SidebarEntry("input", "Input"),
-    SidebarEntry("input_group", "Input Group"),
-    SidebarEntry("jumbotron", "Jumbotron"),
-    SidebarEntry("layout", "Layout"),
-    SidebarEntry("list_group", "List Group"),
-    SidebarEntry("modal", "Modal"),
-    SidebarEntry("nav", "Navs"),
-    SidebarEntry("navbar", "Navbar"),
-    SidebarEntry("popover", "Popover"),
-    SidebarEntry("progress", "Progress"),
-    SidebarEntry("spinner", "Spinners"),
-    SidebarEntry("table", "Table"),
-    SidebarEntry("tabs", "Tabs"),
-    SidebarEntry("toast", "Toast"),
-    SidebarEntry("tooltip", "Tooltip"),
-]
 
-
-def component_page(body_elements, active_item):
-    sidebar_contents = Sidebar(sidebar_entries, active_item)
-    body_column = dbc.Col(body_elements, md=9)
-    sidebar_column = dbc.Col(sidebar_contents, md=3, className="docs-sidebar")
-    page_body = dbc.Container(
-        dbc.Row([body_column, sidebar_column]), className="docs-content"
-    )
-    return [NAVBAR, page_body]
-
-
-class ComponentsPage:
     def __init__(self, app):
         self._app = app
         md_parser = MarkdownParser(self._app)
