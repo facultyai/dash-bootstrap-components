@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
 import {Badge as RSBadge} from 'reactstrap';
 import Link from '../private/Link';
 
 const Badge = props => {
-  const {
-    children,
-    href,
-    loading_state,
-    setProps,
-    target,
-    ...otherProps
-  } = props;
+  const {children, href, loading_state, setProps, ...otherProps} = props;
 
   const incrementClicks = () => {
     if (setProps) {
@@ -28,8 +22,7 @@ const Badge = props => {
     <RSBadge
       tag={href && Link}
       href={href}
-      target={href && target}
-      {...otherProps}
+      {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
