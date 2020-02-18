@@ -28,7 +28,7 @@ const Button = props => {
   return (
     <RSButton
       tag={useLink ? Link : 'button'}
-      target={useLink && target}
+      target={useLink ? target : null}
       href={props.disabled ? null : href}
       {...otherProps}
       data-dash-is-loading={

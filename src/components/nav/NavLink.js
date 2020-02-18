@@ -36,7 +36,7 @@ class NavLink extends React.Component {
       <Link
         className={classes}
         preOnClick={this.incrementClicks}
-        {...omit(['setProps'], otherProps)}
+        {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }

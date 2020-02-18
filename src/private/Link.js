@@ -46,7 +46,7 @@ class Link extends Component {
       this.props.preOnClick();
     }
     const {external_link, href} = this.props;
-    if (!isExternalLink(external_link, href)) {
+    if (href && !isExternalLink(external_link, href)) {
       // prevent anchor from updating location
       e.preventDefault();
       const {href} = this.props;
@@ -74,7 +74,7 @@ class Link extends Component {
     return (
       <a
         href={href}
-        target={isExternalLink(external_link, href) && target}
+        target={href && isExternalLink(external_link, href) ? target : null}
         {...otherProps}
         onClick={e => this.updateLocation(e)}
       >

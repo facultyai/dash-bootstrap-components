@@ -6,18 +6,24 @@ import Link from '../../private/Link';
 
 const CardLink = props => {
   const {children, loading_state, ...otherProps} = props;
+
   return (
     <RSCardLink
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
       tag={Link}
-      {...omit(['setProps'], otherProps)}
+      {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
     </RSCardLink>
   );
 };
+
+CardLink.defaultProps = {
+    n_clicks: 0,
+    n_clicks_timestamp: -1
+}
 
 CardLink.propTypes = {
   /**

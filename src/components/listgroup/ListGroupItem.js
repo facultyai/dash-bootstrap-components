@@ -28,7 +28,7 @@ class ListGroupItem extends React.Component {
       <RSListGroupItem
         tag={useLink ? Link : 'li'}
         target={useLink && target}
-        {...omit(['setProps'], otherProps)}
+        {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }
@@ -38,6 +38,11 @@ class ListGroupItem extends React.Component {
     );
   }
 }
+
+ListGroupItem.defaultProps = {
+  n_clicks: 0,
+  n_clicks_timestamp: -1
+};
 
 ListGroupItem.propTypes = {
   /**
