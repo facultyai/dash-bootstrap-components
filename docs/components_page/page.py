@@ -1,31 +1,11 @@
 from pathlib import Path
 
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
-from .components.alert import get_content as get_alert_content
-from .components.badge import content as badge_content
-from .components.button import get_content as get_button_content
-from .components.button_group import content as button_group_content
-from .components.card import content as card_content
-from .components.collapse import get_content as get_collapse_content
-from .components.dropdown import get_content as get_dropdown_content
-from .components.fade import get_content as get_fade_content
-from .components.form import get_content as get_form_content
-from .components.input import get_content as get_input_content
-from .components.input_group import get_content as get_input_group_content
-from .components.jumbotron import content as jumbotron_content
-from .components.layout import content as layout_content
-from .components.list_group import get_content as get_list_group_content
-from .components.modal import get_content as get_modal_content
-from .components.nav import get_content as get_nav_content
-from .components.navbar import get_content as get_navbar_content
-from .components.popover import get_content as get_popover_content
-from .components.progress import get_content as get_progress_content
-from .components.spinner import get_content as get_spinner_content
-from .components.table import content as table_content
-from .components.tabs import get_content as get_tabs_content
-from .components.toast import get_content as get_toast_content
-from .components.tooltip import content as tooltip_content
+from .components.table.simple import table_body, table_header
+from .components.tabs.simple import tab1_content, tab2_content
+from .markdown_parser import MarkdownParser
 from .sidebar import Sidebar, SidebarEntry
 
 HERE = Path(__file__).parent
@@ -40,6 +20,7 @@ NAVBAR = dbc.NavbarSimple(
     sticky="top",
     children=[dbc.NavItem(dbc.NavLink("GitHub", href=GITHUB_LINK))],
 )
+LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text()
 
 
 sidebar_entries = [
@@ -83,31 +64,49 @@ def component_page(body_elements, active_item):
 class ComponentsPage:
     def __init__(self, app):
         self._app = app
+        md_parser = MarkdownParser(self._app)
         self._component_bodies = {
-            "alert": get_alert_content(self._app),
-            "badge": badge_content,
-            "button": get_button_content(self._app),
-            "button_group": button_group_content,
-            "card": card_content,
-            "collapse": get_collapse_content(self._app),
-            "dropdown_menu": get_dropdown_content(self._app),
-            "fade": get_fade_content(self._app),
-            "form": get_form_content(self._app),
-            "input": get_input_content(self._app),
-            "input_group": get_input_group_content(self._app),
-            "jumbotron": jumbotron_content,
-            "layout": layout_content,
-            "list_group": get_list_group_content(self._app),
-            "modal": get_modal_content(self._app),
-            "nav": get_nav_content(self._app),
-            "navbar": get_navbar_content(self._app),
-            "popover": get_popover_content(self._app),
-            "progress": get_progress_content(self._app),
-            "spinner": get_spinner_content(self._app),
-            "table": table_content,
-            "tabs": get_tabs_content(self._app),
-            "toast": get_toast_content(self._app),
-            "tooltip": tooltip_content,
+            "alert": md_parser.parse(COMPONENTS / "alert.md"),
+            "badge": md_parser.parse(COMPONENTS / "badge.md"),
+            "button": md_parser.parse(COMPONENTS / "button.md"),
+            "button_group": md_parser.parse(COMPONENTS / "button_group.md"),
+            "card": md_parser.parse(COMPONENTS / "card.md"),
+            "collapse": md_parser.parse(COMPONENTS / "collapse.md"),
+            "dropdown_menu": md_parser.parse(COMPONENTS / "dropdown.md"),
+            "fade": md_parser.parse(COMPONENTS / "fade.md"),
+            "form": md_parser.parse(COMPONENTS / "form.md"),
+            "input": md_parser.parse(COMPONENTS / "input.md"),
+            "input_group": md_parser.parse(COMPONENTS / "input_group.md"),
+            "jumbotron": md_parser.parse(COMPONENTS / "jumbotron.md"),
+            "layout": html.Div(
+                md_parser.parse(COMPONENTS / "layout.md"),
+                className="layout-demo",
+            ),
+            "list_group": md_parser.parse(COMPONENTS / "list_group.md"),
+            "modal": md_parser.parse(
+                COMPONENTS / "modal.md", {"LOREM": LOREM}
+            ),
+            "nav": md_parser.parse(COMPONENTS / "nav.md"),
+            "navbar": md_parser.parse(COMPONENTS / "navbar.md"),
+            "popover": md_parser.parse(COMPONENTS / "popover.md"),
+            "progress": md_parser.parse(COMPONENTS / "progress.md"),
+            "spinner": md_parser.parse(COMPONENTS / "spinner.md"),
+            "table": html.Div(
+                md_parser.parse(
+                    COMPONENTS / "table.md",
+                    {
+                        "dbc": dbc,
+                        "table_header": table_header,
+                        "table_body": table_body,
+                    },
+                ),
+            ),
+            "tabs": md_parser.parse(
+                COMPONENTS / "tabs.md",
+                {"tab1_content": tab1_content, "tab2_content": tab2_content},
+            ),
+            "toast": md_parser.parse(COMPONENTS / "toast.md"),
+            "tooltip": md_parser.parse(COMPONENTS / "tooltip.md"),
         }
 
     def for_path(self, path_components):
