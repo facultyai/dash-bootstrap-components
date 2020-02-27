@@ -10,9 +10,7 @@
   Bootstrap components for Plotly Dash
   <br>
   <a href="https://dash-bootstrap-components.opensource.faculty.ai/">Explore the documentation</a>
-  ·
   <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md">Report a bug</a>
-  ·
   <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md">Request a feature</a>
   <br>
   <br>
