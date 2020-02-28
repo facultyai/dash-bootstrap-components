@@ -1,71 +1,87 @@
 from pathlib import Path
 
+import dash
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
 from .components.table.simple import table_body, table_header
 from .components.tabs.simple import tab1_content, tab2_content
-from .markdown_parser import MarkdownParser
-from .sidebar import Sidebar, SidebarEntry
+from .markdown_parser import parse
 
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 
 LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text()
 
+HIGHLIGHT_JS_CSS = (
+    "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/"
+    "build/styles/monokai-sublime.min.css"
+)
 
 
-    def __init__(self, app):
-        self._app = app
-        md_parser = MarkdownParser(self._app)
-        self._component_bodies = {
-            "alert": md_parser.parse(COMPONENTS / "alert.md"),
-            "badge": md_parser.parse(COMPONENTS / "badge.md"),
-            "button": md_parser.parse(COMPONENTS / "button.md"),
-            "button_group": md_parser.parse(COMPONENTS / "button_group.md"),
-            "card": md_parser.parse(COMPONENTS / "card.md"),
-            "collapse": md_parser.parse(COMPONENTS / "collapse.md"),
-            "dropdown_menu": md_parser.parse(COMPONENTS / "dropdown.md"),
-            "fade": md_parser.parse(COMPONENTS / "fade.md"),
-            "form": md_parser.parse(COMPONENTS / "form.md"),
-            "input": md_parser.parse(COMPONENTS / "input.md"),
-            "input_group": md_parser.parse(COMPONENTS / "input_group.md"),
-            "jumbotron": md_parser.parse(COMPONENTS / "jumbotron.md"),
-            "layout": html.Div(
-                md_parser.parse(COMPONENTS / "layout.md"),
-                className="layout-demo",
-            ),
-            "list_group": md_parser.parse(COMPONENTS / "list_group.md"),
-            "modal": md_parser.parse(
-                COMPONENTS / "modal.md", {"LOREM": LOREM}
-            ),
-            "nav": md_parser.parse(COMPONENTS / "nav.md"),
-            "navbar": md_parser.parse(COMPONENTS / "navbar.md"),
-            "popover": md_parser.parse(COMPONENTS / "popover.md"),
-            "progress": md_parser.parse(COMPONENTS / "progress.md"),
-            "spinner": md_parser.parse(COMPONENTS / "spinner.md"),
-            "table": html.Div(
-                md_parser.parse(
-                    COMPONENTS / "table.md",
-                    {
-                        "dbc": dbc,
-                        "table_header": table_header,
-                        "table_body": table_body,
-                    },
-                ),
-            ),
-            "tabs": md_parser.parse(
-                COMPONENTS / "tabs.md",
-                {"tab1_content": tab1_content, "tab2_content": tab2_content},
-            ),
-            "toast": md_parser.parse(COMPONENTS / "toast.md"),
-            "tooltip": md_parser.parse(COMPONENTS / "tooltip.md"),
-        }
+def register():
+    component_bodies = {
+        "alert": {"markdown_path": COMPONENTS / "alert.md"},
+        "badge": {"markdown_path": COMPONENTS / "badge.md"},
+        "button": {"markdown_path": COMPONENTS / "button.md"},
+        "button_group": {"markdown_path": COMPONENTS / "button_group.md"},
+        "card": {"markdown_path": COMPONENTS / "card.md"},
+        "collapse": {"markdown_path": COMPONENTS / "collapse.md"},
+        "dropdown_menu": {"markdown_path": COMPONENTS / "dropdown.md"},
+        "fade": {"markdown_path": COMPONENTS / "fade.md"},
+        "form": {"markdown_path": COMPONENTS / "form.md"},
+        "input": {"markdown_path": COMPONENTS / "input.md"},
+        "input_group": {"markdown_path": COMPONENTS / "input_group.md"},
+        "jumbotron": {"markdown_path": COMPONENTS / "jumbotron.md"},
+        "layout": {"markdown_path": COMPONENTS / "layout.md"},
+        "list_group": {"markdown_path": COMPONENTS / "list_group.md"},
+        "modal": {
+            "markdown_path": COMPONENTS / "modal.md",
+            "extra_env_vars": {"LOREM": LOREM},
+        },
+        "nav": {"markdown_path": COMPONENTS / "nav.md"},
+        "navbar": {"markdown_path": COMPONENTS / "navbar.md"},
+        "popover": {"markdown_path": COMPONENTS / "popover.md"},
+        "progress": {"markdown_path": COMPONENTS / "progress.md"},
+        "spinner": {"markdown_path": COMPONENTS / "spinner.md"},
+        "table": {
+            "markdown_path": COMPONENTS / "table.md",
+            "extra_env_vars": {
+                "dbc": dbc,
+                "table_header": table_header,
+                "table_body": table_body,
+            },
+        },
+        "tabs": {
+            "markdown_path": COMPONENTS / "tabs.md",
+            "extra_env_vars": {
+                "tab1_content": tab1_content,
+                "tab2_content": tab2_content,
+            },
+        },
+        "toast": {"markdown_path": COMPONENTS / "toast.md"},
+        "tooltip": {"markdown_path": COMPONENTS / "tooltip.md"},
+    }
 
-    def for_path(self, path_components):
-        try:
-            component_name = path_components[0]
-            component_body = self._component_bodies[component_name]
-            return component_page(component_body, component_name)
-        except IndexError:
-            return self.for_path(["alert"])
+    routes = {}
+    for slug, kwargs in component_bodies.items():
+        app = dash.Dash(
+            external_stylesheets=[
+                dbc.themes.BOOTSTRAP,
+                HIGHLIGHT_JS_CSS,
+                "/assets/loading.css",
+            ],
+            requests_pathname_prefix=f"/dash/{slug}/",
+            suppress_callback_exceptions=True,
+        )
+        app.title = f"dbc - {slug.capitalize()}"
+
+        if slug == "layout":
+            app.layout = html.Div(
+                parse(app, **kwargs), className="layout-demo"
+            )
+        else:
+            app.layout = parse(app, **kwargs)
+        routes[f"/dash/{slug}"] = app
+
+    return routes

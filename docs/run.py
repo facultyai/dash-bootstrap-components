@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from app import App
+from werkzeug.serving import run_simple
+
+from components_page.register_apps import register
 
 server = Flask(__name__, static_folder="assets")
 
@@ -10,7 +13,11 @@ def index():
     return render_template("index.html")
 
 
-App.from_server(server, "/l/")
+routes = register()
+application = DispatcherMiddleware(
+    server, {slug: app.server for slug, app in routes.items()}
+)
+
 
 if __name__ == "__main__":
-    server.run(debug=True, port=8888)
+    run_simple("localhost", 8888, application, use_reloader=True)
