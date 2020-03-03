@@ -1,7 +1,0 @@
-include dbc_docs_components/dbc_docs_components.min.js
-include dbc_docs_components/dbc_docs_components.min.js.map
-include dbc_docs_components/metadata.json
-include dbc_docs_components/package-info.json
-include README.md
-include LICENSE
-include package.json
