@@ -3,7 +3,7 @@ import dash_html_components as html
 
 top_card = dbc.Card(
     [
-        dbc.CardImg(src="/assets/images/placeholder286x180.png", top=True),
+        dbc.CardImg(src="/static/images/placeholder286x180.png", top=True),
         dbc.CardBody(
             html.P("This card has an image at the top", className="card-text")
         ),
@@ -14,7 +14,7 @@ top_card = dbc.Card(
 bottom_card = dbc.Card(
     [
         dbc.CardBody(html.P("This has a bottom image", className="card-text")),
-        dbc.CardImg(src="/assets/images/placeholder286x180.png", bottom=True),
+        dbc.CardImg(src="/static/images/placeholder286x180.png", bottom=True),
     ],
     style={"width": "18rem"},
 )

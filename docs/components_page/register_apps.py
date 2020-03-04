@@ -69,10 +69,12 @@ def register():
             external_stylesheets=[
                 dbc.themes.BOOTSTRAP,
                 HIGHLIGHT_JS_CSS,
-                "/assets/loading.css",
+                "/static/loading.css",
+                "/static/docs.css",
             ],
-            requests_pathname_prefix=f"/dash/{slug}/",
+            requests_pathname_prefix=f"/dash/components/{slug}/",
             suppress_callback_exceptions=True,
+            serve_locally=False,
         )
         app.title = f"dbc - {slug.capitalize()}"
 
@@ -82,6 +84,6 @@ def register():
             )
         else:
             app.layout = parse(app, **kwargs)
-        routes[f"/dash/{slug}"] = app
+        routes[f"/dash/components/{slug}"] = app
 
     return routes
