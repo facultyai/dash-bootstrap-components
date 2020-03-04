@@ -3,7 +3,7 @@ from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 from components_page.register_apps import register
 
-server = Flask(__name__, static_folder="assets")
+server = Flask(__name__)
 
 
 @server.route("/")
