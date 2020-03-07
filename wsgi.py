@@ -4,6 +4,10 @@ from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 from components_page.register_apps import register
 
+from markdown_to_html import convert_all_markdown_files
+
+convert_all_markdown_files()
+
 server = Flask(__name__)
 docs = Blueprint("docs", __name__)
 
@@ -28,7 +32,6 @@ routes = register()
 application = DispatcherMiddleware(
     server, {slug: app.server for slug, app in routes.items()}
 )
-
 
 if __name__ == "__main__":
     from werkzeug.serving import run_simple
