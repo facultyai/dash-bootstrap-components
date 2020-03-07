@@ -1,4 +1,6 @@
+{% from "macros.html" import navbar %}
 {% extends "base.html" %}
+{% block header %}{{ navbar("docs") }}{% endblock %}
 {% block content %}
 <p>You've found the documentation for Dash Bootstrap Components! Read the <a href="/docs/quickstart">Quick Start</a>, check out the <a href="/l/components">available components</a> or check out the <a href="/examples">examples</a>.</p>
 <pre><code class="language-python">import dash
