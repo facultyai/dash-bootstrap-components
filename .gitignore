@@ -19,5 +19,5 @@ dist
 # release artifacts
 changelog.tmp
 
-# dbc-docs-components artifacts
-docs/dbc_docs_components/dbc_docs_components/*.js*
+# generated documentation files
+docs/templates/docs/*.html
