@@ -24,7 +24,7 @@
 
 code.hljs {
   padding: 1em;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .example-source-container code.hljs {
@@ -88,7 +88,7 @@ span.hljs-meta {
   padding: 1rem;
   border: 1px solid #d8d8d8;
   margin: 2rem 0 0;
-  border-radius: 3px 3px 0px 0px;
+  border-radius: 6px 6px 0px 0px;
   border-bottom: 0px;
 }
 
@@ -97,11 +97,11 @@ span.hljs-meta {
 }
 
 .example-source-container pre.hljs {
-  border-radius: 0px 0px 3px 3px;
+  border-radius: 0px 0px 6px 6px;
 }
 
 .source-container pre.hljs {
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .api-documentation {
@@ -156,4 +156,11 @@ span.hljs-meta {
   background-position: center right calc(0.375em + 0.1875rem);
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   outline: none;
+}
+
+.dbcd-title {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-size: 3rem;
 }

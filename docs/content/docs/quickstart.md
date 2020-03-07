@@ -1,8 +1,10 @@
 ---
-title: "Quickstart"
-date: 2020-02-29T18:15:13Z
-draft: false
+title: Quickstart
 ---
+
+<h1 class="dbcd-title">Quickstart</h1>
+
+<p class="lead">Installation instructions and basic usage.</p>
 
 ## Installation
 
@@ -25,10 +27,12 @@ conda install -c conda-forge dash-bootstrap-components
 
 ## Basic usage
 
+_dash-bootstrap-components_ is a component library for use with Plotly Dash. If you have not used Dash before, it's strongly recommended you check out [the Dash documentation][dash-docs] and try building a basic app first.
+
 To use _dash-bootstrap-components_ you must do two things:
 
 - Link a Bootstrap v4 compatible stylesheet
-- Incorporate _dash-bootstrap-components_ into your layout
+- Incorporate _dash-bootstrap-components_ into the layout of your app.
 
 ### Linking a stylesheet
 
@@ -43,11 +47,11 @@ import dash_bootstrap_components as dbc
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 ```
 
-For more information on how to link local or external CSS, check out the [Dash documentation][dash-docs-external].
+For more information on available themes see the [_themes documentation_][docs-themes]
 
 ### Build the layout
 
-With CSS linked, you can start building your app's layout with our Bootstrap components. See our [_documentation_][docs-components] for a full list of available components, or try running this minimal example to get started.
+With CSS linked, you can start building your app's layout with our Bootstrap components. See the [_component documentation_][docs-components] for a full list of available components, or try running this minimal example to get started.
 
 ```python
 import dash
@@ -55,12 +59,17 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = dbc.Alert("Hello Bootstrap!", color="success")
+app.layout = dbc.Container(
+    dbc.Alert("Hello Bootstrap!", color="success"),
+    className="p-5",
+)
 
 if __name__ == "__main__":
     app.run_server()
 ```
 
+[dash-docs]: https://dash/plot.ly
 [dash-docs-external]: https:/dash.plot.ly/external-resources
-[docs-components]: /l/components
+[docs-themes]: /docs/themes
+[docs-components]: /docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
