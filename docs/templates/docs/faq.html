@@ -1,4 +1,6 @@
+{% from "macros.html" import navbar %}
 {% extends "base.html" %}
+{% block header %}{{ navbar("docs") }}{% endblock %}
 {% block content %}
 <h1>Frequently asked questions</h1>
 <p>This page gathers some frequently asked questions and common issues.</p>

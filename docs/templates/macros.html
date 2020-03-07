@@ -1,3 +1,4 @@
+{% macro navbar(active="home") -%}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">dash-bootstrap-components</a>
   <button
@@ -14,13 +15,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item{{' active' if active == 'home' else ''}}">
         <a class="nav-link" href="/">Home</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item{{' active' if active == 'docs' else ''}}">
         <a class="nav-link" href="/docs/">Documentation</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item{{' active' if active == 'examples' else ''}}">
         <a class="nav-link" href="/examples/">Examples</a>
       </li>
       <li class="nav-item dropdown">
@@ -45,3 +46,5 @@
     </ul>
   </div>
 </nav>
+
+{%- endmacro %}
