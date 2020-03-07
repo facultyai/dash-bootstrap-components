@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Installation</h2>
+<h3>PyPI</h3>
+<p>You can install <em>dash-bootstrap-components</em> with <code>pip</code>:</p>
+<pre><code class="language-sh">pip install dash-bootstrap-components
+</code></pre>
+
+<h3>Anaconda</h3>
+<p>You can also install <em>dash-bootstrap-components</em> with <code>conda</code> through the
+conda-forge channel:</p>
+<pre><code class="language-sh">conda install -c conda-forge dash-bootstrap-components
+</code></pre>
+
+<h2>Basic usage</h2>
+<p>To use <em>dash-bootstrap-components</em> you must do two things:</p>
+<ul>
+<li>Link a Bootstrap v4 compatible stylesheet</li>
+<li>Incorporate <em>dash-bootstrap-components</em> into your layout</li>
+</ul>
+<h3>Linking a stylesheet</h3>
+<p><em>dash-bootstrap-components</em> doesn't come with CSS included. This is to give you the freedom to use any Bootstrap v4 stylesheet of your choice. This means however that in order for the components to be styled properly, you must link to a stylesheet yourself.</p>
+<p>For convenience, links to <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a> for standard Bootstrap and each Bootswatch theme are available through the <code>themes</code> module, which can be used as follows:</p>
+<pre><code class="language-python">import dash
+import dash_bootstrap_components as dbc
+
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+</code></pre>
+
+<p>For more information on how to link local or external CSS, check out the <a href="https:/dash.plot.ly/external-resources">Dash documentation</a>.</p>
+<h3>Build the layout</h3>
+<p>With CSS linked, you can start building your app's layout with our Bootstrap components. See our <a href="/l/components"><em>documentation</em></a> for a full list of available components, or try running this minimal example to get started.</p>
+<pre><code class="language-python">import dash
+import dash_bootstrap_components as dbc
+
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+app.layout = dbc.Alert(&quot;Hello Bootstrap!&quot;, color=&quot;success&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    app.run_server()
+</code></pre>
+{% endblock %}

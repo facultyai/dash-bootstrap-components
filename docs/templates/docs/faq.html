@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Frequently asked questions</h1>
+<p>This page gathers some frequently asked questions and common issues.</p>
+<p>Q. <em>How can I make sure content is scaled properly on mobile devices?</em>
+A. One of the nice features of Bootstrap is that it is a mobile-first framework, and can be used to make responsive layouts (i.e. they will rearrange themselves depending on the size of the screen they are being viewed on).</p>
+<p>Q. <em>I want to make a Bootstrap style <code>DatePickerSingle</code>, <code>Slider</code>, <code>Dropdown</code> etc. How can I do that?</em>
+A. We intentionally didn't reimplement components that are available through <em>dash-core-components</em>. We do however maintain custom Bootstrap stylesheets which will restyle <em>dash-core-components</em> to have a look that is more consistent with Bootstrap or Bootswatch styles.</p>
+<p>To minimise the risk of unwanted side-effects, the Dash styles will only be applied to any component that is a child of a component with <code>className="dash-bootstrap"</code>. Here's a simple example</p>
+<pre><code class="language-python">app.layout = html.Div(dcc.DatePickerSingle(), className=&quot;dash-bootstrap&quot;)
+</code></pre>
+{% endblock %}
