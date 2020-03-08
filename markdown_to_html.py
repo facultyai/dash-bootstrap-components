@@ -9,9 +9,9 @@ FencedBlockPreprocessor.LANG_TAG = ' class="language-%s"'
 CONTENT = Path(__file__).parent / "content" / "docs"
 DEST = Path(__file__).parent / "templates" / "docs"
 
-HTML_TEMPLATE = """{% from "macros.html" import navbar %}
-{% extends "base.html" %}
-{% block title %}<TITLE>{% endblock %}
+HTML_TEMPLATE = """{% from "macros/navbar.html" import navbar %}
+{% extends "docs.html" %}
+{% block title %}<title><TITLE></title>{% endblock %}
 {% block header %}{{ navbar("docs") }}{% endblock %}
 {% block content %}
 <CONTENT>

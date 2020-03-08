@@ -1,34 +1,13 @@
-from flask import Blueprint, Flask, abort, render_template
-from jinja2 import TemplateNotFound
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from components_page.register_apps import register
-
+from components_page import register_apps
 from markdown_to_html import convert_all_markdown_files
+from server import create_server
 
 convert_all_markdown_files()
 
-server = Flask(__name__)
-docs = Blueprint("docs", __name__)
-
-
-@server.route("/")
-def index():
-    return render_template("test.html")
-
-
-@docs.route("/docs/", defaults={"page": "index"})
-@docs.route("/docs/<page>")
-def show(page):
-    try:
-        return render_template(f"docs/{page}.html")
-    except TemplateNotFound:
-        abort(404)
-
-
-server.register_blueprint(docs)
-
-routes = register()
+server = create_server()
+routes = register_apps()
 application = DispatcherMiddleware(
     server, {slug: app.server for slug, app in routes.items()}
 )

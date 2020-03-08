@@ -1,0 +1,51 @@
+{% macro sidenav_children(children, active="alert") -%}
+<ul class="list-unstyled">
+  {%- for child in children %}
+  <li{% if active == child.name %} class="active"{% endif %}>
+    <a href="{{ child.href }}">{{ child.label }}</a>
+  </li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro sidenav(items, active="quickstart", active_child="alert") -%}
+<div class="d-flex align-items-center py-2 d-lg-none dbcd-nav-header">
+  <span class="font-weight-light" style="font-size:1.2rem">Documentation</span>
+  <button
+    class="btn btn-link ml-auto dbcd-nav-toggle"
+    data-toggle="collapse"
+    data-target="#dbcd-nav"
+    aria-controls="dbcd-nav"
+    aria-expanded="false"
+    aria-label="Toggle docs navigation"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      role="img"
+      focusable="false"
+    >
+      <title>Menu</title>
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-miterlimit="10"
+        stroke-width="2"
+        d="M4 7h22M4 15h22M4 23h22"
+      ></path>
+    </svg>
+  </button>
+</div>
+<nav id="dbcd-nav" class="dbcd-nav-links collapse px-3">
+  {% for item in items %}
+  <div class="dbcd-nav-item{{ ' active' if item.name == active else ''}}">
+    <a class="dbcd-nav-link" href="{{ item.href }}">{{ item.label }}</a>
+    {%- if item.children and item.name == active -%}
+      {{ sidenav_children(item.children, active_child) }}
+    {%- endif %}
+  </div>
+  {% endfor %}
+</nav>
+{%- endmacro %}
