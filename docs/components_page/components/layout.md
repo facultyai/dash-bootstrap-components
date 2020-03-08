@@ -15,7 +15,7 @@ When using the grid layout, content should be placed in columns, and only `Col` 
 
 For much moredetail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/4.2/layout/grid/).
 
-#### Row with columns
+## Row with columns
 
 By default, columns will have equal width and will expand to fill available space.
 
@@ -29,7 +29,7 @@ Specify the desired width of each column using the `width` keyword argument. The
 
 {{example:components/layout/width.py:row}}
 
-#### Specify order and offset
+## Specify order and offset
 
 In addition to the simple width arguments outlined above, you can pass a dictionary of values to `width`. The dictionary can have keys `size`, `order` and `offset`.
 
@@ -41,7 +41,7 @@ Finally `offset` accepts the integers `1`, ..., `12` and increases the left marg
 
 {{example:components/layout/order_offset.py:row}}
 
-#### Specify width for different screen sizes
+## Specify width for different screen sizes
 
 Bootstrap’s grid includes five responsive tiers for building complex responsive layouts. Customize the size, order and offset of your columns on extra small, small, medium, large, or extra large devices using the `xs`, `sm`, `md`, `lg`, and `xl` keyword arguments. Each takes the same arguments as `width` and specifies the column behaviour for that size of screen or larger. `width` secretly just sets `xs`. If you specify both, `xs` will override `width`.
 
@@ -53,25 +53,25 @@ By setting different sizes, orders and offsets for the different responsive tier
 
 {{example:components/layout/breakpoints.py:row}}
 
-#### Row without 'gutters'
+## Row without 'gutters'
 
 By default, horizontal spacing is added between the columns. Use `no_gutters=True` to disable this.
 
 {{example:components/layout/no_gutters.py:row}}
 
-#### Vertical alignment
+## Vertical alignment
 
 Control the vertical alignment of each column in the row using the `align` keyword. You can specify a value for `align` in either the `Col` component or its parent `Row`. If you specify a value for `align` in the `Col` it will overrule any value specified in the parent `Row`. The available options are `"start"`, `"center"`, `"end"` which align the columns along the top, center, and bottom of the row respectively.
 
 {{example:components/layout/vertical.py:row}}
 
-#### Horizontal alignment
+## Horizontal alignment
 
 You can also control horizontal alignment of columns using the `justify` keyword argument of `Row`. The options are `"start"`, `"center"`, `"end"`, `"between"` and `"around"`.
 
 {{example:components/layout/horizontal.py:row}}
 
-#### Using only the grid components
+## Using only the grid components
 
 Sometimes you may wish to use Bootstrap's grid system for specifying the layout of your app, but you don't want the changes Bootstrap makes to the typography, or to load all the additional CSS classes that Bootstrap specifies. In such a situation, you can link only the CSS required for the grid system using the `themes` module.
 

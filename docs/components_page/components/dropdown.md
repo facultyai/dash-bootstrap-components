@@ -1,5 +1,5 @@
 ---
-title: DropdownMenus
+title: DropdownMenu
 lead: Use `DropdownMenu` to organise lists of links and buttons into a toggleable overlay.
 ---
 
@@ -7,7 +7,7 @@ DropdownMenus are built up using the `DropdownMenu`, and `DropdownMenuItem` comp
 
 Note: our `DropdownMenu` is an analogue of Bootstrap's Dropdown component. We have changed the name to avoid a clash with the existing `Dropdown` component in _dash-core-components_ which serves a different purpose.
 
-#### Simple example
+## Simple example
 
 This example creates a simple dropdown menu with three items.
 
@@ -17,31 +17,31 @@ Each `DropdownMenuItem` can be used like `dash_core_components.Link`, as a regul
 
 {{example:components/dropdown/menu_items.py:dropdown}}
 
-#### Styling the toggle
+## Styling the toggle
 
 You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggleClassName` arguments.
 
 {{example:components/dropdown/style.py:dropdowns}}
 
-#### DropdownMenu sizing
+## DropdownMenu sizing
 
 Control the size of the `DropdownMenu` toggle using the `size` argument. You can specify either `'sm'`, `'md'` (default), or `'lg'`.
 
 {{example:components/dropdown/size.py:dropdown}}
 
-#### DropdownMenu direction
+## DropdownMenu direction
 
 Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'left'`, or `'right'`.
 
 {{example:components/dropdown/direction.py:dropdown}}
 
-#### DropdownMenu alignment
+## DropdownMenu alignment
 
 By default the menu is aligned with left of the toggle. Set `align='right'` for a right aligned menu.
 
 {{example:components/dropdown/alignment.py:dropdown}}
 
-#### Menu content
+## Menu content
 
 Use the `active` and `disabled` arguments of `DropdownMenuItem` to set the active and disabled styles of menu items respectively. You can also use the `header` or `divider` arguments to create headers and dividers to help structure the menu. You can also include custom content such as text.
 

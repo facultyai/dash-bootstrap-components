@@ -1,14 +1,8 @@
-from flask import (
-    Blueprint,
-    Flask,
-    abort,
-    render_template,
-    redirect
-)
+from flask import Flask, abort, render_template, redirect
 from jinja2 import TemplateNotFound
 
 DOCS_SIDENAV_ITEMS = [
-    {"name": "quickstart", "href": "/docs/quickstart", "label": "Quickstart",},
+    {"name": "quickstart", "href": "/docs/quickstart", "label": "Quickstart"},
     {"name": "themes", "href": "/docs/themes", "label": "Themes"},
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
@@ -43,7 +37,7 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/", defaults={"page": "quickstart"})
+    @server.route("/docs/")
     @server.route("/docs/quickstart")
     def quickstart():
         try:
