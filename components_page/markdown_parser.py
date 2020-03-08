@@ -32,7 +32,7 @@ def parse(app, markdown_path, extra_env_vars=None):
     meta = md.Meta
 
     content = [
-        html.H2(meta["title"][0], className="display-4"),
+        html.H1(meta["title"][0]),
         html.Div(dcc.Markdown(meta["lead"][0]), className="lead"),
     ]
 

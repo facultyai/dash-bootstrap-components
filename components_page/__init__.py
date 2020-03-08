@@ -41,6 +41,17 @@ INDEX_STRING_TEMPLATE = """{% from "macros/navbar.html" import navbar %}
 {% endblock %}
 """
 
+def _get_label(slug):
+    if slug == "button_group":
+        return "ButtonGroup"
+    if slug == "dropdown_menu":
+        return "DropdownMenu"
+    if slug == "input_group":
+        return "InputGroup"
+    if slug == "list_group":
+        return "ListGroup"
+    return slug.capitalize()
+
 
 def register_apps():
     component_bodies = {
@@ -101,7 +112,7 @@ def register_apps():
                 {
                     "name": slug,
                     "href": f"/docs/components/{slug}",
-                    "label": slug.capitalize(),
+                    "label": _get_label(slug),
                 }
                 for slug in component_bodies
             ],
@@ -124,7 +135,7 @@ def register_apps():
                 active_child=slug,
             ),
         )
-        app.title = f"{slug.capitalize()} - dbc docs"
+        app.title = f"{_get_label(slug)} - dbc docs"
 
         if slug == "layout":
             app.layout = html.Div(

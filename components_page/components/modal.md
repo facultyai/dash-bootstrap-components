@@ -7,25 +7,25 @@ Modals are built up using the `Modal`, `ModalHeader`, `ModalBody` and `ModalFoot
 
 {{example:components/modal/simple.py:modal}}
 
-#### Modal size
+## Modal size
 
 Set the size of the modal using the `size` prop. The options are `"sm"`, `"lg"`, or `"xl"` for a small, large or extra large modal. If you don't specify anything, or specify `size=False`, you will get the default modal size.
 
 {{example:components/modal/size.py:modal}}
 
-#### Backdrop
+## Backdrop
 
 By default the modal will render with a backdrop that dismisses the modal on click. Set `backdrop=False` to render the modal without a backdrop, or `backdrop="static"` to render a backdrop that doesn't dismiss the modal when clicked.
 
 {{example:components/modal/backdrop.py:modal}}
 
-#### Scrolling long content
+## Scrolling long content
 
 When modals become too long for the user’s viewport or device, they scroll independently of the page itself. By default, the entire modal (including its header and footer) scrolls. If you prefer you can specify `scrollable=True` to scroll only the body of the modal.
 
 {{example:components/modal/scrollable.py:modal}}
 
-#### Vertically centered modal
+## Vertically centered modal
 
 To vertically center the modal on the page, set `centered=True`.
 

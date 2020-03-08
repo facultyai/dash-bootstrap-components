@@ -2,7 +2,7 @@
 title: Themes
 ---
 
-<h1 class="dbcd-title">Themes</h1>
+# Themes
 
 <p class="lead">Customise your app by choosing from different Bootstrap and Bootswatch themes.</p>
 

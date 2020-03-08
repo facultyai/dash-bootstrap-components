@@ -2,7 +2,7 @@
 title: Quickstart
 ---
 
-<h1 class="dbcd-title">Quickstart</h1>
+# Quickstart
 
 <p class="lead">Installation instructions and basic usage.</p>
 
