@@ -164,3 +164,57 @@ span.hljs-meta {
   font-weight: 300;
   font-size: 3rem;
 }
+
+.dbcd-nav-links {
+  padding: 16px 0px;
+}
+
+@media (min-width: 992px) {
+  .dbcd-nav-links {
+    display: block !important;
+  }
+}
+
+.dbcd-nav-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dbcd-nav-toggle {
+  color: rgb(33, 37, 41);
+  padding: 0.25rem 0.75rem;
+}
+
+.dbcd-nav-link {
+  display: block;
+  padding: 0.25rem 0rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.dbcd-nav-link:hover {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+
+.dbcd-nav-item.active > .dbcd-nav-link {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.dbcd-nav-links ul > li {
+  padding: 2px 0;
+}
+
+.dbcd-nav-links ul > li > a {
+  padding: 0.25rem 0rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.dbcd-nav-links ul > li.active > a {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.dbcd-nav-links ul > li > a:hover {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}

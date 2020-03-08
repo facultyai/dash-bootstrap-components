@@ -2,11 +2,11 @@
 <html>
   <head>
     {% block head %}{% include "partials/head.html" %}{% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+    {% block title %}{% endblock %}
   </head>
   <body>
     {% block header %}{% endblock %}
-    {% block content %}{% endblock %}
+    {% block body %}{% endblock %}
     {% block scripts %}{% include "partials/scripts.html" %}{% endblock %}
   </body>
 </html>

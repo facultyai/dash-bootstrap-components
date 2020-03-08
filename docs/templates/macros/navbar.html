@@ -1,0 +1,59 @@
+{% macro navbar(active="home") -%}
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">dash-bootstrap-components</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item{{' active' if active == 'home' else ''}}">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item{{' active' if active == 'docs' else ''}}">
+          <a class="nav-link" href="/docs/">Documentation</a>
+        </li>
+        <li class="nav-item{{' active' if active == 'examples' else ''}}">
+          <a class="nav-link" href="/examples/">Examples</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a
+              class="dropdown-item"
+              href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug-report.md"
+              >Report a bug</a
+            >
+            <a
+              class="dropdown-item"
+              href="https://github.com/facultyai/dash-bootstrap-components/blob/master/.github/CONTRIBUTING.md"
+              >Contribute</a
+            >
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://faculty.ai">Faculty AI</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{%- endmacro %}

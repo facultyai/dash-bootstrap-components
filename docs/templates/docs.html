@@ -1,0 +1,12 @@
+{% from "macros/sidenav.html" import sidenav %}
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 p-sm-0" style="padding-left:16px;padding-right:16px">
+      {{ sidenav(sidenav_items, sidenav_active, active_child) }}
+    </div>
+    <main class="col-lg-9">{% block content %}{% endblock %}</main>
+  </div>
+</div>
+{% endblock %}
