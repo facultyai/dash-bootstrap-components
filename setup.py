@@ -1,3 +1,4 @@
+import io
 import os
 
 from setuptools import find_packages, setup
@@ -19,7 +20,7 @@ def _get_version():
 
 
 def _get_long_description():
-    with open(os.path.join(HERE, "landing-page.md"), encoding="utf8") as f:
+    with io.open(os.path.join(HERE, "landing-page.md"), encoding="utf8") as f:
         return f.read()
 
 
