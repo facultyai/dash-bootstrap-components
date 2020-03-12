@@ -11,6 +11,7 @@ script:
   - "if [[ \"$GROUP\" == js ]] ; then npm run lint ; fi"
   - "if [[ \"$GROUP\" == js ]] ; then npm run test ; fi"
   - "if [[ \"$GROUP\" == js ]] ; then npm run test:demo ; fi"
+  - "if [[ \"$GROUP\" == js ]] ; then pip install .; fi"
   - "if [[ \"$GROUP\" == python-linting ]] ; then black . --check ; fi"
   - "if [[ \"$GROUP\" == python-linting ]] ; then flake8 ; fi"
   - "if [[ \"$GROUP\" == python-linting ]] ; then isort -rc -c ; fi"
@@ -19,6 +20,8 @@ matrix:
   include:
     - python: 3.6
       env: GROUP=python-linting
+    - python: 2.7
+      env: GROUP=js
     - python: 3.6
       env: GROUP=js
     - python: 2.7
