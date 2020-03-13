@@ -1,208 +1,105 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/monokai-sublime.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='docs.css') }}" />
-    <title>Dash Bootstrap Components</title>
-  </head>
-  <body>
-    <div class="jumbotron text-center mb-3 main-header">
-      <div class="container">
-        <h1 class="jumbotron-heading display-4">Dash Bootstrap Components</h1>
-        <p class="lead">
-          Responsive layouts and components for Plotly Dash
-        </p>
-        <p>
-          <a
-            role="button"
-            class="btn btn-outline-primary"
-            href="https://github.com/facultyai/dash-bootstrap-components">
-            GitHub
-          </a>
-          <a
-            role="button"
-            class="btn btn-primary"
-            href="/l/components">
-            Components
-          </a>
-        </p>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row justify-content-sm-center pb-5">
-        <div class="col">
-          <h2 class="section-header">Installation</h2>
-          <hr />
-          <h4 class="section-header">PyPI</h4>
-          <p>
-            You can install <em>dash-bootstrap-components</em> with <code>pip</code>:
-          </p>
-          <pre><code class="language-bash">pip install dash-bootstrap-components</code> </pre>
-          <h4 class="section-header">Anaconda</h4>
-          <p>You can also install <em>dash-bootstrap-components</em> with <code>conda</code> through the conda-forge channel</p>
-          <pre><code class="language-bash">conda install -c conda-forge dash-bootstrap-components</code></pre>
-          <h2 class="section-header mt-5">Getting started</h2>
-          <hr />
-          <p>
-            <em>dash-bootstrap-components</em> relies on <a>Twitter
-            Bootstrap</a>. To use this package, inject the Bootstrap
-            stylesheet into your application. For convenience, links to
-            Bootstrap CSS hosted on
-            <a href=https://www.bootstrapcdn.com/>bootstrapcdn</a>
-            are included as part of the <code>themes</code> module:
-          </p>
-          <pre><code class="language-python">app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])</code></pre>
-          <h2 class="section-header mt-5">Layout</h2>
-          <hr />
-          <p><em>dash-bootstrap-components</em> makes it easy to
-          structure your application visually. The following template
-          creates a basic app structure with a navbar:</p>
-          <div class="demo-layout-container">
-            <iframe class="demo-layout" src="/l/demo-layout"></iframe>
-          </div>
-          <pre><code class="language-python">import dash
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
-
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.NavItem(dbc.NavLink("Link", href="#")),
-        dbc.DropdownMenu(
-            nav=True,
-            in_navbar=True,
-            label="Menu",
-            children=[
-                dbc.DropdownMenuItem("Entry 1"),
-                dbc.DropdownMenuItem("Entry 2"),
-                dbc.DropdownMenuItem(divider=True),
-                dbc.DropdownMenuItem("Entry 3"),
-            ],
-        ),
-    ],
-    brand="Demo",
-    brand_href="#",
-    sticky="top",
-)
-
-body = dbc.Container(
-    [
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        html.H2("Heading"),
-                        html.P(
-                            """\
-Donec id elit non mi porta gravida at eget metus.
-Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non
-mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
-amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-odio dui."""
-                        ),
-                        dbc.Button("View details", color="secondary"),
-                    ],
-                    md=4,
-                ),
-                dbc.Col(
-                    [
-                        html.H2("Graph"),
-                        dcc.Graph(
-                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]}
-                        ),
-                    ]
-                ),
-            ]
-        )
-    ],
-    className="mt-4",
-)
-
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-app.layout = html.Div([navbar, body])
-
-if __name__ == "__main__":
-    app.run_server()</code></pre>
-          <h2 class="section-header mt-5">Using just the grid system</h2>
-          <hr />
-          <p>
-            Sometimes you may wish to take advantage of Bootstrap's grid system
-            for controlling the layout of your app, without including all of the
-            typography changes and additional CSS classes that come with it. In
-            such scenarios, it's possible to link just the
-            <code>bootstrap-grid.css</code> stylesheet. The easiest way to do this
-            is to use the CDN link in the <code>themes</code> module:
-          </p>
-          <pre><code class="language-python">app = dash.Dash(__name__, external_stylesheets=[dbc.themes.GRID])</code></pre>
-          <p>
-            If you prefer, you can also
-            <a href="https://getbootstrap.com/docs/4.2/getting-started/download/">download</a>
-            <code>bootstrap-grid.css</code> yourself, and place it in your
-            <code>assets/</code> directory, as described in the
-            <a href="https://dash.plot.ly/external-resources">
-              Plotly Dash documentation
-            </a>.
-          </p>
-          <p>
-            With just the grid CSS, you should only expect the layout components
-            <code>Container</code>, <code>Row</code> and <code>Col</code> to
-            work properly. Other components require additional classes and styles
-            that are not included in the Bootstrap grid stylesheet.
-          </p>
-          <h2 class="section-header mt-5">Customising the stylesheet</h2>
-          <hr />
-          <p>
-            The easiest way to get started with
-            <em>dash-bootstrap-components</em> is to include the
-            Bootstrap stylesheet from a CDN, as described above. If
-            you want to use a custom stylesheet, you will need to
-            include it in your <code>assets/</code> directory, as
-            described in the <a
-            href="https://dash.plot.ly/external-resources">Plotly Dash
-            documentation</a>.
-          </p>
-          <p>
-            A good way to start customising the stylesheet is to use
-            an alternative pre-compiled theme. <a
-            href="https://bootswatch.com/">Bootswatch</a> is a great
-            place to find new themes. Links to CDNs for each of the Bootswatch
-            styles are also included in <code>themes</code>, and can be used
-            with the <code>external_stylesheets</code> argument of the
-            <code>Dash</code> constructor:
-          </p>
-          <pre><code class="language-python">app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CERULEAN])</code></pre>
-          <p>
-            You can also download the base CSS from <a
-            href="https://github.com/thomaspark/bootswatch/tree/master/dist/">GitHub</a>,
-            place it in the <code>assets/</code> directory for your
-            application and modify it. For instance, to use the
-            <em>Cerulean</em> theme, you would download
-            <code>/dist/cerulean/bootstrap.css</code> from the
-            Bootswatch GitHub repository.
-          </p>
-          <h2 class="section-header mt-5">Contributing</h2>
-          <hr />
-          <p>
-            If you find a bug, or if something is unclear, we
-            encourage you to raise an issue on <a
-            href="https://github.com/facultyai/dash-bootstrap-components/issues">GitHub</a>.
-          </p>
-          <p>
-            We welcome contributions to
-            <em>dash-bootstrap-components</em>. To contribute, fork
-            the repository and open a <a
-            href="https://github.com/facultyai/dash-bootstrap-components/pulls">pull
-            request</a>.
-          </p>
+{% from "macros/navbar.html" import navbar %} {% from "macros/theme-demo.html"
+import theme_demo %} {% extends "base.html" %} {% block title %}<title>
+  Dash Bootstrap Components</title
+>{% endblock %} {% block header %}{{ navbar("home") }}{% endblock %} {% block
+body %}
+<div class="container mb-5">
+  <div class="dbcd-masthead">
+    <div class="row justify-content-center">
+      <div class="col-auto px-5 align-self-center">
+        <div style="width:250px;height:250px;margin:auto;">
+          <object
+            type="image/svg+xml"
+            data="https://cdn.opensource.faculty.ai/dbc/assets/logo.svg"
+            style="width:100%;height:100%;"
+          >
+            dash-bootstrap-components logo
+          </object>
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </body>
-</html>
+    <div class="row justify-content-center mt-3">
+      <div class="col col-md-10 col-lg-8 col-xl-6 text-center">
+        <h1 class="font-weight-light">Dash Bootstrap Components</h1>
+        <p class="lead">
+          <i>dash-bootstrap-components</i> is a library of Bootstrap components
+          for Plotly Dash, that makes it easier to build consistently styled
+          apps with complex, responsive layouts.
+        </p>
+        <a
+          class="btn btn-outline-secondary"
+          href="https://github.com/facultyai/dash-bootstrap-components"
+          >Source Code</a
+        >
+        <a class="btn btn-secondary" href="/docs">Get Started »</a>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="dbcd-main">
+    <h2>Get started quickly</h2>
+    <div class="row mt-3 mb-5">
+      <div class="col">
+        <p class="lead">
+          Dash Bootstrap Components can be easily installed with
+          <code>pip</code> or <code>conda</code>.
+        </p>
+        <p class="lead">
+          Once installed, just link a Bootstrap stylesheet and start using the
+          components exactly like you would use other Dash component libraries.
+        </p>
+        <a href="/docs/quickstart" class="btn btn-secondary">Quickstart »</a>
+      </div>
+      <div class="col-12 col-lg-6 mt-4 mt-lg-0">
+        <pre><code class="language-sh">pip install dash-bootstrap-components</code></pre>
+        <pre><code class="language-python">import dash
+import dash_bootstrap_components as dbc
+
+app = dash.Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
+)
+
+app.layout = dbc.Alert(
+    "Hello, Bootstrap!" className="m-5"
+)
+
+if __name__ == "__main__":
+    app.run_server()</code></pre>
+      </div>
+    </div>
+    <hr />
+    <h2>Extensive component library</h2>
+    <div class="row mt-3 mb-5">
+      <div class="col-12 col-lg-6 order-lg-2 mb-4 mb-lg-0">
+        <div class="card h-100">{{ theme_demo("Bootstrap") }}</div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="lead">
+          Bootstrap components are available as native Dash components to let
+          you easily incorporate them into your Dash apps. Each component
+          exposes a number of props to let you control the behaviour with Dash
+          callbacks.
+        </p>
+        <a href="/docs/components" class="btn btn-secondary">Components »</a>
+      </div>
+    </div>
+    <hr />
+    <h2>Highly customisable</h2>
+    <div class="row mt-3 mb-5">
+      <div class="col-12 col-lg-6 order-lg-2 mb-4 mb-lg-0">
+        <div class="card h-100 superhero-demo">
+          {{ theme_demo("Superhero") }}
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="lead">
+          Dash Bootstrap Components is compatible with any Bootstrap v4
+          stylesheet of your choice. Learn how to customise the look of your app
+          using the bundled themes or your own custom themes.
+        </p>
+        <a href="/docs/themes" class="btn btn-secondary">Themes »</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
