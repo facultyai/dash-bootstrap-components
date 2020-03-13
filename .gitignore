@@ -20,4 +20,4 @@ dist
 changelog.tmp
 
 # generated documentation files
-docs/templates/docs/*.html
+docs/templates/generated/**/*.html

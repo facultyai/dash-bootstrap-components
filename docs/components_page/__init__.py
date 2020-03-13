@@ -41,6 +41,7 @@ INDEX_STRING_TEMPLATE = """{% from "macros/navbar.html" import navbar %}
 {% endblock %}
 """
 
+
 def _get_label(slug):
     if slug == "button_group":
         return "ButtonGroup"
