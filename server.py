@@ -1,4 +1,4 @@
-from flask import Flask, abort, render_template, redirect
+from flask import Flask, abort, redirect, render_template
 from jinja2 import TemplateNotFound
 
 DOCS_SIDENAV_ITEMS = [
@@ -42,7 +42,7 @@ def create_server():
     def quickstart():
         try:
             return render_template(
-                f"docs/quickstart.html",
+                "generated/docs/quickstart.html",
                 sidenav_items=DOCS_SIDENAV_ITEMS,
                 sidenav_active="quickstart",
             )
@@ -53,7 +53,7 @@ def create_server():
     def themes():
         try:
             return render_template(
-                f"docs/themes.html",
+                "generated/docs/themes.html",
                 sidenav_items=DOCS_SIDENAV_ITEMS,
                 sidenav_active="themes",
             )
@@ -68,5 +68,9 @@ def create_server():
     @server.route("/l/components/<slug>")
     def components_redirect(slug):
         return redirect(f"/docs/components/{slug}", 302)
+
+    @server.route("/changelog")
+    def changelog():
+        return render_template("generated/docs/changelog.html")
 
     return server
