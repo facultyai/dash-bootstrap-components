@@ -170,6 +170,7 @@ span.hljs-meta {
     position: sticky;
     top: 56px;
     height: calc(100vh - 56px);
+    overflow: scroll;
   }
 }
 
@@ -279,13 +280,26 @@ span.hljs-meta {
   border-color: #fa7268;
 }
 
+.dbcd-main.changelog h2 {
+  font-size: 1.5rem;
+}
+
+.dbcd-main.changelog h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+/* Remaining CSS used for styling superhero demo on homepage */
+
 .superhero-demo {
-  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #EBEBEB;
-  background-color: #2B3E50;
+  color: #ebebeb;
+  background-color: #2b3e50;
 }
 
 .superhero-demo .navbar {
@@ -296,7 +310,8 @@ span.hljs-meta {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.superhero-demo .navbar-dark .navbar-nav .nav-link:hover, .superhero-demo .navbar-dark .navbar-nav .nav-link:focus {
+.superhero-demo .navbar-dark .navbar-nav .nav-link:hover,
+.superhero-demo .navbar-dark .navbar-nav .nav-link:focus {
   color: #fff;
 }
 
@@ -323,12 +338,13 @@ span.hljs-meta {
   color: #fff;
 }
 
-.superhero-demo .navbar-dark .navbar-text a:hover, .superhero-demo .navbar-dark .navbar-text a:focus {
+.superhero-demo .navbar-dark .navbar-text a:hover,
+.superhero-demo .navbar-dark .navbar-text a:focus {
   color: #fff;
 }
 
 .superhero-demo .bg-dark {
-  background-color: #4E5D6C !important;
+  background-color: #4e5d6c !important;
 }
 
 .superhero-demo .nav-link.disabled {
@@ -336,13 +352,13 @@ span.hljs-meta {
 }
 
 .superhero-demo .btn {
-  color: #EBEBEB;
+  color: #ebebeb;
   border-radius: 0px;
 }
 
 .superhero-demo .btn-primary {
-  background-color: #DF691A;
-  border-color: #DF691A;
+  background-color: #df691a;
+  border-color: #df691a;
 }
 
 .superhero-demo .btn-primary:hover {
@@ -350,11 +366,12 @@ span.hljs-meta {
   border-color: #b15315;
 }
 
-.superhero-demo .btn-primary:focus, .superhero-demo .btn-primary.focus {
+.superhero-demo .btn-primary:focus,
+.superhero-demo .btn-primary.focus {
   background-color: #bd5916;
   border-color: #b15315;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(228, 128, 60, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(228, 128, 60, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(228, 128, 60, 0.5);
 }
 
 .superhero-demo .btn-success {
@@ -367,11 +384,12 @@ span.hljs-meta {
   border-color: #449d44;
 }
 
-.superhero-demo .btn-success:focus, .superhero-demo .btn-success.focus {
+.superhero-demo .btn-success:focus,
+.superhero-demo .btn-success.focus {
   background-color: #48a648;
   border-color: #449d44;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(116, 195, 116, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(116, 195, 116, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(116, 195, 116, 0.5);
 }
 
 .superhero-demo .btn-warning {
@@ -386,12 +404,13 @@ span.hljs-meta {
   border-color: #ec971f;
 }
 
-.superhero-demo .btn-warning:focus, .superhero-demo .btn-warning.focus {
+.superhero-demo .btn-warning:focus,
+.superhero-demo .btn-warning.focus {
   color: #fff;
   background-color: #ed9d2b;
   border-color: #ec971f;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(242, 185, 105, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(242, 185, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(242, 185, 105, 0.5);
 }
 
 .superhero-demo .btn-danger {
@@ -406,27 +425,29 @@ span.hljs-meta {
   border-color: #c9302c;
 }
 
-.superhero-demo .btn-danger:focus, .superhero-demo .btn-danger.focus {
+.superhero-demo .btn-danger:focus,
+.superhero-demo .btn-danger.focus {
   color: #fff;
   background-color: #d23430;
   border-color: #c9302c;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(223, 109, 105, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(223, 109, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(223, 109, 105, 0.5);
 }
 
 .superhero-demo .dropdown-menu {
-  color: #EBEBEB;
-  background-color: #4E5D6C;
+  color: #ebebeb;
+  background-color: #4e5d6c;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0px;
 }
 
 .superhero-demo .dropdown-item {
-  color: #EBEBEB;
+  color: #ebebeb;
 }
 
-.superhero-demo .dropdown-item:hover, .superhero-demo .dropdown-item:focus {
-  color: #EBEBEB;
+.superhero-demo .dropdown-item:hover,
+.superhero-demo .dropdown-item:focus {
+  color: #ebebeb;
   background-color: rgba(255, 255, 255, 0.075);
 }
 

@@ -1,7 +1,13 @@
 {% macro navbar(active="home") -%}
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <img src="/static/images/icon128x128.png" width="36" height="36" alt="dbc logo thumbnail" class="mr-2">
+    <img
+      src="/static/images/icon128x128.png"
+      width="36"
+      height="36"
+      alt="dbc logo thumbnail"
+      class="mr-2"
+    />
     <a href="/" class="d-lg-none navbar-brand mr-0">dbc</a>
     <button
       class="navbar-toggler"
@@ -26,7 +32,7 @@
         <li class="nav-item{{' active' if active == 'examples' else ''}}">
           <a class="nav-link" href="/examples/">Examples</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item{{' active' if active == 'more' else ''}} dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -39,6 +45,7 @@
             More
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/changelog">Changelog</a>
             <a
               class="dropdown-item"
               href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug-report.md"
