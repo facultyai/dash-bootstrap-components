@@ -71,6 +71,6 @@ def create_server():
 
     @server.route("/changelog")
     def changelog():
-        return render_template("generated/docs/changelog.html")
+        return render_template("generated/changelog.html")
 
     return server
