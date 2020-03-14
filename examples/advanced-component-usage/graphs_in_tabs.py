@@ -50,15 +50,16 @@ def render_tab_content(active_tab, data):
     stored graphs, and renders the tab content depending on what the value of
     'active_tab' is.
     """
-    if active_tab == "scatter":
-        return dcc.Graph(figure=data["scatter"])
-    elif active_tab == "histogram":
-        return dbc.Row(
-            [
-                dbc.Col(dcc.Graph(figure=data["hist_1"]), width=6),
-                dbc.Col(dcc.Graph(figure=data["hist_2"]), width=6),
-            ]
-        )
+    if active_tab and data is not None:
+        if active_tab == "scatter":
+            return dcc.Graph(figure=data["scatter"])
+        elif active_tab == "histogram":
+            return dbc.Row(
+                [
+                    dbc.Col(dcc.Graph(figure=data["hist_1"]), width=6),
+                    dbc.Col(dcc.Graph(figure=data["hist_2"]), width=6),
+                ]
+            )
     return data
 
 
