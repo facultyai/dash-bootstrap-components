@@ -7,25 +7,6 @@ DOCS_SIDENAV_ITEMS = [
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
 
-INDEX_STRING_TEMPLATE = """{% extends "docs.html" %}
-{% block head %}
-{{ super() }}
-{{ "{%metas%}{%css%}{%favicon%}" }}
-{% endblock %}
-{% block title %}
-<title>{{ "{%title%}" }}</title>
-{% endblock %}
-{% block content %}
-{{ "{%app_entry%}" }}
-{% endblock %}
-{% block scripts %}
-<footer>
-  {{ "{%config%}{%scripts%}{%renderer%}" }}
-  {{ super() }}
-</footer>
-{% endblock %}
-"""
-
 
 def create_server():
     server = Flask(__name__)
@@ -38,7 +19,7 @@ def create_server():
             abort(404)
 
     @server.route("/docs/")
-    @server.route("/docs/quickstart")
+    @server.route("/docs/quickstart/")
     def quickstart():
         try:
             return render_template(
@@ -49,7 +30,7 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/themes")
+    @server.route("/docs/themes/")
     def themes():
         try:
             return render_template(
@@ -60,17 +41,27 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/components")
+    @server.route("/docs/components/")
     def components_index():
         return redirect("/docs/components/alert", 302)
 
-    @server.route("/l/components", defaults={"slug": "alert"})
-    @server.route("/l/components/<slug>")
+    @server.route("/l/components/", defaults={"slug": "alert"})
+    @server.route("/l/components/<slug>/")
     def components_redirect(slug):
         return redirect(f"/docs/components/{slug}", 302)
 
-    @server.route("/changelog")
+    @server.route("/examples/")
+    def examples_index():
+        try:
+            return render_template("examples-index.html")
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/changelog/")
     def changelog():
-        return render_template("generated/changelog.html")
+        try:
+            return render_template("generated/changelog.html")
+        except TemplateNotFound:
+            abort(404)
 
     return server
