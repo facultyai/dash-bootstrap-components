@@ -59,9 +59,7 @@ def mod_callback(fn):
     return wrapper
 
 
-def build_app_from_example(
-    app, name, code, code_link, show_warning=False
-):
+def build_app_from_example(app, name, code, code_link, show_warning=False):
     if show_warning:
         template = INDEX_STRING_TEMPLATE.replace("<WARNING>", SIZE_WARNING)
     else:
