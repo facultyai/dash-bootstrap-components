@@ -1,3 +1,4 @@
+import os
 import re
 from pathlib import Path
 
@@ -14,7 +15,7 @@ HERE = Path(__file__).parent
 EXAMPLES = HERE / "vendor"
 TEMPLATES = HERE.parent / "templates"
 
-GITHUB_EXAMPLES = Path(
+GITHUB_EXAMPLES = (
     "https://github.com/"
     "facultyai/dash-bootstrap-components/blob/master/examples/"
 )
@@ -87,13 +88,15 @@ def register_apps():
         iris_app,
         "iris",
         (EXAMPLES / "iris.py").read_text(),
-        str(GITHUB_EXAMPLES / "gallery/iris-kmeans/app.py"),
+        os.path.join(GITHUB_EXAMPLES, "gallery/iris-kmeans/app.py"),
     )
     git_app_ = build_app_from_example(
         git_app,
         "graphs-in-tabs",
         (EXAMPLES / "graphs_in_tabs.py").read_text(),
-        str(GITHUB_EXAMPLES / "advanced-component-usage/graphs_in_tabs.py"),
+        os.path.join(
+            GITHUB_EXAMPLES, "advanced-component-usage/graphs_in_tabs.py"
+        ),
     )
 
     # need to do a bit of hackery to make sure the links of the multi page app
@@ -109,7 +112,7 @@ def register_apps():
         sidebar_app,
         "simple-sidebar",
         sidebar_source,
-        str(GITHUB_EXAMPLES / "multi-page-apps/simple_sidebar.py"),
+        os.path.join(GITHUB_EXAMPLES, "multi-page-apps/simple_sidebar.py"),
         show_warning=True,
     )
 
