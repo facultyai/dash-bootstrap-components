@@ -32,7 +32,7 @@ card_content_2 = dbc.CardBody(
 )
 
 card_content_3 = [
-    dbc.CardImg(src="/assets/images/placeholder286x180.png", top=True),
+    dbc.CardImg(src="/static/images/placeholder286x180.png", top=True),
     dbc.CardBody(
         [
             html.H5("Card with image", className="card-title"),

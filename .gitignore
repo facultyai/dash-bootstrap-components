@@ -1,12 +1,26 @@
+# js artifacts
 node_modules
 lib
-*.egg-info
+
+# sass
+.sass-cache
+
+# dash-bootstrap-components artifacts
 dash_bootstrap_components/bundle.js
 dash_bootstrap_components/metadata.json
-*__pycache__
+dash_bootstrap_components/_components/
+
+# python build artifacts
+__pycache__
 *.pyc
 dist
+*.egg-info
+
+# release artifacts
 changelog.tmp
-dash_bootstrap_components/_components/
-.sass-cache
-.vscode
+
+# generated documentation files
+docs/templates/generated/**/*.html
+
+# vendored example apps
+docs/examples/vendor

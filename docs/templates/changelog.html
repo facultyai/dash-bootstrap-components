@@ -1,0 +1,8 @@
+{% from "macros/navbar.html" import navbar %}
+{% extends "base.html" %}
+{% block header %}{{ navbar("more") }}{% endblock %}
+{% block body %}
+<div class="container">
+  <main class="dbcd-main mb-5 changelog">{% block content %}{% endblock %}</main>
+</div>
+{% endblock %}
