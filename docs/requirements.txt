@@ -4,3 +4,4 @@ gunicorn
 markdown
 pandas
 scikit-learn
+werkzeug>=1.0.0
