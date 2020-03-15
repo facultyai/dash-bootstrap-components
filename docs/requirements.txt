@@ -3,3 +3,4 @@ dash_bootstrap_components==0.9.1
 gunicorn
 markdown
 pandas
+scikit-learn

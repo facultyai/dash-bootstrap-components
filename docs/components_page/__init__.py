@@ -122,9 +122,9 @@ def register_apps():
 
     routes = {}
     env = Environment(loader=FileSystemLoader(TEMPLATES.as_posix()))
+    template = env.from_string(INDEX_STRING_TEMPLATE)
 
     for slug, kwargs in component_bodies.items():
-        template = env.from_string(INDEX_STRING_TEMPLATE)
         app = dash.Dash(
             external_stylesheets=["/static/loading.css"],
             requests_pathname_prefix=f"/docs/components/{slug}/",

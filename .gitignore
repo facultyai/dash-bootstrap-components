@@ -21,3 +21,6 @@ changelog.tmp
 
 # generated documentation files
 docs/templates/generated/**/*.html
+
+# vendored example apps
+docs/examples/vendor

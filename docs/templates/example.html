@@ -1,0 +1,29 @@
+{% from "macros/example-navbar.html" import example_navbar %}
+{% extends "base.html" %}
+{% block header %}{{ example_navbar() }}{% endblock %}
+{% block body %}
+<main class="dbcd-main mb-5 mx-2 mx-md-4 my-4">
+  {% block size_warning %}{% endblock %}
+  <div
+    style="transform:translateZ(0);box-shadow:0 0 10px 5px #9c9c9c;min-height:calc(700px);"
+  >
+    {% block content %}{% endblock %}
+  </div>
+  <div>
+    <h2>Source Code</h2>
+    <div
+      id="sourceCode"
+      class="position-relative"
+      style="visibility:hidden;top:-110px"
+    ></div>
+    <p>
+      This code is available
+      <a href="{{ example_link }}">in the examples directory</a> of our GitHub
+      repository.
+    </p>
+    <pre
+      class="mt-3"
+    ><code class="language-python">{% block code %}{% endblock %}</code></pre>
+  </div>
+</main>
+{% endblock %}

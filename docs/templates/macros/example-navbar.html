@@ -1,0 +1,17 @@
+{% macro example_navbar() -%}
+<nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+    <img
+      src="/static/images/icon128x128.png"
+      width="36"
+      height="36"
+      alt="dbc logo thumbnail"
+      class="mr-2"
+    />
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/examples">Back to examples</a>
+      </li>
+      <li class="nav-item"><a href="#sourceCode" class="nav-link">Jump to source</a></li>
+    </ul>
+</nav>
+{%- endmacro %}
