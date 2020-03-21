@@ -24,6 +24,10 @@ function resolveChildProps(child) {
   }
 }
 
+/**
+ * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
+ * get the currently active tab in a callback.
+ */
 class Tabs extends React.Component {
   constructor(props) {
     super(props);

@@ -4,6 +4,10 @@ import {omit} from 'ramda';
 import {CardLink as RSCardLink} from 'reactstrap';
 import Link from '../../private/Link';
 
+/**
+ * Use card link to add consistently styled links to your cards. Links can be
+ * used like buttons, external links, or internal Dash style links.
+ */
 const CardLink = props => {
   const {children, loading_state, ...otherProps} = props;
 

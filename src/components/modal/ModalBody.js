@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ModalBody as RSModalBody} from 'reactstrap';
 
+/**
+ * Use this component to add consistent padding to the body (main content) of
+ * your Modals.
+ */
 const ModalBody = props => {
   const {children, ...otherProps} = props;
   return (

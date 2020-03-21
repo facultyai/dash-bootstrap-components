@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Table as RSTable} from 'reactstrap';
 
+/**
+ * A component for applying Bootstrap styles to HTML tables. Use this as a
+ * drop-in replacement for `html.Table`, or generate a table from a Pandas
+ * DataFrame using `dbc.Table.from_dataframe`.
+ */
 const Table = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

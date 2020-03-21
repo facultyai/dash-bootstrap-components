@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
 
+/**
+ * Toasts can be used to push messages and notifactions to users. Control
+ * visibility of the toast with the `is_open` prop, or use `duration` to set a
+ * timer for auto-dismissal.
+ */
 class Toast extends React.Component {
   constructor(props) {
     super(props);

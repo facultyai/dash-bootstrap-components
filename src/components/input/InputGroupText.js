@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {InputGroupText as RSInputGroupText} from 'reactstrap';
 
+/**
+ * Use for wrapping text in InputGroups.
+ */
 const InputGroupText = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {FormGroup as RSFormGroup} from 'reactstrap';
 
+/**
+ * A component for grouping together inputs, labels, text and feedback.
+ */
 const FormGroup = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

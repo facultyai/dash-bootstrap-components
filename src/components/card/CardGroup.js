@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardGroup as RSCardGroup} from 'reactstrap';
 
+/**
+ * Use CardGroup to render cards as a single, attached element of columns with
+ * equal width and height.
+ */
 const CardGroup = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -15,6 +15,9 @@ const navbarColors = new Set([
   'white'
 ]);
 
+/**
+ * The Navbar component can be used to make fully customisable navbars.
+ */
 const Navbar = props => {
   const {children, color, style, loading_state, ...otherProps} = props;
   const isNavbarColor = navbarColors.has(color);

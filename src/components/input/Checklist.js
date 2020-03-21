@@ -8,7 +8,14 @@ import CustomInput from '../../private/CustomInput';
  * Checklist is a component that encapsulates several checkboxes.
  * The values and labels of the checklist is specified in the `options`
  * property and the checked items are specified with the `value` property.
- * Each checkbox is rendered as an input with a surrounding label.
+ * Each checkbox is rendered as an input / label pair.
+ *
+ * If `Checklist` is given an `id` (which is necessary for use in callbacks) it
+ * will use Bootstrap's custom checkbox style, which hides the native browser
+ * checkbox and renders a custom CSS alternative. See the Bootstrap docs for
+ * details.
+ *
+ * https://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios-1
  */
 class Checklist extends React.Component {
   constructor(props) {

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardHeader as RSCardHeader} from 'reactstrap';
 
+/**
+ * Use the CardHeader component to add a header to any card.
+ */
 const CardHeader = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

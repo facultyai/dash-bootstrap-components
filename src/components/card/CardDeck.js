@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardDeck as RSCardDeck} from 'reactstrap';
 
+/**
+ * Create a set of cards with equal width and height using CardDeck.
+ */
 const CardDeck = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Modal as RSModal} from 'reactstrap';
 
+/**
+ * Create a toggleable dialog using the Modal component. Toggle the visibility
+ * with the `is_open` prop.
+ */
 class Modal extends React.Component {
   constructor(props) {
     super(props);

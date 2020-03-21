@@ -10,7 +10,6 @@ import CustomInput from '../../private/CustomInput';
  * Each radio item is rendered as an input and associated label which are
  * siblings of each other.
  */
-
 class RadioItems extends React.Component {
   constructor(props) {
     super(props);

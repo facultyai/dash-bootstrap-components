@@ -4,6 +4,9 @@ import {omit} from 'ramda';
 import {ListGroupItemText as RSListGroupItemText} from 'reactstrap';
 import classNames from 'classnames';
 
+/**
+ * Apply consistent styling to text within a list group.
+ */
 const ListGroupItemText = props => {
   const {children, className, color, loading_state, ...otherProps} = props;
   const classes = classNames(className, color && `text-${color}`);

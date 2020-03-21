@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
+/**
+ * Creates a single checkbox input. Use the `checked` prop in your callbacks.
+ */
 class Checkbox extends React.Component {
   constructor(props) {
     super(props);

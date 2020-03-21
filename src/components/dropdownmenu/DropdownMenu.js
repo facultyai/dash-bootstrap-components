@@ -5,6 +5,10 @@ import {Dropdown, DropdownToggle} from 'reactstrap';
 import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 
+/**
+ * DropdownMenu creates an overlay useful for grouping together links and other
+ * content to organise navigation or other interactive elements.
+ */
 class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);

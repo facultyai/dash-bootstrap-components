@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Alert as RSAlert} from 'reactstrap';
 
+/**
+ * Alert allows you to create contextual feedback messages on user actions.
+ *
+ * Control the visibility using callbacks with the `is_open` prop, or set it to
+ * auto-dismiss with the `duration` prop.
+ */
 class Alert extends React.Component {
   constructor(props) {
     super(props);

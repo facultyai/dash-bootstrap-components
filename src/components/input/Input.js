@@ -6,6 +6,16 @@ import classNames from 'classnames';
 
 const convert = val => (isNumeric(val) ? +val : NaN);
 
+/**
+ * A basic HTML input control for entering text, numbers, or passwords, with
+ * Bootstrap styles automatically applied. This component is much like its
+ * counterpart in dash_core_components, but with a few additions such as the
+ * `valid` and `invalid` props for providing user feedback.
+ *
+ * Note that checkbox and radio types are supported through
+ * the Checklist and RadioItems component. Dates, times, and file uploads
+ * are supported through separate components in other libraries.
+ */
 class Input extends React.Component {
   constructor(props) {
     super(props);

@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ListGroup as RSListGroup} from 'reactstrap';
 
+/**
+ * Bootstrap list groups are a flexible way to display a series of content. Use
+ * in conjunction with `ListGroupItem`, `ListGroupItemHeading` and
+ * `ListGroupItemText`.
+ */
 const ListGroup = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardFooter as RSCardFooter} from 'reactstrap';
 
+/**
+ * Use the CardFooter component to add a footer to any card.
+ */
 const CardFooter = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

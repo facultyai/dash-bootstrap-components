@@ -4,6 +4,9 @@ import {omit} from 'ramda';
 import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
 import Link from '../../private/Link';
 
+/**
+ * Call out attention to a brand name or site title within a navbar.
+ */
 const NavbarBrand = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

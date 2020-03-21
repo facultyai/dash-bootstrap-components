@@ -4,6 +4,9 @@ import {omit} from 'ramda';
 import {ListGroupItem as RSListGroupItem} from 'reactstrap';
 import Link from '../../private/Link';
 
+/**
+ * Create a single item in a `ListGroup`.
+ */
 class ListGroupItem extends React.Component {
   constructor(props) {
     super(props);

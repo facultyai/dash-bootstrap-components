@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {InputGroup as RSInputGroup} from 'reactstrap';
 
+/**
+ * A component for grouping together inputs and buttons, dropdowns or text.
+ */
 const InputGroup = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

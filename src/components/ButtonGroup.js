@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ButtonGroup as RSButtonGroup} from 'reactstrap';
 
+/**
+ * A component for creating groups of buttons. Can be used with `Button` or
+ * `DropdownMenu`.
+ */
 const ButtonGroup = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

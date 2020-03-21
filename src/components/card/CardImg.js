@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardImg as RSCardImg} from 'reactstrap';
 
+/**
+ * Use CardImg to add images to your cards.
+ */
 const CardImg = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

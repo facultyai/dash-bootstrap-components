@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardImgOverlay as RSCardImgOverlay} from 'reactstrap';
 
+/**
+ * Use CardImgOverlay to turn an image into the background of your card and add
+ * text on top of it.
+ */
 const CardImgOverlay = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

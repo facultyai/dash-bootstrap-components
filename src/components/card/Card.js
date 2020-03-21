@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Card as RSCard} from 'reactstrap';
 
+/**
+ * Component for creating Bootstrap cards. Use in conjunction with CardBody,
+ * CardImg, CardLink, CardHeader and CardFooter. Can also be used in
+ * conjunction with CardColumns, CardDeck, CardGroup for different layout
+ * options.
+ */
 const Card = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

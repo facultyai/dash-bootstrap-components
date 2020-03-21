@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ModalHeader as RSModalHeader} from 'reactstrap';
 
+/**
+ * Add a header to any modal.
+ */
 const ModalHeader = props => {
   const {children, ...otherProps} = props;
   return <RSModalHeader {...omit(['setProps'], otherProps)}>{children}</RSModalHeader>;

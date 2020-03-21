@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Create a single tab. Should be used as a component of Tabs.
+ */
 const Tab = props => {
   return <div>{props.children}</div>;
 };

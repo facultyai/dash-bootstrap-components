@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {FormText as RSFormText} from 'reactstrap';
 
+/**
+ * Add explanatory text below your input components.
+ */
 const FormText = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

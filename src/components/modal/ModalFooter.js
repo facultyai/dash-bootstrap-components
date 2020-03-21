@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ModalFooter as RSModalFooter} from 'reactstrap';
 
+/**
+ * Add a footer to any modal.
+ */
 const ModalFooter = props => {
   const {children, ...otherProps} = props;
   return <RSModalFooter {...omit(['setProps'], otherProps)}>{children}</RSModalFooter>;
