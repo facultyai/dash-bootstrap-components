@@ -42,10 +42,15 @@ class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
+  /**
+   * The ID of this component, used to identify dash components
+   * in callbacks. The ID needs to be unique across all of the
+   * components in an app.
+   */
   id: PropTypes.string,
 
   /**
-   * Whether RadioButton has been checked or not
+   * Whether Checkbox has been checked or not
    */
   checked: PropTypes.bool,
 
