@@ -4,6 +4,10 @@ import {omit} from 'ramda';
 import classNames from 'classnames';
 import Link from '../../private/Link';
 
+/**
+ * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
+ * directly.
+ */
 class NavLink extends React.Component {
   constructor(props) {
     super(props);

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Progress as RSProgress} from 'reactstrap';
 
+/**
+ * A component for creating progress bars just with CSS. Control the current
+ * progress with a callback and the `value` prop.
+ */
 const Progress = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Nav as RSNav} from 'reactstrap';
 
+/**
+ * Nav can be used to group together a collection of navigation links.
+ */
 const Nav = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

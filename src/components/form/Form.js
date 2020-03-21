@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Form as RSForm} from 'reactstrap';
 
+/**
+ * The Form component can be used to organise collections of input components
+ * and apply consistent styling.
+ */
 const Form = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

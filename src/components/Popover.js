@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Popover as RSPopover} from 'reactstrap';
 
+/**
+ * Popover creates a toggleable overlay that can be used to provide additional
+ * information or content to users without having to load a new page or open a
+ * new window.
+ *
+ * Use the `PopoverHeader` and `PopoverBody` components to control the layout
+ * of the children.
+ */
 const Popover = props => {
   const {children, is_open, hide_arrow, loading_state, ...otherProps} = props;
   return (

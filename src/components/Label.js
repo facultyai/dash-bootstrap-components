@@ -12,6 +12,9 @@ const alignMap = {
 
 const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl'];
 
+/**
+ * A component for adding labels to inputs in forms with added sizing controls.
+ */
 const Label = props => {
   const {
     children,

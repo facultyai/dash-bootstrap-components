@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardColumns as RSCardColumns} from 'reactstrap';
 
+/**
+ * Display a series of cards in vertical columns using a masonry style layout.
+ */
 const CardColumns = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -6,7 +6,6 @@ import classNames from 'classnames';
 /**
  * A basic HTML textarea for entering multiline text based on the corresponding
  * component in dash-core-components
- *
  */
 class Textarea extends React.Component {
   constructor(props) {

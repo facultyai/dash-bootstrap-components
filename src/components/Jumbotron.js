@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Jumbotron as RSJumbotron} from 'reactstrap';
 
+/**
+ * Create a Bootstrap Jumbotron for showcasing hero style content on landing
+ * pages or other parts of your app.
+ */
 const Jumbotron = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -19,6 +19,10 @@ const navbarColors = new Set([
   'white'
 ]);
 
+/**
+ * A self-contained navbar ready for use. If you need more customisability try
+ * `Navbar` instead.
+ */
 class NavbarSimple extends React.Component {
   constructor(props) {
     super(props);

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {NavItem as RSNavItem} from 'reactstrap';
 
+/**
+ * Create a single item in a `Nav`.
+ */
 const NavItem = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

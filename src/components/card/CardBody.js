@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CardBody as RSCardBody} from 'reactstrap';
 
+/**
+ * Wrap the content of your `Card` in `CardBody` to apply padding and other
+ * styles.
+ */
 const CardBody = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

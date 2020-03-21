@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {FormFeedback as RSFormFeedback} from 'reactstrap';
 
+/**
+ * The FormFeedback component can be used to provide feedback on input values
+ * in a form. Add the form feedback to a `FormGroup` and set the `valid` or
+ * `invalid` props of the associated input to toggle visibility.
+ */
 const FormFeedback = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {Container as RSContainer} from 'reactstrap';
 import {omit} from 'ramda';
 
+/**
+ * Containers provide a means to center and horizontally pad your site’s
+ * contents.
+ */
 const Container = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

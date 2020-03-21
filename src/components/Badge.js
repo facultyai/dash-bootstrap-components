@@ -4,6 +4,9 @@ import {omit} from 'ramda';
 import {Badge as RSBadge} from 'reactstrap';
 import Link from '../private/Link';
 
+/**
+ * Badges can be used to add counts or labels to other components.
+ */
 const Badge = props => {
   const {children, href, loading_state, setProps, ...otherProps} = props;
 

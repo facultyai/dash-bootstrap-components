@@ -12,6 +12,13 @@ const alignMap = {
   baseline: 'align-self-baseline'
 };
 
+/**
+ * Component for creating Bootstrap columns to control the layout of your page.
+ *
+ * Use the width argument to specify width, or use the breakpoint arguments
+ * (xs, sm, md, lg, xl) to control the width of the columns on different screen
+ * sizes to achieve a responsive layout.
+ */
 const Col = props => {
   const {
     children,

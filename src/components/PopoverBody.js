@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {PopoverBody as RSPopoverBody} from 'reactstrap';
 
+/**
+ * Componnet for wrapping the body (i.e. main content) of a `Popover`.
+ */
 const PopoverBody = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

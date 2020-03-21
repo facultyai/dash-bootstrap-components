@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CustomInput} from 'reactstrap';
 
+/**
+ * Create a HTML select element with Bootstrap styles. Specify options as a
+ * list of dictionaries with keys label, value and disabled.
+ */
 const Select = props => {
   const [value, setValue] = useState('');
 

@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Tooltip as RSTooltip} from 'reactstrap';
 
+/**
+ * A component for adding tooltips to any element, no callbacks required!
+ *
+ * Simply add the Tooltip to you layout, and give it a target (id of a
+ * component to which the tooltip should be attached)
+ */
 class Tooltip extends React.Component {
   constructor(props) {
     super(props);

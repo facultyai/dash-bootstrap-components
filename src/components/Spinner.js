@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import {omit, type} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 
+/**
+ * Render Bootstrap style loading spinners using only CSS.
+ *
+ * This component can be used standalone to render a loading spinner, or it can
+ * be used like `dash_core_components.Loading` by giving it children. In the
+ * latter case the chosen spinner will display while the children are loading.
+ */
 const Spinner = props => {
   const {
     children,

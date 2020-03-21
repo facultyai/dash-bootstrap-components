@@ -20,6 +20,12 @@ const justifyMap = {
   between: 'justify-content-between'
 };
 
+/**
+ * Row is one of the core layout components in Bootstrap. Build up your layout
+ * as a series of rows of columns. Row has arguments for controlling the
+ * vertical and horizontal alignment of its children, as well as the spacing
+ * between columns.
+ */
 const Row = props => {
   const {
     children,

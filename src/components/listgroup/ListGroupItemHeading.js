@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ListGroupItemHeading as RSListGroupItemHeading} from 'reactstrap';
 
+/**
+ * Add a heading to any `ListGroupItem`.
+ */
 const ListGroupItemHeading = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

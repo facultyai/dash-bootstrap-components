@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import {Button as RSButton} from 'reactstrap';
 import Link from '../private/Link';
 
+/**
+ * A component for creating Bootstrap buttons with different style options. The
+ * Button component can act as a HTML button, link (<a>) or can be used like a
+ * dash_core_components style `Link` for navigating between pages of a Dash app.
+ *
+ * Use the `n_clicks` prop to trigger callbacks when the button has been
+ * clicked.
+ */
 const Button = props => {
   const {
     children,

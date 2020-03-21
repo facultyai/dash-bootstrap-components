@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {NavbarToggler as RSNavbarToggler} from 'reactstrap';
 
+/**
+ * Use this component to create a navbar toggle to show navlinks when the
+ * navbar collapses on smaller screens.
+ */
 const NavbarToggler = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

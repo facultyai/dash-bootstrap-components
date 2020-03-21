@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Collapse as RSCollapse} from 'reactstrap';
 
+/**
+ * Hide or show content with a vertical collapsing animation. Visibility of the
+ * children is controlled by the `is_open` prop which can be targetted by
+ * callbacks.
+ */
 const Collapse = props => {
   const {children, is_open, loading_state, ...otherProps} = props;
   return (

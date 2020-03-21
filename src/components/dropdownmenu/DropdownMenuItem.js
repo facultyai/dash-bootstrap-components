@@ -6,6 +6,9 @@ import {DropdownItem as RSDropdownItem} from 'reactstrap';
 import Link, {isExternalLink} from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 
+/**
+ * Use DropdownMenuItem to build up the content of a DropdownMenu.
+ */
 class DropdownMenuItem extends React.Component {
   constructor(props) {
     super(props);

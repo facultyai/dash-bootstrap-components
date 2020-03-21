@@ -31,6 +31,10 @@ const wrapChild = (child, i) => {
   return <React.Fragment key={i}>{child}</React.Fragment>;
 };
 
+/**
+ * A component to wrap addons (such as text or buttons) when used with
+ * InputGroup
+ */
 const InputGroupAddon = props => {
   let {children, loading_state, className, addon_type, ...otherProps} = props;
   const classes = classNames(className, 'input-group-' + addon_type);

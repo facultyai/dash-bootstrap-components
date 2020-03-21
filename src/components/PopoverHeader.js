@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {PopoverHeader as RSPopoverHeader} from 'reactstrap';
 
+/**
+ * Creates a header for use inside the `Popover` component.
+ */
 const PopoverHeader = props => {
   const {children, loading_state, ...otherProps} = props;
   return (

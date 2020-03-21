@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Fade as RSFade} from 'reactstrap';
 
+/**
+ * Hide or show content with a fading animation. Visibility of the children is
+ * controlled by the `is_open` prop which can be targetted by callbacks.
+ */
 const Fade = props => {
   const {
     children,
