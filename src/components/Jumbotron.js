@@ -35,6 +35,11 @@ Jumbotron.propTypes = {
   children: PropTypes.node,
 
   /**
+   * Defines CSS styles which will override styles previously set.
+   */
+  style: PropTypes.object,
+
+  /**
    * If True, the jumbotron will grow to use the entire
    * horizontal space of its parent. Default: False.
    */
