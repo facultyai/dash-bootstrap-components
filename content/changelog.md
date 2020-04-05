@@ -6,6 +6,13 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.9.2 - 2020/4/5
+
+### Fixed
+
+* Expose `tabIndex` prop in `Input` component ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/344))
+* Expose `style` prop in `Jumbotron` component ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/344))
+
 ## 0.9.1 - 2020/3/12
 
 ### Fixed
