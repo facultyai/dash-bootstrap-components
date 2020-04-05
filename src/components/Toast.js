@@ -60,7 +60,7 @@ class Toast extends React.Component {
     return (
       <RSToast
         isOpen={this.state.toastOpen}
-        {...omit(['setProps'], otherProps)}
+        {...omit(['setProps', 'is_open'], otherProps)}
       >
         <ToastHeader
           icon={icon}

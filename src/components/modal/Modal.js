@@ -37,7 +37,7 @@ class Modal extends React.Component {
       <RSModal
         isOpen={this.state.modalOpen}
         toggle={this.toggle}
-        {...omit(['setProps'], otherProps)}
+        {...omit(['setProps', 'is_open'], otherProps)}
       >
         {children}
       </RSModal>
