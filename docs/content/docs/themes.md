@@ -34,7 +34,7 @@ See the [available themes](#available-themes) for more.
 
 ## Manually linking to a CDN
 
-Each theme such as `dash_bootstrap_components.BOOTSTRAP` is simply BootstrapCDN URL stored as a Python string, so using the themes module is really equivalent to doing something like the following.
+Each theme such as `dash_bootstrap_components.themes.BOOTSTRAP` is simply BootstrapCDN URL stored as a Python string, so using the themes module is really equivalent to doing something like the following.
 
 ```python
 BS = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
