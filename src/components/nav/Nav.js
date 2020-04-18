@@ -83,7 +83,7 @@ Nav.propTypes = {
    * Specify the horizontal alignment of the NavItems. Options are 'start',
    * 'center', or 'end'.
    */
-  horizontal: PropTypes.oneOf(['start', 'center', 'end']),
+  horizontal: PropTypes.oneOf(['start', 'center', 'end', 'between', 'around']),
 
   /**
    * Set to True if using Nav in Navbar component. This applies the `navbar-nav`

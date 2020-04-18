@@ -56,7 +56,7 @@ class Checklist extends React.Component {
           type={switches ? 'switch' : 'checkbox'}
           label={option.label}
           labelStyle={mergedLabelStyle}
-          className={classNames(
+          labelClassName={classNames(
             labelClassName,
             checked && labelCheckedClassName
           )}
@@ -74,12 +74,16 @@ class Checklist extends React.Component {
         />
       );
     } else {
+      // it shouldn't ever really happen that an id isn't supplied, but in case
+      // it is we use _dbcprivate_checklist
+      const inputId = `_${id || "_dbcprivate_checklist"}-${option.value}`
       return (
         <div
           className={classNames('form-check', inline && 'form-check-inline')}
           key={option.value}
         >
           <input
+            id={inputId}
             checked={checked}
             className={classNames('form-check-input', inputClassName)}
             disabled={Boolean(option.disabled)}
@@ -103,6 +107,7 @@ class Checklist extends React.Component {
               checked && labelCheckedClassName
             )}
             key={option.value}
+            htmlFor={inputId}
           >
             {option.label}
           </label>

@@ -11,12 +11,22 @@ import Link from '../../private/Link';
 const CardLink = props => {
   const {children, loading_state, ...otherProps} = props;
 
+  const incrementClicks = () => {
+    if (!props.disabled && props.setProps) {
+      props.setProps({
+        n_clicks: props.n_clicks + 1,
+        n_clicks_timestamp: Date.now()
+      });
+    }
+  };
+
   return (
     <RSCardLink
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
       tag={Link}
+      preOnClick={incrementClicks}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
@@ -25,9 +35,9 @@ const CardLink = props => {
 };
 
 CardLink.defaultProps = {
-    n_clicks: 0,
-    n_clicks_timestamp: -1
-}
+  n_clicks: 0,
+  n_clicks_timestamp: -1
+};
 
 CardLink.propTypes = {
   /**

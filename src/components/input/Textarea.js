@@ -61,6 +61,18 @@ class Textarea extends React.Component {
             setProps(payload);
           }
         }}
+        onKeyPress={e => {
+          if (setProps && e.key === 'Enter') {
+            const payload = {
+              n_submit: this.props.n_submit + 1,
+              n_submit_timestamp: Date.now()
+            };
+            if (debounce) {
+              payload.value = value;
+            }
+            setProps(payload);
+          }
+        }}
         onClick={() => {
           if (setProps) {
             setProps({
@@ -125,12 +137,12 @@ Textarea.propTypes = {
   /**
    * Defines the number of columns in a textarea.
    */
-  cols: PropTypes.string,
+  cols: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Indicates whether the user can interact with the element.
    */
-  disabled: PropTypes.string,
+  disabled: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 
   /**
    * Indicates the form that is the owner of the element.
@@ -140,12 +152,12 @@ Textarea.propTypes = {
   /**
    * Defines the maximum number of characters allowed in the element.
    */
-  maxLength: PropTypes.string,
+  maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Defines the minimum number of characters allowed in the element.
    */
-  minLength: PropTypes.string,
+  minLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Name of the element. For example used by the server to identify the fields in form submits.
@@ -160,17 +172,23 @@ Textarea.propTypes = {
   /**
    * Indicates whether the element can be edited.
    */
-  readOnly: PropTypes.string,
+  readOnly: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['readOnly', 'readonly', 'READONLY'])
+  ]),
 
   /**
    * Indicates whether this element is required to fill out or not.
    */
-  required: PropTypes.string,
+  required: PropTypes.oneOfType([
+    PropTypes.oneOf(['required', 'REQUIRED']),
+    PropTypes.bool
+  ]),
 
   /**
    * Defines the number of rows in a text area.
    */
-  rows: PropTypes.string,
+  rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Indicates whether the text should be wrapped.
@@ -190,7 +208,7 @@ Textarea.propTypes = {
   /**
    * Indicates whether the element's content is editable.
    */
-  contentEditable: PropTypes.string,
+  contentEditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Defines the ID of a <menu> element which will serve as the element's context menu.
@@ -205,7 +223,11 @@ Textarea.propTypes = {
   /**
    * Defines whether the element can be dragged.
    */
-  draggable: PropTypes.string,
+  draggable: PropTypes.oneOfType([
+    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
+    PropTypes.oneOf(['true', 'false']),
+    PropTypes.bool
+  ]),
 
   /**
    * Prevents rendering of given element, while keeping child elements, e.g. script elements, active.
@@ -220,7 +242,11 @@ Textarea.propTypes = {
   /**
    * Indicates whether spell checking is allowed for the element.
    */
-  spellCheck: PropTypes.string,
+  spellCheck: PropTypes.oneOfType([
+    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
+    PropTypes.oneOf(['true', 'false']),
+    PropTypes.bool
+  ]),
 
   /**
    * Defines CSS styles which will override styles previously set.
@@ -230,7 +256,7 @@ Textarea.propTypes = {
   /**
    * Overrides the browser's default tab order and follows the one specified instead.
    */
-  tabIndex: PropTypes.string,
+  tabIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Text to be displayed in a tooltip when hovering over the element.
@@ -267,6 +293,16 @@ Textarea.propTypes = {
    * Last time the input lost focus.
    */
   n_blur_timestamp: PropTypes.number,
+
+  /**
+   * Number of times the `Enter` key was pressed while the textarea had focus.
+   */
+  n_submit: PropTypes.number,
+
+  /**
+   * Last time that `Enter` was pressed.
+   */
+  n_submit_timestamp: PropTypes.number,
 
   /**
    * An integer that represents the number of times
@@ -338,6 +374,8 @@ Textarea.propTypes = {
 Textarea.defaultProps = {
   n_blur: 0,
   n_blur_timestamp: -1,
+  n_submit: 0,
+  n_submit_timestamp: -1,
   n_clicks: 0,
   n_clicks_timestamp: -1,
   debounce: false,

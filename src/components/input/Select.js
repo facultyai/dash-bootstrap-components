@@ -34,7 +34,8 @@ const Select = props => {
           'options',
           'persistence',
           'persistence_type',
-          'persisted_props'
+          'persisted_props',
+          'loading_state'
         ],
         props
       )}
@@ -44,7 +45,7 @@ const Select = props => {
       bsSize={props.bs_size}
     >
       <option value="" disabled hidden></option>
-      {props.options.map(option => (
+      {props.options && props.options.map(option => (
         <option
           key={option.value}
           value={option.value}

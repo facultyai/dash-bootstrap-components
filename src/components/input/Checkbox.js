@@ -22,7 +22,7 @@ class Checkbox extends React.Component {
       <input
         type="checkbox"
         checked={checked}
-        {...omit(['checked', 'setProps'], this.props)}
+        {...omit(['checked', 'setProps', 'loading_state'], this.props)}
         onClick={() => {
           if (this.props.setProps) {
             this.props.setProps({

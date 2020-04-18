@@ -24,7 +24,7 @@ const Navbar = props => {
 
   return (
     <RSNavbar
-      color={isNavbarColor && color}
+      color={isNavbarColor ? color : null}
       style={{backgroundColor: !isNavbarColor && color, ...style}}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
