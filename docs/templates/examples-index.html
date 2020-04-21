@@ -1,8 +1,9 @@
-{% from "macros/sidenav.html" import sidenav %} {% from "macros/navbar.html"
-import navbar %} {% extends "base.html" %} {% block title %}<title>
-  Examples - dbc docs</title
->{% endblock %} {% block header %}{{ navbar("examples") }}{% endblock %} {%
-block body %}
+{% from "macros/sidenav.html" import sidenav %}
+{% from "macros/navbar.html" import navbar %}
+{% extends "base.html" %}
+{% block title %}<title>Examples - dbc docs</title>{% endblock %}
+{% block header %}{{ navbar("examples") }}{% endblock %}
+{% block body %}
 <div class="container">
   <main class="dbcd-main mb-5">
     <h1>Examples</h1>
