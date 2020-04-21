@@ -1,8 +1,9 @@
-{% from "macros/navbar.html" import navbar %} {% from "macros/theme-demo.html"
-import theme_demo %} {% extends "base.html" %} {% block title %}<title>
-  Dash Bootstrap Components</title
->{% endblock %} {% block header %}{{ navbar("home") }}{% endblock %} {% block
-body %}
+{% from "macros/navbar.html" import navbar %}
+{% from "macros/theme-demo.html" import theme_demo %}
+{% extends "base.html" %}
+{% block title %}<title>Dash Bootstrap Components</title>{% endblock %}
+{% block header %}{{ navbar("home") }}{% endblock %}
+{% block body %}
 <div class="container mb-5">
   <div class="dbcd-masthead">
     <div class="row justify-content-center">
