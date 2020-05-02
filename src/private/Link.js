@@ -128,19 +128,6 @@ Link.propTypes = {
   external_link: PropTypes.bool,
 
   /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
-   */
-  n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
-
-  /**
    * Function to be executed on click before the redirect logic of Link.
    */
   preOnClick: PropTypes.func,
@@ -149,8 +136,6 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1,
   disabled: false,
   external_link: null
 };

@@ -1,169 +1,250 @@
 import React from 'react';
-
-import {shallow} from 'enzyme';
-
+import {render, fireEvent} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Input from '../Input';
 
 describe('Input', () => {
-  it('create an input', () => {
-    const input = shallow(<Input />)
-    const htmlInput = input.find('input')
-    expect(htmlInput).toHaveLength(1)
-  })
+  test('renders an input with class "form-control"', () => {
+    const input = render(<Input />);
 
-  describe('value', () => {
-    it('push no value by default', () => {
-      const input = shallow(<Input />)
-      const htmlInput = input.find('input')
-      expect(htmlInput.prop('value')).toBeUndefined()
-    })
+    expect(input.container.querySelector('input.form-control')).not.toBe(null);
+  });
 
-    it('pass a value onto the html input', () => {
-      const input = shallow(<Input value="some-value" />)
-      const htmlInput = input.find('input')
-      expect(htmlInput.prop('value')).toEqual('some-value')
-    })
+  test('has no value by default', () => {
+    const input = render(<Input />);
 
-    it('pass on changes in the value prop', () => {
-      const input = shallow(<Input />)
-      input.setProps({value: 'some-value'})
-      const htmlInput = input.find('input')
-      expect(htmlInput.prop('value')).toEqual('some-value')
-    })
-  })
+    expect(input.container.firstChild).not.toHaveValue();
+  });
 
-  describe('onChange for input', () => {
-    const mockEvent = {
-      target: {
-        value: 'some-value'
-      }
-    }
+  test('passes value on to the underlying HTML input', () => {
+    const {
+      container: {firstChild: input},
+      rerender
+    } = render(<Input value="some-input-value" />);
 
-    it('update the input if setProps is undefined', () => {
-      const input = shallow(<Input />)
-      const htmlInputBeforeChange = input.find('input')
-      htmlInputBeforeChange.simulate('change', mockEvent)
-      const htmlInputAfterChange = input.find('input')
-      expect(htmlInputAfterChange.prop('value')).toEqual('some-value')
-    })
+    expect(input).toHaveValue('some-input-value');
 
-    it('call setProps if debounce is false', () => {
-      const setProps = jest.fn()
-      const input = shallow(<Input setProps={setProps} />)
-      const htmlInput = input.find('input')
-      htmlInput.simulate('change', mockEvent)
-      expect(setProps.mock.calls).toEqual([[{value: 'some-value'}]])
-    })
+    rerender(<Input value="another-input-value" />);
+    expect(input).toHaveValue('another-input-value');
+  });
 
-    it('update the input and not setProps if debounce is true', () => {
-      const setProps = jest.fn()
-      const input = shallow(<Input debounce={true} setProps={setProps} />)
-      const htmlInputBeforeChange = input.find('input')
-      htmlInputBeforeChange.simulate('change', mockEvent)
-      const htmlInputAfterChange = input.find('input')
-      expect(htmlInputAfterChange.prop('value')).toEqual('some-value')
-      expect(setProps.mock.calls).toHaveLength(0)
-    })
-  })
+  test('passes HTML attributes on to underlying input', () => {
+    const {container: {firstChild: input}} = render(
+      <Input
+        autoComplete="username"
+        disabled
+        inputMode="verbatim"
+        list="datalist-id"
+        max={10}
+        maxLength="20"
+        min={1}
+        minLength="2"
+        name="test-name"
+        pattern="test-pattern"
+        placeholder="test-placeholder"
+        size="42"
+        step={2}
+        tabIndex="3"
+        type="text"
+      />
+    );
 
-  describe('onBlur for input', () => {
-    it('dispatch setProps', () => {
-      const setProps = jest.fn()
-      const input = shallow(
-        <Input
-          n_blur={0}
-          n_blur_timestamp={-1}
-          setProps={setProps}
-        />
-      )
-      const htmlInput = input.find('input')
-      const before = Date.now()
-      htmlInput.simulate('blur')
-      const after = Date.now()
-      expect(setProps.mock.calls).toHaveLength(1)
-      const [call] = setProps.mock.calls
-      const [arg] = call
-      const { n_blur, n_blur_timestamp } = arg
-      expect(n_blur).toEqual(1)
-      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before)
-      expect(n_blur_timestamp).toBeLessThanOrEqual(after)
-    })
+    expect(input).toHaveAttribute('autocomplete', 'username');
+    expect(input).toHaveAttribute('disabled');
+    expect(input).toHaveAttribute('inputmode', 'verbatim');
+    expect(input).toHaveAttribute('list', 'datalist-id');
+    expect(input).toHaveAttribute('max', '10');
+    expect(input).toHaveAttribute('maxlength', '20');
+    expect(input).toHaveAttribute('min', '1');
+    expect(input).toHaveAttribute('minlength', '2');
+    expect(input).toHaveAttribute('name', 'test-name');
+    expect(input).toHaveAttribute('pattern', 'test-pattern');
+    expect(input).toHaveAttribute('placeholder', 'test-placeholder');
+    expect(input).toHaveAttribute('size', '42');
+    expect(input).toHaveAttribute('step', '2');
+    expect(input).toHaveAttribute('tabindex', '3');
+    expect(input).toHaveAttribute('type', 'text');
+  });
 
-    it('dispatch the value if debounce is true', () => {
-      const setProps = jest.fn()
-      const input = shallow(
-        <Input
-          n_blur={0}
-          n_blur_timestamp={-1}
-          setProps={setProps}
-          debounce={true}
-          value="some-value"
-        />
-      )
-      const htmlInput = input.find('input')
-      const before = Date.now()
-      htmlInput.simulate('blur')
-      const after = Date.now()
-      expect(setProps.mock.calls).toHaveLength(1)
-      const [call] = setProps.mock.calls
-      const [arg] = call
-      const { n_blur, n_blur_timestamp, value } = arg
-      expect(n_blur).toEqual(1)
-      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before)
-      expect(n_blur_timestamp).toBeLessThanOrEqual(after)
-      expect(value).toEqual('some-value')
-    })
-  })
+  test('sets validity using "valid" and "invalid" props', () => {
+    const validInput = render(<Input valid />);
+    const invalidInput = render(<Input invalid />);
 
-  describe('onKeyPress for input', () => {
-    const event = { key: 'Enter' }
+    expect(validInput.container.firstChild).toHaveClass('is-valid');
+    expect(invalidInput.container.firstChild).toHaveClass('is-invalid');
+  });
 
-    it('dispatch setProps', () => {
-      const setProps = jest.fn()
-      const input = shallow(
-        <Input
-          n_submit={0}
-          n_submit_timestamp={-1}
-          setProps={setProps}
-        />
-      )
-      const before = Date.now()
-      input.simulate('keyPress', event)
-      const after = Date.now()
-      expect(setProps.mock.calls).toHaveLength(1)
-      const [[{n_submit, n_submit_timestamp}]] = setProps.mock.calls
-      expect(n_submit).toEqual(1)
-      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before)
-      expect(n_submit_timestamp).toBeLessThanOrEqual(after)
-    })
+  describe('setProps', () => {
+    let inputElement, mockSetProps;
 
-    it('dispatch the value if debounce is true', () => {
-      const setProps = jest.fn()
-      const input = shallow(
-        <Input
-          n_submit={0}
-          n_submit_timestamp={-1}
-          setProps={setProps}
-          debounce={true}
-          value="some-value"
-        />
-      )
-      const before = Date.now()
-      input.simulate('keyPress', event)
-      const after = Date.now()
-      expect(setProps.mock.calls).toHaveLength(1)
-      const [[{n_submit, n_submit_timestamp, value}]] = setProps.mock.calls
-      expect(n_submit).toEqual(1)
-      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before)
-      expect(n_submit_timestamp).toBeLessThanOrEqual(after)
-      expect(value).toEqual("some-value")
-    })
+    beforeEach(() => {
+      mockSetProps = jest.fn();
+      const {container} = render(<Input setProps={mockSetProps} />);
+      inputElement = container.firstChild;
+    });
 
-    it('do nothing if the key is not enter', () => {
-      const setProps = jest.fn()
-      const input = shallow(<Input setProps={setProps} />)
-      input.simulate('keyPress', {key: 'a'})
-      expect(setProps.mock.calls).toHaveLength(0)
-    })
-  })
-})
+    test('tracks changes with "value" prop', () => {
+      fireEvent.change(inputElement, {
+        target: {value: 'some-input-value'}
+      });
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+      expect(mockSetProps.mock.calls[0][0]).toEqual({
+        value: 'some-input-value'
+      });
+      expect(inputElement).toHaveValue('some-input-value');
+    });
+
+    test('dispatches update for each typed character', () => {
+      userEvent.type(inputElement, 'abc');
+
+      expect(inputElement).toHaveValue('abc');
+      expect(mockSetProps.mock.calls).toHaveLength(3);
+
+      const [call1, call2, call3] = mockSetProps.mock.calls;
+      expect(call1).toEqual([{value: 'a'}]);
+      expect(call2).toEqual([{value: 'ab'}]);
+      expect(call3).toEqual([{value: 'abc'}]);
+    });
+
+    test('track number of blurs with "n_blur" and "n_blur_timestamp"', () => {
+      const before = Date.now();
+      fireEvent.blur(inputElement);
+      const after = Date.now();
+
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+
+      const [[{n_blur, n_blur_timestamp}]] = mockSetProps.mock.calls;
+      expect(n_blur).toEqual(1);
+      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
+      expect(n_blur_timestamp).toBeLessThanOrEqual(after);
+    });
+
+    test('tracks submit with "n_submit" and "n_submit_timestamp"', () => {
+      const before = Date.now();
+      fireEvent.keyPress(inputElement, {key: 'Enter', code: 13, charCode: 13});
+      const after = Date.now();
+
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+
+      const [[{n_submit, n_submit_timestamp}]] = mockSetProps.mock.calls;
+      expect(n_submit).toEqual(1);
+      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
+      expect(n_submit_timestamp).toBeLessThanOrEqual(after);
+    });
+
+    test("don't increment n_submit if key is not Enter", () => {
+      fireEvent.keyPress(inputElement, {key: 'a', code: 65, charCode: 65});
+      expect(mockSetProps.mock.calls).toHaveLength(0);
+    });
+  });
+
+  describe('debounce', () => {
+    let inputElement, mockSetProps;
+    beforeEach(() => {
+      mockSetProps = jest.fn();
+      const {container} = render(
+        <Input setProps={mockSetProps} value="some-input-value" debounce />
+      );
+      inputElement = container.firstChild;
+    });
+
+    test("don't call setProps on change if debounce is true", () => {
+      fireEvent.change(inputElement, {
+        target: {value: 'some-input-value'}
+      });
+      expect(mockSetProps.mock.calls).toHaveLength(0);
+      expect(inputElement).toHaveValue('some-input-value');
+    });
+
+    test('dispatch value on blur if debounce is true', () => {
+      const before = Date.now();
+      fireEvent.blur(inputElement);
+      const after = Date.now();
+
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+
+      const [[{n_blur, n_blur_timestamp, value}]] = mockSetProps.mock.calls;
+      expect(n_blur).toEqual(1);
+      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
+      expect(n_blur_timestamp).toBeLessThanOrEqual(after);
+      expect(value).toEqual('some-input-value');
+    });
+
+    test('dispatch value on submit if debounce is true', () => {
+      const before = Date.now();
+      fireEvent.keyPress(inputElement, {
+        key: 'Enter',
+        code: 13,
+        charCode: 13
+      });
+      const after = Date.now();
+
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+
+      const [[{n_submit, n_submit_timestamp, value}]] = mockSetProps.mock.calls;
+      expect(n_submit).toEqual(1);
+      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
+      expect(n_submit_timestamp).toBeLessThanOrEqual(after);
+      expect(value).toEqual('some-input-value');
+    });
+  });
+
+  describe('number input', () => {
+    let inputElement, mockSetProps;
+
+    beforeEach(() => {
+      mockSetProps = jest.fn();
+      const {container} = render(<Input setProps={mockSetProps} type="number" />);
+      inputElement = container.firstChild;
+    });
+
+    test('tracks changes with "value" prop', () => {
+      fireEvent.change(inputElement, {
+        target: {value: 12}
+      });
+      expect(inputElement).toHaveValue(12);
+
+      fireEvent.change(inputElement, {
+        target: {value: -42}
+      });
+      expect(inputElement).toHaveValue(-42);
+
+      fireEvent.change(inputElement, {
+        target: {value: 1.01}
+      });
+      expect(inputElement).toHaveValue(1.01);
+
+      fireEvent.change(inputElement, {
+        target: {value: 0}
+      });
+      expect(inputElement).toHaveValue(0);
+
+      expect(mockSetProps.mock.calls).toHaveLength(4);
+
+      const [call1, call2, call3, call4] = mockSetProps.mock.calls;
+      expect(call1).toEqual([{value: 12}]);
+      expect(call2).toEqual([{value: -42}]);
+      expect(call3).toEqual([{value: 1.01}]);
+      expect(call4).toEqual([{value: 0}]);
+    });
+
+    test('dispatches update for each typed character', () => {
+      userEvent.type(inputElement, '-1e4');
+
+      expect(inputElement).toHaveValue(-10000);
+      expect(mockSetProps.mock.calls).toHaveLength(3);
+
+      const [call1, call2, call3] = mockSetProps.mock.calls;
+      expect(call1).toEqual([{value: -1}]);
+      expect(call2).toEqual([{value: undefined}]);
+      expect(call3).toEqual([{value: -10000}]);
+    });
+
+    test('only accepts numeric input', () => {
+      userEvent.type(inputElement, 'asdf?');
+
+      expect(inputElement).not.toHaveValue();
+      expect(mockSetProps.mock.calls).toHaveLength(0);
+    });
+  });
+});

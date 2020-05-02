@@ -95,7 +95,7 @@ Table.propTypes = {
    * Set to True or one of the breakpoints 'sm', 'md', 'lg', 'xl' to make table
    * scroll horizontally at lower breakpoints.
    */
-  responsive: PropTypes.oneOf([PropTypes.bool, PropTypes.string]),
+  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
    * Object that holds the loading state object coming from dash-renderer

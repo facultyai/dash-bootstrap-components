@@ -57,7 +57,6 @@ class Input extends React.Component {
       invalid,
       bs_size,
       plaintext,
-      debounce,
       loading_state
     } = this.props;
 
@@ -210,9 +209,15 @@ Input.propTypes = {
   autoComplete: PropTypes.string,
 
   /**
-   * The element should be automatically focused after the page has loaded.
+   * The element should be automatically focused after the page loaded.
+   * autoFocus is an HTML boolean attribute - it is enabled by a boolean or
+   * 'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
+   * are also acccepted.
    */
-  autoFocus: PropTypes.string,
+  autoFocus: PropTypes.oneOfType([
+    PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
+    PropTypes.bool
+  ]),
 
   /**
    * Provides a hint to the browser as to the type of data that might be
@@ -310,7 +315,7 @@ Input.propTypes = {
    * user can enter an unlimited number of characters). The constraint is
    * evaluated only when the value of the attribute has been changed.
    */
-  maxLength: PropTypes.string,
+  maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * The minimum (numeric or date-time) value for this item, which must not be
@@ -324,7 +329,7 @@ Input.propTypes = {
    * Unicode code points) that the user can enter. For other control types, it
    * is ignored.
    */
-  minLength: PropTypes.string,
+  minLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Works with the min and max attributes to limit the increments at which a
@@ -379,7 +384,7 @@ Input.propTypes = {
    * take. There are cases in which the placeholder attribute is never
    * displayed to the user, so the form must be understandable without it.
    */
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * The name of the control, which is submitted with the form data.

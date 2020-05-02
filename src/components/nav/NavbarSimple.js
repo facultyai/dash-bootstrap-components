@@ -56,8 +56,8 @@ class NavbarSimple extends React.Component {
 
     return (
       <RSNavbar
-        color={isNavbarColor && color}
-        style={{backgroundColor: !isNavbarColor && color, ...style}}
+        color={isNavbarColor ? color : null}
+        style={!isNavbarColor ? {backgroundColor: color, ...style} : style}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined

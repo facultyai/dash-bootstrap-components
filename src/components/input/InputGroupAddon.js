@@ -14,10 +14,13 @@ const isCheckOrRadio = el => {
 };
 
 const parseChildrenToArray = children => {
-  if (children && !Array.isArray(children)) {
-    return [children];
+  if (children) {
+    if (!Array.isArray(children)) {
+      return [children];
+    }
+    return children;
   }
-  return children;
+  return [];
 };
 
 const wrapChild = (child, i) => {
@@ -53,6 +56,8 @@ const InputGroupAddon = props => {
     </div>
   );
 };
+
+InputGroupAddon.defaultProps = {addon_type: 'prepend'};
 
 InputGroupAddon.propTypes = {
   /**

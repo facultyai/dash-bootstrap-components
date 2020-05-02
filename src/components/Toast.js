@@ -79,7 +79,9 @@ class Toast extends React.Component {
 }
 
 Toast.defaultProps = {
-  is_open: true
+  is_open: true,
+  n_dismiss: 0,
+  n_dismiss_timestamp: -1
 };
 
 Toast.propTypes = {

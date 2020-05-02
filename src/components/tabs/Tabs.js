@@ -43,11 +43,6 @@ class Tabs extends React.Component {
       this.state = {
         activeTab: activeTab
       };
-      if (this.props.setProps) {
-        this.props.setProps({
-          active_tab: activeTab
-        });
-      }
     } else {
       this.state = {
         activeTab: this.props.active_tab
