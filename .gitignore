@@ -24,3 +24,11 @@ docs/templates/generated/**/*.html
 
 # vendored example apps
 docs/examples/vendor
+
+# R build artifacts
+inst
+man
+R
+DESCRIPTION
+NAMESPACE
+!R/zzz.R
