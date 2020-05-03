@@ -68,8 +68,8 @@ if __name__ == "__main__":
     app.run_server()
 ```
 
-[dash-docs]: https://dash/plot.ly
-[dash-docs-external]: https:/dash.plot.ly/external-resources
+[dash-docs]: https://dash.plotly.com
+[dash-docs-external]: https://dash.plotly.com/external-resources
 [docs-themes]: /docs/themes
 [docs-components]: /docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/

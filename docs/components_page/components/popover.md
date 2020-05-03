@@ -15,8 +15,8 @@ Use the `placement` argument to control the placement of the `Popover`. The basi
 
 {{example:components/popover/direction.py:popovers}}
 
-{{apidoc:src/components/Popover.js}}
+{{apidoc:src/components/popover/Popover.js}}
 
-{{apidoc:src/components/PopoverHeader.js}}
+{{apidoc:src/components/popover/PopoverHeader.js}}
 
-{{apidoc:src/components/PopoverBody.js}}
+{{apidoc:src/components/popover/PopoverBody.js}}
