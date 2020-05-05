@@ -116,6 +116,11 @@ Popover.propTypes = {
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
+   * Whether to flip the direction of the popover if too close to the container edge
+   */
+  flip: PropTypes.bool,
+
+  /**
    * Object that holds the loading state object coming from dash-renderer
    */
   loading_state: PropTypes.shape({
