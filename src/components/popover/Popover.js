@@ -116,7 +116,8 @@ Popover.propTypes = {
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * Whether to flip the direction of the popover if too close to the container edge
+   * Whether to flip the direction of the popover if too close to the container
+   * edge, default True.
    */
   flip: PropTypes.bool,
 
