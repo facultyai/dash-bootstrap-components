@@ -4,7 +4,7 @@ title: Dash for R
 
 # Dash for R
 
-You can now use _dash-bootstrap-components_ with Dash for R! Note that support for Dash for R is still in its early stages so proceed with caution. It should be fine, but let us know if you run into issues.
+You can now use _dash-bootstrap-components_ with Dash for R! Note that support for Dash for R is still in beta so proceed with caution. If you try it out and run into issues, please [let us know](https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md)!
 
 ## Installation
 
@@ -69,3 +69,6 @@ app$run_server(showcase = TRUE)
 ```
 
 [dash-docs]: https://dashr.plotly.com/
+[docs-themes]: /docs/themes
+[docs-components]: /docs/components
+[bootstrapcdn]: https://www.bootstrapcdn.com/

@@ -3,7 +3,7 @@
   return(paste(BOOTSWATCH_BASE, suffix, sep=""))
 }
 
-.onLoad <- function() {
+.onLoad <- function(libname, pkgname) {
   dbcThemes <- list(
     BOOTSTRAP = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
     GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap-grid.min.css",
