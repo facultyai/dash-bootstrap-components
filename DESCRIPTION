@@ -1,0 +1,15 @@
+Package: dashBootstrapComponents
+Title: Bootstrap components for Plotly Dash
+Version: 0.10.0
+Description: Bootstrap components for Plotly Dash
+Depends: R (>= 3.0.2)
+Imports: 
+Suggests: 
+License: Apache-2.0 + file LICENSE
+URL: https://dash-bootstrap-components.opensource.faculty.ai
+BugReports: https://github.com/facultyai/dash-bootstrap-components/issues
+Encoding: UTF-8
+LazyData: true
+KeepSource: true
+Author: Faculty [aut]
+Maintainer: Faculty <opensource@faculty.ai>
