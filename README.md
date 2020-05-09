@@ -53,6 +53,23 @@ conda-forge channel:
 conda install -c conda-forge dash-bootstrap-components
 ```
 
+### Dash for R
+
+You can now use _dash-bootstrap-components_ with Dash for R! Note that support for Dash for R is still in beta so proceed with caution. If you try it out and run into issues, please [let us know](https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md)! To get started make sure you have the _devtools_ library installed
+
+```r
+install.packages("devtools")
+```
+
+You can then install _dash-bootstrap-components_ from the `r-release` branch of this repository.
+
+```r
+library(devtools)
+install_github('facultyai/dash-bootstrap-components@r-release')
+```
+
+Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/dashr)
+
 ## Quick start
 
 To use _dash-bootstrap-components_ you must do two things:
