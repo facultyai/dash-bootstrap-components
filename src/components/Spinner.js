@@ -3,6 +3,22 @@ import PropTypes from 'prop-types';
 import {omit, type} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 
+const spinnerColors = new Set([
+  'primary',
+  'light',
+  'dark',
+  'secondary',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'body',
+  'muted',
+  'black-50',
+  'white-50',
+  'white'
+]);
+
 /**
  * Render Bootstrap style loading spinners using only CSS.
  *
@@ -13,48 +29,58 @@ import {Spinner as RSSpinner} from 'reactstrap';
 const Spinner = props => {
   const {
     children,
+    color,
     loading_state,
     spinner_style,
+    spinnerClassName,
     fullscreen,
+    fullscreenClassName,
+    fullscreen_style,
     ...otherProps
   } = props;
+
+  const isSpinnerColor = spinnerColors.has(color);
+
   // this spacing is consistent with the behaviour of dcc.Loading
   // it can be overridden with spinnerStyle
-  let defaultSpinnerStyle = children
+  const defaultSpinnerStyle = children
     ? {display: 'block', margin: '1rem auto'}
     : {};
+  const spinnerStyle = {...defaultSpinnerStyle, ...spinner_style};
 
-  const spinnerStyle = children
-    ? {...defaultSpinnerStyle, ...spinner_style}
-    : spinner_style;
+  const fullscreenStyle = {
+    position: 'fixed',
+    width: '100vw',
+    height: '100vh',
+    top: 0,
+    left: 0,
+    backgroundColor: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 99,
+    ...fullscreen_style
+  };
+
   if (!children || (loading_state && loading_state.is_loading)) {
     if (fullscreen) {
       return (
-        <div
-          style={{
-            position: 'fixed',
-            width: '100vw',
-            height: '100vh',
-            top: 0,
-            left: 0,
-            backgroundColor: 'white',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 99
-          }}
-        >
+        <div className={fullscreenClassName} style={fullscreenStyle}>
           <RSSpinner
-            style={spinnerStyle}
-            {...omit(['setProps', 'className', 'style'], otherProps)}
+            color={isSpinnerColor ? color : null}
+            style={{color: !isSpinnerColor && color, ...spinnerStyle}}
+            className={spinnerClassName}
+            {...omit(['setProps'], otherProps)}
           />
         </div>
       );
     }
     return (
       <RSSpinner
-        style={spinnerStyle}
-        {...omit(['setProps', 'className', 'style'], otherProps)}
+        color={isSpinnerColor ? color : null}
+        style={{color: !isSpinnerColor && color, ...spinnerStyle}}
+        className={spinnerClassName}
+        {...omit(['setProps'], otherProps)}
       />
     );
   }
@@ -80,9 +106,9 @@ Spinner.propTypes = {
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * Defines CSS styles for the container when fullscreen=True.
    */
-  style: PropTypes.object,
+  fullscreen_style: PropTypes.object,
 
   /**
    * Inline CSS styles to apply to the spinner.
@@ -92,7 +118,7 @@ Spinner.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
-  className: PropTypes.string,
+  fullscreenClassName: PropTypes.string,
 
   /**
    * CSS class names to apply to the spinner.
@@ -100,8 +126,12 @@ Spinner.propTypes = {
   spinnerClassName: PropTypes.string,
 
   /**
-   * Spinner color, options: primary, secondary, success, info, warning, danger,
-   * link. If not specified will default to text colour.
+   * Sets the color of the Spinner. Main options are Bootstrap contextual
+   * colors: primary, secondary, success, info, warning, danger, light, dark,
+   * body, muted, white-50, black-50. You can also specify any valid CSS color
+   * of your choice (e.g. a hex code, a decimal code or a CSS color name)
+   *
+   * If not specified will default to text colour.
    */
   color: PropTypes.string,
 
