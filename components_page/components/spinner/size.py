@@ -5,6 +5,6 @@ spinners = html.Div(
     [
         dbc.Spinner(size="sm"),
         html.Hr(),
-        dbc.Spinner(style={"width": "3rem", "height": "3rem"}),
+        dbc.Spinner(spinner_style={"width": "3rem", "height": "3rem"}),
     ]
 )
