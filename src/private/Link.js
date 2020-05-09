@@ -38,6 +38,10 @@ class Link extends Component {
   }
 
   updateLocation(e) {
+    const hasModifiers = e.metaKey || e.shiftKey || e.altKey || e.ctrlKey;
+    if (hasModifiers) {
+        return;
+    }
     if (this.props.disabled) {
       e.preventDefault();
       return;
