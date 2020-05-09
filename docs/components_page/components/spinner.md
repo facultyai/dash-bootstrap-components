@@ -27,7 +27,7 @@ There are two types of spinner, border and grow. Border spinners are the default
 
 ## Size
 
-Create a small spinner with `size="sm"` or use inline style arguments for full control of the size of the spinner.
+Create a small spinner with `size="sm"` or use inline style arguments with the `spinner_style` prop for full control of the size of the spinner.
 
 {{example:components/spinner/size.py:spinners}}
 
