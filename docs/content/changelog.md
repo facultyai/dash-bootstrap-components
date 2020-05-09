@@ -6,6 +6,22 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.10.0 - 2020/5/9
+
+### Added
+
+* Support for Dash for R, check the documentation [here](/docs/dashr)
+* Add support for persistence to `Checkbox` and `RadioButton` components ([PR 365](https://github.com/facultyai/dash-bootstrap-components/pull/365))
+* Allow arbitrary CSS colors to be passed to `color` prop of `Spinner` ([PR 366](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+
+### Fixed
+
+* Expose `flip` prop in `Popover` component ([PR 363](https://github.com/facultyai/dash-bootstrap-components/pull/363))
+
+### Changed
+
+* Removed `style` and `className` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+
 ## 0.9.2 - 2020/4/5
 
 ### Fixed
