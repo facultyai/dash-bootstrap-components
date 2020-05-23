@@ -1,10 +1,10 @@
 BOOTSTRAP = (
-    "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 )
 
-GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap-grid.min.css"  # noqa
+GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-grid.min.css"  # noqa
 
-_BOOTSWATCH_BASE = "https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/"
+_BOOTSWATCH_BASE = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/"
 
 CERULEAN = _BOOTSWATCH_BASE + "cerulean/bootstrap.min.css"
 COSMO = _BOOTSWATCH_BASE + "cosmo/bootstrap.min.css"
