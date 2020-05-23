@@ -40,9 +40,12 @@ class RadioItems extends React.Component {
       : labelStyle;
 
     if (id && custom) {
+      const inputId =
+        option.input_id || `_dbcprivate_radioitems_${id}_input_${option.value}`;
       return (
         <CustomInput
-          id={`${id}-${option.value}`}
+          id={inputId}
+          labelId={option.label_id}
           checked={checked}
           className={inputClassName}
           disabled={Boolean(option.disabled)}
@@ -62,8 +65,9 @@ class RadioItems extends React.Component {
       );
     } else {
       // it shouldn't ever really happen that an id isn't supplied, but in case
-      // it is we use _dbcprivate_checklist
-      const inputId = `_${id || '_dbcprivate_radioitems'}-${option.value}`;
+      // it is we use _dbcprivate_radioitems
+      const inputId =
+        option.input_id || `_dbcprivate_radioitems_${id}_input_${option.value}`;
       return (
         <div
           className={classNames('form-check', inline && 'form-check-inline')}
@@ -81,6 +85,7 @@ class RadioItems extends React.Component {
             }}
           />
           <label
+            id={option.label_id}
             style={mergedLabelStyle}
             className={classNames(
               'form-check-label',
@@ -153,7 +158,19 @@ RadioItems.propTypes = {
       /**
        * If true, this radio item is disabled and can't be clicked on.
        */
-      disabled: PropTypes.bool
+      disabled: PropTypes.bool,
+
+      /**
+       * id for this option's input, can be used to attach tooltips or apply
+       * CSS styles
+       */
+      input_id: PropTypes.string,
+
+      /**
+       * id for this option's label, can be used to attach tooltips or apply
+       * CSS styles
+       */
+      label_id: PropTypes.string
     })
   ),
 
