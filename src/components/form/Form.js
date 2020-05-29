@@ -8,10 +8,28 @@ import {Form as RSForm} from 'reactstrap';
  * and apply consistent styling.
  */
 const Form = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    n_submit,
+    prevent_default_on_submit,
+    setProps,
+    ...otherProps
+  } = props;
   return (
     <RSForm
-      {...omit(['setProps'], otherProps)}
+      onSubmit={e => {
+        if (prevent_default_on_submit) {
+          e.preventDefault();
+        }
+        if (setProps) {
+          setProps({
+            n_submit: n_submit + 1,
+            n_submit_timestamp: Date.now()
+          });
+        }
+      }}
+      {...omit(['n_submit_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -19,6 +37,12 @@ const Form = props => {
       {children}
     </RSForm>
   );
+};
+
+Form.defaultProps = {
+  prevent_default_on_submit: true,
+  n_submit: 0,
+  n_submit_timestamp: -1
 };
 
 Form.propTypes = {
@@ -57,6 +81,22 @@ Form.propTypes = {
    * Form controls within inline forms vary slightly from their default states.
    */
   inline: PropTypes.bool,
+
+  /**
+   * Number of times the `Enter` key was pressed while the input had focus.
+   */
+  n_submit: PropTypes.number,
+
+  /**
+   * Last time that `Enter` was pressed.
+   */
+  n_submit_timestamp: PropTypes.number,
+
+  /**
+   * The form calls preventDefault on submit events. Use submit_allow_default
+   * to override this and not call preventDefault on submit.
+   */
+  prevent_default_on_submit: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
