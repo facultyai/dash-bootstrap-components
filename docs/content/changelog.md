@@ -6,169 +6,183 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.10.1 - 2020/5/30
+
+### Added
+
+- Each option in `RadioItems` and `Checklist` now accepts `input_id` and `label_id` as fields to allow custom ids to be attached to inputs and labels ([PR 379](https://github.com/facultyai/dash-bootstrap-components/pull/379))
+
+### Fixed
+
+- Prevent `From` component from submitting (and hence refreshing the page) by default. If the submit behaviour is desired set `prevent_default_on_submit=False`. ([PR 385](https://github.com/facultyai/dash-bootstrap-components/pull/385))
+
+### Changed
+
+- The `themes` module now links to Bootstrap and Bootswatch 4.5.0 stylesheets ([PR 380](https://github.com/facultyai/dash-bootstrap-components/pull/380))
+
 ## 0.10.0 - 2020/5/9
 
 ### Added
 
-* Support for Dash for R, check the documentation [here](/docs/dashr)
-* Add support for persistence to `Checkbox` and `RadioButton` components ([PR 365](https://github.com/facultyai/dash-bootstrap-components/pull/365))
-* Allow arbitrary CSS colors to be passed to `color` prop of `Spinner` ([PR 366](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+- Support for Dash for R, check the documentation [here](/docs/dashr)
+- Add support for persistence to `Checkbox` and `RadioButton` components ([PR 365](https://github.com/facultyai/dash-bootstrap-components/pull/365))
+- Allow arbitrary CSS colors to be passed to `color` prop of `Spinner` ([PR 366](https://github.com/facultyai/dash-bootstrap-components/pull/366))
 
 ### Fixed
 
-* Expose `flip` prop in `Popover` component ([PR 363](https://github.com/facultyai/dash-bootstrap-components/pull/363))
+- Expose `flip` prop in `Popover` component ([PR 363](https://github.com/facultyai/dash-bootstrap-components/pull/363))
 
 ### Changed
 
-* Removed `style` and `className` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+- Removed `style` and `className` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
 
 ## 0.9.2 - 2020/4/5
 
 ### Fixed
 
-* Expose `tabIndex` prop in `Input` component ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/344))
-* Expose `style` prop in `Jumbotron` component ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/344))
+- Expose `tabIndex` prop in `Input` component ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/344))
+- Expose `style` prop in `Jumbotron` component ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/344))
 
 ## 0.9.1 - 2020/3/12
 
 ### Fixed
 
-* Restore ability to install module with Python 2 ([PR 329](https://github.com/facultyai/dash-bootstrap-components/pull/329))
+- Restore ability to install module with Python 2 ([PR 329](https://github.com/facultyai/dash-bootstrap-components/pull/329))
 
 ## 0.9.0 - 2020/3/11
 
 ### Added
 
-* Allow `Spinner` to be used like `dash_core_components.Loading` by passing `children` ([PR 314](https://github.com/facultyai/dash-bootstrap-components/pull/314))
+- Allow `Spinner` to be used like `dash_core_components.Loading` by passing `children` ([PR 314](https://github.com/facultyai/dash-bootstrap-components/pull/314))
 
 ### Fixed
 
-* Prevent `false` being passed to the `target` prop of `Link` components ([PR 315](https://github.com/facultyai/dash-bootstrap-components/pull/315))
+- Prevent `false` being passed to the `target` prop of `Link` components ([PR 315](https://github.com/facultyai/dash-bootstrap-components/pull/315))
 
 ## 0.8.3 - 2020/2/8
 
 ### Fixed
 
-* Update `Link` components for compatibility with Dash >= 1.9.0 ([PR 311](https://github.com/facultyai/dash-bootstrap-components/pull/311))
+- Update `Link` components for compatibility with Dash >= 1.9.0 ([PR 311](https://github.com/facultyai/dash-bootstrap-components/pull/311))
 
 ## 0.8.2 - 2020/1/28
 
 ### Fixed
 
-* Expose `target` prop of `Link` components so that linked pages can be made to open in new tabs ([PR 305](https://github.com/facultyai/dash-bootstrap-components/pull/305))
+- Expose `target` prop of `Link` components so that linked pages can be made to open in new tabs ([PR 305](https://github.com/facultyai/dash-bootstrap-components/pull/305))
 
 ## 0.8.1 - 2020/1/8
 
 ### Fixed
 
-* Ensure `Input` with `type="number"` triggers callbacks when given the value `0` ([PR 299](https://github.com/facultyai/dash-bootstrap-components/pull/299))
+- Ensure `Input` with `type="number"` triggers callbacks when given the value `0` ([PR 299](https://github.com/facultyai/dash-bootstrap-components/pull/299))
 
 ## 0.8.0 - 2019/12/24
 
 ### Added
 
-* Add `horizontal` prop to `ListGroup` to allow use of horizontal list groups ([PR 292](https://github.com/facultyai/dash-bootstrap-components/pull/292))
-* Add support for Dash's persistence feature to `Checklist`, `Input`, `RadioItems`, `Select`, `Textarea` and `Tabs` ([PR 293](https://github.com/facultyai/dash-bootstrap-components/pull/293)).
-* Add `toggle` prop to `DropdownMenuItem` which controls whether the parent `DropdownMenu` is dismissed on click. Default behaviour is to dismiss the `DropdownMenu` ([PR 288](https://github.com/facultyai/dash-bootstrap-components/pull/288))
+- Add `horizontal` prop to `ListGroup` to allow use of horizontal list groups ([PR 292](https://github.com/facultyai/dash-bootstrap-components/pull/292))
+- Add support for Dash's persistence feature to `Checklist`, `Input`, `RadioItems`, `Select`, `Textarea` and `Tabs` ([PR 293](https://github.com/facultyai/dash-bootstrap-components/pull/293)).
+- Add `toggle` prop to `DropdownMenuItem` which controls whether the parent `DropdownMenu` is dismissed on click. Default behaviour is to dismiss the `DropdownMenu` ([PR 288](https://github.com/facultyai/dash-bootstrap-components/pull/288))
 
 ### Changed
 
-* Update BootstrapCDN links in `dash_bootstrap_components.themes` to use Bootstrap 4.4.1 ([PR 289](https://github.com/facultyai/dash-bootstrap-components/pull/289))
+- Update BootstrapCDN links in `dash_bootstrap_components.themes` to use Bootstrap 4.4.1 ([PR 289](https://github.com/facultyai/dash-bootstrap-components/pull/289))
 
 ### Fixed
 
-* Ensure `DropdownMenu` can be dismissed by `DropdownMenuItem`s being used as internal links ([PR 288](https://github.com/facultyai/dash-bootstrap-components/pull/288))
+- Ensure `DropdownMenu` can be dismissed by `DropdownMenuItem`s being used as internal links ([PR 288](https://github.com/facultyai/dash-bootstrap-components/pull/288))
 
 ## 0.7.2 - 2019/10/25
 
 ### Added
 
-* Add `href` and `external_link` props to `Button` ([PR 259](https://github.com/facultyai/dash-bootstrap-components/pull/259))
-* Add `href`, `external_link`, `n_clicks` and `n_clicks_timestamp` props to `Badge` to allow for use in callbacks and navigation. ([PR 268](https://github.com/facultyai/dash-bootstrap-components/pull/268))
+- Add `href` and `external_link` props to `Button` ([PR 259](https://github.com/facultyai/dash-bootstrap-components/pull/259))
+- Add `href`, `external_link`, `n_clicks` and `n_clicks_timestamp` props to `Badge` to allow for use in callbacks and navigation. ([PR 268](https://github.com/facultyai/dash-bootstrap-components/pull/268))
 
 ### Fixed
 
-* Allow `InputGroupAddon` to accept multiple children and `RadioButton` or `Checkbox` components ([PR 260](https://github.com/facultyai/dash-bootstrap-components/pull/260))
-* Prevent `Tabs` from throwing an error if instantiated without children ([PR 266](https://github.com/facultyai/dash-bootstrap-components/pull/266))
-* Enable the `value` prop of `Select` to be used as the Output in a callback ([PR 270](https://github.com/facultyai/dash-bootstrap-components/pull/270))
-* Prevent `setProps` from being set on DOM elements ([PR 264](https://github.com/facultyai/dash-bootstrap-components/pull/264))
-* Set `key` on list items for `RadioItems` and `Checklist` ([PR 265](https://github.com/facultyai/dash-bootstrap-components/pull/265))
+- Allow `InputGroupAddon` to accept multiple children and `RadioButton` or `Checkbox` components ([PR 260](https://github.com/facultyai/dash-bootstrap-components/pull/260))
+- Prevent `Tabs` from throwing an error if instantiated without children ([PR 266](https://github.com/facultyai/dash-bootstrap-components/pull/266))
+- Enable the `value` prop of `Select` to be used as the Output in a callback ([PR 270](https://github.com/facultyai/dash-bootstrap-components/pull/270))
+- Prevent `setProps` from being set on DOM elements ([PR 264](https://github.com/facultyai/dash-bootstrap-components/pull/264))
+- Set `key` on list items for `RadioItems` and `Checklist` ([PR 265](https://github.com/facultyai/dash-bootstrap-components/pull/265))
 
 ## 0.7.1 - 2019/9/7
 
 ### Added
 
-* Add `Select` component that renders a styled `<select>` element. Options and values are specified much like `dash_core_components.Dropdown` ([PR 251](https://github.com/facultyai/dash-bootstrap-components/pull/251))
-* Add `duration` prop to `Alert` and `Toast` components allowing users to specify a time in milliseconds after which the `Alert` / `Toast` will dismiss itself ([PR 250](https://github.com/facultyai/dash-bootstrap-components/pull/250))
+- Add `Select` component that renders a styled `<select>` element. Options and values are specified much like `dash_core_components.Dropdown` ([PR 251](https://github.com/facultyai/dash-bootstrap-components/pull/251))
+- Add `duration` prop to `Alert` and `Toast` components allowing users to specify a time in milliseconds after which the `Alert` / `Toast` will dismiss itself ([PR 250](https://github.com/facultyai/dash-bootstrap-components/pull/250))
 
 ### Changed
 
-* Internal improvements to `Input` with `type="number"` ([PR 244](https://github.com/facultyai/dash-bootstrap-components/pull/244))
+- Internal improvements to `Input` with `type="number"` ([PR 244](https://github.com/facultyai/dash-bootstrap-components/pull/244))
 
 ## 0.7.0 - 2019/7/25
 
 ### Added
 
-* Add `Toast` component ([PR 234](https://github.com/facultyai/dash-bootstrap-components/pull/234))
+- Add `Toast` component ([PR 234](https://github.com/facultyai/dash-bootstrap-components/pull/234))
 
 ### Changed
 
-* Use Bootstrap's custom radio and checkbox styles for `RadioItems` and `Checklist`. This can be overridden by setting `custom=False` ([PR 238](https://github.com/facultyai/dash-bootstrap-components/pull/238))
-* Rename `values` prop of `Checklist` to `value` for consistency with other components and with Dash >=1.0.0 ([PR 226](https://github.com/facultyai/dash-bootstrap-components/pull/226))
+- Use Bootstrap's custom radio and checkbox styles for `RadioItems` and `Checklist`. This can be overridden by setting `custom=False` ([PR 238](https://github.com/facultyai/dash-bootstrap-components/pull/238))
+- Rename `values` prop of `Checklist` to `value` for consistency with other components and with Dash >=1.0.0 ([PR 226](https://github.com/facultyai/dash-bootstrap-components/pull/226))
 
 ## 0.6.3 - 2019/6/27
 
 ### Added
 
-* Expose `color`, `toggle_style` and `toggleClassName` props in `DropdownMenu` component ([PR 221](https://github.com/facultyai/dash-bootstrap-components/pull/221))
+- Expose `color`, `toggle_style` and `toggleClassName` props in `DropdownMenu` component ([PR 221](https://github.com/facultyai/dash-bootstrap-components/pull/221))
 
 ## 0.6.2 - 2019/6/5
 
 ### Fixed
 
-* Allow `active_tab` prop of `Tabs` to be set by callbacks ([PR 213](https://github.com/facultyai/dash-bootstrap-components/pull/213))
+- Allow `active_tab` prop of `Tabs` to be set by callbacks ([PR 213](https://github.com/facultyai/dash-bootstrap-components/pull/213))
 
 ## 0.6.1 - 2019/5/19
 
 ### Added
 
-* Add `"baseline"` and `"stretch"` as possible arguments to `align` in both `Row` and `Col` components ([PR 204](https://github.com/facultyai/dash-bootstrap-components/pull/204))
+- Add `"baseline"` and `"stretch"` as possible arguments to `align` in both `Row` and `Col` components ([PR 204](https://github.com/facultyai/dash-bootstrap-components/pull/204))
 
 ## 0.6.0 - 2019/5/10
 
 ### Added
 
-* Enable the `"up"` direction in `DropdownMenu` ([PR 196](https://github.com/facultyai/dash-bootstrap-components/pull/196))
+- Enable the `"up"` direction in `DropdownMenu` ([PR 196](https://github.com/facultyai/dash-bootstrap-components/pull/196))
 
 ### Changed
 
-* Remove `CardTitle`, `CardSubtitle` and `CardText` components in favour of applying the `card-title`, `card-subtitle` or `card-text` classes to relevant HTML components ([PR 193](https://github.com/facultyai/dash-bootstrap-components/pull/193))
-* Use timestamps rather than Date objects for the `*_timestamp` props in `Input` ([PR 189](https://github.com/facultyai/dash-bootstrap-components/pull/189))
-* Rename props of `Input` to use camelCase in order that they are applied properly by dash-renderer ([PR 189](https://github.com/facultyai/dash-bootstrap-components/pull/189))
+- Remove `CardTitle`, `CardSubtitle` and `CardText` components in favour of applying the `card-title`, `card-subtitle` or `card-text` classes to relevant HTML components ([PR 193](https://github.com/facultyai/dash-bootstrap-components/pull/193))
+- Use timestamps rather than Date objects for the `*_timestamp` props in `Input` ([PR 189](https://github.com/facultyai/dash-bootstrap-components/pull/189))
+- Rename props of `Input` to use camelCase in order that they are applied properly by dash-renderer ([PR 189](https://github.com/facultyai/dash-bootstrap-components/pull/189))
 
 ## 0.5.0 - 2019/4/19
 
 ### Added
 
-* Add `Modal` and `Spinner` components ([PR 177](https://github.com/facultyai/dash-bootstrap-components/pull/177))
+- Add `Modal` and `Spinner` components ([PR 177](https://github.com/facultyai/dash-bootstrap-components/pull/177))
 
 ### Changed
 
-* Allow `DropdownMenu` to be right aligned ([PR 143](https://github.com/facultyai/dash-bootstrap-components/pull/143))
+- Allow `DropdownMenu` to be right aligned ([PR 143](https://github.com/facultyai/dash-bootstrap-components/pull/143))
 
 ## 0.4.0 - 2019/4/7
 
 ### Added
 
-* Add `dismissable` prop to `Alert` ([PR 158](https://github.com/facultyai/dash-bootstrap-components/pull/158))
-* Add support the Dash loading states feature ([PR 171](https://github.com/facultyai/dash-bootstrap-components/pull/171))
-* Expose the `style` prop in `ButtonGroup` ([PR 167](https://github.com/facultyai/dash-bootstrap-components/pull/167))
-* Expose the `disabled` prop in `Input` ([PR 170](https://github.com/facultyai/dash-bootstrap-components/pull/170))
-* Expose the `group` prop in `DropdownMenu` ([PR 175](https://github.com/facultyai/dash-bootstrap-components/pull/175))
+- Add `dismissable` prop to `Alert` ([PR 158](https://github.com/facultyai/dash-bootstrap-components/pull/158))
+- Add support the Dash loading states feature ([PR 171](https://github.com/facultyai/dash-bootstrap-components/pull/171))
+- Expose the `style` prop in `ButtonGroup` ([PR 167](https://github.com/facultyai/dash-bootstrap-components/pull/167))
+- Expose the `disabled` prop in `Input` ([PR 170](https://github.com/facultyai/dash-bootstrap-components/pull/170))
+- Expose the `group` prop in `DropdownMenu` ([PR 175](https://github.com/facultyai/dash-bootstrap-components/pull/175))
 
 ### Changed
 
-* Remove `DatePickerSingle` and `DatePickerRange` components. Use the versions from dash-core-components instead ([PR 159](https://github.com/facultyai/dash-bootstrap-components/pull/159))
+- Remove `DatePickerSingle` and `DatePickerRange` components. Use the versions from dash-core-components instead ([PR 159](https://github.com/facultyai/dash-bootstrap-components/pull/159))
 
 ## Older versions
 
