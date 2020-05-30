@@ -59,7 +59,6 @@ With CSS linked, you can start building you app's layout with out Bootstrap comp
 ```r
 library(dash)
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
