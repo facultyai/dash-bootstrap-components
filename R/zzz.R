@@ -1,12 +1,12 @@
 .prependBootswatch <- function(suffix) {
-  BOOTSWATCH_BASE <- "https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/"
+  BOOTSWATCH_BASE <- "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/"
   return(paste(BOOTSWATCH_BASE, suffix, sep=""))
 }
 
 .onLoad <- function(libname, pkgname) {
   dbcThemes <- list(
-    BOOTSTRAP = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-    GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap-grid.min.css",
+    BOOTSTRAP = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
+    GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-grid.min.css",
     CERULEAN = .prependBootswatch("cerulean/bootstrap.min.css"),
     COSMO = .prependBootswatch("cosmo/bootstrap.min.css"),
     CYBORG = .prependBootswatch("cyborg/bootstrap.min.css"),

@@ -8,7 +8,7 @@ You can now use _dash-bootstrap-components_ with Dash for R! Note that support f
 
 ## Installation
 
-To get started make sure you have the _devtools_ library installed
+To get started make sure you have [installed Dash for R](https://dashr.plotly.com/installation). If you didn't already install it in order to install Dash for R, we also need to make sure that the _devtools_ library is installed.
 
 ```r
 install.packages("devtools")

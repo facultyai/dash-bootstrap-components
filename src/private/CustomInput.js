@@ -13,6 +13,7 @@ const CustomInput = props => {
     bsSize,
     innerRef,
     htmlFor,
+    labelId,
     labelStyle,
     labelClassName,
     ...attributes
@@ -68,6 +69,7 @@ const CustomInput = props => {
         className={classNames(validationClassNames, 'custom-control-input')}
       />
       <label
+        id={labelId}
         className={classNames('custom-control-label', labelClassName)}
         style={labelStyle}
         htmlFor={labelHtmlFor}
@@ -100,6 +102,7 @@ CustomInput.propTypes = {
     PropTypes.string,
     PropTypes.func
   ]),
+  labelId: PropTypes.string,
   labelStyle: PropTypes.object,
   labelClassName: PropTypes.string
 };
