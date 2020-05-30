@@ -11,7 +11,9 @@ The Form component can be used to organise collections of input components and a
 
 \usage{
 dbcForm(children=NULL, id=NULL, style=NULL, className=NULL,
-key=NULL, inline=NULL, loading_state=NULL)
+key=NULL, inline=NULL, n_submit=NULL,
+n_submit_timestamp=NULL, prevent_default_on_submit=NULL,
+loading_state=NULL)
 }
 
 \arguments{
@@ -32,6 +34,13 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 \item{inline}{Logical. Use inline=True to apply the `form-inline` class, allowing you to display
 a series of labels, form controls, and buttons on a single horizontal row.
 Form controls within inline forms vary slightly from their default states.}
+
+\item{n_submit}{Numeric. Number of times the `Enter` key was pressed while the input had focus.}
+
+\item{n_submit_timestamp}{Numeric. Last time that `Enter` was pressed.}
+
+\item{prevent_default_on_submit}{Logical. The form calls preventDefault on submit events. Use submit_allow_default
+to override this and not call preventDefault on submit.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
