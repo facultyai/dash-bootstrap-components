@@ -45,15 +45,17 @@ const Select = props => {
       bsSize={props.bs_size}
     >
       <option value="" disabled hidden></option>
-      {props.options && props.options.map(option => (
-        <option
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-        >
-          {option.label}
-        </option>
-      ))}
+      {props.options &&
+        props.options.map(option => (
+          <option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+            title={option.title}
+          >
+            {option.label}
+          </option>
+        ))}
     </CustomInput>
   );
 };
@@ -113,7 +115,14 @@ Select.propTypes = {
       /**
        * If true, this checkbox is disabled and can't be clicked on.
        */
-      disabled: PropTypes.bool
+      disabled: PropTypes.bool,
+
+      /**
+       * The HTML 'title' attribute for the option. Allows for information on
+       * hover. For more information on this attribute, see
+       * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+       */
+      title: PropTypes.string
     })
   ),
 
