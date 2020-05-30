@@ -14,7 +14,7 @@ This page documents notable changes in dash-bootstrap-components releases.
 
 ### Fixed
 
-- Prevent `From` component from submitting (and hence refreshing the page) by default. If the submit behaviour is desired set `prevent_default_on_submit=False`. ([PR 385](https://github.com/facultyai/dash-bootstrap-components/pull/385))
+- Prevent `Form` component from submitting (and hence refreshing the page) by default. If the submit behaviour is desired set `prevent_default_on_submit=False`. ([PR 385](https://github.com/facultyai/dash-bootstrap-components/pull/385))
 
 ### Changed
 
