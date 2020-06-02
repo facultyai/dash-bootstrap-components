@@ -7,40 +7,41 @@ import Link from '../../private/Link';
 /**
  * Create a single item in a `ListGroup`.
  */
-class ListGroupItem extends React.Component {
-  constructor(props) {
-    super(props);
+const ListGroupItem = props => {
+  let {
+    children,
+    loading_state,
+    target,
+    n_clicks,
+    setProps,
+    ...otherProps
+  } = props;
 
-    this.incrementClicks = this.incrementClicks.bind(this);
-  }
-
-  incrementClicks() {
-    if (!this.props.disabled && this.props.setProps) {
-      this.props.setProps({
-        n_clicks: this.props.n_clicks + 1,
+  const incrementClicks = () => {
+    if (!props.disabled && setProps) {
+      setProps({
+        n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
-  }
+  };
 
-  render() {
-    let {children, loading_state, target, ...otherProps} = this.props;
-    const useLink = this.props.href && !this.props.disabled;
-    otherProps[useLink ? 'preOnClick' : 'onClick'] = this.incrementClicks;
-    return (
-      <RSListGroupItem
-        tag={useLink ? Link : 'li'}
-        target={useLink && target}
-        {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {children}
-      </RSListGroupItem>
-    );
-  }
-}
+  const useLink = props.href && !props.disabled;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
+
+  return (
+    <RSListGroupItem
+      tag={useLink ? Link : 'li'}
+      target={useLink && target}
+      {...omit(['n_clicks_timestamp'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSListGroupItem>
+  );
+};
 
 ListGroupItem.defaultProps = {
   n_clicks: 0,

@@ -17,14 +17,10 @@ import CustomInput from '../../private/CustomInput';
  *
  * https://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios-1
  */
-class Checklist extends React.Component {
-  constructor(props) {
-    super(props);
+const Checklist = props => {
+  const {className, id, options, style, key, loading_state} = props;
 
-    this.listItem = this.listItem.bind(this);
-  }
-
-  listItem(option) {
+  const listItem = option => {
     const {
       id,
       inputClassName,
@@ -38,7 +34,7 @@ class Checklist extends React.Component {
       value,
       custom,
       switch: switches
-    } = this.props;
+    } = props;
 
     const checked = contains(option.value, value);
 
@@ -119,28 +115,23 @@ class Checklist extends React.Component {
         </div>
       );
     }
-  }
+  };
+  const items = options.map(option => listItem(option));
 
-  render() {
-    const {className, id, options, style, key, loading_state} = this.props;
-
-    const items = options.map(option => this.listItem(option));
-
-    return (
-      <div
-        id={id}
-        style={style}
-        className={className}
-        key={key}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {items}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      id={id}
+      style={style}
+      className={className}
+      key={key}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {items}
+    </div>
+  );
+};
 
 Checklist.propTypes = {
   /**

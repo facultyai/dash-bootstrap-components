@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classnames from 'classnames';
 import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import {isNil} from 'ramda';
 
-function resolveChildProps(child) {
+const resolveChildProps = child => {
   // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
   if (
     // disabled is a defaultProp (so it's always set)
@@ -22,159 +22,141 @@ function resolveChildProps(child) {
     // else props are coming from React (e.g. Demo.js, or Tabs.test.js)
     return child.props;
   }
-}
+};
+
+const parseChildrenToArray = children => {
+  if (children && !Array.isArray(children)) {
+    // if dcc.Tabs.children contains just one single element, it gets passed as an object
+    // instead of an array - so we put in in a array ourselves!
+    return [children];
+  }
+  return children;
+};
 
 /**
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
  * get the currently active tab in a callback.
  */
-class Tabs extends React.Component {
-  constructor(props) {
-    super(props);
+const Tabs = props => {
+  let {
+    children,
+    id,
+    card,
+    className,
+    style,
+    active_tab,
+    key,
+    loading_state,
+    setProps
+  } = props;
+  children = parseChildrenToArray(children);
 
-    this.toggle = this.toggle.bind(this);
-    this.parseChildrenToArray = this.parseChildrenToArray.bind(this);
+  const [activeTab, setActiveTab] = useState(
+    active_tab !== undefined
+      ? active_tab
+      : children && (resolveChildProps(children[0]).tab_id || 'tab-0')
+  );
 
-    const children = this.parseChildrenToArray();
-
-    if (!this.props.active_tab) {
-      const activeTab =
-        children && (resolveChildProps(children[0]).tab_id || 'tab-0');
-      this.state = {
-        activeTab: activeTab
-      };
-    } else {
-      this.state = {
-        activeTab: this.props.active_tab
-      };
+  useEffect(() => {
+    if (active_tab !== undefined) {
+      setActiveTab(active_tab);
     }
-  }
+  }, [active_tab]);
 
-  parseChildrenToArray() {
-    if (this.props.children && !Array.isArray(this.props.children)) {
-      // if dcc.Tabs.children contains just one single element, it gets passed as an object
-      // instead of an array - so we put in in a array ourselves!
-      return [this.props.children];
-    }
-    return this.props.children;
-  }
-
-  toggle(tab) {
-    if (this.props.setProps) {
-      if (this.props.active_tab !== tab) {
-        this.props.setProps({active_tab: tab});
+  const toggle = tab => {
+    if (setProps) {
+      if (active_tab !== tab) {
+        setProps({active_tab: tab});
       }
     } else {
-      if (this.state.activeTab !== tab) {
-        this.setState({activeTab: tab});
+      if (activeTab !== tab) {
+        setActiveTab(tab);
       }
     }
-  }
+  };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.active_tab && nextProps.active_tab != prevState.activeTab) {
-      return {activeTab: nextProps.active_tab};
-    } else return null;
-  }
-
-  render() {
-    // ensure children is array of children
-    const children = this.parseChildrenToArray();
-
-    // create tab links by extracting labels from children
-    const links =
-      children &&
-      children.map((child, idx) => {
-        const childProps = resolveChildProps(child);
-        const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
-        return (
-          <NavItem
-            key={tabId}
-            style={childProps.tab_style}
-            className={childProps.tabClassName}
-          >
-            <NavLink
-              className={classnames(childProps.labelClassName, {
-                active: this.state.activeTab === tabId
-              })}
-              style={childProps.label_style}
-              disabled={childProps.disabled}
-              onClick={() => {
-                if (!childProps.disabled) {
-                  this.toggle(tabId);
-                }
-              }}
-            >
-              {childProps.label}
-            </NavLink>
-          </NavItem>
-        );
-      });
-
-    // create tab content by extracting children from children
-    const tabs =
-      children &&
-      children.map((child, idx) => {
-        const childProps = resolveChildProps(child);
-        const {
-          children,
-          tab_id,
-          label,
-          tab_style,
-          label_style,
-          tabClassName,
-          labelClassName,
-          loading_state,
-          ...otherProps
-        } = childProps;
-        const tabId = tab_id || 'tab-' + idx;
-        return (
-          <TabPane
-            tabId={tabId}
-            key={tabId}
-            {...omit(
-              [
-                'setProps',
-                'persistence',
-                'persistence_type',
-                'persisted_props'
-              ],
-              otherProps
-            )}
-            data-dash-is-loading={
-              (loading_state && loading_state.is_loading) || undefined
-            }
-          >
-            {child}
-          </TabPane>
-        );
-      });
-    return (
-      <div
-        key={this.props.key}
-        data-dash-is-loading={
-          (this.props.loading_state && this.props.loading_state.is_loading) ||
-          undefined
-        }
-      >
-        <Nav
-          id={this.props.id}
-          tabs={true}
-          card={this.props.card}
-          className={this.props.className}
-          style={this.props.style}
+  // create tab links by extracting labels from children
+  const links =
+    children &&
+    children.map((child, idx) => {
+      const childProps = resolveChildProps(child);
+      const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
+      return (
+        <NavItem
+          key={tabId}
+          style={childProps.tab_style}
+          className={childProps.tabClassName}
         >
-          {links}
-        </Nav>
-        <TabContent activeTab={this.state.activeTab}>{tabs}</TabContent>
-      </div>
-    );
-  }
-}
+          <NavLink
+            className={classnames(childProps.labelClassName, {
+              active: activeTab === tabId
+            })}
+            style={childProps.label_style}
+            disabled={childProps.disabled}
+            onClick={() => {
+              if (!childProps.disabled) {
+                toggle(tabId);
+              }
+            }}
+          >
+            {childProps.label}
+          </NavLink>
+        </NavItem>
+      );
+    });
+
+  // create tab content by extracting children from children
+  const tabs =
+    children &&
+    children.map((child, idx) => {
+      const childProps = resolveChildProps(child);
+      const {
+        children,
+        tab_id,
+        label,
+        tab_style,
+        label_style,
+        tabClassName,
+        labelClassName,
+        loading_state,
+        ...otherProps
+      } = childProps;
+      const tabId = tab_id || 'tab-' + idx;
+      return (
+        <TabPane
+          tabId={tabId}
+          key={tabId}
+          {...omit(
+            ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
+            otherProps
+          )}
+          data-dash-is-loading={
+            (loading_state && loading_state.is_loading) || undefined
+          }
+        >
+          {child}
+        </TabPane>
+      );
+    });
+  return (
+    <div
+      key={key}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      <Nav id={id} tabs card={card} className={className} style={style}>
+        {links}
+      </Nav>
+      <TabContent activeTab={activeTab}>{tabs}</TabContent>
+    </div>
+  );
+};
 
 Tabs.defaultProps = {
   persisted_props: ['active_tab'],
-  persistence_type: 'local'}
+  persistence_type: 'local'
+};
 
 Tabs.propTypes = {
   /**

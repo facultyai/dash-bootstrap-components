@@ -8,48 +8,44 @@ import Link from '../../private/Link';
  * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
  * directly.
  */
-class NavLink extends React.Component {
-  constructor(props) {
-    super(props);
+const NavLink = props => {
+  const {
+    children,
+    disabled,
+    className,
+    active,
+    loading_state,
+    setProps,
+    n_clicks,
+    ...otherProps
+  } = props;
 
-    this.incrementClicks = this.incrementClicks.bind(this);
-  }
-
-  incrementClicks() {
-    if (!this.props.disabled && this.props.setProps) {
-      this.props.setProps({
-        n_clicks: this.props.n_clicks + 1,
+  const incrementClicks = () => {
+    if (!disabled && setProps) {
+      setProps({
+        n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
-  }
+  };
 
-  render() {
-    const {
-      children,
-      className,
-      active,
-      loading_state,
-      ...otherProps
-    } = this.props;
-    const classes = classNames(className, 'nav-link', {
-      active,
-      disabled: otherProps.disabled
-    });
-    return (
-      <Link
-        className={classes}
-        preOnClick={this.incrementClicks}
-        {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {children}
-      </Link>
-    );
-  }
-}
+  const classes = classNames(className, 'nav-link', {
+    active,
+    disabled: otherProps.disabled
+  });
+  return (
+    <Link
+      className={classes}
+      preOnClick={incrementClicks}
+      {...omit(['n_clicks_timestamp'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </Link>
+  );
+};
 
 NavLink.defaultProps = {
   active: false,

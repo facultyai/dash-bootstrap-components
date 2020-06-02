@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {act, render} from '@testing-library/react';
 import Alert from '../Alert';
 
 jest.useFakeTimers();
@@ -24,9 +24,15 @@ describe('Alert', () => {
   });
 
   test('applies contextual colors with "color" prop', () => {
-    const {container: {firstChild: alertPrimary}} = render(<Alert color="primary" />);
-    const {container: {firstChild: alertSuccess}} = render(<Alert color="success" />);
-    const {container: {firstChild: alertDark}} = render(<Alert color="dark" />);
+    const {
+      container: {firstChild: alertPrimary}
+    } = render(<Alert color="primary" />);
+    const {
+      container: {firstChild: alertSuccess}
+    } = render(<Alert color="success" />);
+    const {
+      container: {firstChild: alertDark}
+    } = render(<Alert color="dark" />);
 
     expect(alertPrimary).toHaveClass('alert-primary');
     expect(alertSuccess).toHaveClass('alert-success');
@@ -48,7 +54,7 @@ describe('Alert', () => {
     expect(alert.container.querySelector('.alert')).not.toBe(null);
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
 
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     // after timeout has run alert no longer displays
     expect(alert.container.querySelector('.alert')).toBe(null);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Modal as RSModal} from 'reactstrap';
@@ -7,43 +7,30 @@ import {Modal as RSModal} from 'reactstrap';
  * Create a toggleable dialog using the Modal component. Toggle the visibility
  * with the `is_open` prop.
  */
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
+const Modal = props => {
+  const {children, is_open, setProps, ...otherProps} = props;
+  const [modalOpen, setModalOpen] = useState(is_open);
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      modalOpen: props.is_open
-    };
-  }
-
-  toggle() {
-    if (this.props.setProps) {
-      this.props.setProps({is_open: !this.state.modalOpen});
-    } else {
-      this.setState({modalOpen: !this.state.modalOpen});
+  useEffect(() => {
+    if (is_open != modalOpen) {
+      setModalOpen(is_open);
     }
-  }
+  }, [is_open]);
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.is_open != prevState.modalOpen) {
-      return {modalOpen: nextProps.is_open};
-    } else return null;
-  }
+  const toggle = () => {
+    if (setProps) {
+      setProps({is_open: !modalOpen});
+    } else {
+      setModalOpen(!modalOpen);
+    }
+  };
 
-  render() {
-    const {children, ...otherProps} = this.props;
-    return (
-      <RSModal
-        isOpen={this.state.modalOpen}
-        toggle={this.toggle}
-        {...omit(['setProps', 'is_open'], otherProps)}
-      >
-        {children}
-      </RSModal>
-    );
-  }
-}
+  return (
+    <RSModal isOpen={modalOpen} toggle={toggle} {...otherProps}>
+      {children}
+    </RSModal>
+  );
+};
 
 Modal.propTypes = {
   /**

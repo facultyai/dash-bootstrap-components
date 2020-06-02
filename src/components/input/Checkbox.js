@@ -1,55 +1,39 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
 /**
  * Creates a single checkbox input. Use the `checked` prop in your callbacks.
  */
-class Checkbox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {checked: props.checked};
-  }
+const Checkbox = props => {
+  const {checked, loading_state, setProps, ...otherProps} = props;
+  const [checkedState, setCheckedState] = useState(checked);
 
-  componentWillReceiveProps(newProps) {
-    this.setState({checked: newProps.checked});
-  }
+  useEffect(() => setCheckedState(checked), [checked]);
 
-  render() {
-    const {checked} = this.state;
-
-    return (
-      <input
-        type="checkbox"
-        checked={checked}
-        {...omit(
-          [
-            'checked',
-            'setProps',
-            'loading_state',
-            'persistence',
-            'persistence_type',
-            'persisted_props'
-          ],
-          this.props
-        )}
-        onClick={() => {
-          if (this.props.setProps) {
-            this.props.setProps({
-              checked: !checked
-            });
-          } else {
-            this.setState({checked: !checked});
-          }
-        }}
-        data-dash-is-loading={
-          (this.props.loading_state && this.props.loading_state.is_loading) ||
-          undefined
+  return (
+    <input
+      type="checkbox"
+      defaultChecked={checkedState}
+      {...omit(
+        ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
+        otherProps
+      )}
+      onChange={() => {
+        if (setProps) {
+          setProps({
+            checked: !checkedState
+          });
+        } else {
+          setCheckedState(!checkedState);
         }
-      />
-    );
-  }
-}
+      }}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    />
+  );
+};
 
 Checkbox.defaultProps = {
   persisted_props: ['checked'],
