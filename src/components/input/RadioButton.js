@@ -1,57 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
 /**
  * Creates a single radio button. Use the `checked` prop in your callbacks.
  */
-class RadioButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {checked: props.checked};
-  }
+const RadioButton = props => {
+  const {checked, loading_state, setProps, ...otherProps} = props;
+  const [checkedState, setCheckedState] = useState(checked || false);
 
-  componentWillReceiveProps(newProps) {
-    this.setState({checked: newProps.checked});
-  }
+  useEffect(() => {
+    if (checked !== undefined && checked !== null) {
+      setCheckedState(checked);
+    }
+  }, [checked]);
 
-  render() {
-    const {checked} = this.state;
-
-    return (
-      <input
-        type="radio"
-        checked={checked}
-        {...omit(
-          [
-            'checked',
-            'setProps',
-            'loading_state',
-            'persistence',
-            'persistence_type',
-            'persisted_props'
-          ],
-          this.props
-        )}
-        onClick={() => {
-          if (this.props.setProps) {
-            this.props.setProps({
-              checked: !checked
-            });
-          } else {
-            this.setState({checked: !checked});
-          }
-        }}
-        data-dash-is-loading={
-          (this.props.loading_state && this.props.loading_state.is_loading) ||
-          undefined
+  return (
+    <input
+      type="radio"
+      checked={checkedState}
+      {...omit(
+        ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
+        otherProps
+      )}
+      onClick={() => {
+        if (setProps) {
+          setProps({
+            checked: !checkedState
+          });
         }
-      />
-    );
-  }
-}
+      }}
+      onChange={() => {}}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    />
+  );
+};
 
 RadioButton.defaultProps = {
+  checked: false,
   persisted_props: ['checked'],
   persistence_type: 'local'
 };

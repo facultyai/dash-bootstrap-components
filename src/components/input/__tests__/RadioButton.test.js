@@ -12,16 +12,17 @@ describe('RadioButton', () => {
     expect(radioButton).toHaveAttribute('type', 'radio');
   });
 
-  test('toggles checked value on click', () => {
+  test('passes checked prop on to underlying HTML element', () => {
     const {
-      container: {firstChild: radioButton}
+      container: {firstChild: radioButton},
+      rerender
     } = render(<RadioButton />);
     expect(radioButton.checked).toEqual(false);
 
-    userEvent.click(radioButton);
+    rerender(<RadioButton checked />);
     expect(radioButton.checked).toEqual(true);
 
-    userEvent.click(radioButton);
+    rerender(<RadioButton checked={false} />);
     expect(radioButton.checked).toEqual(false);
   });
 

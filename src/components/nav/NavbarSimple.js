@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
@@ -23,67 +23,55 @@ const navbarColors = new Set([
  * A self-contained navbar ready for use. If you need more customisability try
  * `Navbar` instead.
  */
-class NavbarSimple extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-    this.toggle = this.toggle.bind(this);
-  }
+const NavbarSimple = props => {
+  const {
+    children,
+    brand,
+    brand_href,
+    brand_style,
+    brand_external_link,
+    linksLeft,
+    fluid,
+    color,
+    style,
+    loading_state,
+    ...otherProps
+  } = props;
+  const isNavbarColor = navbarColors.has(color);
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
-  render() {
-    const {
-      children,
-      brand,
-      brand_href,
-      brand_style,
-      brand_external_link,
-      linksLeft,
-      fluid,
-      color,
-      style,
-      loading_state,
-      ...otherProps
-    } = this.props;
-    const isNavbarColor = navbarColors.has(color);
+  const toggle = () => setNavbarOpen(!navbarOpen);
 
-    return (
-      <RSNavbar
-        color={isNavbarColor ? color : null}
-        style={!isNavbarColor ? {backgroundColor: color, ...style} : style}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        <Container fluid={fluid}>
-          {brand && (
-            <NavbarBrand
-              href={brand_href}
-              style={brand_style}
-              external_link={brand_external_link}
-            >
-              {brand}
-            </NavbarBrand>
-          )}
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className={linksLeft ? 'mr-auto' : 'ml-auto'} navbar>
-              {children}
-            </Nav>
-          </Collapse>
-        </Container>
-      </RSNavbar>
-    );
-  }
-}
+  return (
+    <RSNavbar
+      color={isNavbarColor ? color : null}
+      style={!isNavbarColor ? {backgroundColor: color, ...style} : style}
+      {...omit(['setProps'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      <Container fluid={fluid}>
+        {brand && (
+          <NavbarBrand
+            href={brand_href}
+            style={brand_style}
+            external_link={brand_external_link}
+          >
+            {brand}
+          </NavbarBrand>
+        )}
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={navbarOpen} navbar>
+          <Nav className={linksLeft ? 'mr-auto' : 'ml-auto'} navbar>
+            {children}
+          </Nav>
+        </Collapse>
+      </Container>
+    </RSNavbar>
+  );
+};
 
 NavbarSimple.defaultProps = {
   fluid: false,

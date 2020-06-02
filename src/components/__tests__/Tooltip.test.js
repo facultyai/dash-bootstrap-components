@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {act, fireEvent, render} from '@testing-library/react';
 import Tooltip from '../Tooltip';
 
 jest.useFakeTimers();
@@ -42,13 +42,13 @@ describe('Tooltip', () => {
     });
 
     fireEvent.mouseOver(div);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(document.body.querySelector('div.tooltip')).not.toBe(null);
     expect(document.body.querySelector('div.tooltip-inner')).not.toBe(null);
 
     fireEvent.mouseLeave(div);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(document.body.querySelector('.tooltip')).toBe(null);
     expect(document.body.querySelector('.tooltip-inner')).toBe(null);
@@ -60,13 +60,13 @@ describe('Tooltip', () => {
     });
 
     fireEvent.focusIn(div);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(document.body.querySelector('div.tooltip')).not.toBe(null);
     expect(document.body.querySelector('div.tooltip-inner')).not.toBe(null);
 
     fireEvent.focusOut(div);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(document.body.querySelector('.tooltip')).toBe(null);
     expect(document.body.querySelector('.tooltip-inner')).toBe(null);
@@ -78,7 +78,7 @@ describe('Tooltip', () => {
     });
 
     fireEvent.mouseOver(div);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(document.body.querySelector('.tooltip-inner')).toHaveTextContent(
       'Tooltip content'

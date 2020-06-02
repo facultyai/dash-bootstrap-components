@@ -11,10 +11,9 @@ const Select = props => {
   const [value, setValue] = useState('');
 
   const handleChange = e => {
+    setValue(e.target.value);
     if (props.setProps) {
       props.setProps({value: e.target.value});
-    } else {
-      setValue(e.target.value);
     }
   };
 

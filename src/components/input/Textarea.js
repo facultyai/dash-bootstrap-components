@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classNames from 'classnames';
@@ -7,107 +7,104 @@ import classNames from 'classnames';
  * A basic HTML textarea for entering multiline text based on the corresponding
  * component in dash-core-components
  */
-class Textarea extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: props.value};
-  }
+const Textarea = props => {
+  const {
+    value,
+    n_clicks,
+    n_blur,
+    n_submit,
+    setProps,
+    className,
+    invalid,
+    valid,
+    bs_size,
+    debounce,
+    loading_state,
+    ...otherProps
+  } = props;
+  const [valueState, setValueState] = useState(value || '');
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.value});
-  }
+  useEffect(() => {
+    if (value !== valueState && value !== null && value !== undefined) {
+      setValueState(value);
+    }
+  }, [value]);
 
-  render() {
-    const {
-      setProps,
-      className,
-      invalid,
-      valid,
-      bs_size,
-      debounce,
-      loading_state
-    } = this.props;
-    const {value} = this.state;
+  const onChange = e => {
+    const newValue = e.target.value;
+    setValueState(newValue);
+    if (!debounce && setProps) {
+      setProps({value: newValue});
+    }
+  };
 
-    const classes = classNames(
-      className,
-      invalid && 'is-invalid',
-      valid && 'is-valid',
-      bs_size ? `form-control-${bs_size}` : false,
-      'form-control'
-    );
+  const onBlur = () => {
+    if (setProps) {
+      const payload = {
+        n_blur: n_blur + 1,
+        n_blur_timestamp: Date.now()
+      };
+      if (debounce) {
+        payload.value = value;
+      }
+      setProps(payload);
+    }
+  };
 
-    return (
-      <textarea
-        value={value}
-        className={classes}
-        onChange={e => {
-          const newValue = e.target.value;
-          if (!debounce && setProps) {
-            setProps({value: newValue});
-          } else {
-            this.setState({value: newValue});
-          }
-        }}
-        onBlur={() => {
-          if (setProps) {
-            const payload = {
-              n_blur: this.props.n_blur + 1,
-              n_blur_timestamp: Date.now()
-            };
-            if (debounce) {
-              payload.value = value;
-            }
-            setProps(payload);
-          }
-        }}
-        onKeyPress={e => {
-          if (setProps && e.key === 'Enter') {
-            const payload = {
-              n_submit: this.props.n_submit + 1,
-              n_submit_timestamp: Date.now()
-            };
-            if (debounce) {
-              payload.value = value;
-            }
-            setProps(payload);
-          }
-        }}
-        onClick={() => {
-          if (setProps) {
-            setProps({
-              n_clicks: this.props.n_clicks + 1,
-              n_clicks_timestamp: Date.now()
-            });
-          }
-        }}
-        {...omit(
-          [
-            'setProps',
-            'value',
-            'valid',
-            'invalid',
-            'bs_size',
-            'className',
-            'n_blur',
-            'n_blur_timestamp',
-            'n_submit',
-            'n_submit_timestamp',
-            'debounce',
-            'loading_state',
-            'persistence',
-            'persistence_type',
-            'persisted_props'
-          ],
-          this.props
-        )}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      />
-    );
-  }
-}
+  const onKeyPress = e => {
+    if (setProps && e.key === 'Enter') {
+      const payload = {
+        n_submit: n_submit + 1,
+        n_submit_timestamp: Date.now()
+      };
+      if (debounce) {
+        payload.value = value;
+      }
+      setProps(payload);
+    }
+  };
+
+  const onClick = () => {
+    if (setProps) {
+      setProps({
+        n_clicks: n_clicks + 1,
+        n_clicks_timestamp: Date.now()
+      });
+    }
+  };
+
+  const classes = classNames(
+    className,
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    bs_size ? `form-control-${bs_size}` : false,
+    'form-control'
+  );
+
+  return (
+    <textarea
+      value={valueState}
+      className={classes}
+      onChange={onChange}
+      onBlur={onBlur}
+      onKeyPress={onKeyPress}
+      onClick={onClick}
+      {...omit(
+        [
+          'n_blur_timestamp',
+          'n_submit_timestamp',
+          'persistence',
+          'persistence_type',
+          'persisted_props'
+        ],
+        otherProps
+      )}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    />
+  );
+};
 
 Textarea.propTypes = {
   /**
@@ -380,7 +377,8 @@ Textarea.defaultProps = {
   n_clicks_timestamp: -1,
   debounce: false,
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
+  value: ''
 };
 
 export default Textarea;

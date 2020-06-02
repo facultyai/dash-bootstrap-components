@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {act, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Toast from '../Toast';
 
@@ -78,7 +78,7 @@ describe('Toast', () => {
     expect(toast.container.querySelector('.toast')).not.toBe(null);
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
 
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     // after timeout has run toast no longer displays
     expect(toast.container.querySelector('.toast')).toBe(null);
