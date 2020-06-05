@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Alert as RSAlert} from 'reactstrap';
@@ -20,28 +20,28 @@ const Alert = props => {
     ...otherProps
   } = props;
 
-  const [alertOpen, setAlertOpen] = useState(is_open);
+  const timeout = useRef(null);
 
   useEffect(() => {
-    if (is_open != alertOpen) {
-      setAlertOpen(is_open);
-    }
-    if (is_open && duration) {
-      setTimeout(dismiss, duration);
+    if (duration) {
+      if (is_open) {
+        timeout.current = setTimeout(dismiss, duration);
+      } else if (timeout.current) {
+        clearTimeout(timeout.current);
+        timeout.current = null;
+      }
     }
   }, [is_open]);
 
   const dismiss = () => {
     if (setProps) {
       setProps({is_open: false});
-    } else {
-      setAlertOpen(false);
     }
   };
 
   return (
     <RSAlert
-      isOpen={alertOpen}
+      isOpen={is_open}
       toggle={dismissable && dismiss}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={

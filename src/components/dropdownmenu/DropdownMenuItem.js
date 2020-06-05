@@ -32,8 +32,7 @@ const DropdownMenuItem = props => {
         n_clicks_timestamp: Date.now()
       });
     }
-    const {external_link, href} = props;
-    if (href && !isExternalLink(external_link, href)) {
+    if (props.href) {
       if (toggle && context.isOpen) {
         context.toggle(e);
       }
@@ -58,13 +57,6 @@ const DropdownMenuItem = props => {
     </RSDropdownItem>
   );
 };
-class OldDropdownMenuItem extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-}
 
 DropdownMenuItem.propTypes = {
   /**
