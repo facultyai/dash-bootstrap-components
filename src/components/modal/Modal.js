@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import {Modal as RSModal} from 'reactstrap';
 
 /**
@@ -8,25 +7,23 @@ import {Modal as RSModal} from 'reactstrap';
  * with the `is_open` prop.
  */
 const Modal = props => {
-  const {children, is_open, setProps, ...otherProps} = props;
-  const [modalOpen, setModalOpen] = useState(is_open);
-
-  useEffect(() => {
-    if (is_open != modalOpen) {
-      setModalOpen(is_open);
-    }
-  }, [is_open]);
+  const {children, is_open, setProps, loading_state, ...otherProps} = props;
 
   const toggle = () => {
     if (setProps) {
-      setProps({is_open: !modalOpen});
-    } else {
-      setModalOpen(!modalOpen);
+      setProps({is_open: !is_open});
     }
   };
 
   return (
-    <RSModal isOpen={modalOpen} toggle={toggle} {...otherProps}>
+    <RSModal
+      isOpen={is_open}
+      toggle={toggle}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+      {...otherProps}
+    >
       {children}
     </RSModal>
   );
@@ -130,7 +127,25 @@ Modal.propTypes = {
   /**
    * Set the z-index of the modal. Default 1050.
    */
-  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Modal;

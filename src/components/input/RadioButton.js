@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
@@ -7,25 +7,25 @@ import {omit} from 'ramda';
  */
 const RadioButton = props => {
   const {checked, loading_state, setProps, ...otherProps} = props;
-  const [checkedState, setCheckedState] = useState(checked);
-
-  useEffect(() => setCheckedState(checked), [checked]);
 
   return (
     <input
       type="radio"
-      checked={checkedState}
+      checked={checked}
       {...omit(
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
+      // really we're supposed to use onChange for updates, but it doesn't
+      // fire when a checked radio is clicked on, so we need to manage updates
+      // with onClick, but leaving onChange unspecified leads to unwanted
+      // warnings in the JavaScript console.
+      onChange={() => {}}
       onClick={() => {
         if (setProps) {
           setProps({
-            checked: !checkedState
+            checked: !checked
           });
-        } else {
-          setCheckedState(!checkedState);
         }
       }}
       data-dash-is-loading={
@@ -36,6 +36,7 @@ const RadioButton = props => {
 };
 
 RadioButton.defaultProps = {
+  checked: false,
   persisted_props: ['checked'],
   persistence_type: 'local'
 };

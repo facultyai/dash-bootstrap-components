@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit, isEmpty} from 'ramda';
 import isNumeric from 'fast-isnumeric';
@@ -32,10 +32,6 @@ const Input = props => {
     ...otherProps
   } = props;
 
-  const [valueState, setValueState] = useState(value);
-
-  useEffect(() => setValueState(value), [value]);
-
   const parseValue = value => {
     if (props.type === 'number') {
       const convertedValue = convert(value);
@@ -54,19 +50,17 @@ const Input = props => {
     const newValue = parseValue(e.target.value);
     if (!debounce && setProps) {
       setProps({value: newValue});
-    } else {
-      setValueState(newValue);
     }
   };
 
-  const onBlur = () => {
+  const onBlur = e => {
     if (setProps) {
       const payload = {
         n_blur: n_blur + 1,
         n_blur_timestamp: Date.now()
       };
       if (debounce) {
-        payload.value = valueState;
+        payload.value = parseValue(e.target.value);
       }
       setProps(payload);
     }
@@ -79,7 +73,7 @@ const Input = props => {
         n_submit_timestamp: Date.now()
       };
       if (debounce) {
-        payload.value = valueState;
+        payload.value = parseValue(e.target.value);
       }
       setProps(payload);
     }
@@ -102,7 +96,7 @@ const Input = props => {
       onBlur={onBlur}
       onKeyPress={onKeyPress}
       className={classes}
-      value={valueState}
+      defaultValue={value}
       {...omit(
         [
           'n_blur_timestamp',

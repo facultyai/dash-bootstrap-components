@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
@@ -7,14 +7,11 @@ import {omit} from 'ramda';
  */
 const Checkbox = props => {
   const {checked, loading_state, setProps, ...otherProps} = props;
-  const [checkedState, setCheckedState] = useState(checked);
-
-  useEffect(() => setCheckedState(checked), [checked]);
 
   return (
     <input
       type="checkbox"
-      defaultChecked={checkedState}
+      defaultChecked={checked}
       {...omit(
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
         otherProps
@@ -22,10 +19,8 @@ const Checkbox = props => {
       onChange={() => {
         if (setProps) {
           setProps({
-            checked: !checkedState
+            checked: !checked
           });
-        } else {
-          setCheckedState(!checkedState);
         }
       }}
       data-dash-is-loading={
@@ -36,6 +31,7 @@ const Checkbox = props => {
 };
 
 Checkbox.defaultProps = {
+  checked: false,
   persisted_props: ['checked'],
   persistence_type: 'local'
 };

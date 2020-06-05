@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {CustomInput} from 'reactstrap';
@@ -8,21 +8,11 @@ import {CustomInput} from 'reactstrap';
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const [value, setValue] = useState('');
-
   const handleChange = e => {
     if (props.setProps) {
       props.setProps({value: e.target.value});
-    } else {
-      setValue(e.target.value);
     }
   };
-
-  useEffect(() => {
-    if (props.value !== value) {
-      setValue(props.value || '');
-    }
-  }, [props.value]);
 
   return (
     <CustomInput
@@ -41,7 +31,7 @@ const Select = props => {
       )}
       type="select"
       onChange={handleChange}
-      value={value}
+      defaultValue={props.value}
       bsSize={props.bs_size}
     >
       <option value="" disabled hidden></option>
@@ -61,6 +51,7 @@ const Select = props => {
 };
 
 Select.defaultProps = {
+  value: '',
   persisted_props: ['value'],
   persistence_type: 'local'
 };

@@ -20,18 +20,6 @@ describe('Textarea', () => {
     expect(textarea).not.toHaveValue();
   });
 
-  test('passes value on to the underlying HTML textarea', () => {
-    const {
-      container: {firstChild: textarea},
-      rerender
-    } = render(<Textarea value="some-textarea-value" />);
-
-    expect(textarea).toHaveValue('some-textarea-value');
-
-    rerender(<Textarea value="another-textarea-value" />);
-    expect(textarea).toHaveValue('another-textarea-value');
-  });
-
   test('passes HTML attributes on to underlying textarea', () => {
     const {
       container: {firstChild: textarea}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Tooltip as RSTooltip} from 'reactstrap';

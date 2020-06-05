@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classnames from 'classnames';
@@ -51,26 +51,15 @@ const Tabs = props => {
   } = props;
   children = parseChildrenToArray(children);
 
-  const [activeTab, setActiveTab] = useState(
+  active_tab =
     active_tab !== undefined
       ? active_tab
-      : children && (resolveChildProps(children[0]).tab_id || 'tab-0')
-  );
-
-  useEffect(() => {
-    if (active_tab !== undefined) {
-      setActiveTab(active_tab);
-    }
-  }, [active_tab]);
+      : children && (resolveChildProps(children[0]).tab_id || 'tab-0');
 
   const toggle = tab => {
     if (setProps) {
       if (active_tab !== tab) {
         setProps({active_tab: tab});
-      }
-    } else {
-      if (activeTab !== tab) {
-        setActiveTab(tab);
       }
     }
   };
@@ -89,7 +78,7 @@ const Tabs = props => {
         >
           <NavLink
             className={classnames(childProps.labelClassName, {
-              active: activeTab === tabId
+              active: active_tab === tabId
             })}
             style={childProps.label_style}
             disabled={childProps.disabled}
@@ -148,7 +137,7 @@ const Tabs = props => {
       <Nav id={id} tabs card={card} className={className} style={style}>
         {links}
       </Nav>
-      <TabContent activeTab={activeTab}>{tabs}</TabContent>
+      <TabContent activeTab={active_tab}>{tabs}</TabContent>
     </div>
   );
 };

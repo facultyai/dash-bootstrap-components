@@ -22,9 +22,6 @@ const Textarea = props => {
     loading_state,
     ...otherProps
   } = props;
-  const [valueState, setValueState] = useState(value);
-
-  useEffect(() => setValueState(value), [value]);
 
   const classes = classNames(
     className,
@@ -36,14 +33,12 @@ const Textarea = props => {
 
   return (
     <textarea
-      value={valueState}
+      defaultValue={value}
       className={classes}
       onChange={e => {
         const newValue = e.target.value;
         if (!debounce && setProps) {
           setProps({value: newValue});
-        } else {
-          setValueState(newValue);
         }
       }}
       onBlur={() => {
@@ -366,7 +361,8 @@ Textarea.defaultProps = {
   n_clicks_timestamp: -1,
   debounce: false,
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
+  value: ''
 };
 
 export default Textarea;
