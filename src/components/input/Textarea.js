@@ -25,8 +25,8 @@ const Textarea = props => {
   const [valueState, setValueState] = useState(value || '');
 
   useEffect(() => {
-    if (value !== valueState && value !== null && value !== undefined) {
-      setValueState(value);
+    if (value !== valueState) {
+      setValueState(value || '');
     }
   }, [value]);
 

@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import {Modal as RSModal} from 'reactstrap';
 
 /**
@@ -9,24 +8,15 @@ import {Modal as RSModal} from 'reactstrap';
  */
 const Modal = props => {
   const {children, is_open, setProps, ...otherProps} = props;
-  const [modalOpen, setModalOpen] = useState(is_open);
-
-  useEffect(() => {
-    if (is_open != modalOpen) {
-      setModalOpen(is_open);
-    }
-  }, [is_open]);
 
   const toggle = () => {
     if (setProps) {
-      setProps({is_open: !modalOpen});
-    } else {
-      setModalOpen(!modalOpen);
+      setProps({is_open: !is_open});
     }
   };
 
   return (
-    <RSModal isOpen={modalOpen} toggle={toggle} {...otherProps}>
+    <RSModal isOpen={is_open} toggle={toggle} {...otherProps}>
       {children}
     </RSModal>
   );

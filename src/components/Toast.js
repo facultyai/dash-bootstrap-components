@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
@@ -25,12 +25,7 @@ const Toast = props => {
     ...otherProps
   } = props;
 
-  const [toastOpen, setToastOpen] = useState(is_open);
-
   useEffect(() => {
-    if (is_open != toastOpen) {
-      setToastOpen(is_open);
-    }
     if (is_open && duration) {
       setTimeout(dismiss, duration);
     }
@@ -43,13 +38,11 @@ const Toast = props => {
         n_dismiss: n_dismiss + 1,
         n_dismiss_timestamp: Date.now()
       });
-    } else {
-      setToastOpen(false);
     }
   };
 
   return (
-    <RSToast isOpen={toastOpen} {...omit(['n_dismiss_timestamp'], otherProps)}>
+    <RSToast isOpen={is_open} {...omit(['n_dismiss_timestamp'], otherProps)}>
       <ToastHeader
         icon={icon}
         style={header_style}

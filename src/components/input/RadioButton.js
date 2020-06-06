@@ -10,8 +10,8 @@ const RadioButton = props => {
   const [checkedState, setCheckedState] = useState(checked || false);
 
   useEffect(() => {
-    if (checked !== undefined && checked !== null) {
-      setCheckedState(checked);
+    if (checked !== checkedState) {
+      setCheckedState(checked || false);
     }
   }, [checked]);
 
@@ -24,6 +24,7 @@ const RadioButton = props => {
         otherProps
       )}
       onClick={() => {
+        setCheckedState(!checkedState);
         if (setProps) {
           setProps({
             checked: !checkedState

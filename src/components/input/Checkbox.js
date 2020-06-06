@@ -10,8 +10,8 @@ const Checkbox = props => {
   const [checkedState, setCheckedState] = useState(checked || false);
 
   useEffect(() => {
-    if (checked !== null && checked !== undefined) {
-      setCheckedState(checked);
+    if (checked !== checkedState) {
+      setCheckedState(checked || false);
     }
   }, [checked]);
 
@@ -24,12 +24,11 @@ const Checkbox = props => {
         otherProps
       )}
       onChange={() => {
+        setCheckedState(!checkedState);
         if (setProps) {
           setProps({
             checked: !checkedState
           });
-        } else {
-          setCheckedState(!checkedState);
         }
       }}
       data-dash-is-loading={
