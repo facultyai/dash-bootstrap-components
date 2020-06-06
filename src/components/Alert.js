@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Alert as RSAlert} from 'reactstrap';
@@ -20,9 +20,16 @@ const Alert = props => {
     ...otherProps
   } = props;
 
+  const timeout = useRef(null);
+
   useEffect(() => {
-    if (is_open && duration) {
-      setTimeout(dismiss, duration);
+    if (duration) {
+      if (is_open) {
+        timeout.current = setTimeout(dismiss, duration);
+      } else if (timeout.current) {
+        clearTimeout(timeout.current);
+        timeout.current = null;
+      }
     }
   }, [is_open]);
 
