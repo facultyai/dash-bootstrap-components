@@ -8,13 +8,12 @@ import {CustomInput} from 'reactstrap';
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(props.value || '');
 
   const handleChange = e => {
+    setValue(e.target.value);
     if (props.setProps) {
       props.setProps({value: e.target.value});
-    } else {
-      setValue(e.target.value);
     }
   };
 
@@ -45,20 +44,23 @@ const Select = props => {
       bsSize={props.bs_size}
     >
       <option value="" disabled hidden></option>
-      {props.options && props.options.map(option => (
-        <option
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-        >
-          {option.label}
-        </option>
-      ))}
+      {props.options &&
+        props.options.map(option => (
+          <option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+            title={option.title}
+          >
+            {option.label}
+          </option>
+        ))}
     </CustomInput>
   );
 };
 
 Select.defaultProps = {
+  value: '',
   persisted_props: ['value'],
   persistence_type: 'local'
 };
@@ -113,7 +115,14 @@ Select.propTypes = {
       /**
        * If true, this checkbox is disabled and can't be clicked on.
        */
-      disabled: PropTypes.bool
+      disabled: PropTypes.bool,
+
+      /**
+       * The HTML 'title' attribute for the option. Allows for information on
+       * hover. For more information on this attribute, see
+       * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+       */
+      title: PropTypes.string
     })
   ),
 

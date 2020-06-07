@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {DropdownItem as RSDropdownItem} from 'reactstrap';
@@ -9,49 +9,54 @@ import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
  */
-class DropdownMenuItem extends React.Component {
-  constructor(props) {
-    super(props);
+const DropdownMenuItem = props => {
+  let {
+    children,
+    href,
+    external_link,
+    loading_state,
+    target,
+    disabled,
+    n_clicks,
+    toggle,
+    setProps,
+    ...otherProps
+  } = props;
 
-    this.handleClick = this.handleClick.bind(this);
-  }
+  const context = useContext(DropdownMenuContext);
 
-  handleClick(e) {
-    if (!this.props.disabled && this.props.setProps) {
-      this.props.setProps({
-        n_clicks: this.props.n_clicks + 1,
+  const handleClick = e => {
+    if (!disabled && setProps) {
+      setProps({
+        n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
-    const {external_link, href} = this.props;
-    if (href && !isExternalLink(external_link, href)) {
-      if (this.props.toggle && this.context.isOpen) {
-        this.context.toggle(e);
+    if (props.href) {
+      if (toggle && context.isOpen) {
+        context.toggle(e);
       }
     }
-  }
+  };
 
-  render() {
-    let {children, href, loading_state, target, ...otherProps} = this.props;
-    const useLink = href && !this.props.disabled;
-    otherProps[useLink ? 'preOnClick' : 'onClick'] = e => this.handleClick(e);
-    return (
-      <RSDropdownItem
-        tag={useLink ? Link : 'button'}
-        // don't pass href if disabled otherwise reactstrap renders item
-        // as link and the cursor becomes a pointer on hover
-        href={this.props.disabled ? null : href}
-        target={useLink && target}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {children}
-      </RSDropdownItem>
-    );
-  }
-}
+  const useLink = href && !disabled;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
+  return (
+    <RSDropdownItem
+      tag={useLink ? Link : 'button'}
+      // don't pass href if disabled otherwise reactstrap renders item
+      // as link and the cursor becomes a pointer on hover
+      href={disabled ? null : href}
+      target={useLink && target}
+      {...omit(['setProps'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSDropdownItem>
+  );
+};
 
 DropdownMenuItem.propTypes = {
   /**
@@ -167,7 +172,5 @@ DropdownMenuItem.defaultProps = {
   n_clicks_timestamp: -1,
   toggle: true
 };
-
-DropdownMenuItem.contextType = DropdownMenuContext;
 
 export default DropdownMenuItem;

@@ -81,9 +81,9 @@ def release(ctx, version):
 
 
 @task
-def documentation(ctx):
+def copy_examples(ctx):
     """
-    Push documentation to Heroku
+    Copy examples used in documentation to the docs directory.
     """
     info("copying examples into docs directory")
     # TODO: have this determined by some configuration rather than hardcoded
@@ -97,6 +97,12 @@ def documentation(ctx):
         "docs/examples/vendor/simple_sidebar.py"
     )
 
+
+@task(copy_examples)
+def documentation(ctx):
+    """
+    Push documentation to Heroku
+    """
     info("Pushing documentation to Heroku")
     run("git checkout -b inv-push-docs")
     run("git add docs/examples/vendor/*.py -f")

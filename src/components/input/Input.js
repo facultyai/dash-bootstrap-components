@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {omit, isEmpty} from 'ramda';
+import {omit} from 'ramda';
 import isNumeric from 'fast-isnumeric';
 import classNames from 'classnames';
 
@@ -16,140 +16,115 @@ const convert = val => (isNumeric(val) ? +val : NaN);
  * the Checklist and RadioItems component. Dates, times, and file uploads
  * are supported through separate components in other libraries.
  */
-class Input extends React.Component {
-  constructor(props) {
-    super(props);
+const Input = props => {
+  const {
+    value,
+    className,
+    debounce,
+    n_blur,
+    n_submit,
+    valid,
+    invalid,
+    bs_size,
+    plaintext,
+    loading_state,
+    setProps,
+    ...otherProps
+  } = props;
 
-    this.onBlur = this.onBlur.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onKeyPress = this.onKeyPress.bind(this);
-    this.parseValue = this.parseValue.bind(this);
+  const [valueState, setValueState] = useState(value || '');
 
-    this.state = {value: props.value};
-  }
+  useEffect(() => {
+    // "" == 0 in JavaScript, which means we need to check separately if a
+    // cleared input is being set to 0
+    if (value != valueState || (valueState === '' && value === 0)) {
+      if (value !== null && value !== undefined) {
+        setValueState(value);
+      } else {
+        setValueState('');
+      }
+    }
+  }, [value]);
 
-  parseValue(value) {
-    if (this.props.type === 'number') {
+  const parseValue = value => {
+    if (props.type === 'number') {
       const convertedValue = convert(value);
       if (isNaN(convertedValue)) {
         return;
-      }
-      else if (
-        (!isEmpty(this.props.min) && convertedValue < this.props.min) ||
-        (!isEmpty(this.props.max) && convertedValue > this.props.max)
-      ) {
-        return;
-      }
-      else return convertedValue;
+      } else return convertedValue;
     } else return value;
-  }
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value != this.state.value) {
-      this.setState({value: nextProps.value});
-    }
-  }
-
-  render() {
-    const {
-      className,
-      valid,
-      invalid,
-      bs_size,
-      plaintext,
-      loading_state
-    } = this.props;
-
-    let formControlClass = 'form-control';
-
-    if (plaintext) {
-      formControlClass = `${formControlClass}-plaintext`;
-    }
-
-    const classes = classNames(
-      className,
-      invalid && 'is-invalid',
-      valid && 'is-valid',
-      bs_size ? `form-control-${bs_size}` : false,
-      formControlClass
-    );
-    return (
-      <input
-        onChange={this.onChange}
-        onBlur={this.onBlur}
-        onKeyPress={this.onKeyPress}
-        className={classes}
-        value={this.state.value}
-        {...omit(
-          [
-            'debounce',
-            'n_blur',
-            'n_blur_timestamp',
-            'n_submit',
-            'n_submit_timestamp',
-            'selectionDirection',
-            'selectionEnd',
-            'selectionStart',
-            'setProps',
-            'value',
-            'className',
-            'valid',
-            'invalid',
-            'bs_size',
-            'plaintext',
-            'loading_state',
-            'persistence',
-            'persistence_type',
-            'persisted_props'
-          ],
-          this.props
-        )}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      />
-    );
-  }
-
-  onChange(e) {
-    const {debounce, setProps} = this.props;
-    const newValue = e.target.value;
-    const castValue = this.parseValue(newValue);
+  const onChange = e => {
+    setValueState(e.target.value);
     if (!debounce && setProps) {
-      setProps({value: castValue});
-    } else {
-      this.setState({value: castValue});
+      setProps({value: parseValue(e.target.value)});
     }
-  }
+  };
 
-  onKeyPress(e) {
-    const {setProps, debounce} = this.props;
-    if (setProps && e.key === 'Enter') {
-      const payload = {
-        n_submit: this.props.n_submit + 1,
-        n_submit_timestamp: Date.now()
-      };
-      if (debounce) {
-        payload.value = this.state.value;
-      }
-      setProps(payload);
-    }
-  }
-
-  onBlur() {
-    const {setProps, debounce} = this.props;
+  const onBlur = () => {
     if (setProps) {
       const payload = {
-        n_blur: this.props.n_blur + 1,
+        n_blur: n_blur + 1,
         n_blur_timestamp: Date.now()
       };
       if (debounce) {
-        payload.value = this.state.value;
+        payload.value = parseValue(valueState);
       }
       setProps(payload);
     }
-  }
-}
+  };
+
+  const onKeyPress = e => {
+    if (setProps && e.key === 'Enter') {
+      const payload = {
+        n_submit: n_submit + 1,
+        n_submit_timestamp: Date.now()
+      };
+      if (debounce) {
+        payload.value = parseValue(valueState);
+      }
+      setProps(payload);
+    }
+  };
+
+  const formControlClass = plaintext
+    ? 'form-control-plaintext'
+    : 'form-control';
+
+  const classes = classNames(
+    className,
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    bs_size ? `form-control-${bs_size}` : false,
+    formControlClass
+  );
+  return (
+    <input
+      onChange={onChange}
+      onBlur={onBlur}
+      onKeyPress={onKeyPress}
+      className={classes}
+      value={valueState}
+      {...omit(
+        [
+          'n_blur_timestamp',
+          'n_submit_timestamp',
+          'selectionDirection',
+          'selectionEnd',
+          'selectionStart',
+          'persistence',
+          'persistence_type',
+          'persisted_props'
+        ],
+        otherProps
+      )}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    />
+  );
+};
 
 Input.propTypes = {
   /**

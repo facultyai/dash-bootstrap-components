@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Dropdown, DropdownToggle} from 'reactstrap';
@@ -9,81 +9,67 @@ import {DropdownMenuContext} from '../../private/DropdownMenuContext';
  * DropdownMenu creates an overlay useful for grouping together links and other
  * content to organise navigation or other interactive elements.
  */
-class DropdownMenu extends React.Component {
-  constructor(props) {
-    super(props);
+const DropdownMenu = props => {
+  const {
+    children,
+    nav,
+    label,
+    disabled,
+    caret,
+    in_navbar,
+    addon_type,
+    bs_size,
+    right,
+    loading_state,
+    color,
+    toggle_style,
+    toggleClassName,
+    ...otherProps
+  } = props;
 
-    this.toggle = this.toggle.bind(this);
-    this.getContextValue = this.getContextValue.bind(this);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    this.state = {
-      dropdownOpen: false
-    };
-  }
-
-  toggle() {
-    if (!this.props.disabled) {
-      this.setState(prevState => ({
-        dropdownOpen: !prevState.dropdownOpen
-      }));
+  const toggle = () => {
+    if (!disabled) {
+      setDropdownOpen(!dropdownOpen);
     }
-  }
+  };
 
-  getContextValue() {
-    return {
-      toggle: this.toggle,
-      isOpen: this.state.dropdownOpen
-    };
-  }
-
-  render() {
-    const {
-      children,
-      nav,
-      label,
-      disabled,
-      caret,
-      in_navbar,
-      addon_type,
-      bs_size,
-      right,
-      loading_state,
-      color,
-      toggle_style,
-      toggleClassName,
-      ...otherProps
-    } = this.props;
-    return (
-      <DropdownMenuContext.Provider value={this.getContextValue()}>
-        <Dropdown
-          isOpen={this.state.dropdownOpen}
-          toggle={this.toggle}
+  return (
+    <DropdownMenuContext.Provider
+      value={{
+        toggle: toggle,
+        isOpen: dropdownOpen
+      }}
+    >
+      <Dropdown
+        isOpen={dropdownOpen}
+        toggle={toggle}
+        nav={nav}
+        disabled={disabled}
+        inNavbar={in_navbar}
+        addonType={addon_type}
+        size={bs_size}
+        {...omit(['setProps'], otherProps)}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
+      >
+        <DropdownToggle
           nav={nav}
+          caret={caret}
           disabled={disabled}
-          inNavbar={in_navbar}
-          addonType={addon_type}
-          size={bs_size}
-          {...omit(['setProps'], otherProps)}
-          data-dash-is-loading={
-            (loading_state && loading_state.is_loading) || undefined
-          }
+          color={color}
+          style={toggle_style}
+          className={toggleClassName}
         >
-          <DropdownToggle
-            nav={nav}
-            caret={caret}
-            disabled={disabled}
-            color={color}
-            style={toggle_style}
-            className={toggleClassName}
-          >
-            {label}
-          </DropdownToggle>
-          <RSDropdownMenu right={right}>{this.props.children}</RSDropdownMenu>
-        </Dropdown>
-      </DropdownMenuContext.Provider>
-    );
-  }
-}
+          {label}
+        </DropdownToggle>
+        <RSDropdownMenu right={right}>{children}</RSDropdownMenu>
+      </Dropdown>
+    </DropdownMenuContext.Provider>
+  );
+};
 
 DropdownMenu.defaultProps = {
   caret: true,
