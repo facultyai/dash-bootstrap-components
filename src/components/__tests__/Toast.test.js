@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {act, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Toast from '../Toast';
 
@@ -72,13 +72,28 @@ describe('Toast', () => {
   });
 
   test('self dismisses if duration is set', () => {
-    const toast = render(<Toast duration={5000} />);
+    const mockSetProps = jest.fn();
+    const toast = render(<Toast duration={5000} setProps={mockSetProps} />);
 
     // toast exists and timeout is set with duration 5000
     expect(toast.container.querySelector('.toast')).not.toBe(null);
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
 
-    jest.runAllTimers();
+    act(() => jest.advanceTimersByTime(4000));
+    // toast hasn't dismissed yet
+    expect(mockSetProps.mock.calls).toHaveLength(0);
+
+    act(() => jest.advanceTimersByTime(1000));
+    // toast has dismissed
+    expect(mockSetProps.mock.calls).toHaveLength(1);
+    expect(mockSetProps.mock.calls[0][0].is_open).toEqual(false);
+
+    toast.rerender(
+      <Toast duration={5000} setProps={mockSetProps} is_open={false} />
+    );
+
+    // necessary to skip fade animation
+    act(() => jest.runAllTimers());
 
     // after timeout has run toast no longer displays
     expect(toast.container.querySelector('.toast')).toBe(null);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Tooltip as RSTooltip} from 'reactstrap';
@@ -9,47 +9,37 @@ import {Tooltip as RSTooltip} from 'reactstrap';
  * Simply add the Tooltip to you layout, and give it a target (id of a
  * component to which the tooltip should be attached)
  */
-class Tooltip extends React.Component {
-  constructor(props) {
-    super(props);
+const Tooltip = props => {
+  const {
+    id,
+    children,
+    hide_arrow,
+    boundaries_element,
+    loading_state,
+    ...otherProps
+  } = props;
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      tooltipOpen: false
-    };
-  }
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  toggle() {
-    this.setState({
-      tooltipOpen: !this.state.tooltipOpen
-    });
-  }
+  const toggle = () => {
+    setTooltipOpen(!tooltipOpen);
+  };
 
-  render() {
-    const {
-      id,
-      children,
-      hide_arrow,
-      boundaries_element,
-      loading_state,
-      ...otherProps
-    } = this.props;
-    return (
-      <RSTooltip
-        toggle={this.toggle}
-        isOpen={this.state.tooltipOpen}
-        hideArrow={hide_arrow}
-        boundariesElement={boundaries_element}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {children}
-      </RSTooltip>
-    );
-  }
-}
+  return (
+    <RSTooltip
+      toggle={toggle}
+      isOpen={tooltipOpen}
+      hideArrow={hide_arrow}
+      boundariesElement={boundaries_element}
+      {...omit(['setProps'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSTooltip>
+  );
+};
 
 Tooltip.propTypes = {
   /**

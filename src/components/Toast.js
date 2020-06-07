@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
@@ -8,75 +8,62 @@ import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
  * visibility of the toast with the `is_open` prop, or use `duration` to set a
  * timer for auto-dismissal.
  */
-class Toast extends React.Component {
-  constructor(props) {
-    super(props);
+const Toast = props => {
+  const {
+    children,
+    header,
+    icon,
+    header_style,
+    headerClassName,
+    body_style,
+    bodyClassName,
+    dismissable,
+    duration,
+    n_dismiss,
+    is_open,
+    setProps,
+    ...otherProps
+  } = props;
 
-    this.dismiss = this.dismiss.bind(this);
-    this.state = {
-      toastOpen: props.is_open
-    };
-  }
-
-  dismiss() {
-    if (this.props.setProps) {
-      this.props.setProps({
+  const dismiss = () => {
+    if (setProps) {
+      setProps({
         is_open: false,
-        n_dismiss: this.props.n_dismiss + 1,
+        n_dismiss: n_dismiss + 1,
         n_dismiss_timestamp: Date.now()
       });
-    } else {
-      this.setState({toastOpen: false});
     }
-  }
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.is_open != this.state.toastOpen) {
-      this.setState({toastOpen: nextProps.is_open});
-      if (nextProps.is_open && this.props.duration) {
-        setTimeout(this.dismiss, this.props.duration);
+  const timeout = useRef(null);
+
+  useEffect(() => {
+    if (duration) {
+      if (is_open) {
+        timeout.current = setTimeout(dismiss, duration);
+      } else if (timeout.current) {
+        clearTimeout(timeout.current);
+        timeout.current = null;
       }
     }
-  }
+  }, [is_open]);
 
-  componentDidMount() {
-    if (this.props.is_open && this.props.duration) {
-      setTimeout(this.dismiss, this.props.duration);
-    }
-  }
-
-  render() {
-    const {
-      children,
-      header,
-      icon,
-      header_style,
-      headerClassName,
-      body_style,
-      bodyClassName,
-      dismissable,
-      ...otherProps
-    } = this.props;
-    return (
-      <RSToast
-        isOpen={this.state.toastOpen}
-        {...omit(['setProps', 'is_open'], otherProps)}
+  return (
+    <RSToast isOpen={is_open} {...omit(['n_dismiss_timestamp'], otherProps)}>
+      <ToastHeader
+        icon={icon}
+        style={header_style}
+        className={headerClassName}
+        toggle={dismissable && dismiss}
       >
-        <ToastHeader
-          icon={icon}
-          style={header_style}
-          className={headerClassName}
-          toggle={dismissable && this.dismiss}
-        >
-          {header}
-        </ToastHeader>
-        <ToastBody style={body_style} className={bodyClassName}>
-          {children}
-        </ToastBody>
-      </RSToast>
-    );
-  }
-}
+        {header}
+      </ToastHeader>
+      <ToastBody style={body_style} className={bodyClassName}>
+        {children}
+      </ToastBody>
+    </RSToast>
+  );
+};
 
 Toast.defaultProps = {
   is_open: true,

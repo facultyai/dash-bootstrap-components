@@ -10,14 +10,10 @@ import CustomInput from '../../private/CustomInput';
  * Each radio item is rendered as an input and associated label which are
  * siblings of each other.
  */
-class RadioItems extends React.Component {
-  constructor(props) {
-    super(props);
+const RadioItems = props => {
+  const {id, className, style, options, key, loading_state} = props;
 
-    this.listItem = this.listItem.bind(this);
-  }
-
-  listItem(option) {
+  const listItem = option => {
     const {
       id,
       inputClassName,
@@ -31,7 +27,7 @@ class RadioItems extends React.Component {
       value,
       custom,
       switch: switches
-    } = this.props;
+    } = props;
 
     const checked = option.value === value;
 
@@ -100,28 +96,24 @@ class RadioItems extends React.Component {
         </div>
       );
     }
-  }
+  };
 
-  render() {
-    const {id, className, style, options, key, loading_state} = this.props;
+  const items = options.map(option => listItem(option));
 
-    const items = options.map(option => this.listItem(option));
-
-    return (
-      <div
-        id={id}
-        className={className}
-        style={style}
-        key={key}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {items}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      id={id}
+      className={className}
+      style={style}
+      key={key}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {items}
+    </div>
+  );
+};
 
 RadioItems.propTypes = {
   /**

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Alert as RSAlert} from 'reactstrap';
@@ -9,62 +9,49 @@ import {Alert as RSAlert} from 'reactstrap';
  * Control the visibility using callbacks with the `is_open` prop, or set it to
  * auto-dismiss with the `duration` prop.
  */
-class Alert extends React.Component {
-  constructor(props) {
-    super(props);
+const Alert = props => {
+  const {
+    children,
+    dismissable,
+    duration,
+    is_open,
+    loading_state,
+    setProps,
+    ...otherProps
+  } = props;
 
-    this.dismiss = this.dismiss.bind(this);
+  const timeout = useRef(null);
 
-    this.state = {
-      alertOpen: props.is_open
-    };
-  }
-
-  dismiss() {
-    if (this.props.setProps) {
-      this.props.setProps({is_open: false});
-    } else {
-      this.setState({alertOpen: false});
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.is_open != this.state.alertOpen) {
-      this.setState({alertOpen: nextProps.is_open});
-      if (nextProps.is_open && this.props.duration) {
-        setTimeout(this.dismiss, this.props.duration);
+  useEffect(() => {
+    if (duration) {
+      if (is_open) {
+        timeout.current = setTimeout(dismiss, duration);
+      } else if (timeout.current) {
+        clearTimeout(timeout.current);
+        timeout.current = null;
       }
     }
-  }
+  }, [is_open]);
 
-  componentDidMount() {
-    if (this.props.is_open && this.props.duration) {
-      setTimeout(this.dismiss, this.props.duration);
+  const dismiss = () => {
+    if (setProps) {
+      setProps({is_open: false});
     }
-  }
+  };
 
-  render() {
-    const {
-      children,
-      dismissable,
-      is_open,
-      loading_state,
-      ...otherProps
-    } = this.props;
-    return (
-      <RSAlert
-        isOpen={this.state.alertOpen}
-        toggle={dismissable && this.dismiss}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
-      >
-        {children}
-      </RSAlert>
-    );
-  }
-}
+  return (
+    <RSAlert
+      isOpen={is_open}
+      toggle={dismissable && dismiss}
+      {...omit(['setProps'], otherProps)}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      {children}
+    </RSAlert>
+  );
+};
 
 Alert.defaultProps = {
   is_open: true,

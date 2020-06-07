@@ -8,13 +8,12 @@ import {CustomInput} from 'reactstrap';
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(props.value || '');
 
   const handleChange = e => {
+    setValue(e.target.value);
     if (props.setProps) {
       props.setProps({value: e.target.value});
-    } else {
-      setValue(e.target.value);
     }
   };
 
@@ -61,6 +60,7 @@ const Select = props => {
 };
 
 Select.defaultProps = {
+  value: '',
   persisted_props: ['value'],
   persistence_type: 'local'
 };
