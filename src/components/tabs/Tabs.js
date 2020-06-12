@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classnames from 'classnames';
@@ -51,10 +51,15 @@ const Tabs = props => {
   } = props;
   children = parseChildrenToArray(children);
 
-  active_tab =
-    active_tab !== undefined
-      ? active_tab
-      : children && (resolveChildProps(children[0]).tab_id || 'tab-0');
+  // if active_tab not set initially, choose first tab
+  useEffect(() => {
+    if (setProps && active_tab === undefined) {
+      setProps({
+        active_tab:
+          children && (resolveChildProps(children[0]).tab_id || 'tab-0')
+      });
+    }
+  }, []);
 
   const toggle = tab => {
     if (setProps) {
