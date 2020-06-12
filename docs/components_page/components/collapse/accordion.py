@@ -39,7 +39,7 @@ def toggle_accordion(n1, n2, n3, is_open1, is_open2, is_open3):
     ctx = dash.callback_context
 
     if not ctx.triggered:
-        return ['']*3
+        return False, False, False
     else:
         button_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
