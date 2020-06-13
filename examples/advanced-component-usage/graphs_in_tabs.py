@@ -34,6 +34,7 @@ app.layout = dbc.Container(
                 dbc.Tab(label="Histograms", tab_id="histogram"),
             ],
             id="tabs",
+            active_tab="scatter",
         ),
         html.Div(id="tab-content", className="p-4"),
     ]
