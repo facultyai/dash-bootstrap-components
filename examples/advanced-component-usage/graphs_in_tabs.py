@@ -60,7 +60,7 @@ def render_tab_content(active_tab, data):
                     dbc.Col(dcc.Graph(figure=data["hist_2"]), width=6),
                 ]
             )
-    return data
+    return "No tab selected"
 
 
 @app.callback(Output("store", "data"), [Input("button", "n_clicks")])
