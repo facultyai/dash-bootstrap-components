@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
 import Button from '../Button';
 
 describe('Button', () => {
@@ -97,5 +97,20 @@ describe('Button', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
+  });
+
+  test("doesn't track clicks if disabled", () => {
+    const mockSetProps = jest.fn();
+    const button = render(
+      <Button disabled setProps={mockSetProps}>
+        Clickable
+      </Button>
+    );
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
+
+    userEvent.click(button.getByText('Clickable'));
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
   });
 });

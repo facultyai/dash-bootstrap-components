@@ -61,4 +61,21 @@ describe('ListGroupItem', () => {
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
   });
+
+  test("doesn't track clicks if disabled", () => {
+    const mockSetProps = jest.fn();
+    const listGroupItem = render(
+      <ListGroupItem disabled setProps={mockSetProps}>
+        Clickable
+      </ListGroupItem>
+    );
+
+    expect(listGroupItem.getByText('Clickable')).toHaveClass('disabled');
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
+
+    userEvent.click(listGroupItem.getByText('Clickable'));
+
+    expect(mockSetProps.mock.calls).toHaveLength(0);
+  });
 });

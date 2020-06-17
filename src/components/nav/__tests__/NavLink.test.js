@@ -53,6 +53,7 @@ describe('NavLink', () => {
         Clickable
       </NavLink>
     );
+    expect(navLink.getByText('Clickable')).toHaveClass('disabled');
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
