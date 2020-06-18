@@ -10,6 +10,7 @@ import Link from '../../private/Link';
 const ListGroupItem = props => {
   let {
     children,
+    disabled,
     loading_state,
     target,
     n_clicks,
@@ -18,7 +19,7 @@ const ListGroupItem = props => {
   } = props;
 
   const incrementClicks = () => {
-    if (!props.disabled && setProps) {
+    if (!disabled && setProps) {
       setProps({
         n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
@@ -26,13 +27,14 @@ const ListGroupItem = props => {
     }
   };
 
-  const useLink = props.href && !props.disabled;
+  const useLink = props.href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
     <RSListGroupItem
       tag={useLink ? Link : 'li'}
       target={useLink && target}
+      disabled={disabled}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

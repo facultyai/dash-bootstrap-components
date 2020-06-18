@@ -15,6 +15,7 @@ import Link from '../private/Link';
 const Button = props => {
   const {
     children,
+    disabled,
     href,
     loading_state,
     setProps,
@@ -24,21 +25,22 @@ const Button = props => {
   } = props;
 
   const incrementClicks = () => {
-    if (!props.disabled && setProps) {
+    if (!disabled && setProps) {
       setProps({
         n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
   };
-  const useLink = href && !props.disabled;
+  const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
     <RSButton
       tag={useLink ? Link : 'button'}
       target={useLink ? target : null}
-      href={props.disabled ? null : href}
+      href={disabled ? null : href}
+      disabled={disabled}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
