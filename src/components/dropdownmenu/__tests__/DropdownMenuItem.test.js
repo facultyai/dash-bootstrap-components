@@ -64,6 +64,8 @@ describe('DropdownMenuItem', () => {
       </DropdownMenu>
     );
 
+    expect(dropdownMenuItem.getByText('Clickable')).toHaveClass('disabled');
+
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
     userEvent.click(dropdownMenuItem.getByText('Clickable'));

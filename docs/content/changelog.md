@@ -6,6 +6,26 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.10.3 - 2020/6/26
+
+### Fixed
+
+- Sets the `active_tab` prop server-side when default is not provided (required for dynamic tab content with callbacks) ([PR 405](https://github.com/facultyai/dash-bootstrap-components/pull/405))
+- Fixed `disabled` prop of various link based components ([PR 410](https://github.com/facultyai/dash-bootstrap-components/pull/410))
+- Persists null values in `Input` components with `type="number"` ([PR 411](https://github.com/facultyai/dash-bootstrap-components/pull/411))
+
+## 0.10.2 - 2020/6/7
+
+### Added
+
+- Each option in `Select` now accepts `title` as a field ([PR 389](https://github.com/facultyai/dash-bootstrap-components/pull/389))
+
+### Fixed
+
+- No more warnings related to deprecated React lifecycle methods, or controlled components changing to uncontrolled components ([PR 396](https://github.com/facultyai/dash-bootstrap-components/pull/396))
+- Automatic dismissal of `Alert` and `Toast` does not happen early if manually toggled. ([PR 396](https://github.com/facultyai/dash-bootstrap-components/pull/396))
+- Clicking on a `DropdownMenuItem` consistently dismisses the parent `DropdownMenu` ([PR 396](https://github.com/facultyai/dash-bootstrap-components/pull/396))
+
 ## 0.10.1 - 2020/5/30
 
 ### Added

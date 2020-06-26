@@ -57,7 +57,7 @@ describe('Tabs', () => {
   test('tracks most recently clicked tab with "active_tab" prop', () => {
     const mockSetProps = jest.fn();
     const {container, getByText, rerender} = render(
-      <Tabs setProps={mockSetProps}>
+      <Tabs setProps={mockSetProps} active_tab="tab-0">
         <Tab label="tab-label-1">tab-content-1</Tab>
         <Tab label="tab-label-2">tab-content-2</Tab>
       </Tabs>

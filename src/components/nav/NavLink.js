@@ -29,13 +29,11 @@ const NavLink = props => {
     }
   };
 
-  const classes = classNames(className, 'nav-link', {
-    active,
-    disabled: otherProps.disabled
-  });
+  const classes = classNames(className, 'nav-link', {active, disabled});
   return (
     <Link
       className={classes}
+      disabled={disabled}
       preOnClick={incrementClicks}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={

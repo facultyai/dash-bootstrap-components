@@ -34,6 +34,7 @@ app.layout = dbc.Container(
                 dbc.Tab(label="Histograms", tab_id="histogram"),
             ],
             id="tabs",
+            active_tab="scatter",
         ),
         html.Div(id="tab-content", className="p-4"),
     ]
@@ -60,7 +61,7 @@ def render_tab_content(active_tab, data):
                     dbc.Col(dcc.Graph(figure=data["hist_2"]), width=6),
                 ]
             )
-    return data
+    return "No tab selected"
 
 
 @app.callback(Output("store", "data"), [Input("button", "n_clicks")])

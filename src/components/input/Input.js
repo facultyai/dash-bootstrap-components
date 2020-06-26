@@ -50,7 +50,7 @@ const Input = props => {
     if (props.type === 'number') {
       const convertedValue = convert(value);
       if (isNaN(convertedValue)) {
-        return;
+        return null;
       } else return convertedValue;
     } else return value;
   };
