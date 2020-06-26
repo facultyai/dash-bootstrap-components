@@ -236,7 +236,7 @@ describe('Input', () => {
 
       const [call1, call2, call3] = mockSetProps.mock.calls;
       expect(call1).toEqual([{value: -1}]);
-      expect(call2).toEqual([{value: undefined}]);
+      expect(call2).toEqual([{value: null}]);
       expect(call3).toEqual([{value: -10000}]);
     });
 
