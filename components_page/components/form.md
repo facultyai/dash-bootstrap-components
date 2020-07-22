@@ -52,3 +52,5 @@ The `Form` and `FormGroup` components can also be used with _dash-core-component
 {{apidoc:src/components/form/FormText.js}}
 
 {{apidoc:src/components/form/FormFeedback.js}}
+
+{{apidoc:src/components/Label.js}}
