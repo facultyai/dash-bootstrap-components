@@ -12,6 +12,13 @@ from termcolor import cprint
 VERSION_TEMPLATE = """__version__ = "{version_string}"
 """
 
+TEST_VERSION_TEMPLATE = """from dash_bootstrap_components import __version__
+
+
+def test_version():
+    assert __version__ == "{version_string}"
+"""
+
 RELEASE_NOTES_TEMPLATE = """# Write the release notes here
 # Delete the version title to cancel
 Version {version_string}
@@ -179,6 +186,10 @@ def set_pyversion(version):
     version_path = DASH_BOOTSTRAP_DIR / "_version.py"
     with version_path.open("w") as f:
         f.write(VERSION_TEMPLATE.format(version_string=version))
+
+    test_version_path = HERE / "tests" / "test_version.py"
+    with test_version_path.open("w") as f:
+        f.write(TEST_VERSION_TEMPLATE.format(version_string=version))
 
 
 def set_jsversion(version):

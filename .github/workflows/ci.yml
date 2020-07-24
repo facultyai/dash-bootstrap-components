@@ -1,0 +1,92 @@
+name: CI
+
+on: [push]
+
+jobs:
+  js:
+    name: Lint and test JavaScript
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint source
+        run: npm run lint
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+      - name: Run demo test
+        run: npm run test:demo
+  build:
+    name: Build package
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install Dash
+        run: pip install dash[dev]
+      - name: Build dash-bootstrap-components
+        run: npm run build
+      - name: Upload generated files
+        uses: actions/upload-artifact@v2
+        with:
+          name: dash-bootstrap-components
+          path: dash_bootstrap_components/_components
+  python:
+    name: Lint and test Python package
+    needs: build
+    runs-on: 'ubuntu-latest'
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+    services:
+      hub:
+        image: selenium/hub:3.141.59-gold
+      firefox:
+        image: selenium/node-chrome:3.141.59-gold
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Set up Python ${{ matrix.python-version }}
+        if: matrix.python-version != '3.8'
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install nox
+        run: python3.8 -m pip install -U nox
+      - name: Lint Python source
+        if: matrix.python-version == 3.8
+        run: nox -s lint
+      - uses: actions/download-artifact@v2
+        with:
+          name: dash-bootstrap-components
+          path: dash_bootstrap_components/_components
+      - name: Test Python module
+        run: nox -s test-${{ matrix.python-version }}
