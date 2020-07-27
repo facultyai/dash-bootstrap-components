@@ -1,3 +1,4 @@
+"""Bootstrap themed components for use in Plotly Dash"""
 import os
 import sys
 
@@ -5,7 +6,9 @@ from . import themes  # noqa
 from . import _components
 from ._components import *  # noqa
 from ._table import _generate_table_from_df
-from ._version import __version__  # noqa
+# from ._version import __version__  # noqa
+
+__version__ = "0.0.1"
 
 _current_path = os.path.dirname(os.path.abspath(__file__))
 
