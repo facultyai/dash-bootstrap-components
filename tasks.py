@@ -182,9 +182,15 @@ def release_python_sdist():
 
 def set_pyversion(version):
     version = normalize_version(version)
-    version_path = DASH_BOOTSTRAP_DIR / "_version.py"
-    with version_path.open("w") as f:
-        f.write(VERSION_TEMPLATE.format(version_string=version))
+    init_path = DASH_BOOTSTRAP_DIR / "__init__.py"
+    with init_path.open("r") as f:
+        lines = f.readlines()
+
+    index = [line.startswith("__version__ = ") for line in lines].index(True)
+    lines[index] = VERSION_TEMPLATE.format(version_string=version)
+
+    with init_path.open("w") as f:
+        f.writelines(lines)
 
     test_version_path = HERE / "tests" / "test_version.py"
     with test_version_path.open("w") as f:
