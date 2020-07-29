@@ -53,9 +53,9 @@ SIZE_WARNING = """{% block size_warning %}
 
 
 def mod_callback(fn):
-    def wrapper(path):
+    def wrapper(path, **kwargs):
         path = path.replace("/examples/simple-sidebar", "")
-        return fn(path)
+        return fn(path, **kwargs)
 
     return wrapper
 
