@@ -79,6 +79,7 @@ def build_app_from_example(app, name, code, code_link, show_warning=False):
     new_app.title = f"{name.capitalize().replace('-', ' ')} - dbc examples"
     new_app.layout = app.layout
     new_app.callback_map = app.callback_map
+    new_app._callback_list = app._callback_list
     return new_app
 
 
