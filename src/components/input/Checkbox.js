@@ -6,7 +6,7 @@ import {omit} from 'ramda';
  * Creates a single checkbox input. Use the `checked` prop in your callbacks.
  */
 const Checkbox = props => {
-  const {checked, loading_state, setProps, ...otherProps} = props;
+  const {checked, loading_state, disabled, setProps, ...otherProps} = props;
   const [checkedState, setCheckedState] = useState(checked || false);
 
   useEffect(() => {
@@ -23,12 +23,15 @@ const Checkbox = props => {
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
+      disabled={disabled}
       onChange={() => {
-        setCheckedState(!checkedState);
-        if (setProps) {
-          setProps({
-            checked: !checkedState
-          });
+        if (!disabled) {
+          setCheckedState(!checkedState);
+          if (setProps) {
+            setProps({
+              checked: !checkedState
+            });
+          }
         }
       }}
       data-dash-is-loading={
@@ -123,7 +126,12 @@ Checkbox.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * Disabled the Checkbox
+   */
+  disabled: PropTypes.bool
 };
 
 export default Checkbox;
