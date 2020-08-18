@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import React, {useEffect, useState} from 'react';
 
 /**
  * Creates a single radio button. Use the `checked` prop in your callbacks.
  */
 const RadioButton = props => {
-  const {checked, loading_state, setProps, ...otherProps} = props;
+  const {checked, loading_state, disabled, setProps, ...otherProps} = props;
   const [checkedState, setCheckedState] = useState(checked || false);
 
   useEffect(() => {
@@ -23,12 +23,15 @@ const RadioButton = props => {
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
+      disabled={disabled}
       onClick={() => {
-        setCheckedState(!checkedState);
-        if (setProps) {
-          setProps({
-            checked: !checkedState
-          });
+        if (!disabled) {
+          setCheckedState(!checkedState);
+          if (setProps) {
+            setProps({
+              checked: !checkedState
+            });
+          }
         }
       }}
       onChange={() => {}}
@@ -124,7 +127,12 @@ RadioButton.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * Disable the RadioButton.
+   */
+  disabled: PropTypes.bool
 };
 
 export default RadioButton;
