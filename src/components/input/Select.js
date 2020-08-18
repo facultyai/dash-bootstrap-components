@@ -43,7 +43,9 @@ const Select = props => {
       value={value}
       bsSize={props.bs_size}
     >
-      <option value="" disabled hidden></option>
+      <option value="" disabled hidden>
+        {props.placeholder}
+      </option>
       {props.options &&
         props.options.map(option => (
           <option
@@ -62,7 +64,8 @@ const Select = props => {
 Select.defaultProps = {
   value: '',
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
+  placeholder: ''
 };
 
 Select.propTypes = {
@@ -89,6 +92,11 @@ Select.propTypes = {
    * See https://reactjs.org/docs/lists-and-keys.html for more info
    */
   key: PropTypes.string,
+
+  /**
+   * Placeholder text to display before a selection is made.
+   */
+  placeholder: PropTypes.string,
 
   /**
    * The value of the currently selected option.
