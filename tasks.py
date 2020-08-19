@@ -77,9 +77,8 @@ def release(ctx, version):
     info("Committing version changes")
     run(f"git checkout -b release-{version}")
     run(
-        "git add package.json package-lock.json "
-        "docs/requirements.txt "
-        "dash_bootstrap_components/_version.py"
+        "git add package.json package-lock.json tests/test_version.py"
+        "docs/requirements.txt dash_bootstrap_components/_version.py"
     )
     run(f'git commit -m "Bump version to {version}"')
     info(f"Tagging version {version} and pushing to GitHub")
