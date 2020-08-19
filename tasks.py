@@ -139,7 +139,7 @@ def postrelease(ctx, version):
     set_jsversion(new_version)
     run(f"git checkout -b postrelease-{version}")
     run(
-        "git add package.json package-lock.json "
+        "git add package.json package-lock.json tests/test_version.py"
         "dash_bootstrap_components/_version.py"
     )
     run('git commit -m "Back to dev"')
