@@ -6,6 +6,13 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.10.4 - 2020/8/19
+
+### Added
+
+- `Select` now has a `placeholder` prop ([PR 431](https://github.com/facultyai/dash-bootstrap-components/pull/431))
+- `Checkbox` and `RadioButton` now have a `disabled` prop ([PR 432](https://github.com/facultyai/dash-bootstrap-components/pull/432))
+
 ## 0.10.3 - 2020/6/26
 
 ### Fixed
