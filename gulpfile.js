@@ -2,6 +2,7 @@ const {dest, parallel, series, src} = require('gulp');
 const del = require('del');
 const mkdirp = require('mkdirp');
 const rename = require('gulp-rename');
+const footer = require('gulp-footer');
 
 function cleanLib() {
   mkdirp.sync('lib');
@@ -42,5 +43,16 @@ function copyGeneratedFiles() {
     .pipe(dest('dash_bootstrap_components/_components'));
 }
 
-exports.default = series(copyGeneratedFiles, cleanGeneratedFiles);
+function addThemesToRNamespace() {
+  return src('NAMESPACE')
+    .pipe(footer('export(dbcThemes)'))
+    .pipe(dest('.', {overwrite: true}));
+}
+
+exports.postPyBuild = series(copyGeneratedFiles, cleanGeneratedFiles);
 exports.clean = parallel(cleanGeneratedFiles, cleanComponents, cleanLib);
+exports.postRBuild = series(
+  copyGeneratedFiles,
+  cleanGeneratedFiles,
+  addThemesToRNamespace
+);
