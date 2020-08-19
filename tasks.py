@@ -12,6 +12,13 @@ from termcolor import cprint
 VERSION_TEMPLATE = """__version__ = "{version_string}"
 """
 
+TEST_VERSION_TEMPLATE = """from dash_bootstrap_components import __version__
+
+
+def test_version():
+    assert __version__ == "{version_string}"
+"""
+
 RELEASE_NOTES_TEMPLATE = """# Write the release notes here
 # Delete the version title to cancel
 Version {version_string}
@@ -70,9 +77,8 @@ def release(ctx, version):
     info("Committing version changes")
     run(f"git checkout -b release-{version}")
     run(
-        "git add package.json package-lock.json "
-        "docs/requirements.txt "
-        "dash_bootstrap_components/_version.py"
+        "git add package.json package-lock.json tests/test_version.py"
+        "docs/requirements.txt dash_bootstrap_components/_version.py"
     )
     run(f'git commit -m "Bump version to {version}"')
     info(f"Tagging version {version} and pushing to GitHub")
@@ -179,6 +185,10 @@ def set_pyversion(version):
     version_path = DASH_BOOTSTRAP_DIR / "_version.py"
     with version_path.open("w") as f:
         f.write(VERSION_TEMPLATE.format(version_string=version))
+
+    test_version_path = HERE / "tests" / "test_version.py"
+    with test_version_path.open("w") as f:
+        f.write(TEST_VERSION_TEMPLATE.format(version_string=version))
 
 
 def set_jsversion(version):

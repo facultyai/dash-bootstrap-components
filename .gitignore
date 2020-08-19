@@ -2,8 +2,9 @@
 node_modules
 lib
 
-# sass
-.sass-cache
+# testing
+.nox
+.pytest_cache
 
 # dash-bootstrap-components artifacts
 dash_bootstrap_components/bundle.js
