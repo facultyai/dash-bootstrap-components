@@ -12,7 +12,7 @@ Creates a single checkbox input. Use the `checked` prop in your callbacks.
 \usage{
 dbcCheckbox(id=NULL, checked=NULL, className=NULL, style=NULL, key=NULL,
 loading_state=NULL, persistence=NULL, persisted_props=NULL,
-persistence_type=NULL)
+persistence_type=NULL, disabled=NULL)
 }
 
 \arguments{
@@ -51,6 +51,8 @@ normally be ignored.}
 memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.}
+
+\item{disabled}{Logical. Disabled the Checkbox}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

@@ -10,10 +10,10 @@ Create a HTML select element with Bootstrap styles. Specify options as a list of
 }
 
 \usage{
-dbcSelect(id=NULL, style=NULL, className=NULL, key=NULL, value=NULL,
-options=NULL, disabled=NULL, valid=NULL, invalid=NULL,
-bs_size=NULL, persistence=NULL, persisted_props=NULL,
-persistence_type=NULL)
+dbcSelect(id=NULL, style=NULL, className=NULL, key=NULL,
+placeholder=NULL, value=NULL, options=NULL, disabled=NULL,
+valid=NULL, invalid=NULL, bs_size=NULL, persistence=NULL,
+persisted_props=NULL, persistence_type=NULL)
 }
 
 \arguments{
@@ -28,6 +28,8 @@ components in an app.}
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
+
+\item{placeholder}{Character. Placeholder text to display before a selection is made.}
 
 \item{value}{Character | numeric. The value of the currently selected option.}
 
