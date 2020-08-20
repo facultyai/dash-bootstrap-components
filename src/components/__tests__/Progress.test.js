@@ -85,4 +85,24 @@ describe('Progress', () => {
 
     expect(progressAnimated.firstChild).toHaveClass('progress-bar-animated');
   });
+
+  test('sets className and style on the progress container and the bar', () => {
+    const {
+      container: {firstChild: progress}
+    } = render(
+      <Progress
+        style={{height: '40px'}}
+        className="outer"
+        bar_style={{color: 'chartreuse'}}
+        barClassName="inner"
+      />
+    );
+
+    expect(progress).toHaveClass('outer');
+    expect(progress).toHaveStyle('height:40px');
+
+    expect(progress.firstChild).toHaveClass('progress-bar');
+    expect(progress.firstChild).toHaveClass('inner');
+    expect(progress.firstChild).toHaveStyle('color:chartreuse');
+  });
 });

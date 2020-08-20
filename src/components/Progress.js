@@ -3,18 +3,28 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Progress as RSProgress} from 'reactstrap';
 
+const CustomProgressTag = props => {
+  // This is a little trick to enable us to pass styles to the outer div
+  const {outer_style, style, ...otherProps} = props;
+  return <div style={outer_style} {...otherProps} />;
+};
+
 /**
  * A component for creating progress bars just with CSS. Control the current
  * progress with a callback and the `value` prop.
  */
 const Progress = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, bar_style, style, ...otherProps} = props;
   return (
     <RSProgress
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      // reactstrap handles these inconsistently atm, have to swap around
+      style={bar_style}
+      outer_style={style}
+      tag={CustomProgressTag}
     >
       {children}
     </RSProgress>
@@ -96,6 +106,11 @@ Progress.propTypes = {
    * CSS classes to apply to the bar.
    */
   barClassName: PropTypes.string,
+
+  /**
+   * Style arguments to pass to the bar.
+   */
+  bar_style: PropTypes.object,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
