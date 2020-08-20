@@ -23,7 +23,7 @@ GITHUB_EXAMPLES = (
 INDEX_STRING_TEMPLATE = """{% extends "example.html" %}
 {% block head %}
 {{ super() }}
-{{ "{%metas%}{%css%}{%favicon%}" }}
+{{ "{%metas%}{%css%}" }}
 {% endblock %}
 {% block title %}
 <title>{{ "{%title%}" }}</title>
@@ -75,6 +75,7 @@ def build_app_from_example(app, name, code, code_link, show_warning=False):
         requests_pathname_prefix=f"/examples/{name}/",
         serve_locally=False,
         index_string=template.replace("<CODE>", code),
+        update_title=None,
     )
     new_app.title = f"{name.capitalize().replace('-', ' ')} - dbc examples"
     new_app.layout = app.layout
