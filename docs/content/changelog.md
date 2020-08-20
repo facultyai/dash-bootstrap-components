@@ -6,6 +6,12 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.10.5 - 2020/8/20
+
+### Fixed
+
+- Reverted behaviour of `style` prop from `Progress` component. Bar can be styled with new `bar_style` prop ([PR 441](https://github.com/facultyai/dash-bootstrap-components/pull/441))
+
 ## 0.10.4 - 2020/8/19
 
 ### Added
