@@ -24,7 +24,7 @@ INDEX_STRING_TEMPLATE = """{% from "macros/navbar.html" import navbar %}
 {% extends "docs.html" %}
 {% block head %}
 {{ super() }}
-{{ "{%metas%}{%css%}{%favicon%}" }}
+{{ "{%metas%}{%css%}" }}
 {% endblock %}
 {% block title %}
 <title>{{ "{%title%}" }}</title>
@@ -136,6 +136,7 @@ def register_apps():
                 sidenav_active="components",
                 active_child=slug,
             ),
+            update_title=None,
         )
         app.title = f"{_get_label(slug)} - dbc docs"
 
