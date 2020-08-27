@@ -1,0 +1,121 @@
+name: Publish release
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  release:
+    name: Release
+    if: ${{ github.event.pull_request.merged && startsWith(github.head_ref, 'release/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
+      - id: get-version
+        run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|release/||')"
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm install
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install Python dependencies
+        run: python -m pip install dash[dev] flit invoke semver termcolor
+      - name: Publish release to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish release to PyPI
+        run: flit publish
+        env:
+          FLIT_USERNAME: ${{ secrets.FLIT_USERNAME }}
+          FLIT_PASSWORD: ${{ secrets.FLIT_PASSWORD }}
+      - name: Commit updated package-lock.json
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Release ${{ steps.get-version.outputs.version }}
+          branch: master
+          push_options: --force
+          file_pattern: package-lock.json
+      - name: Create GitHub release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.get-version.outputs.version }}
+          release_name: Release ${{ steps.get-version.outputs.version }}
+          body: ${{ github.event.pull_request.body }}
+          prerelease: false
+      - name: Post-release cleanup
+        run: invoke postrelease ${{ steps.get-version.outputs.version }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Back to dev
+          branch: master
+          push_options: --force
+          file_pattern: package.json tests/test_version.py dash_bootstrap_components/__init__.py
+
+  prerelease:
+    name: Prerelease
+    if: ${{ github.event.pull_request.merged && startsWith(github.head_ref, 'prerelease/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
+      - id: get-version
+        run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|prerelease/||')"
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm install
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install Python dependencies
+        run: python -m pip install dash[dev] flit invoke semver termcolor
+      - name: Publish prerelease to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish prerelease to PyPI
+        run: flit publish
+        env:
+          FLIT_USERNAME: ${{ secrets.FLIT_USERNAME }}
+          FLIT_PASSWORD: ${{ secrets.FLIT_PASSWORD }}
+      - name: Commit updated package-lock.json
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Release ${{ steps.get-version.outputs.version }}
+          branch: master
+          push_options: --force
+          file_pattern: package-lock.json
+      - name: Create GitHub prerelease
+        id: create-prerelease
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.get-version.outputs.version }}
+          release_name: Prerelease ${{ steps.get-version.outputs.version }}
+          body: ${{ github.event.pull_request.body }}
+          prerelease: true
+      - name: Post-release cleanup
+        run: invoke postrelease ${{ steps.get-version.outputs.version }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Back to dev
+          branch: master
+          push_options: --force
+          file_pattern: package.json tests/test_version.py dash_bootstrap_components/__init__.py

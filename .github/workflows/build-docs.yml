@@ -1,0 +1,28 @@
+name: Build docs
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - docs/**
+      - examples/**
+
+jobs:
+  build_docs:
+    name: Build and release documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install Python dependencies
+        run: python -m pip install invoke semver termcolor
+      - name: Copy examples to docs/
+        run: invoke copy-examples
+      - uses: ./.github/actions/push_docs
+        with:
+          heroku-api-token: ${{ secrets.HEROKU_API_TOKEN }}
+          heroku-app-name: ${{ secrets.HEROKU_APP_NAME }}

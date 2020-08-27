@@ -5,7 +5,6 @@ SOURCES = [
     "docs",
     "examples",
     "noxfile.py",
-    "setup.py",
     "tasks.py",
 ]
 

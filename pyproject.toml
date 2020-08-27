@@ -1,7 +1,61 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+dist-name = "dash-bootstrap-components"
+module = "dash_bootstrap_components"
+author = "Faculty"
+author-email = "opensource@faculty.ai"
+home-page = "https://dash-bootstrap-components.opensource.faculty.ai"
+classifiers = [
+    "Framework :: Dash",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8"
+]
+requires = ["dash>=1.9.0"]
+description-file = "landing-page.md"
+requires-python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
+
+[tool.flit.metadata.requires-extra]
+pandas = ["numpy", "pandas"]
+
+[tool.flit.metadata.urls]
+Source = "https://github.com/facultyai/dash-bootstrap-components/"
+"Bug Reports" = "https://github.com/facultyai/dash-bootstrap-components/issues"
+
+[tool.flit.sdist]
+include = [
+    "dash_bootstrap_components/_components/*.py",
+    "dash_bootstrap_components/_components/*.js",
+    "dash_bootstrap_components/_components/*.json"
+]
+exclude = [
+    ".github",
+    "demo",
+    "docs",
+    "examples",
+    "R",
+    "readme-images",
+    "src",
+    "tests",
+    "webpack",
+    ".babelrc",
+    ".gitignore",
+    ".prettierrc",
+    ".Rbuildignore",
+    "gulpfile.js",
+    "jest.config.js",
+    "noxfile.py",
+    "package.json",
+    "package-lock.json",
+    "tasks.py"
+]
+
 [tool.black]
 line-length = 79
 exclude = "dash_bootstrap_components/_components|node_modules"
-
-[build-system]
-requires = ["setuptools >= 40.8.0", "wheel"]
-build-backend = "setuptools.build_meta"
