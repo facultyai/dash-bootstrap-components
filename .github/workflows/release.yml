@@ -28,10 +28,9 @@ jobs:
           python-version: 3.8
       - name: Install Python dependencies
         run: python -m pip install dash[dev] flit invoke semver termcolor
-      - name: Publish release to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
       - name: Publish release to PyPI
         run: flit publish
         env:
@@ -85,10 +84,9 @@ jobs:
           python-version: 3.8
       - name: Install Python dependencies
         run: python -m pip install dash[dev] flit invoke semver termcolor
-      - name: Publish prerelease to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
       - name: Publish prerelease to PyPI
         run: flit publish
         env:
