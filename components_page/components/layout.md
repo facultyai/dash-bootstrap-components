@@ -13,7 +13,7 @@ The `Row` component is a wrapper for columns. The layout of your app should be b
 
 When using the grid layout, content should be placed in columns, and only `Col` components should be immediate children of `Row`.
 
-For much moredetail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/4.2/layout/grid/).
+For much more detail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/4.2/layout/grid/).
 
 ## Row with columns
 
