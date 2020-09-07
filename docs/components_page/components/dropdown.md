@@ -37,7 +37,7 @@ Use the `direction` argument to control where the menu is rendered relative to t
 
 ## DropdownMenu alignment
 
-By default the menu is aligned with left of the toggle. Set `align='right'` for a right aligned menu.
+By default the menu is aligned with left of the toggle. Set `right=True` for a right aligned menu.
 
 {{example:components/dropdown/alignment.py:dropdown}}
 
