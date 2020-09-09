@@ -20,6 +20,7 @@
     "test:watch": "jest --watch"
   },
   "files": [
+    "dist/dash_bootstrap_components.min.js",
     "lib",
     "src",
     "LICENSE.txt",
