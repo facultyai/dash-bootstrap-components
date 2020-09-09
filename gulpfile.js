@@ -9,6 +9,17 @@ function cleanLib() {
   return del(['lib/*']);
 }
 
+function cleanDist() {
+  mkdirp.sync('dist');
+  return del(['dist/*']);
+}
+
+function copyDist() {
+  return src(
+    'dash_bootstrap_components/_components/dash_bootstrap_components.min.js'
+  ).pipe(dest('dist/'));
+}
+
 function cleanComponents() {
   return del(['dash_bootstrap_components/_components/*']);
 }
@@ -49,9 +60,15 @@ function addThemesToRNamespace() {
     .pipe(dest('.', {overwrite: true}));
 }
 
-exports.postPyBuild = series(copyGeneratedFiles, cleanGeneratedFiles);
-exports.clean = parallel(cleanGeneratedFiles, cleanComponents, cleanLib);
+exports.postPyBuild = series(copyDist, copyGeneratedFiles, cleanGeneratedFiles);
+exports.clean = parallel(
+  cleanGeneratedFiles,
+  cleanComponents,
+  cleanLib,
+  cleanDist
+);
 exports.postRBuild = series(
+  copyDist,
   copyGeneratedFiles,
   cleanGeneratedFiles,
   addThemesToRNamespace
