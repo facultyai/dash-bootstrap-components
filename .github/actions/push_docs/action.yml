@@ -1,12 +1,6 @@
 name: Push Docs
 description: Push Docs to Heroku
 inputs:
-  heroku-api-token:
-    description: API token for Heroku
-    required: true
-  heroku-app-name:
-    description: App name
-    required: true
   commit_user_name:
     description: Name used for the commit user
     required: false
@@ -19,11 +13,8 @@ runs:
   using: "composite"
   steps:
     - run: |
-       git checkout -b inv-push-docs
        git add docs/examples/vendor/*.py -f
        git -c user.name="${{ inputs.commit_user_name }}" -c user.email="${{ inputs.commit_user_email }}" commit -m "Add examples" --allow-empty
-       git subtree split --prefix docs -b inv-push-docs-subtree
-       git push -f https://heroku:${{ inputs.heroku-api-token }}@git.heroku.com/${{ inputs.heroku-app-name }}.git inv-push-docs-subtree:master
-       git checkout master
-       git branch -D inv-push-docs inv-push-docs-subtree
+       git subtree split --prefix docs -b docs-deploy
+       git push -f origin docs-deploy
       shell: bash
