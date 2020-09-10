@@ -13,7 +13,7 @@ A component for creating progress bars just with CSS. Control the current progre
 dbcProgress(children=NULL, id=NULL, style=NULL, className=NULL,
 key=NULL, tag=NULL, bar=NULL, multi=NULL, max=NULL,
 value=NULL, animated=NULL, striped=NULL, color=NULL,
-barClassName=NULL, loading_state=NULL)
+barClassName=NULL, bar_style=NULL, loading_state=NULL)
 }
 
 \arguments{
@@ -49,6 +49,8 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 warning, danger, info.}
 
 \item{barClassName}{Character. CSS classes to apply to the bar.}
+
+\item{bar_style}{Named list. Style arguments to pass to the bar.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
