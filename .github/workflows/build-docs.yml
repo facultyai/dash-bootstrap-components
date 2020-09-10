@@ -9,6 +9,9 @@ on:
       - examples/**
       - .github/workflows/build-docs.yml
       - .github/actions/push_docs/**
+  release:
+    types:
+      - released
 
 jobs:
   build_docs:

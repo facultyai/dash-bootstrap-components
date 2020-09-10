@@ -56,12 +56,10 @@ def release(ctx, version):
     """
     info(f"Creating release branch for {version}")
     set_source_version(version)
-    set_documentation_version(version)
 
     run(f"git checkout -b release/{version}")
     run(
         "git add package.json package-lock.json "
-        "docs/requirements.txt "
         "dash_bootstrap_components/__init__.py "
         "tests/test_version.py"
     )
@@ -146,7 +144,8 @@ def set_js_version(version):
         f.writelines(package_json)
 
 
-def set_documentation_version(version):
+@task
+def set_documentation_version(ctx, version):
     version = normalize_version(version)
     docs_requirements_path = HERE / "docs" / "requirements.txt"
     with docs_requirements_path.open() as f:
