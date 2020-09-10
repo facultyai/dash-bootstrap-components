@@ -1,8 +1,4 @@
-import os
-import tempfile
 from pathlib import Path
-from shutil import which
-from subprocess import call
 
 import semver
 from invoke import run as invoke_run
@@ -19,16 +15,9 @@ def test_version():
     assert __version__ == "{version_string}"
 """
 
-RELEASE_NOTES_TEMPLATE = """# Write the release notes here
-# Delete the version title to cancel
-Version {version_string}
-{underline}
-"""
-
 HERE = Path(__file__).parent
 
 DASH_BOOTSTRAP_DIR = HERE / "dash_bootstrap_components"
-JS_DIR = HERE
 
 
 @task(help={"version": "Version number to release"})
@@ -39,9 +28,16 @@ def prerelease(ctx, version):
      - Bump the version number
      - Push a release to pypi
     """
-    check_prerequisites()
-    info(f"Releasing version {version} as prerelease")
-    build_publish(version)
+    info(f"Creating prerelease branch for {version}")
+    set_source_version(version)
+    run(f"git checkout -b prerelease/{version}")
+    run(
+        "git add package.json package-lock.json "
+        "dash_bootstrap_components/__init__.py "
+        "tests/test_version.py"
+    )
+    run(f'git commit -m "Set version to {version}"')
+    run(f"git push origin prerelease/{version}")
 
 
 @task(help={"version": "Version number to release"})
@@ -49,41 +45,26 @@ def release(ctx, version):
     """
     Release a new version
     Running this task will:
-     - Prompt the user for a changelog and write it to
-       the release notes
-     - Commit the release notes
+     - Create a release branch
      - Bump the version number
-     - Push a release to pypi
-     - commit the version changes to source control
-     - tag the commit
+    Release notes should be written in the body of the pull request. When
+    changes are merged GitHub actions will
+     - Build the package
+     - Push a release to PyPI
+     - Create a release
+     - Revert to a dev version change.
     """
-    check_prerequisites()
-    info(f"Releasing version {version} as full release")
-    set_documentation_version(version)
-    release_notes_lines = get_release_notes(version)
+    info(f"Creating release branch for {version}")
+    set_source_version(version)
 
-    if release_notes_lines is None:
-        error("No release notes: exiting")
-        exit()
-
-    info("Writing release notes to changelog.tmp")
-    with open("changelog.tmp", "w") as f:
-        f.writelines(release_notes_lines)
-
-    # TODO when we have release notes, these should be amended here
-
-    build_publish(version)
-
-    info("Committing version changes")
-    run(f"git checkout -b release-{version}")
+    run(f"git checkout -b release/{version}")
     run(
-        "git add package.json package-lock.json tests/test_version.py"
-        "docs/requirements.txt dash_bootstrap_components/_version.py"
+        "git add package.json package-lock.json "
+        "dash_bootstrap_components/__init__.py "
+        "tests/test_version.py"
     )
     run(f'git commit -m "Bump version to {version}"')
-    info(f"Tagging version {version} and pushing to GitHub")
-    run(f'git tag -a "{version}" -F changelog.tmp')
-    run(f"git push origin release-{version} --tags")
+    run(f"git push origin release/{version}")
 
 
 @task
@@ -104,23 +85,7 @@ def copy_examples(ctx):
     )
 
 
-@task(copy_examples)
-def documentation(ctx):
-    """
-    Push documentation to Heroku
-    """
-    info("Pushing documentation to Heroku")
-    run("git checkout -b inv-push-docs")
-    run("git add docs/examples/vendor/*.py -f")
-    run('git commit -m "Add examples" --allow-empty')
-    run("git subtree split --prefix docs -b inv-push-docs-subtree")
-    run("git push -f heroku inv-push-docs-subtree:master")
-    run("git checkout master")
-    run("git branch -D inv-push-docs inv-push-docs-subtree")
-
-
 @task(
-    documentation,
     help={
         "version": "Version number to finalize. Must be "
         "the same version number that was used in the release."
@@ -133,65 +98,41 @@ def postrelease(ctx, version):
      - bump the version to the next dev version
      - push changes to master
     """
-    new_version = semver.bump_patch(version) + "-dev"
+    clean_version = semver.finalize_version(version)
+    if clean_version == version:
+        # last release was full release, bump patch
+        new_version = semver.bump_patch(version) + "-dev"
+    else:
+        # last release was prerelease, revert to dev version
+        new_version = clean_version + "-dev"
+
     info(f"Bumping version numbers to {new_version} and committing")
-    set_pyversion(new_version)
-    set_jsversion(new_version)
-    run(f"git checkout -b postrelease-{version}")
-    run(
-        "git add package.json package-lock.json tests/test_version.py"
-        "dash_bootstrap_components/_version.py"
-    )
-    run('git commit -m "Back to dev"')
-    run(f"git push origin postrelease-{version}")
+    set_source_version(new_version)
 
 
-def build_publish(version):
-    info("Cleaning")
-    clean()
-    info("Updating versions")
-    set_pyversion(version)
-    set_jsversion(version)
-    info("Building JavaScript components")
-    build_js()
-    info("Building and uploading Python source distribution")
-    info("PyPI credentials:")
-    release_python_sdist()
+def set_source_version(version):
+    set_js_version(version)
+    set_py_version(version)
 
 
-def clean():
-    paths_to_clean = ["dash_bootstrap_components/_components", "dist/", "lib/"]
-    for path in paths_to_clean:
-        run(f"rm -rf {path}")
-
-
-def build_js():
-    os.chdir(JS_DIR)
-    try:
-        run("npm install")
-        run("npm publish")
-    finally:
-        os.chdir(HERE)
-
-
-def release_python_sdist():
-    run("rm -f dist/*")
-    run("python setup.py sdist")
-    invoke_run("twine upload dist/*")
-
-
-def set_pyversion(version):
+def set_py_version(version):
     version = normalize_version(version)
-    version_path = DASH_BOOTSTRAP_DIR / "_version.py"
-    with version_path.open("w") as f:
-        f.write(VERSION_TEMPLATE.format(version_string=version))
+    init_path = DASH_BOOTSTRAP_DIR / "__init__.py"
+    with init_path.open("r") as f:
+        lines = f.readlines()
+
+    index = [line.startswith("__version__ = ") for line in lines].index(True)
+    lines[index] = VERSION_TEMPLATE.format(version_string=version)
+
+    with init_path.open("w") as f:
+        f.writelines(lines)
 
     test_version_path = HERE / "tests" / "test_version.py"
     with test_version_path.open("w") as f:
         f.write(TEST_VERSION_TEMPLATE.format(version_string=version))
 
 
-def set_jsversion(version):
+def set_js_version(version):
     version = normalize_version(version)
     package_json_path = HERE / "package.json"
     with package_json_path.open() as f:
@@ -203,7 +144,8 @@ def set_jsversion(version):
         f.writelines(package_json)
 
 
-def set_documentation_version(version):
+@task
+def set_documentation_version(ctx, version):
     version = normalize_version(version)
     docs_requirements_path = HERE / "docs" / "requirements.txt"
     with docs_requirements_path.open() as f:
@@ -214,51 +156,6 @@ def set_documentation_version(version):
             docs_requirements[iline] = updated_line
     with open(docs_requirements_path, "w") as f:
         f.writelines(docs_requirements)
-
-
-def get_release_notes(version):
-    version = normalize_version(version)
-    underline = "=" * len(f"Version {version}")
-    initial_message = RELEASE_NOTES_TEMPLATE.format(
-        version_string=version, underline=underline
-    )
-    lines = open_editor(initial_message)
-    non_commented_lines = [line for line in lines if not line.startswith("#")]
-    changelog = "".join(non_commented_lines)
-    if version in changelog:
-        if not non_commented_lines[-1].isspace():
-            non_commented_lines.append("\n")
-        return non_commented_lines
-    else:
-        return None
-
-
-def open_editor(initial_message):
-    editor = os.environ.get("EDITOR", "vim")
-    tmp = tempfile.NamedTemporaryFile(suffix=".tmp")
-    fname = tmp.name
-
-    with open(fname, "w") as f:
-        f.write(initial_message)
-        f.flush()
-
-    call([editor, fname], close_fds=True)
-
-    with open(fname, "r") as f:
-        lines = f.readlines()
-
-    return lines
-
-
-def check_prerequisites():
-    for executable in ["twine", "npm", "dash-generate-components"]:
-        if which(executable) is None:
-            error(
-                f"{executable} executable not found. "
-                f"You must have {executable} to release "
-                "dash-bootstrap-components."
-            )
-            exit(127)
 
 
 def normalize_version(version):

@@ -1,0 +1,20 @@
+name: Push Docs
+description: Push Docs to Heroku
+inputs:
+  commit_user_name:
+    description: Name used for the commit user
+    required: false
+    default: GitHub Actions
+  commit_user_email:
+    description: Email address used for the commit user
+    required: false
+    default: actions@github.com
+runs:
+  using: "composite"
+  steps:
+    - run: |
+       git add docs/examples/vendor/*.py -f
+       git -c user.name="${{ inputs.commit_user_name }}" -c user.email="${{ inputs.commit_user_email }}" commit -m "Add examples" --allow-empty
+       git subtree split --prefix docs -b docs-deploy
+       git push -f origin docs-deploy
+      shell: bash

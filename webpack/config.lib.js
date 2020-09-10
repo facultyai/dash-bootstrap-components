@@ -11,7 +11,6 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 var environment = JSON.stringify(NODE_ENV);
 
 var LIBRARY_NAME = 'dash-bootstrap-components';
-var BUILD_PATH = path.join(directories.ROOT, LIBRARY_NAME, '_components');
 
 /* eslint-disable no-console */
 console.log('Current environment: ' + environment);
