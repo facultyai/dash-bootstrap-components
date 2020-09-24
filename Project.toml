@@ -1,0 +1,14 @@
+
+name = "DashBootstrapComponents"
+uuid = "1b08a953-4be3-4667-9a23-fa6d05876a1e"
+authors = ["Faculty <opensource@faculty.ai>"]
+version = "0.10.7"
+
+[deps]
+DashBase = "03207cf0-e2b3-4b91-9ca8-690cf0fb507e"
+Dash = "1b08a953-4be3-4667-9a23-3db579824955"
+
+[compat]
+julia = "1.2"
+DashBase = "0.1"
+Dash = "0.1"
