@@ -13,7 +13,6 @@ const DropdownMenuItem = props => {
   let {
     children,
     href,
-    external_link,
     loading_state,
     target,
     disabled,
