@@ -53,7 +53,7 @@ There are numerous free to use Bootstrap stylesheets available on the web. The `
 
 To start with, we recommend experimenting with some of the Bootswatch themes available in the `dash_bootstrap_components.themes` module. The full list of available themes is [`CERULEAN`](https://bootswatch.com/cerulean/), [`COSMO`](https://bootswatch.com/cosmo/), [`CYBORG`](https://bootswatch.com/cyborg/), [`DARKLY`](https://bootswatch.com/darkly/), [`FLATLY`](https://bootswatch.com/flatly/), [`JOURNAL`](https://bootswatch.com/journal/), [`LITERA`](https://bootswatch.com/litera/), [`LUMEN`](https://bootswatch.com/lumen/), [`LUX`](https://bootswatch.com/lux/), [`MATERIA`](https://bootswatch.com/materia/), [`MINTY`](https://bootswatch.com/minty/), [`PULSE`](https://bootswatch.com/pulse/), [`SANDSTONE`](https://bootswatch.com/sandstone/), [`SIMPLEX`](https://bootswatch.com/simplex/), [`SKETCHY`](https://bootswatch.com/sketchy/), [`SLATE`](https://bootswatch.com/slate/), [`SOLAR`](https://bootswatch.com/solar/), [`SPACELAB`](https://bootswatch.com/spacelab/), [`SUPERHERO`](https://bootswatch.com/superhero/), [`UNITED`](https://bootswatch.com/united/), [`YETI`](https://bootswatch.com/yeti/)
 
-[dash-docs-external]: https:/dash.plot.ly/external-resources/
+[dash-docs-external]: https://dash.plotly.com/external-resources/
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [bootstrap]:https://getbootstrap.com/
 [bootstrap-download]: https://getbootstrap.com/docs/4.4/getting-started/download/
