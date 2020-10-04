@@ -59,4 +59,34 @@ describe('Badge', () => {
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
   });
+
+    test('relative links are internal by default', () => {
+      const badge = render(
+        <Badge href="/relative">Clickable</Badge>
+      );
+
+      const mockEventListener = jest.fn();
+      window.addEventListener('_dashprivate_pushstate', mockEventListener);
+      window.scrollTo = jest.fn();
+
+      expect(mockEventListener.mock.calls).toHaveLength(0);
+      userEvent.click(badge.getByText('Clickable'));
+      expect(mockEventListener.mock.calls).toHaveLength(1);
+    });
+
+    test('relative links are external with external_link=true', () => {
+      const badge = render(
+        <Badge href="/relative" external_link>
+          Clickable
+        </Badge>
+      );
+
+      const mockEventListener = jest.fn();
+      window.addEventListener('_dashprivate_pushstate', mockEventListener);
+      window.scrollTo = jest.fn();
+
+      expect(mockEventListener.mock.calls).toHaveLength(0);
+      userEvent.click(badge.getByText('Clickable'));
+      expect(mockEventListener.mock.calls).toHaveLength(0);
+    });
 });

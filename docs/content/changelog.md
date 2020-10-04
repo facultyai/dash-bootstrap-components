@@ -6,6 +6,22 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.10.7 - 2020/10/4
+
+### Fixed
+
+- Follow link as external link when `external_link=True` in `DropdownMenuItem` ([PR 458](https://github.com/facultyai/dash-bootstrap-components/pull/458))
+
+## 0.10.6 - 2020/9/10
+
+### Added
+
+- The JavaScript bundle for dash-bootstrap-components can now be fetched from a CDN by setting `serve_locally=False` in `dash.Dash` ([PR 451](https://github.com/facultyai/dash-bootstrap-components/pull/451))
+
+### Fixed
+
+- Wheels are now available on PyPI which should resolve some reported installation issues ([PR 445](https://github.com/facultyai/dash-bootstrap-components/pull/445))
+
 ## 0.10.5 - 2020/8/20
 
 ### Fixed

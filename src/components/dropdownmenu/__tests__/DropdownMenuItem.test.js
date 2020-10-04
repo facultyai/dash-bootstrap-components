@@ -28,6 +28,36 @@ describe('DropdownMenuItem', () => {
     ).not.toBe(null);
   });
 
+  test('relative links are internal by default', () => {
+    const dropdownMenuItem = render(
+      <DropdownMenuItem href="/relative">Clickable</DropdownMenuItem>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(dropdownMenuItem.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(1);
+  });
+
+  test('relative links are external with external_link=true', () => {
+    const dropdownMenuItem = render(
+      <DropdownMenuItem href="/relative" external_link>
+        Clickable
+      </DropdownMenuItem>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(dropdownMenuItem.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+  });
+
   test('renders its content', () => {
     const dropdownMenuItem = render(
       <DropdownMenuItem>Some dropdown item content</DropdownMenuItem>
