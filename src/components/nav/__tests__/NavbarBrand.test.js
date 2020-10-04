@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import NavbarBrand from '../NavbarBrand';
 
 describe('NavbarBrand', () => {
@@ -27,5 +28,35 @@ describe('NavbarBrand', () => {
       container: {firstChild: navbarBrand}
     } = render(<NavbarBrand href={href} />);
     expect(navbarBrand.getAttribute('href')).toBe(href);
+  });
+
+  test('relative links are internal by default', () => {
+    const navbarBrand = render(
+      <NavbarBrand href="/relative">Clickable</NavbarBrand>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(navbarBrand.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(1);
+  });
+
+  test('relative links are external with external_link=true', () => {
+    const navbarBrand = render(
+      <NavbarBrand href="/relative" external_link>
+        Clickable
+      </NavbarBrand>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(navbarBrand.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(0);
   });
 });

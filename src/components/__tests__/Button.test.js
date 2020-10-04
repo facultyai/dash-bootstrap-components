@@ -113,4 +113,32 @@ describe('Button', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
   });
+
+  test('relative links are internal by default', () => {
+    const button = render(<Button href="/relative">Clickable</Button>);
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(button.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(1);
+  });
+
+  test('relative links are external with external_link=true', () => {
+    const button = render(
+      <Button href="/relative" external_link>
+        Clickable
+      </Button>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(button.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+  });
 });
