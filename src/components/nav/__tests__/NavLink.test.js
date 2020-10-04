@@ -61,4 +61,32 @@ describe('NavLink', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
   });
+
+  test('relative links are internal by default', () => {
+    const navLink = render(<NavLink href="/relative">Clickable</NavLink>);
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(navLink.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(1);
+  });
+
+  test('relative links are external with external_link=true', () => {
+    const navLink = render(
+      <NavLink href="/relative" external_link>
+        Clickable
+      </NavLink>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(navLink.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+  });
 });

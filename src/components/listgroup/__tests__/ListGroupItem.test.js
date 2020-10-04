@@ -78,4 +78,34 @@ describe('ListGroupItem', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
   });
+
+  test('relative links are internal by default', () => {
+    const listGroupItem = render(
+      <ListGroupItem href="/relative">Clickable</ListGroupItem>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(listGroupItem.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(1);
+  });
+
+  test('relative links are external with external_link=true', () => {
+    const listGroupItem = render(
+      <ListGroupItem href="/relative" external_link>
+        Clickable
+      </ListGroupItem>
+    );
+
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
+
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(listGroupItem.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+  });
 });
