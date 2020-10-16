@@ -12,36 +12,74 @@ describe('Spinner', () => {
   });
 
   test("renders its content if object isn't loading", () => {
-    const {container: spinner, rerender} = render(<Spinner>Some spinner content</Spinner>);
+    const {container: All, rerender} = render(
+      <Spinner>Some spinner content</Spinner>
+    );
 
-    expect(spinner).toHaveTextContent('Some spinner content');
+    expect(All).toHaveTextContent('Some spinner content');
 
     rerender(
       <Spinner loading_state={{is_loading: true}}>Some spinner content</Spinner>
     );
 
-    expect(spinner).not.toHaveTextContent('Some spinner content');
+    const overAll = All.firstChild;
+    const spinner = overAll.lastChild;
+
+    expect(overAll).toHaveTextContent('Some spinner content');
     expect(spinner.firstChild).toHaveClass('spinner-border');
   });
 
   test('applies additional CSS classes when props are set', () => {
     // grow spinner
-    const {container: {firstChild: spinnerGrow}} = render(<Spinner type="grow" />);
+    const {
+      container: {firstChild: overAll}
+    } = render(<Spinner type="grow" />);
+    const spinner = overAll.lastChild;
 
-    expect(spinnerGrow).toHaveClass('spinner-grow');
+    expect(spinner.firstChild).toHaveClass('spinner-grow');
 
     // spinner sizes
-    const {container: {firstChild: spinnerSm}} = render(<Spinner size="sm" />);
-    const {container: {firstChild: spinnerLg}} = render(<Spinner size="lg" />);
+    const {
+      container: {
+        firstChild: {
+          firstChild: {firstChild: spinnerSm}
+        }
+      }
+    } = render(<Spinner size="sm" />);
+    const {
+      container: {
+        firstChild: {
+          firstChild: {firstChild: spinnerLg}
+        }
+      }
+    } = render(<Spinner size="lg" />);
 
     expect(spinnerSm).toHaveClass('spinner-border-sm');
     expect(spinnerLg).toHaveClass('spinner-border-lg');
   });
 
   test('applies contextual colors with "color" prop', () => {
-    const {container: {firstChild: spinnerPrimary}} = render(<Spinner color="primary" />);
-    const {container: {firstChild: spinnerSuccess}} = render(<Spinner color="success" />);
-    const {container: {firstChild: spinnerDark}} = render(<Spinner color="dark" />);
+    const {
+      container: {
+        firstChild: {
+          firstChild: {firstChild: spinnerPrimary}
+        }
+      }
+    } = render(<Spinner color="primary" />);
+    const {
+      container: {
+        firstChild: {
+          firstChild: {firstChild: spinnerSuccess}
+        }
+      }
+    } = render(<Spinner color="success" />);
+    const {
+      container: {
+        firstChild: {
+          firstChild: {firstChild: spinnerDark}
+        }
+      }
+    } = render(<Spinner color="dark" />);
 
     expect(spinnerPrimary).toHaveClass('text-primary');
     expect(spinnerSuccess).toHaveClass('text-success');

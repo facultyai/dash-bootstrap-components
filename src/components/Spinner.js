@@ -59,13 +59,46 @@ const Spinner = props => {
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 99,
+    visibility: 'visible',
     ...fullscreen_style
   };
 
-  if (!children || (loading_state && loading_state.is_loading)) {
-    if (fullscreen) {
-      return (
-        <div className={fullscreenClassName} style={fullscreenStyle}>
+  const coveringStyle = {
+    visibility: 'visible'
+  };
+
+  const hiddenStyle = {
+    visibility: 'hidden',
+    position: 'relative',
+    display: 'inline-block'
+  };
+
+  // Defaulted styles above to the situation where spinner has no children
+  // now include properties if spinner has children
+  if (children) {
+    // include covering style additions
+    coveringStyle.position = 'absolute';
+    coveringStyle.top = 0;
+    coveringStyle.height = '100%';
+    coveringStyle.width = '100%';
+    coveringStyle.display = 'flex';
+    coveringStyle.justifyContent = 'center';
+    coveringStyle.alignItems = 'center';
+
+    // remove hidden style additions
+    delete hiddenStyle.display;
+  }
+
+  const showSpinner = !children || (loading_state && loading_state.is_loading);
+
+  return (
+    <div style={showSpinner ? hiddenStyle : {}}>
+      {children}
+      {showSpinner && (
+        <div
+          style={fullscreen ? fullscreenStyle : coveringStyle}
+          className={fullscreen && fullscreenClassName}
+        >
           <RSSpinner
             color={isSpinnerColor ? color : null}
             style={{color: !isSpinnerColor && color, ...spinnerStyle}}
@@ -73,21 +106,9 @@ const Spinner = props => {
             {...omit(['setProps'], otherProps)}
           />
         </div>
-      );
-    }
-    return (
-      <RSSpinner
-        color={isSpinnerColor ? color : null}
-        style={{color: !isSpinnerColor && color, ...spinnerStyle}}
-        className={spinnerClassName}
-        {...omit(['setProps'], otherProps)}
-      />
-    );
-  }
-  if (type(children) !== 'Object' || type(children) !== 'Function') {
-    return <Fragment>{children}</Fragment>;
-  }
-  return children;
+      )}
+    </div>
+  );
 };
 
 Spinner._dashprivate_isLoadingComponent = true;
