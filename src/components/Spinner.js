@@ -41,13 +41,6 @@ const Spinner = props => {
 
   const isSpinnerColor = spinnerColors.has(color);
 
-  // this spacing is consistent with the behaviour of dcc.Loading
-  // it can be overridden with spinnerStyle
-  const defaultSpinnerStyle = children
-    ? {display: 'block', margin: '1rem auto'}
-    : {};
-  const spinnerStyle = {...defaultSpinnerStyle, ...spinner_style};
-
   const fullscreenStyle = {
     position: 'fixed',
     width: '100vw',
@@ -63,52 +56,66 @@ const Spinner = props => {
     ...fullscreen_style
   };
 
-  const coveringStyle = {
-    visibility: 'visible'
-  };
-
-  const hiddenStyle = {
-    visibility: 'hidden',
-    position: 'relative',
-    display: 'inline-block'
-  };
-
+  const SpinnerDiv = style => (
+    <RSSpinner
+      color={isSpinnerColor ? color : null}
+      style={{color: !isSpinnerColor && color, ...style}}
+      className={spinnerClassName}
+      {...omit(['setProps'], otherProps)}
+    />
+  );
   // Defaulted styles above to the situation where spinner has no children
   // now include properties if spinner has children
   if (children) {
     // include covering style additions
-    coveringStyle.position = 'absolute';
-    coveringStyle.top = 0;
-    coveringStyle.height = '100%';
-    coveringStyle.width = '100%';
-    coveringStyle.display = 'flex';
-    coveringStyle.justifyContent = 'center';
-    coveringStyle.alignItems = 'center';
+    const coveringStyle = {
+      visibility: 'visible',
+      position: 'absolute',
+      top: 0,
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    };
 
-    // remove hidden style additions
-    delete hiddenStyle.display;
+    const hiddenStyle = {
+      visibility: 'hidden',
+      position: 'relative'
+    };
+
+    const spinnerStyle = {
+      display: 'block',
+      margin: '1rem auto',
+      ...spinner_style
+    };
+
+    const showSpinner = loading_state && loading_state.is_loading;
+
+    return (
+      <div style={showSpinner ? hiddenStyle : {}}>
+        {children}
+        {showSpinner && (
+          <div
+            style={fullscreen ? fullscreenStyle : coveringStyle}
+            className={fullscreen && fullscreenClassName}
+          >
+            <SpinnerDiv style={spinnerStyle} />
+          </div>
+        )}
+      </div>
+    );
   }
 
-  const showSpinner = !children || (loading_state && loading_state.is_loading);
+  if (fullscreen) {
+    return (
+      <div className={fullscreenClassName} style={fullscreenStyle}>
+        <SpinnerDiv style={spinner_style} />
+      </div>
+    );
+  }
 
-  return (
-    <div style={showSpinner ? hiddenStyle : {}}>
-      {children}
-      {showSpinner && (
-        <div
-          style={fullscreen ? fullscreenStyle : coveringStyle}
-          className={fullscreen && fullscreenClassName}
-        >
-          <RSSpinner
-            color={isSpinnerColor ? color : null}
-            style={{color: !isSpinnerColor && color, ...spinnerStyle}}
-            className={spinnerClassName}
-            {...omit(['setProps'], otherProps)}
-          />
-        </div>
-      )}
-    </div>
-  );
+  return <SpinnerDiv style={spinner_style} />;
 };
 
 Spinner._dashprivate_isLoadingComponent = true;

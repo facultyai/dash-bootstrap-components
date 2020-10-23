@@ -32,26 +32,17 @@ describe('Spinner', () => {
   test('applies additional CSS classes when props are set', () => {
     // grow spinner
     const {
-      container: {firstChild: overAll}
+      container: {firstChild: spinner}
     } = render(<Spinner type="grow" />);
-    const spinner = overAll.lastChild;
 
-    expect(spinner.firstChild).toHaveClass('spinner-grow');
+    expect(spinner).toHaveClass('spinner-grow');
 
     // spinner sizes
     const {
-      container: {
-        firstChild: {
-          firstChild: {firstChild: spinnerSm}
-        }
-      }
+      container: {firstChild: spinnerSm}
     } = render(<Spinner size="sm" />);
     const {
-      container: {
-        firstChild: {
-          firstChild: {firstChild: spinnerLg}
-        }
-      }
+      container: {firstChild: spinnerLg}
     } = render(<Spinner size="lg" />);
 
     expect(spinnerSm).toHaveClass('spinner-border-sm');
@@ -60,25 +51,13 @@ describe('Spinner', () => {
 
   test('applies contextual colors with "color" prop', () => {
     const {
-      container: {
-        firstChild: {
-          firstChild: {firstChild: spinnerPrimary}
-        }
-      }
+      container: {firstChild: spinnerPrimary}
     } = render(<Spinner color="primary" />);
     const {
-      container: {
-        firstChild: {
-          firstChild: {firstChild: spinnerSuccess}
-        }
-      }
+      container: {firstChild: spinnerSuccess}
     } = render(<Spinner color="success" />);
     const {
-      container: {
-        firstChild: {
-          firstChild: {firstChild: spinnerDark}
-        }
-      }
+      container: {firstChild: spinnerDark}
     } = render(<Spinner color="dark" />);
 
     expect(spinnerPrimary).toHaveClass('text-primary');
