@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import dash
@@ -8,6 +9,8 @@ from jinja2 import Environment, FileSystemLoader
 from .components.table.simple import table_body, table_header
 from .components.tabs.simple import tab1_content, tab2_content
 from .markdown_parser import parse
+
+SERVE_LOCALLY = os.getenv("DBC_DOCS_MODE", "production") == "dev"
 
 HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
@@ -130,7 +133,7 @@ def register_apps():
             external_stylesheets=["/static/loading.css"],
             requests_pathname_prefix=f"/docs/components/{slug}/",
             suppress_callback_exceptions=True,
-            serve_locally=False,
+            serve_locally=SERVE_LOCALLY,
             index_string=template.render(
                 sidenav_items=sidenav_items,
                 sidenav_active="components",
