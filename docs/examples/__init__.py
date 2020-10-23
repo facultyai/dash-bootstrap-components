@@ -9,6 +9,8 @@ from jinja2 import Environment, FileSystemLoader
 from .vendor.graphs_in_tabs import app as git_app
 from .vendor.iris import app as iris_app
 
+SERVE_LOCALLY = os.getenv("DBC_DOCS_MODE", "production") == "dev"
+
 HREF_PATTERN = re.compile(r'href="')
 
 HERE = Path(__file__).parent
@@ -73,7 +75,7 @@ def build_app_from_example(app, name, code, code_link, show_warning=False):
     new_app = dash.Dash(
         external_stylesheets=["/static/loading.css", dbc.themes.BOOTSTRAP],
         requests_pathname_prefix=f"/examples/{name}/",
-        serve_locally=False,
+        serve_locally=SERVE_LOCALLY,
         index_string=template.replace("<CODE>", code),
         update_title=None,
     )
