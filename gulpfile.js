@@ -3,6 +3,7 @@ const del = require('del');
 const mkdirp = require('mkdirp');
 const rename = require('gulp-rename');
 const footer = require('gulp-footer');
+var replace = require('gulp-replace');
 
 function cleanLib() {
   mkdirp.sync('lib');
@@ -60,6 +61,18 @@ function addThemesToRNamespace() {
     .pipe(dest('.', {overwrite: true}));
 }
 
+function moveJlThemesToSrc() {
+  return src('jl/themes.jl').pipe(dest('src'));
+}
+
+function addThemesToJlNamespace() {
+  // modify generated DashBootstrapComponents.jl file to include themes.jl
+  let anchor = 'include("dbc_tabs.jl")';
+  return src('src/DashBootstrapComponents.jl')
+    .pipe(replace(anchor, anchor + '\ninclude("themes.jl")\n'))
+    .pipe(dest('src'));
+}
+
 exports.postPyBuild = series(copyDist, copyGeneratedFiles, cleanGeneratedFiles);
 exports.clean = parallel(
   cleanGeneratedFiles,
@@ -72,4 +85,11 @@ exports.postRBuild = series(
   copyGeneratedFiles,
   cleanGeneratedFiles,
   addThemesToRNamespace
+);
+exports.postJlBuild = series(
+  copyDist,
+  copyGeneratedFiles,
+  cleanGeneratedFiles,
+  moveJlThemesToSrc,
+  addThemesToJlNamespace
 );
