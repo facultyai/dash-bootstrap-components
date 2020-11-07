@@ -32,4 +32,9 @@ man
 R
 DESCRIPTION
 NAMESPACE
-!R/zzz.R
+!R/themes.R
+
+# Julia build artifacts
+deps/
+src/*.jl
+Project.toml
