@@ -21,6 +21,7 @@ const Button = props => {
     setProps,
     n_clicks,
     target,
+    type,
     ...otherProps
   } = props;
 
@@ -38,6 +39,7 @@ const Button = props => {
   return (
     <RSButton
       tag={useLink ? Link : 'button'}
+      type={useLink ? null : type}
       target={useLink ? target : null}
       href={disabled ? null : href}
       disabled={disabled}
@@ -178,7 +180,13 @@ Button.propTypes = {
   /**
    * Target attribute to pass on to link if using Button as an external link.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * The default behavior of the button. Possible values are: button, reset,
+   * submit
+   */
+  type: PropTypes.oneOf(['button', 'reset', 'submit'])
 };
 
 export default Button;
