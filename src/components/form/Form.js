@@ -76,6 +76,17 @@ Form.propTypes = {
   key: PropTypes.string,
 
   /**
+   * The URI of a program that processes the information submitted via the form.
+   */
+  action: PropTypes.string,
+
+  /**
+   * Defines which HTTP method to use when submitting the form. Can be GET
+   * (default) or POST.
+   */
+  method: PropTypes.oneOf(["GET", "POST"]),
+
+  /**
    * Use inline=True to apply the `form-inline` class, allowing you to display
    * a series of labels, form controls, and buttons on a single horizontal row.
    * Form controls within inline forms vary slightly from their default states.

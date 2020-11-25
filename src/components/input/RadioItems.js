@@ -11,7 +11,7 @@ import CustomInput from '../../private/CustomInput';
  * siblings of each other.
  */
 const RadioItems = props => {
-  const {id, className, style, options, key, loading_state} = props;
+  const {id, className, style, options, key, loading_state, name} = props;
 
   const listItem = option => {
     const {
@@ -41,6 +41,8 @@ const RadioItems = props => {
       return (
         <CustomInput
           id={inputId}
+          name={name}
+          value={option.value}
           labelId={option.label_id}
           checked={checked}
           className={inputClassName}
@@ -71,6 +73,8 @@ const RadioItems = props => {
         >
           <input
             id={inputId}
+            name={name}
+            value={option.value}
             checked={checked}
             className={classNames('form-check-input', inputClassName)}
             disabled={Boolean(option.disabled)}
@@ -280,7 +284,12 @@ RadioItems.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  name: PropTypes.string
 };
 
 RadioItems.defaultProps = {
