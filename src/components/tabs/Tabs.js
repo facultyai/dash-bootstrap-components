@@ -85,6 +85,7 @@ const Tabs = props => {
             className={classnames(childProps.labelClassName, {
               active: active_tab === tabId
             })}
+            href="#"
             style={childProps.label_style}
             disabled={childProps.disabled}
             onClick={() => {
