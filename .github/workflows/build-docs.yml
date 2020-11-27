@@ -1,14 +1,6 @@
 name: Build docs
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - docs/**
-      - examples/**
-      - .github/workflows/build-docs.yml
-      - .github/actions/push_docs/**
   release:
     types:
       - released
