@@ -108,6 +108,7 @@ def register_apps():
             "label": "Quickstart",
         },
         {"name": "themes", "href": "/docs/themes", "label": "Themes"},
+        {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
         {"name": "dashr", "href": "/docs/dashr", "label": "Dash for R"},
         {
             "name": "components",
