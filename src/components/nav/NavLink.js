@@ -112,8 +112,10 @@ NavLink.propTypes = {
 
   /**
    * Apply 'active' style to this component. Set to "exact" to automatically
-   * toggle active status when pathname matches href, or to "partial" to
-   * automatically toggle on a partial match.
+   * toggle active status when the current pathname matches href, or to
+   * "partial" to automatically toggle on a partial match. Assumes that href is
+   * a relative url such as /link rather than an absolute such as
+   * https://example.com/link
    *
    * For example
    * - dbc.NavLink(..., href="/my-page", active="exact") will be active on
