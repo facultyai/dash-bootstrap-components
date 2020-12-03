@@ -29,6 +29,8 @@ You can also apply CSS classes to the tab or label using the `tabClassName` or `
 
 {{example:components/tabs/style.py:tabs}}
 
+To apply certain styles only to the currently active tab, you can use the `active_tab_style`, `activeTabClassName`, `active_label_style` and `activeLabelClassName` properties.
+
 {{apidoc:src/components/tabs/Tabs.js}}
 
 {{apidoc:src/components/tabs/Tab.js}}
