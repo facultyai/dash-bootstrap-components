@@ -14,7 +14,7 @@ dbcButton(children=NULL, id=NULL, className=NULL, style=NULL,
 key=NULL, href=NULL, external_link=NULL, n_clicks=NULL,
 n_clicks_timestamp=NULL, active=NULL, block=NULL,
 color=NULL, disabled=NULL, size=NULL, outline=NULL,
-loading_state=NULL, target=NULL)
+loading_state=NULL, target=NULL, type=NULL)
 }
 
 \arguments{
@@ -73,6 +73,9 @@ those elements have the following types:
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
 \item{target}{Character. Target attribute to pass on to link if using Button as an external link.}
+
+\item{type}{A value equal to: 'button', 'reset', 'submit'. The default behavior of the button. Possible values are: button, reset,
+submit}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

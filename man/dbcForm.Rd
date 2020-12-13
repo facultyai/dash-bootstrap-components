@@ -11,9 +11,9 @@ The Form component can be used to organise collections of input components and a
 
 \usage{
 dbcForm(children=NULL, id=NULL, style=NULL, className=NULL,
-key=NULL, inline=NULL, n_submit=NULL,
-n_submit_timestamp=NULL, prevent_default_on_submit=NULL,
-loading_state=NULL)
+key=NULL, action=NULL, method=NULL, inline=NULL,
+n_submit=NULL, n_submit_timestamp=NULL,
+prevent_default_on_submit=NULL, loading_state=NULL)
 }
 
 \arguments{
@@ -30,6 +30,11 @@ components in an app.}
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
+
+\item{action}{Character. The URI of a program that processes the information submitted via the form.}
+
+\item{method}{A value equal to: "get", "post". Defines which HTTP method to use when submitting the form. Can be GET
+(default) or POST.}
 
 \item{inline}{Logical. Use inline=True to apply the `form-inline` class, allowing you to display
 a series of labels, form controls, and buttons on a single horizontal row.

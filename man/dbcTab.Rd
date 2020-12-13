@@ -11,9 +11,11 @@ Create a single tab. Should be used as a component of Tabs.
 
 \usage{
 dbcTab(children=NULL, id=NULL, style=NULL, tab_style=NULL,
-label_style=NULL, className=NULL, tabClassName=NULL,
-labelClassName=NULL, key=NULL, label=NULL, tab_id=NULL,
-disabled=NULL, loading_state=NULL)
+active_tab_style=NULL, label_style=NULL,
+active_label_style=NULL, className=NULL, tabClassName=NULL,
+activeTabClassName=NULL, labelClassName=NULL,
+activeLabelClassName=NULL, key=NULL, label=NULL,
+tab_id=NULL, disabled=NULL, loading_state=NULL)
 }
 
 \arguments{
@@ -29,16 +31,30 @@ set here apply to the content of the Tab}
 \item{tab_style}{Named list. Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavItem in the tab.}
 
+\item{active_tab_style}{Named list. Defines CSS styles which will override styles previously set. The styles
+set here apply to the NavItem in the tab when it is active.}
+
 \item{label_style}{Named list. Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavLink in the tab.}
+
+\item{active_label_style}{Named list. Defines CSS styles which will override styles previously set. The styles
+set here apply to the NavLink in the tab when it is active}
 
 \item{className}{Character. Often used with CSS to style elements with common properties.}
 
 \item{tabClassName}{Character. Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavItem in the tab.}
 
+\item{activeTabClassName}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavItem in the tab when it
+is active.}
+
 \item{labelClassName}{Character. Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavLink in the tab.}
+
+\item{activeLabelClassName}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavLink in the tab when
+it is active.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

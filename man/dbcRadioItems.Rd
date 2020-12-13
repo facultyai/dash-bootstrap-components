@@ -16,7 +16,7 @@ labelStyle=NULL, labelCheckedStyle=NULL,
 labelClassName=NULL, labelCheckedClassName=NULL,
 inline=NULL, switch=NULL, custom=NULL, loading_state=NULL,
 persistence=NULL, persisted_props=NULL,
-persistence_type=NULL)
+persistence_type=NULL, name=NULL)
 }
 
 \arguments{
@@ -78,6 +78,8 @@ normally be ignored.}
 memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.}
+
+\item{name}{Character. The name of the control, which is submitted with the form data.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

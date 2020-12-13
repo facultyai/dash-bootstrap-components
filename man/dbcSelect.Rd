@@ -13,7 +13,7 @@ Create a HTML select element with Bootstrap styles. Specify options as a list of
 dbcSelect(id=NULL, style=NULL, className=NULL, key=NULL,
 placeholder=NULL, value=NULL, options=NULL, disabled=NULL,
 valid=NULL, invalid=NULL, bs_size=NULL, persistence=NULL,
-persisted_props=NULL, persistence_type=NULL)
+persisted_props=NULL, persistence_type=NULL, name=NULL)
 }
 
 \arguments{
@@ -61,6 +61,8 @@ normally be ignored.}
 memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.}
+
+\item{name}{Character. The name of the control, which is submitted with the form data.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

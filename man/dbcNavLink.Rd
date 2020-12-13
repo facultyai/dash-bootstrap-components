@@ -33,7 +33,17 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{href}{Character. The URL of the linked resource.}
 
-\item{active}{Logical. Apply 'active' style to this component}
+\item{active}{Logical | a value equal to: 'partial', 'exact'. Apply 'active' style to this component. Set to "exact" to automatically
+toggle active status when the current pathname matches href, or to
+"partial" to automatically toggle on a partial match. Assumes that href is
+a relative url such as /link rather than an absolute such as
+https://example.com/link
+
+For example
+- dbc.NavLink(..., href="/my-page", active="exact") will be active on
+  "/my-page" but not "/my-page/other" or "/random"
+- dbc.NavLink(..., href="/my-page", active="partial") will be active on
+  "/my-page" and "/my-page/other" but not "/random"}
 
 \item{disabled}{Logical. Disable the link}
 
