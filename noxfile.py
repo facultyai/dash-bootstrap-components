@@ -17,7 +17,7 @@ def lint(session):
     session.run("isort", "--check", *SOURCES)
 
 
-@nox.session(python=["2.7", "3.5", "3.6", "3.7", "3.8"])
+@nox.session(python=["2.7", "3.5", "3.6", "3.7", "3.8", "3.9"])
 def test(session):
     session.install("pytest")
     session.install("dash[testing]")
