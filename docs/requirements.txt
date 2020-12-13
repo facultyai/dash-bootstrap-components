@@ -1,5 +1,5 @@
 dash==1.14.0
-dash_bootstrap_components==0.10.7
+dash_bootstrap_components==0.11.0
 gunicorn
 markdown
 pandas
