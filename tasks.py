@@ -85,6 +85,21 @@ def copy_examples(ctx):
     )
 
 
+@task(copy_examples)
+def documentation(ctx):
+    """
+    Push documentation to Heroku
+    """
+    info("Deploying docs")
+    run("git checkout -b inv-push-docs")
+    run("git add docs/examples/vendor/*.py -f")
+    run('git commit -m "Add examples" --allow-empty')
+    run("git subtree split --prefix docs -b docs-deploy")
+    run("git push -f origin docs-deploy")
+    run("git checkout master")
+    run("git branch -D inv-push-docs docs-deploy")
+
+
 @task(
     help={
         "version": "Version number to finalize. Must be "

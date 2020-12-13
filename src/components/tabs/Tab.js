@@ -10,7 +10,7 @@ const Tab = props => {
 
 Tab.defaultProps = {
   disabled: false
-}
+};
 
 Tab.propTypes = {
   /**
@@ -39,9 +39,21 @@ Tab.propTypes = {
 
   /**
    * Defines CSS styles which will override styles previously set. The styles
+   * set here apply to the NavItem in the tab when it is active.
+   */
+  active_tab_style: PropTypes.object,
+
+  /**
+   * Defines CSS styles which will override styles previously set. The styles
    * set here apply to the NavLink in the tab.
    */
   label_style: PropTypes.object,
+
+  /**
+   * Defines CSS styles which will override styles previously set. The styles
+   * set here apply to the NavLink in the tab when it is active
+   */
+  active_label_style: PropTypes.object,
 
   /**
    * Often used with CSS to style elements with common properties.
@@ -56,9 +68,23 @@ Tab.propTypes = {
 
   /**
    * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavItem in the tab when it
+   * is active.
+   */
+  activeTabClassName: PropTypes.string,
+
+  /**
+   * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the NavLink in the tab.
    */
   labelClassName: PropTypes.string,
+
+  /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavLink in the tab when
+   * it is active.
+   */
+  activeLabelClassName: PropTypes.string,
 
   /**
    * A unique identifier for the component, used to improve

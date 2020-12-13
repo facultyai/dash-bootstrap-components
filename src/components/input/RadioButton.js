@@ -132,7 +132,12 @@ RadioButton.propTypes = {
   /**
    * Disable the RadioButton.
    */
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  name: PropTypes.string
 };
 
 export default RadioButton;

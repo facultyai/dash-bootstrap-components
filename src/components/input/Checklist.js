@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {append, contains, without} from 'ramda';
+import {append, includes, without} from 'ramda';
 import classNames from 'classnames';
 import CustomInput from '../../private/CustomInput';
 
@@ -18,7 +18,7 @@ import CustomInput from '../../private/CustomInput';
  * https://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios-1
  */
 const Checklist = props => {
-  const {className, id, options, style, key, loading_state} = props;
+  const {className, id, options, style, key, loading_state, name} = props;
 
   const listItem = option => {
     const {
@@ -36,7 +36,7 @@ const Checklist = props => {
       switch: switches
     } = props;
 
-    const checked = contains(option.value, value);
+    const checked = includes(option.value, value);
 
     const mergedLabelStyle = checked
       ? {...labelStyle, ...labelCheckedStyle}
@@ -48,6 +48,8 @@ const Checklist = props => {
       return (
         <CustomInput
           id={inputId}
+          name={name}
+          value={option.value}
           labelId={option.label_id}
           checked={checked}
           className={inputClassName}
@@ -62,7 +64,7 @@ const Checklist = props => {
           inline={inline}
           onChange={() => {
             let newValue;
-            if (contains(option.value, value)) {
+            if (includes(option.value, value)) {
               newValue = without([option.value], value);
             } else {
               newValue = append(option.value, value);
@@ -84,6 +86,8 @@ const Checklist = props => {
         >
           <input
             id={inputId}
+            name={name}
+            value={option.value}
             checked={checked}
             className={classNames('form-check-input', inputClassName)}
             disabled={Boolean(option.disabled)}
@@ -91,7 +95,7 @@ const Checklist = props => {
             type="checkbox"
             onChange={() => {
               let newValue;
-              if (contains(option.value, value)) {
+              if (includes(option.value, value)) {
                 newValue = without([option.value], value);
               } else {
                 newValue = append(option.value, value);
@@ -300,7 +304,12 @@ Checklist.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  name: PropTypes.string
 };
 
 Checklist.defaultProps = {

@@ -1,6 +1,10 @@
 name: Tests
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 
 jobs:
   js:
@@ -49,9 +53,9 @@ jobs:
     needs: build
     runs-on: 'ubuntu-latest'
     strategy:
-      max-parallel: 4
+      max-parallel: 6
       matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8, 3.9]
     services:
       hub:
         image: selenium/hub:3.141.59-gold

@@ -75,17 +75,32 @@ const Tabs = props => {
     children.map((child, idx) => {
       const childProps = resolveChildProps(child);
       const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
+      const active = active_tab === tabId;
       return (
         <NavItem
           key={tabId}
-          style={childProps.tab_style}
-          className={childProps.tabClassName}
+          style={
+            active
+              ? {...childProps.tab_style, ...childProps.active_tab_style}
+              : childProps.tab_style
+          }
+          className={classnames(
+            childProps.tabClassName,
+            active && childProps.activeTabClassName
+          )}
         >
           <NavLink
-            className={classnames(childProps.labelClassName, {
-              active: active_tab === tabId
-            })}
-            style={childProps.label_style}
+            className={classnames(
+              childProps.labelClassName,
+              active && childProps.activeLabelClassName,
+              {active}
+            )}
+            href="#"
+            style={
+              active
+                ? {...childProps.label_style, ...childProps.active_label_style}
+                : childProps.label_style
+            }
             disabled={childProps.disabled}
             onClick={() => {
               if (!childProps.disabled) {
@@ -109,9 +124,13 @@ const Tabs = props => {
         tab_id,
         label,
         tab_style,
+        active_tab_style,
         label_style,
+        active_label_style,
         tabClassName,
+        activeTabClassName,
         labelClassName,
+        activeLabelClassName,
         loading_state,
         ...otherProps
       } = childProps;

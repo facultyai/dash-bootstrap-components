@@ -16,6 +16,9 @@ application = DispatcherMiddleware(
 )
 
 if __name__ == "__main__":
+    import os
+
     from werkzeug.serving import run_simple
 
+    os.environ["DBC_DOCS_MODE"] = "dev"
     run_simple("localhost", 8888, application, use_reloader=True)

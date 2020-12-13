@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classNames from 'classnames';
+import {History} from '@plotly/dash-component-plugins';
 import Link from '../../private/Link';
 
 /**
@@ -9,6 +10,7 @@ import Link from '../../private/Link';
  * directly.
  */
 const NavLink = props => {
+  const [linkActive, setLinkActive] = useState(false);
   const {
     children,
     disabled,
@@ -17,8 +19,17 @@ const NavLink = props => {
     loading_state,
     setProps,
     n_clicks,
+    href,
     ...otherProps
   } = props;
+
+  const pathnameToActive = pathname => {
+    setLinkActive(
+      active === true ||
+        (active === 'exact' && pathname === href) ||
+        (active === 'partial' && pathname.startsWith(href))
+    );
+  };
 
   const incrementClicks = () => {
     if (!disabled && setProps) {
@@ -29,12 +40,24 @@ const NavLink = props => {
     }
   };
 
-  const classes = classNames(className, 'nav-link', {active, disabled});
+  useEffect(() => {
+    // get initial pathname
+    pathnameToActive(window.location.pathname);
+
+    // add event listener to update on change
+    History.onChange(() => pathnameToActive(window.location.pathname));
+  }, []);
+
+  const classes = classNames(className, 'nav-link', {
+    active: linkActive,
+    disabled
+  });
   return (
     <Link
       className={classes}
       disabled={disabled}
       preOnClick={incrementClicks}
+      href={href}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -88,9 +111,22 @@ NavLink.propTypes = {
   href: PropTypes.string,
 
   /**
-   * Apply 'active' style to this component
+   * Apply 'active' style to this component. Set to "exact" to automatically
+   * toggle active status when the current pathname matches href, or to
+   * "partial" to automatically toggle on a partial match. Assumes that href is
+   * a relative url such as /link rather than an absolute such as
+   * https://example.com/link
+   *
+   * For example
+   * - dbc.NavLink(..., href="/my-page", active="exact") will be active on
+   *   "/my-page" but not "/my-page/other" or "/random"
+   * - dbc.NavLink(..., href="/my-page", active="partial") will be active on
+   *   "/my-page" and "/my-page/other" but not "/random"
    */
-  active: PropTypes.bool,
+  active: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['partial', 'exact'])
+  ]),
 
   /**
    * Disable the link
