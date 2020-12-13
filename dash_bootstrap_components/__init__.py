@@ -7,7 +7,7 @@ from . import _components
 from ._components import *  # noqa
 from ._table import _generate_table_from_df
 
-__version__ = "0.11.0-rc1"
+__version__ = "0.11.0-dev"
 _current_path = os.path.dirname(os.path.abspath(__file__))
 
 METADATA_PATH = os.path.join(_current_path, "_components", "metadata.json")
