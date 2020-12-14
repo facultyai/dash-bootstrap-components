@@ -4,8 +4,10 @@ CSS. Each menu item has an icon, when the sidebar is collapsed the labels
 disappear and only the icons remain. Visit www.fontawesome.com to find
 alternative icons to suit your needs!
 
-dcc.Location is used to track the current location, setting the page content
-and the active menu item via callbacks.
+dcc.Location is used to track the current location, a callback uses the current
+location to render the appropriate page content. The active prop of each
+NavLink is set automatically according to the current pathname. To use this
+feature you must install dash-bootstrap-components >= 0.11.0.
 
 For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plot.ly/urls
@@ -38,7 +40,7 @@ sidebar = html.Div(
                 dbc.NavLink(
                     [html.I(className="fas fa-home mr-2"), html.Span("Home")],
                     href="/",
-                    id="home-link",
+                    active="exact",
                 ),
                 dbc.NavLink(
                     [
@@ -46,7 +48,7 @@ sidebar = html.Div(
                         html.Span("Calendar"),
                     ],
                     href="/calendar",
-                    id="calendar-link",
+                    active="exact",
                 ),
                 dbc.NavLink(
                     [
@@ -54,7 +56,7 @@ sidebar = html.Div(
                         html.Span("Messages"),
                     ],
                     href="/messages",
-                    id="messages-link",
+                    active="exact",
                 ),
             ],
             vertical=True,
@@ -70,7 +72,7 @@ app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 
 # set the content according to the current pathname
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+@app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def render_page_content(pathname):
     if pathname == "/":
         return html.P("This is the home page!")
@@ -86,24 +88,6 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ]
     )
-
-
-# sets the active property on the navlink corresponding to the current page
-@app.callback(
-    [
-        Output(link_id, "active")
-        for link_id in ["home-link", "calendar-link", "messages-link"]
-    ],
-    [Input("url", "pathname")],
-)
-def toggle_active_links(pathname):
-    if pathname == "/":
-        return True, False, False
-    elif pathname == "/calendar":
-        return False, True, False
-    elif pathname == "/messages":
-        return False, False, True
-    return False, False, False
 
 
 if __name__ == "__main__":
