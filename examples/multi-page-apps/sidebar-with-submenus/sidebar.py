@@ -2,10 +2,10 @@
 This app creates a simple sidebar layout using inline style arguments and the
 dbc.Nav component.
 
-dcc.Location is used to track the current location. There are two callbacks,
+dcc.Location is used to track the current location. There are three callbacks,
 one uses the current location to render the appropriate page content, the other
-uses the current location to toggle the "active" properties of the navigation
-links.
+two are used to toggle the collapsing sections in the sidebar. They control the
+collapse component and the CSS that rotates the chevron icon respectively.
 
 For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plot.ly/urls
@@ -52,6 +52,7 @@ submenu_1 = [
             ],
             className="my-1",
         ),
+        style={"cursor": "pointer"},
         id="submenu-1",
     ),
     # we use the Collapse component to hide and reveal the navigation links
@@ -75,6 +76,7 @@ submenu_2 = [
             ],
             className="my-1",
         ),
+        style={"cursor": "pointer"},
         id="submenu-2",
     ),
     dbc.Collapse(
