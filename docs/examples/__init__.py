@@ -121,10 +121,7 @@ def register_apps():
     )
 
     # shim navigation callbacks
-    keys = [
-        "..page-1-link.active...page-2-link.active...page-3-link.active..",
-        "page-content.children",
-    ]
+    keys = ["page-content.children"]
     for key in keys:
         sidebar_app.callback_map[key]["callback"] = mod_callback(
             sidebar_app.callback_map[key]["callback"]
