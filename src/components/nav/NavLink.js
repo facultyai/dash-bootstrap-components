@@ -31,6 +31,16 @@ const NavLink = props => {
     );
   };
 
+  useEffect(() => {
+    pathnameToActive(window.location.pathname);
+
+    if (typeof active === 'string') {
+      History.onChange(() => {
+        pathnameToActive(window.location.pathname);
+      });
+    }
+  }, [active]);
+
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({
@@ -40,18 +50,11 @@ const NavLink = props => {
     }
   };
 
-  useEffect(() => {
-    // get initial pathname
-    pathnameToActive(window.location.pathname);
-
-    // add event listener to update on change
-    History.onChange(() => pathnameToActive(window.location.pathname));
-  }, []);
-
   const classes = classNames(className, 'nav-link', {
     active: linkActive,
     disabled
   });
+
   return (
     <Link
       className={classes}
