@@ -2,4 +2,4 @@ from dash_bootstrap_components import __version__
 
 
 def test_version():
-    assert __version__ == "0.11.1-rc1"
+    assert __version__ == "0.11.1-dev"
