@@ -3,7 +3,7 @@ from dash_bootstrap_components import Alert
 from dash_html_components import Div
 
 
-def test_gene001_simple_callback(dash_duo):
+def test_dbal001_alert_content(dash_duo):
     app = Dash()
 
     app.layout = Div([Alert("Test content", id="alert")])
