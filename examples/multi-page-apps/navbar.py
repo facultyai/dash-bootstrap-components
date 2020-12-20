@@ -1,11 +1,10 @@
 """
 This app uses NavbarSimple to navigate between three different pages.
 
-dcc.Location is used to track the current location. There are two callbacks,
-one uses the current location to render the appropriate page content, the other
-uses the current location to toggle the "active" properties of the navigation
-links. This means the link corresponding to the current page appears active,
-indicating to the user which page they are looking at.
+dcc.Location is used to track the current location. A callback uses the current
+location to render the appropriate page content. The active prop of each
+NavLink is set automatically according to the current pathname. To use this
+feature you must install dash-bootstrap-components >= 0.11.0.
 
 For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plot.ly/urls
@@ -23,9 +22,9 @@ app.layout = html.Div(
         dcc.Location(id="url"),
         dbc.NavbarSimple(
             children=[
-                dbc.NavLink("Page 1", href="/page-1", id="page-1-link"),
-                dbc.NavLink("Page 2", href="/page-2", id="page-2-link"),
-                dbc.NavLink("Page 3", href="/page-3", id="page-3-link"),
+                dbc.NavLink("Home", href="/", active="exact"),
+                dbc.NavLink("Page 1", href="/page-1", active="exact"),
+                dbc.NavLink("Page 2", href="/page-2", active="exact"),
             ],
             brand="Navbar with active links",
             color="primary",
@@ -36,27 +35,14 @@ app.layout = html.Div(
 )
 
 
-# this callback uses the current pathname to set the active state of the
-# corresponding nav link to true, allowing users to tell see page they are on
-@app.callback(
-    [Output(f"page-{i}-link", "active") for i in range(1, 4)],
-    [Input("url", "pathname")],
-)
-def toggle_active_links(pathname):
-    if pathname == "/":
-        # Treat page 1 as the homepage / index
-        return True, False, False
-    return [pathname == f"/page-{i}" for i in range(1, 4)]
-
-
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
-    if pathname in ["/", "/page-1"]:
-        return html.P("This is the content of page 1!")
+    if pathname == "/":
+        return html.P("This is the content of the home page!")
+    elif pathname == "/page-1":
+        return html.P("This is the content of page 1. Yay!")
     elif pathname == "/page-2":
-        return html.P("This is the content of page 2. Yay!")
-    elif pathname == "/page-3":
-        return html.P("Oh cool, this is page 3!")
+        return html.P("Oh cool, this is page 2!")
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
