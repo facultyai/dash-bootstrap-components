@@ -6,9 +6,14 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
-## 0.11.0 - 2020/12/13
 
-This is a release candidate for dash-bootstrap-components 0.11.0
+## 0.11.1 - 2020/12/20
+
+### Fixed
+
+- Fixes bug that prevented `active` property of `NavLink` from being correctly updated by callbacks ([PR 499](https://github.com/facultyai/dash-bootstrap-components/pull/499))
+
+## 0.11.0 - 2020/12/13
 
 ### Added
 
