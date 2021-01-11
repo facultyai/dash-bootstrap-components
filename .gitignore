@@ -1,6 +1,7 @@
 # js artifacts
 node_modules
 lib
+yarn.lock
 
 # testing
 .nox
