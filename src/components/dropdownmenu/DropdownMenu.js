@@ -60,7 +60,7 @@ const DropdownMenu = props => {
           nav={nav}
           caret={caret}
           disabled={disabled}
-          color={isBootstrapColor ? color : null}
+          color={isBootstrapColor ? color : undefined}
           style={!isBootstrapColor ? {backgroundColor: color, ...toggle_style} : toggle_style}
           className={toggleClassName}
         >
