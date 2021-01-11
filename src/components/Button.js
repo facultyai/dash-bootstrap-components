@@ -52,7 +52,7 @@ const Button = props => {
       href={disabled ? null : href}
       disabled={disabled}
       outline={outline}
-      color={isBootstrapColor ? color : null}
+      color={isBootstrapColor ? color : undefined}
       style={!isBootstrapColor ? (outline ? outlineStyle : filledStyle) : style}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
