@@ -2,22 +2,11 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
 import NavbarToggler from './NavbarToggler';
-
-const navbarColors = new Set([
-  'primary',
-  'light',
-  'dark',
-  'secondary',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'white'
-]);
 
 /**
  * A self-contained navbar ready for use. If you need more customisability try
@@ -37,7 +26,7 @@ const NavbarSimple = props => {
     loading_state,
     ...otherProps
   } = props;
-  const isNavbarColor = navbarColors.has(color);
+  const isBootstrapColor = bootstrapColors.has(color);
 
   const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -45,8 +34,8 @@ const NavbarSimple = props => {
 
   return (
     <RSNavbar
-      color={isNavbarColor ? color : null}
-      style={!isNavbarColor ? {backgroundColor: color, ...style} : style}
+      color={isBootstrapColor ? color : null}
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
