@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Label as RSLabel} from 'reactstrap';
 import classNames from 'classnames';
+import {bootstrapTextColors} from '../private/BootstrapColors';
 
 const alignMap = {
   start: 'align-self-start',
@@ -24,9 +25,12 @@ const Label = props => {
     xs,
     className,
     color,
+    style,
     loading_state,
     ...otherProps
   } = props;
+  
+  const isBootstrapColor = bootstrapTextColors.has(color);
 
   // check if column width has been specified, use alignment attribute if so
   const cols = colWidths.filter(
@@ -37,7 +41,7 @@ const Label = props => {
   const classes = classNames(
     className,
     cols.length && alignClass,
-    color && `text-${color}`
+    color && isBootstrapColor && `text-${color}`
   );
 
   return (
@@ -45,6 +49,7 @@ const Label = props => {
       for={html_for}
       xs={xs || width}
       className={classes}
+      style={!isBootstrapColor ? {color: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -173,7 +178,8 @@ Label.propTypes = {
 
   /**
    * Text color, options: primary, secondary, success, warning, danger, info,
-   * muted, light, dark, body, white, black-50, white-50.
+   * muted, light, dark, body, white, black-50, white-50 or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
   color: PropTypes.string,
 
