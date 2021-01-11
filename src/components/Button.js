@@ -51,6 +51,7 @@ const Button = props => {
       target={useLink ? target : null}
       href={disabled ? null : href}
       disabled={disabled}
+      outline={outline}
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? (outline ? outlineStyle : filledStyle) : style}
       {...omit(['n_clicks_timestamp'], otherProps)}
