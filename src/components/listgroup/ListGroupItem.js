@@ -39,7 +39,7 @@ const ListGroupItem = props => {
       target={useLink && target}
       disabled={disabled}
       color={isBootstrapColor ? color : null}
-      style={!isNavbarColor ? {backgroundColor: color, ...style} : style}
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
