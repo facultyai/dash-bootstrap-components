@@ -60,7 +60,9 @@ Card.propTypes = {
 
   /**
    * Card color, options: primary, secondary, success, info, warning, danger,
-   * light, dark. Default is light.
+   * light, dark or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name).
+   * Default is light.
    */
   color: PropTypes.string,
 
