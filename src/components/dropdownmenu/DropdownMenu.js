@@ -4,6 +4,7 @@ import {omit} from 'ramda';
 import {Dropdown, DropdownToggle} from 'reactstrap';
 import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * DropdownMenu creates an overlay useful for grouping together links and other
@@ -28,7 +29,7 @@ const DropdownMenu = props => {
   } = props;
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const isBootstrapColor = bootstrapColors.has(color);
   const toggle = () => {
     if (!disabled) {
       setDropdownOpen(!dropdownOpen);
@@ -59,8 +60,8 @@ const DropdownMenu = props => {
           nav={nav}
           caret={caret}
           disabled={disabled}
-          color={color}
-          style={toggle_style}
+          color={isBootstrapColor ? color : null}
+          style={!isBootstrapColor ? {backgroundColor: color, ...toggle_style} : toggle_style}
           className={toggleClassName}
         >
           {label}
@@ -152,7 +153,9 @@ DropdownMenu.propTypes = {
 
   /**
    * Set the color of the DropdownMenu toggle. Available options are: 'primary',
-   * 'secondary', 'success', 'warning', 'danger', 'info', 'link'. Default: 'secondary'
+   * 'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS 
+   * color of your choice (e.g. a hex code, a decimal code or a CSS color name)
+   * Default: 'secondary'
    */
   color: PropTypes.string,
 

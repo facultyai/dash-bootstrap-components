@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Alert as RSAlert} from 'reactstrap';
+import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
  * Alert allows you to create contextual feedback messages on user actions.
@@ -17,6 +18,8 @@ const Alert = props => {
     is_open,
     loading_state,
     setProps,
+    color,
+    style,
     ...otherProps
   } = props;
 
@@ -39,10 +42,13 @@ const Alert = props => {
     }
   };
 
+  const isBootstrapColor = bootstrapColors.has(color);
   return (
     <RSAlert
       isOpen={is_open}
       toggle={dismissable && dismiss}
+      color={isBootstrapColor ? color : null}
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style} 
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -90,7 +96,9 @@ Alert.propTypes = {
 
   /**
    * Alert color, options: primary, secondary, success, info, warning, danger,
-   * link. Default: secondary.
+   * link or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name)
+   * Default: secondary.
    */
   color: PropTypes.string,
 

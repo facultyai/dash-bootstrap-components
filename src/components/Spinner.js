@@ -2,22 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {omit, type} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
-
-const spinnerColors = new Set([
-  'primary',
-  'light',
-  'dark',
-  'secondary',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'body',
-  'muted',
-  'black-50',
-  'white-50',
-  'white'
-]);
+import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
  * Render Bootstrap style loading spinners using only CSS.
@@ -39,7 +24,7 @@ const Spinner = props => {
     ...otherProps
   } = props;
 
-  const isSpinnerColor = spinnerColors.has(color);
+  const isBootstrapColor = bootstrapColors.has(color);
 
   const fullscreenStyle = {
     position: 'fixed',
@@ -58,8 +43,8 @@ const Spinner = props => {
 
   const SpinnerDiv = style => (
     <RSSpinner
-      color={isSpinnerColor ? color : null}
-      style={{color: !isSpinnerColor && color, ...style}}
+      color={isBootstrapColor ? color : null}
+      style={{color: !isBootstrapColor && color, ...style}}
       className={spinnerClassName}
       {...omit(['setProps'], otherProps)}
     />

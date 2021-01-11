@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Button as RSButton} from 'reactstrap';
 import Link from '../private/Link';
+import {bootstrapColors} from '../private/BootstrapColors';
+
 
 /**
  * A component for creating Bootstrap buttons with different style options. The
@@ -22,6 +24,9 @@ const Button = props => {
     n_clicks,
     target,
     type,
+    color,
+    style,
+    outline,
     ...otherProps
   } = props;
 
@@ -33,6 +38,10 @@ const Button = props => {
       });
     }
   };
+  const isBootstrapColor = bootstrapColors.has(color);
+  const filledStyle = {backgroundColor: color, ...style}
+  const outlineStyle = {color: color, borderColor: color, ...style}
+
   const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
@@ -43,6 +52,8 @@ const Button = props => {
       target={useLink ? target : null}
       href={disabled ? null : href}
       disabled={disabled}
+      color={isBootstrapColor ? color : null}
+      style={!isBootstrapColor ? (outline ? outlineStyle : filledStyle) : style}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -139,7 +150,9 @@ Button.propTypes = {
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,
-   * link. Default: secondary.
+   * link or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name)
+   * Default: secondary.
    */
   color: PropTypes.string,
 
