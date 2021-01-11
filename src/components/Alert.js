@@ -48,7 +48,7 @@ const Alert = props => {
       isOpen={is_open}
       toggle={dismissable && dismiss}
       color={isBootstrapColor ? color : null}
-      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style} 
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

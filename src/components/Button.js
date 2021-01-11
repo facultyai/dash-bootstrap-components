@@ -5,7 +5,6 @@ import {Button as RSButton} from 'reactstrap';
 import Link from '../private/Link';
 import {bootstrapColors} from '../private/BootstrapColors';
 
-
 /**
  * A component for creating Bootstrap buttons with different style options. The
  * Button component can act as a HTML button, link (<a>) or can be used like a
@@ -39,8 +38,8 @@ const Button = props => {
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
-  const filledStyle = {backgroundColor: color, ...style}
-  const outlineStyle = {color: color, borderColor: color, ...style}
+  const filledStyle = {backgroundColor: color, ...style};
+  const outlineStyle = {color: color, borderColor: color, ...style};
 
   const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;

@@ -15,8 +15,15 @@ const CustomProgressTag = props => {
  * progress with a callback and the `value` prop.
  */
 const Progress = props => {
-  const {children, loading_state, bar_style, color, style, ...otherProps} = props;
-  const isBootstrapColor = bootstrapColors.has(color); 
+  const {
+    children,
+    loading_state,
+    bar_style,
+    color,
+    style,
+    ...otherProps
+  } = props;
+  const isBootstrapColor = bootstrapColors.has(color);
   return (
     <RSProgress
       {...omit(['setProps'], otherProps)}
@@ -25,7 +32,9 @@ const Progress = props => {
       }
       // reactstrap handles these inconsistently atm, have to swap around
       color={isBootstrapColor ? color : null}
-      style={!isBootstrapColor ? {backgroundColor: color, ...bar_style} : bar_style}
+      style={
+        !isBootstrapColor ? {backgroundColor: color, ...bar_style} : bar_style
+      }
       outer_style={style}
       tag={CustomProgressTag}
     >
@@ -101,7 +110,7 @@ Progress.propTypes = {
 
   /**
    * Set color of the progress bar, options: primary, secondary, success,
-   * warning, danger, info or any valid CSS color 
+   * warning, danger, info or any valid CSS color
    * of your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
   color: PropTypes.string,

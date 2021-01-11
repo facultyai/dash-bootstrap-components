@@ -9,7 +9,15 @@ import {bootstrapColors} from '../private/BootstrapColors';
  * Badges can be used to add counts or labels to other components.
  */
 const Badge = props => {
-  const {children, href, loading_state, setProps, color, style, ...otherProps} = props;
+  const {
+    children,
+    href,
+    loading_state,
+    setProps,
+    color,
+    style,
+    ...otherProps
+  } = props;
 
   const incrementClicks = () => {
     if (setProps) {

@@ -29,7 +29,7 @@ const Label = props => {
     loading_state,
     ...otherProps
   } = props;
-  
+
   const isBootstrapColor = bootstrapTextColors.has(color);
 
   // check if column width has been specified, use alignment attribute if so
