@@ -1,4 +1,3 @@
-
 /* Reference: https://getbootstrap.com/docs/4.1/utilities/colors/ */
 
 export const bootstrapColors = new Set([
