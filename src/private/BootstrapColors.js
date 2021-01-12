@@ -1,27 +1,30 @@
+
+/* Reference: https://getbootstrap.com/docs/4.1/utilities/colors/ */
+
 export const bootstrapColors = new Set([
   'primary',
-  'light',
-  'dark',
   'secondary',
   'success',
-  'warning',
   'danger',
+  'warning',
   'info',
+  'light',
+  'dark',
   'white',
   'transparent'
 ]);
 
 export const bootstrapTextColors = new Set([
   'primary',
-  'light',
-  'dark',
   'secondary',
   'success',
-  'warning',
   'danger',
+  'warning',
   'info',
-  'white',
+  'light',
+  'dark',
   'muted',
-  'white-50',
-  'black-50'
+  'white',
+  'black-50',
+  'white-50'
 ]);
