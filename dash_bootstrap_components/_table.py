@@ -71,7 +71,17 @@ def _generate_table_from_df(
         elif isinstance(header, dict):
             df = df.rename(columns=header)
         table = [
-            html.Thead(html.Tr(children=[html.Th(col) for col in df.columns]))
+            html.Thead(
+                [
+                    html.Tr(
+                        children=[
+                            html.Th(col)
+                            for col in df.columns.get_level_values(level)
+                        ]
+                    )
+                    for level in range(df.columns.nlevels)
+                ]
+            )
         ]
     else:
         table = []
