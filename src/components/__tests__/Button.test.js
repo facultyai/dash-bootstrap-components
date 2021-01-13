@@ -32,27 +32,12 @@ describe('Button', () => {
     expect(buttonDark).toHaveClass('btn-dark');
   });
 
-  test('applies custom color with "color" prop', () => {
-    const {
-      container: {firstChild: button}
-    } = render(<Button color="#FA7268" />);
-
-    expect(button).toHaveStyle('background-color: #FA7268;');
-  });
-
   test('applies outline styles with "outline" prop', () => {
     const {
       container: {firstChild: button}
     } = render(<Button color="primary" outline />);
 
     expect(button).toHaveClass('btn-outline-primary');
-  });
-
-  test('applies custom color and outline style', () => {
-    const {
-      container: {firstChild: button}
-    } = render(<Button color="#FA7268" outline/>);
-    expect(button).toHaveStyle('color: #FA7268; border-color: #FA7268');
   });
 
   test('applies additional CSS classes when props are set', () => {
