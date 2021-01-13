@@ -1,7 +1,6 @@
 # js artifacts
 node_modules
 lib
-yarn.lock
 
 # testing
 .nox
@@ -17,8 +16,6 @@ __pycache__
 *.pyc
 dist
 *.egg-info
-
-.mypy_cache/
 
 # release artifacts
 changelog.tmp
