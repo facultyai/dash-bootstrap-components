@@ -18,6 +18,8 @@ __pycache__
 dist
 *.egg-info
 
+.mypy_cache/
+
 # release artifacts
 changelog.tmp
 
