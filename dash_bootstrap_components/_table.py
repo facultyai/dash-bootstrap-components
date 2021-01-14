@@ -1,3 +1,5 @@
+from itertools import groupby
+
 import dash_html_components as html
 
 
@@ -75,8 +77,10 @@ def _generate_table_from_df(
                 [
                     html.Tr(
                         children=[
-                            html.Th(col)
-                            for col in df.columns.get_level_values(level)
+                            html.Th(col, colSpan=len(list(group)))
+                            for col, group in groupby(
+                                df.columns.get_level_values(level)
+                            )
                         ]
                     )
                     for level in range(df.columns.nlevels)
