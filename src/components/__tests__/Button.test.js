@@ -40,6 +40,14 @@ describe('Button', () => {
     expect(button).toHaveClass('btn-outline-primary');
   });
 
+  test('applies outline styles with "outline" prop', () => {
+    const {
+      container: {firstChild: button}
+    } = render(<Button color="primary" outline />);
+
+    expect(button).toHaveClass('btn-outline-primary');
+  });
+
   test('applies additional CSS classes when props are set', () => {
     // active and disabled buttons
     const {
