@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Card as RSCard} from 'reactstrap';
+import {bootstrapColors} from '../../private/BootstrapColors';
+
 
 /**
  * Component for creating Bootstrap cards. Use in conjunction with CardBody,
@@ -10,12 +12,15 @@ import {Card as RSCard} from 'reactstrap';
  * options.
  */
 const Card = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, color, style, loading_state, ...otherProps} = props;
+  const isBootstrapColor = bootstrapColors.has(color);
   return (
     <RSCard
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      color={isBootstrapColor ? color : null}
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
     >
       {children}
@@ -55,7 +60,9 @@ Card.propTypes = {
 
   /**
    * Card color, options: primary, secondary, success, info, warning, danger,
-   * light, dark. Default is light.
+   * light, dark or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name).
+   * Default is light.
    */
   color: PropTypes.string,
 

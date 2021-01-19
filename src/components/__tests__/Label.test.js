@@ -47,4 +47,13 @@ describe('Label', () => {
     expect(labelSuccess).toHaveClass('text-success');
     expect(labelDark).toHaveClass('text-dark');
   });
+
+  test('applies custom color with "color" prop', () => {
+    const {
+      container: {firstChild: button}
+    } = render(<Label color="#FA7268" />);
+
+    expect(button).toHaveStyle('color: #FA7268;');
+  });
+
 });
