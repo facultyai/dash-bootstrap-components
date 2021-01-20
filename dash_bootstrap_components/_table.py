@@ -1,4 +1,6 @@
-from itertools import groupby
+from functools import reduce
+from itertools import accumulate, groupby
+from operator import add
 
 import dash_html_components as html
 
@@ -72,18 +74,59 @@ def _generate_table_from_df(
                 )
         elif isinstance(header, dict):
             df = df.rename(columns=header)
+
+        # Get the actual headers
+        n_levels = df.columns.nlevels
+        header_values = [
+            [val for val in df.columns.get_level_values(level)]
+            for level in range(n_levels)
+        ]
+
+        # The positions of header changes for each level as an integer
+        header_breaks = [
+            list(
+                accumulate(
+                    [
+                        len(list(group))
+                        for _, group in groupby(header_values[level])
+                    ]
+                )
+            )
+            for level in range(n_levels)
+        ]
+
+        # Include breaks from higher levels
+        header_breaks = [
+            sorted(set(reduce(add, header_breaks[:level])).union({0}))
+            for level in range(1, n_levels + 1)
+        ]
+
+        #  Go from header break positions to cell spans
+        header_spans = [
+            reversed(
+                [
+                    level_breaks[i] - level_breaks[i - 1]
+                    for i in range(len(level_breaks) - 1, 0, -1)
+                ]
+            )
+            for level_breaks in header_breaks
+        ]
+
         table = [
             html.Thead(
                 [
                     html.Tr(
                         children=[
-                            html.Th(col, colSpan=len(list(group)))
-                            for col, group in groupby(
-                                df.columns.get_level_values(level)
+                            html.Th(
+                                header_values[level][pos],
+                                colSpan=span,
+                            )
+                            for pos, span in zip(
+                                header_breaks[level], header_spans[level]
                             )
                         ]
                     )
-                    for level in range(df.columns.nlevels)
+                    for level in range(n_levels)
                 ]
             )
         ]
