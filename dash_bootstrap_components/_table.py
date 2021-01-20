@@ -101,7 +101,7 @@ def _generate_table_from_df(
             for level in range(1, n_levels + 1)
         ]
 
-        #  Go from header break positions to cell spans
+        # Go from header break positions to cell spans
         header_spans = [
             reversed(
                 [
