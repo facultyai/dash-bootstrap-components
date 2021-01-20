@@ -78,7 +78,7 @@ def _generate_table_from_df(
         # Get the actual headers
         n_levels = df.columns.nlevels
         header_values = [
-            [val for val in df.columns.get_level_values(level)]
+            list(df.columns.get_level_values(level))
             for level in range(n_levels)
         ]
 
