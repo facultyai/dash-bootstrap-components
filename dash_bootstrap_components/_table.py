@@ -1,8 +1,9 @@
 from functools import reduce
-from itertools import accumulate, groupby
+from itertools import groupby
 from operator import add
 
 import dash_html_components as html
+from numpy import cumsum
 
 
 def _generate_table_from_df(
@@ -85,7 +86,7 @@ def _generate_table_from_df(
         # The positions of header changes for each level as an integer
         header_breaks = [
             list(
-                accumulate(
+                cumsum(
                     [
                         len(list(group))
                         for _, group in groupby(header_values[level])
