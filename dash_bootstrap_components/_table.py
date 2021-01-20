@@ -92,7 +92,9 @@ def _generate_table_from_df(
     table.append(
         html.Tbody(
             [
-                html.Tr([html.Td(df.iloc[i][col]) for col in df.columns])
+                html.Tr(
+                    [html.Td(df.iloc[i, j]) for j in range(len(df.columns))]
+                )
                 for i in range(len(df))
             ]
         )
