@@ -5,13 +5,6 @@ from operator import add
 import dash_html_components as html
 
 
-def _accumulate(iterable):
-    total = 0
-    for val in iterable:
-        total += val
-        yield total
-
-
 def _generate_table_from_df(
     cls,
     df,
@@ -89,17 +82,16 @@ def _generate_table_from_df(
             for level in range(n_levels)
         ]
 
+        # The sizes of consecutive header groups at each level
+        header_spans = [
+            [len(list(group)) for _, group in groupby(level_values)]
+            for level_values in header_values
+        ]
+
         # The positions of header changes for each level as an integer
         header_breaks = [
-            list(
-                _accumulate(
-                    [
-                        len(list(group))
-                        for _, group in groupby(header_values[level])
-                    ]
-                )
-            )
-            for level in range(n_levels)
+            [sum(level_spans[:i]) for i in range(1, len(level_spans) + 1)]
+            for level_spans in header_spans
         ]
 
         # Include breaks from higher levels
@@ -108,7 +100,7 @@ def _generate_table_from_df(
             for level in range(1, n_levels + 1)
         ]
 
-        # Go from header break positions to cell spans
+        # Go from header break positions back to cell spans
         header_spans = [
             reversed(
                 [
