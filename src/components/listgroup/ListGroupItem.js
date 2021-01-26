@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ListGroupItem as RSListGroupItem} from 'reactstrap';
 import Link from '../../private/Link';
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * Create a single item in a `ListGroup`.
@@ -15,6 +16,8 @@ const ListGroupItem = props => {
     target,
     n_clicks,
     setProps,
+    color,
+    style,
     ...otherProps
   } = props;
 
@@ -26,7 +29,7 @@ const ListGroupItem = props => {
       });
     }
   };
-
+  const isBootstrapColor = bootstrapColors.has(color);
   const useLink = props.href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
@@ -35,6 +38,8 @@ const ListGroupItem = props => {
       tag={useLink ? Link : 'li'}
       target={useLink && target}
       disabled={disabled}
+      color={isBootstrapColor ? color : null}
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -97,7 +102,9 @@ ListGroupItem.propTypes = {
 
   /**
    * Item color, options: primary, secondary, success, info, warning,
-   * danger, default: secondary
+   * danger, or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name)
+   * default: secondary
    */
   color: PropTypes.string,
 

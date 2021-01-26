@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {ListGroupItemText as RSListGroupItemText} from 'reactstrap';
 import classNames from 'classnames';
+import {bootstrapTextColors} from '../../private/BootstrapColors';
 
 /**
  * Apply consistent styling to text within a list group.
  */
 const ListGroupItemText = props => {
-  const {children, className, color, loading_state, ...otherProps} = props;
-  const classes = classNames(className, color && `text-${color}`);
+  const {children, className, color, style, loading_state, ...otherProps} = props;
+  const isBootstrapColor = bootstrapTextColors.has(color);
+  const classes = classNames(className, color && isBootstrapColor && `text-${color}`);
   return (
     <RSListGroupItemText
       className={classes}
+      style={!isBootstrapColor ? {color: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

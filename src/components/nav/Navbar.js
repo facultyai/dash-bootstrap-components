@@ -2,30 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Navbar as RSNavbar} from 'reactstrap';
-
-const navbarColors = new Set([
-  'primary',
-  'light',
-  'dark',
-  'secondary',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'white'
-]);
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * The Navbar component can be used to make fully customisable navbars.
  */
 const Navbar = props => {
   const {children, color, style, loading_state, ...otherProps} = props;
-  const isNavbarColor = navbarColors.has(color);
+  const isBootstrapColor = bootstrapColors.has(color);
 
   return (
     <RSNavbar
-      color={isNavbarColor ? color : null}
-      style={{backgroundColor: !isNavbarColor && color, ...style}}
+      color={isBootstrapColor ? color : null}
+      style={{backgroundColor: !isBootstrapColor && color, ...style}}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
