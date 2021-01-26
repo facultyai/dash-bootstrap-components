@@ -68,7 +68,17 @@ library(devtools)
 install_github('facultyai/dash-bootstrap-components@r-release')
 ```
 
-Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/dashr)
+Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart)
+
+### Dash.jl
+
+You can also use _dash-bootstrap-components_ with Dash.jl! Support for Dash.jl is still in beta so proceed with caution. If you try it out and run into issues, please [let us know](https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md)! Install with
+
+```jl
+pkg> add Dash DashBootstrapComponents
+```
+
+Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart)
 
 ## Quick start
 

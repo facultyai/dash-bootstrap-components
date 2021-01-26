@@ -8,25 +8,7 @@ You can now use _dash-bootstrap-components_ with Dash for R! Note that support f
 
 ## Installation
 
-To get started make sure you have [installed Dash for R](https://dashr.plotly.com/installation). If you didn't already install it in order to install Dash for R, we also need to make sure that the _devtools_ library is installed.
 
-```r
-install.packages("devtools")
-```
-
-You can then install _dash-bootstrap-components_ from the `r-release` branch of our GitHub repository.
-
-```r
-library(devtools)
-install_github('facultyai/dash-bootstrap-components@r-release')
-```
-
-The `r-release` branch will always point to the latest R release. If you want a specific version you can install it by referencing with a tag of the form `rX.X.X` where `X.X.X` is the desired version number. For example to install version `0.10.0` you could do
-
-```r
-library(devtools)
-install_github('facultyai/dash-bootstrap-components@r0.10.0')
-```
 
 ## Basic usage
 
@@ -44,10 +26,6 @@ _dash-bootstrap-components_ doesn't come with CSS included. This is to give you 
 For convenience, links to [BootstrapCDN][bootstrapcdn] for standard Bootstrap and each Bootswatch theme are available through the `dbcThemes` list, which can be used as follows:
 
 ```r
-library(dash)
-library(dashBootstrapComponents)
-
-app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 ```
 
 For more information on available themes see the [_themes documentation_][docs-themes]
@@ -57,15 +35,7 @@ For more information on available themes see the [_themes documentation_][docs-t
 With CSS linked, you can start building you app's layout with out Bootstrap components. Currently there isn't documentation for the R components, but check out [_component documentation_][docs-components] for a full list of available components with Python documentation. The R components work the same way with the same arguments. You can also try running this minimal example to get started.
 
 ```r
-library(dash)
-library(dashBootstrapComponents)
 
-app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
-
-app$layout(dbcContainer(dbcAlert("Hello Bootstrap!", color = "success"),
-                        className = "p-5"))
-
-app$run_server(showcase = TRUE)
 ```
 
 [dash-docs]: https://dashr.plotly.com/

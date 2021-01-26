@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import markdown
@@ -19,6 +20,74 @@ CHANGELOG_HTML_TEMPLATE = """{% extends "changelog.html" %}
 {% block content %}<CONTENT>{% endblock %}
 """
 
+TAB_OUTER_TEMPLATE = """<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs{classes}"{id_value} role="tablist">{tabs}</ul>
+  </div>
+  <div class="card-body tab-content">{tab_panes}</div>
+</div>
+"""
+
+TAB_TEMPLATE = """<li class="nav-item" role="presentation">
+  <a class="nav-link{2}" id="{0}-tab" data-toggle="tab" href="#{0}" role="tab" aria-controls="{0}" aria-selected="{3}">{1}</a>
+</li>
+"""
+
+TAB_PANE_TEMPLATE = """<div class="tab-pane fade show{2}" id="{0}" role="tabpanel" aria-labelledby="{0}-tab">{1}</div>"""
+
+
+def tab_formatter(source, language, class_name, options, md, **kwargs):
+    """Format source as tabs."""
+    source = [chunk.split("\n", 1) for chunk in source.split("-----\n")]
+
+    classes = kwargs["classes"]
+    id_value = kwargs["id_value"]
+    attrs = kwargs["attrs"]
+
+    if class_name:
+        classes.insert(0, class_name)
+
+    id_value = ' id="{}"'.format(id_value) if id_value else ""
+    classes = " {}".format(" ".join(classes)) if classes else ""
+    attrs = (
+        " " + " ".join('{k}="{v}"'.format(k=k, v=v) for k, v in attrs.items())
+        if attrs
+        else ""
+    )
+
+    tabs = ""
+    tab_panes = ""
+    for i, (tab_name, tab_content) in enumerate(source):
+        tab_id = re.sub(r"\s", "_", tab_name).lower()
+        tabs += TAB_TEMPLATE.format(
+            tab_id,
+            tab_name,
+            " active" if i == 0 else "",
+            "true" if i == 0 else "false",
+        )
+        tab_panes += TAB_PANE_TEMPLATE.format(
+            tab_id,
+            markdown.markdown(tab_content, extensions=["fenced_code", "meta"]),
+            " active" if i == 0 else "",
+        )
+
+    return TAB_OUTER_TEMPLATE.format(
+        tabs=tabs, tab_panes=tab_panes, id_value=id_value, classes=classes
+    )
+
+
+extension_configs = {
+    "pymdownx.superfences": {
+        "custom_fences": [
+            {
+                "name": "bootstrap-tabs",
+                "class": "bootstrap-tabs",
+                "format": tab_formatter,
+            }
+        ]
+    }
+}
+
 
 def convert_all_markdown_files():
     for path in CONTENT.glob("docs/*.md"):
@@ -35,7 +104,10 @@ def convert_all_markdown_files():
 
 
 def template_from_markdown(path, title_suffix="", template=DOCS_HTML_TEMPLATE):
-    md = markdown.Markdown(extensions=["fenced_code", "meta"])
+    md = markdown.Markdown(
+        extensions=["fenced_code", "meta", "pymdownx.superfences"],
+        extension_configs=extension_configs,
+    )
     text = path.read_text()
     template = template.replace("<CONTENT>", md.convert(text))
     return template.replace("<TITLE>", f"{md.Meta['title'][0]} - dbc docs")

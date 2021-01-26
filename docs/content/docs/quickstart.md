@@ -8,6 +8,10 @@ title: Quickstart
 
 ## Installation
 
+Dash Bootstrap components can be used with Dash in Python, R or Julia.
+
+~~~bootstrap-tabs
+Python
 ### PyPI
 
 You can install _dash-bootstrap-components_ with `pip`:
@@ -24,6 +28,28 @@ conda-forge channel:
 ```sh
 conda install -c conda-forge dash-bootstrap-components
 ```
+-----
+R
+To get started make sure you have [installed Dash for R](https://dashr.plotly.com/installation). If you didn't already install it in order to install Dash for R, we also need to make sure that the _devtools_ library is installed.
+
+```r
+install.packages("devtools")
+```
+
+You can then install _dash-bootstrap-components_ from the `r-release` branch of our GitHub repository.
+
+```r
+library(devtools)
+install_github('facultyai/dash-bootstrap-components@r-release')
+```
+
+The `r-release` branch will always point to the latest R release. If you want a specific version you can install it by referencing with a tag of the form `rX.X.X` where `X.X.X` is the desired version number. For example to install version `0.10.0` you could do
+
+```r
+library(devtools)
+install_github('facultyai/dash-bootstrap-components@r0.10.0')
+```
+~~~
 
 ## Basic usage
 
@@ -38,7 +64,12 @@ To use _dash-bootstrap-components_ you must do two things:
 
 _dash-bootstrap-components_ doesn't come with CSS included. This is to give you the freedom to use any Bootstrap v4 stylesheet of your choice. This means however that in order for the components to be styled properly, you must link to a stylesheet yourself.
 
-For convenience, links to [BootstrapCDN][bootstrapcdn] for standard Bootstrap and each Bootswatch theme are available through the `themes` module, which can be used as follows:
+For convenience, links to [BootstrapCDN][bootstrapcdn] for standard Bootstrap and each Bootswatch theme are available as part of _dash-bootstrap-components_ and can be used as follows
+
+~~~bootstrap-tabs
+Python
+In Python, each CDN link is available within the `dbc.themes` submodule and can
+be used when instantiating the `app` object.
 
 ```python
 import dash
@@ -46,6 +77,20 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 ```
+-----
+R
+Once you have imported _dash-bootstrap-components_ with
+`library(dashBootstrapComponents)`, the `dbcThemes` list will be loaded into
+your global namespace and can be used when instantiating the `app` object.
+
+
+```r
+library(dash)
+library(dashBootstrapComponents)
+
+app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
+```
+~~~
 
 For more information on available themes see the [_themes documentation_][docs-themes]
 
@@ -53,6 +98,8 @@ For more information on available themes see the [_themes documentation_][docs-t
 
 With CSS linked, you can start building your app's layout with our Bootstrap components. See the [_component documentation_][docs-components] for a full list of available components, or try running this minimal example to get started.
 
+~~~bootstrap-tabs
+Python
 ```python
 import dash
 import dash_bootstrap_components as dbc
@@ -67,6 +114,22 @@ app.layout = dbc.Container(
 if __name__ == "__main__":
     app.run_server()
 ```
+-----
+R
+
+```r
+library(dash)
+library(dashBootstrapComponents)
+
+app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
+
+app$layout(dbcContainer(dbcAlert("Hello Bootstrap!", color = "success"),
+                        className = "p-5"))
+
+app$run_server(showcase = TRUE)
+```
+
+~~~
 
 [dash-docs]: https://dash.plotly.com
 [dash-docs-external]: https://dash.plotly.com/external-resources
