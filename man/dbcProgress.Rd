@@ -46,7 +46,8 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 \item{striped}{Logical. Use striped progress bar}
 
 \item{color}{Character. Set color of the progress bar, options: primary, secondary, success,
-warning, danger, info.}
+warning, danger, info or any valid CSS color
+of your choice (e.g. a hex code, a decimal code or a CSS color name).}
 
 \item{barClassName}{Character. CSS classes to apply to the bar.}
 

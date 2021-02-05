@@ -74,7 +74,8 @@ more details.}
 default: 'center'}
 
 \item{color}{Character. Text color, options: primary, secondary, success, warning, danger, info,
-muted, light, dark, body, white, black-50, white-50.}
+muted, light, dark, body, white, black-50, white-50 or any valid CSS color of
+your choice (e.g. a hex code, a decimal code or a CSS color name).}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:

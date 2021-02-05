@@ -31,7 +31,9 @@ performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{color}{Character. Card color, options: primary, secondary, success, info, warning, danger,
-light, dark. Default is light.}
+light, dark or any valid CSS color of
+your choice (e.g. a hex code, a decimal code or a CSS color name).
+Default is light.}
 
 \item{body}{Logical. Apply the `card-body` class to the card, so that there is no need to also
 include a CardBody component in the children of this Card. Default: False}

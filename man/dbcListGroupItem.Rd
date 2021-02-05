@@ -38,7 +38,9 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 \item{disabled}{Logical. Apply disabled style to item}
 
 \item{color}{Character. Item color, options: primary, secondary, success, info, warning,
-danger, default: secondary}
+danger, or any valid CSS color of
+your choice (e.g. a hex code, a decimal code or a CSS color name)
+default: secondary}
 
 \item{action}{Logical. Apply list-group-item-action class for hover animation etc.}
 

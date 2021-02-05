@@ -31,7 +31,9 @@ performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{color}{Character. Alert color, options: primary, secondary, success, info, warning, danger,
-link. Default: secondary.}
+link or any valid CSS color of
+your choice (e.g. a hex code, a decimal code or a CSS color name)
+Default: secondary.}
 
 \item{is_open}{Logical. Whether alert is open. Default: True.}
 
