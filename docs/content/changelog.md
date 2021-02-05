@@ -6,6 +6,12 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.11.2 - 2021/2/5
+
+### Added
+
+- `color` prop for multiple components now accepts CSS colors, hex strings etc. ([PR 506](https://github.com/facultyai/dash-bootstrap-components/pull/506))
+- `Table.from_dataframe` now supports multiple column header levels ([PR 509](https://github.com/facultyai/dash-bootstrap-components/pull/509))
 
 ## 0.11.1 - 2020/12/20
 
@@ -17,19 +23,19 @@ This page documents notable changes in dash-bootstrap-components releases.
 
 ### Added
 
-- The `NavLink` component can now automatically set the `active` prop based on the current pathname. Set `active="exact"` to toggle set `active=True` if the `href` exactly matches the current pathname, or `active="partial"` to set `active=True` if the current pathname starts with `href`  ([PR  482](https://github.com/facultyai/dash-bootstrap-components/pull/482))
-- `active_tab_style` and `activeTabClassName` props to `Tab` for styling active tabs ([PR  491](https://github.com/facultyai/dash-bootstrap-components/pull/491))
-- Exposed `name` prop on input components so that they can be used more effectively in form submissions, and `action` and `method` props of `Form` so that `Form` can be used to post form submissions to a route on the backend ([PR  474](https://github.com/facultyai/dash-bootstrap-components/pull/474))
-- Exposes `type` prop on `Button` ([PR  470](https://github.com/facultyai/dash-bootstrap-components/pull/470))
+- The `NavLink` component can now automatically set the `active` prop based on the current pathname. Set `active="exact"` to toggle set `active=True` if the `href` exactly matches the current pathname, or `active="partial"` to set `active=True` if the current pathname starts with `href` ([PR 482](https://github.com/facultyai/dash-bootstrap-components/pull/482))
+- `active_tab_style` and `activeTabClassName` props to `Tab` for styling active tabs ([PR 491](https://github.com/facultyai/dash-bootstrap-components/pull/491))
+- Exposed `name` prop on input components so that they can be used more effectively in form submissions, and `action` and `method` props of `Form` so that `Form` can be used to post form submissions to a route on the backend ([PR 474](https://github.com/facultyai/dash-bootstrap-components/pull/474))
+- Exposes `type` prop on `Button` ([PR 470](https://github.com/facultyai/dash-bootstrap-components/pull/470))
 
 ### Fixed
 
 - Cursor becomes pointer when hovering on tabs ([PR 480](https://github.com/facultyai/dash-bootstrap-components/pull/480))
-- Current position on page is preserved when using `Spinner` as a loading component ([PR  465](https://github.com/facultyai/dash-bootstrap-components/pull/465))
+- Current position on page is preserved when using `Spinner` as a loading component ([PR 465](https://github.com/facultyai/dash-bootstrap-components/pull/465))
 
 ### Changed
 
-- Updated BootstrapCDN links to use Bootstrap v4.5.2 ([PR  481](https://github.com/facultyai/dash-bootstrap-components/pull/481))
+- Updated BootstrapCDN links to use Bootstrap v4.5.2 ([PR 481](https://github.com/facultyai/dash-bootstrap-components/pull/481))
 
 ## 0.10.7 - 2020/10/4
 
