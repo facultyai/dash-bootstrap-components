@@ -1,13 +1,13 @@
 export prepend_bootswatch, dbc_themes
 
 function prepend_bootswatch(suffix)
-  BOOTSWATCH_BASE = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/"
+  BOOTSWATCH_BASE = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/"
   return string(BOOTSWATCH_BASE, suffix)
 end
 
 dbc_themes = (
-  BOOTSTRAP = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
-  GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-grid.min.css",
+  BOOTSTRAP = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css",
+  GRID = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-grid.min.css",
   CERULEAN = prepend_bootswatch("cerulean/bootstrap.min.css"),
   COSMO = prepend_bootswatch("cosmo/bootstrap.min.css"),
   CYBORG = prepend_bootswatch("cyborg/bootstrap.min.css"),
