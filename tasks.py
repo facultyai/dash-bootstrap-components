@@ -96,7 +96,7 @@ def documentation(ctx):
     run('git commit -m "Add examples" --allow-empty')
     run("git subtree split --prefix docs -b docs-deploy")
     run("git push -f origin docs-deploy")
-    run("git checkout master")
+    run("git checkout main")
     run("git branch -D inv-push-docs docs-deploy")
 
 
@@ -111,7 +111,7 @@ def postrelease(ctx, version):
     Finalise the release
     Running this task will:
      - bump the version to the next dev version
-     - push changes to master
+     - push changes to main
     """
     clean_version = semver.finalize_version(version)
     if clean_version == version:

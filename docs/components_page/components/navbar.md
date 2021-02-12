@@ -17,7 +17,7 @@ The `NavbarSimple` will collapse on smaller screens, and add a toggle for reveal
 
 If you want to have more control over the layout of your navbar you can use the `Navbar` component. This gives you full control over the children, but you will have to write your own callbacks to achieve things like the toggle behaviour on small screens. We recommend using a `Nav` component to wrap the navigation items, check the [docs here](/l/components/nav).
 
-Here is an example of a custom navbar, see the `examples/` folder in the [GitHub repo](https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py) for more.
+Here is an example of a custom navbar, see the `examples/` folder in the [GitHub repo](https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/advanced-component-usage/Navbars.py) for more.
 
 {{example:components/navbar/navbar.py:navbar}}
 
