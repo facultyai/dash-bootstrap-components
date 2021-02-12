@@ -36,7 +36,7 @@ def prerelease(ctx, version):
         "dash_bootstrap_components/__init__.py "
         "tests/test_version.py"
     )
-    run(f'git commit -m "Set version to {version}"')
+    run(f'git commit -m "Prerelease {version}"')
     run(f"git push origin prerelease/{version}")
 
 
@@ -63,7 +63,7 @@ def release(ctx, version):
         "dash_bootstrap_components/__init__.py "
         "tests/test_version.py"
     )
-    run(f'git commit -m "Bump version to {version}"')
+    run(f'git commit -m "Release {version}"')
     run(f"git push origin release/{version}")
 
 
