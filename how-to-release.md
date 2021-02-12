@@ -9,7 +9,7 @@ This is a set of instructions for releasing to Pypi. The release process is some
 
 - If the manual installation tests failed, fix the issue and repeat the previous steps with `rc2` etc. If installing worked, proceed to the next steps.
 
-- Run `invoke release <version>`, where `version` is the version number of the release (e.g. `0.7.0`). You will be prompted to enter a changelog. This will create a release, push it to Pypi and add a tag on current master.
+- Run `invoke release <version>`, where `version` is the version number of the release (e.g. `0.7.0`). You will be prompted to enter a changelog. This will create a release, push it to Pypi and add a tag on current main.
 
 - Verify that the new version is available by running `pip install dash-bootstrap-components` in a new virtual environment.
 
@@ -20,6 +20,5 @@ This is a set of instructions for releasing to Pypi. The release process is some
 The documentation is currently hosted on Heroku. To push documentation updates:
 
 ```sh
-git remote add heroku https://git.heroku.com/dash-bootstrap-components.git
-git subtree push --prefix docs/ heroku master
+invoke documentation
 ```

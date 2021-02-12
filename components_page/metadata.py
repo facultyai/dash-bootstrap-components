@@ -17,7 +17,7 @@ def _load_metadata():
 
 def _get_metadata(metadata_path):
     # Copied from Dash source:
-    # https://github.com/plotly/dash/blob/master/dash/development/component_loader.py#L8
+    # https://github.com/plotly/dash/blob/02a157a4e78c9faa1705e8a44544d72aaa6c7018/dash/development/component_loader.py#L14-L21
     with open(metadata_path) as data_file:
         json_string = data_file.read()
         data = json.JSONDecoder(
