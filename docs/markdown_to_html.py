@@ -13,12 +13,12 @@ DEST = Path(__file__).parent / "templates" / "generated"
 DOCS_HTML_TEMPLATE = """{% extends "docs.html" %}
 {% block title %}<title><TITLE></title>{% endblock %}
 {% block content %}<CONTENT>{% endblock %}
-"""
+"""  # noqa
 
 CHANGELOG_HTML_TEMPLATE = """{% extends "changelog.html" %}
 {% block title %}<title><TITLE></title>{% endblock %}
 {% block content %}<CONTENT>{% endblock %}
-"""
+"""  # noqa
 
 TAB_OUTER_TEMPLATE = """<div class="card mb-3">
   <div class="card-header">
@@ -26,14 +26,14 @@ TAB_OUTER_TEMPLATE = """<div class="card mb-3">
   </div>
   <div class="card-body tab-content">{tab_panes}</div>
 </div>
-"""
+"""  # noqa
 
 TAB_TEMPLATE = """<li class="nav-item" role="presentation">
   <a class="nav-link{2}" id="{0}-tab" data-toggle="tab" href="#{0}" role="tab" aria-controls="{0}" aria-selected="{3}">{1}</a>
 </li>
-"""
+"""  # noqa
 
-TAB_PANE_TEMPLATE = """<div class="tab-pane fade show{2}" id="{0}" role="tabpanel" aria-labelledby="{0}-tab">{1}</div>"""
+TAB_PANE_TEMPLATE = """<div class="tab-pane fade show{2}" id="{0}" role="tabpanel" aria-labelledby="{0}-tab">{1}</div>"""  # noqa
 
 TAB_COUNT = 0
 
