@@ -3,5 +3,6 @@ dash_bootstrap_components==0.11.3
 gunicorn
 markdown
 pandas
+pymdown-extensions
 scikit-learn
 werkzeug>=1.0.0

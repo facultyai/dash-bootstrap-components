@@ -5,7 +5,6 @@ DOCS_SIDENAV_ITEMS = [
     {"name": "quickstart", "href": "/docs/quickstart", "label": "Quickstart"},
     {"name": "themes", "href": "/docs/themes", "label": "Themes"},
     {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
-    {"name": "dashr", "href": "/docs/dashr", "label": "Dash for R"},
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
 
@@ -56,14 +55,7 @@ def create_server():
 
     @server.route("/docs/dashr/")
     def dashr():
-        try:
-            return render_template(
-                "generated/docs/dashR.html",
-                sidenav_items=DOCS_SIDENAV_ITEMS,
-                sidenav_active="dashr",
-            )
-        except TemplateNotFound:
-            abort(404)
+        return redirect("/docs/quickstart", 302)
 
     @server.route("/docs/components/")
     def components_index():
