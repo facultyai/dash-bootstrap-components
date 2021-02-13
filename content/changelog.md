@@ -6,6 +6,10 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.11.3 - 2021/2/13
+
+This version marks the first release of dash-bootstrap-components for Julia. There are no changes in functionality.
+
 ## 0.11.2 - 2021/2/5
 
 ### Added
