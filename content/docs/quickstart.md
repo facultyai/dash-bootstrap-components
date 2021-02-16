@@ -62,7 +62,7 @@ Or alternatively you can install from source as follows
 ```julia-repl
 julia> using Pkg;
 julia> Pkg.add(PackageSpec(
-           url="https://github.com/facultyai/dash-bootstrap-components", rev="jl-release"
+           url="https://github.com/facultyai/dash-bootstrap-components", rev="julia-release",
        ))
 ```
 ~~~
@@ -112,7 +112,7 @@ Julia
 ```julia
 using Dash, DashBootstrapComponents
 
-app = dash(external_stylesheets = [dbc_themes.BOOTSTRAP])
+app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
 ```
 ~~~
 
@@ -162,7 +162,7 @@ This is a minimal Dash app written in Julia.
 ```julia
 using Dash, DashBootstrapComponents
 
-app = dash(external_stylesheets = [dbc_themes.BOOTSTRAP])
+app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
 
 app.layout = dbc_container(
     dbc_alert("Hello Bootstrap!", color="success"),
