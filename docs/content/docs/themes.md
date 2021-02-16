@@ -26,7 +26,7 @@ import dash_bootstrap_components as dbc
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 ```
 
-This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg][bootswatch-cyborg] you would just change this to
+This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg](https://bootswatch.com/cyborg/) you would just change this to
 
 ```python
 import dash
@@ -46,7 +46,7 @@ library(dashBootstrapComponents)
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 ```
 
-This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg][bootswatch-cyborg] you would just change this to
+This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg](https://bootswatch.com/cyborg/) you would just change this to
 
 ```r
 library(dash)
@@ -62,15 +62,15 @@ Links are available as part of the `dbc_themes` named tuple available in `DashBo
 ```julia
 using Dash, DashBootstrapComponents
 
-app = dash(external_stylesheets = [dbc_themes.BOOTSTRAP])
+app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
 ```
 
-This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg][bootswatch-cyborg] you would just change this to
+This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg](https://bootswatch.com/cyborg/) you would just change this to
 
 ```julia
 using Dash, DashBootstrapComponents
 
-app = dash(external_stylesheets = [dbc_themes.CYBORG])
+app = dash(external_stylesheets=[dbc_themes.CYBORG])
 ```
 ~~~
 
@@ -99,16 +99,17 @@ Julia
 
 ```julia
 BS = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-app = dash(external_stylesheets = [BS])
+app = dash(external_stylesheets=[BS])
 ```
 ~~~
-
 
 You can change this URL to anything you like, for example if you prefer to use a mirror or a different CDN to supply the stylesheet.
 
 ## Linking local CSS
 
-You can [download][bootstrap-download] a stylesheet and serve it locally if you prefer. This might be desirable if you are restricted by a firewall or if you want to modify the stylesheet or even [compile your own][bootstrap-compile]. The easiest way to link a local stylesheet is to place it in a folder named `assets/` in the root of the app directory. See the [Dash documentation][dash-docs-external] for more details on this.
+You can [download][bootstrap-download] a stylesheet and serve it locally if you prefer. This might be desirable if you are restricted by a firewall or if you want to modify the stylesheet or even [compile your own][bootstrap-compile]. There are tools online to help with this, we recommend [Bootstrap Build](https://bootstrap.build/app).
+
+The easiest way to link a local stylesheet is to place it in a folder named `assets/` in the root of the app directory. See the [Dash documentation][dash-docs-external] for more details on this.
 
 <h2 id="available-themes">Available themes</h2>
 
@@ -116,16 +117,11 @@ There are numerous free to use Bootstrap stylesheets available on the web. The `
 
 To start with, we recommend experimenting with some of the Bootswatch themes available in the `dash_bootstrap_components.themes` module. The full list of available themes is [`CERULEAN`](https://bootswatch.com/cerulean/), [`COSMO`](https://bootswatch.com/cosmo/), [`CYBORG`](https://bootswatch.com/cyborg/), [`DARKLY`](https://bootswatch.com/darkly/), [`FLATLY`](https://bootswatch.com/flatly/), [`JOURNAL`](https://bootswatch.com/journal/), [`LITERA`](https://bootswatch.com/litera/), [`LUMEN`](https://bootswatch.com/lumen/), [`LUX`](https://bootswatch.com/lux/), [`MATERIA`](https://bootswatch.com/materia/), [`MINTY`](https://bootswatch.com/minty/), [`PULSE`](https://bootswatch.com/pulse/), [`SANDSTONE`](https://bootswatch.com/sandstone/), [`SIMPLEX`](https://bootswatch.com/simplex/), [`SKETCHY`](https://bootswatch.com/sketchy/), [`SLATE`](https://bootswatch.com/slate/), [`SOLAR`](https://bootswatch.com/solar/), [`SPACELAB`](https://bootswatch.com/spacelab/), [`SUPERHERO`](https://bootswatch.com/superhero/), [`UNITED`](https://bootswatch.com/united/), [`YETI`](https://bootswatch.com/yeti/)
 
-## Customising themes
-
-Bootstrap is highly customisable, so you can also build your own stylesheet with the styles you like. There are tools online to help with this, we recommend [Bootstrap Build](https://bootstrap.build/app). If you're familiar with SASS then you can check out the [Bootstrap documentation](https://getbootstrap.com/docs/4.6/getting-started/theming/) on customisation.
-
 [dash-docs-external]: https://dash.plotly.com/external-resources/
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [bootstrap]:https://getbootstrap.com/
-[bootstrap-download]: https://getbootstrap.com/docs/4.4/getting-started/download/
-[bootstrap-compile]: https://getbootstrap.com/docs/4.4/getting-started/theming/
+[bootstrap-download]: https://getbootstrap.com/docs/4.6/getting-started/download/
+[bootstrap-compile]: https://getbootstrap.com/docs/4.6/getting-started/theming/
 [bootstrap-themes]: https://themes.getbootstrap.com/
 [bootswatch]: https://bootswatch.com/
-[bootswatch-cyborg]: https://bootswatch.com/cyborg/
 [bootswatch-themes]: https://www.bootstrapcdn.com/bootswatch/
