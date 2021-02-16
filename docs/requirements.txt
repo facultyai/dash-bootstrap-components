@@ -1,7 +1,8 @@
 dash==1.14.0
-dash_bootstrap_components==0.11.1
+dash_bootstrap_components==0.11.3
 gunicorn
 markdown
 pandas
+pymdown-extensions
 scikit-learn
 werkzeug>=1.0.0

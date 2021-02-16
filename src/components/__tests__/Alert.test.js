@@ -39,6 +39,14 @@ describe('Alert', () => {
     expect(alertDark).toHaveClass('alert-dark');
   });
 
+  test('applies custom color with "color" prop', () => {
+    const {
+      container: {firstChild: alert}
+    } = render(<Alert color="#FA7268" />);
+
+    expect(alert).toHaveStyle('background-color: #FA7268;');
+  });
+
   test('renders a dismiss button with dismissable=true', () => {
     const alertDismissable = render(<Alert dismissable />);
 

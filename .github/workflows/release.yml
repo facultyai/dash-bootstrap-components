@@ -42,7 +42,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Release ${{ steps.get-version.outputs.version }}
-          branch: master
+          branch: main
           push_options: --force
           file_pattern: package-lock.json docs/requirements.txt
       - name: Create GitHub release
@@ -60,7 +60,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Back to dev
-          branch: master
+          branch: main
           push_options: --force
           file_pattern: package.json tests/test_version.py dash_bootstrap_components/__init__.py
 
@@ -98,7 +98,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Release ${{ steps.get-version.outputs.version }}
-          branch: master
+          branch: main
           push_options: --force
           file_pattern: package-lock.json
       - name: Create GitHub prerelease
@@ -116,6 +116,6 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Back to dev
-          branch: master
+          branch: main
           push_options: --force
           file_pattern: package.json tests/test_version.py dash_bootstrap_components/__init__.py

@@ -3,6 +3,7 @@ from dash.dependencies import Input, Output
 from dash_bootstrap_components import NavLink
 from dash_core_components import Location
 from dash_html_components import Div
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 def test_dbnl001_auto_active(dash_duo):
@@ -115,6 +116,12 @@ def test_dbnl_002_manual_active(dash_duo):
 
     dash_duo.wait_for_element_by_id("page-1-link").click()
 
+    # wait for callback to update page
+    WebDriverWait(dash_duo.driver, timeout=10).until(
+        lambda d: "active"
+        in d.find_element_by_id("page-1-link").get_attribute("class")
+    )
+
     assert "active" in dash_duo.wait_for_element_by_id(
         "page-1-link"
     ).get_attribute("class")
@@ -126,6 +133,12 @@ def test_dbnl_002_manual_active(dash_duo):
     ).get_attribute("class")
 
     dash_duo.wait_for_element_by_id("page-3-link").click()
+
+    # wait for callback to update page
+    WebDriverWait(dash_duo.driver, timeout=10).until(
+        lambda d: "active"
+        not in d.find_element_by_id("page-1-link").get_attribute("class")
+    )
 
     assert "active" not in dash_duo.wait_for_element_by_id(
         "page-1-link"

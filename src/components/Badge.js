@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Badge as RSBadge} from 'reactstrap';
 import Link from '../private/Link';
+import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
  * Badges can be used to add counts or labels to other components.
  */
 const Badge = props => {
-  const {children, href, loading_state, setProps, ...otherProps} = props;
+  const {
+    children,
+    href,
+    loading_state,
+    setProps,
+    color,
+    style,
+    ...otherProps
+  } = props;
 
   const incrementClicks = () => {
     if (setProps) {
@@ -18,6 +27,7 @@ const Badge = props => {
       });
     }
   };
+  const isBootstrapColor = bootstrapColors.has(color);
 
   otherProps[href ? 'preOnClick' : 'onClick'] = incrementClicks;
 
@@ -25,6 +35,8 @@ const Badge = props => {
     <RSBadge
       tag={href && Link}
       href={href}
+      color={isBootstrapColor ? color : null}
+      style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -72,7 +84,9 @@ Badge.propTypes = {
 
   /**
    * Badge color, options: primary, secondary, success, info, warning, danger,
-   * link. Default: secondary.
+   * link or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name)
+   * Default: secondary.
    */
   color: PropTypes.string,
 

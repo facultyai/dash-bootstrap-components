@@ -16,7 +16,7 @@
   <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md">Request a feature</a>
   <br>
   <br>
-  <img alt="GitHub Actions" src="https://github.com/facultyai/dash-bootstrap-components/workflows/Tests/badge.svg?branch=master">
+  <img alt="GitHub Actions" src="https://github.com/facultyai/dash-bootstrap-components/workflows/Tests/badge.svg?branch=main">
   <img alt="GitHub" src="https://img.shields.io/github/license/facultyai/dash-bootstrap-components">
   <img alt="PyPI" src="https://img.shields.io/pypi/v/dash-bootstrap-components">
   <img alt="Conda (channel only)" src="https://img.shields.io/conda/vn/conda-forge/dash-bootstrap-components">
@@ -55,7 +55,7 @@ conda install -c conda-forge dash-bootstrap-components
 
 ### Dash for R
 
-You can now use _dash-bootstrap-components_ with Dash for R! Note that support for Dash for R is still in beta so proceed with caution. If you try it out and run into issues, please [let us know](https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md)! To get started make sure you have the _devtools_ library installed
+You can now use _dash-bootstrap-components_ with Dash for R! To get started make sure you have the _devtools_ library installed
 
 ```r
 install.packages("devtools")
@@ -68,7 +68,17 @@ library(devtools)
 install_github('facultyai/dash-bootstrap-components@r-release')
 ```
 
-Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/dashr)
+Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart)
+
+### Dash.jl
+
+You can also use _dash-bootstrap-components_ with Dash.jl! Install with
+
+```jl
+pkg> add DashBootstrapComponents
+```
+
+Check out [the docs for more details](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart)
 
 ## Quick start
 
@@ -163,4 +173,4 @@ Code and documentation is copyright [Faculty Science Ltd.][faculty]
 [faculty]: https://faculty.ai
 [bug-report]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md
 [feature-request]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md
-[contribution-guide]: https://github.com/facultyai/dash-bootstrap-components/blob/master/.github/CONTRIBUTING.md
+[contribution-guide]: https://github.com/facultyai/dash-bootstrap-components/blob/main/.github/CONTRIBUTING.md
