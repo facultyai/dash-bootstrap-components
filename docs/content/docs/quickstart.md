@@ -8,7 +8,7 @@ title: Quickstart
 
 ## Installation
 
-Dash Bootstrap components can be used with Dash in Python, R or Julia.
+_dash-bootstrap-components_ can be used with Dash in Python, R or Julia.
 
 ~~~bootstrap-tabs
 Python
@@ -116,11 +116,11 @@ app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
 ```
 ~~~
 
-For more information on available themes see the [_themes documentation_][docs-themes]
+For more information on available themes see the [themes documentation][docs-themes]
 
 ### Build the layout
 
-With CSS linked, you can start building your app's layout with our Bootstrap components. See the [_component documentation_][docs-components] for a full list of available components, or try running this minimal example to get started.
+With CSS linked, you can start building your app's layout with our Bootstrap components. See the [component documentation][docs-components] for a full list of available components, or try running this minimal example to get started.
 
 ~~~bootstrap-tabs
 Python
@@ -173,9 +173,9 @@ run_server(app, "0.0.0.0", 8080)
 ```
 ~~~
 
-### Examples
+## Examples
 
-Check out these [_example apps_][examples] made with dash-bootstrap-components.
+Check out these [example apps][examples] made with _dash-bootstrap-components_.
 
 [dash-docs]: https://dash.plotly.com
 [dash-docs-external]: https://dash.plotly.com/external-resources
