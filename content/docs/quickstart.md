@@ -173,8 +173,13 @@ run_server(app, "0.0.0.0", 8080)
 ```
 ~~~
 
+### Examples
+
+Check out these [_example apps_][examples] made with dash-bootstrap-components.
+
 [dash-docs]: https://dash.plotly.com
 [dash-docs-external]: https://dash.plotly.com/external-resources
 [docs-themes]: /docs/themes
 [docs-components]: /docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
+[examples]: /examples
