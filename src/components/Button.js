@@ -22,6 +22,7 @@ const Button = props => {
     n_clicks,
     target,
     type,
+    download,
     ...otherProps
   } = props;
 
@@ -43,6 +44,7 @@ const Button = props => {
       target={useLink ? target : null}
       href={disabled ? null : href}
       disabled={disabled}
+      download={useLink ? download : null}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -186,7 +188,12 @@ Button.propTypes = {
    * The default behavior of the button. Possible values are: button, reset,
    * submit
    */
-  type: PropTypes.oneOf(['button', 'reset', 'submit'])
+  type: PropTypes.oneOf(['button', 'reset', 'submit']),
+
+  /**
+   * Indicates that the hyperlink is to be used for downloading a resource.
+   */
+  download: PropTypes.string
 };
 
 export default Button;
