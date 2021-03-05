@@ -86,6 +86,11 @@ Popover.propTypes = {
    * Where to inject the popper DOM node, default body.
    */
   container: PropTypes.string,
+  
+  /**
+   * space separated list of triggers (e.g. "click hover focus").
+   */
+  trigger: PropTypes.string,
 
   /**
    * Whether the Popover is open or not.
