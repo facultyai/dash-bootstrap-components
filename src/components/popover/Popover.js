@@ -12,11 +12,28 @@ import {Popover as RSPopover} from 'reactstrap';
  * of the children.
  */
 const Popover = props => {
-  const {children, is_open, hide_arrow, loading_state, ...otherProps} = props;
+  const {
+    children,
+    is_open,
+    hide_arrow,
+    loading_state,
+    setProps,
+    trigger,
+    ...otherProps
+  } = props;
+
+  const toggle = () => {
+    setProps({is_open: !is_open});
+  };
+
   return (
     <RSPopover
       isOpen={is_open}
       hideArrow={hide_arrow}
+      // to ensure proper backwards compatibility, the toggle function is only
+      // passed to the popover if `trigger` is not specified
+      toggle={trigger ? toggle : null}
+      trigger={trigger}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -86,9 +103,18 @@ Popover.propTypes = {
    * Where to inject the popper DOM node, default body.
    */
   container: PropTypes.string,
-  
+
   /**
-   * space separated list of triggers (e.g. "click hover focus").
+   * Space separated list of triggers (e.g. "click hover focus legacy"). These
+   * specify ways in which the target component can toggle the popover. If not
+   * specified you must toggle the popover yourself using callbacks. Options
+   * are:
+   * - "click": toggles the popover when the target is clicked.
+   * - "hover": toggles the popover when the target is hovered over with the
+   * cursor.
+   * - "focus": toggles the popover when the target receives focus
+   * - "legacy": toggles the popover when the target is clicked, but will also
+   * dismiss the popover when the user clicks outside of the popover.
    */
   trigger: PropTypes.string,
 
