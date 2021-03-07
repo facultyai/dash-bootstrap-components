@@ -1,31 +1,46 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
-from dash.dependencies import Input, Output, State
 
-popover = html.Div(
+popover_children = [
+    dbc.PopoverHeader("Popover header"),
+    dbc.PopoverBody("And here's some amazing content. Cool!"),
+]
+
+popovers = html.Div(
     [
         dbc.Button(
-            "Click to toggle popover", id="popover-target", color="danger"
+            "Click", id="click-target", color="danger", className="mr-1"
         ),
         dbc.Popover(
-            [
-                dbc.PopoverHeader("Popover header"),
-                dbc.PopoverBody("And here's some amazing content. Cool!"),
-            ],
-            id="popover",
-            is_open=False,
-            target="popover-target",
+            popover_children,
+            id="click",
+            target="click-target",
+            trigger="click",
+        ),
+        dbc.Button(
+            "Focus", id="focus-target", color="danger", className="mr-1"
+        ),
+        dbc.Popover(
+            popover_children,
+            id="focus",
+            target="focus-target",
+            trigger="focus",
+        ),
+        dbc.Button(
+            "Hover", id="hover-target", color="danger", className="mr-1"
+        ),
+        dbc.Popover(
+            popover_children,
+            id="hover",
+            target="hover-target",
+            trigger="hover",
+        ),
+        dbc.Button("Legacy", id="legacy-target", color="danger"),
+        dbc.Popover(
+            popover_children,
+            id="legacy",
+            target="legacy-target",
+            trigger="legacy",
         ),
     ]
 )
-
-
-@app.callback(
-    Output("popover", "is_open"),
-    [Input("popover-target", "n_clicks")],
-    [State("popover", "is_open")],
-)
-def toggle_popover(n, is_open):
-    if n:
-        return not is_open
-    return is_open
