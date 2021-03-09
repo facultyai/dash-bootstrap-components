@@ -14,6 +14,7 @@ const Fade = props => {
     base_class_active,
     is_in,
     loading_state,
+    style,
     ...otherProps
   } = props;
   return (
@@ -21,6 +22,7 @@ const Fade = props => {
       baseClass={base_class}
       baseClassActive={base_class_active}
       in={is_in}
+      style={is_in ? style : {visibility: 'hidden', ...style}}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
