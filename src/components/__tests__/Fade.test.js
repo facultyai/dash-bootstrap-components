@@ -24,8 +24,22 @@ describe('Fade', () => {
     fade.rerender(<Fade is_in />);
     jest.runAllTimers();
 
-    expect(fade.container.querySelector('div.fade.show')).not.toBe(
-      null
-    );
+    expect(fade.container.querySelector('div.fade.show')).not.toBe(null);
+  });
+
+  test('sets visibility hidden when is_in is false and not transitioning', () => {
+    const fade = render(<Fade is_in={false} timeout={1000} />);
+
+    expect(fade.container.firstChild).toHaveStyle('visibility:hidden');
+
+    fade.rerender(<Fade is_in timeout={1000} />);
+    expect(fade.container.firstChild).not.toHaveStyle('visibility:hidden');
+    jest.runAllTimers();
+    expect(fade.container.firstChild).not.toHaveStyle('visibility:hidden');
+
+    fade.rerender(<Fade is_in={false} timout={1000} />);
+    expect(fade.container.firstChild).not.toHaveStyle('visibility:hidden');
+    jest.runAllTimers();
+    expect(fade.container.firstChild).toHaveStyle('visibility:hidden');
   });
 });
