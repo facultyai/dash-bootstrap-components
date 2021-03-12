@@ -23,7 +23,7 @@ THEMES_SIDENAV_ITEMS[1] = {
             "name": "explorer",
             "href": "/docs/themes/explorer",
             "label": "Theme explorer",
-        }
+        },
     ],
 }
 
