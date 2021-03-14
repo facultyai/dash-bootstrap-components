@@ -14,30 +14,40 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
+
       - id: get-version
         run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|release/||')"
+
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+
       - name: Install dependencies
         run: npm install
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
           python-version: 3.8
+
       - name: Install Python dependencies
-        run: python -m pip install dash[dev] flit invoke semver termcolor
+        run: python -m pip install -r requirements-dev.txt
+
       - name: Update docs requirements
         run: invoke set-documentation-version ${{ steps.get-version.outputs.version }}
+
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-      - name: Publish release to PyPI
-        run: flit publish
-        env:
-          FLIT_USERNAME: ${{ secrets.FLIT_USERNAME }}
-          FLIT_PASSWORD: ${{ secrets.FLIT_PASSWORD }}
+
+      - name: Build dash-bootstrap-components
+        run: python -m build --sdist --wheel --outdir dist/
+
+      - name: Publish brad to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
       - name: Commit updated package-lock.json and docs requirements
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -45,6 +55,7 @@ jobs:
           branch: main
           push_options: --force
           file_pattern: package-lock.json docs/requirements.txt
+
       - name: Create GitHub release
         id: create-release
         uses: actions/create-release@v1
@@ -55,14 +66,16 @@ jobs:
           release_name: Release ${{ steps.get-version.outputs.version }}
           body: ${{ github.event.pull_request.body }}
           prerelease: false
+
       - name: Post-release cleanup
         run: invoke postrelease ${{ steps.get-version.outputs.version }}
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Back to dev
           branch: main
           push_options: --force
-          file_pattern: package.json tests/test_version.py dash_bootstrap_components/__init__.py
+          file_pattern: package.json tests/test_version.py dash_bootstrap_components/_version.py
 
   prerelease:
     name: Prerelease
@@ -72,28 +85,38 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
+
       - id: get-version
         run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|prerelease/||')"
+
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+
       - name: Install dependencies
         run: npm install
+
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
           python-version: 3.8
+
       - name: Install Python dependencies
-        run: python -m pip install dash[dev] flit invoke semver termcolor
+        run: python -m pip install -r requirements-dev.txt
+
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-      - name: Publish prerelease to PyPI
-        run: flit publish
-        env:
-          FLIT_USERNAME: ${{ secrets.FLIT_USERNAME }}
-          FLIT_PASSWORD: ${{ secrets.FLIT_PASSWORD }}
+
+      - name: Build dash-bootstrap-components
+        run: python -m build --sdist --wheel --outdir dist/
+
+      - name: Publish brad to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
       - name: Commit updated package-lock.json
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -101,6 +124,7 @@ jobs:
           branch: main
           push_options: --force
           file_pattern: package-lock.json
+
       - name: Create GitHub prerelease
         id: create-prerelease
         uses: actions/create-release@v1
@@ -111,11 +135,13 @@ jobs:
           release_name: Prerelease ${{ steps.get-version.outputs.version }}
           body: ${{ github.event.pull_request.body }}
           prerelease: true
+
       - name: Post-release cleanup
         run: invoke postrelease ${{ steps.get-version.outputs.version }}
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Back to dev
           branch: main
           push_options: --force
-          file_pattern: package.json tests/test_version.py dash_bootstrap_components/__init__.py
+          file_pattern: package.json tests/test_version.py dash_bootstrap_components/_version.py

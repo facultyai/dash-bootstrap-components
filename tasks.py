@@ -35,7 +35,7 @@ def prerelease(ctx, version):
     run(f"git checkout -b prerelease/{version}")
     run(
         "git add package.json package-lock.json "
-        "dash_bootstrap_components/__init__.py "
+        "dash_bootstrap_components/_version.py "
         "tests/test_version.py"
     )
     run(f'git commit -m "Prerelease {version}"')
@@ -134,15 +134,9 @@ def set_source_version(version):
 
 def set_py_version(version):
     version = normalize_version(version)
-    init_path = DASH_BOOTSTRAP_DIR / "__init__.py"
-    with init_path.open("r") as f:
-        lines = f.readlines()
-
-    index = [line.startswith("__version__ = ") for line in lines].index(True)
-    lines[index] = VERSION_TEMPLATE.format(version_string=version)
-
-    with init_path.open("w") as f:
-        f.writelines(lines)
+    version_path = DASH_BOOTSTRAP_DIR / "_version.py"
+    with version_path.open("w") as f:
+        f.write(VERSION_TEMPLATE.format(version_string=version))
 
     test_version_path = HERE / "tests" / "test_version.py"
     with test_version_path.open("w") as f:
@@ -230,7 +224,12 @@ def move_generated_files(ctx):
     for file_ in chain(dir_.glob("*.py"), dir_.glob("*.json")):
         filename = file_.name
 
-        if filename in ("__init__.py", "_table.py", "themes.py"):
+        if filename in (
+            "__init__.py",
+            "_table.py",
+            "_version.py",
+            "themes.py",
+        ):
             continue
 
         if filename == "_imports_.py":
