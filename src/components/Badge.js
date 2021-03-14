@@ -48,7 +48,7 @@ const Badge = props => {
 };
 
 Badge.defaultProps = {
-  color: "secondary",
+  color: 'secondary',
   n_clicks: 0,
   n_clicks_timestamp: -1
 };

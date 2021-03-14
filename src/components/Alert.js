@@ -60,7 +60,7 @@ const Alert = props => {
 };
 
 Alert.defaultProps = {
-  color: "success",
+  color: 'success',
   is_open: true,
   duration: null
 };
