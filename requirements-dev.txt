@@ -1,5 +1,5 @@
-dash[dev,testing]
-flit
+build
+dash[dev]
 invoke
 semver
 termcolor

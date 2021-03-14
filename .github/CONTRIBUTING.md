@@ -179,16 +179,6 @@ You can now build Python, R and Julia packages with
 npm run build
 ```
 
-Install the Python package for testing using `flit` (which will have been
-installed alongside the other development dependencies)
-
-```
-flit install [-s]
-```
-
-The optional `-s` flag creates a symlink to the code and allows you to make
-changes to the source without having to reinstall. It is roughly equivalent to
-doing `pip install -e .`.
 ## License
 
 By contributing your code, you agree to license your contribution under the
