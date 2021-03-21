@@ -28,6 +28,16 @@ See https://reactjs.org/docs/lists-and-keys.html for more info
 - `placement` (a value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'; optional): Specify popover placement.
 - `target` (String; optional): ID of the component to attach the popover to.
 - `container` (String; optional): Where to inject the popper DOM node, default body.
+- `trigger` (String; optional): Space separated list of triggers (e.g. "click hover focus legacy"). These
+specify ways in which the target component can toggle the popover. If not
+specified you must toggle the popover yourself using callbacks. Options
+are:
+- "click": toggles the popover when the target is clicked.
+- "hover": toggles the popover when the target is hovered over with the
+cursor.
+- "focus": toggles the popover when the target receives focus
+- "legacy": toggles the popover when the target is clicked, but will also
+dismiss the popover when the user clicks outside of the popover.
 - `is_open` (Bool; optional): Whether the Popover is open or not.
 - `hide_arrow` (Bool; optional): Hide popover arrow.
 - `innerClassName` (String; optional): CSS class to apply to the popover.
@@ -45,7 +55,7 @@ Those elements have the following types:
   - `component_name` (String; optional): Holds the name of the component that is loading
 """
 function dbc_popover(; kwargs...)
-        available_props = Symbol[:children, :id, :style, :className, :key, :placement, :target, :container, :is_open, :hide_arrow, :innerClassName, :delay, :offset, :flip, :loading_state]
+        available_props = Symbol[:children, :id, :style, :className, :key, :placement, :target, :container, :trigger, :is_open, :hide_arrow, :innerClassName, :delay, :offset, :flip, :loading_state]
         wild_props = Symbol[]
         return Component("dbc_popover", "Popover", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

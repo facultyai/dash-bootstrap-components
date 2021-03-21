@@ -57,9 +57,10 @@ Those elements have the following types:
 - `target` (String; optional): Target attribute to pass on to link if using Button as an external link.
 - `type` (a value equal to: 'button', 'reset', 'submit'; optional): The default behavior of the button. Possible values are: button, reset,
 submit
+- `download` (String; optional): Indicates that the hyperlink is to be used for downloading a resource.
 """
 function dbc_button(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :style, :key, :href, :external_link, :n_clicks, :n_clicks_timestamp, :active, :block, :color, :disabled, :size, :outline, :loading_state, :target, :type]
+        available_props = Symbol[:children, :id, :className, :style, :key, :href, :external_link, :n_clicks, :n_clicks_timestamp, :active, :block, :color, :disabled, :size, :outline, :loading_state, :target, :type, :download]
         wild_props = Symbol[]
         return Component("dbc_button", "Button", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
