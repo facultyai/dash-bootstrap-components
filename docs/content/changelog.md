@@ -6,6 +6,21 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.12.0 - 2021/3/21
+
+### Added
+
+- Adds a new `trigger` property to `Popover`, allowing it to be used without writing callbacks if desired ([PR 531](https://github.com/facultyai/dash-bootstrap-components/pull/531))
+- Exposes `download` prop on `Button` ([PR 528](https://github.com/facultyai/dash-bootstrap-components/pull/528))
+
+### Fixed
+
+- Restore default colours in `Alert` and `Badge` components ([PR 542](https://github.com/facultyai/dash-bootstrap-components/pull/542))
+
+### Changed
+
+- Adds `visibility:hidden` to `Fade` when content is faded so that tooltips do not appear on faded content ([PR 535](https://github.com/facultyai/dash-bootstrap-components/pull/535), [PR 537](https://github.com/facultyai/dash-bootstrap-components/pull/537))
+
 ## 0.11.3 - 2021/2/13
 
 This version marks the first release of dash-bootstrap-components for Julia. There are no changes in functionality.
