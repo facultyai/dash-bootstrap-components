@@ -156,7 +156,28 @@ npm run format
 ### Run tests
 
 Run `npm run test` before committing to ensure your changes follow our coding
-standards and pass our tests..
+standards and pass our tests.
+
+## Building dash-bootstrap-components locally
+
+To build _dash-bootstrap-components_ locally, first install the Python
+development dependencies
+
+```
+python -m pip install -r requirements-dev.txt
+```
+
+Then install JavaScript dependencies
+
+```
+npm install
+```
+
+You can now build Python, R and Julia packages with
+
+```
+npm run build
+```
 
 ## License
 

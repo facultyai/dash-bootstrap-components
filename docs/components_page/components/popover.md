@@ -5,9 +5,20 @@ lead: Use the Popover component to add Bootstrap popovers to any component in yo
 
 ## Simple example
 
-To use `Popover`, add it to your layout, and set the `target` argument to the `id` of the component you would like to attach the popover to. Then define a callback that toggles the `is_open` property of the `Popover`. In the below example we use a simple callback to toggle the popover when a button is clicked. In this case the target of the popover is the button itself, but in general there is no requirement that the components used in the callback need to be related to the target.
+To use `Popover`, add it to your layout, and set the `target` argument to the `id` of the component you would like to attach the popover to. The easiest way to trigger the popover is to specify the `trigger` property. This should be a string containing any of the following 4 values (space separated)
 
-{{example:components/popover/popover.py:popover}}
+*  `"click"`: toggles the popover when the target is clicked.
+*  `"focus"`: toggles the popover when the target receives focus
+*  `"hover"`: toggles the popover when the target is hovered over with the cursor.
+*  `"legacy"`: toggles the popover when the target is clicked, but will also dismiss the popover when the user clicks outside of the popover.
+
+{{example:components/popover/popover.py:popovers}}
+
+## Toggling the Popover with callbacks
+
+Alternatively, you can manually control the appearance of the popover using callbacks by setting the `is_open` property of the `Popover`. This can be useful for example when you want to make the popover appear after the user interacts with something other than the target component as demonstrated in the below example.
+
+{{example:components/popover/popover_callback.py:popover}}
 
 ## Placement
 

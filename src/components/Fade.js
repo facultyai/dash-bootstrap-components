@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Fade as RSFade} from 'reactstrap';
@@ -14,13 +14,21 @@ const Fade = props => {
     base_class_active,
     is_in,
     loading_state,
+    style,
     ...otherProps
   } = props;
+
+  // set visibility to hidden after transition has completed to hide tooltips
+  const [hidden, setHidden] = useState(!is_in);
+
   return (
     <RSFade
       baseClass={base_class}
       baseClassActive={base_class_active}
       in={is_in}
+      style={hidden ? {visibility: 'hidden', ...style} : style}
+      onEnter={() => setHidden(false)}
+      onExited={() => setHidden(true)}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

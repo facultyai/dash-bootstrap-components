@@ -32,7 +32,7 @@ const Progress = props => {
       }
       // reactstrap handles these inconsistently atm, have to swap around
       color={isBootstrapColor ? color : null}
-      style={
+      barStyle={
         !isBootstrapColor ? {backgroundColor: color, ...bar_style} : bar_style
       }
       outer_style={style}

@@ -2,12 +2,12 @@
 import os
 import sys
 
-from . import themes  # noqa
-from . import _components
-from ._components import *  # noqa
-from ._table import _generate_table_from_df
+from dash_bootstrap_components import themes  # noqa
+from dash_bootstrap_components import _components
+from dash_bootstrap_components._components import *  # noqa
+from dash_bootstrap_components._table import _generate_table_from_df
+from dash_bootstrap_components._version import __version__
 
-__version__ = "0.11.3"
 _current_path = os.path.dirname(os.path.abspath(__file__))
 
 METADATA_PATH = os.path.join(_current_path, "_components", "metadata.json")

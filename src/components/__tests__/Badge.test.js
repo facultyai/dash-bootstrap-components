@@ -18,6 +18,9 @@ describe('Badge', () => {
 
   test('applies contextual colors with "color" prop', () => {
     const {
+      container: {firstChild: badgeSecondary}
+    } = render(<Badge />);
+    const {
       container: {firstChild: badgePrimary}
     } = render(<Badge color="primary" />);
     const {
@@ -27,6 +30,7 @@ describe('Badge', () => {
       container: {firstChild: badgeDark}
     } = render(<Badge color="dark" />);
 
+    expect(badgeSecondary).toHaveClass('badge-secondary');
     expect(badgePrimary).toHaveClass('badge-primary');
     expect(badgeSuccess).toHaveClass('badge-success');
     expect(badgeDark).toHaveClass('badge-dark');
@@ -60,33 +64,31 @@ describe('Badge', () => {
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
   });
 
-    test('relative links are internal by default', () => {
-      const badge = render(
-        <Badge href="/relative">Clickable</Badge>
-      );
+  test('relative links are internal by default', () => {
+    const badge = render(<Badge href="/relative">Clickable</Badge>);
 
-      const mockEventListener = jest.fn();
-      window.addEventListener('_dashprivate_pushstate', mockEventListener);
-      window.scrollTo = jest.fn();
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
 
-      expect(mockEventListener.mock.calls).toHaveLength(0);
-      userEvent.click(badge.getByText('Clickable'));
-      expect(mockEventListener.mock.calls).toHaveLength(1);
-    });
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(badge.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(1);
+  });
 
-    test('relative links are external with external_link=true', () => {
-      const badge = render(
-        <Badge href="/relative" external_link>
-          Clickable
-        </Badge>
-      );
+  test('relative links are external with external_link=true', () => {
+    const badge = render(
+      <Badge href="/relative" external_link>
+        Clickable
+      </Badge>
+    );
 
-      const mockEventListener = jest.fn();
-      window.addEventListener('_dashprivate_pushstate', mockEventListener);
-      window.scrollTo = jest.fn();
+    const mockEventListener = jest.fn();
+    window.addEventListener('_dashprivate_pushstate', mockEventListener);
+    window.scrollTo = jest.fn();
 
-      expect(mockEventListener.mock.calls).toHaveLength(0);
-      userEvent.click(badge.getByText('Clickable'));
-      expect(mockEventListener.mock.calls).toHaveLength(0);
-    });
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+    userEvent.click(badge.getByText('Clickable'));
+    expect(mockEventListener.mock.calls).toHaveLength(0);
+  });
 });

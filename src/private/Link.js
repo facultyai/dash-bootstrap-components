@@ -68,8 +68,10 @@ class Link extends Component {
       preOnClick,
       target,
       href,
+      download,
       ...otherProps
     } = this.props;
+    const linkIsExternal = href && isExternalLink(external_link, href);
     /**
      * ideally, we would use cloneElement however
      * that doesn't work with dash's recursive
@@ -78,7 +80,8 @@ class Link extends Component {
     return (
       <a
         href={href}
-        target={href && isExternalLink(external_link, href) ? target : null}
+        target={linkIsExternal ? target : null}
+        download={download && linkIsExternal ? download : null}
         {...otherProps}
         onClick={e => this.updateLocation(e)}
       >
@@ -136,7 +139,9 @@ Link.propTypes = {
    */
   preOnClick: PropTypes.func,
 
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  download: PropTypes.string
 };
 
 Link.defaultProps = {

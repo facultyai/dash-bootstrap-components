@@ -1,3 +1,5 @@
+import shutil
+from itertools import chain
 from pathlib import Path
 
 import semver
@@ -33,7 +35,7 @@ def prerelease(ctx, version):
     run(f"git checkout -b prerelease/{version}")
     run(
         "git add package.json package-lock.json "
-        "dash_bootstrap_components/__init__.py "
+        "dash_bootstrap_components/_version.py "
         "tests/test_version.py"
     )
     run(f'git commit -m "Prerelease {version}"')
@@ -60,7 +62,7 @@ def release(ctx, version):
     run(f"git checkout -b release/{version}")
     run(
         "git add package.json package-lock.json "
-        "dash_bootstrap_components/__init__.py "
+        "dash_bootstrap_components/_version.py "
         "tests/test_version.py"
     )
     run(f'git commit -m "Release {version}"')
@@ -132,15 +134,9 @@ def set_source_version(version):
 
 def set_py_version(version):
     version = normalize_version(version)
-    init_path = DASH_BOOTSTRAP_DIR / "__init__.py"
-    with init_path.open("r") as f:
-        lines = f.readlines()
-
-    index = [line.startswith("__version__ = ") for line in lines].index(True)
-    lines[index] = VERSION_TEMPLATE.format(version_string=version)
-
-    with init_path.open("w") as f:
-        f.writelines(lines)
+    version_path = DASH_BOOTSTRAP_DIR / "_version.py"
+    with version_path.open("w") as f:
+        f.write(VERSION_TEMPLATE.format(version_string=version))
 
     test_version_path = HERE / "tests" / "test_version.py"
     with test_version_path.open("w") as f:
@@ -195,3 +191,78 @@ def error(text):
 
 def info(text):
     print(text)
+
+
+def make_and_clean_dir(dir_, glob="*"):
+    info(f"Cleaning {dir_}/{glob}")
+    (HERE / dir_).mkdir(exist_ok=True)
+    for file_ in (HERE / dir_).glob(glob):
+        if file_.is_file():
+            file_.unlink()
+
+
+def copy_dist():
+    bundle_name = "dash_bootstrap_components.min.js"
+    shutil.copy(
+        HERE / "dash_bootstrap_components" / "_components" / bundle_name,
+        HERE / "dist" / bundle_name,
+    )
+
+
+@task
+def clean(ctx):
+    make_and_clean_dir("dist")
+    make_and_clean_dir("lib")
+    make_and_clean_dir("dash_bootstrap_components/_components")
+    make_and_clean_dir("src", "*.jl")
+
+
+@task
+def move_generated_files(ctx):
+    info("Moving generated files")
+    dir_ = HERE / "dash_bootstrap_components"
+    for file_ in chain(dir_.glob("*.py"), dir_.glob("*.json")):
+        filename = file_.name
+
+        if filename in (
+            "__init__.py",
+            "_table.py",
+            "_version.py",
+            "themes.py",
+        ):
+            continue
+
+        if filename == "_imports_.py":
+            filename = "__init__.py"
+
+        file_.rename(file_.parent / "_components" / filename)
+
+
+@task
+def build_py(ctx):
+    run("dash-generate-components ./src/components dash_bootstrap_components")
+    copy_dist()
+    move_generated_files(ctx)
+
+
+@task
+def build_r(ctx):
+    run(
+        "dash-generate-components ./src/components dash_bootstrap_components "
+        "--r-prefix 'dbc'"
+    )
+    copy_dist()
+    move_generated_files(ctx)
+    with (HERE / "NAMESPACE").open("a") as f:
+        f.write("export(dbcThemes)\n")
+
+
+@task
+def build_jl(ctx):
+    run(
+        "dash-generate-components ./src/components dash_bootstrap_components "
+        "--jl-prefix 'dbc'"
+    )
+    copy_dist()
+    move_generated_files(ctx)
+    shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "themes.jl")
