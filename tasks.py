@@ -265,4 +265,22 @@ def build_jl(ctx):
     )
     copy_dist()
     move_generated_files(ctx)
+
+    # add themes include to DashBootstrapComponents.jl
+    with (HERE / "src" / "DashBootstrapComponents.jl").open() as f:
+        lines = f.readlines()
+
+    count = 0
+    for i, line in enumerate(lines):
+        if line.startswith("include"):
+            count += 1
+        elif count > 0:
+            break
+
+    lines.insert(i, 'include("themes.jl")\n')
+    lines.insert(i + 1, "\n")
+
+    with (HERE / "src" / "DashBootstrapComponents.jl").open("w") as f:
+        f.writelines(lines)
+
     shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "themes.jl")
