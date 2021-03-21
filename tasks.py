@@ -62,7 +62,7 @@ def release(ctx, version):
     run(f"git checkout -b release/{version}")
     run(
         "git add package.json package-lock.json "
-        "dash_bootstrap_components/__init__.py "
+        "dash_bootstrap_components/_version.py "
         "tests/test_version.py"
     )
     run(f'git commit -m "Release {version}"')
