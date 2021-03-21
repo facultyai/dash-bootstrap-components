@@ -14,7 +14,7 @@ dbcButton(children=NULL, id=NULL, className=NULL, style=NULL,
 key=NULL, href=NULL, external_link=NULL, n_clicks=NULL,
 n_clicks_timestamp=NULL, active=NULL, block=NULL,
 color=NULL, disabled=NULL, size=NULL, outline=NULL,
-loading_state=NULL, target=NULL, type=NULL)
+loading_state=NULL, target=NULL, type=NULL, download=NULL)
 }
 
 \arguments{
@@ -76,6 +76,8 @@ those elements have the following types:
 
 \item{type}{A value equal to: 'button', 'reset', 'submit'. The default behavior of the button. Possible values are: button, reset,
 submit}
+
+\item{download}{Character. Indicates that the hyperlink is to be used for downloading a resource.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

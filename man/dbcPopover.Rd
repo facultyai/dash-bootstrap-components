@@ -12,8 +12,9 @@ Popover creates a toggleable overlay that can be used to provide additional info
 \usage{
 dbcPopover(children=NULL, id=NULL, style=NULL, className=NULL,
 key=NULL, placement=NULL, target=NULL, container=NULL,
-is_open=NULL, hide_arrow=NULL, innerClassName=NULL,
-delay=NULL, offset=NULL, flip=NULL, loading_state=NULL)
+trigger=NULL, is_open=NULL, hide_arrow=NULL,
+innerClassName=NULL, delay=NULL, offset=NULL, flip=NULL,
+loading_state=NULL)
 }
 
 \arguments{
@@ -36,6 +37,17 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 \item{target}{Character. ID of the component to attach the popover to.}
 
 \item{container}{Character. Where to inject the popper DOM node, default body.}
+
+\item{trigger}{Character. Space separated list of triggers (e.g. "click hover focus legacy"). These
+specify ways in which the target component can toggle the popover. If not
+specified you must toggle the popover yourself using callbacks. Options
+are:
+- "click": toggles the popover when the target is clicked.
+- "hover": toggles the popover when the target is hovered over with the
+cursor.
+- "focus": toggles the popover when the target receives focus
+- "legacy": toggles the popover when the target is clicked, but will also
+dismiss the popover when the user clicks outside of the popover.}
 
 \item{is_open}{Logical. Whether the Popover is open or not.}
 
