@@ -43,7 +43,7 @@ jobs:
       - name: Build dash-bootstrap-components
         run: python -m build --sdist --wheel --outdir dist/
 
-      - name: Publish brad to PyPI
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.4.2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
@@ -112,7 +112,7 @@ jobs:
       - name: Build dash-bootstrap-components
         run: python -m build --sdist --wheel --outdir dist/
 
-      - name: Publish brad to PyPI
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.4.2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
