@@ -1,0 +1,67 @@
+{% from "macros/theme-explorer-navbar.html" import theme_explorer_navbar %}
+{% extends "base.html" %}
+{% block header %}
+{{ theme_explorer_navbar() }}
+{% endblock %}
+{% block body %}
+<div class="form-group mx-2 mx-md-4 my-4">
+  <p>
+    Choose a theme below to see the different options for styling your app.
+    Click the book icon next to any of the headings to be taken to the relevant
+    documentation for that component.
+  </p>
+  <p>
+    This app only shows Bootstrap components. Check out the original
+    <a href="https://hellodash.pythonanywhere.com/">
+      Plotly Dash theme explorer app
+    </a>
+    made by
+    <a href="https://github.com/AnnMarieW">@AnnMarieW</a>
+    for a much more comprehensive demo of different styling options.
+  </p>
+  <label for="theme-switcher">Select theme</label>
+  <select
+    name="theme-switcher"
+    id="theme-switcher"
+    class="custom-select"
+    value="bootstrap"
+  >
+    <option value="bootstrap">Bootstrap</option>
+    <option value="cerulean">Cerulean</option>
+    <option value="cosmo">Cosmo</option>
+    <option value="cyborg">Cyborg</option>
+    <option value="darkly">Darkly</option>
+    <option value="flatly">Flatly</option>
+    <option value="journal">Journal</option>
+    <option value="litera">Litera</option>
+    <option value="lumen">Lumen</option>
+    <option value="lux">Lux</option>
+    <option value="materia">Materia</option>
+    <option value="minty">Minty</option>
+    <option value="pulse">Pulse</option>
+    <option value="sandstone">Sandstone</option>
+    <option value="simplex">Simplex</option>
+    <option value="sketchy">Sketchy</option>
+    <option value="slate">Slate</option>
+    <option value="solar">Solar</option>
+    <option value="spacelab">Spacelab</option>
+    <option value="superhero">Superhero</option>
+    <option value="united">United</option>
+    <option value="yeti">Yeti</option>
+  </select>
+</div>
+<main class="dbcd-main mb-2 mx-2 mx-md-4 my-4">
+  <div style="transform:translateZ(0);box-shadow:0 0 2px 1px #9c9c9c;">
+    <iframe
+      id="explorer-iframe"
+      src="/docs/themes/explorer/bootstrap"
+      frameborder="0"
+      style="min-height:calc(100vh - 106px);width:100%;"
+    ></iframe>
+  </div>
+</main>
+{% endblock %}
+{% block scripts %}
+{% include "partials/scripts.html" %}
+<script src="/static/js/theme-switcher.js"></script>
+{% endblock %}
