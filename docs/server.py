@@ -62,6 +62,13 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
+    @server.route("/docs/themes/explorer/")
+    def theme_explorer():
+        try:
+            return render_template("theme-explorer.html")
+        except TemplateNotFound:
+            abort(404)
+
     @server.route("/docs/faq/")
     def faq():
         try:
