@@ -1,55 +1,54 @@
 import os
-from pathlib import Path
-
 import dash
-from jinja2 import Environment, FileSystemLoader
+import dash_bootstrap_components as dbc
 
 from .theme_explorer import app as theme_explorer
 
 SERVE_LOCALLY = os.getenv("DBC_DOCS_MODE", "production") == "dev"
+FA = "https://use.fontawesome.com/releases/v5.15.3/css/all.css"
 
-HERE = Path(__file__).parent
-TEMPLATES = HERE.parent / "templates"
-
-INDEX_STRING_TEMPLATE = """{% extends "theme-explorer.html" %}
-{% block head %}
-{{ super() }}
-{{ "{%metas%}{%css%}" }}
-{% endblock %}
-{% block title %}
-<title>{{ "{%title%}" }}</title>
-{% endblock %}
-{% block content %}
-{{ "{%app_entry%}" }}
-{% endblock %}
-{% block code %}<CODE>{% endblock %}
-{% block scripts %}
-<footer>
-  {{ "{%config%}{%scripts%}{%renderer%}" }}
-  {{ super() }}
-</footer>
-{% endblock %}
-"""
+SHEETS = [
+    ("bootstrap", dbc.themes.BOOTSTRAP),
+    ("cerulean", dbc.themes.CERULEAN),
+    ("cosmo", dbc.themes.COSMO),
+    ("cyborg", dbc.themes.CYBORG),
+    ("darkly", dbc.themes.DARKLY),
+    ("flatly", dbc.themes.FLATLY),
+    ("journal", dbc.themes.JOURNAL),
+    ("litera", dbc.themes.LITERA),
+    ("lumen", dbc.themes.LUMEN),
+    ("lux", dbc.themes.LUX),
+    ("materia", dbc.themes.MATERIA),
+    ("minty", dbc.themes.MINTY),
+    ("pulse", dbc.themes.PULSE),
+    ("sandstone", dbc.themes.SANDSTONE),
+    ("simplex", dbc.themes.SIMPLEX),
+    ("sketchy", dbc.themes.SKETCHY),
+    ("slate", dbc.themes.SLATE),
+    ("solar", dbc.themes.SOLAR),
+    ("spacelab", dbc.themes.SPACELAB),
+    ("superhero", dbc.themes.SUPERHERO),
+    ("united", dbc.themes.UNITED),
+    ("yeti", dbc.themes.YETI),
+]
 
 
 def register_apps():
-    env = Environment(loader=FileSystemLoader(TEMPLATES.as_posix()))
-    template = env.from_string(INDEX_STRING_TEMPLATE)
-    template = template.render()
+    apps = {}
 
-    code = (HERE / "theme_explorer.py").read_text()
+    for name, sheet in SHEETS:
+        new_theme_explorer = dash.Dash(
+            external_stylesheets=[FA, sheet, "/static/loading.css"],
+            requests_pathname_prefix=f"/docs/themes/explorer/{name}/",
+            suppress_callback_exceptions=True,
+            serve_locally=SERVE_LOCALLY,
+            update_title=None,
+        )
 
-    new_theme_explorer = dash.Dash(
-        external_stylesheets=["/static/loading.css"],
-        requests_pathname_prefix="/docs/themes/explorer/",
-        suppress_callback_exceptions=True,
-        serve_locally=SERVE_LOCALLY,
-        index_string=template.replace("<CODE>", code),
-        update_title=None,
-    )
+        new_theme_explorer.title = f"Theme explorer - {name} - dbc docs"
+        new_theme_explorer.layout = theme_explorer.layout
+        new_theme_explorer.callback_map = theme_explorer.callback_map
+        new_theme_explorer._callback_list = theme_explorer._callback_list
+        apps[f"/docs/themes/explorer/{name}"] = new_theme_explorer
 
-    new_theme_explorer.title = "Theme explorer - dbc docs"
-    new_theme_explorer.layout = theme_explorer.layout
-    new_theme_explorer.callback_map = theme_explorer.callback_map
-    new_theme_explorer._callback_list = new_theme_explorer._callback_list
-    return {"/docs/themes/explorer": new_theme_explorer}
+    return apps

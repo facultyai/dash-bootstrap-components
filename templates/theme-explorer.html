@@ -1,11 +1,26 @@
-{% from "macros/theme-explorer-navbar.html" import theme_explorer_navbar %} {%
-extends "base.html" %} {% block head %} {% include "partials/head.html" %}
-<link rel="stylesheet" href="/static/theme-explorer.css" />
-{% endblock %} {% block header %}{{ theme_explorer_navbar() }}{% endblock %} {%
-block body %}
+{% from "macros/theme-explorer-navbar.html" import theme_explorer_navbar %}
+{% extends "base.html" %}
+{% block header %}
+{{ theme_explorer_navbar() }}
+{% endblock %}
+{% block body %}
 <div class="form-group mx-2 mx-md-4 my-4">
-  <label for="theme-switcher">Select theme</label
-  ><select
+  <p>
+    Choose a theme below to see the different options for styling your app.
+    Click the book icon next to any of the headings to be taken to the relevant
+    documentation for that component.
+  </p>
+  <p>
+    This app only shows Bootstrap components. Check out the original
+    <a href="https://github.com/AnnMarieW/HelloDash">
+      Plotly Dash theme explorer app
+    </a>
+    made by
+    <a href="https://github.com/AnnMarieW">@AnnMarieW</a>
+    for a much more comprehensive demo of different styling options.
+  </p>
+  <label for="theme-switcher">Select theme</label>
+  <select
     name="theme-switcher"
     id="theme-switcher"
     class="custom-select"
@@ -19,8 +34,8 @@ block body %}
     <option value="flatly">Flatly</option>
     <option value="journal">Journal</option>
     <option value="litera">Litera</option>
-    <option value="lux">Lux</option>
     <option value="lumen">Lumen</option>
+    <option value="lux">Lux</option>
     <option value="materia">Materia</option>
     <option value="minty">Minty</option>
     <option value="pulse">Pulse</option>
@@ -35,24 +50,18 @@ block body %}
     <option value="yeti">Yeti</option>
   </select>
 </div>
-<main class="dbcd-main mb-5 mx-2 mx-md-4 my-4">
-  <div
-    style="transform:translateZ(0);box-shadow:0 0 2px 1px #9c9c9c;min-height:calc(700px);"
-  >
-    {% block content %}{% endblock %}
-  </div>
-  <div>
-    <h2>Source Code</h2>
-    <div
-      id="sourceCode"
-      class="position-relative"
-      style="visibility:hidden;top:-110px"
-    ></div>
-    <pre
-      class="mt-3"
-    ><code id="code-container" class="language-python">{% block code %}{% endblock %}</code></pre>
+<main class="dbcd-main mb-2 mx-2 mx-md-4 my-4">
+  <div style="transform:translateZ(0);box-shadow:0 0 2px 1px #9c9c9c;">
+    <iframe
+      id="explorer-iframe"
+      src="/docs/themes/explorer/bootstrap"
+      frameborder="0"
+      style="min-height:calc(100vh - 106px);width:100%;"
+    ></iframe>
   </div>
 </main>
-{% endblock %} {% block scripts %} {% include "partials/scripts.html" %}
+{% endblock %}
+{% block scripts %}
+{% include "partials/scripts.html" %}
 <script src="/static/js/theme-switcher.js"></script>
 {% endblock %}
