@@ -92,6 +92,15 @@ If you need more granular control over checkboxes and radio buttons, you can als
 
 {{example:components/input/radio_check_standalone.py:standalone_radio_check}}
 
+## Color picker
+
+When using `Input` with `type="color"`, the user may specify a color, either by using a visual color picker or by entering the color in a text field in #rrggbb format.
+
+Note that the color picker presentation may vary substantially from one browser and/or platform to another.
+
+{{example:components/input/colorpicker.py:colorpicker}}
+
+
 {{apidoc:src/components/input/Input.js}}
 
 {{apidoc:src/components/input/Textarea.js}}
