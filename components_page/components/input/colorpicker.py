@@ -1,11 +1,10 @@
-
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
 colorpicker = dbc.FormGroup(
     [
-        dbc.Label("Choose the text color:", id='label'),
+        dbc.Label("Choose the text color:", id="label"),
         dbc.Input(
             type="color",
             id="colorpicker",
