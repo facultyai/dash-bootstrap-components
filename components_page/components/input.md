@@ -105,6 +105,8 @@ Note that the color picker presentation may vary substantially from one browser 
 
 {{apidoc:src/components/input/Textarea.js}}
 
+{{apidoc:src/components/input/Select.js}}
+
 {{apidoc:src/components/input/RadioItems.js}}
 
 {{apidoc:src/components/input/Checklist.js}}
