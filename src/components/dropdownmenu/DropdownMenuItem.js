@@ -48,6 +48,7 @@ const DropdownMenuItem = props => {
       href={disabled ? null : href}
       disabled={disabled}
       target={useLink && target}
+      toggle={toggle}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
