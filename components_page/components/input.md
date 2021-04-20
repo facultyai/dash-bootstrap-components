@@ -98,6 +98,10 @@ When using `Input` with `type="color"`, the user may specify a color, either by 
 
 Note that the color picker presentation may vary substantially from one browser and/or platform to another.
 
+As you drag the selector around the color picker, notice that the text color is smoothly updated.   While this is a nice feature, it may  cause a performance issue in your app, because the callback fires continuously.  
+
+This is a great use-case for a [Dash clientside callback](https://dash.plotly.com/clientside-callbacks).  This example uses a clientside callback so the callback runs directly in the browser instead of making requests to the Dash server.  For your reference, the regular Dash callback is shown as a comment.  
+
 {{example:components/input/colorpicker.py:colorpicker}}
 
 
