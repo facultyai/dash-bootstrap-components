@@ -1,10 +1,10 @@
+import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import dash_bootstrap_components as dbc
 
 colorpicker = dbc.FormGroup(
     [
-        dbc.Label("Choose the text color:", id="label"),
+        dbc.Label(["Select a ", html.Span("color", id="color")]),
         dbc.Input(
             type="color",
             id="colorpicker",
@@ -14,9 +14,18 @@ colorpicker = dbc.FormGroup(
     ]
 )
 
-
-@app.callback(
-    Output("label", "style"), Input("colorpicker", "value"),
+app.clientside_callback(
+    """
+    function(color) {                                      
+        return {"color": color}
+    }
+    """,
+    Output("color", "style"),
+    Input("colorpicker", "value"),
 )
-def update_text(color):
-    return {"color": color}
+
+
+# Regular Dash callback
+# @app.callback(Output("color", "style"), Input("colorpicker", "value"))
+# def update_text(color):
+#     return {"color": color}
