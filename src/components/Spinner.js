@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {omit, type} from 'ramda';
+import {omit} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 import {bootstrapColors} from '../private/BootstrapColors';
 
@@ -21,8 +21,21 @@ const Spinner = props => {
     fullscreen,
     fullscreenClassName,
     fullscreen_style,
+    debounce,
     ...otherProps
   } = props;
+
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  useEffect(() => {
+    if (loading_state) {
+      if (loading_state.is_loading && !showSpinner) {
+        setShowSpinner(true);
+      } else if (!loading_state.is_loading && showSpinner) {
+        setTimeout(() => setShowSpinner(false), debounce);
+      }
+    }
+  }, [loading_state]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -75,8 +88,6 @@ const Spinner = props => {
       ...spinner_style
     };
 
-    const showSpinner = loading_state && loading_state.is_loading;
-
     return (
       <div style={showSpinner ? hiddenStyle : {}}>
         {children}
@@ -104,6 +115,10 @@ const Spinner = props => {
 };
 
 Spinner._dashprivate_isLoadingComponent = true;
+
+Spinner.defaultProps = {
+  debounce: 0
+};
 
 Spinner.propTypes = {
   /**
@@ -162,7 +177,13 @@ Spinner.propTypes = {
    * Boolean that determines if the loading spinner will be displayed
    * full-screen or not.
    */
-  fullscreen: PropTypes.bool
+  fullscreen: PropTypes.bool,
+
+  /**
+   * When using the spinner as a loading spinner, add a time delay to the
+   * spinner being removed to prevent flickering.
+   */
+  debounce: PropTypes.number
 };
 
 export default Spinner;

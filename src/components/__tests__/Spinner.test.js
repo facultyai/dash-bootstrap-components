@@ -1,6 +1,8 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {act, render} from '@testing-library/react';
 import Spinner from '../Spinner';
+
+jest.useFakeTimers();
 
 describe('Spinner', () => {
   test('renders a div with class "border-spinner"', () => {
@@ -12,17 +14,18 @@ describe('Spinner', () => {
   });
 
   test("renders its content if object isn't loading", () => {
-    const {container: All, rerender} = render(
+    const {container: container, rerender} = render(
       <Spinner>Some spinner content</Spinner>
     );
 
-    expect(All).toHaveTextContent('Some spinner content');
+    expect(container).toHaveTextContent('Some spinner content');
+        expect(container.querySelector('div.spinner-border')).toBe(null);
 
     rerender(
       <Spinner loading_state={{is_loading: true}}>Some spinner content</Spinner>
     );
 
-    const overAll = All.firstChild;
+    const overAll = container.firstChild;
     const spinner = overAll.lastChild;
 
     expect(overAll).toHaveTextContent('Some spinner content');
@@ -63,5 +66,32 @@ describe('Spinner', () => {
     expect(spinnerPrimary).toHaveClass('text-primary');
     expect(spinnerSuccess).toHaveClass('text-success');
     expect(spinnerDark).toHaveClass('text-dark');
+  });
+
+  test('spinner can be debounced with debounce prop', () => {
+    const {container: container, rerender} = render(
+      <Spinner loading_state={{is_loading: true}} debounce={1000}>
+        Some spinner content
+      </Spinner>
+    );
+
+    const overAll = container.firstChild;
+    const spinner = overAll.lastChild;
+
+    expect(overAll).toHaveTextContent('Some spinner content');
+    expect(spinner.firstChild).toHaveClass('spinner-border');
+
+    rerender(
+      <Spinner loading_state={{is_loading: false}} debounce={1000}>
+        Some spinner content
+      </Spinner>
+    );
+
+    expect(overAll).toHaveTextContent('Some spinner content');
+    expect(spinner.firstChild).toHaveClass('spinner-border');
+
+    act(() => jest.advanceTimersByTime(1000));
+
+    expect(container.querySelector('div.spinner-border')).toBe(null);
   });
 });
