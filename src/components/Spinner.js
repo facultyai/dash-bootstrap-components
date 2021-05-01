@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
@@ -26,13 +26,17 @@ const Spinner = props => {
   } = props;
 
   const [showSpinner, setShowSpinner] = useState(false);
+  const timer = useRef();
 
   useEffect(() => {
     if (loading_state) {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
       if (loading_state.is_loading && !showSpinner) {
         setShowSpinner(true);
       } else if (!loading_state.is_loading && showSpinner) {
-        setTimeout(() => setShowSpinner(false), debounce);
+        timer.current = setTimeout(() => setShowSpinner(false), debounce);
       }
     }
   }, [loading_state]);
@@ -180,8 +184,8 @@ Spinner.propTypes = {
   fullscreen: PropTypes.bool,
 
   /**
-   * When using the spinner as a loading spinner, add a time delay to the
-   * spinner being removed to prevent flickering.
+   * When using the spinner as a loading spinner, add a time delay (in ms) to
+   * the spinner being removed to prevent flickering.
    */
   debounce: PropTypes.number
 };
