@@ -22,10 +22,11 @@ const Spinner = props => {
     fullscreenClassName,
     fullscreen_style,
     debounce,
+    show_initially,
     ...otherProps
   } = props;
 
-  const [showSpinner, setShowSpinner] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(show_initially);
   const timer = useRef();
 
   useEffect(() => {
@@ -121,7 +122,8 @@ const Spinner = props => {
 Spinner._dashprivate_isLoadingComponent = true;
 
 Spinner.defaultProps = {
-  debounce: 0
+  debounce: 0,
+  show_initially: true
 };
 
 Spinner.propTypes = {
@@ -187,7 +189,13 @@ Spinner.propTypes = {
    * When using the spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being removed to prevent flickering.
    */
-  debounce: PropTypes.number
+  debounce: PropTypes.number,
+
+  /**
+   * Whether the Spinner should show on app start-up before the loading state
+   * has been determined. Default True.
+   */
+  show_initially: PropTypes.bool
 };
 
 export default Spinner;
