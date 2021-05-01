@@ -23,6 +23,8 @@ const Button = props => {
     target,
     type,
     download,
+    name,
+    value,
     ...otherProps
   } = props;
 
@@ -45,6 +47,8 @@ const Button = props => {
       href={disabled ? null : href}
       disabled={disabled}
       download={useLink ? download : null}
+      name={useLink ? null : name}
+      value={useLink ? null : value}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -193,7 +197,20 @@ Button.propTypes = {
   /**
    * Indicates that the hyperlink is to be used for downloading a resource.
    */
-  download: PropTypes.string
+  download: PropTypes.string,
+
+  /**
+   * The name of the button, submitted as a pair with the button’s value as part
+   * of the form data.
+   */
+  name: PropTypes.string,
+
+  /**
+   * Defines the value associated with the button’s name when it’s submitted
+   * with the form data. This value is passed to the server in params when the
+   * form is submitted.
+   */
+  value: PropTypes.string
 };
 
 export default Button;
