@@ -15,11 +15,17 @@ describe('Spinner', () => {
 
   test("renders its content if object isn't loading", () => {
     const {container: container, rerender} = render(
-      <Spinner>Some spinner content</Spinner>
+      <Spinner loading_state={{is_loading: false}}>
+        Some spinner content
+      </Spinner>
     );
 
+    // spinner is initially visible until we've had time to update based on
+    // loading state. this can be disabled with show_initially={false}
+    act(() => jest.advanceTimersByTime(10));
+
     expect(container).toHaveTextContent('Some spinner content');
-        expect(container.querySelector('div.spinner-border')).toBe(null);
+    expect(container.querySelector('div.spinner-border')).toBe(null);
 
     rerender(
       <Spinner loading_state={{is_loading: true}}>Some spinner content</Spinner>
@@ -28,8 +34,19 @@ describe('Spinner', () => {
     const overAll = container.firstChild;
     const spinner = overAll.lastChild;
 
-    expect(overAll).toHaveTextContent('Some spinner content');
-    expect(spinner.firstChild).toHaveClass('spinner-border');
+    act(() => jest.advanceTimersByTime(10));
+
+    expect(container).toHaveTextContent('Some spinner content');
+    expect(container.querySelector('div.spinner-border')).not.toBe(null);
+  });
+
+  test("doesn't show initially when show_initially is false", () => {
+    const {container: container} = render(
+      <Spinner show_initially={false}>Some spinner content</Spinner>
+    );
+
+    expect(container).toHaveTextContent('Some spinner content');
+    expect(container.querySelector('div.spinner-border')).toBe(null);
   });
 
   test('applies additional CSS classes when props are set', () => {
