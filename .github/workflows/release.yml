@@ -24,7 +24,7 @@ jobs:
           node-version: 12.x
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
@@ -98,7 +98,7 @@ jobs:
           node-version: 12.x
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Set up Python 3.8
         uses: actions/setup-python@v1

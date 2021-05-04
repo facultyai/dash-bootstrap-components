@@ -21,6 +21,7 @@ const Progress = props => {
     bar_style,
     color,
     style,
+    bar,
     ...otherProps
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
@@ -35,8 +36,9 @@ const Progress = props => {
       barStyle={
         !isBootstrapColor ? {backgroundColor: color, ...bar_style} : bar_style
       }
-      outer_style={style}
-      tag={CustomProgressTag}
+      outer_style={bar ? undefined : style}
+      bar={bar}
+      tag={bar ? 'div' : CustomProgressTag}
     >
       {children}
     </RSProgress>
