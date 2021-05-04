@@ -15,10 +15,10 @@ value=NULL, disabled=NULL, autoComplete=NULL,
 autoFocus=NULL, inputMode=NULL, list=NULL, max=NULL,
 maxLength=NULL, min=NULL, minLength=NULL, step=NULL,
 size=NULL, bs_size=NULL, valid=NULL, invalid=NULL,
-plaintext=NULL, placeholder=NULL, name=NULL, pattern=NULL,
-n_submit=NULL, n_submit_timestamp=NULL, n_blur=NULL,
-n_blur_timestamp=NULL, debounce=NULL, loading_state=NULL,
-persistence=NULL, persisted_props=NULL,
+required=NULL, plaintext=NULL, placeholder=NULL, name=NULL,
+pattern=NULL, n_submit=NULL, n_submit_timestamp=NULL,
+n_blur=NULL, n_blur_timestamp=NULL, debounce=NULL,
+loading_state=NULL, persistence=NULL, persisted_props=NULL,
 persistence_type=NULL, tabIndex=NULL)
 }
 
@@ -100,6 +100,14 @@ any FormFeedback in the enclosing FormGroup with valid=True to display.}
 
 \item{invalid}{Logical. Apply invalid style to the Input for feedback purposes. This will cause
 any FormFeedback in the enclosing FormGroup with valid=False to display.}
+
+\item{required}{A value equal to: 'required', 'required' | logical. This attribute specifies that the user must fill in a value before
+submitting a form. It cannot be used when the type attribute is hidden,
+image, or a button type (submit, reset, or button). The :optional and
+:required CSS pseudo-classes will be applied to the field as appropriate.
+required is an HTML boolean attribute - it is enabled by a boolean or
+'required'. Alternative capitalizations `REQUIRED`
+are also acccepted.}
 
 \item{plaintext}{Logical. Set to true for a readonly input styled as plain text with the default
 form field styling removed and the correct margins and padding preserved.}

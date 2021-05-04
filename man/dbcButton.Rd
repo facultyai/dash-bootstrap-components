@@ -14,7 +14,8 @@ dbcButton(children=NULL, id=NULL, className=NULL, style=NULL,
 key=NULL, href=NULL, external_link=NULL, n_clicks=NULL,
 n_clicks_timestamp=NULL, active=NULL, block=NULL,
 color=NULL, disabled=NULL, size=NULL, outline=NULL,
-loading_state=NULL, target=NULL, type=NULL, download=NULL)
+loading_state=NULL, target=NULL, type=NULL, download=NULL,
+name=NULL, value=NULL)
 }
 
 \arguments{
@@ -74,10 +75,19 @@ those elements have the following types:
 
 \item{target}{Character. Target attribute to pass on to link if using Button as an external link.}
 
-\item{type}{A value equal to: 'button', 'reset', 'submit'. The default behavior of the button. Possible values are: button, reset,
-submit}
+\item{type}{A value equal to: 'button', 'reset', 'submit'. The default behavior of the button. Possible values are: "button", "reset",
+"submit". If left unspecified the default depends on usage: for buttons
+associated with a form (e.g. a dbc.Button inside a dbc.Form) the default is
+"submit". Otherwise the default is "button".}
 
 \item{download}{Character. Indicates that the hyperlink is to be used for downloading a resource.}
+
+\item{name}{Character. The name of the button, submitted as a pair with the button’s value as part
+of the form data.}
+
+\item{value}{Character. Defines the value associated with the button’s name when it’s submitted
+with the form data. This value is passed to the server in params when the
+form is submitted.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

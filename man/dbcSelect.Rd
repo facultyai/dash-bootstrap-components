@@ -12,8 +12,9 @@ Create a HTML select element with Bootstrap styles. Specify options as a list of
 \usage{
 dbcSelect(id=NULL, style=NULL, className=NULL, key=NULL,
 placeholder=NULL, value=NULL, options=NULL, disabled=NULL,
-valid=NULL, invalid=NULL, bs_size=NULL, persistence=NULL,
-persisted_props=NULL, persistence_type=NULL, name=NULL)
+required=NULL, valid=NULL, invalid=NULL, bs_size=NULL,
+persistence=NULL, persisted_props=NULL,
+persistence_type=NULL, name=NULL)
 }
 
 \arguments{
@@ -36,6 +37,14 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 \item{options}{List. An array of options for the select}
 
 \item{disabled}{Logical. Set to True to disable the Select.}
+
+\item{required}{A value equal to: 'required', 'required' | logical. This attribute specifies that the user must fill in a value before
+submitting a form. It cannot be used when the type attribute is hidden,
+image, or a button type (submit, reset, or button). The :optional and
+:required CSS pseudo-classes will be applied to the field as appropriate.
+required is an HTML boolean attribute - it is enabled by a boolean or
+'required'. Alternative capitalizations `REQUIRED`
+are also acccepted.}
 
 \item{valid}{Logical. Apply valid style to the Input for feedback purposes. This will cause
 any FormFeedback in the enclosing FormGroup with valid=True to display.}

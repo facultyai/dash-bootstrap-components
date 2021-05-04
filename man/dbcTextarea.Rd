@@ -54,7 +54,13 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{readOnly}{Logical | a value equal to: 'readonly', 'readonly', 'readonly'. Indicates whether the element can be edited.}
 
-\item{required}{A value equal to: 'required', 'required' | logical. Indicates whether this element is required to fill out or not.}
+\item{required}{A value equal to: 'required', 'required' | logical. This attribute specifies that the user must fill in a value before
+submitting a form. It cannot be used when the type attribute is hidden,
+image, or a button type (submit, reset, or button). The :optional and
+:required CSS pseudo-classes will be applied to the field as appropriate.
+required is an HTML boolean attribute - it is enabled by a boolean or
+'required'. Alternative capitalizations `REQUIRED`
+are also acccepted.}
 
 \item{rows}{Character | numeric. Defines the number of rows in a text area.}
 

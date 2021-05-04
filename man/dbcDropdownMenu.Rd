@@ -51,7 +51,7 @@ with other nav items. Default: False.}
 \item{caret}{Logical. Add a caret to the DropdownMenu toggle. Default: True.}
 
 \item{color}{Character. Set the color of the DropdownMenu toggle. Available options are: 'primary',
-'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS 
+'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
 color of your choice (e.g. a hex code, a decimal code or a CSS color name)
 Default: 'secondary'}
 

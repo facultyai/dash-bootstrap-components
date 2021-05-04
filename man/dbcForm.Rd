@@ -44,8 +44,9 @@ Form controls within inline forms vary slightly from their default states.}
 
 \item{n_submit_timestamp}{Numeric. Last time that `Enter` was pressed.}
 
-\item{prevent_default_on_submit}{Logical. The form calls preventDefault on submit events. Use submit_allow_default
-to override this and not call preventDefault on submit.}
+\item{prevent_default_on_submit}{Logical. The form calls preventDefault on submit events. If you want form data to
+be posted to the endpoint specified by `action` on submit events, set
+prevent_default_on_submit to False. Defaults to True.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:

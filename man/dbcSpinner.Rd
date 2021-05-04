@@ -13,7 +13,7 @@ Render Bootstrap style loading spinners using only CSS.  This component can be u
 dbcSpinner(children=NULL, id=NULL, fullscreen_style=NULL,
 spinner_style=NULL, fullscreenClassName=NULL,
 spinnerClassName=NULL, color=NULL, type=NULL, size=NULL,
-fullscreen=NULL)
+fullscreen=NULL, debounce=NULL, show_initially=NULL)
 }
 
 \arguments{
@@ -44,6 +44,12 @@ If not specified will default to text colour.}
 
 \item{fullscreen}{Logical. Boolean that determines if the loading spinner will be displayed
 full-screen or not.}
+
+\item{debounce}{Numeric. When using the spinner as a loading spinner, add a time delay (in ms) to
+the spinner being removed to prevent flickering.}
+
+\item{show_initially}{Logical. Whether the Spinner should show on app start-up before the loading state
+has been determined. Default True.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}
