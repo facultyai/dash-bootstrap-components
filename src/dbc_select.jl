@@ -21,6 +21,13 @@ See https://reactjs.org/docs/lists-and-keys.html for more info
 - `value` (String | Real; optional): The value of the currently selected option.
 - `options` (Array; optional): An array of options for the select
 - `disabled` (Bool; optional): Set to True to disable the Select.
+- `required` (a value equal to: 'required', 'REQUIRED' | Bool; optional): This attribute specifies that the user must fill in a value before
+submitting a form. It cannot be used when the type attribute is hidden,
+image, or a button type (submit, reset, or button). The :optional and
+:required CSS pseudo-classes will be applied to the field as appropriate.
+required is an HTML boolean attribute - it is enabled by a boolean or
+'required'. Alternative capitalizations `REQUIRED`
+are also acccepted.
 - `valid` (Bool; optional): Apply valid style to the Input for feedback purposes. This will cause
 any FormFeedback in the enclosing FormGroup with valid=True to display.
 - `invalid` (Bool; optional): Apply invalid style to the Input for feedback purposes. This will cause
@@ -43,7 +50,7 @@ session: window.sessionStorage, data is cleared once the browser quit.
 - `name` (String; optional): The name of the control, which is submitted with the form data.
 """
 function dbc_select(; kwargs...)
-        available_props = Symbol[:id, :style, :className, :key, :placeholder, :value, :options, :disabled, :valid, :invalid, :bs_size, :persistence, :persisted_props, :persistence_type, :name]
+        available_props = Symbol[:id, :style, :className, :key, :placeholder, :value, :options, :disabled, :required, :valid, :invalid, :bs_size, :persistence, :persisted_props, :persistence_type, :name]
         wild_props = Symbol[]
         return Component("dbc_select", "Select", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

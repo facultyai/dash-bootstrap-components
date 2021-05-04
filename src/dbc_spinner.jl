@@ -33,9 +33,13 @@ If not specified will default to text colour.
 - `size` (String; optional): The spinner size. Options are 'sm', 'md' and 'lg'.
 - `fullscreen` (Bool; optional): Boolean that determines if the loading spinner will be displayed
 full-screen or not.
+- `debounce` (Real; optional): When using the spinner as a loading spinner, add a time delay (in ms) to
+the spinner being removed to prevent flickering.
+- `show_initially` (Bool; optional): Whether the Spinner should show on app start-up before the loading state
+has been determined. Default True.
 """
 function dbc_spinner(; kwargs...)
-        available_props = Symbol[:children, :id, :fullscreen_style, :spinner_style, :fullscreenClassName, :spinnerClassName, :color, :type, :size, :fullscreen]
+        available_props = Symbol[:children, :id, :fullscreen_style, :spinner_style, :fullscreenClassName, :spinnerClassName, :color, :type, :size, :fullscreen, :debounce, :show_initially]
         wild_props = Symbol[]
         return Component("dbc_spinner", "Spinner", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

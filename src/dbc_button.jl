@@ -55,12 +55,19 @@ Those elements have the following types:
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `target` (String; optional): Target attribute to pass on to link if using Button as an external link.
-- `type` (a value equal to: 'button', 'reset', 'submit'; optional): The default behavior of the button. Possible values are: button, reset,
-submit
+- `type` (a value equal to: 'button', 'reset', 'submit'; optional): The default behavior of the button. Possible values are: "button", "reset",
+"submit". If left unspecified the default depends on usage: for buttons
+associated with a form (e.g. a dbc.Button inside a dbc.Form) the default is
+"submit". Otherwise the default is "button".
 - `download` (String; optional): Indicates that the hyperlink is to be used for downloading a resource.
+- `name` (String; optional): The name of the button, submitted as a pair with the button’s value as part
+of the form data.
+- `value` (String; optional): Defines the value associated with the button’s name when it’s submitted
+with the form data. This value is passed to the server in params when the
+form is submitted.
 """
 function dbc_button(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :style, :key, :href, :external_link, :n_clicks, :n_clicks_timestamp, :active, :block, :color, :disabled, :size, :outline, :loading_state, :target, :type, :download]
+        available_props = Symbol[:children, :id, :className, :style, :key, :href, :external_link, :n_clicks, :n_clicks_timestamp, :active, :block, :color, :disabled, :size, :outline, :loading_state, :target, :type, :download, :name, :value]
         wild_props = Symbol[]
         return Component("dbc_button", "Button", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

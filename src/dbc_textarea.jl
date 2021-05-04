@@ -25,7 +25,13 @@ See https://reactjs.org/docs/lists-and-keys.html for more info
 - `name` (String; optional): Name of the element. For example used by the server to identify the fields in form submits.
 - `placeholder` (String; optional): Provides a hint to the user of what can be entered in the field.
 - `readOnly` (Bool | a value equal to: 'readOnly', 'readonly', 'READONLY'; optional): Indicates whether the element can be edited.
-- `required` (a value equal to: 'required', 'REQUIRED' | Bool; optional): Indicates whether this element is required to fill out or not.
+- `required` (a value equal to: 'required', 'REQUIRED' | Bool; optional): This attribute specifies that the user must fill in a value before
+submitting a form. It cannot be used when the type attribute is hidden,
+image, or a button type (submit, reset, or button). The :optional and
+:required CSS pseudo-classes will be applied to the field as appropriate.
+required is an HTML boolean attribute - it is enabled by a boolean or
+'required'. Alternative capitalizations `REQUIRED`
+are also acccepted.
 - `rows` (String | Real; optional): Defines the number of rows in a text area.
 - `wrap` (String; optional): Indicates whether the text should be wrapped.
 - `accessKey` (String; optional): Defines a keyboard shortcut to activate or add focus to the element.

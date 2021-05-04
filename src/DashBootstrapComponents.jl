@@ -3,7 +3,7 @@ module DashBootstrapComponents
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.12.0"
+const version = "0.12.1"
 
 include("dbc_alert.jl")
 include("dbc_badge.jl")
@@ -79,7 +79,7 @@ function __init__()
             [
                 DashBase.Resource(
     relative_package_path = "_components/dash_bootstrap_components.min.js",
-    external_url = "https://unpkg.com/dash-bootstrap-components@0.12.0/dist/dash_bootstrap_components.min.js",
+    external_url = "https://unpkg.com/dash-bootstrap-components@0.12.1/dist/dash_bootstrap_components.min.js",
     dynamic = nothing,
     async = nothing,
     type = :js

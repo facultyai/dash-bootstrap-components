@@ -31,7 +31,7 @@ See https://reactjs.org/docs/lists-and-keys.html for more info
 with other nav items. Default: False.
 - `caret` (Bool; optional): Add a caret to the DropdownMenu toggle. Default: True.
 - `color` (String; optional): Set the color of the DropdownMenu toggle. Available options are: 'primary',
-'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS 
+'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
 color of your choice (e.g. a hex code, a decimal code or a CSS color name)
 Default: 'secondary'
 - `toggle_style` (Dict; optional): Defines CSS styles which will override styles previously set. The styles

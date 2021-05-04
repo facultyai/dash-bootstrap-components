@@ -29,8 +29,9 @@ a series of labels, form controls, and buttons on a single horizontal row.
 Form controls within inline forms vary slightly from their default states.
 - `n_submit` (Real; optional): Number of times the `Enter` key was pressed while the input had focus.
 - `n_submit_timestamp` (Real; optional): Last time that `Enter` was pressed.
-- `prevent_default_on_submit` (Bool; optional): The form calls preventDefault on submit events. Use submit_allow_default
-to override this and not call preventDefault on submit.
+- `prevent_default_on_submit` (Bool; optional): The form calls preventDefault on submit events. If you want form data to
+be posted to the endpoint specified by `action` on submit events, set
+prevent_default_on_submit to False. Defaults to True.
 - `loading_state` (optional): Object that holds the loading state object coming from dash-renderer. loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
