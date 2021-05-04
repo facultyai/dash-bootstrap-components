@@ -53,22 +53,19 @@ describe('Progress', () => {
     const {
       container: {firstChild: progress}
     } = render(
-      <Progress>
+      <Progress multi>
         <Progress value={25} color="success" bar />
         <Progress value={25} color="warning" bar />
         <Progress value={25} color="danger" bar />
       </Progress>
     );
 
-    expect(progress.firstChild.children[0]).toHaveClass(
-      'progress-bar bg-success'
-    );
-    expect(progress.firstChild.children[1]).toHaveClass(
-      'progress-bar bg-warning'
-    );
-    expect(progress.firstChild.children[2]).toHaveClass(
-      'progress-bar bg-danger'
-    );
+    expect(progress.children[0]).toHaveClass('progress-bar bg-success');
+    expect(progress.children[0]).toHaveStyle({width: '25%'});
+    expect(progress.children[1]).toHaveClass('progress-bar bg-warning');
+    expect(progress.children[1]).toHaveStyle({width: '25%'});
+    expect(progress.children[2]).toHaveClass('progress-bar bg-danger');
+    expect(progress.children[2]).toHaveStyle({width: '25%'});
   });
 
   test('applies additional CSS classes when props are set', () => {
