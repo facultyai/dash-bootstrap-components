@@ -140,6 +140,20 @@ Select.propTypes = {
   disabled: PropTypes.bool,
 
   /**
+   * This attribute specifies that the user must fill in a value before
+   * submitting a form. It cannot be used when the type attribute is hidden,
+   * image, or a button type (submit, reset, or button). The :optional and
+   * :required CSS pseudo-classes will be applied to the field as appropriate.
+   * required is an HTML boolean attribute - it is enabled by a boolean or
+   * 'required'. Alternative capitalizations `REQUIRED`
+   * are also acccepted.
+   */
+  required: PropTypes.oneOfType([
+    PropTypes.oneOf(['required', 'REQUIRED']),
+    PropTypes.bool
+  ]),
+
+  /**
    * Apply valid style to the Input for feedback purposes. This will cause
    * any FormFeedback in the enclosing FormGroup with valid=True to display.
    */

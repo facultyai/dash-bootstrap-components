@@ -8,6 +8,25 @@ DOCS_SIDENAV_ITEMS = [
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
 
+THEMES_SIDENAV_ITEMS = DOCS_SIDENAV_ITEMS[:]
+THEMES_SIDENAV_ITEMS[1] = {
+    "name": "themes",
+    "href": "/docs/themes",
+    "label": "Themes",
+    "children": [
+        {
+            "name": "overview",
+            "href": "/docs/themes/",
+            "label": "Overview",
+        },
+        {
+            "name": "explorer",
+            "href": "/docs/themes/explorer",
+            "label": "Theme explorer",
+        },
+    ],
+}
+
 
 def create_server():
     server = Flask(__name__)
@@ -36,9 +55,17 @@ def create_server():
         try:
             return render_template(
                 "generated/docs/themes.html",
-                sidenav_items=DOCS_SIDENAV_ITEMS,
+                sidenav_items=THEMES_SIDENAV_ITEMS,
                 sidenav_active="themes",
+                active_child="overview",
             )
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/docs/themes/explorer/")
+    def theme_explorer():
+        try:
+            return render_template("theme-explorer.html")
         except TemplateNotFound:
             abort(404)
 
