@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcNavbar <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, light=NULL, dark=NULL, fixed=NULL, sticky=NULL, color=NULL, role=NULL, tag=NULL, expand=NULL, loading_state=NULL) {
+dbcNavbar <- function(children=NULL, id=NULL, className=NULL, color=NULL, dark=NULL, expand=NULL, fixed=NULL, key=NULL, light=NULL, loading_state=NULL, role=NULL, sticky=NULL, style=NULL, tag=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, light=light, dark=dark, fixed=fixed, sticky=sticky, color=color, role=role, tag=tag, expand=expand, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, color=color, dark=dark, expand=expand, fixed=fixed, key=key, light=light, loading_state=loading_state, role=role, sticky=sticky, style=style, tag=tag)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcNavbar <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NU
         props = props,
         type = 'Navbar',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'light', 'dark', 'fixed', 'sticky', 'color', 'role', 'tag', 'expand', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'color', 'dark', 'expand', 'fixed', 'key', 'light', 'loading_state', 'role', 'sticky', 'style', 'tag'),
         package = 'dashBootstrapComponents'
         )
 

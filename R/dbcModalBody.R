@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcModalBody <- function(children=NULL, id=NULL, style=NULL, className=NULL, tag=NULL) {
+dbcModalBody <- function(children=NULL, id=NULL, className=NULL, style=NULL, tag=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, tag=tag)
+    props <- list(children=children, id=id, className=className, style=style, tag=tag)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcModalBody <- function(children=NULL, id=NULL, style=NULL, className=NULL, tag
         props = props,
         type = 'ModalBody',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'tag'),
+        propNames = c('children', 'id', 'className', 'style', 'tag'),
         package = 'dashBootstrapComponents'
         )
 

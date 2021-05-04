@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcButtonGroup <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, vertical=NULL, size=NULL, loading_state=NULL) {
+dbcButtonGroup <- function(children=NULL, id=NULL, className=NULL, key=NULL, loading_state=NULL, size=NULL, style=NULL, vertical=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, vertical=vertical, size=size, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, key=key, loading_state=loading_state, size=size, style=style, vertical=vertical)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcButtonGroup <- function(children=NULL, id=NULL, style=NULL, className=NULL, k
         props = props,
         type = 'ButtonGroup',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'vertical', 'size', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'key', 'loading_state', 'size', 'style', 'vertical'),
         package = 'dashBootstrapComponents'
         )
 

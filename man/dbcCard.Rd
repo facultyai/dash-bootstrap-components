@@ -10,9 +10,9 @@ Component for creating Bootstrap cards. Use in conjunction with CardBody, CardIm
 }
 
 \usage{
-dbcCard(children=NULL, id=NULL, style=NULL, className=NULL,
-key=NULL, color=NULL, body=NULL, outline=NULL, inverse=NULL,
-loading_state=NULL)
+dbcCard(children=NULL, id=NULL, body=NULL, className=NULL,
+color=NULL, inverse=NULL, key=NULL, loading_state=NULL,
+outline=NULL, style=NULL)
 }
 
 \arguments{
@@ -22,31 +22,31 @@ loading_state=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+\item{body}{Logical. Apply the `card-body` class to the card, so that there is no need to also
+include a CardBody component in the children of this Card. Default: False}
 
 \item{className}{Character. Often used with CSS to style elements with common properties.}
-
-\item{key}{Character. A unique identifier for the component, used to improve
-performance by React.js while rendering components
-See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{color}{Character. Card color, options: primary, secondary, success, info, warning, danger,
 light, dark or any valid CSS color of
 your choice (e.g. a hex code, a decimal code or a CSS color name).
 Default is light.}
 
-\item{body}{Logical. Apply the `card-body` class to the card, so that there is no need to also
-include a CardBody component in the children of this Card. Default: False}
-
-\item{outline}{Logical. Apply color styling to just the border of the card.}
-
 \item{inverse}{Logical. Invert text colours for use with a darker background.}
+
+\item{key}{Character. A unique identifier for the component, used to improve
+performance by React.js while rendering components
+See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
   - is_loading (logical; optional): determines if the component is loading or not
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
+
+\item{outline}{Logical. Apply color styling to just the border of the card.}
+
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcCardImg <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, tag=NULL, top=NULL, bottom=NULL, src=NULL, alt=NULL, title=NULL, loading_state=NULL) {
+dbcCardImg <- function(children=NULL, id=NULL, alt=NULL, bottom=NULL, className=NULL, key=NULL, loading_state=NULL, src=NULL, style=NULL, tag=NULL, title=NULL, top=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, tag=tag, top=top, bottom=bottom, src=src, alt=alt, title=title, loading_state=loading_state)
+    props <- list(children=children, id=id, alt=alt, bottom=bottom, className=className, key=key, loading_state=loading_state, src=src, style=style, tag=tag, title=title, top=top)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcCardImg <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=N
         props = props,
         type = 'CardImg',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'tag', 'top', 'bottom', 'src', 'alt', 'title', 'loading_state'),
+        propNames = c('children', 'id', 'alt', 'bottom', 'className', 'key', 'loading_state', 'src', 'style', 'tag', 'title', 'top'),
         package = 'dashBootstrapComponents'
         )
 

@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcModalFooter <- function(children=NULL, id=NULL, style=NULL, className=NULL, tag=NULL) {
+dbcModalFooter <- function(children=NULL, id=NULL, className=NULL, style=NULL, tag=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, tag=tag)
+    props <- list(children=children, id=id, className=className, style=style, tag=tag)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcModalFooter <- function(children=NULL, id=NULL, style=NULL, className=NULL, t
         props = props,
         type = 'ModalFooter',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'tag'),
+        propNames = c('children', 'id', 'className', 'style', 'tag'),
         package = 'dashBootstrapComponents'
         )
 

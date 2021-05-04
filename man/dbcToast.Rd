@@ -10,11 +10,11 @@ Toasts can be used to push messages and notifactions to users. Control visibilit
 }
 
 \usage{
-dbcToast(children=NULL, id=NULL, style=NULL, className=NULL,
-header_style=NULL, headerClassName=NULL, body_style=NULL,
-bodyClassName=NULL, tag=NULL, is_open=NULL, key=NULL,
-fade=NULL, header=NULL, dismissable=NULL, duration=NULL,
-n_dismiss=NULL, n_dismiss_timestamp=NULL, icon=NULL)
+dbcToast(children=NULL, id=NULL, bodyClassName=NULL, body_style=NULL,
+className=NULL, dismissable=NULL, duration=NULL, fade=NULL,
+header=NULL, headerClassName=NULL, header_style=NULL,
+icon=NULL, is_open=NULL, key=NULL, n_dismiss=NULL,
+n_dismiss_timestamp=NULL, style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -24,38 +24,38 @@ n_dismiss=NULL, n_dismiss_timestamp=NULL, icon=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{style}{Named list. Defines CSS styles which will override styles previously set.}
-
-\item{className}{Character. Often used with CSS to style elements with common properties.}
-
-\item{header_style}{Named list. Defines CSS styles which will override styles previously set. The styles
-set here apply to the header of the toast.}
-
-\item{headerClassName}{Character. Often used with CSS to style elements with common properties. The classes
-specified with this prop will be applied to the header of the toast.}
+\item{bodyClassName}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the body of the toast.}
 
 \item{body_style}{Named list. Defines CSS styles which will override styles previously set. The styles
 set here apply to the body of the toast.}
 
-\item{bodyClassName}{Character. Often used with CSS to style elements with common properties. The classes
-specified with this prop will be applied to the body of the toast.}
+\item{className}{Character. Often used with CSS to style elements with common properties.}
 
-\item{tag}{Character. HTML tag to use for the Toast, default: div}
+\item{dismissable}{Logical. Set to True to add a dismiss button to the header which will close the
+toast on click}
+
+\item{duration}{Numeric. Duration in milliseconds after which the Alert dismisses itself.}
+
+\item{fade}{Logical. Set to false for a Toast that simply appears rather than fades into view.}
+
+\item{header}{Character. Text to populate the header with}
+
+\item{headerClassName}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the header of the toast.}
+
+\item{header_style}{Named list. Defines CSS styles which will override styles previously set. The styles
+set here apply to the header of the toast.}
+
+\item{icon}{Character. Add a contextually coloured icon to the header of the toast. Options are:
+"primary", "secondary", "success", "warning", "danger", "info", "light" or
+"dark".}
 
 \item{is_open}{Logical. Whether Toast is currently open.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
-
-\item{fade}{Logical. Set to false for a Toast that simply appears rather than fades into view.}
-
-\item{header}{Character. Text to populate the header with}
-
-\item{dismissable}{Logical. Set to True to add a dismiss button to the header which will close the
-toast on click}
-
-\item{duration}{Numeric. Duration in milliseconds after which the Alert dismisses itself.}
 
 \item{n_dismiss}{Numeric. An integer that represents the number of times that the dismiss button has
 been clicked on.}
@@ -66,9 +66,9 @@ See "How do I determine which Input has changed?" in the Dash FAQs https://dash.
 An integer that represents the time (in ms since 1970) at which n_dismiss
 changed. This can be used to tell which button was changed most recently.}
 
-\item{icon}{Character. Add a contextually coloured icon to the header of the toast. Options are:
-"primary", "secondary", "success", "warning", "danger", "info", "light" or
-"dark".}
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+
+\item{tag}{Character. HTML tag to use for the Toast, default: div}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcNavLink <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, href=NULL, active=NULL, disabled=NULL, external_link=NULL, n_clicks=NULL, n_clicks_timestamp=NULL, loading_state=NULL, target=NULL) {
+dbcNavLink <- function(children=NULL, id=NULL, active=NULL, className=NULL, disabled=NULL, external_link=NULL, href=NULL, key=NULL, loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL, style=NULL, target=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, href=href, active=active, disabled=disabled, external_link=external_link, n_clicks=n_clicks, n_clicks_timestamp=n_clicks_timestamp, loading_state=loading_state, target=target)
+    props <- list(children=children, id=id, active=active, className=className, disabled=disabled, external_link=external_link, href=href, key=key, loading_state=loading_state, n_clicks=n_clicks, n_clicks_timestamp=n_clicks_timestamp, style=style, target=target)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcNavLink <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=N
         props = props,
         type = 'NavLink',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'href', 'active', 'disabled', 'external_link', 'n_clicks', 'n_clicks_timestamp', 'loading_state', 'target'),
+        propNames = c('children', 'id', 'active', 'className', 'disabled', 'external_link', 'href', 'key', 'loading_state', 'n_clicks', 'n_clicks_timestamp', 'style', 'target'),
         package = 'dashBootstrapComponents'
         )
 

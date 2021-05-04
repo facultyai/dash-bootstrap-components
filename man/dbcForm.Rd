@@ -10,10 +10,10 @@ The Form component can be used to organise collections of input components and a
 }
 
 \usage{
-dbcForm(children=NULL, id=NULL, style=NULL, className=NULL,
-key=NULL, action=NULL, method=NULL, inline=NULL,
+dbcForm(children=NULL, id=NULL, action=NULL, className=NULL,
+inline=NULL, key=NULL, loading_state=NULL, method=NULL,
 n_submit=NULL, n_submit_timestamp=NULL,
-prevent_default_on_submit=NULL, loading_state=NULL)
+prevent_default_on_submit=NULL, style=NULL)
 }
 
 \arguments{
@@ -23,22 +23,26 @@ prevent_default_on_submit=NULL, loading_state=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+\item{action}{Character. The URI of a program that processes the information submitted via the form.}
 
 \item{className}{Character. Often used with CSS to style elements with common properties.}
+
+\item{inline}{Logical. Use inline=True to apply the `form-inline` class, allowing you to display
+a series of labels, form controls, and buttons on a single horizontal row.
+Form controls within inline forms vary slightly from their default states.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
 
-\item{action}{Character. The URI of a program that processes the information submitted via the form.}
+\item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
+those elements have the following types:
+  - is_loading (logical; optional): determines if the component is loading or not
+  - prop_name (character; optional): holds which property is loading
+  - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
 \item{method}{A value equal to: "get", "post". Defines which HTTP method to use when submitting the form. Can be GET
 (default) or POST.}
-
-\item{inline}{Logical. Use inline=True to apply the `form-inline` class, allowing you to display
-a series of labels, form controls, and buttons on a single horizontal row.
-Form controls within inline forms vary slightly from their default states.}
 
 \item{n_submit}{Numeric. Number of times the `Enter` key was pressed while the input had focus.}
 
@@ -48,11 +52,7 @@ Form controls within inline forms vary slightly from their default states.}
 be posted to the endpoint specified by `action` on submit events, set
 prevent_default_on_submit to False. Defaults to True.}
 
-\item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
-those elements have the following types:
-  - is_loading (logical; optional): determines if the component is loading or not
-  - prop_name (character; optional): holds which property is loading
-  - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

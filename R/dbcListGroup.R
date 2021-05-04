@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcListGroup <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, tag=NULL, flush=NULL, loading_state=NULL, horizontal=NULL) {
+dbcListGroup <- function(children=NULL, id=NULL, className=NULL, flush=NULL, horizontal=NULL, key=NULL, loading_state=NULL, style=NULL, tag=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, tag=tag, flush=flush, loading_state=loading_state, horizontal=horizontal)
+    props <- list(children=children, id=id, className=className, flush=flush, horizontal=horizontal, key=key, loading_state=loading_state, style=style, tag=tag)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcListGroup <- function(children=NULL, id=NULL, style=NULL, className=NULL, key
         props = props,
         type = 'ListGroup',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'tag', 'flush', 'loading_state', 'horizontal'),
+        propNames = c('children', 'id', 'className', 'flush', 'horizontal', 'key', 'loading_state', 'style', 'tag'),
         package = 'dashBootstrapComponents'
         )
 

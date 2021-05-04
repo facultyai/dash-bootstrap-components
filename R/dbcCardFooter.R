@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcCardFooter <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, tag=NULL, loading_state=NULL) {
+dbcCardFooter <- function(children=NULL, id=NULL, className=NULL, key=NULL, loading_state=NULL, style=NULL, tag=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, tag=tag, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, key=key, loading_state=loading_state, style=style, tag=tag)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcCardFooter <- function(children=NULL, id=NULL, style=NULL, className=NULL, ke
         props = props,
         type = 'CardFooter',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'tag', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'key', 'loading_state', 'style', 'tag'),
         package = 'dashBootstrapComponents'
         )
 

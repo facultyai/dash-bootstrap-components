@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcNavbarToggler <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, type=NULL, n_clicks=NULL, n_clicks_timestamp=NULL, loading_state=NULL) {
+dbcNavbarToggler <- function(children=NULL, id=NULL, className=NULL, key=NULL, loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL, style=NULL, type=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, type=type, n_clicks=n_clicks, n_clicks_timestamp=n_clicks_timestamp, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, key=key, loading_state=loading_state, n_clicks=n_clicks, n_clicks_timestamp=n_clicks_timestamp, style=style, type=type)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcNavbarToggler <- function(children=NULL, id=NULL, style=NULL, className=NULL,
         props = props,
         type = 'NavbarToggler',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'type', 'n_clicks', 'n_clicks_timestamp', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'key', 'loading_state', 'n_clicks', 'n_clicks_timestamp', 'style', 'type'),
         package = 'dashBootstrapComponents'
         )
 

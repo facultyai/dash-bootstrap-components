@@ -10,7 +10,7 @@ Add a header to any modal.
 }
 
 \usage{
-dbcModalHeader(children=NULL, id=NULL, style=NULL, className=NULL, tag=NULL)
+dbcModalHeader(children=NULL, id=NULL, className=NULL, style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -20,9 +20,9 @@ dbcModalHeader(children=NULL, id=NULL, style=NULL, className=NULL, tag=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{style}{Named list. Defines CSS styles which will override styles previously set.}
-
 \item{className}{Character. Often used with CSS to style elements with common properties.}
+
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
 \item{tag}{Character. HTML tag to use for the ModalHeader, default: div}
 }

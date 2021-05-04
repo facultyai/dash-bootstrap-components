@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcFormText <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, color=NULL, loading_state=NULL) {
+dbcFormText <- function(children=NULL, id=NULL, className=NULL, color=NULL, key=NULL, loading_state=NULL, style=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, color=color, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, color=color, key=key, loading_state=loading_state, style=style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcFormText <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=
         props = props,
         type = 'FormText',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'color', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'color', 'key', 'loading_state', 'style'),
         package = 'dashBootstrapComponents'
         )
 

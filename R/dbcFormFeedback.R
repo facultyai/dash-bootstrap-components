@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcFormFeedback <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, valid=NULL, tooltip=NULL, loading_state=NULL) {
+dbcFormFeedback <- function(children=NULL, id=NULL, className=NULL, key=NULL, loading_state=NULL, style=NULL, tooltip=NULL, valid=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, valid=valid, tooltip=tooltip, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, key=key, loading_state=loading_state, style=style, tooltip=tooltip, valid=valid)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcFormFeedback <- function(children=NULL, id=NULL, style=NULL, className=NULL, 
         props = props,
         type = 'FormFeedback',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'valid', 'tooltip', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'key', 'loading_state', 'style', 'tooltip', 'valid'),
         package = 'dashBootstrapComponents'
         )
 

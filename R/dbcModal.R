@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcModal <- function(children=NULL, id=NULL, style=NULL, className=NULL, tag=NULL, is_open=NULL, centered=NULL, scrollable=NULL, autoFocus=NULL, size=NULL, role=NULL, labelledBy=NULL, keyboard=NULL, backdrop=NULL, modalClassName=NULL, backdropClassName=NULL, contentClassName=NULL, fade=NULL, zIndex=NULL) {
+dbcModal <- function(children=NULL, id=NULL, autoFocus=NULL, backdrop=NULL, backdropClassName=NULL, centered=NULL, className=NULL, contentClassName=NULL, fade=NULL, is_open=NULL, keyboard=NULL, labelledBy=NULL, modalClassName=NULL, role=NULL, scrollable=NULL, size=NULL, style=NULL, tag=NULL, zIndex=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, tag=tag, is_open=is_open, centered=centered, scrollable=scrollable, autoFocus=autoFocus, size=size, role=role, labelledBy=labelledBy, keyboard=keyboard, backdrop=backdrop, modalClassName=modalClassName, backdropClassName=backdropClassName, contentClassName=contentClassName, fade=fade, zIndex=zIndex)
+    props <- list(children=children, id=id, autoFocus=autoFocus, backdrop=backdrop, backdropClassName=backdropClassName, centered=centered, className=className, contentClassName=contentClassName, fade=fade, is_open=is_open, keyboard=keyboard, labelledBy=labelledBy, modalClassName=modalClassName, role=role, scrollable=scrollable, size=size, style=style, tag=tag, zIndex=zIndex)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcModal <- function(children=NULL, id=NULL, style=NULL, className=NULL, tag=NUL
         props = props,
         type = 'Modal',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'tag', 'is_open', 'centered', 'scrollable', 'autoFocus', 'size', 'role', 'labelledBy', 'keyboard', 'backdrop', 'modalClassName', 'backdropClassName', 'contentClassName', 'fade', 'zIndex'),
+        propNames = c('children', 'id', 'autoFocus', 'backdrop', 'backdropClassName', 'centered', 'className', 'contentClassName', 'fade', 'is_open', 'keyboard', 'labelledBy', 'modalClassName', 'role', 'scrollable', 'size', 'style', 'tag', 'zIndex'),
         package = 'dashBootstrapComponents'
         )
 

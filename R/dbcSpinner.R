@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcSpinner <- function(children=NULL, id=NULL, fullscreen_style=NULL, spinner_style=NULL, fullscreenClassName=NULL, spinnerClassName=NULL, color=NULL, type=NULL, size=NULL, fullscreen=NULL, debounce=NULL, show_initially=NULL) {
+dbcSpinner <- function(children=NULL, id=NULL, color=NULL, debounce=NULL, fullscreen=NULL, fullscreenClassName=NULL, fullscreen_style=NULL, show_initially=NULL, size=NULL, spinnerClassName=NULL, spinner_style=NULL, type=NULL) {
     
-    props <- list(children=children, id=id, fullscreen_style=fullscreen_style, spinner_style=spinner_style, fullscreenClassName=fullscreenClassName, spinnerClassName=spinnerClassName, color=color, type=type, size=size, fullscreen=fullscreen, debounce=debounce, show_initially=show_initially)
+    props <- list(children=children, id=id, color=color, debounce=debounce, fullscreen=fullscreen, fullscreenClassName=fullscreenClassName, fullscreen_style=fullscreen_style, show_initially=show_initially, size=size, spinnerClassName=spinnerClassName, spinner_style=spinner_style, type=type)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcSpinner <- function(children=NULL, id=NULL, fullscreen_style=NULL, spinner_st
         props = props,
         type = 'Spinner',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'fullscreen_style', 'spinner_style', 'fullscreenClassName', 'spinnerClassName', 'color', 'type', 'size', 'fullscreen', 'debounce', 'show_initially'),
+        propNames = c('children', 'id', 'color', 'debounce', 'fullscreen', 'fullscreenClassName', 'fullscreen_style', 'show_initially', 'size', 'spinnerClassName', 'spinner_style', 'type'),
         package = 'dashBootstrapComponents'
         )
 

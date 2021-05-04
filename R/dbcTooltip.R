@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcTooltip <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, target=NULL, boundaries_element=NULL, hide_arrow=NULL, container=NULL, delay=NULL, innerClassName=NULL, arrowClassName=NULL, autohide=NULL, placement=NULL, offset=NULL, loading_state=NULL) {
+dbcTooltip <- function(children=NULL, id=NULL, arrowClassName=NULL, autohide=NULL, boundaries_element=NULL, className=NULL, container=NULL, delay=NULL, hide_arrow=NULL, innerClassName=NULL, key=NULL, loading_state=NULL, offset=NULL, placement=NULL, style=NULL, target=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, target=target, boundaries_element=boundaries_element, hide_arrow=hide_arrow, container=container, delay=delay, innerClassName=innerClassName, arrowClassName=arrowClassName, autohide=autohide, placement=placement, offset=offset, loading_state=loading_state)
+    props <- list(children=children, id=id, arrowClassName=arrowClassName, autohide=autohide, boundaries_element=boundaries_element, className=className, container=container, delay=delay, hide_arrow=hide_arrow, innerClassName=innerClassName, key=key, loading_state=loading_state, offset=offset, placement=placement, style=style, target=target)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcTooltip <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=N
         props = props,
         type = 'Tooltip',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'target', 'boundaries_element', 'hide_arrow', 'container', 'delay', 'innerClassName', 'arrowClassName', 'autohide', 'placement', 'offset', 'loading_state'),
+        propNames = c('children', 'id', 'arrowClassName', 'autohide', 'boundaries_element', 'className', 'container', 'delay', 'hide_arrow', 'innerClassName', 'key', 'loading_state', 'offset', 'placement', 'style', 'target'),
         package = 'dashBootstrapComponents'
         )
 

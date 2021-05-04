@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcNavbarBrand <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, external_link=NULL, href=NULL, loading_state=NULL) {
+dbcNavbarBrand <- function(children=NULL, id=NULL, className=NULL, external_link=NULL, href=NULL, key=NULL, loading_state=NULL, style=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, external_link=external_link, href=href, loading_state=loading_state)
+    props <- list(children=children, id=id, className=className, external_link=external_link, href=href, key=key, loading_state=loading_state, style=style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcNavbarBrand <- function(children=NULL, id=NULL, style=NULL, className=NULL, k
         props = props,
         type = 'NavbarBrand',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'external_link', 'href', 'loading_state'),
+        propNames = c('children', 'id', 'className', 'external_link', 'href', 'key', 'loading_state', 'style'),
         package = 'dashBootstrapComponents'
         )
 

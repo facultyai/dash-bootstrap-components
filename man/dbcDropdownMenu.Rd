@@ -10,12 +10,11 @@ DropdownMenu creates an overlay useful for grouping together links and other con
 }
 
 \usage{
-dbcDropdownMenu(children=NULL, id=NULL, style=NULL, className=NULL,
-key=NULL, label=NULL, direction=NULL, right=NULL,
-in_navbar=NULL, addon_type=NULL, disabled=NULL, nav=NULL,
-caret=NULL, color=NULL, toggle_style=NULL,
-toggleClassName=NULL, bs_size=NULL, loading_state=NULL,
-group=NULL)
+dbcDropdownMenu(children=NULL, id=NULL, addon_type=NULL, bs_size=NULL,
+caret=NULL, className=NULL, color=NULL, direction=NULL,
+disabled=NULL, group=NULL, in_navbar=NULL, key=NULL,
+label=NULL, loading_state=NULL, nav=NULL, right=NULL,
+style=NULL, toggleClassName=NULL, toggle_style=NULL)
 }
 
 \arguments{
@@ -25,9 +24,27 @@ group=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+\item{addon_type}{Logical | a value equal to: 'prepend', 'append'. Set this to 'prepend' or 'append' if the DropdownMenu is being used in an input group.}
+
+\item{bs_size}{A value equal to: 'sm', 'md', 'lg'. Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
+and 'lg' to large.}
+
+\item{caret}{Logical. Add a caret to the DropdownMenu toggle. Default: True.}
 
 \item{className}{Character. Often used with CSS to style elements with common properties.}
+
+\item{color}{Character. Set the color of the DropdownMenu toggle. Available options are: 'primary',
+'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
+color of your choice (e.g. a hex code, a decimal code or a CSS color name)
+Default: 'secondary'}
+
+\item{direction}{A value equal to: 'down', 'left', 'right', 'up'. Direction in which to expand the DropdownMenu. Default: 'down'.}
+
+\item{disabled}{Logical. Disable the dropdown.}
+
+\item{group}{Logical. Set group to True if the DropdownMenu is inside a ButtonGroup.}
+
+\item{in_navbar}{Logical. Set this to True if the DropdownMenu is inside a navbar. Default: False.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -35,42 +52,24 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{label}{Character. Label for the DropdownMenu toggle.}
 
-\item{direction}{A value equal to: 'down', 'left', 'right', 'up'. Direction in which to expand the DropdownMenu. Default: 'down'.}
-
-\item{right}{Logical. Align the DropdownMenu along the right side of its parent. Default: False.}
-
-\item{in_navbar}{Logical. Set this to True if the DropdownMenu is inside a navbar. Default: False.}
-
-\item{addon_type}{Logical | a value equal to: 'prepend', 'append'. Set this to 'prepend' or 'append' if the DropdownMenu is being used in an input group.}
-
-\item{disabled}{Logical. Disable the dropdown.}
-
-\item{nav}{Logical. Set this to True if the DropdownMenu is inside a nav for styling consistent
-with other nav items. Default: False.}
-
-\item{caret}{Logical. Add a caret to the DropdownMenu toggle. Default: True.}
-
-\item{color}{Character. Set the color of the DropdownMenu toggle. Available options are: 'primary',
-'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
-color of your choice (e.g. a hex code, a decimal code or a CSS color name)
-Default: 'secondary'}
-
-\item{toggle_style}{Named list. Defines CSS styles which will override styles previously set. The styles
-set here apply to the DropdownMenu toggle.}
-
-\item{toggleClassName}{Character. Often used with CSS to style elements with common properties. The classes
-specified with this prop will be applied to the DropdownMenu toggle.}
-
-\item{bs_size}{A value equal to: 'sm', 'md', 'lg'. Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
-and 'lg' to large.}
-
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
   - is_loading (logical; optional): determines if the component is loading or not
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
-\item{group}{Logical. Set group to True if the DropdownMenu is inside a ButtonGroup.}
+\item{nav}{Logical. Set this to True if the DropdownMenu is inside a nav for styling consistent
+with other nav items. Default: False.}
+
+\item{right}{Logical. Align the DropdownMenu along the right side of its parent. Default: False.}
+
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+
+\item{toggleClassName}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the DropdownMenu toggle.}
+
+\item{toggle_style}{Named list. Defines CSS styles which will override styles previously set. The styles
+set here apply to the DropdownMenu toggle.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

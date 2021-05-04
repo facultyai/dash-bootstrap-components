@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcLabel <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, hidden=NULL, size=NULL, html_for=NULL, width=NULL, xs=NULL, sm=NULL, md=NULL, lg=NULL, xl=NULL, align=NULL, color=NULL, loading_state=NULL) {
+dbcLabel <- function(children=NULL, id=NULL, align=NULL, className=NULL, color=NULL, hidden=NULL, html_for=NULL, key=NULL, lg=NULL, loading_state=NULL, md=NULL, size=NULL, sm=NULL, style=NULL, width=NULL, xl=NULL, xs=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, hidden=hidden, size=size, html_for=html_for, width=width, xs=xs, sm=sm, md=md, lg=lg, xl=xl, align=align, color=color, loading_state=loading_state)
+    props <- list(children=children, id=id, align=align, className=className, color=color, hidden=hidden, html_for=html_for, key=key, lg=lg, loading_state=loading_state, md=md, size=size, sm=sm, style=style, width=width, xl=xl, xs=xs)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcLabel <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NUL
         props = props,
         type = 'Label',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'hidden', 'size', 'html_for', 'width', 'xs', 'sm', 'md', 'lg', 'xl', 'align', 'color', 'loading_state'),
+        propNames = c('children', 'id', 'align', 'className', 'color', 'hidden', 'html_for', 'key', 'lg', 'loading_state', 'md', 'size', 'sm', 'style', 'width', 'xl', 'xs'),
         package = 'dashBootstrapComponents'
         )
 

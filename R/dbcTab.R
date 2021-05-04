@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcTab <- function(children=NULL, id=NULL, style=NULL, tab_style=NULL, active_tab_style=NULL, label_style=NULL, active_label_style=NULL, className=NULL, tabClassName=NULL, activeTabClassName=NULL, labelClassName=NULL, activeLabelClassName=NULL, key=NULL, label=NULL, tab_id=NULL, disabled=NULL, loading_state=NULL) {
+dbcTab <- function(children=NULL, id=NULL, activeLabelClassName=NULL, activeTabClassName=NULL, active_label_style=NULL, active_tab_style=NULL, className=NULL, disabled=NULL, key=NULL, label=NULL, labelClassName=NULL, label_style=NULL, loading_state=NULL, style=NULL, tabClassName=NULL, tab_id=NULL, tab_style=NULL) {
     
-    props <- list(children=children, id=id, style=style, tab_style=tab_style, active_tab_style=active_tab_style, label_style=label_style, active_label_style=active_label_style, className=className, tabClassName=tabClassName, activeTabClassName=activeTabClassName, labelClassName=labelClassName, activeLabelClassName=activeLabelClassName, key=key, label=label, tab_id=tab_id, disabled=disabled, loading_state=loading_state)
+    props <- list(children=children, id=id, activeLabelClassName=activeLabelClassName, activeTabClassName=activeTabClassName, active_label_style=active_label_style, active_tab_style=active_tab_style, className=className, disabled=disabled, key=key, label=label, labelClassName=labelClassName, label_style=label_style, loading_state=loading_state, style=style, tabClassName=tabClassName, tab_id=tab_id, tab_style=tab_style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcTab <- function(children=NULL, id=NULL, style=NULL, tab_style=NULL, active_ta
         props = props,
         type = 'Tab',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'tab_style', 'active_tab_style', 'label_style', 'active_label_style', 'className', 'tabClassName', 'activeTabClassName', 'labelClassName', 'activeLabelClassName', 'key', 'label', 'tab_id', 'disabled', 'loading_state'),
+        propNames = c('children', 'id', 'activeLabelClassName', 'activeTabClassName', 'active_label_style', 'active_tab_style', 'className', 'disabled', 'key', 'label', 'labelClassName', 'label_style', 'loading_state', 'style', 'tabClassName', 'tab_id', 'tab_style'),
         package = 'dashBootstrapComponents'
         )
 

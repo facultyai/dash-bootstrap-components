@@ -10,9 +10,10 @@ Creates a single radio button. Use the `checked` prop in your callbacks.
 }
 
 \usage{
-dbcRadioButton(id=NULL, checked=NULL, className=NULL, style=NULL, key=NULL,
-loading_state=NULL, persistence=NULL, persisted_props=NULL,
-persistence_type=NULL, disabled=NULL, name=NULL)
+dbcRadioButton(id=NULL, checked=NULL, className=NULL, disabled=NULL,
+key=NULL, loading_state=NULL, name=NULL,
+persisted_props=NULL, persistence=NULL,
+persistence_type=NULL, style=NULL)
 }
 
 \arguments{
@@ -23,7 +24,7 @@ The ID needs to be unique across all of the components in an app.}
 
 \item{className}{Character. The class of the container (div)}
 
-\item{style}{Named list. The style of the container (div)}
+\item{disabled}{Logical. Disable the RadioButton.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -35,6 +36,12 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
+\item{name}{Character. The name of the control, which is submitted with the form data.}
+
+\item{persisted_props}{List of a value equal to: 'checked's. Properties whose user interactions will persist after refreshing the
+component or the page. Since only `value` is allowed this prop can
+normally be ignored.}
+
 \item{persistence}{Logical | character | numeric. Used to allow user interactions in this component to be persisted when
 the component - or the page - is refreshed. If `persisted` is truthy and
 hasn't changed from its previous value, a `value` that the user has
@@ -42,18 +49,12 @@ changed while using the app will keep that change, as long as
 the new `value` also matches what was given originally.
 Used in conjunction with `persistence_type`.}
 
-\item{persisted_props}{List of a value equal to: 'checked's. Properties whose user interactions will persist after refreshing the
-component or the page. Since only `value` is allowed this prop can
-normally be ignored.}
-
 \item{persistence_type}{A value equal to: 'local', 'session', 'memory'. Where persisted user changes will be stored:
 memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.}
 
-\item{disabled}{Logical. Disable the RadioButton.}
-
-\item{name}{Character. The name of the control, which is submitted with the form data.}
+\item{style}{Named list. The style of the container (div)}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

@@ -10,11 +10,11 @@ A component for adding tooltips to any element, no callbacks required!  Simply a
 }
 
 \usage{
-dbcTooltip(children=NULL, id=NULL, style=NULL, className=NULL,
-key=NULL, target=NULL, boundaries_element=NULL,
-hide_arrow=NULL, container=NULL, delay=NULL,
-innerClassName=NULL, arrowClassName=NULL, autohide=NULL,
-placement=NULL, offset=NULL, loading_state=NULL)
+dbcTooltip(children=NULL, id=NULL, arrowClassName=NULL, autohide=NULL,
+boundaries_element=NULL, className=NULL, container=NULL,
+delay=NULL, hide_arrow=NULL, innerClassName=NULL, key=NULL,
+loading_state=NULL, offset=NULL, placement=NULL, style=NULL,
+target=NULL)
 }
 
 \arguments{
@@ -24,20 +24,14 @@ placement=NULL, offset=NULL, loading_state=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+\item{arrowClassName}{Character. CSS classes to apply to the arrow-tooltip ('arrow' by default)}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
-
-\item{key}{Character. A unique identifier for the component, used to improve
-performance by React.js while rendering components
-See https://reactjs.org/docs/lists-and-keys.html for more info}
-
-\item{target}{Character. The id of the element to attach the tooltip to}
+\item{autohide}{Logical. Optionally hide tooltip when hovering over tooltip content - default true}
 
 \item{boundaries_element}{Character. Boundaries for popper, can be scrollParent, window, viewport, or any DOM
 element}
 
-\item{hide_arrow}{Logical. Hide arrow on tooltip}
+\item{className}{Character. Often used with CSS to style elements with common properties.}
 
 \item{container}{Character. Where to inject the popper DOM node, default body}
 
@@ -46,21 +40,27 @@ those elements have the following types:
   - show (numeric; optional)
   - hide (numeric; optional) | numeric. optionally override show/hide delays - default { show: 0, hide: 250 }}
 
+\item{hide_arrow}{Logical. Hide arrow on tooltip}
+
 \item{innerClassName}{Character. CSS classes to apply to the inner-tooltip}
 
-\item{arrowClassName}{Character. CSS classes to apply to the arrow-tooltip ('arrow' by default)}
-
-\item{autohide}{Logical. Optionally hide tooltip when hovering over tooltip content - default true}
-
-\item{placement}{A value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'. How to place the tooltip.}
-
-\item{offset}{Character | numeric. Tooltip offset}
+\item{key}{Character. A unique identifier for the component, used to improve
+performance by React.js while rendering components
+See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
   - is_loading (logical; optional): determines if the component is loading or not
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
+
+\item{offset}{Character | numeric. Tooltip offset}
+
+\item{placement}{A value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'. How to place the tooltip.}
+
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
+
+\item{target}{Character. The id of the element to attach the tooltip to}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

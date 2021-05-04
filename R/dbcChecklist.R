@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcChecklist <- function(id=NULL, options=NULL, value=NULL, className=NULL, style=NULL, key=NULL, inputStyle=NULL, inputClassName=NULL, labelStyle=NULL, labelCheckedStyle=NULL, labelClassName=NULL, labelCheckedClassName=NULL, inline=NULL, switch=NULL, custom=NULL, loading_state=NULL, persistence=NULL, persisted_props=NULL, persistence_type=NULL, name=NULL) {
+dbcChecklist <- function(id=NULL, className=NULL, custom=NULL, inline=NULL, inputClassName=NULL, inputStyle=NULL, key=NULL, labelCheckedClassName=NULL, labelCheckedStyle=NULL, labelClassName=NULL, labelStyle=NULL, loading_state=NULL, name=NULL, options=NULL, persisted_props=NULL, persistence=NULL, persistence_type=NULL, style=NULL, switch=NULL, value=NULL) {
     
-    props <- list(id=id, options=options, value=value, className=className, style=style, key=key, inputStyle=inputStyle, inputClassName=inputClassName, labelStyle=labelStyle, labelCheckedStyle=labelCheckedStyle, labelClassName=labelClassName, labelCheckedClassName=labelCheckedClassName, inline=inline, switch=switch, custom=custom, loading_state=loading_state, persistence=persistence, persisted_props=persisted_props, persistence_type=persistence_type, name=name)
+    props <- list(id=id, className=className, custom=custom, inline=inline, inputClassName=inputClassName, inputStyle=inputStyle, key=key, labelCheckedClassName=labelCheckedClassName, labelCheckedStyle=labelCheckedStyle, labelClassName=labelClassName, labelStyle=labelStyle, loading_state=loading_state, name=name, options=options, persisted_props=persisted_props, persistence=persistence, persistence_type=persistence_type, style=style, switch=switch, value=value)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcChecklist <- function(id=NULL, options=NULL, value=NULL, className=NULL, styl
         props = props,
         type = 'Checklist',
         namespace = 'dash_bootstrap_components',
-        propNames = c('id', 'options', 'value', 'className', 'style', 'key', 'inputStyle', 'inputClassName', 'labelStyle', 'labelCheckedStyle', 'labelClassName', 'labelCheckedClassName', 'inline', 'switch', 'custom', 'loading_state', 'persistence', 'persisted_props', 'persistence_type', 'name'),
+        propNames = c('id', 'className', 'custom', 'inline', 'inputClassName', 'inputStyle', 'key', 'labelCheckedClassName', 'labelCheckedStyle', 'labelClassName', 'labelStyle', 'loading_state', 'name', 'options', 'persisted_props', 'persistence', 'persistence_type', 'style', 'switch', 'value'),
         package = 'dashBootstrapComponents'
         )
 

@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcProgress <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, tag=NULL, bar=NULL, multi=NULL, max=NULL, value=NULL, animated=NULL, striped=NULL, color=NULL, barClassName=NULL, bar_style=NULL, loading_state=NULL) {
+dbcProgress <- function(children=NULL, id=NULL, animated=NULL, bar=NULL, barClassName=NULL, bar_style=NULL, className=NULL, color=NULL, key=NULL, loading_state=NULL, max=NULL, multi=NULL, striped=NULL, style=NULL, tag=NULL, value=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, tag=tag, bar=bar, multi=multi, max=max, value=value, animated=animated, striped=striped, color=color, barClassName=barClassName, bar_style=bar_style, loading_state=loading_state)
+    props <- list(children=children, id=id, animated=animated, bar=bar, barClassName=barClassName, bar_style=bar_style, className=className, color=color, key=key, loading_state=loading_state, max=max, multi=multi, striped=striped, style=style, tag=tag, value=value)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcProgress <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=
         props = props,
         type = 'Progress',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'tag', 'bar', 'multi', 'max', 'value', 'animated', 'striped', 'color', 'barClassName', 'bar_style', 'loading_state'),
+        propNames = c('children', 'id', 'animated', 'bar', 'barClassName', 'bar_style', 'className', 'color', 'key', 'loading_state', 'max', 'multi', 'striped', 'style', 'tag', 'value'),
         package = 'dashBootstrapComponents'
         )
 

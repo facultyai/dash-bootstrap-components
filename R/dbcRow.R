@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcRow <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL, no_gutters=NULL, align=NULL, justify=NULL, form=NULL, loading_state=NULL) {
+dbcRow <- function(children=NULL, id=NULL, align=NULL, className=NULL, form=NULL, justify=NULL, key=NULL, loading_state=NULL, no_gutters=NULL, style=NULL) {
     
-    props <- list(children=children, id=id, style=style, className=className, key=key, no_gutters=no_gutters, align=align, justify=justify, form=form, loading_state=loading_state)
+    props <- list(children=children, id=id, align=align, className=className, form=form, justify=justify, key=key, loading_state=loading_state, no_gutters=no_gutters, style=style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcRow <- function(children=NULL, id=NULL, style=NULL, className=NULL, key=NULL,
         props = props,
         type = 'Row',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'style', 'className', 'key', 'no_gutters', 'align', 'justify', 'form', 'loading_state'),
+        propNames = c('children', 'id', 'align', 'className', 'form', 'justify', 'key', 'loading_state', 'no_gutters', 'style'),
         package = 'dashBootstrapComponents'
         )
 
