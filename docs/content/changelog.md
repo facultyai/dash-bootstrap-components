@@ -6,6 +6,12 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.12.2 - 2021/5/4
+
+### Fixed
+
+- Fix issue with nested `Progress` bars([PR 573](https://github.com/facultyai/dash-bootstrap-components/pull/573))
+
 ## 0.12.1 - 2021/5/4
 
 ### Added
