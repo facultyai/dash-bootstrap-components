@@ -189,8 +189,10 @@ Button.propTypes = {
   target: PropTypes.string,
 
   /**
-   * The default behavior of the button. Possible values are: button, reset,
-   * submit
+   * The default behavior of the button. Possible values are: "button", "reset",
+   * "submit". If left unspecified the default depends on usage: for buttons
+   * associated with a form (e.g. a dbc.Button inside a dbc.Form) the default is
+   * "submit". Otherwise the default is "button".
    */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 
