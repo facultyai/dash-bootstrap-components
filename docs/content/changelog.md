@@ -6,6 +6,18 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.12.1 - 2021/5/4
+
+### Added
+
+- Adds `required` property to `Input` and `Select` ([PR 552](https://github.com/facultyai/dash-bootstrap-components/pull/552))
+- Added `debounce` and `show_initially` props to `Spinner`. `debounce` can be used to add a time delay to prevent the spinner from dismissing immediately when its children have finished loading. This can help reduce flickering. `show_initially` can be used to ensure that the spinner is initially showing when the app starts up to prevent flickering when initial callbacks fire. ([PR 561](https://github.com/facultyai/dash-bootstrap-components/pull/561))
+- Added `name` and `value` props to `Button`, can be used to send additional data with form submissions. ([PR 565](https://github.com/facultyai/dash-bootstrap-components/pull/565))
+
+### Fixed
+
+- Fix `toggle` property of `DropdownMenuItem` which can be used to prevent the parent `DropdownMenu` from dismissing when that item is clicked on ([PR 554](https://github.com/facultyai/dash-bootstrap-components/pull/554))
+
 ## 0.12.0 - 2021/3/21
 
 ### Added
