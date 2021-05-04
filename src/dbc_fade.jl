@@ -16,13 +16,25 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `style` (Dict; optional): Defines CSS styles which will override styles previously set.
+- `appear` (Bool; optional): Show fade-in animation on initial page load. Default: True.
+- `base_class` (String; optional): CSS base class. Note that this class is always used, whether the
+components are showing or hidden. Default: 'fade'
+- `base_class_active` (String; optional): CSS class used when the fade contents are displayed. Default: 'show'.
 - `className` (String; optional): Often used with CSS to style elements with common properties.
+- `enter` (Bool; optional): Enable or disable enter transitions. Default: True.
+- `exit` (Bool; optional): Enable or disable exit transitions. Default: True.
+- `is_in` (Bool; optional): Controls whether the children of the Fade component are currently visible
+or not.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
-- `is_in` (Bool; optional): Controls whether the children of the Fade component are currently visible
-or not.
+- `loading_state` (optional): Object that holds the loading state object coming from dash-renderer. loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
+Those elements have the following types:
+  - `is_loading` (Bool; optional): Determines if the component is loading or not
+  - `prop_name` (String; optional): Holds which property is loading
+  - `component_name` (String; optional): Holds the name of the component that is loading
+- `style` (Dict; optional): Defines CSS styles which will override styles previously set.
+- `tag` (String; optional): HTML tag to use for the fade component. Default: div.
 - `timeout` (optional): The duration of the transition, in milliseconds.
 
 You may specify a single timeout for all transitions like: `timeout=500`
@@ -30,21 +42,9 @@ or individually like: timeout={'enter': 300, 'exit': 500}. timeout has the follo
 Those elements have the following types:
   - `enter` (Real; optional)
   - `exit` (Real; optional)
-- `appear` (Bool; optional): Show fade-in animation on initial page load. Default: True.
-- `enter` (Bool; optional): Enable or disable enter transitions. Default: True.
-- `exit` (Bool; optional): Enable or disable exit transitions. Default: True.
-- `tag` (String; optional): HTML tag to use for the fade component. Default: div.
-- `base_class` (String; optional): CSS base class. Note that this class is always used, whether the
-components are showing or hidden. Default: 'fade'
-- `base_class_active` (String; optional): CSS class used when the fade contents are displayed. Default: 'show'.
-- `loading_state` (optional): Object that holds the loading state object coming from dash-renderer. loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
-Those elements have the following types:
-  - `is_loading` (Bool; optional): Determines if the component is loading or not
-  - `prop_name` (String; optional): Holds which property is loading
-  - `component_name` (String; optional): Holds the name of the component that is loading
 """
 function dbc_fade(; kwargs...)
-        available_props = Symbol[:children, :id, :style, :className, :key, :is_in, :timeout, :appear, :enter, :exit, :tag, :base_class, :base_class_active, :loading_state]
+        available_props = Symbol[:children, :id, :appear, :base_class, :base_class_active, :className, :enter, :exit, :is_in, :key, :loading_state, :style, :tag, :timeout]
         wild_props = Symbol[]
         return Component("dbc_fade", "Fade", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

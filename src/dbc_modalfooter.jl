@@ -15,12 +15,12 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `className` (String; optional): Often used with CSS to style elements with common properties.
+- `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `tag` (String; optional): HTML tag to use for the ModalFooter, default: div
 """
 function dbc_modalfooter(; kwargs...)
-        available_props = Symbol[:children, :id, :style, :className, :tag]
+        available_props = Symbol[:children, :id, :className, :style, :tag]
         wild_props = Symbol[]
         return Component("dbc_modalfooter", "ModalFooter", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

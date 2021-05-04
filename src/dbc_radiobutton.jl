@@ -12,7 +12,7 @@ Keyword arguments:
 The ID needs to be unique across all of the components in an app.
 - `checked` (Bool; optional): Whether RadioButton has been checked or not
 - `className` (String; optional): The class of the container (div)
-- `style` (Dict; optional): The style of the container (div)
+- `disabled` (Bool; optional): Disable the RadioButton.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -21,24 +21,24 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
+- `name` (String; optional): The name of the control, which is submitted with the form data.
+- `persisted_props` (Array of a value equal to: 'checked's; optional): Properties whose user interactions will persist after refreshing the
+component or the page. Since only `value` is allowed this prop can
+normally be ignored.
 - `persistence` (Bool | String | Real; optional): Used to allow user interactions in this component to be persisted when
 the component - or the page - is refreshed. If `persisted` is truthy and
 hasn't changed from its previous value, a `value` that the user has
 changed while using the app will keep that change, as long as
 the new `value` also matches what was given originally.
 Used in conjunction with `persistence_type`.
-- `persisted_props` (Array of a value equal to: 'checked's; optional): Properties whose user interactions will persist after refreshing the
-component or the page. Since only `value` is allowed this prop can
-normally be ignored.
 - `persistence_type` (a value equal to: 'local', 'session', 'memory'; optional): Where persisted user changes will be stored:
 memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.
-- `disabled` (Bool; optional): Disable the RadioButton.
-- `name` (String; optional): The name of the control, which is submitted with the form data.
+- `style` (Dict; optional): The style of the container (div)
 """
 function dbc_radiobutton(; kwargs...)
-        available_props = Symbol[:id, :checked, :className, :style, :key, :loading_state, :persistence, :persisted_props, :persistence_type, :disabled, :name]
+        available_props = Symbol[:id, :checked, :className, :disabled, :key, :loading_state, :name, :persisted_props, :persistence, :persistence_type, :style]
         wild_props = Symbol[]
         return Component("dbc_radiobutton", "RadioButton", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
