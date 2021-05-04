@@ -1,8 +1,8 @@
 ._dash-loading {
   margin: auto;
   color: transparent;
-  width: 0;
-  height: 0;
+  width: 2rem;
+  height: 2rem;
   text-align: center;
 }
 
@@ -11,7 +11,7 @@
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  color: black;
+  color: var(--secondary);
   vertical-align: text-bottom;
   border: 0.25em solid currentColor;
   border-right-color: transparent;

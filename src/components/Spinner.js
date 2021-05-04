@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {omit, type} from 'ramda';
+import {omit} from 'ramda';
 import {Spinner as RSSpinner} from 'reactstrap';
 import {bootstrapColors} from '../private/BootstrapColors';
 
@@ -21,8 +21,26 @@ const Spinner = props => {
     fullscreen,
     fullscreenClassName,
     fullscreen_style,
+    debounce,
+    show_initially,
     ...otherProps
   } = props;
+
+  const [showSpinner, setShowSpinner] = useState(show_initially);
+  const timer = useRef();
+
+  useEffect(() => {
+    if (loading_state) {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      if (loading_state.is_loading && !showSpinner) {
+        setShowSpinner(true);
+      } else if (!loading_state.is_loading && showSpinner) {
+        timer.current = setTimeout(() => setShowSpinner(false), debounce);
+      }
+    }
+  }, [loading_state]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -75,8 +93,6 @@ const Spinner = props => {
       ...spinner_style
     };
 
-    const showSpinner = loading_state && loading_state.is_loading;
-
     return (
       <div style={showSpinner ? hiddenStyle : {}}>
         {children}
@@ -104,6 +120,11 @@ const Spinner = props => {
 };
 
 Spinner._dashprivate_isLoadingComponent = true;
+
+Spinner.defaultProps = {
+  debounce: 0,
+  show_initially: true
+};
 
 Spinner.propTypes = {
   /**
@@ -162,7 +183,19 @@ Spinner.propTypes = {
    * Boolean that determines if the loading spinner will be displayed
    * full-screen or not.
    */
-  fullscreen: PropTypes.bool
+  fullscreen: PropTypes.bool,
+
+  /**
+   * When using the spinner as a loading spinner, add a time delay (in ms) to
+   * the spinner being removed to prevent flickering.
+   */
+  debounce: PropTypes.number,
+
+  /**
+   * Whether the Spinner should show on app start-up before the loading state
+   * has been determined. Default True.
+   */
+  show_initially: PropTypes.bool
 };
 
 export default Spinner;

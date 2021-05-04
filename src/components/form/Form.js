@@ -104,8 +104,9 @@ Form.propTypes = {
   n_submit_timestamp: PropTypes.number,
 
   /**
-   * The form calls preventDefault on submit events. Use submit_allow_default
-   * to override this and not call preventDefault on submit.
+   * The form calls preventDefault on submit events. If you want form data to
+   * be posted to the endpoint specified by `action` on submit events, set
+   * prevent_default_on_submit to False. Defaults to True.
    */
   prevent_default_on_submit: PropTypes.bool,
 

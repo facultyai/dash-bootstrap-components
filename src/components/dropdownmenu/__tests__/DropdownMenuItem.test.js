@@ -120,4 +120,22 @@ describe('DropdownMenuItem', () => {
       dropdownMenu.container.querySelector('.dropdown-menu')
     ).not.toHaveClass('show');
   });
+
+  test("doesn't dismiss parent DropdownMenu when clicked if toggle=false", () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle">
+        <DropdownMenuItem toggle={false}>Clickable</DropdownMenuItem>
+      </DropdownMenu>
+    );
+
+    userEvent.click(dropdownMenu.getByText('toggle'));
+
+    expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
+      'show'
+    );
+    userEvent.click(dropdownMenu.getByText('Clickable'));
+    expect(
+      dropdownMenu.container.querySelector('.dropdown-menu')
+    ).toHaveClass('show');
+  });
 });

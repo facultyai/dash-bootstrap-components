@@ -32,7 +32,7 @@ const Popover = props => {
       hideArrow={hide_arrow}
       // to ensure proper backwards compatibility, the toggle function is only
       // passed to the popover if `trigger` is not specified
-      toggle={trigger ? toggle : null}
+      toggle={trigger ? toggle : undefined}
       trigger={trigger}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
