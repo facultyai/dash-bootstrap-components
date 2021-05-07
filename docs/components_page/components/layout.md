@@ -11,7 +11,12 @@ The `Container` component can be used to center and horizontally pad your app's 
 
 The `Row` component is a wrapper for columns. The layout of your app should be built as a series of rows of columns.
 
-When using the grid layout, content should be placed in columns, and only `Col` components should be immediate children of `Row`.
+The `Col` component should always be used as an immediate child of `Row` and is a wrapper for your content that ensures it takes up the correct amount of horizontal space.
+
+For best results, make sure you adhere to the following two rules when constructing your layouts:
+
+1. Only use `Row` and `Col` inside a `Container`. A single `Container` wrapping your entire app's content is fine. Set `fluid=True` if you don't want the margins that `Container` adds by default. Since the content of this page is wrapped with a `Container`, the snippets below don't explicitly include them.
+2. The immediate children of any `Row` component should always be `Col` components. Your content should go inside the `Col` components.
 
 For much more detail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/4.2/layout/grid/).
 
