@@ -61,12 +61,62 @@ describe('Spinner', () => {
     const {
       container: {firstChild: spinnerSm}
     } = render(<Spinner size="sm" />);
-    const {
-      container: {firstChild: spinnerLg}
-    } = render(<Spinner size="lg" />);
 
     expect(spinnerSm).toHaveClass('spinner-border-sm');
-    expect(spinnerLg).toHaveClass('spinner-border-lg');
+
+    // spinner styles
+    const {
+      container: {firstChild: spinnerStyle}
+    } = render(<Spinner spinner_style={{width: '5rem', height: '5rem'}} />);
+
+    expect(spinnerStyle).toHaveStyle({width: '5rem', height: '5rem'});
+  });
+
+  test('applies additional CSS classes when props are set and children are present', () => {
+    // grow spinner
+    const {
+      container: {
+        firstChild: {lastChild: spinner}
+      }
+    } = render(
+      <Spinner type="grow" loading_state={{is_loading: true}}>
+        <p>Child</p>
+      </Spinner>
+    );
+
+    expect(spinner.firstChild).toHaveClass('spinner-grow');
+
+    // spinner sizes
+    const {
+      container: {
+        firstChild: {lastChild: spinnerSm}
+      }
+    } = render(
+      <Spinner size="sm" loading_state={{is_loading: true}}>
+        <p>Child</p>
+      </Spinner>
+    );
+
+    expect(spinnerSm.firstChild).toHaveClass('spinner-border-sm');
+
+    // spinner styles
+    const {
+      container: {
+        firstChild: {lastChild: spinnerStyle}
+      }
+    } = render(
+      <Spinner
+        spinner_style={{width: '5rem', height: '5rem'}}
+        loading_state={{is_loading: true}}
+      >
+        <p>Child</p>
+      </Spinner>
+    );
+
+    expect(spinnerStyle.firstChild).toHaveStyle({
+      width: '5rem',
+      height: '5rem'
+    });
   });
 
   test('applies contextual colors with "color" prop', () => {
