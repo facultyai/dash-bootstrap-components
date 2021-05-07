@@ -148,6 +148,10 @@ def register_apps():
             app.layout = html.Div(
                 parse(app, **kwargs), className="layout-demo"
             )
+        elif slug == "button_group":
+            app.layout = html.Div(
+                parse(app, **kwargs), className="button-group-demo"
+            )
         else:
             app.layout = parse(app, **kwargs)
         routes[f"/docs/components/{slug}"] = app
