@@ -158,6 +158,35 @@ span.hljs-meta {
   outline: none;
 }
 
+/* radio button group example */
+.button-group-demo .radio-group .custom-control-input ~ .custom-control-label::before {
+  content: none;
+}
+
+.button-group-demo .radio-group
+  .custom-radio
+  .custom-control-input
+  ~ .custom-control-label::after {
+  content: none;
+}
+
+.button-group-demo .radio-group .custom-control {
+  padding-left: 0;
+}
+
+.button-group-demo .radio-group .btn-group > .custom-control:not(:last-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.button-group-demo .radio-group .btn-group > .custom-control:not(:first-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+/* example ends */
+
 .dbcd-title {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
