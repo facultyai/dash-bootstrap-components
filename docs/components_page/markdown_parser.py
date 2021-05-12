@@ -6,11 +6,7 @@ import dash_html_components as html
 import markdown
 
 from .api_doc import ApiDoc
-from .helpers import (
-    ExampleContainer,
-    HighlightedSource,
-    load_source_with_environment,
-)
+from .helpers import ExampleContainer, load_source_with_environment
 from .metadata import get_component_metadata
 
 __all__ = ["parse"]
@@ -65,11 +61,26 @@ def _parse_block(block, app, extra_env_vars):
 
 def _parse_example(data, app, extra_env_vars):
     source_path, obj = data.split(":")
-    source = (HERE / source_path).read_text().strip()
+    py_source = (HERE / source_path).read_text().strip()
+    r_source = _safe_load_source(source_path, "r")
+    jl_source = _safe_load_source(source_path, "jl")
+
     example = load_source_with_environment(
-        source, obj, {"app": app, **extra_env_vars}
+        py_source, obj, {"app": app, **extra_env_vars}
     )
-    return html.Div([ExampleContainer(example), HighlightedSource(source)])
+    return ExampleContainer(example, py_source, r_source, jl_source)
+
+
+def _safe_load_source(source_path, ext):
+    source_path = Path(source_path)
+    try:
+        return (
+            (HERE / source_path.parent / f"{source_path.stem}.{ext}")
+            .read_text()
+            .strip()
+        )
+    except FileNotFoundError:
+        return None
 
 
 def _parse_code_example(data):
