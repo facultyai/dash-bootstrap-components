@@ -8,13 +8,13 @@ def HighlightedSource(py_source, r_source, jl_source):
         [
             dbc.Tab(
                 dcc.Markdown(f"```{lang}\n{source}\n```", className="m-3"),
-                label=name,
+                label=lang.capitalize(),
                 className="example-source",
             )
-            for name, lang, source in [
-                ("Python", "python", py_source),
-                ("R", "r", r_source),
-                ("Julia", "julia", jl_source),
+            for lang, source in [
+                ("python", py_source),
+                ("r", r_source),
+                ("julia", jl_source),
             ]
             if source is not None
         ],
