@@ -62,7 +62,7 @@ def _parse_block(block, app, extra_env_vars):
 def _parse_example(data, app, extra_env_vars):
     source_path, obj = data.split(":")
     py_source = (HERE / source_path).read_text().strip()
-    r_source = _safe_load_source(source_path, "r")
+    r_source = _safe_load_source(source_path, "R")
     jl_source = _safe_load_source(source_path, "jl")
 
     example = load_source_with_environment(
