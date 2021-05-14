@@ -3,7 +3,6 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-
 alert <- htmlDiv(
  list(
     dbcButton("Toggle", id = "alert-toggle-auto", className = "mr-1",
@@ -11,7 +10,7 @@ alert <- htmlDiv(
     htmlHr(),
     dbcAlert(
       "Hello! I am an auto-dismissing alert!",
-      id = "alert-auto",
+      id= "alert-auto",
       is_open = TRUE,
       duration = 4000
     )
@@ -20,10 +19,10 @@ alert <- htmlDiv(
 
 
 app$callback(
-  output(id = "alert-auto", property = "is_open"),
+  output("alert-auto",  "is_open"),
   list(
-    input(id = "alert-toggle-auto", property = "n_clicks"),
-    state(id = "alert-auto", property = "is_open")
+    input("alert-toggle-auto", "n_clicks"),
+    state("alert-auto", "is_open")
   ),
   function(n, is_open) {
     if (n > 0) {
