@@ -1,8 +1,6 @@
 
-
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
-
 
 alerts <- htmlDiv(
   list(
