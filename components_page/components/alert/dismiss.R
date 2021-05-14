@@ -29,10 +29,10 @@ alert <- htmlDiv(
 
 
 app$callback(
-  output(id = "alert-fade", property = "is_open"),
+  output("alert-fade", "is_open"),
   list(
-    input(id = "alert-toggle-fade", property = "n_clicks"),
-    state(id = "alert-fade", property = "is_open")
+    input("alert-toggle-fade", "n_clicks"),
+    state("alert-fade", "is_open")
   ),
   function(n, is_open) {
     if (n > 0) {
@@ -44,10 +44,10 @@ app$callback(
 
 
 app$callback(
-  output(id = "alert-no-fade", property = "is_open"),
+  output("alert-no-fade", "is_open"),
   list(
-    input(id = "alert-toggle-no-fade", property = "n_clicks"),
-    state(id = "alert-no-fade", property = "is_open")
+    input("alert-toggle-no-fade", "n_clicks"),
+    state("alert-no-fade", "is_open")
   ),
   function(n, is_open) {
     if (n > 0) {
