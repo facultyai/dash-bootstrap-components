@@ -177,9 +177,15 @@ run_server(app, "0.0.0.0", 8080)
 
 Check out these [example apps][examples] made with _dash-bootstrap-components_.
 
+## R Examples
+
+The examples in the documentation are also available in R.  See the
+R apps with examples from the component pages [here.][R-examples-github] 
+
 [dash-docs]: https://dash.plotly.com
 [dash-docs-external]: https://dash.plotly.com/external-resources
 [docs-themes]: /docs/themes
 [docs-components]: /docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [examples]: /examples
+[R-examples-github]: https://github.com/facultyai/dash-bootstrap-components/tree/main/R_examples/components
