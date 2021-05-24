@@ -66,3 +66,5 @@ export {default as Table} from './components/Table';
 export {default as Textarea} from './components/input/Textarea';
 export {default as Toast} from './components/Toast';
 export {default as Tooltip} from './components/Tooltip';
+export {default as Carousel} from './components/Carousel'
+
