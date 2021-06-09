@@ -1,8 +1,17 @@
 // For docs:  How to style the next/prev icons:  https://github.com/reactstrap/reactstrap/issues/1367
 //              ? https://github.com/reactstrap/reactstrap/issues/1965
-//           to center an image that's smaller than the rest of the slides, use
-//           text-align center on the carousel wrapper
-//       ?? Should `height` and `width` props be included for the image?
+//            To center an image that's smaller than the rest of the slides, use text-align center on the carousel wrapper
+//            Note defaults - interval = 5000
+//            Header and captions don't show on the smallest screen
+//            Include nice photos for the docs?
+//
+// questions/notes
+//    ? Should `height` and `width` props be added for the image?
+//    ? Is there a way to add Markdown text to the slides?  How about other components?
+//    -  Review my javascript for anti patterns
+//    - odd behaviour when trying to use interval to pause.  It will stop when interval=false in callback, but when
+//          set to interval=2000, it doesn't restart.  Workaound is to control it with dcc.Interval and active_index prop
+//
 
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
@@ -74,6 +83,7 @@ const Carousel = props => {
           style={item.src_style}
           alt={item.altText}
         />
+
         <CarouselCaption
           captionText={item.caption}
           captionHeader={item.header}

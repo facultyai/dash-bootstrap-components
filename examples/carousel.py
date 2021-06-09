@@ -1,8 +1,11 @@
+
+
+
 import dash
-from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output, State
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -61,7 +64,11 @@ app.layout = dbc.Container(
                     ),
                     dbc.Carousel(
                         id="carousel-1",
-                        items=[{"src": src1}, {"src": src2}, {"src": src3,}],
+                        items=[
+                            {"id": "1","src": src1},
+                            {"id": "2","src": src2},
+                            {"id": "3", "src": src3},
+                        ],
                         interval=2000,
                         ride="carousel",
                         controls=False,
@@ -85,7 +92,11 @@ app.layout = dbc.Container(
                     ),
                     dbc.Carousel(
                         id="carousel-2",
-                        items=[{"src": src1}, {"src": src2}, {"src": src3,}],
+                        items=[
+                            {"id": "1","src": src1},
+                            {"id": "2","src": src2},
+                            {"id": "3", "src": src3},
+                        ],
                         interval=False,
                     ),
                 ],
@@ -103,7 +114,9 @@ app.layout = dbc.Container(
             """
                     ),
                     dbc.Carousel(
-                        id="carousel-3", items=slides, interval=False,
+                        id="carousel-3",
+                        items=slides,
+                        interval=False,
                     ),
                 ],
                 width=5,
@@ -170,7 +183,8 @@ app.layout = dbc.Container(
 
 
 @app.callback(
-    Output("carousel-4", "active_index"), Input("slide-number", "value"),
+    Output("carousel-4", "active_index"),
+    Input("slide-number", "value"),
 )
 def select_slide(idx):
     return idx
