@@ -31,4 +31,4 @@ def test(session):
     session.install("pytest")
     session.install("dash[testing]")
     session.install(".")
-    session.run("pytest", "--headless")
+    session.run("pytest")

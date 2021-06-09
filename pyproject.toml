@@ -3,5 +3,10 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools>=42", "wheel"]
 
 [tool.black]
-line-length = 79
 exclude = "dash_bootstrap_components/_components|node_modules"
+line-length = 79
+
+[tool.pytest.ini_options]
+addopts = "--headless"
+minversion = "6.0"
+testpaths = ["tests", "docs/components_page/components/__tests__"]
