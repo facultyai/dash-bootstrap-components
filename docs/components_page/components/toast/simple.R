@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-toast_simple <- dbcToast(
+toast <- dbcToast(
   list(
     htmlP("This is the content of the toast", className = "mb-0")
   ),

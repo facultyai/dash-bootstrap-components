@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-dropdown_content <- dbcDropdownMenu(
+dropdown <- dbcDropdownMenu(
   list(
     dbcDropdownMenuItem("Header", header = TRUE),
     dbcDropdownMenuItem("An item"),

@@ -49,4 +49,4 @@ radios_input <- dbcFormGroup(
   row = TRUE
 )
 
-form_row <- dbcForm(list(email_input, password_input, radios_input))
+form <- dbcForm(list(email_input, password_input, radios_input))

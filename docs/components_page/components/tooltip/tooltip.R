@@ -15,8 +15,10 @@ tooltip <- htmlDiv(
       )
     ),
     dbcTooltip(
-      "Noun: rare,
-      the action or habit of estimating something as worthless.",
+      paste(
+        "Noun: rare,",
+        "the action or habit of estimating something as worthless."
+      ),
       target = "tooltip-target",
     )
   )

@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-fade_transition <- htmlDiv(
+fade <- htmlDiv(
   list(
     dbcButton("Toggle fade", id = "fade-transition-button", n_clicks = 0,
               className = "mb-3"),
@@ -15,7 +15,8 @@ fade_transition <- htmlDiv(
       ),
       id = "fade-transition",
       is_in = TRUE,
-      style = list(transition = "opacity 2000ms ease")
+      style = list(transition = "opacity 2000ms ease"),
+      timeout=2000
     )
   )
 )

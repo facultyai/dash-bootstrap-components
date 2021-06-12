@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-toast_icon_dismiss <- htmlDiv(
+toast <- htmlDiv(
   list(
     dbcButton(
       "Open toast",

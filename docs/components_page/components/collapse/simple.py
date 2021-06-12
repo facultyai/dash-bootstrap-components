@@ -9,10 +9,12 @@ collapse = html.Div(
             id="collapse-button",
             className="mb-3",
             color="primary",
+            n_clicks=0,
         ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
             id="collapse",
+            is_open=False,
         ),
     ]
 )

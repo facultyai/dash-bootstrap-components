@@ -4,41 +4,50 @@ from dash.dependencies import Input, Output, State
 
 modal = html.Div(
     [
-        dbc.Button("Small modal", id="open-sm", className="mr-1"),
-        dbc.Button("Large modal", id="open-lg", className="mr-1"),
-        dbc.Button("Extra large modal", id="open-xl"),
+        dbc.Button("Small modal", id="open-sm", className="mr-1", n_clicks=0),
+        dbc.Button("Large modal", id="open-lg", className="mr-1", n_clicks=0),
+        dbc.Button("Extra large modal", id="open-xl", n_clicks=0),
         dbc.Modal(
             [
                 dbc.ModalHeader("Header"),
                 dbc.ModalBody("A small modal."),
                 dbc.ModalFooter(
-                    dbc.Button("Close", id="close-sm", className="ml-auto")
+                    dbc.Button(
+                        "Close", id="close-sm", className="ml-auto", n_clicks=0
+                    )
                 ),
             ],
             id="modal-sm",
             size="sm",
+            is_open=False,
         ),
         dbc.Modal(
             [
                 dbc.ModalHeader("Header"),
                 dbc.ModalBody("A large modal."),
                 dbc.ModalFooter(
-                    dbc.Button("Close", id="close-lg", className="ml-auto")
+                    dbc.Button(
+                        "Close", id="close-lg", className="ml-auto", n_clicks=0
+                    )
                 ),
             ],
             id="modal-lg",
             size="lg",
+            is_open=False,
         ),
         dbc.Modal(
             [
                 dbc.ModalHeader("Header"),
                 dbc.ModalBody("An extra large modal."),
                 dbc.ModalFooter(
-                    dbc.Button("Close", id="close-xl", className="ml-auto")
+                    dbc.Button(
+                        "Close", id="close-xl", className="ml-auto", n_clicks=0
+                    )
                 ),
             ],
             id="modal-xl",
             size="xl",
+            is_open=False,
         ),
     ]
 )

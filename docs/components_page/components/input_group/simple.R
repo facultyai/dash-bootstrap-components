@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-input_groups_simple <- htmlDiv(
+input_groups <- htmlDiv(
   list(
     dbcInputGroup(
       list(
@@ -11,7 +11,7 @@ input_groups_simple <- htmlDiv(
     ),
     dbcInputGroup(
       list(
-        dbcInput(placeholder = "Recipients username"),
+        dbcInput(placeholder = "Recipient's username"),
         dbcInputGroupAddon("@example.com", addon_type = "append")
       ),
       className = "mb-3"

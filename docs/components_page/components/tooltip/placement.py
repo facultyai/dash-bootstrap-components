@@ -7,6 +7,7 @@ def make_button(placement):
         f"Tooltip on {placement}",
         id=f"tooltip-target-{placement}",
         className="mx-2",
+        n_clicks=0,
     )
 
 

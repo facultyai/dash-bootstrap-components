@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-input_groups_check_radio <- htmlDiv(
+input_groups <- htmlDiv(
   list(
     dbcInputGroup(
       list(

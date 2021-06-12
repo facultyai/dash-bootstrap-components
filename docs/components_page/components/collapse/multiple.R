@@ -9,21 +9,19 @@ collapses <- htmlDiv(
     dbcButton("Toggle right", color = "primary", id = "right",
               className = "mr-1", n_clicks = 0
     ),
-    dbcButton("Toggle both", color = "primary", id = "both",
-              className = "mr-1", n_clicks = 0
-    ),
+    dbcButton("Toggle both", color = "primary", id = "both", n_clicks = 0),
     dbcRow(
       list(
         dbcCol(
           dbcCollapse(
-            dbcCard("This is the left card.", body = TRUE),
+            dbcCard("This is the left card!", body = TRUE),
             id = "left-collapse",
             is_open = TRUE
           )
         ),
         dbcCol(
           dbcCollapse(
-            dbcCard("This is the right card.", body = TRUE),
+            dbcCard("This is the right card!", body = TRUE),
             id = "right-collapse",
             is_open = TRUE
           )

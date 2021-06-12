@@ -22,7 +22,7 @@ tab2_content <- dbcCard(
 )
 
 
-tabs_simple <- dbcTabs(
+tabs <- dbcTabs(
   list(
     dbcTab(tab1_content, label = "Tab 1"),
     dbcTab(tab2_content, label = "Tab 2"),

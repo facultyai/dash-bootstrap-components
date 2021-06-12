@@ -5,7 +5,10 @@ from dash.dependencies import Input, Output
 toast = html.Div(
     [
         dbc.Button(
-            "Open toast", id="positioned-toast-toggle", color="primary"
+            "Open toast",
+            id="positioned-toast-toggle",
+            color="primary",
+            n_clicks=0,
         ),
         dbc.Toast(
             "This toast is placed in the top right",

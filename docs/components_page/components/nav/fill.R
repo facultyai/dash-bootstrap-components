@@ -17,4 +17,4 @@ nav2 <- dbcNav(
   justified = TRUE
 )
 
-navs_fill <- htmlDiv(list(nav1, htmlHr(), nav2))
+navs <- htmlDiv(list(nav1, htmlHr(), nav2))

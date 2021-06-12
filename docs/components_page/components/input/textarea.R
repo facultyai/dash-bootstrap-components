@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-input_textareas <- htmlDiv(
+textareas <- htmlDiv(
   list(
     dbcTextarea(className = "mb-3", placeholder = "A Textarea"),
     dbcTextarea(

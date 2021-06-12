@@ -6,7 +6,7 @@ standalone_radio_check <- htmlDiv(
     dbcFormGroup(
       list(
         dbcCheckbox(
-          id = "standalone-checkbox", checked = FALSE,
+          id = "standalone-checkbox",
           className = "form-check-input"
         ),
         dbcLabel(
@@ -20,7 +20,7 @@ standalone_radio_check <- htmlDiv(
     dbcFormGroup(
       list(
         dbcRadioButton(
-            id = "standalone-radio", checked = FALSE,
+            id = "standalone-radio",
             className = "form-check-input"
         ),
         dbcLabel(
