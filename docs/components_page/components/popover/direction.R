@@ -29,7 +29,7 @@ make_button <- function(placement) {
 }
 
 
-popovers_direction <- htmlDiv(
+popovers <- htmlDiv(
   list(
     make_button("top"), make_button("left"),
     make_button("right"), make_button("bottom"),

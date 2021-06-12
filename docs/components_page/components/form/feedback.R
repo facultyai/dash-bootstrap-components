@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-form_feedback <- htmlDiv(
+email_input <- htmlDiv(
   list(
     dbcFormGroup(
       list(

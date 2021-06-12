@@ -3,13 +3,13 @@ library(dashHtmlComponents)
 
 badges <- htmlSpan(
   list(
-    dbcBadge("Primary", pill = TRUE, color = "primary", className = "mr-1"),
-    dbcBadge("Secondary", pill = TRUE, color = "secondary", className = "mr-1"),
-    dbcBadge("Success", pill = TRUE, color = "success", className = "mr-1"),
-    dbcBadge("Warning", pill = TRUE, color = "warning", className = "mr-1"),
-    dbcBadge("Danger", pill = TRUE, color = "danger", className = "mr-1"),
-    dbcBadge("Info", pill = TRUE, color = "info", className = "mr-1"),
-    dbcBadge("Light", pill = TRUE, color = "light", className = "mr-1"),
-    dbcBadge("Dark", pill = TRUE, color = "dark")
+    dbcBadge("Primary", href = "#", color = "primary", className = "mr-1"),
+    dbcBadge("Secondary", href = "#", color = "secondary", className = "mr-1"),
+    dbcBadge("Success", href = "#", color = "success", className = "mr-1"),
+    dbcBadge("Warning", href = "#", color = "warning", className = "mr-1"),
+    dbcBadge("Danger", href = "#", color = "danger", className = "mr-1"),
+    dbcBadge("Info", href = "#", color = "info", className = "mr-1"),
+    dbcBadge("Light", href = "#", color = "light", className = "mr-1"),
+    dbcBadge("Dark", href = "#", color = "dark")
   )
 )

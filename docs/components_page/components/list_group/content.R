@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-list_group_content <- dbcListGroup(
+list_group <- dbcListGroup(
   list(
     dbcListGroupItem(
       list(

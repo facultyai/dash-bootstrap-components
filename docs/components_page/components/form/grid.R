@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-form_grid <- dbcRow(
+form <- dbcRow(
   list(
     dbcCol(
       dbcFormGroup(

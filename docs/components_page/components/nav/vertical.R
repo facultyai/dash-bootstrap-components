@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-nav_vertical <- dbcNav(
+nav <- dbcNav(
   list(
     dbcNavItem(dbcNavLink("Active", active = TRUE, href = "#")),
     dbcNavItem(dbcNavLink("A link", href = "#")),

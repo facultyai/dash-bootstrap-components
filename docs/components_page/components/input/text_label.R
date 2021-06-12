@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-input_text <- dbcFormGroup(
+text_input <- dbcFormGroup(
   list(
     dbcLabel("Text"),
     dbcInput(placeholder = "Input goes here...", type = "text"),

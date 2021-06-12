@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-navlink <- htmlDiv(
+nav <- htmlDiv(
   list(
     dbcNav(
       list(

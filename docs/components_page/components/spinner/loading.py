@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 
 loading_spinner = html.Div(
     [
-        dbc.Button("Load", id="loading-button"),
+        dbc.Button("Load", id="loading-button", n_clicks=0),
         dbc.Spinner(html.Div(id="loading-output")),
     ]
 )

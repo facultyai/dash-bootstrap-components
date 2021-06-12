@@ -19,7 +19,7 @@ modal = html.Div(
                 ),
             ]
         ),
-        dbc.Button("Open modal", id="open-backdrop"),
+        dbc.Button("Open modal", id="open-backdrop", n_clicks=0),
         dbc.Modal(
             [
                 dbc.ModalHeader("Header"),
@@ -28,11 +28,15 @@ modal = html.Div(
                 ),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close-backdrop", className="ml-auto"
+                        "Close",
+                        id="close-backdrop",
+                        className="ml-auto",
+                        n_clicks=0,
                     )
                 ),
             ],
             id="modal-backdrop",
+            is_open=False,
         ),
     ]
 )

@@ -1,11 +1,14 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-LOREM <- toString(read.delim(
- "https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt",
-))
+LOREM <- paste(
+  readLines(
+    "https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt",
+  ),
+  collapse="\n"
+)
 
-modal_scrollable <- htmlDiv(
+modal <- htmlDiv(
   list(
     dbcButton(
       "Scrolling modal", id = "open-scroll", n_clicks = 0, className = "mr-1"

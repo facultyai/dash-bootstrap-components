@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-toast_position <- htmlDiv(
+toast <- htmlDiv(
   list(
     dbcButton(
         "Open toast", id = "positioned-toast-toggle",
@@ -11,7 +11,7 @@ toast_position <- htmlDiv(
         "This toast is placed in the top right",
         id = "positioned-toast",
         header = "Positioned toast",
-        #is_open = FALSE,
+        is_open = FALSE,
         dismissable = TRUE,
         icon = "danger",
         # top: 66 positions the toast below the navbar

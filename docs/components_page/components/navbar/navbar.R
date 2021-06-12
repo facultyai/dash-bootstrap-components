@@ -30,7 +30,7 @@ navbar <- dbcNavbar(
         align = "center",
         no_gutters = TRUE
       ),
-      href = "https://plot.ly"
+      href = "https://plotly.com"
     ),
     dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
     dbcCollapse(

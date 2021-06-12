@@ -7,7 +7,7 @@ dropdown_menu_items <- list(
     dbcDropdownMenuItem("Clear", id = "dropdown-menu-item-clear")
 )
 
-input_group_dropdown <- dbcInputGroup(
+input_group <- dbcInputGroup(
   list(
     dbcDropdownMenu(
       dropdown_menu_items, label = "Generate", addon_type = "prepend"

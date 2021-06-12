@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-list_group_horizontal <- htmlDiv(
+list_group <- htmlDiv(
   list(
     dbcListGroup(
       list(

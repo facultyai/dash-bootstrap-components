@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-spinners_size <- htmlDiv(
+spinners <- htmlDiv(
   list(
     dbcSpinner(size = "sm"),
     htmlHr(),

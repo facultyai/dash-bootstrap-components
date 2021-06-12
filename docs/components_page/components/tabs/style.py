@@ -5,7 +5,7 @@ tabs = html.Div(
     [
         dbc.Tabs(
             [
-                dbc.Tab(label="Tab 1", tab_style={"margin-left": "auto"}),
+                dbc.Tab(label="Tab 1", tab_style={"marginLeft": "auto"}),
                 dbc.Tab(label="Tab 2", label_style={"color": "#00AEF9"}),
             ]
         ),

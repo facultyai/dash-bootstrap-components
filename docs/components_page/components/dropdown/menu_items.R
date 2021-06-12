@@ -1,20 +1,20 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-dropdown_menu_items <- htmlDiv(
+dropdown <- htmlDiv(
   list(
     dbcDropdownMenu(
       list(
         dbcDropdownMenuItem("A button", id = "dropdown-button", n_clicks = 0),
         dbcDropdownMenuItem(
-          "Internal link", href = "/l/components/dropdown_menu"
+          "Internal link", href = "/docs/components/dropdown_menu"
         ),
         dbcDropdownMenuItem(
           "External Link", href = "https://github.com"
         ),
         dbcDropdownMenuItem(
           "External relative",
-          href = "/l/components/dropdown_menu",
+          href = "/docs/components/dropdown_menu",
           external_link = TRUE
         )
       ),
@@ -35,4 +35,3 @@ app$callback(
     return(sprintf("Button not clicked yet"))
   }
 )
-

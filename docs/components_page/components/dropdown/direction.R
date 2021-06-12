@@ -6,7 +6,7 @@ items_direction <- list(
   dbcDropdownMenuItem("Second")
 )
 
-dropdown_direction <- dbcRow(
+dropdown <- dbcRow(
   list(
     dbcCol(
       dbcDropdownMenu(

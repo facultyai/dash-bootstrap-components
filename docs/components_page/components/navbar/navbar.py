@@ -8,7 +8,9 @@ search_bar = dbc.Row(
     [
         dbc.Col(dbc.Input(type="search", placeholder="Search")),
         dbc.Col(
-            dbc.Button("Search", color="primary", className="ml-2"),
+            dbc.Button(
+                "Search", color="primary", className="ml-2", n_clicks=0
+            ),
             width="auto",
         ),
     ],
@@ -29,10 +31,12 @@ navbar = dbc.Navbar(
                 align="center",
                 no_gutters=True,
             ),
-            href="https://plot.ly",
+            href="https://plotly.com",
         ),
-        dbc.NavbarToggler(id="navbar-toggler"),
-        dbc.Collapse(search_bar, id="navbar-collapse", navbar=True),
+        dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+        dbc.Collapse(
+            search_bar, id="navbar-collapse", navbar=True, is_open=False
+        ),
     ],
     color="dark",
     dark=True,
