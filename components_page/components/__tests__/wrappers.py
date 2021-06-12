@@ -21,3 +21,14 @@ app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 app$layout({name})
 app$run_server()
 """
+
+JL_WRAPPER = """
+using Dash, DashBootstrapComponents
+
+app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
+
+{snippet}
+
+app.layout = {name}
+run_server(app)
+"""
