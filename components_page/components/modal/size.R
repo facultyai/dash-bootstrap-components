@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-modal_size <- htmlDiv(
+modal <- htmlDiv(
   list(
     dbcButton("Small modal", id = "open-sm", n_clicks = 0, className = "mr-1"),
     dbcButton("Large modal", id = "open-lg", n_clicks = 0, className = "mr-1"),

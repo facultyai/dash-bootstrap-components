@@ -1,43 +1,37 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-row_vertical <- htmlDiv(
+row <- htmlDiv(
   list(
     dbcRow(
       list(
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light")),
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light")),
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light"))
+        dbcCol(htmlDiv("One of three columns")),
+        dbcCol(htmlDiv("One of three columns")),
+        dbcCol(htmlDiv("One of three columns"))
       ),
       align = "start"
     ),
     dbcRow(
       list(
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light")),
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light")),
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light"))
+        dbcCol(htmlDiv("One of three columns")),
+        dbcCol(htmlDiv("One of three columns")),
+        dbcCol(htmlDiv("One of three columns"))
       ),
       align = "center"
     ),
     dbcRow(
       list(
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light")),
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light")),
-        dbcCol(htmlDiv("One of three columns", className = "border bg-light"))
+        dbcCol(htmlDiv("One of three columns")),
+        dbcCol(htmlDiv("One of three columns")),
+        dbcCol(htmlDiv("One of three columns"))
       ),
       align = "end"
     ),
     dbcRow(
       list(
-        dbcCol(htmlDiv(
-          "One of three columns", className = "border bg-light"),
-               align = "start"),
-        dbcCol(htmlDiv(
-          "One of three columns", className = "border bg-light"),
-               align = "center"),
-        dbcCol(htmlDiv(
-          "One of three columns", className = "border bg-light"),
-               align = "end")
+        dbcCol(htmlDiv("One of three columns"), align = "start"),
+        dbcCol(htmlDiv("One of three columns"), align = "center"),
+        dbcCol(htmlDiv("One of three columns"), align = "end")
       )
     )
   )

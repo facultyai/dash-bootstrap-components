@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-modal_simple <- htmlDiv(
+modal <- htmlDiv(
   list(
     dbcButton("Open modal", id = "open", n_clicks = 0),
     dbcModal(
@@ -35,4 +35,3 @@ app$callback(
   return(is_open)
   }
 )
-

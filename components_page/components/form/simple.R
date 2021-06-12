@@ -26,4 +26,4 @@ password_input_simple <- dbcFormGroup(
   )
 )
 
-form_simple <- dbcForm(list(email_input_simple, password_input_simple))
+form <- dbcForm(list(email_input_simple, password_input_simple))

@@ -24,7 +24,7 @@ make_tooltip <- function(placement) {
 }
 
 
-tooltips_direction <- htmlDiv(
+tooltips <- htmlDiv(
   list(
     make_button("top"), make_button("left"),
     make_button("right"), make_button("bottom"),

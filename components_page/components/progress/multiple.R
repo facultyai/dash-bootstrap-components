@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-progress_multiple <- dbcProgress(
+progress <- dbcProgress(
   list(
     dbcProgress(valu = 20, color = "success", bar = TRUE),
     dbcProgress(value = 30, color = "warning", bar = TRUE),

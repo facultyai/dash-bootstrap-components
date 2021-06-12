@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-dropdown_simple <- dbcDropdownMenu(
+dropdown <- dbcDropdownMenu(
   list(
     dbcDropdownMenuItem("Item 1"),
     dbcDropdownMenuItem("Item 2"),
@@ -8,4 +8,3 @@ dropdown_simple <- dbcDropdownMenu(
   ),
   label = "Menu",
 )
-

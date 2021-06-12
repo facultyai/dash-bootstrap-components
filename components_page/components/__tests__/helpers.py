@@ -1,13 +1,12 @@
 from pathlib import Path
 
 
-def py_source_to_app(py_source):
+def py_source_to_app(py_source, env):
     """
     Create a Dash app from a string defining the app.
     """
-    g = {}
-    exec(py_source, g)
-    return g["app"]
+    exec(py_source, env)
+    return env["app"]
 
 
 def drop_keys(d):
@@ -20,6 +19,8 @@ def drop_keys(d):
             k: drop_keys(v)
             for k, v in d.items()
             if k not in ["propNames", "package"]
+            and v is not None
+            and not (k == "children" and v == "")
         }
     elif isinstance(d, list):
         return [drop_keys(x) for x in d]

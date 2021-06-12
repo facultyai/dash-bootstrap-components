@@ -16,7 +16,7 @@ HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 TEMPLATES = HERE.parent / "templates"
 
-LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text()
+LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text().strip()
 
 HIGHLIGHT_JS_CSS = (
     "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/"

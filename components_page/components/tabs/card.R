@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-tabs_card <- dbcCard(
+card <- dbcCard(
   list(
     dbcCardHeader(
       dbcTabs(

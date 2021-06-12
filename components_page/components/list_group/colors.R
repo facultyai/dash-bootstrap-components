@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-list_group_colors <- dbcListGroup(
+list_group <- dbcListGroup(
   list(
     dbcListGroupItem("The primary item", color = "primary"),
     dbcListGroupItem("A secondary item", color = "secondary"),

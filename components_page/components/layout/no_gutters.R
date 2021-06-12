@@ -1,11 +1,11 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-row_no_gutters <- dbcRow(
+row <- dbcRow(
   list(
-    dbcCol(htmlDiv("One of three columns"), className = "border bg-light"),
-    dbcCol(htmlDiv("One of three columns"), className = "border bg-light"),
-    dbcCol(htmlDiv("One of three columns"), className = "border bg-light")
+    dbcCol(htmlDiv("One of three columns")),
+    dbcCol(htmlDiv("One of three columns")),
+    dbcCol(htmlDiv("One of three columns"))
   ),
   no_gutters = TRUE,
 )
