@@ -77,11 +77,13 @@ def test_alert_callback(dashr):
     assert dashr.find_element("#alert-fade") != []
     dashr.find_element("#alert-toggle-fade").click()
     wait.until(
-        lambda: dashr.find_elements("#alert-fade") == [], timeout=1,
+        lambda: dashr.find_elements("#alert-fade") == [],
+        timeout=1,
     )
 
     assert dashr.find_element("#alert-no-fade") != []
     dashr.find_element("#alert-toggle-no-fade").click()
     wait.until(
-        lambda: dashr.find_elements("#alert-no-fade") == [], timeout=1,
+        lambda: dashr.find_elements("#alert-no-fade") == [],
+        timeout=1,
     )
