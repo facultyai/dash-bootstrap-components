@@ -1,0 +1,42 @@
+name: Test doc snippets
+
+on:
+  push:
+    paths:
+      - docs/components_page/**
+  pull_request:
+    paths:
+      - docs/components_page/**
+
+jobs:
+  build-and-test:
+    name: Build package
+    runs-on: 'ubuntu-latest'
+    services:
+      hub:
+        image: selenium/hub:3.141.59-gold
+      firefox:
+        image: selenium/node-chrome:3.141.59-gold
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install Dash
+        run: python -m pip install -r requirements-dev.txt
+      - name: Build dash-bootstrap-components
+        run: npm run build
+      - name: Install nox
+        run: python3.8 -m pip install -U nox
+      - name: Test Python module
+        run: nox -s doctest
