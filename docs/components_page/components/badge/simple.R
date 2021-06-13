@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-badge <- dbcButton(
+simple_badge <- dbcButton(
   list(
     "Notifications",
     dbcBadge("4", color = "light", className = "ml-1")

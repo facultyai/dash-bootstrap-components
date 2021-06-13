@@ -22,7 +22,7 @@ bottom_card <- dbcCard(
   style = list(width =  "18rem")
 )
 
-cards <- dbcRow(
+image_cards <- dbcRow(
   list(
     dbcCol(top_card, width = "auto"), dbcCol(bottom_card, width = "auto")
   )

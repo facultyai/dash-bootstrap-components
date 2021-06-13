@@ -1,3 +1,3 @@
 using DashBootstrapComponents
 
-button = dbc_button("Block button", color="primary", block=true);
+block_button = dbc_button("Block button", color="primary", block=true);

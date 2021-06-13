@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-button_group = html_div(
+radio_items_button_group = html_div(
     [
         dbc_radioitems(
             id="radios",

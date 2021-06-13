@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-jumbotron = dbc_jumbotron([
+simple_jumbotron = dbc_jumbotron([
     html_h1("Jumbotron", className="display-3"),
     html_p(
         "Use a jumbotron to call attention to " * "featured content or information.",
