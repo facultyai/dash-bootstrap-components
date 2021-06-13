@@ -3,12 +3,12 @@ using DashBootstrapComponents, DashHtmlComponents
 email_input = html_div([
     dbc_formgroup([
         dbc_label("Email"),
-        dbc_input(id = "email-input", type = "email", value = ""),
+        dbc_input(id="email-input", type="email", value=""),
         dbc_formtext("We only accept gmail..."),
-        dbc_formfeedback("That looks like a gmail address :-)", valid = true),
-        dbc_formfeedback("Sorry, we only accept gmail for some reason...", valid = false),
+        dbc_formfeedback("That looks like a gmail address :-)", valid=true),
+        dbc_formfeedback("Sorry, we only accept gmail for some reason...", valid=false),
     ]),
-])
+]);
 
 
 callback!(
@@ -22,4 +22,4 @@ callback!(
         return (is_gmail, !is_gmail)
     end
     return (false, false)
-end
+end;
