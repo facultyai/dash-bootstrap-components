@@ -8,8 +8,10 @@ cards <- dbcCardDeck(
         list(
           htmlH5("Card 1", className = "card-title"),
           htmlP(
-              "This card has some text content, which is a little
-              bit longer than the second card.",
+              paste(
+                "This card has some text content, which is a little",
+                "bit longer than the second card."
+              ),
               className = "card-text"
           ),
           dbcButton(
@@ -37,10 +39,12 @@ cards <- dbcCardDeck(
         list(
           htmlH5("Card 3", className = "card-title"),
           htmlP(
-            "This card has some text content, which is longer
-            than both of the other two cards, in order to
-            demonstrate the equal height property of cards in a
-            card group.",
+            paste(
+              "This card has some text content, which is longer",
+              "than both of the other two cards, in order to",
+              "demonstrate the equal height property of cards in a",
+              "card group."
+            ),
             className = "card-text",
           ),
           dbcButton(

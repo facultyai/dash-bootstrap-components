@@ -4,7 +4,9 @@ from dash.dependencies import Input, Output, State
 
 fade = html.Div(
     [
-        dbc.Button("Toggle fade", id="fade-button", className="mb-3"),
+        dbc.Button(
+            "Toggle fade", id="fade-button", className="mb-3", n_clicks=0
+        ),
         dbc.Fade(
             dbc.Card(
                 dbc.CardBody(

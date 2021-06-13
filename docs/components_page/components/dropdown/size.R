@@ -7,7 +7,7 @@ items_size <- list(
   dbcDropdownMenuItem("Second")
 )
 
-dropdown_size <- htmlDiv(
+dropdown <- htmlDiv(
   list(
     dbcDropdownMenu(
         label = "large dropdown",

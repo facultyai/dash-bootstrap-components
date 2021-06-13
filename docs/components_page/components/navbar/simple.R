@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-navbar_simple <- dbcNavbarSimple(
+navbar <- dbcNavbarSimple(
   list(
     dbcNavItem(dbcNavLink("Page 1", href = "#")),
     dbcDropdownMenu(

@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-tabs_style <- htmlDiv(
+tabs <- htmlDiv(
   list(
     dbcTabs(
       list(

@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-input_group_button <- dbcInputGroup(
+input_group <- dbcInputGroup(
   list(
     dbcInputGroupAddon(
       dbcButton("Random name", id = "input-group-button", n_clicks = 0),

@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-card <- htmlDiv(
+cards <- htmlDiv(
   list(
     dbcCard(
       dbcCardBody("This is some text within a card body"),

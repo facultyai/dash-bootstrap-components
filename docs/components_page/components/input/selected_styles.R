@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-input_checklist <- dbcChecklist(
+checklist <- dbcChecklist(
   id = "checklist-selected-style",
   options = list(
     list(label =  "Option 1", value = 1),

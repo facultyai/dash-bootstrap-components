@@ -1,16 +1,16 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-modal_centered <- htmlDiv(
+modal <- htmlDiv(
   list(
-    dbcButton("Open", id = "open-centered", n_clicks = 0),
+    dbcButton("Open", id = "open-centered"),
     dbcModal(
       list(
         dbcModalHeader("Header"),
         dbcModalBody("This modal is vertically centered"),
         dbcModalFooter(
           dbcButton(
-            "Close", id = "close-centered", n_clicks = 0, className = "ml-auto"
+            "Close", id = "close-centered", className = "ml-auto", n_clicks=0
           )
         )
       ),
@@ -30,7 +30,7 @@ app$callback(
     state("modal-centered", "is_open")
   ),
   function(n1, n2, is_open) {
-    if (n1 > 0 | n2 > 0) {
+    if (n1 | n2) {
       return(!is_open)
     }
     return(is_open)

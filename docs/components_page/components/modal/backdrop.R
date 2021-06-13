@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-modal_backdrop <- htmlDiv(
+modal <- htmlDiv(
   list(
     dbcFormGroup(
       list(
@@ -9,9 +9,9 @@ modal_backdrop <- htmlDiv(
         dbcRadioItems(
             id = "backdrop-selector",
             options = list(
-              list(label = "TRUE (default)", value = TRUE),
-              list(label = "FALSE", value = FALSE),
-              list(label = "static", value = "static")
+              list(label = "True (default)", value = TRUE),
+              list(label = "False", value = FALSE),
+              list(label = "'static'", value = "static")
             ),
             inline = TRUE,
             value = TRUE,

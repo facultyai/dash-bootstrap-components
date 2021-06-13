@@ -8,7 +8,7 @@ items <- list(
   dbcDropdownMenuItem("Something else here after the divider")
 )
 
-dropdown_alignment <- dbcRow(
+dropdown <- dbcRow(
   list(
     dbcCol(
       dbcDropdownMenu(

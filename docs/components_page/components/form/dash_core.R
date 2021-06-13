@@ -8,7 +8,7 @@ dropdown <-  dbcFormGroup(
       id = "dropdown",
       options = list(
         list(label = "Option 1", value =  1),
-        list(label = "Option 1", value =  1)
+        list(label = "Option 2", value =  2)
       )
     )
   )
@@ -28,4 +28,4 @@ range_slider <- dbcFormGroup(
   )
 )
 
-form_dcc <- dbcForm(list(dropdown, slider, range_slider))
+form <- dbcForm(list(dropdown, slider, range_slider))

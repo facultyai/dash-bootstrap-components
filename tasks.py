@@ -256,6 +256,17 @@ def build_r(ctx):
     with (HERE / "NAMESPACE").open("a") as f:
         f.write("export(dbcThemes)\n")
 
+    # -dev suffix breaks local installs of R package
+    description = (HERE / "DESCRIPTION").read_text().split("\n")
+
+    for i in range(len(description)):
+        desc = description[i]
+        if desc.startswith("Version:") and desc.endswith("-dev"):
+            description[i] = desc[:-4]
+
+    with (HERE / "DESCRIPTION").open("w") as f:
+        f.write("\n".join(description))
+
 
 @task
 def build_jl(ctx):

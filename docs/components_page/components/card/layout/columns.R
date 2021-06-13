@@ -19,8 +19,10 @@ card_content_2 <- dbcCardBody(
     htmlBlockquote(
       list(
         htmlP(
-          "A learning experience is one of those things that says,
-          'You know that thing you just did? Don't do that.'"
+          paste(
+            "A learning experience is one of those things that says,",
+            "'You know that thing you just did? Don't do that.'"
+          )
         ),
         htmlFooter(
             htmlSmall("Douglas Adams", className = "text-muted")

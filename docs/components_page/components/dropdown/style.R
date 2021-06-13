@@ -7,7 +7,7 @@ items_style <- list(
   dbcDropdownMenuItem("Item 3")
 )
 
-dropdowns_style <- htmlDiv(
+dropdowns <- htmlDiv(
   list(
     dbcDropdownMenu(
       items_style, label = "Primary", color = "primary", className = "m-1"

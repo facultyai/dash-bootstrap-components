@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build package
+    name: Build package and test snippets
     runs-on: 'ubuntu-latest'
     services:
       hub:
@@ -36,7 +36,17 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
       - name: Build dash-bootstrap-components
         run: npm run build
+      - name: Install R dependencies from cran2deb4ubuntu
+        run: |
+          sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
+          sudo apt-get update
+          sudo apt-get install r-recommended r-cran-dash
+      - name: Install R package
+        run: sudo R CMD INSTALL .
+      - name: Test installation
+        run: library(dashBootstrapComponents)
+        shell: Rscript {0}
       - name: Install nox
         run: python3.8 -m pip install -U nox
-      - name: Test Python module
+      - name: Test R docs snippets
         run: nox -s doctest

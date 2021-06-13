@@ -8,7 +8,7 @@ radioitems <- dbcFormGroup(
       options = list(
         list(label =  "Option 1", value = 1),
         list(label =  "Option 2", value = 2),
-        list(label =  "Disabled option", value = 3, disabled = TRUE)
+        list(label =  "Disabled Option", value = 3, disabled = TRUE)
       ),
       value = 1,
       id = "radioitems-input"
@@ -24,7 +24,7 @@ checklist <- dbcFormGroup(
       options = list(
         list(label =  "Option 1", value = 1),
         list(label =  "Option 2", value = 2),
-        list(label =  "Disabled option", value = 3, disabled = TRUE)
+        list(label =  "Disabled Option", value = 3, disabled = TRUE)
       ),
       value = list(1),
       id = "checklist-input"
@@ -39,7 +39,7 @@ switches <- dbcFormGroup(
       options = list(
         list(label =  "Option 1", value = 1),
         list(label =  "Option 2", value = 2),
-        list(label =  "Disabled option", value = 3, disabled = TRUE)
+        list(label =  "Disabled Option", value = 3, disabled = TRUE)
       ),
       value = list(1),
       id = "switches-input",
@@ -48,7 +48,7 @@ switches <- dbcFormGroup(
   )
 )
 
-inputs_radio_check <- htmlDiv(
+inputs <- htmlDiv(
   list(
     dbcForm(list(radioitems, checklist, switches)),
     htmlP(id = "radioitems-checklist-output")

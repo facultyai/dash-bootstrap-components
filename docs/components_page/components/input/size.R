@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-inputs_size <- htmlDiv(
+inputs <- htmlDiv(
   list(
     dbcInput(
       placeholder = "A large input...", bs_size = "lg", className = "mb-3"

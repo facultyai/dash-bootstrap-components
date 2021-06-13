@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-spinners_button <- htmlDiv(
+spinners <- htmlDiv(
   list(
     dbcButton(
         dbcSpinner(size = "sm"),

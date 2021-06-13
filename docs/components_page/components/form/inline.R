@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-form_inline <- dbcForm(
+form <- dbcForm(
   list(
     dbcFormGroup(
       list(
