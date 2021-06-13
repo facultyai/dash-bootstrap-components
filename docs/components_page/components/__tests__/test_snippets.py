@@ -1,7 +1,6 @@
 """
 Automated testing of non-Python code snippets in the docs
 """
-import json
 import re
 import unittest
 from collections import defaultdict
@@ -9,10 +8,10 @@ from pathlib import Path
 
 import pytest
 import requests
-from dash.testing.composite import DashRComposite, DashJuliaComposite
+from dash.testing.composite import DashJuliaComposite, DashRComposite
 
 from .helpers import clean_path, drop_keys, py_source_to_app
-from .wrappers import PY_WRAPPER, R_WRAPPER, JL_WRAPPER
+from .wrappers import JL_WRAPPER, PY_WRAPPER, R_WRAPPER
 
 HERE = Path(__file__).parent
 
