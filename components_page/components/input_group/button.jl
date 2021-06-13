@@ -2,11 +2,11 @@ using DashBootstrapComponents
 
 input_group = dbc_inputgroup([
     dbc_inputgroupaddon(
-        dbc_button("Random name", id = "input-group-button", n_clicks = 0),
-        addon_type = "prepend",
+        dbc_button("Random name", id="input-group-button", n_clicks=0),
+        addon_type="prepend",
     ),
-    dbc_input(id = "input-group-button-input", placeholder = "name"),
-])
+    dbc_input(id="input-group-button-input", placeholder="name"),
+]);
 
 
 callback!(
@@ -17,8 +17,8 @@ callback!(
     if n_clicks > 0
         names = ["Arthur Dent", "Ford Prefect", "Trillian Astra"]
         which = n_clicks % length(names)
-        return names[which+1]
+        return names[which + 1]
     else
         return ""
     end
-end
+end;

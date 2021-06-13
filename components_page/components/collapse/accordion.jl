@@ -6,17 +6,17 @@ function make_item(i)
     return dbc_card([
         dbc_cardheader(
             html_h2(
-                dbc_button("Collapsible group #$i", color = "link", id = "group-$i-toggle"),
+                dbc_button("Collapsible group #$i", color="link", id="group-$i-toggle"),
             ),
         ),
         dbc_collapse(
             dbc_cardbody("This is the content of group $i..."),
-            id = "collapse-$i",
+            id="collapse-$i",
         ),
     ])
-end
+end;
 
-accordion = html_div([make_item(1), make_item(2), make_item(3)], className = "accordion")
+accordion = html_div([make_item(1), make_item(2), make_item(3)], className="accordion");
 
 callback!(
     app,
@@ -47,4 +47,4 @@ callback!(
     else
         return false, false, false
     end
-end
+end;

@@ -4,17 +4,17 @@ modal = html_div([
     dbc_formgroup([
         dbc_label("Backdrop:"),
         dbc_radioitems(
-            id = "backdrop-selector",
-            options = [
+            id="backdrop-selector",
+            options=[
                 Dict("label" => "True (default)", "value" => true),
                 Dict("label" => "False", "value" => false),
                 Dict("label" => "'static'", "value" => "static"),
             ],
-            inline = true,
-            value = true,
+            inline=true,
+            value=true,
         ),
     ]),
-    dbc_button("Open modal", id = "open-backdrop", n_clicks = 0),
+    dbc_button("Open modal", id="open-backdrop", n_clicks=0),
     dbc_modal(
         [
             dbc_modalheader("Header"),
@@ -22,16 +22,16 @@ modal = html_div([
             dbc_modalfooter(
                 dbc_button(
                     "Close",
-                    id = "close-backdrop",
-                    className = "ml-auto",
-                    n_clicks = 0,
+                    id="close-backdrop",
+                    className="ml-auto",
+                    n_clicks=0,
                 ),
             ),
         ],
-        id = "modal-backdrop",
-        is_open = false,
+        id="modal-backdrop",
+        is_open=false,
     ),
-])
+]);
 
 callback!(
     app,
@@ -39,7 +39,7 @@ callback!(
     Input("backdrop-selector", "value"),
 ) do backdrop
     return backdrop
-end
+end;
 
 
 callback!(
@@ -50,4 +50,4 @@ callback!(
     State("modal-backdrop", "is_open"),
 ) do n1, n2, is_open
     return n1 > 0 || n2 > 0 ? is_open == 0 : is_open
-end
+end;

@@ -1,9 +1,9 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 loading_spinner = html_div([
-    dbc_button("Load", id = "loading-button", n_clicks = 0),
-    dbc_spinner(html_div(id = "loading-output")),
-])
+    dbc_button("Load", id="loading-button", n_clicks=0),
+    dbc_spinner(html_div(id="loading-output")),
+]);
 
 callback!(
     app,
@@ -18,4 +18,4 @@ callback!(
         return "Output not reloaded yet"
     end
 
-end
+end;
