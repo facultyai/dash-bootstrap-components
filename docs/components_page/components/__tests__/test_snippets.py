@@ -1,18 +1,16 @@
 """
 Automated testing of non-Python code snippets in the docs
 """
-import json
 import re
 import unittest
-from collections import defaultdict
 from pathlib import Path
 
 import pytest
 import requests
-from dash.testing.composite import DashRComposite, DashJuliaComposite
+from dash.testing.application_runners import JuliaRunner, RRunner
 
-from .helpers import clean_path, drop_keys, py_source_to_app
-from .wrappers import PY_WRAPPER, R_WRAPPER, JL_WRAPPER
+from .helpers import clean_path, drop_keys, py_source_to_app, rename_variable
+from .wrappers import JL_WRAPPER, PY_WRAPPER, R_WRAPPER
 
 HERE = Path(__file__).parent
 
@@ -26,191 +24,121 @@ PARAMS = [
 ]
 
 SKIP = ["components/table/kwargs.py", "components/tabs/active_tab.py"]
-ENVS = defaultdict(
-    dict,
-    {
-        "modal.md": {
-            "LOREM": (HERE.parent / "modal" / "lorem.txt").read_text().strip()
-        }
-    },
-)
+ENVS = {
+    "modal.md": {
+        "LOREM": (HERE.parent / "modal" / "lorem.txt").read_text().strip()
+    }
+}
+
+R_PORT = 8051
+JL_PORT = 8053
 
 
-def compare_layouts(
-    components, snippet, runner, wrapper, py_snippet, py_runner, py_env
+@pytest.fixture
+def dashr_server():
+    with RRunner() as starter:
+        starter.port = R_PORT
+        yield starter
+
+
+@pytest.fixture
+def dashjl_server():
+    with JuliaRunner() as starter:
+        starter.port = JL_PORT
+        yield starter
+
+
+@pytest.mark.parametrize("config", PARAMS)
+def test_r_snippets(dash_thread_server, dashr_server, config):
+    md_path, data = config
+    env = ENVS.get(md_path.name)
+
+    python_r_compare = []
+
+    # Concatenate all the snippets in the markdown file together
+    for i, (snippet_path, name) in enumerate(data):
+        if snippet_path in SKIP:
+            continue
+
+        snippet_path = HERE.parent / clean_path(snippet_path)
+        py_snippet = rename_variable(snippet_path, i, name)
+
+        r_snippet_path = snippet_path.parent / f"{snippet_path.stem}.R"
+
+        if r_snippet_path.exists():
+            r_snippet = rename_variable(
+                r_snippet_path, i, name, assign_op="<-"
+            )
+            python_r_compare.append((py_snippet, r_snippet, f"{name}_{i}"))
+
+    assert_layouts_equal(
+        python_r_compare,
+        dashr_server,
+        R_WRAPPER,
+        R_PORT,
+        dash_thread_server,
+        env,
+        8050,
+    )
+
+
+@pytest.mark.parametrize("config", PARAMS)
+def test_jl_snippets(dash_thread_server, dashjl_server, config):
+    md_path, data = config
+    env = ENVS.get(md_path.name)
+
+    python_jl_compare = []
+
+    # Concatenate all the snippets in the markdown file together
+    for i, (snippet_path, name) in enumerate(data):
+        if snippet_path in SKIP:
+            continue
+
+        snippet_path = HERE.parent / clean_path(snippet_path)
+        py_snippet = rename_variable(snippet_path, i, name)
+
+        jl_snippet_path = snippet_path.parent / f"{snippet_path.stem}.jl"
+
+        if jl_snippet_path.exists():
+            jl_snippet = rename_variable(jl_snippet_path, i, name)
+            python_jl_compare.append((py_snippet, jl_snippet, f"{name}_{i}"))
+
+    assert_layouts_equal(
+        python_jl_compare,
+        dashjl_server,
+        JL_WRAPPER,
+        JL_PORT,
+        dash_thread_server,
+        env,
+        8052,
+    )
+
+
+def assert_layouts_equal(
+    compare, runner, wrapper, port, py_runner, py_env, py_port
 ):
-
     # Get python snippet layout
     app = py_source_to_app(
         PY_WRAPPER.format(
-            snippet=py_snippet,
-            components=components,
+            snippet="\n".join(x[0] for x in compare),
+            components=", ".join(x[2] for x in compare),
         ),
         env=py_env,
     )
-    py_runner.start_server(app, port=8051)
-    py_layout = requests.get(f"{py_runner.server_url}/_dash-layout").json()
+    py_runner.start(app, port=py_port)
+    py_layout = requests.get(f"{py_runner.url}/_dash-layout").json()
 
     # Get other language snippet layout
-    runner.start_server(
+    runner.start(
         wrapper.format(
-            snippet=snippet,
-            components=components,
+            snippet="\n".join(x[1] for x in compare),
+            components=", ".join(x[2] for x in compare),
+            port=port,
         )
     )
-    layout = requests.get(f"{runner.server_url}/_dash-layout").json()
+    layout = requests.get(f"{runner.url}/_dash-layout").json()
 
     # Test layouts match
     unittest.TestCase().assertDictEqual(
         drop_keys(py_layout), drop_keys(layout)
     )
-
-
-@pytest.fixture
-def dashr(request, dashr_server, tmpdir):
-    with DashRComposite(
-        dashr_server,
-        browser=request.config.getoption("webdriver"),
-        remote=request.config.getoption("remote"),
-        remote_url=request.config.getoption("remote_url"),
-        headless=request.config.getoption("headless"),
-        options=request.config.hook.pytest_setup_options(),
-        download_path=tmpdir.mkdir("download-r").strpath,
-        percy_assets_root=request.config.getoption("percy_assets"),
-        percy_finalize=request.config.getoption("nopercyfinalize"),
-        pause=request.config.getoption("pause"),
-    ) as dc:
-        yield dc
-
-
-@pytest.fixture
-def dashjl(request, dashjl_server, tmpdir):
-    with DashJuliaComposite(
-        dashjl_server,
-        browser=request.config.getoption("webdriver"),
-        remote=request.config.getoption("remote"),
-        remote_url=request.config.getoption("remote_url"),
-        headless=request.config.getoption("headless"),
-        options=request.config.hook.pytest_setup_options(),
-        download_path=tmpdir.mkdir("download-jl").strpath,
-        percy_assets_root=request.config.getoption("percy_assets"),
-        percy_finalize=request.config.getoption("nopercyfinalize"),
-        pause=request.config.getoption("pause"),
-    ) as dc:
-        yield dc
-
-
-@pytest.mark.parametrize("config", PARAMS)
-def test_snippets(dash_duo, dashr, dashjl, config):
-    path, data = config
-
-    env = ENVS[path.name]
-
-    file_types = {
-        "R": {
-            "file_ext": "r",
-            "assignment_op": "<-",
-            "runner": dashr,
-            "wrapper": R_WRAPPER,
-        },
-        "Julia": {
-            "file_ext": "jl",
-            "assignment_op": "=",
-            "runner": dashjl,
-            "wrapper": JL_WRAPPER,
-        },
-    }
-
-    # Dictionaries to hold the results
-    py_data = {i: [] for i in file_types.keys()}
-    snippets = {i: [] for i in file_types.keys()}
-    components = {i: [] for i in file_types.keys()}
-
-    # Counter to generate new non-duplicate values
-    counter = 0
-
-    # Determine whether all components are unique
-    rename = len([i[1] for i in data]) != len(set([i[1] for i in data]))
-
-    # Concatenate all the snippets in the markdown file together
-    for filepath, name in data:
-        if filepath not in SKIP:
-
-            filepath = HERE.parent / clean_path(filepath)
-
-            new_component_name = name
-
-            # Some components are named the same - this renames them
-            if rename:
-                py_snippet = []
-                with filepath.open() as f:
-                    for line in f.readlines():
-                        new_line = line
-                        if new_line.startswith(f"{name} ="):
-                            new_component_name = f"{name}_{counter}"
-                            py_snippet.append(
-                                f"{new_component_name} ="
-                                + new_line[len(f"{name} =") :]
-                            )
-                            counter += 1
-                        else:
-                            py_snippet.append(new_line)
-                py_snippet = "".join(py_snippet)
-            else:
-                py_snippet = filepath.read_text()
-
-            # Now get the data for each file type
-            for file_type, meta in file_types.items():
-                # Get the file path
-                snippet_file = (
-                    filepath.parent / f"{filepath.stem}.{meta['file_ext']}"
-                )
-
-                # Check a snippet exists
-                if snippet_file.exists():
-                    py_data[file_type].append(py_snippet)
-                    # Add the component details
-                    components[file_type].append(new_component_name)
-
-                    # If we changed the name, then do it again here on the new file
-                    if rename and new_component_name != name:
-                        snippet = []
-                        with snippet_file.open() as f:
-                            for line in f.readlines():
-                                new_line = line
-                                if new_line.startswith(
-                                    f"{name} {meta['assignment_op']}"
-                                ):
-                                    snippet.append(
-                                        f"{new_component_name} {meta['assignment_op']}"
-                                        + new_line[
-                                            len(
-                                                f"{name} {meta['assignment_op']}"
-                                            ) :
-                                        ]
-                                    )
-
-                                else:
-                                    snippet.append(new_line)
-
-                        snippets[file_type].append("".join(snippet))
-                    else:
-                        snippets[file_type].append(snippet_file.read_text())
-
-    assert all(
-        [len(i) == len(set(i)) for _, i in components.items()]
-    ), "component names are not unique"
-
-    # Test all the snippets match
-    for file_type, meta in file_types.items():
-        if len(components[file_type]) > 0:
-
-            compare_layouts(
-                components=", ".join(components[file_type]),
-                snippet="\n".join(snippets[file_type]),
-                runner=meta["runner"],
-                wrapper=meta["wrapper"],
-                py_snippet="\n".join(py_data[file_type]),
-                py_runner=dash_duo,
-                py_env=env,
-            )

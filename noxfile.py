@@ -41,5 +41,8 @@ def doctest(session):
     session.install("-r", "docs/requirements.txt")
     session.install(".")
     session.run(
-        "pytest", "--headless", "docs/components_page/components/__tests__"
+        "pytest",
+        "--headless",
+        "-v",
+        "docs/components_page/components/__tests__",
     )

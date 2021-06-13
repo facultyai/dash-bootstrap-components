@@ -43,10 +43,19 @@ jobs:
           sudo apt-get install r-recommended r-cran-dash
       - name: Install R package
         run: sudo R CMD INSTALL .
-      - name: Test installation
-        run: library(dashBootstrapComponents)
-        shell: Rscript {0}
+      - name: Setup Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.6.1'
+      - name: Add Julia artifacts to repo for local install
+        run: |
+          git add -f deps src/*.jl Project.toml
+          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "Add Julia build artifacts"
+      - name: Install Julia dependencies
+        run: julia -e 'using Pkg; Pkg.add(["Dash", "DashCoreComponents", "DashHtmlComponents", "HTTP"]); Pkg.add(path=".");'
+      - name: Test Julia installation
+        run: julia -e 'using Dash, DashBootstrapComponents, HTTP;'
       - name: Install nox
         run: python3.8 -m pip install -U nox
-      - name: Test R docs snippets
+      - name: Test R and Julia docs snippets
         run: nox -s doctest

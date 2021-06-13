@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-spinners<- htmlDiv(
+spinners <- htmlDiv(
   list(
     dbcSpinner(color = "primary", type = "grow"),
     dbcSpinner(color = "secondary", type = "grow"),

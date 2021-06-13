@@ -9,7 +9,7 @@ make_item <- function(i) {
         dbcCardHeader(
             htmlH2(
                 dbcButton(
-                    sprintf("Collapsible group # %d", i),
+                    sprintf("Collapsible group #%d", i),
                     color = "link",
                     id = sprintf("group-%d-toggle", i),
                     n_clicks = 0

@@ -19,7 +19,7 @@ app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 {snippet}
 
 app$layout(htmlDiv(list({components})))
-app$run_server()
+app$run_server(port = {port})
 """
 
 JL_WRAPPER = """
@@ -27,8 +27,8 @@ using Dash, DashBootstrapComponents
 
 app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP]);
 
-{snippet};
+{snippet}
 
 app.layout = html_div([{components}]);
-run_server(app, debug = false);
+run_server(app, "127.0.0.1", {port});
 """
