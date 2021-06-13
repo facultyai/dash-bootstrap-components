@@ -14,12 +14,14 @@ def make_item(i):
                         f"Collapsible group #{i}",
                         color="link",
                         id=f"group-{i}-toggle",
+                        n_clicks=0,
                     )
                 )
             ),
             dbc.Collapse(
                 dbc.CardBody(f"This is the content of group {i}..."),
                 id=f"collapse-{i}",
+                is_open=False,
             ),
         ]
     )
