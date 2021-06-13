@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-alert <- htmlDiv(
+auto_dismiss_alert <- htmlDiv(
  list(
     dbcButton("Toggle", id = "alert-toggle-auto", className = "mr-1",
               n_clicks = 0),

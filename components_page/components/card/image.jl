@@ -16,4 +16,4 @@ bottom_card = dbc_card(
     style=Dict("width" => "18rem"),
 );
 
-cards = dbc_row([dbc_col(top_card, width="auto"), dbc_col(bottom_card, width="auto")]);
+image_cards = dbc_row([dbc_col(top_card, width="auto"), dbc_col(bottom_card, width="auto")]);

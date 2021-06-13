@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-badges = html_span([
+pill_badges = html_span([
     dbc_badge("Primary", pill=true, color="primary", className="mr-1"),
     dbc_badge("Secondary", pill=true, color="secondary", className="mr-1"),
     dbc_badge("Success", pill=true, color="success", className="mr-1"),

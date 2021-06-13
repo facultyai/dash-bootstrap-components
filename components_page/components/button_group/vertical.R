@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-button_group <- dbcButtonGroup(
+vertical_button_group <- dbcButtonGroup(
   list(
     dbcButton("First"),
     dbcButton("Second"),

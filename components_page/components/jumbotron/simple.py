@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
-jumbotron = dbc.Jumbotron(
+simple_jumbotron = dbc.Jumbotron(
     [
         html.H1("Jumbotron", className="display-3"),
         html.P(

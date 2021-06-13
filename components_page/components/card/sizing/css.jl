@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-card = dbc_card(
+size_css_card = dbc_card(
     dbc_cardbody([
         html_h5("Custom CSS", className="card-title"),
         html_p(

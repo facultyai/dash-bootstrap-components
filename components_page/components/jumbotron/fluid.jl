@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-jumbotron = dbc_jumbotron(
+fluid_jumbotron = dbc_jumbotron(
     [
         dbc_container(
             [

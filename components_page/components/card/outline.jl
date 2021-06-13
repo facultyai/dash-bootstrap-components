@@ -31,4 +31,4 @@ row_3 = dbc_row([
     dbc_col(dbc_card(card_content, color="dark", outline=true)),
 ]);
 
-cards = html_div([row_1, row_2, row_3]);
+outline_cards = html_div([row_1, row_2, row_3]);

@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-buttons = html_div([
+simple_buttons = html_div([
     dbc_button("Primary", color="primary", className="mr-1"),
     dbc_button("Secondary", color="secondary", className="mr-1"),
     dbc_button("Success", color="success", className="mr-1"),

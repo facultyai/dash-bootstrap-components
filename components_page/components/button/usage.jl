@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-button = html_div([
+callback_button = html_div([
     dbc_button("Click me", id="example-button", className="mr-2", n_clicks=0),
     html_span(id="example-output", style=Dict("verticalAlign" => "middle")),
 ]);

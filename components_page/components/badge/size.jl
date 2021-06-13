@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-badges = html_div([
+varying_size_badges = html_div([
     html_h1(["Example heading", dbc_badge("New", className="ml-1")]),
     html_h2(["Example heading", dbc_badge("New", className="ml-1")]),
     html_h3(["Example heading", dbc_badge("New", className="ml-1")]),
