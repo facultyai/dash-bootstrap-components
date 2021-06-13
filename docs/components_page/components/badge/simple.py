@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 
-badge = dbc.Button(
+simple_badge = dbc.Button(
     ["Notifications", dbc.Badge("4", color="light", className="ml-1")],
     color="primary",
 )

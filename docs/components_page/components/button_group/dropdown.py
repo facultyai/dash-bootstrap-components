@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 
-button_group = dbc.ButtonGroup(
+dropdown_button_group = dbc.ButtonGroup(
     [
         dbc.Button("First"),
         dbc.Button("Second"),

@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-buttons = html_div([
+outline_buttons = html_div([
     dbc_button("Primary", outline=true, color="primary", className="mr-1"),
     dbc_button("Secondary", outline=true, color="secondary", className="mr-1"),
     dbc_button("Success", outline=true, color="success", className="mr-1"),

@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-cards <- dbcCardDeck(
+layout_deck_cards <- dbcCardDeck(
   list(
     dbcCard(
       dbcCardBody(

@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-jumbotron <- dbcJumbotron(
+simple_jumbotron <- dbcJumbotron(
   list(
     htmlH1("Jumbotron", className = "display-3"),
     htmlP(

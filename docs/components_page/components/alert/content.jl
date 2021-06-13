@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-alert = dbc_alert([
+complex_alert = dbc_alert([
     html_h4("Well done!", className="alert-heading"),
     html_p(
         "This is a success alert with loads of extra text in it. So much " *

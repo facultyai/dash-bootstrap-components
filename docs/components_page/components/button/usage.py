@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-button = html.Div(
+callback_button = html.Div(
     [
         dbc.Button(
             "Click me", id="example-button", className="mr-2", n_clicks=0

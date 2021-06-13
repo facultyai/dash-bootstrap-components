@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-alerts = html_div([
+linked_alerts = html_div([
     dbc_alert(
         [
             "This is a primary alert with an ",

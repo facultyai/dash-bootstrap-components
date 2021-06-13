@@ -1,6 +1,6 @@
 using DashBootstrapComponents
 
-card = dbc_card(
+list_group_card = dbc_card(
     dbc_listgroup(
         [
             dbc_listgroupitem("Item 1"),

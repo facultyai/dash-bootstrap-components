@@ -2,7 +2,7 @@ library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
 
-card <- dbcCard(
+list_group_card <- dbcCard(
   dbcListGroup(
     list(
       dbcListGroupItem("Item 1"),

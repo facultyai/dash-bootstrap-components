@@ -21,4 +21,4 @@ second_card = dbc_card(
 );
 
 
-cards = dbc_row([dbc_col(first_card, width=4), dbc_col(second_card, width=8)]);
+size_grid_cards = dbc_row([dbc_col(first_card, width=4), dbc_col(second_card, width=8)]);

@@ -8,7 +8,7 @@ card_content = [
     ]),
 ];
 
-cards = html_div([
+coloured_cards = html_div([
     dbc_row(
         [
             dbc_col(dbc_card(card_content, color="primary", inverse=true)),
