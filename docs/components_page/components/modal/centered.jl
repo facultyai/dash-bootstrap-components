@@ -1,7 +1,7 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 modal = html_div([
-    dbc_button("Open", id = "open-centered"),
+    dbc_button("Open", id="open-centered"),
     dbc_modal(
         [
             dbc_modalheader("Header"),
@@ -9,17 +9,17 @@ modal = html_div([
             dbc_modalfooter(
                 dbc_button(
                     "Close",
-                    id = "close-centered",
-                    className = "ml-auto",
-                    n_clicks = 0,
+                    id="close-centered",
+                    className="ml-auto",
+                    n_clicks=0,
                 ),
             ),
         ],
-        id = "modal-centered",
-        centered = true,
-        is_open = false,
+        id="modal-centered",
+        centered=true,
+        is_open=false,
     ),
-])
+]);
 
 callback!(
     app,
@@ -29,4 +29,4 @@ callback!(
     State("modal-centered", "is_open"),
 ) do n1, n2, is_open
     return n1 > 0 || n2 > 0 ? is_open == 0 : is_open
-end
+end;
