@@ -25,10 +25,10 @@ app$run_server()
 JL_WRAPPER = """
 using Dash, DashBootstrapComponents
 
-app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
+app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP]);
 
-{snippet}
+{snippet};
 
-app.layout = {name}
-run_server(app)
+app.layout = {name};
+run_server(app, debug = false);
 """
