@@ -1,18 +1,3 @@
-// For docs:  How to style the next/prev icons:  https://github.com/reactstrap/reactstrap/issues/1367
-//              ? https://github.com/reactstrap/reactstrap/issues/1965
-//            To center an image that's smaller than the rest of the slides, use text-align center on the carousel wrapper
-//            Note defaults - interval = 5000
-//            Header and captions don't show on the smallest screen
-//            Include nice photos for the docs?
-//
-// questions/notes
-//    ? Should `height` and `width` props be added for the image?
-//    ? Is there a way to add Markdown text to the slides?  How about other components?
-//    -  Review my javascript for anti patterns
-//    - odd behaviour when trying to use interval to pause.  It will stop when interval=false in callback, but when
-//          set to interval=2000, it doesn't restart.  Workaound is to control it with dcc.Interval and active_index prop
-//
-
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
@@ -36,10 +21,6 @@ const Carousel = props => {
     active_index,
     style,
     className,
-    src_className,
-    src_style,
-    caption_className,
-    caption_style,
     loading_state,
     controls,
     indicators,
@@ -66,9 +47,9 @@ const Carousel = props => {
 
   const slides = items.map(item => {
     // note - the default 'd-block w-100' is from the examples in the Bootstrap docs.
-    item.src_className =
-      typeof item.src_className !== 'undefined'
-        ? item.src_className
+    item.imgClassName =
+      typeof item.imgClassName !== 'undefined'
+        ? item.imgClassName
         : 'd-block w-100';
 
     return (
@@ -79,16 +60,15 @@ const Carousel = props => {
       >
         <img
           src={item.src}
-          className={item.src_className}
-          style={item.src_style}
-          alt={item.altText}
+          className={item.imgClassName}
+          style={item.img_style}
+          alt={item.alt}
         />
 
         <CarouselCaption
           captionText={item.caption}
           captionHeader={item.header}
-          className={item.caption_className}
-          style={item.caption_style}
+          className={item.captionClassName}
         />
       </CarouselItem>
     );
@@ -174,7 +154,7 @@ Carousel.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.exact({
       /**
-       * The id of the item
+       * The id of the slide
        */
       id: PropTypes.string,
       /**
@@ -188,13 +168,13 @@ Carousel.propTypes = {
       /**
        * The className for the image.  The default is 'd-block w-100'
        */
-      src_className: PropTypes.string,
+      imgClassName: PropTypes.string,
       /**
        * The style for the image
        */
-      src_style: PropTypes.string,
+      img_style: PropTypes.object,
       /**
-       * The Header for the caption of item. The text is displayed in a <h5> element
+       * The header of the text on the slide. It is displayed in a <h5> element
        */
       header: PropTypes.string,
       /**
@@ -204,13 +184,9 @@ Carousel.propTypes = {
       /**
        * The className for the header and caption container
        */
-      caption_className: PropTypes.string,
-      /**
-       * The style for the header and caption container
-       */
-      caption_style: PropTypes.string
-    }).isRequired
-  ),
+      captionClassName: PropTypes.string
+    })
+  ).isRequired,
 
   /**
    * The current visible slide number
@@ -229,7 +205,6 @@ Carousel.propTypes = {
 
   /**
    * Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.
-   * This is how bootstrap defines it... I would prefer a bool named autoplay or something...
    */
   ride: PropTypes.oneOf(['carousel']),
 
