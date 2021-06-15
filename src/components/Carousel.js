@@ -56,7 +56,7 @@ const Carousel = props => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item.id}
+        key={item.key}
       >
         <img
           src={item.src}
@@ -154,9 +154,10 @@ Carousel.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.exact({
       /**
-       * The id of the slide
+       * A unique identifier for the slide, used to improve performance by React.js while rendering components
+       * See https://reactjs.org/docs/lists-and-keys.html for more info.
        */
-      id: PropTypes.string,
+      key: PropTypes.string,
       /**
        * The URL of the image
        */

@@ -39,7 +39,7 @@ Add `className="carousel-fade"` to your carousel to animate slides with a fade t
 
 ## Control slideshow with callbacks
 
-Control which slide number is displayed by using the `active_index` in a callback. This slidshow is being controled by `dbc.RadioItems`
+Control which slide number is displayed by using the `active_index` in a callback. This slideshow is being controlled by `dbc.RadioItems`
 
 {{example:components/carousel/callback.py:carousel}}
 
@@ -67,11 +67,12 @@ The controls in the Bootstrap carousel are images that have a white background. 
   color: yellow;
 }
 ```
+   
+{{apidoc:src/components/Carousel.js}}
 
-## Items
-
-The `items` prop is a list of dictionaries that defines what is displayed on the slides.  It has the following keys:
--  `id` (string):The id of the slide.
+### Items
+`items`  is a list of dictionaries that defines what is displayed on the slides in the Carousel.  It has the following keys:
+-  `key` (string):A unique identifier for the component, used to improve performance by React.js while rendering components See https://reactjs.org/docs/lists-and-keys.html for more info.
 - `src` (string): The URL of the image.
 - `alt` (string):The alternate text for an image, if the image cannot be displayed.
 - `imgClassName`(string): The className for the image.  The default is `d-block w-100`.
@@ -79,7 +80,4 @@ The `items` prop is a list of dictionaries that defines what is displayed on the
 - `header` (string): The header of the text on the slide. It is displayed in a `<h5>` element.
 - `caption` (string): The caption of the item.  The text is displayed in a `<p>` element.
 - `captionClassName`(string): The className for the header and caption container
-      
-
-
-{{apidoc:src/components/Carousel.js}}
+   
