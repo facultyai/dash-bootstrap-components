@@ -5,7 +5,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import markdown
 
-from .api_doc import ApiDoc
+from .api_doc import ComponentReference
 from .helpers import ExampleContainer, load_source_with_environment
 from .metadata import get_component_metadata
 
@@ -53,7 +53,9 @@ def _parse_block(block, app, extra_env_vars):
     if type_ == "example":
         return _parse_example(data, app, extra_env_vars)
     elif type_ == "apidoc":
-        return _parse_doc(data)
+        _, filename = data.rsplit("/", 1)
+        component_name = filename[:-3]
+        return ComponentReference(component_name)
     elif type_ == "code-example":
         return _parse_code_example(data)
     raise ValueError("Unable to parse block.")

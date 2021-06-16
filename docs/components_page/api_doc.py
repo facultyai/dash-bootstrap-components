@@ -1,45 +1,49 @@
+import re
+
+import dash_bootstrap_components as dbc
+import dash_core_components as dcc
 import dash_html_components as html
-from dash.development._py_components_generation import (
-    filter_props,
-    js_to_py_type,
-    reorder_props,
-)
 
 
-def ApiDoc(component_metadata, component_name=None):
-    component_props = component_metadata.get("props", {})
-    return html.Div(
-        ArgumentsList(component_props, component_name),
-        className="api-documentation",
-    )
+def ComponentReference(component_name):
+    component = getattr(dbc, component_name)
+    component_doc = component.__doc__
 
-
-def ArgumentsList(component_props, component_name):
-    if component_name is not None:
-        heading = f"Keyword arguments for {component_name}"
-    else:
-        heading = "Keyword arguments"
-    component_props = reorder_props(filter_props(component_props))
-    arguments = []
-    for name, metadata in component_props.items():
-        arguments.append(Argument(name, metadata))
-    if not arguments:
-        return []
-    return [
-        html.H4(heading, className="mt-5 mb-2"),
-        html.Ul(arguments, className="list-unstyled"),
+    return_div = [
+        dcc.Markdown("### Keyword arguments for {}".format(component_name))
     ]
 
+    docs = component_doc.split("Keyword arguments:")[-1]
 
-def Argument(argument_name, argument_metadata):
-    description = argument_metadata.get("description", "")
-    required = "" if argument_metadata.get("required", False) else ", optional"
-    argument_type = argument_metadata.get("type", {})
-    argument_type = js_to_py_type(argument_type)
-    if argument_type is not None:
-        type_string = f" ({argument_type}{required})"
-    else:
-        type_string = ""
-    return html.Li(
-        [html.Code(argument_name), html.I(type_string), ": ", description]
+    # formats code blocks that includes square brackets
+    docs = docs.replace("[", "\[").replace("]", "\]")
+    verbatim_regex = r"`((\\\[)((.|\n)*?)(\\\]))`"
+    docs = re.sub(re.compile(verbatim_regex), r"`[\3]`", docs)
+
+    # format links
+    link_regex = r"\\\[([\w\.\-:\/]+)\\\]\(([\w\.\-:#\/]+)\)"
+    docs = re.sub(re.compile(link_regex), r"[\1](\2)", docs)
+
+    # formats the prop defaults
+    prop_optional_default_regex = r"""default (.*)\)"""
+    docs = re.sub(
+        re.compile(prop_optional_default_regex), r"default `\1`)", docs
     )
+
+    # formats the prop type
+    prop_type_regex = r"""(\s*- \w+?\s*\()([^;]*);"""
+    docs = re.sub(re.compile(prop_type_regex), r"\1*\2*;", docs)
+
+    # formats the prop name on first level only
+    prop_name_regex = r"""(\n- )(\w+?) \("""
+    docs = re.sub(re.compile(prop_name_regex), r"\1**`\2`** (", docs)
+
+    # formats keys of nested dicts
+    nested_prop_name_regex = r"""(\n\s+- )(\w+?) \("""
+    docs = re.sub(re.compile(nested_prop_name_regex), r"\1**`\2`** (", docs)
+
+    # removes a level of nesting
+    docs = docs.replace("\n-", "\n")
+
+    return_div.append(dcc.Markdown(docs))
+    return html.Div(return_div, className="reference")
