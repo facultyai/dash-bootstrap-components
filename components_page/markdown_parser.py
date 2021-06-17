@@ -3,11 +3,10 @@ from pathlib import Path
 
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_bootstrap_components as dbc
 import markdown
+import dash_bootstrap_components as dbc
 
 from .helpers import ExampleContainer, load_source_with_environment
-
 
 __all__ = ["parse"]
 
