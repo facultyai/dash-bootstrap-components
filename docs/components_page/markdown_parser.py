@@ -1,10 +1,10 @@
 import re
 from pathlib import Path
 
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 import markdown
-import dash_bootstrap_components as dbc
 
 from .helpers import ExampleContainer, load_source_with_environment
 
