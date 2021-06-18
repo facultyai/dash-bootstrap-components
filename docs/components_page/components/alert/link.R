@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-alerts <- htmlDiv(
+linked_alerts <- htmlDiv(
   list(
     dbcAlert(
       list(

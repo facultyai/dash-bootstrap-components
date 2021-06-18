@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-button <-  htmlDiv(
+callback_button <-  htmlDiv(
   list(
     dbcButton("Click me", id = "example-button", n_clicks = 0,
               className = "mr-2"),

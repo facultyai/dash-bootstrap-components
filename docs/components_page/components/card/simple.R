@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-card <- dbcCard(
+simple_card <- dbcCard(
   list(
     dbcCardImg(src = "/static/images/placeholder286x180.png", top = TRUE),
     dbcCardBody(

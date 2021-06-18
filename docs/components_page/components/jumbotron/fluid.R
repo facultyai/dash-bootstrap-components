@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-jumbotron <- dbcJumbotron(
+fluid_jumbotron <- dbcJumbotron(
   list(
     dbcContainer(
       list(

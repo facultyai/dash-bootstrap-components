@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-card <- dbcCard(
+complex_card <- dbcCard(
   dbcCardBody(
     list(
       htmlH4("Title", className = "card-title"),

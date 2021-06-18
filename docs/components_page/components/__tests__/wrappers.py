@@ -6,7 +6,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 {snippet}
 
-app.layout = {name}
+app.layout = html.Div([{components}])
 """
 
 R_WRAPPER = """
@@ -18,6 +18,17 @@ app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
 {snippet}
 
-app$layout({name})
-app$run_server()
+app$layout(htmlDiv(list({components})))
+app$run_server(port = {port})
+"""
+
+JL_WRAPPER = """
+using Dash, DashBootstrapComponents
+
+app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP]);
+
+{snippet}
+
+app.layout = html_div([{components}]);
+run_server(app, "127.0.0.1", {port});
 """
