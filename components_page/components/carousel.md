@@ -69,15 +69,4 @@ The controls in the Bootstrap carousel are images that have a white background. 
 ```
    
 {{apidoc:src/components/Carousel.js}}
-
-### Items
-`items`  is a list of dictionaries that defines what is displayed on the slides in the Carousel.  It has the following keys:
--  `key` (string):A unique identifier for the component, used to improve performance by React.js while rendering components See https://reactjs.org/docs/lists-and-keys.html for more info.
-- `src` (string): The URL of the image.
-- `alt` (string):The alternate text for an image, if the image cannot be displayed.
-- `imgClassName`(string): The className for the image.  The default is `d-block w-100`.
-- `img_style`(dict): The CSS style of the image.
-- `header` (string): The header of the text on the slide. It is displayed in a `<h5>` element.
-- `caption` (string): The caption of the item.  The text is displayed in a `<p>` element.
-- `captionClassName`(string): The className for the header and caption container
    
