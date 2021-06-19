@@ -40,3 +40,4 @@ deps/
 src/*.jl
 src/jl
 Project.toml
+!examples/**/Project.toml
