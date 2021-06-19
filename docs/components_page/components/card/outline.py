@@ -39,4 +39,4 @@ row_3 = dbc.Row(
     ]
 )
 
-cards = html.Div([row_1, row_2, row_3])
+outline_cards = html.Div([row_1, row_2, row_3])

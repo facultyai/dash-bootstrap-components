@@ -19,6 +19,9 @@ bottom_card = dbc.Card(
     style={"width": "18rem"},
 )
 
-cards = dbc.Row(
-    [dbc.Col(top_card, width="auto"), dbc.Col(bottom_card, width="auto")]
+image_cards = dbc.Row(
+    [
+        dbc.Col(top_card, width="auto"),
+        dbc.Col(bottom_card, width="auto"),
+    ]
 )

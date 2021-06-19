@@ -9,6 +9,7 @@ toast = html.Div(
             id="simple-toast-toggle",
             color="primary",
             className="mb-3",
+            n_clicks=0,
         ),
         dbc.Toast(
             [html.P("This is the content of the toast", className="mb-0")],

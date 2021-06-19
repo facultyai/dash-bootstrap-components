@@ -5,7 +5,10 @@ from dash.dependencies import Input, Output, State
 fade = html.Div(
     [
         dbc.Button(
-            "Toggle fade", id="fade-transition-button", className="mb-3"
+            "Toggle fade",
+            id="fade-transition-button",
+            className="mb-3",
+            n_clicks=0,
         ),
         dbc.Fade(
             dbc.Card(
@@ -17,7 +20,8 @@ fade = html.Div(
             ),
             id="fade-transition",
             is_in=True,
-            style={"transition": "opacity 100ms ease"},
+            style={"transition": "opacity 2000ms ease"},
+            timeout=2000,
         ),
     ]
 )

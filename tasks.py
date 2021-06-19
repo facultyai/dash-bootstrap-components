@@ -256,6 +256,17 @@ def build_r(ctx):
     with (HERE / "NAMESPACE").open("a") as f:
         f.write("export(dbcThemes)\n")
 
+    # -dev suffix breaks local installs of R package
+    description = (HERE / "DESCRIPTION").read_text().split("\n")
+
+    for i in range(len(description)):
+        desc = description[i]
+        if desc.startswith("Version:") and desc.endswith("-dev"):
+            description[i] = desc[:-4]
+
+    with (HERE / "DESCRIPTION").open("w") as f:
+        f.write("\n".join(description))
+
 
 @task
 def build_jl(ctx):
@@ -266,3 +277,16 @@ def build_jl(ctx):
     copy_dist()
     move_generated_files(ctx)
     shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "themes.jl")
+
+    with (HERE / "src" / "DashBootstrapComponents.jl").open() as f:
+        lines = f.readlines()
+
+    n = len(lines)
+    for i, line in enumerate(reversed(lines)):
+        if line.startswith("include"):
+            break
+
+    lines.insert(n - i, 'include("themes.jl")\n')
+
+    with (HERE / "src" / "DashBootstrapComponents.jl").open("w") as f:
+        f.writelines(lines)

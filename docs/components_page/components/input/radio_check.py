@@ -9,7 +9,7 @@ radioitems = dbc.FormGroup(
             options=[
                 {"label": "Option 1", "value": 1},
                 {"label": "Option 2", "value": 2},
-                {"label": "Disabled option", "value": 3, "disabled": True},
+                {"label": "Disabled Option", "value": 3, "disabled": True},
             ],
             value=1,
             id="radioitems-input",
@@ -26,7 +26,7 @@ checklist = dbc.FormGroup(
                 {"label": "Option 2", "value": 2},
                 {"label": "Disabled Option", "value": 3, "disabled": True},
             ],
-            value=[],
+            value=[1],
             id="checklist-input",
         ),
     ]
@@ -41,7 +41,7 @@ switches = dbc.FormGroup(
                 {"label": "Option 2", "value": 2},
                 {"label": "Disabled Option", "value": 3, "disabled": True},
             ],
-            value=[],
+            value=[1],
             id="switches-input",
             switch=True,
         ),

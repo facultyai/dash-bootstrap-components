@@ -4,16 +4,19 @@ from dash.dependencies import Input, Output, State
 
 modal = html.Div(
     [
-        dbc.Button("Open modal", id="open"),
+        dbc.Button("Open modal", id="open", n_clicks=0),
         dbc.Modal(
             [
                 dbc.ModalHeader("Header"),
                 dbc.ModalBody("This is the content of the modal"),
                 dbc.ModalFooter(
-                    dbc.Button("Close", id="close", className="ml-auto")
+                    dbc.Button(
+                        "Close", id="close", className="ml-auto", n_clicks=0
+                    )
                 ),
             ],
             id="modal",
+            is_open=False,
         ),
     ]
 )
