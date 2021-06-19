@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
-complex_card = dbc.Card(
+card = dbc.Card(
     dbc.CardBody(
         [
             html.H4("Title", className="card-title"),

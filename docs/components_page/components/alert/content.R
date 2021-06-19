@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-complex_alert <- dbcAlert(
+alert <- dbcAlert(
   list(
     htmlH4("Well done!", className = "alert-heading"),
     htmlP(

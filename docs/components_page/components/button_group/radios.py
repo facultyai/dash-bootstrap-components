@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-radio_items_button_group = html.Div(
+button_group = html.Div(
     [
         dbc.RadioItems(
             id="radios",
