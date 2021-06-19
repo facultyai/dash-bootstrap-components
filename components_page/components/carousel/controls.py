@@ -7,5 +7,5 @@ carousel = dbc.Carousel(
         {"key": "3", "src": "/static/images/slide3.svg"},
     ],
     controls=True,
-    indicators=False
+    indicators=False,
 )
