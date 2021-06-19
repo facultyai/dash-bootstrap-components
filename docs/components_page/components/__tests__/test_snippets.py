@@ -71,15 +71,16 @@ def test_r_snippets(dash_thread_server, dashr_server, config):
             )
             python_r_compare.append((py_snippet, r_snippet, f"{name}_{i}"))
 
-    assert_layouts_equal(
-        python_r_compare,
-        dashr_server,
-        R_WRAPPER,
-        R_PORT,
-        dash_thread_server,
-        env,
-        8050,
-    )
+    if python_r_compare:
+        assert_layouts_equal(
+            python_r_compare,
+            dashr_server,
+            R_WRAPPER,
+            R_PORT,
+            dash_thread_server,
+            env,
+            8050,
+        )
 
 
 @pytest.mark.parametrize("config", PARAMS)
@@ -103,15 +104,16 @@ def test_jl_snippets(dash_thread_server, dashjl_server, config):
             jl_snippet = rename_variable(jl_snippet_path, i, name)
             python_jl_compare.append((py_snippet, jl_snippet, f"{name}_{i}"))
 
-    assert_layouts_equal(
-        python_jl_compare,
-        dashjl_server,
-        JL_WRAPPER,
-        JL_PORT,
-        dash_thread_server,
-        env,
-        8052,
-    )
+    if python_jl_compare:
+        assert_layouts_equal(
+            python_jl_compare,
+            dashjl_server,
+            JL_WRAPPER,
+            JL_PORT,
+            dash_thread_server,
+            env,
+            8052,
+        )
 
 
 def assert_layouts_equal(
