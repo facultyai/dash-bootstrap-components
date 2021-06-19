@@ -2,12 +2,17 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-alert = html.Div(
+dimissable_alert = html.Div(
     [
         dbc.Button(
-            "Toggle alert with fade", id="alert-toggle-fade", className="mr-1"
+            "Toggle alert with fade",
+            id="alert-toggle-fade",
+            className="mr-1",
+            n_clicks=0,
         ),
-        dbc.Button("Toggle alert without fade", id="alert-toggle-no-fade"),
+        dbc.Button(
+            "Toggle alert without fade", id="alert-toggle-no-fade", n_clicks=0
+        ),
         html.Hr(),
         dbc.Alert(
             "Hello! I am an alert",

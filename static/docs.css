@@ -27,11 +27,6 @@ code.hljs {
   border-radius: 6px;
 }
 
-.example-source-container code.hljs {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 span.hljs-meta {
   color: #66d9ef;
 }
@@ -85,18 +80,16 @@ span.hljs-meta {
 }
 
 .example-container {
-  padding: 1rem;
   border: 1px solid #d8d8d8;
   margin: 2rem 0 0;
-  border-radius: 6px 6px 0px 0px;
-  border-bottom: 0px;
+  border-radius: 6px;
 }
 
-.example-source-container {
-  margin-bottom: 2rem;
+.example {
+  margin: 1rem;
 }
 
-.example-source-container pre.hljs {
+.example-source pre.hljs {
   border-radius: 0px 0px 6px 6px;
 }
 
@@ -159,11 +152,15 @@ span.hljs-meta {
 }
 
 /* radio button group example */
-.button-group-demo .radio-group .custom-control-input ~ .custom-control-label::before {
+.button-group-demo
+  .radio-group
+  .custom-control-input
+  ~ .custom-control-label::before {
   content: none;
 }
 
-.button-group-demo .radio-group
+.button-group-demo
+  .radio-group
   .custom-radio
   .custom-control-input
   ~ .custom-control-label::after {
@@ -174,12 +171,20 @@ span.hljs-meta {
   padding-left: 0;
 }
 
-.button-group-demo .radio-group .btn-group > .custom-control:not(:last-child) > .btn {
+.button-group-demo
+  .radio-group
+  .btn-group
+  > .custom-control:not(:last-child)
+  > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.button-group-demo .radio-group .btn-group > .custom-control:not(:first-child) > .btn {
+.button-group-demo
+  .radio-group
+  .btn-group
+  > .custom-control:not(:first-child)
+  > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   margin-left: -1px;

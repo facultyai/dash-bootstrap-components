@@ -12,6 +12,7 @@ def make_popover(placement):
         id=f"popover-{placement}",
         target=f"popover-{placement}-target",
         placement=placement,
+        is_open=False,
     )
 
 
@@ -20,6 +21,7 @@ def make_button(placement):
         f"Popover on {placement}",
         id=f"popover-{placement}-target",
         className="mx-2",
+        n_clicks=0,
     )
 
 
