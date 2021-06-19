@@ -14,7 +14,7 @@ card_content <- list(
   )
 )
 
-coloured_cards <- htmlDiv(
+cards <- htmlDiv(
   list(
     dbcRow(
       list(

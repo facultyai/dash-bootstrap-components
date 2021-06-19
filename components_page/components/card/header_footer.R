@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-header_footer_card <- dbcCard(
+card <- dbcCard(
   list(
       dbcCardHeader("This is the header"),
       dbcCardBody(

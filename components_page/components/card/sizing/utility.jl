@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-size_bootstrap_cards = html_div([
+cards = html_div([
     dbc_card(
         dbc_cardbody([
             html_h5("75% width card", className="card-title"),

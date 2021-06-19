@@ -26,7 +26,7 @@ second_card <- dbcCard(
   )
 )
 
-size_grid_cards <- dbcRow(
+cards <- dbcRow(
   list(
     dbcCol(first_card, width = 4),
     dbcCol(second_card, width = 8)

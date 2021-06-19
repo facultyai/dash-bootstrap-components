@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-layout_group_cards <- dbcCardGroup(
+cards <- dbcCardGroup(
   list(
     dbcCard(
       dbcCardBody(

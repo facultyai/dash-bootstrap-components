@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 
-list_group_card = dbc.Card(
+card = dbc.Card(
     dbc.ListGroup(
         [
             dbc.ListGroupItem("Item 1"),

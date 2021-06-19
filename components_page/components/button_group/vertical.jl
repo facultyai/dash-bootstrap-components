@@ -1,6 +1,6 @@
 using DashBootstrapComponents
 
-vertical_button_group = dbc_buttongroup(
+button_group = dbc_buttongroup(
     [
         dbc_button("First"),
         dbc_button("Second"),
