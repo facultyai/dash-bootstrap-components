@@ -1,3 +1,6 @@
+name = "IrisKMeans"
+version = "0.1.0"
+
 [deps]
 Clustering = "aaaa29a8-35af-508c-8bc3-b662a17a0fe5"
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"
