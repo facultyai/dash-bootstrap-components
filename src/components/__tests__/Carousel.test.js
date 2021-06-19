@@ -10,13 +10,20 @@ const slides = [
   ];
 
 describe('Carousel', () => {
-  test('renders a carousel with class "slide"', () => {
+  test('renders a carousel with classes "slide , inner, item, caption"', () => {
     const carousel = render(<Carousel items={slides}/>);
 
     expect(carousel.container.querySelector('div.carousel.slide')).not.toBe(null);
     expect(carousel.container.querySelector('div.carousel-inner')).not.toBe(null);
     expect(carousel.container.querySelector('div.carousel-item')).not.toBe(null);
     expect(carousel.container.querySelector('div.carousel-caption')).not.toBe(null);
+  });
+
+  test('renders its content', () => {
+    const carousel = render(<Carousel items={slides}/>);
+
+    expect(carousel.queryByText('caption 2')).not.toBe(null);
+    expect(carousel.queryByText('caption INFINITY')).toBe(null);
   });
 
 
@@ -46,6 +53,4 @@ describe('Carousel', () => {
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].active_index).toBe(1);
   });
-
-
 });
