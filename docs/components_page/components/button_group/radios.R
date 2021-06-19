@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-radio_items_button_group <- htmlDiv(
+button_group <- htmlDiv(
   list(
     dbcRadioItems(
       id = "radios",

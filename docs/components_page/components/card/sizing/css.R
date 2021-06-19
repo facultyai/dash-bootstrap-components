@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-size_css_card <- dbcCard(
+cards <- dbcCard(
   dbcCardBody(
     list(
       htmlH5("Custom CSS", className = "card-title"),

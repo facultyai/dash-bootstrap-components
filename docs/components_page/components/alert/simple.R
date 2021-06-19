@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-simple_alerts <- htmlDiv(
+alerts <- htmlDiv(
   list(
     dbcAlert("This is a primary alert", color = "primary"),
     dbcAlert("This is a secondary alert", color = "secondary"),

@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-size_bootstrap_cards <- htmlDiv(
+cards <- htmlDiv(
   list(
     dbcCard(
       dbcCardBody(

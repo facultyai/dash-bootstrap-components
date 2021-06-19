@@ -14,7 +14,7 @@ card_content = [
     ),
 ]
 
-coloured_cards = html.Div(
+cards = html.Div(
     [
         dbc.Row(
             [

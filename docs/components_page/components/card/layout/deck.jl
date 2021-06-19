@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-layout_deck_cards = dbc_carddeck([
+cards = dbc_carddeck([
     dbc_card(
         dbc_cardbody([
             html_h5("Card 1", className="card-title"),

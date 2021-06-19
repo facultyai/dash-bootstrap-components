@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
-linked_badges = html.Span(
+badges = html.Span(
     [
         dbc.Badge("Primary", href="#", color="primary", className="mr-1"),
         dbc.Badge("Secondary", href="#", color="secondary", className="mr-1"),

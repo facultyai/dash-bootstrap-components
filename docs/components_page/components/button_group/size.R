@@ -2,7 +2,7 @@ library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
 
-varying_size_button_groups <- htmlDiv(
+button_groups <- htmlDiv(
   list(
     dbcButtonGroup(
       list(

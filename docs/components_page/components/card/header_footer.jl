@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-header_footer_card = dbc_card(
+card = dbc_card(
     [
         dbc_cardheader("This is the header"),
         dbc_cardbody([
