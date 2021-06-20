@@ -45,7 +45,7 @@ Once the requirements are installed, run the file from Julia using:
 julia> include("julia_file_name.jl")
 ```
 
-Or you can run from any terminal using:
+Or you can run from the terminal using:
 
 ```
 julia --project=. julia_file_name.jl
