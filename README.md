@@ -162,8 +162,8 @@ If you would like to submit a pull request, please read our
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
 2018-2021, and released under the [Apache 2.0 license](./LICENSE.txt)
 
-[dash-homepage]: https://dash.plot.ly/
-[dash-docs-external]: https:/dash.plot.ly/external-resources
+[dash-homepage]: https://dash.plotly.com/
+[dash-docs-external]: https://dash.plotly.com/external-resources
 [bootstrap-homepage]: https://getbootstrap.com/
 [dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/
