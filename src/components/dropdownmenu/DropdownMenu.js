@@ -25,6 +25,9 @@ const DropdownMenu = props => {
     color,
     toggle_style,
     toggleClassName,
+    toggle_class_name,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -51,6 +54,7 @@ const DropdownMenu = props => {
         inNavbar={in_navbar}
         addonType={addon_type}
         size={bs_size}
+        className={class_name || className}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
@@ -62,7 +66,7 @@ const DropdownMenu = props => {
           disabled={disabled}
           color={isBootstrapColor ? color : undefined}
           style={!isBootstrapColor ? {backgroundColor: color, ...toggle_style} : toggle_style}
-          className={toggleClassName}
+          className={toggle_class_name || toggleClassName}
         >
           {label}
         </DropdownToggle>
@@ -173,6 +177,14 @@ DropdownMenu.propTypes = {
   toggle_style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the DropdownMenu toggle.
+   */
+   toggle_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `toggle_class_name` instead.
+   * 
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the DropdownMenu toggle.
    */
