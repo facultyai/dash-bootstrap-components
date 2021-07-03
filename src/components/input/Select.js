@@ -7,17 +7,12 @@ import {CustomInput} from 'reactstrap';
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
  */
-const Select = props => {
-
-  const {
-    className,
-    class_name,
-    ...otherProps
-  } = props;
+const Select = (props) => {
+  const {className, class_name, ...otherProps} = props;
 
   const [value, setValue] = useState(props.value || '');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValue(e.target.value);
     if (props.setProps) {
       props.setProps({value: e.target.value});
@@ -41,7 +36,7 @@ const Select = props => {
           'persistence',
           'persistence_type',
           'persisted_props',
-          'loading_state'
+          'loading_state',
         ],
         otherProps
       )}
@@ -55,7 +50,7 @@ const Select = props => {
         {props.placeholder}
       </option>
       {props.options &&
-        props.options.map(option => (
+        props.options.map((option) => (
           <option
             key={option.value}
             value={option.value}
@@ -73,7 +68,7 @@ Select.defaultProps = {
   value: '',
   persisted_props: ['value'],
   persistence_type: 'local',
-  placeholder: ''
+  placeholder: '',
 };
 
 Select.propTypes = {
@@ -145,7 +140,7 @@ Select.propTypes = {
        * hover. For more information on this attribute, see
        * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
        */
-      title: PropTypes.string
+      title: PropTypes.string,
     })
   ),
 
@@ -165,7 +160,7 @@ Select.propTypes = {
    */
   required: PropTypes.oneOfType([
     PropTypes.oneOf(['required', 'REQUIRED']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
 
   /**
@@ -197,7 +192,7 @@ Select.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
 
   /**
@@ -218,7 +213,7 @@ Select.propTypes = {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export default Select;

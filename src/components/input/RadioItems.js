@@ -10,10 +10,11 @@ import CustomInput from '../../private/CustomInput';
  * Each radio item is rendered as an input and associated label which are
  * siblings of each other.
  */
-const RadioItems = props => {
-  const {id, className, class_name, style, options, key, loading_state, name} = props;
+const RadioItems = (props) => {
+  const {id, className, class_name, style, options, key, loading_state, name} =
+    props;
 
-  const listItem = option => {
+  const listItem = (option) => {
     const {
       id,
       inputClassName,
@@ -32,14 +33,17 @@ const RadioItems = props => {
       inline,
       value,
       custom,
-      switch: switches
+      switch: switches,
     } = props;
 
     const checked = option.value === value;
 
     const mergedLabelStyle = checked
-      ? {...(label_style || labelStyle), ...(label_checked_style || labelCheckedStyle)}
-      : (label_style || labelStyle);
+      ? {
+          ...(label_style || labelStyle),
+          ...(label_checked_style || labelCheckedStyle),
+        }
+      : label_style || labelStyle;
 
     if (id && custom) {
       const inputId =
@@ -57,7 +61,7 @@ const RadioItems = props => {
           label={option.label}
           labelStyle={mergedLabelStyle}
           labelClassName={classNames(
-            (label_class_name || labelClassName),
+            label_class_name || labelClassName,
             checked && (label_checked_class_name || labelCheckedClassName)
           )}
           inline={inline}
@@ -82,7 +86,10 @@ const RadioItems = props => {
             name={name}
             value={option.value}
             checked={checked}
-            className={classNames('form-check-input', (input_class_name || inputClassName))}
+            className={classNames(
+              'form-check-input',
+              input_class_name || inputClassName
+            )}
             disabled={Boolean(option.disabled)}
             style={input_style || inputStyle}
             type="radio"
@@ -95,7 +102,7 @@ const RadioItems = props => {
             style={mergedLabelStyle}
             className={classNames(
               'form-check-label',
-              (label_class_name || labelClassName),
+              label_class_name || labelClassName,
               checked && (label_checked_class_name || labelCheckedClassName)
             )}
             key={option.value}
@@ -108,7 +115,7 @@ const RadioItems = props => {
     }
   };
 
-  const items = options.map(option => listItem(option));
+  const items = options.map((option) => listItem(option));
 
   return (
     <div
@@ -172,7 +179,7 @@ RadioItems.propTypes = {
        * id for this option's label, can be used to attach tooltips or apply
        * CSS styles
        */
-      label_id: PropTypes.string
+      label_id: PropTypes.string,
     })
   ),
 
@@ -193,7 +200,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `class_name` instead.
-   * 
+   *
    * The class of the container (div)
    */
   className: PropTypes.string,
@@ -205,7 +212,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `input_style` instead.
-   * 
+   *
    * The style of the <input> radio element
    */
   inputStyle: PropTypes.object,
@@ -217,7 +224,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `input_class_name` instead.
-   * 
+   *
    * The class of the <input> radio element
    */
   inputClassName: PropTypes.string,
@@ -229,7 +236,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_style` instead.
-   * 
+   *
    * Inline style arguments to apply to the <label> element for each item.
    */
   labelStyle: PropTypes.object,
@@ -242,7 +249,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_checked_style` instead.
-   * 
+   *
    * Additional inline style arguments to apply to <label> elements on checked
    * items.
    */
@@ -255,7 +262,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_class_name` instead.
-   * 
+   *
    * CSS classes to apply to the <label> element for each item.
    */
   labelClassName: PropTypes.string,
@@ -268,7 +275,7 @@ RadioItems.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_checked_class_name` instead.
-   * 
+   *
    * Additional CSS classes to apply to the <label> element when the
    * corresponding radio is checked.
    */
@@ -311,7 +318,7 @@ RadioItems.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
@@ -325,7 +332,7 @@ RadioItems.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
 
   /**
@@ -346,7 +353,7 @@ RadioItems.propTypes = {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 RadioItems.defaultProps = {
@@ -361,7 +368,7 @@ RadioItems.defaultProps = {
   options: [],
   custom: true,
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
 };
 
 export default RadioItems;

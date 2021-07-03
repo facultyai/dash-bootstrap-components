@@ -9,7 +9,7 @@ const alignMap = {
   center: 'align-self-center',
   end: 'align-self-end',
   stretch: 'align-self-stretch',
-  baseline: 'align-self-baseline'
+  baseline: 'align-self-baseline',
 };
 
 /**
@@ -19,7 +19,7 @@ const alignMap = {
  * (xs, sm, md, lg, xl) to control the width of the columns on different screen
  * sizes to achieve a responsive layout.
  */
-const Col = props => {
+const Col = (props) => {
   const {
     children,
     xs,
@@ -50,7 +50,7 @@ const Col = props => {
 
 const stringOrNumberProp = PropTypes.oneOfType([
   PropTypes.number,
-  PropTypes.string
+  PropTypes.string,
 ]);
 const columnProps = PropTypes.oneOfType([
   PropTypes.string,
@@ -60,15 +60,15 @@ const columnProps = PropTypes.oneOfType([
     size: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.number,
-      PropTypes.string
+      PropTypes.string,
     ]),
     // example size values:
     // 12 || "12" => col-12 or col-`width`-12
     // auto => col-auto or col-`width`-auto
     // true => col or col-`width`
     order: stringOrNumberProp,
-    offset: stringOrNumberProp
-  })
+    offset: stringOrNumberProp,
+  }),
 ]);
 
 Col.propTypes = {
@@ -184,8 +184,8 @@ Col.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default Col;

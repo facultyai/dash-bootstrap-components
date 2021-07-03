@@ -6,7 +6,7 @@ import {FormGroup as RSFormGroup} from 'reactstrap';
 /**
  * A component for grouping together inputs, labels, text and feedback.
  */
-const FormGroup = props => {
+const FormGroup = (props) => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSFormGroup
@@ -95,8 +95,8 @@ FormGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default FormGroup;

@@ -6,7 +6,7 @@ import {InputGroup as RSInputGroup} from 'reactstrap';
 /**
  * A component for grouping together inputs and buttons, dropdowns or text.
  */
-const InputGroup = props => {
+const InputGroup = (props) => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSInputGroup
@@ -79,8 +79,8 @@ InputGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default InputGroup;

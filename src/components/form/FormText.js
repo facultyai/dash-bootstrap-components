@@ -7,8 +7,16 @@ import {bootstrapTextColors} from '../../private/BootstrapColors';
 /**
  * Add explanatory text below your input components.
  */
-const FormText = props => {
-  const {children, loading_state, color, style, className, class_name, ...otherProps} = props;
+const FormText = (props) => {
+  const {
+    children,
+    loading_state,
+    color,
+    style,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapTextColors.has(color);
   return (
     <RSFormText
@@ -84,8 +92,8 @@ FormText.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default FormText;

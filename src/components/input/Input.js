@@ -4,7 +4,7 @@ import {omit} from 'ramda';
 import isNumeric from 'fast-isnumeric';
 import classNames from 'classnames';
 
-const convert = val => (isNumeric(val) ? +val : NaN);
+const convert = (val) => (isNumeric(val) ? +val : NaN);
 
 /**
  * A basic HTML input control for entering text, numbers, or passwords, with
@@ -16,7 +16,7 @@ const convert = val => (isNumeric(val) ? +val : NaN);
  * the Checklist and RadioItems component. Dates, times, and file uploads
  * are supported through separate components in other libraries.
  */
-const Input = props => {
+const Input = (props) => {
   const {
     value,
     className,
@@ -59,7 +59,7 @@ const Input = props => {
     }
   }, [value]);
 
-  const parseValue = value => {
+  const parseValue = (value) => {
     if (props.type === 'number') {
       const convertedValue = convert(value);
       if (isNaN(convertedValue)) {
@@ -68,7 +68,7 @@ const Input = props => {
     } else return value;
   };
 
-  const onChange = e => {
+  const onChange = (e) => {
     setValueState(e.target.value);
     if (!debounce && setProps) {
       setProps({value: parseValue(e.target.value)});
@@ -79,7 +79,7 @@ const Input = props => {
     if (setProps) {
       const payload = {
         n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now()
+        n_blur_timestamp: Date.now(),
       };
       if (debounce) {
         payload.value = parseValue(valueState);
@@ -88,11 +88,11 @@ const Input = props => {
     }
   };
 
-  const onKeyPress = e => {
+  const onKeyPress = (e) => {
     if (setProps && e.key === 'Enter') {
       const payload = {
         n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now()
+        n_submit_timestamp: Date.now(),
       };
       if (debounce) {
         payload.value = parseValue(valueState);
@@ -134,7 +134,7 @@ const Input = props => {
           'selectionStart',
           'persistence',
           'persistence_type',
-          'persisted_props'
+          'persisted_props',
         ],
         otherProps
       )}
@@ -190,7 +190,7 @@ Input.propTypes = {
     'search',
     'tel',
     'url',
-    'hidden'
+    'hidden',
   ]),
 
   /**
@@ -207,11 +207,11 @@ Input.propTypes = {
    * This attribute indicates whether the value of the control can be
    * automatically completed by the browser.
    */
-   autocomplete: PropTypes.string,
+  autocomplete: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `autocomplete` instead.
-   * 
+   *
    * This attribute indicates whether the value of the control can be
    * automatically completed by the browser.
    */
@@ -225,13 +225,12 @@ Input.propTypes = {
    */
   autofocus: PropTypes.oneOfType([
     PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
-
 
   /**
    * **DEPRECATED** Use `autofocus` instead.
-   * 
+   *
    * The element should be automatically focused after the page loaded.
    * autoFocus is an HTML boolean attribute - it is enabled by a boolean or
    * 'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
@@ -239,7 +238,7 @@ Input.propTypes = {
    */
   autoFocus: PropTypes.oneOfType([
     PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
 
   /**
@@ -309,12 +308,12 @@ Input.propTypes = {
     /**
      * URL input. Use type="url" if possible instead.
      */
-    'url'
+    'url',
   ]),
 
   /**
    * **DEPRECATED** Use `inputmode` instead.
-   * 
+   *
    * Provides a hint to the browser as to the type of data that might be
    * entered by the user while editing the element or its contents.
    */
@@ -381,7 +380,7 @@ Input.propTypes = {
     /**
      * URL input. Use type="url" if possible instead.
      */
-    'url'
+    'url',
   ]),
 
   /**
@@ -414,7 +413,7 @@ Input.propTypes = {
 
   /**
    * **DEPRECATED** Use `maxlength` instead.
-   * 
+   *
    * If the value of the type attribute is text, email, search, password, tel,
    * or url, this attribute specifies the maximum number of characters
    * (in UTF-16 code units) that the user can enter. For other control types,
@@ -442,7 +441,7 @@ Input.propTypes = {
 
   /**
    * **DEPRECATED** Use `minlength` instead.
-   * 
+   *
    * If the value of the type attribute is text, email, search, password, tel,
    * or url, this attribute specifies the minimum number of characters (in
    * Unicode code points) that the user can enter. For other control types, it
@@ -498,7 +497,7 @@ Input.propTypes = {
    */
   required: PropTypes.oneOfType([
     PropTypes.oneOf(['required', 'REQUIRED']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
 
   /**
@@ -579,7 +578,7 @@ Input.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
@@ -593,7 +592,7 @@ Input.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
 
   /**
@@ -618,10 +617,10 @@ Input.propTypes = {
 
   /**
    * **DEPRECATED** Use `tabindex` instead.
-   * 
+   *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
-  tabIndex: PropTypes.string
+  tabIndex: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -631,7 +630,7 @@ Input.defaultProps = {
   n_submit_timestamp: -1,
   debounce: false,
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
 };
 
 export default Input;
