@@ -7,12 +7,13 @@ import {CardImg as RSCardImg} from 'reactstrap';
  * Use CardImg to add images to your cards.
  */
 const CardImg = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardImg
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}

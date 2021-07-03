@@ -7,12 +7,13 @@ import {CardDeck as RSCardDeck} from 'reactstrap';
  * Create a set of cards with equal width and height using CardDeck.
  */
 const CardDeck = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardDeck
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}

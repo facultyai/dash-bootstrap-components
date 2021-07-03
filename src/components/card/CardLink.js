@@ -9,7 +9,7 @@ import Link from '../../private/Link';
  * used like buttons, external links, or internal Dash style links.
  */
 const CardLink = props => {
-  const {children, loading_state, disabled, ...otherProps} = props;
+  const {children, loading_state, disabled, className, class_name, ...otherProps} = props;
 
   const incrementClicks = () => {
     if (!disabled && props.setProps) {
@@ -28,6 +28,7 @@ const CardLink = props => {
       tag={Link}
       preOnClick={incrementClicks}
       disabled={disabled}
+      className={class_name || className}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
