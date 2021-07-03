@@ -9,9 +9,10 @@ import {ListGroup as RSListGroup} from 'reactstrap';
  * `ListGroupItemText`.
  */
 const ListGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSListGroup
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

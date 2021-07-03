@@ -7,9 +7,10 @@ import {ListGroupItemHeading as RSListGroupItemHeading} from 'reactstrap';
  * Add a heading to any `ListGroupItem`.
  */
 const ListGroupItemHeading = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSListGroupItemHeading
+    className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

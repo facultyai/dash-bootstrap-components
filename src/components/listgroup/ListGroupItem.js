@@ -18,6 +18,8 @@ const ListGroupItem = props => {
     setProps,
     color,
     style,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -40,6 +42,7 @@ const ListGroupItem = props => {
       disabled={disabled}
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
+      className={class_name || className}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
