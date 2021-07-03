@@ -27,12 +27,12 @@ def check_form_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#email-input").get_attribute("class")
         == "is-invalid form-control",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#email-input").send_keys("x@gmail.com")
     wait.until(
         lambda: runner.find_element("#email-input").get_attribute("class")
         == "is-valid form-control",
-        timeout=2,
+        timeout=4,
     )

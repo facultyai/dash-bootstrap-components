@@ -27,5 +27,5 @@ def check_button_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#example-output").text
         == "Clicked 1 times.",
-        timeout=2,
+        timeout=4,
     )

@@ -31,7 +31,7 @@ def check_progress_callbacks(runner):
             "div[class^='progress-bar']"
         ).get_attribute("class")
         == "progress-bar progress-bar-striped",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#animation-toggle").click()
@@ -40,5 +40,5 @@ def check_progress_callbacks(runner):
             "div[class^='progress-bar']"
         ).get_attribute("class")
         == "progress-bar progress-bar-animated progress-bar-striped",
-        timeout=2,
+        timeout=4,
     )

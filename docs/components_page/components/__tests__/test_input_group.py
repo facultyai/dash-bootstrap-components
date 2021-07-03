@@ -33,7 +33,7 @@ def check_input_group_button_callbacks(runner):
             "value"
         )
         != "",
-        timeout=2,
+        timeout=4,
     )
 
 
@@ -64,7 +64,7 @@ def check_input_group_dropdown_callbacks(runner):
             "#input-group-dropdown-input"
         ).get_attribute("value")
         in ["Arthur Dent", "Ford Prefect", "Trillian Astra"],
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element(".btn").click()
@@ -74,7 +74,7 @@ def check_input_group_dropdown_callbacks(runner):
             "#input-group-dropdown-input"
         ).get_attribute("value")
         in ["David Bowman", "Frank Poole", "Dr. Heywood Floyd"],
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element(".btn").click()
@@ -84,5 +84,5 @@ def check_input_group_dropdown_callbacks(runner):
             "#input-group-dropdown-input"
         ).get_attribute("value")
         == "",
-        timeout=2,
+        timeout=4,
     )

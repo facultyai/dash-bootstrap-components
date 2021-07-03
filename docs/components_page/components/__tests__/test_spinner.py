@@ -31,5 +31,5 @@ def check_spinner_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#loading-output").text
         == "Output loaded 1 times",
-        timeout=3,
+        timeout=4,
     )

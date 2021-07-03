@@ -32,5 +32,5 @@ def check_dropdown_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#item-clicks").text
         == "Button clicked 1 times.",
-        timeout=3,
+        timeout=4,
     )

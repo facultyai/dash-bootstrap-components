@@ -27,7 +27,7 @@ def check_collapse_simple_callbacks(runner):
     runner.find_element("#collapse-button").click()
     wait.until(
         lambda: runner.find_elements("#collapse") != [],
-        timeout=2,
+        timeout=4,
     )
 
 

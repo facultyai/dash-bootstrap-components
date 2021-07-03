@@ -31,5 +31,5 @@ def check_tabs_card_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#card-content").text
         == "This is tab tab-2",
-        timeout=2,
+        timeout=4,
     )

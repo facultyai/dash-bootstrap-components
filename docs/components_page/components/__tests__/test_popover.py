@@ -31,5 +31,5 @@ def check_popover_callbacks(runner):
     runner.find_element("#toggle").click()
     wait.until(
         lambda: len(runner.find_elements("#popover")) > 0,
-        timeout=2,
+        timeout=4,
     )

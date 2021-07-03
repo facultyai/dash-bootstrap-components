@@ -29,5 +29,5 @@ def check_list_group_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#counter").text
         == "Button clicked 1 times",
-        timeout=2,
+        timeout=4,
     )
