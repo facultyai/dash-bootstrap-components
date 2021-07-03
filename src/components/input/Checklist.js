@@ -18,17 +18,23 @@ import CustomInput from '../../private/CustomInput';
  * https://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios-1
  */
 const Checklist = props => {
-  const {className, id, options, style, key, loading_state, name} = props;
+  const {className, class_name, id, options, style, key, loading_state, name} = props;
 
   const listItem = option => {
     const {
       id,
       inputClassName,
+      input_class_name,
       inputStyle,
+      input_style,
       labelClassName,
+      label_class_name,
       labelCheckedClassName,
+      label_checked_class_name,
       labelStyle,
+      label_style,
       labelCheckedStyle,
+      label_checked_style,
       setProps,
       inline,
       value,
@@ -39,8 +45,8 @@ const Checklist = props => {
     const checked = includes(option.value, value);
 
     const mergedLabelStyle = checked
-      ? {...labelStyle, ...labelCheckedStyle}
-      : labelStyle;
+      ? {...(label_style || labelStyle), ...(label_checked_style || labelCheckedStyle)}
+      : (label_style || labelStyle);
 
     if (id && custom) {
       const inputId =
@@ -52,14 +58,14 @@ const Checklist = props => {
           value={option.value}
           labelId={option.label_id}
           checked={checked}
-          className={inputClassName}
+          className={input_class_name || inputClassName}
           disabled={Boolean(option.disabled)}
           type={switches ? 'switch' : 'checkbox'}
           label={option.label}
           labelStyle={mergedLabelStyle}
           labelClassName={classNames(
-            labelClassName,
-            checked && labelCheckedClassName
+            label_class_name || labelClassName,
+            checked && (label_checked_class_name || labelCheckedClassName)
           )}
           inline={inline}
           onChange={() => {
@@ -89,9 +95,9 @@ const Checklist = props => {
             name={name}
             value={option.value}
             checked={checked}
-            className={classNames('form-check-input', inputClassName)}
+            className={classNames('form-check-input', input_class_name || inputClassName)}
             disabled={Boolean(option.disabled)}
-            style={inputStyle}
+            style={input_style || inputStyle}
             type="checkbox"
             onChange={() => {
               let newValue;
@@ -108,8 +114,8 @@ const Checklist = props => {
             style={mergedLabelStyle}
             className={classNames(
               'form-check-label',
-              labelClassName,
-              checked && labelCheckedClassName
+              label_class_name || labelClassName,
+              checked && (label_checked_class_name || labelCheckedClassName)
             )}
             key={option.value}
             htmlFor={inputId}
@@ -126,7 +132,7 @@ const Checklist = props => {
     <div
       id={id}
       style={style}
-      className={className}
+      className={class_name || className}
       key={key}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -191,6 +197,13 @@ Checklist.propTypes = {
   /**
    * The class of the container (div)
    */
+   class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   * 
+   * The class of the container (div)
+   */
   className: PropTypes.string,
 
   /**
@@ -208,14 +221,35 @@ Checklist.propTypes = {
   /**
    * The style of the <input> checkbox element. Only used if custom=False
    */
+   input_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `input_style` instead.
+   * 
+   * The style of the <input> checkbox element. Only used if custom=False
+   */
   inputStyle: PropTypes.object,
 
   /**
    * The class of the <input> checkbox element
    */
+  input_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `input_class_name` instead.
+   * 
+   * The class of the <input> checkbox element
+   */
   inputClassName: PropTypes.string,
 
   /**
+   * Inline style arguments to apply to the <label> element for each item.
+   */
+  label_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `label_style` instead.
+   * 
    * Inline style arguments to apply to the <label> element for each item.
    */
   labelStyle: PropTypes.object,
@@ -224,14 +258,39 @@ Checklist.propTypes = {
    * Additional inline style arguments to apply to <label> elements on checked
    * items.
    */
-  labelCheckedStyle: PropTypes.object,
+  label_checked_style: PropTypes.object,
 
   /**
+   * **DEPRECATED** Use `label_checked_style` instead.
+   * 
+   * Additional inline style arguments to apply to <label> elements on checked
+   * items.
+   */
+  labelCheckedStyle: PropTypes.object,
+
+
+  /**
+   * CSS classes to apply to the <label> element for each item.
+   */
+  label_class_name: PropTypes.string,
+
+
+  /**
+   * **DEPRECATED** Use `label_class_name` instead.
+   * 
    * CSS classes to apply to the <label> element for each item.
    */
   labelClassName: PropTypes.string,
 
   /**
+   * Additional CSS classes to apply to the <label> element when the
+   * corresponding checkbox is checked.
+   */
+  label_checked_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `label_checked_class_name` instead.
+   * 
    * Additional CSS classes to apply to the <label> element when the
    * corresponding checkbox is checked.
    */
@@ -314,9 +373,13 @@ Checklist.propTypes = {
 
 Checklist.defaultProps = {
   inputStyle: {},
+  input_style: {},
   inputClassName: '',
+  input_class_name: '',
   labelStyle: {},
+  label_style: {},
   labelClassName: '',
+  label_class_name: '',
   options: [],
   value: [],
   custom: true,

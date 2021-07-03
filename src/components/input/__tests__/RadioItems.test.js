@@ -204,8 +204,8 @@ describe('RadioItems', () => {
           ]}
           setProps={mockSetProps}
           value={2}
-          labelCheckedClassName="a-checked-label"
-          labelCheckedStyle={{color: 'green'}}
+          label_checked_class_name="a-checked-label"
+          label_checked_style={{color: 'green'}}
         />
       );
       const [child1, child2, child3] = radioItems.container.firstChild.children;
@@ -455,8 +455,8 @@ describe('RadioItems', () => {
           ]}
           setProps={mockSetProps}
           value={2}
-          labelCheckedClassName="a-checked-label"
-          labelCheckedStyle={{color: 'green'}}
+          label_checked_class_name="a-checked-label"
+          label_checked_style={{color: 'green'}}
         />
       );
       const [child1, child2, child3] = radioItems.container.firstChild.children;

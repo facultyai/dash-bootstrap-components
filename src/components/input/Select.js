@@ -8,6 +8,13 @@ import {CustomInput} from 'reactstrap';
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
+
+  const {
+    className,
+    class_name,
+    ...otherProps
+  } = props;
+
   const [value, setValue] = useState(props.value || '');
 
   const handleChange = e => {
@@ -36,12 +43,13 @@ const Select = props => {
           'persisted_props',
           'loading_state'
         ],
-        props
+        otherProps
       )}
       type="select"
       onChange={handleChange}
       value={value}
       bsSize={props.bs_size}
+      className={class_name || className}
     >
       <option value="" disabled hidden>
         {props.placeholder}
