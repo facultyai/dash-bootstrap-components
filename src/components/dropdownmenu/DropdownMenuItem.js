@@ -9,7 +9,7 @@ import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
  */
-const DropdownMenuItem = props => {
+const DropdownMenuItem = (props) => {
   let {
     children,
     href,
@@ -26,11 +26,11 @@ const DropdownMenuItem = props => {
 
   const context = useContext(DropdownMenuContext);
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (!disabled && setProps) {
       setProps({
         n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
+        n_clicks_timestamp: Date.now(),
       });
     }
     if (props.href) {
@@ -41,7 +41,7 @@ const DropdownMenuItem = props => {
   };
 
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = (e) => handleClick(e);
   return (
     <RSDropdownItem
       tag={useLink ? Link : 'button'}
@@ -169,19 +169,19 @@ DropdownMenuItem.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
 };
 
 DropdownMenuItem.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
-  toggle: true
+  toggle: true,
 };
 
 export default DropdownMenuItem;

@@ -6,11 +6,11 @@ import {Nav as RSNav} from 'reactstrap';
 /**
  * Nav can be used to group together a collection of navigation links.
  */
-const Nav = (props) => {
+const Nav = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSNav
-      className={class_name || class_Name}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -115,8 +115,8 @@ Nav.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Nav;

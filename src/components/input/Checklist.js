@@ -17,10 +17,11 @@ import CustomInput from '../../private/CustomInput';
  *
  * https://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios-1
  */
-const Checklist = props => {
-  const {className, class_name, id, options, style, key, loading_state, name} = props;
+const Checklist = (props) => {
+  const {className, class_name, id, options, style, key, loading_state, name} =
+    props;
 
-  const listItem = option => {
+  const listItem = (option) => {
     const {
       id,
       inputClassName,
@@ -39,14 +40,17 @@ const Checklist = props => {
       inline,
       value,
       custom,
-      switch: switches
+      switch: switches,
     } = props;
 
     const checked = includes(option.value, value);
 
     const mergedLabelStyle = checked
-      ? {...(label_style || labelStyle), ...(label_checked_style || labelCheckedStyle)}
-      : (label_style || labelStyle);
+      ? {
+          ...(label_style || labelStyle),
+          ...(label_checked_style || labelCheckedStyle),
+        }
+      : label_style || labelStyle;
 
     if (id && custom) {
       const inputId =
@@ -95,7 +99,10 @@ const Checklist = props => {
             name={name}
             value={option.value}
             checked={checked}
-            className={classNames('form-check-input', input_class_name || inputClassName)}
+            className={classNames(
+              'form-check-input',
+              input_class_name || inputClassName
+            )}
             disabled={Boolean(option.disabled)}
             style={input_style || inputStyle}
             type="checkbox"
@@ -126,7 +133,7 @@ const Checklist = props => {
       );
     }
   };
-  const items = options.map(option => listItem(option));
+  const items = options.map((option) => listItem(option));
 
   return (
     <div
@@ -183,7 +190,7 @@ Checklist.propTypes = {
        * id for this option's label, can be used to attach tooltips or apply
        * CSS styles
        */
-      label_id: PropTypes.string
+      label_id: PropTypes.string,
     })
   ),
 
@@ -197,11 +204,11 @@ Checklist.propTypes = {
   /**
    * The class of the container (div)
    */
-   class_name: PropTypes.string,
+  class_name: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `class_name` instead.
-   * 
+   *
    * The class of the container (div)
    */
   className: PropTypes.string,
@@ -221,11 +228,11 @@ Checklist.propTypes = {
   /**
    * The style of the <input> checkbox element. Only used if custom=False
    */
-   input_style: PropTypes.object,
+  input_style: PropTypes.object,
 
   /**
    * **DEPRECATED** Use `input_style` instead.
-   * 
+   *
    * The style of the <input> checkbox element. Only used if custom=False
    */
   inputStyle: PropTypes.object,
@@ -237,7 +244,7 @@ Checklist.propTypes = {
 
   /**
    * **DEPRECATED** Use `input_class_name` instead.
-   * 
+   *
    * The class of the <input> checkbox element
    */
   inputClassName: PropTypes.string,
@@ -249,7 +256,7 @@ Checklist.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_style` instead.
-   * 
+   *
    * Inline style arguments to apply to the <label> element for each item.
    */
   labelStyle: PropTypes.object,
@@ -262,22 +269,20 @@ Checklist.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_checked_style` instead.
-   * 
+   *
    * Additional inline style arguments to apply to <label> elements on checked
    * items.
    */
   labelCheckedStyle: PropTypes.object,
-
 
   /**
    * CSS classes to apply to the <label> element for each item.
    */
   label_class_name: PropTypes.string,
 
-
   /**
    * **DEPRECATED** Use `label_class_name` instead.
-   * 
+   *
    * CSS classes to apply to the <label> element for each item.
    */
   labelClassName: PropTypes.string,
@@ -290,7 +295,7 @@ Checklist.propTypes = {
 
   /**
    * **DEPRECATED** Use `label_checked_class_name` instead.
-   * 
+   *
    * Additional CSS classes to apply to the <label> element when the
    * corresponding checkbox is checked.
    */
@@ -333,7 +338,7 @@ Checklist.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
@@ -347,7 +352,7 @@ Checklist.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
 
   /**
@@ -368,7 +373,7 @@ Checklist.propTypes = {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 Checklist.defaultProps = {
@@ -384,7 +389,7 @@ Checklist.defaultProps = {
   value: [],
   custom: true,
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
 };
 
 export default Checklist;

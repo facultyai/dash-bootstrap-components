@@ -9,7 +9,7 @@ const alignMap = {
   center: 'align-items-center',
   end: 'align-items-end',
   stretch: 'align-items-stretch',
-  baseline: 'align-items-baseline'
+  baseline: 'align-items-baseline',
 };
 
 const justifyMap = {
@@ -17,7 +17,7 @@ const justifyMap = {
   center: 'justify-content-center',
   end: 'justify-content-end',
   around: 'justify-content-around',
-  between: 'justify-content-between'
+  between: 'justify-content-between',
 };
 
 /**
@@ -26,7 +26,7 @@ const justifyMap = {
  * vertical and horizontal alignment of its children, as well as the spacing
  * between columns.
  */
-const Row = props => {
+const Row = (props) => {
   const {
     children,
     className,
@@ -132,8 +132,8 @@ Row.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default Row;

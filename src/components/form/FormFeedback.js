@@ -8,7 +8,7 @@ import {FormFeedback as RSFormFeedback} from 'reactstrap';
  * in a form. Add the form feedback to a `FormGroup` and set the `valid` or
  * `invalid` props of the associated input to toggle visibility.
  */
-const FormFeedback = props => {
+const FormFeedback = (props) => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSFormFeedback
@@ -86,8 +86,8 @@ FormFeedback.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default FormFeedback;

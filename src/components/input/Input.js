@@ -25,7 +25,7 @@ const BaseInput = forwardRef((props, ref) => {
     if (setProps) {
       const payload = {
         n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now()
+        n_blur_timestamp: Date.now(),
       };
       if (debounce) {
         onEvent(payload);
@@ -35,11 +35,11 @@ const BaseInput = forwardRef((props, ref) => {
     }
   };
 
-  const onKeyPress = e => {
+  const onKeyPress = (e) => {
     if (setProps && e.key === 'Enter') {
       const payload = {
         n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now()
+        n_submit_timestamp: Date.now(),
       };
       if (debounce) {
         onEvent(payload);
@@ -274,7 +274,7 @@ Input.propTypes = {
     'search',
     'tel',
     'url',
-    'hidden'
+    'hidden',
   ]),
 
   /**
@@ -291,7 +291,7 @@ Input.propTypes = {
    * This attribute indicates whether the value of the control can be
    * automatically completed by the browser.
    */
-   autocomplete: PropTypes.string,
+  autocomplete: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `autocomplete` instead.
@@ -309,9 +309,8 @@ Input.propTypes = {
    */
   autofocus: PropTypes.oneOfType([
     PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
-
 
   /**
    * **DEPRECATED** Use `autofocus` instead.
@@ -323,7 +322,7 @@ Input.propTypes = {
    */
   autoFocus: PropTypes.oneOfType([
     PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
 
   /**
@@ -393,7 +392,7 @@ Input.propTypes = {
     /**
      * URL input. Use type="url" if possible instead.
      */
-    'url'
+    'url',
   ]),
 
   /**
@@ -465,7 +464,7 @@ Input.propTypes = {
     /**
      * URL input. Use type="url" if possible instead.
      */
-    'url'
+    'url',
   ]),
 
   /**
@@ -582,7 +581,7 @@ Input.propTypes = {
    */
   required: PropTypes.oneOfType([
     PropTypes.oneOf(['required', 'REQUIRED']),
-    PropTypes.bool
+    PropTypes.bool,
   ]),
 
   /**
@@ -663,7 +662,7 @@ Input.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
@@ -677,7 +676,7 @@ Input.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
 
   /**
@@ -705,7 +704,7 @@ Input.propTypes = {
    *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
-  tabIndex: PropTypes.string
+  tabIndex: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -716,7 +715,10 @@ Input.defaultProps = {
   debounce: false,
   persisted_props: ['value'],
   persistence_type: 'local',
+<<<<<<< HEAD
   step: 'any'
+=======
+>>>>>>> 7dfcf7d (Format)
 };
 
 export default Input;

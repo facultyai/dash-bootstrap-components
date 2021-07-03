@@ -163,7 +163,7 @@ Modal.propTypes = {
 
   /**
    * **DEPRECATED** Use `backdrop_class_name` instead
-   * 
+   *
    * CSS class to apply to the backdrop.
    */
   backdropClassName: PropTypes.string,
@@ -175,7 +175,7 @@ Modal.propTypes = {
 
   /**
    * **DEPRECATED** Use `content_class_name` instead
-   * 
+   *
    * CSS class to apply to the modal content.
    */
   contentClassName: PropTypes.string,

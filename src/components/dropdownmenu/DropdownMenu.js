@@ -10,7 +10,7 @@ import {bootstrapColors} from '../../private/BootstrapColors';
  * DropdownMenu creates an overlay useful for grouping together links and other
  * content to organise navigation or other interactive elements.
  */
-const DropdownMenu = props => {
+const DropdownMenu = (props) => {
   const {
     children,
     nav,
@@ -43,7 +43,7 @@ const DropdownMenu = props => {
     <DropdownMenuContext.Provider
       value={{
         toggle: toggle,
-        isOpen: dropdownOpen
+        isOpen: dropdownOpen,
       }}
     >
       <Dropdown
@@ -65,7 +65,11 @@ const DropdownMenu = props => {
           caret={caret}
           disabled={disabled}
           color={isBootstrapColor ? color : undefined}
-          style={!isBootstrapColor ? {backgroundColor: color, ...toggle_style} : toggle_style}
+          style={
+            !isBootstrapColor
+              ? {backgroundColor: color, ...toggle_style}
+              : toggle_style
+          }
           className={toggle_class_name || toggleClassName}
         >
           {label}
@@ -78,7 +82,7 @@ const DropdownMenu = props => {
 
 DropdownMenu.defaultProps = {
   caret: true,
-  disabled: false
+  disabled: false,
 };
 
 DropdownMenu.propTypes = {
@@ -143,7 +147,7 @@ DropdownMenu.propTypes = {
    */
   addon_type: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.oneOf(['prepend', 'append'])
+    PropTypes.oneOf(['prepend', 'append']),
   ]),
 
   /**
@@ -180,11 +184,11 @@ DropdownMenu.propTypes = {
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the DropdownMenu toggle.
    */
-   toggle_class_name: PropTypes.string,
+  toggle_class_name: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `toggle_class_name` instead.
-   * 
+   *
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the DropdownMenu toggle.
    */
@@ -211,13 +215,13 @@ DropdownMenu.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
    * Set group to True if the DropdownMenu is inside a ButtonGroup.
    */
-  group: PropTypes.bool
+  group: PropTypes.bool,
 };
 
 export default DropdownMenu;
