@@ -85,7 +85,7 @@ def test_r_collapse_accordion(dashr):
 
 def test_jl_collapse_accordion(dashjl):
     jl_app = load_jl_app(
-        (HERE.parent / "collapse" / "accordion.jl"), "collapses"
+        (HERE.parent / "collapse" / "accordion.jl"), "accordion"
     )
     dashjl.start_server(jl_app)
     check_collapse_accordion_callbacks(dashjl)
@@ -104,12 +104,12 @@ def check_collapse_accordion_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#collapse-2").get_attribute("class")
         == "collapse show",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#group-3-toggle").click()
     wait.until(
         lambda: runner.find_element("#collapse-3").get_attribute("class")
         == "collapse show",
-        timeout=2,
+        timeout=4,
     )

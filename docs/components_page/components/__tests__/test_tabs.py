@@ -33,32 +33,3 @@ def check_tabs_card_callbacks(runner):
         == "This is tab tab-2",
         timeout=2,
     )
-
-
-# -------------------------
-
-
-def test_r_tabs(dashr):
-    r_app = load_r_app((HERE.parent / "tabs" / "active_tab.R"), "tabs")
-    dashr.start_server(r_app)
-    check_tabs_callbacks(dashr)
-
-
-def test_jl_tabs(dashjl):
-    jl_app = load_jl_app((HERE.parent / "tabs" / "active_tab.jl"), "tabs")
-    dashjl.start_server(jl_app)
-    check_tabs_callbacks(dashjl)
-
-
-def check_tabs_callbacks(runner):
-
-    # TODO how to load tab 2 content
-    #
-    runner.driver.find_element_by_xpath(
-        "//ul[@id='tabs']/li/a[.='Tab 2']"
-    ).click()
-
-    wait.until(
-        lambda: len(runner.find_elements(".btn btn-danger")) > 0,
-        timeout=2,
-    )

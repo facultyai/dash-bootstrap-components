@@ -26,13 +26,13 @@ def check_modal_simple_callbacks(runner):
     runner.find_element("#open").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
 
@@ -134,28 +134,31 @@ def test_jl_modal_scrollable(dashjl):
 
 
 def check_modal_scrollable_callbacks(runner):
+    import time
+
+    time.sleep(3)
     runner.find_element("#open-scroll").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-scroll").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#open-body-scroll").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-body-scroll").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
 
