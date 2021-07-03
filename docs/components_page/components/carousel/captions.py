@@ -20,12 +20,5 @@ carousel = dbc.Carousel(
             "header": "",
             "caption": "This slide has a caption only",
         },
-        {
-            "key": "4",
-            "img_style": {"height": "300px"},
-            "header": "This slide has no image",
-            "caption": "Image height must be set to make the slide visible",
-            "captionClassName": "border border-secondary text-primary",
-        },
     ]
 )

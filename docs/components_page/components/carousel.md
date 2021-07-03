@@ -42,31 +42,6 @@ Add `className="carousel-fade"` to your carousel to animate slides with a fade t
 Control which slide number is displayed by using the `active_index` in a callback. This slideshow is being controlled by `dbc.RadioItems`
 
 {{example:components/carousel/callback.py:carousel}}
-
-## Style the controls
-
-The controls in the Bootstrap carousel are images that have a white background. To use a different symbol or to make them more visible in light backgrounds you can use custom CSS.  Here is an example:
-
-```css
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  background-image: none;
-}
-
-.carousel-control-next-icon:after {
-  content: '\003e';
-  font-size: 55px;
-  color: yellow;
-}
-
-.carousel-control-prev-icon:after {
-  content: '\003c';
-  font-size: 55px;
-  color: yellow;
-}
-```
    
 {{apidoc:src/components/Carousel.js}}
    
