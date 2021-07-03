@@ -28,7 +28,7 @@ def check_fade_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#fade").get_attribute("style")
         == "visibility: hidden;",
-        timeout=2,
+        timeout=4,
     )
 
 
