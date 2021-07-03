@@ -55,21 +55,21 @@ def check_collapse_multiple_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#left-collapse").get_attribute("class")
         == "collapse",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#right").click()
     wait.until(
         lambda: runner.find_element("#right-collapse").get_attribute("class")
         == "collapse",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#both").click()
     wait.until(
         lambda: runner.find_element("#right-collapse").get_attribute("class")
         == "collapse show",
-        timeout=2,
+        timeout=4,
     )
 
 
@@ -97,7 +97,7 @@ def check_collapse_accordion_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#collapse-1").get_attribute("class")
         == "collapse show",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#group-2-toggle").click()
