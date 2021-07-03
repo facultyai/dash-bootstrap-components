@@ -7,9 +7,10 @@ import {FormGroup as RSFormGroup} from 'reactstrap';
  * A component for grouping together inputs, labels, text and feedback.
  */
 const FormGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSFormGroup
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

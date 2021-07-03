@@ -8,12 +8,13 @@ import {bootstrapTextColors} from '../../private/BootstrapColors';
  * Add explanatory text below your input components.
  */
 const FormText = props => {
-  const {children, loading_state, color, style, ...otherProps} = props;
+  const {children, loading_state, color, style, className, class_name, ...otherProps} = props;
   const isBootstrapColor = bootstrapTextColors.has(color);
   return (
     <RSFormText
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {color: color, ...style} : style}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

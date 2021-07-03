@@ -9,9 +9,10 @@ import {FormFeedback as RSFormFeedback} from 'reactstrap';
  * `invalid` props of the associated input to toggle visibility.
  */
 const FormFeedback = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSFormFeedback
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
