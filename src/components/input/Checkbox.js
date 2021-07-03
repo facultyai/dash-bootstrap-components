@@ -6,7 +6,7 @@ import {omit} from 'ramda';
  * Creates a single checkbox input. Use the `checked` prop in your callbacks.
  */
 const Checkbox = props => {
-  const {checked, loading_state, disabled, setProps, ...otherProps} = props;
+  const {checked, loading_state, disabled, setProps, className, class_name, ...otherProps} = props;
   const [checkedState, setCheckedState] = useState(checked || false);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const Checkbox = props => {
     <input
       type="checkbox"
       checked={checkedState}
+      className={class_name || className}
       {...omit(
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
         otherProps
@@ -60,6 +61,13 @@ Checkbox.propTypes = {
   checked: PropTypes.bool,
 
   /**
+   * The class of the container (div)
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   * 
    * The class of the container (div)
    */
   className: PropTypes.string,

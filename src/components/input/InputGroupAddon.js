@@ -39,8 +39,8 @@ const wrapChild = (child, i) => {
  * InputGroup
  */
 const InputGroupAddon = props => {
-  let {children, loading_state, className, addon_type, ...otherProps} = props;
-  const classes = classNames(className, 'input-group-' + addon_type);
+  let {children, loading_state, className, class_name, addon_type, ...otherProps} = props;
+  const classes = classNames(class_name || className, 'input-group-' + addon_type);
 
   children = parseChildrenToArray(children);
 

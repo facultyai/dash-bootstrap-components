@@ -37,22 +37,22 @@ describe('Textarea', () => {
       container: {firstChild: textarea}
     } = render(
       <Textarea
-        accessKey="k"
+        accesskey="k"
         cols="33"
         dir="ltr"
         disabled
         draggable
         form="form-id"
         lang="en-GB"
-        maxLength="20"
-        minLength="2"
+        maxlength="20"
+        minlength="2"
         name="test-name"
         placeholder="test-placeholder"
-        readOnly
+        readonly
         required
         rows="6"
-        spellCheck
-        tabIndex="3"
+        spellcheck
+        tabindex="3"
         title="test-title"
         wrap="hard"
       />
