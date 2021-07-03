@@ -27,5 +27,5 @@ def check_nav_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#button-clicks").text
         == "Button clicked 1 times",
-        timeout=2,
+        timeout=4,
     )

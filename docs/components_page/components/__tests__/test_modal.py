@@ -55,37 +55,37 @@ def check_modal_size_callbacks(runner):
     runner.find_element("#open-sm").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-sm").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#open-lg").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-lg").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#open-xl").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-xl").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
 
@@ -108,13 +108,13 @@ def check_modal_backdrop_callbacks(runner):
     runner.find_element("#open-backdrop").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-backdrop").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )
 
 
@@ -181,11 +181,11 @@ def check_modal_centered_callbacks(runner):
     runner.find_element("#open-centered").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) != 0,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#close-centered").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
-        timeout=2,
+        timeout=4,
     )

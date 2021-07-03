@@ -31,7 +31,7 @@ def check_toast_auto_callbacks(runner):
     runner.find_element("#auto-toast-toggle").click()
     wait.until(
         lambda: len(runner.find_elements("#auto-toast")) > 0,
-        timeout=2,
+        timeout=4,
     )
 
 

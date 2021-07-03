@@ -26,7 +26,7 @@ def check_input_simple_callbacks(runner):
     runner.find_element("#input").send_keys("x")
     wait.until(
         lambda: runner.find_element("#output").text == "x",
-        timeout=2,
+        timeout=4,
     )
 
 

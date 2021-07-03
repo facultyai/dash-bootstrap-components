@@ -47,7 +47,7 @@ def test_jl_fade_transition(dashjl):
 def check_fade_transition_callbacks(runner):
     wait.until(
         lambda: len(runner.find_elements("#fade-transition")) == 1,
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#fade-transition-button").click()

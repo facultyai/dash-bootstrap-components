@@ -33,7 +33,7 @@ def check_button_group_callbacks(runner):
     ).click()
     wait.until(
         lambda: runner.find_element("#output").text == "Selected value: 2",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element(
@@ -41,5 +41,5 @@ def check_button_group_callbacks(runner):
     ).click()
     wait.until(
         lambda: runner.find_element("#output").text == "Selected value: 3",
-        timeout=2,
+        timeout=4,
     )
