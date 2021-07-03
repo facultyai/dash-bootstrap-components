@@ -29,12 +29,12 @@ def check_navbar_callbacks(runner):
     wait.until(
         lambda: runner.find_element("#navbar-collapse").get_attribute("class")
         == "collapse navbar-collapse",
-        timeout=2,
+        timeout=4,
     )
 
     runner.find_element("#navbar-toggler").click()
     wait.until(
         lambda: runner.find_element("#navbar-collapse").get_attribute("class")
         == "collapse show navbar-collapse",
-        timeout=2,
+        timeout=4,
     )
