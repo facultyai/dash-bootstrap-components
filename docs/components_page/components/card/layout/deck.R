@@ -6,16 +6,16 @@ cards <- dbcCardDeck(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("Card 1", className = "card-title"),
+          htmlH5("Card 1", class_name = "card-title"),
           htmlP(
               paste(
                 "This card has some text content, which is a little",
                 "bit longer than the second card."
               ),
-              className = "card-text"
+              class_name = "card-text"
           ),
           dbcButton(
-              "Click here", color = "success", className = "mt-auto"
+              "Click here", color = "success", class_name = "mt-auto"
           )
         )
       )
@@ -23,13 +23,13 @@ cards <- dbcCardDeck(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("Card 2", className = "card-title"),
+          htmlH5("Card 2", class_name = "card-title"),
           htmlP(
             "This card has some text content.",
-            className = "card-text",
+            class_name = "card-text",
           ),
           dbcButton(
-            "Click here", color = "warning", className = "mt-auto"
+            "Click here", color = "warning", class_name = "mt-auto"
           )
         )
       )
@@ -37,7 +37,7 @@ cards <- dbcCardDeck(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("Card 3", className = "card-title"),
+          htmlH5("Card 3", class_name = "card-title"),
           htmlP(
             paste(
               "This card has some text content, which is longer",
@@ -45,10 +45,10 @@ cards <- dbcCardDeck(
               "demonstrate the equal height property of cards in a",
               "card group."
             ),
-            className = "card-text",
+            class_name = "card-text",
           ),
           dbcButton(
-            "Click here", color = "danger", className = "mt-auto"
+            "Click here", color = "danger", class_name = "mt-auto"
           )
         )
       )

@@ -34,7 +34,7 @@ controls = dbc.Card(
         html.Hr(),
         html.P(
             "Data from AT&T (1961) The World's Telephones.",
-            className="text-muted",
+            class_name="text-muted",
         ),
     ],
     body=True,

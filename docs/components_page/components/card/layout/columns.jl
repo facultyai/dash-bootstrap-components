@@ -3,8 +3,8 @@ using DashBootstrapComponents, DashHtmlComponents
 card_content_1 = [
     dbc_cardheader("Card header"),
     dbc_cardbody([
-        html_h5("Card title", className="card-title"),
-        html_p("This is some card content that we'll reuse", className="card-text"),
+        html_h5("Card title", class_name="card-title"),
+        html_p("This is some card content that we'll reuse", class_name="card-text"),
     ]),
 ];
 
@@ -15,19 +15,19 @@ card_content_2 = dbc_cardbody([
                 "A learning experience is one of those things that says, " *
                 "'You know that thing you just did? Don't do that.'",
             ),
-            html_footer(html_small("Douglas Adams", className="text-muted")),
+            html_footer(html_small("Douglas Adams", class_name="text-muted")),
         ],
-        className="blockquote",
+        class_name="blockquote",
     ),
 ]);
 
 card_content_3 = [
     dbc_cardimg(src="/static/images/placeholder286x180.png", top=true),
     dbc_cardbody([
-        html_h5("Card with image", className="card-title"),
+        html_h5("Card with image", class_name="card-title"),
         html_p(
             "This card has an image on top, and a button below",
-            className="card-text",
+            class_name="card-text",
         ),
         dbc_button("Click me!", color="primary"),
     ]),

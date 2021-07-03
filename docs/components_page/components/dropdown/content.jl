@@ -11,7 +11,7 @@ dropdown = dbc_dropdownmenu(
         dbc_dropdownmenuitem(divider=true),
         html_p(
             "You can have other content here like text if you like.",
-            className="text-muted px-4 mt-4",
+            class_name="text-muted px-4 mt-4",
         ),
     ],
     label="Menu",

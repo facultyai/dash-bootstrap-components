@@ -30,7 +30,7 @@ modal = html.Div(
                     dbc.Button(
                         "Close",
                         id="close-backdrop",
-                        className="ml-auto",
+                        class_name="ml-auto",
                         n_clicks=0,
                     )
                 ),

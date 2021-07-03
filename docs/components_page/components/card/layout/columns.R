@@ -5,10 +5,10 @@ card_content_1 <- list(
   dbcCardHeader("Card header"),
   dbcCardBody(
     list(
-      htmlH5("Card title", className = "card-title"),
+      htmlH5("Card title", class_name = "card-title"),
       htmlP(
           "This is some card content that we'll reuse",
-          className = "card-text"
+          class_name = "card-text"
       )
     )
   )
@@ -25,10 +25,10 @@ card_content_2 <- dbcCardBody(
           )
         ),
         htmlFooter(
-            htmlSmall("Douglas Adams", className = "text-muted")
+            htmlSmall("Douglas Adams", class_name = "text-muted")
         )
       ),
-      className = "blockquote"
+      class_name = "blockquote"
     )
   )
 )
@@ -37,9 +37,9 @@ card_content_3 <- list(
   dbcCardImg(src = "/static/images/placeholder286x180.png", top = TRUE),
   dbcCardBody(
     list(
-      htmlH5("Card with image", className = "card-title"),
+      htmlH5("Card with image", class_name = "card-title"),
       htmlP("This card has an image on top, and a button below",
-            className = "card-text",
+            class_name = "card-text",
       ),
       dbcButton("Click me!", color = "primary")
     )

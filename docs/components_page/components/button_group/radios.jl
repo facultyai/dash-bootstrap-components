@@ -4,9 +4,9 @@ button_group = html_div(
     [
         dbc_radioitems(
             id="radios",
-            className="btn-group",
-            labelClassName="btn btn-secondary",
-            labelCheckedClassName="active",
+            class_name="btn-group",
+            label_class_name="btn btn-secondary",
+            label_checked_class_name="active",
             options=[
                 Dict("label" => "Option 1", "value" => 1),
                 Dict("label" => "Option 2", "value" => 2),
@@ -16,7 +16,7 @@ button_group = html_div(
         ),
         html_div(id="output"),
     ],
-    className="radio-group",
+    class_name="radio-group",
 );
 
 callback!(app, Output("output", "children"), Input("radios", "value")) do value

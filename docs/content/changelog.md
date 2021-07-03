@@ -77,7 +77,7 @@ This version marks the first release of dash-bootstrap-components for Julia. The
 ### Added
 
 - The `NavLink` component can now automatically set the `active` prop based on the current pathname. Set `active="exact"` to toggle set `active=True` if the `href` exactly matches the current pathname, or `active="partial"` to set `active=True` if the current pathname starts with `href` ([PR 482](https://github.com/facultyai/dash-bootstrap-components/pull/482))
-- `active_tab_style` and `activeTabClassName` props to `Tab` for styling active tabs ([PR 491](https://github.com/facultyai/dash-bootstrap-components/pull/491))
+- `active_tab_style` and `active_tab_class_name` props to `Tab` for styling active tabs ([PR 491](https://github.com/facultyai/dash-bootstrap-components/pull/491))
 - Exposed `name` prop on input components so that they can be used more effectively in form submissions, and `action` and `method` props of `Form` so that `Form` can be used to post form submissions to a route on the backend ([PR 474](https://github.com/facultyai/dash-bootstrap-components/pull/474))
 - Exposes `type` prop on `Button` ([PR 470](https://github.com/facultyai/dash-bootstrap-components/pull/470))
 
@@ -167,7 +167,7 @@ This version marks the first release of dash-bootstrap-components for Julia. The
 
 ### Changed
 
-- Removed `style` and `className` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+- Removed `style` and `class_name` arguments from `Spinner`, replaced with `spinner_style` and `spinner_class_name`. Also added `fullscreen_style` and `fullscreen_class_name` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
 
 ## 0.9.2 - 2020/4/5
 
@@ -267,7 +267,7 @@ This version marks the first release of dash-bootstrap-components for Julia. The
 
 ### Added
 
-- Expose `color`, `toggle_style` and `toggleClassName` props in `DropdownMenu` component ([PR 221](https://github.com/facultyai/dash-bootstrap-components/pull/221))
+- Expose `color`, `toggle_style` and `toggle_class_name` props in `DropdownMenu` component ([PR 221](https://github.com/facultyai/dash-bootstrap-components/pull/221))
 
 ## 0.6.2 - 2019/6/5
 

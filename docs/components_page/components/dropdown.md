@@ -19,7 +19,7 @@ Each `DropdownMenuItem` can be used like `dash_core_components.Link`, as a regul
 
 ## Styling the toggle
 
-You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggleClassName` arguments.
+You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggle_class_name` arguments.
 
 {{example:components/dropdown/style.py:dropdowns}}
 

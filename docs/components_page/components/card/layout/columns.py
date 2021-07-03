@@ -5,10 +5,10 @@ card_content_1 = [
     dbc.CardHeader("Card header"),
     dbc.CardBody(
         [
-            html.H5("Card title", className="card-title"),
+            html.H5("Card title", class_name="card-title"),
             html.P(
                 "This is some card content that we'll reuse",
-                className="card-text",
+                class_name="card-text",
             ),
         ]
     ),
@@ -23,10 +23,10 @@ card_content_2 = dbc.CardBody(
                     "'You know that thing you just did? Don't do that.'"
                 ),
                 html.Footer(
-                    html.Small("Douglas Adams", className="text-muted")
+                    html.Small("Douglas Adams", class_name="text-muted")
                 ),
             ],
-            className="blockquote",
+            class_name="blockquote",
         )
     ]
 )
@@ -35,10 +35,10 @@ card_content_3 = [
     dbc.CardImg(src="/static/images/placeholder286x180.png", top=True),
     dbc.CardBody(
         [
-            html.H5("Card with image", className="card-title"),
+            html.H5("Card with image", class_name="card-title"),
             html.P(
                 "This card has an image on top, and a button below",
-                className="card-text",
+                class_name="card-text",
             ),
             dbc.Button("Click me!", color="primary"),
         ]

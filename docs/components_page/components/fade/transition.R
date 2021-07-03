@@ -4,12 +4,12 @@ library(dashHtmlComponents)
 fade <- htmlDiv(
   list(
     dbcButton("Toggle fade", id = "fade-transition-button", n_clicks = 0,
-              className = "mb-3"),
+              class_name = "mb-3"),
     dbcFade(
       dbcCard(
         dbcCardBody(
             htmlP(
-              "This content fades in and out", className = "card-text"
+              "This content fades in and out", class_name = "card-text"
             )
         )
       ),

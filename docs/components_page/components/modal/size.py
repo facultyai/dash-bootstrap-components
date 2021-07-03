@@ -4,8 +4,8 @@ from dash.dependencies import Input, Output, State
 
 modal = html.Div(
     [
-        dbc.Button("Small modal", id="open-sm", className="mr-1", n_clicks=0),
-        dbc.Button("Large modal", id="open-lg", className="mr-1", n_clicks=0),
+        dbc.Button("Small modal", id="open-sm", class_name="mr-1", n_clicks=0),
+        dbc.Button("Large modal", id="open-lg", class_name="mr-1", n_clicks=0),
         dbc.Button("Extra large modal", id="open-xl", n_clicks=0),
         dbc.Modal(
             [
@@ -13,7 +13,7 @@ modal = html.Div(
                 dbc.ModalBody("A small modal."),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close-sm", className="ml-auto", n_clicks=0
+                        "Close", id="close-sm", class_name="ml-auto", n_clicks=0
                     )
                 ),
             ],
@@ -27,7 +27,7 @@ modal = html.Div(
                 dbc.ModalBody("A large modal."),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close-lg", className="ml-auto", n_clicks=0
+                        "Close", id="close-lg", class_name="ml-auto", n_clicks=0
                     )
                 ),
             ],
@@ -41,7 +41,7 @@ modal = html.Div(
                 dbc.ModalBody("An extra large modal."),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close-xl", className="ml-auto", n_clicks=0
+                        "Close", id="close-xl", class_name="ml-auto", n_clicks=0
                     )
                 ),
             ],

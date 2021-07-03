@@ -8,7 +8,7 @@ input_groups = html.Div(
                 dbc.InputGroupAddon(dbc.RadioButton(), addon_type="prepend"),
                 dbc.Input(),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.InputGroup(
             [

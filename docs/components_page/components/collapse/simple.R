@@ -7,7 +7,7 @@ collapse <- htmlDiv(
     dbcButton(
       "Open collapse",
       id = "collapse-button",
-      className = "mb-3",
+      class_name = "mb-3",
       color = "primary",
       n_clicks = 0
     ),

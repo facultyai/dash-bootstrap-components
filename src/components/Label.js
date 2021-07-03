@@ -24,6 +24,7 @@ const Label = props => {
     align,
     xs,
     className,
+    class_name,
     color,
     style,
     loading_state,
@@ -39,7 +40,7 @@ const Label = props => {
 
   const alignClass = align && alignMap[align];
   const classes = classNames(
-    className,
+    class_name || className,
     cols.length && alignClass,
     color && isBootstrapColor && `text-${color}`
   );
@@ -93,6 +94,13 @@ Label.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

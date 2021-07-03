@@ -6,12 +6,12 @@ button_groups = html.Div(
         dbc.ButtonGroup(
             [dbc.Button("Left"), dbc.Button("Middle"), dbc.Button("Right")],
             size="lg",
-            className="mr-1",
+            class_name="mr-1",
         ),
         dbc.ButtonGroup(
             [dbc.Button("Left"), dbc.Button("Middle"), dbc.Button("Right")],
             size="md",
-            className="mr-1",
+            class_name="mr-1",
         ),
         dbc.ButtonGroup(
             [dbc.Button("Left"), dbc.Button("Middle"), dbc.Button("Right")],
