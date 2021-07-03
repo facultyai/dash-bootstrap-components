@@ -26,12 +26,13 @@ const Col = props => {
     width,
     align,
     className,
+    class_name,
     loading_state,
     ...otherProps
   } = props;
 
   const alignClass = align && alignMap[align];
-  const classes = classNames(className, alignClass);
+  const classes = classNames(class_name || className, alignClass);
 
   return (
     <RSCol
