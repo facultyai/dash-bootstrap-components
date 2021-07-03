@@ -8,12 +8,13 @@ import {CardGroup as RSCardGroup} from 'reactstrap';
  * equal width and height.
  */
 const CardGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardGroup
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}

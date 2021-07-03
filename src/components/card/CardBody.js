@@ -8,12 +8,13 @@ import {CardBody as RSCardBody} from 'reactstrap';
  * styles.
  */
 const CardBody = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardBody
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
