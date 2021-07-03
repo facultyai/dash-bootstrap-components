@@ -7,14 +7,14 @@ input_groups <- htmlDiv(
         dbcInputGroupAddon("@", addon_type = "prepend"),
         dbcInput(placeholder = "Username")
       ),
-      className = "mb-3"
+      class_name = "mb-3"
     ),
     dbcInputGroup(
       list(
         dbcInput(placeholder = "Recipient's username"),
         dbcInputGroupAddon("@example.com", addon_type = "append")
       ),
-      className = "mb-3"
+      class_name = "mb-3"
     ),
     dbcInputGroup(
       list(
@@ -22,14 +22,14 @@ input_groups <- htmlDiv(
         dbcInput(placeholder = "Amount", type = "number"),
         dbcInputGroupAddon(".00", addon_type = "append")
       ),
-      className = "mb-3"
+      class_name = "mb-3"
     ),
     dbcInputGroup(
       list(
         dbcInputGroupAddon("With textarea", addon_type = "prepend"),
         dbcTextarea()
       ),
-      className = "mb-3"
+      class_name = "mb-3"
     ),
     dbcInputGroup(
       list(

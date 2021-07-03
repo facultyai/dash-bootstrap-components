@@ -4,10 +4,10 @@ library(dashHtmlComponents)
 collapses <- htmlDiv(
   list(
     dbcButton("Toggle left", color = "primary", id = "left",
-              className = "mr-1", n_clicks = 0
+              class_name = "mr-1", n_clicks = 0
     ),
     dbcButton("Toggle right", color = "primary", id = "right",
-              className = "mr-1", n_clicks = 0
+              class_name = "mr-1", n_clicks = 0
     ),
     dbcButton("Toggle both", color = "primary", id = "both", n_clicks = 0),
     dbcRow(
@@ -27,7 +27,7 @@ collapses <- htmlDiv(
           )
         )
       ),
-      className = "mt-3"
+      class_name = "mt-3"
     )
   )
 )

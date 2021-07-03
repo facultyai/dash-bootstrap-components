@@ -21,5 +21,5 @@ tooltip = html.Div(
             target="tooltip-target",
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )

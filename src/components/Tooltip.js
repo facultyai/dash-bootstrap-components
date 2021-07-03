@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {Tooltip as RSTooltip} from 'reactstrap';
@@ -16,6 +16,12 @@ const Tooltip = props => {
     hide_arrow,
     boundaries_element,
     loading_state,
+    className,
+    class_name,
+    arrowClassName,
+    arrow_class_name,
+    innerClassName,
+    inner_class_name,
     ...otherProps
   } = props;
 
@@ -31,6 +37,9 @@ const Tooltip = props => {
       isOpen={tooltipOpen}
       hideArrow={hide_arrow}
       boundariesElement={boundaries_element}
+      className={class_name || className}
+      arrowClassName={arrow_class_name || arrowClassName}
+      innerClassName={inner_class_name || innerClassName}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -60,6 +69,13 @@ Tooltip.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -103,9 +119,23 @@ Tooltip.propTypes = {
   /**
    * CSS classes to apply to the inner-tooltip
    */
+  inner_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `inner_class_name` instead.
+   *
+   * CSS classes to apply to the inner-tooltip
+   */
   innerClassName: PropTypes.string,
 
   /**
+   * CSS classes to apply to the arrow-tooltip ('arrow' by default)
+   */
+  arrow_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `arrow_class_name` instead.
+   *
    * CSS classes to apply to the arrow-tooltip ('arrow' by default)
    */
   arrowClassName: PropTypes.string,

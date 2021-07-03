@@ -25,14 +25,14 @@ alerts_link <- htmlDiv(
     dbcAlert(
       list(
         "This is a primary alert with an ",
-        htmlA("example link", href = "#", className = "alert-link")
+        htmlA("example link", href = "#", class_name = "alert-link")
       ),
       color = "primary"
     ),
     dbcAlert(
       list(
         "This is a danger alert with an ",
-        htmlA("example link", href = "#", className = "alert-link")
+        htmlA("example link", href = "#", class_name = "alert-link")
       ),
       color = "danger"
     )
@@ -41,7 +41,7 @@ alerts_link <- htmlDiv(
 
 alerts_content <- dbcAlert(
   list(
-    htmlH4("Well done!", className = "alert-heading"),
+    htmlH4("Well done!", class_name = "alert-heading"),
     htmlP(
       "This is a success alert with loads of extra text in it. So much
       that you can see how spacing within an alert works with this
@@ -50,7 +50,7 @@ alerts_content <- dbcAlert(
     htmlHr(),
     htmlP(
       "Let's put some more text down here, but remove the bottom margin",
-      className = "mb-0",
+      class_name = "mb-0",
     )
   )
 )
@@ -59,7 +59,7 @@ alerts_dismiss <- htmlDiv(
   list(
     dbcButton(
       "Toggle alert with fade", id = "alert-toggle-fade", n_clicks = 0,
-      className = "mr-1"
+      class_name = "mr-1"
     ),
     dbcButton("Toggle alert without fade", id = "alert-toggle-no-fade",
               n_clicks = 0),
@@ -82,7 +82,7 @@ alerts_dismiss <- htmlDiv(
 
 alerts_auto_dismiss <- htmlDiv(
   list(
-    dbcButton("Toggle", id = "alert-toggle-auto", className = "mr-1",
+    dbcButton("Toggle", id = "alert-toggle-auto", class_name = "mr-1",
               n_clicks = 0),
     htmlHr(),
     dbcAlert(
@@ -112,7 +112,7 @@ app$layout(
       htmlH2("Alerts Automatic Dismissing"),
       alerts_auto_dismiss
     ),
-  className = "p-5")
+  class_name = "p-5")
 )
 
 

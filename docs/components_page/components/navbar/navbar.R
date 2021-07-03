@@ -8,13 +8,13 @@ search_bar <- dbcRow(
     dbcCol(dbcInput(type = "search", placeholder = "Search")),
     dbcCol(
       dbcButton(
-        "Search", color = "primary", n_clicks = 0, className = "ml-2"
+        "Search", color = "primary", n_clicks = 0, class_name = "ml-2"
       ),
       width = "auto"
     )
   ),
   no_gutters = TRUE,
-  className = "ml-auto flex-nowrap mt-3 mt-md-0",
+  class_name = "ml-auto flex-nowrap mt-3 mt-md-0",
   align = "center",
 )
 
@@ -25,7 +25,7 @@ navbar <- dbcNavbar(
       dbcRow(
         list(
           dbcCol(htmlImg(src = PLOTLY_LOGO, height = "30px")),
-          dbcCol(dbcNavbarBrand("Navbar", className = "ml-2"))
+          dbcCol(dbcNavbarBrand("Navbar", class_name = "ml-2"))
         ),
         align = "center",
         no_gutters = TRUE

@@ -3,8 +3,8 @@ library(dashHtmlComponents)
 
 modal <- htmlDiv(
   list(
-    dbcButton("Small modal", id = "open-sm", n_clicks = 0, className = "mr-1"),
-    dbcButton("Large modal", id = "open-lg", n_clicks = 0, className = "mr-1"),
+    dbcButton("Small modal", id = "open-sm", n_clicks = 0, class_name = "mr-1"),
+    dbcButton("Large modal", id = "open-lg", n_clicks = 0, class_name = "mr-1"),
     dbcButton("Extra large modal", n_clicks = 0, id = "open-xl"),
     dbcModal(
       list(
@@ -12,7 +12,7 @@ modal <- htmlDiv(
         dbcModalBody("A small modal."),
         dbcModalFooter(
           dbcButton(
-            "Close", id = "close-sm", n_clicks = 0, className = "ml-auto"
+            "Close", id = "close-sm", n_clicks = 0, class_name = "ml-auto"
           )
         )
       ),
@@ -26,7 +26,7 @@ modal <- htmlDiv(
         dbcModalBody("A large modal."),
         dbcModalFooter(
           dbcButton(
-            "Close", id = "close-lg", n_clicks = 0, className = "ml-auto"
+            "Close", id = "close-lg", n_clicks = 0, class_name = "ml-auto"
           )
         )
       ),
@@ -40,7 +40,7 @@ modal <- htmlDiv(
         dbcModalBody("An extra large modal."),
         dbcModalFooter(
           dbcButton(
-            "Close", id = "close-xl", n_clicks = 0, className = "ml-auto"
+            "Close", id = "close-xl", n_clicks = 0, class_name = "ml-auto"
           )
         )
       ),

@@ -12,8 +12,8 @@ tabs <- htmlDiv(
     htmlBr(),
     dbcTabs(
       list(
-        dbcTab(label = "Tab 1", tabClassName = "ml-auto"),
-        dbcTab(label = "Tab 2", labelClassName = "text-success")
+        dbcTab(label = "Tab 1", tab_class_name = "ml-auto"),
+        dbcTab(label = "Tab 2", label_class_name = "text-success")
       )
     )
   )

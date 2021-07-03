@@ -4,7 +4,6 @@ import {omit} from 'ramda';
 import {Card as RSCard} from 'reactstrap';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
-
 /**
  * Component for creating Bootstrap cards. Use in conjunction with CardBody,
  * CardImg, CardLink, CardHeader and CardFooter. Can also be used in
@@ -47,6 +46,13 @@ Card.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

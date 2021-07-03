@@ -25,6 +25,8 @@ const Button = props => {
     download,
     name,
     value,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -49,6 +51,7 @@ const Button = props => {
       download={useLink ? download : null}
       name={useLink ? null : name}
       value={useLink ? null : value}
+      className={class_name || className}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -78,6 +81,13 @@ Button.propTypes = {
   children: PropTypes.node,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

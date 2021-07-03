@@ -42,7 +42,7 @@ header = html.Div(
             ]
         )
     ],
-    className="mt-4",
+    class_name="mt-4",
 )
 
 alerts = html.Div(
@@ -70,11 +70,11 @@ buttons = html.Div(
         html.H2("Buttons"),
         html.Div(
             [
-                dbc.Button("Primary", color="primary", className="mr-1"),
-                dbc.Button("Secondary", color="secondary", className="mr-1"),
-                dbc.Button("Success", color="success", className="mr-1"),
-                dbc.Button("Warning", color="warning", className="mr-1"),
-                dbc.Button("Danger", color="danger", className="mr-1"),
+                dbc.Button("Primary", color="primary", class_name="mr-1"),
+                dbc.Button("Secondary", color="secondary", class_name="mr-1"),
+                dbc.Button("Success", color="success", class_name="mr-1"),
+                dbc.Button("Warning", color="warning", class_name="mr-1"),
+                dbc.Button("Danger", color="danger", class_name="mr-1"),
                 dbc.Button("Info", color="info"),
             ]
         ),
@@ -83,22 +83,22 @@ buttons = html.Div(
         html.Div(
             [
                 dbc.Button(
-                    "Primary", outline=True, color="primary", className="mr-1"
+                    "Primary", outline=True, color="primary", class_name="mr-1"
                 ),
                 dbc.Button(
                     "Secondary",
                     outline=True,
                     color="secondary",
-                    className="mr-1",
+                    class_name="mr-1",
                 ),
                 dbc.Button(
-                    "Success", outline=True, color="success", className="mr-1"
+                    "Success", outline=True, color="success", class_name="mr-1"
                 ),
                 dbc.Button(
-                    "Warning", outline=True, color="warning", className="mr-1"
+                    "Warning", outline=True, color="warning", class_name="mr-1"
                 ),
                 dbc.Button(
-                    "Danger", outline=True, color="danger", className="mr-1"
+                    "Danger", outline=True, color="danger", class_name="mr-1"
                 ),
                 dbc.Button("Info", outline=True, color="info"),
             ]
@@ -132,9 +132,9 @@ cards = html.Div(
                             [
                                 html.H5(
                                     "This card has a title",
-                                    className="card-title",
+                                    class_name="card-title",
                                 ),
-                                html.P("And some text", className="card-text"),
+                                html.P("And some text", class_name="card-text"),
                             ]
                         ),
                     ]
@@ -145,11 +145,11 @@ cards = html.Div(
                             [
                                 html.H5(
                                     "This card has a title",
-                                    className="card-title",
+                                    class_name="card-title",
                                 ),
                                 html.P(
                                     "and some text, but no header",
-                                    className="card-text",
+                                    class_name="card-text",
                                 ),
                             ]
                         )
@@ -163,11 +163,11 @@ cards = html.Div(
                             [
                                 html.H5(
                                     "This card has a title",
-                                    className="card-title",
+                                    class_name="card-title",
                                 ),
                                 html.P(
                                     "and some text, and a footer!",
-                                    className="card-text",
+                                    class_name="card-text",
                                 ),
                             ]
                         ),
@@ -281,7 +281,7 @@ fade = html.Div(
             dbc.Card(
                 dbc.CardBody(
                     html.P(
-                        "This content fades in and out", className="card-text"
+                        "This content fades in and out", class_name="card-text"
                     )
                 )
             ),
@@ -308,7 +308,7 @@ form = html.Div(
                                 html.A(
                                     "Click here.",
                                     href="#",
-                                    className="text-muted",
+                                    class_name="text-muted",
                                     style={"text-decoration": "underline"},
                                 ),
                             ]
@@ -327,7 +327,7 @@ form = html.Div(
                                 html.A(
                                     "Click here.",
                                     href="#",
-                                    className="text-muted",
+                                    class_name="text-muted",
                                     style={"text-decoration": "underline"},
                                 ),
                             ]
@@ -364,7 +364,7 @@ input_ = html.Div(
             ],
             value=[],
         ),
-        html.H5("Inline checklist", className="mt-3"),
+        html.H5("Inline checklist", class_name="mt-3"),
         dbc.Checklist(
             options=[
                 {"label": "Option {}".format(i), "value": i} for i in range(5)
@@ -372,14 +372,14 @@ input_ = html.Div(
             value=[],
             inline=True,
         ),
-        html.H4("RadioItems", className="mt-5"),
+        html.H4("RadioItems", class_name="mt-5"),
         dbc.RadioItems(
             options=[
                 {"label": "Option {}".format(i), "value": i} for i in range(5)
             ],
             value=0,
         ),
-        html.H5("Inline radioitems", className="mt-3"),
+        html.H5("Inline radioitems", class_name="mt-3"),
         dbc.RadioItems(
             options=[
                 {"label": "Option {}".format(i), "value": i} for i in range(5)
@@ -543,7 +543,7 @@ tabs = html.Div(
                             [
                                 html.P(
                                     "This tab has a card!",
-                                    className="card-text",
+                                    class_name="card-text",
                                 ),
                                 dbc.Button("Click here", color="success"),
                             ]

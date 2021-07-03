@@ -18,8 +18,10 @@ const Spinner = props => {
     loading_state,
     spinner_style,
     spinnerClassName,
+    spinner_class_name,
     fullscreen,
     fullscreenClassName,
+    fullscreen_class_name,
     fullscreen_style,
     debounce,
     show_initially,
@@ -63,7 +65,7 @@ const Spinner = props => {
     <RSSpinner
       color={isBootstrapColor ? color : null}
       style={{color: !isBootstrapColor && color, ...style}}
-      className={spinnerClassName}
+      className={spinner_class_name || spinnerClassName}
       {...omit(['setProps'], otherProps)}
     />
   );
@@ -99,7 +101,9 @@ const Spinner = props => {
         {showSpinner && (
           <div
             style={fullscreen ? fullscreenStyle : coveringStyle}
-            className={fullscreen && fullscreenClassName}
+            className={
+              fullscreen && (fullscreen_class_name || fullscreenClassName)
+            }
           >
             <SpinnerDiv style={spinnerStyle} />
           </div>
@@ -110,7 +114,10 @@ const Spinner = props => {
 
   if (fullscreen) {
     return (
-      <div className={fullscreenClassName} style={fullscreenStyle}>
+      <div
+        className={fullscreen_class_name || fullscreenClassName}
+        style={fullscreenStyle}
+      >
         <SpinnerDiv style={spinner_style} />
       </div>
     );
@@ -152,9 +159,23 @@ Spinner.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  fullscreen_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `fullscreen_class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   fullscreenClassName: PropTypes.string,
 
   /**
+   * CSS class names to apply to the spinner.
+   */
+  spinner_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `spinner_class_name` instead.
+   *
    * CSS class names to apply to the spinner.
    */
   spinnerClassName: PropTypes.string,

@@ -9,10 +9,18 @@ import {Collapse as RSCollapse} from 'reactstrap';
  * callbacks.
  */
 const Collapse = props => {
-  const {children, is_open, loading_state, ...otherProps} = props;
+  const {
+    children,
+    is_open,
+    loading_state,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
   return (
     <RSCollapse
       isOpen={is_open}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -42,6 +50,13 @@ Collapse.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

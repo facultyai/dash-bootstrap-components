@@ -5,10 +5,10 @@ card_content = [
     dbc.CardHeader("Card header"),
     dbc.CardBody(
         [
-            html.H5("Card title", className="card-title"),
+            html.H5("Card title", class_name="card-title"),
             html.P(
                 "This is some card content that we'll reuse",
-                className="card-text",
+                class_name="card-text",
             ),
         ]
     ),
@@ -20,7 +20,7 @@ row_1 = dbc.Row(
         dbc.Col(dbc.Card(card_content, color="secondary", outline=True)),
         dbc.Col(dbc.Card(card_content, color="info", outline=True)),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )
 
 row_2 = dbc.Row(
@@ -29,7 +29,7 @@ row_2 = dbc.Row(
         dbc.Col(dbc.Card(card_content, color="warning", outline=True)),
         dbc.Col(dbc.Card(card_content, color="danger", outline=True)),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )
 
 row_3 = dbc.Row(

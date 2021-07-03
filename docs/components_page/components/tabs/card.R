@@ -14,7 +14,7 @@ card <- dbcCard(
         active_tab = "tab-1"
       )
     ),
-    dbcCardBody(htmlP(id = "card-content", className = "card-text"))
+    dbcCardBody(htmlP(id = "card-content", class_name = "card-text"))
   )
 )
 

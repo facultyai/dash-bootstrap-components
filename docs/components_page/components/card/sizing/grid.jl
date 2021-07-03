@@ -2,7 +2,7 @@ using DashBootstrapComponents, DashHtmlComponents
 
 first_card = dbc_card(
     dbc_cardbody([
-        html_h5("Card title", className="card-title"),
+        html_h5("Card title", class_name="card-title"),
         html_p("This card has some text content, but not much else"),
         dbc_button("Go somewhere", color="primary"),
     ]),
@@ -11,7 +11,7 @@ first_card = dbc_card(
 
 second_card = dbc_card(
     dbc_cardbody([
-        html_h5("Card title", className="card-title"),
+        html_h5("Card title", class_name="card-title"),
         html_p(
             "This card also has some text content and not much else, but " *
             "it is twice as wide as the first card.",
