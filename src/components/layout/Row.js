@@ -30,6 +30,7 @@ const Row = props => {
   const {
     children,
     className,
+    class_name,
     align,
     justify,
     no_gutters,
@@ -40,7 +41,7 @@ const Row = props => {
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
 
-  const classes = classNames(className, alignClass, justifyClass);
+  const classes = classNames(class_name || className, alignClass, justifyClass);
   return (
     <RSRow
       className={classes}

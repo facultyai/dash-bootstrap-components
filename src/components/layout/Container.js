@@ -8,9 +8,10 @@ import {omit} from 'ramda';
  * contents.
  */
 const Container = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSContainer
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
