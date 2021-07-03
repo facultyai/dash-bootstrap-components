@@ -19,6 +19,8 @@ const DropdownMenuItem = props => {
     n_clicks,
     toggle,
     setProps,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -49,6 +51,7 @@ const DropdownMenuItem = props => {
       disabled={disabled}
       target={useLink && target}
       toggle={toggle}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
