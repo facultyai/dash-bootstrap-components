@@ -14,6 +14,8 @@ const Form = props => {
     n_submit,
     prevent_default_on_submit,
     setProps,
+    className,
+    class_name,
     ...otherProps
   } = props;
   return (
@@ -29,6 +31,7 @@ const Form = props => {
           });
         }
       }}
+      className={class_name || className}
       {...omit(['n_submit_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
