@@ -19,7 +19,7 @@ const NavbarSimple = props => {
     brand_href,
     brand_style,
     brand_external_link,
-    linksLeft,
+    links_left,
     fluid,
     color,
     style,
@@ -53,7 +53,7 @@ const NavbarSimple = props => {
         )}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={navbarOpen} navbar>
-          <Nav className={linksLeft ? 'mr-auto' : 'ml-auto'} navbar>
+          <Nav className={links_left ? 'mr-auto' : 'ml-auto'} navbar>
             {children}
           </Nav>
         </Collapse>
@@ -66,7 +66,8 @@ NavbarSimple.defaultProps = {
   fluid: false,
   color: 'light',
   light: true,
-  expand: 'md'
+  expand: 'md',
+  links_left: false,
 };
 
 NavbarSimple.propTypes = {
@@ -130,6 +131,11 @@ NavbarSimple.propTypes = {
    * navbar fill the available horizontal space.
    */
   fluid: PropTypes.bool,
+
+  /**
+   * Align the navlinks in the navbar to the left. Default: False.
+   */
+  links_left: PropTypes.bool,
 
   /**
    * Applies the `navbar-light` class to the NavbarSimple, causing text in the
