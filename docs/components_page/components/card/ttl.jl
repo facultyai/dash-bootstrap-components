@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-complex_card = dbc_card(
+card = dbc_card(
     dbc_cardbody([
         html_h4("Title", className="card-title"),
         html_h6("Card subtitle", className="card-subtitle"),

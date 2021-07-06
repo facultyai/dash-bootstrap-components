@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-dimissable_alert = html_div([
+alert = html_div([
     dbc_button(
         "Toggle alert with fade",
         id="alert-toggle-fade",

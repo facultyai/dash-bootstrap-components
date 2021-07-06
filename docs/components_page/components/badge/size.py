@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
-varying_size_badges = html.Div(
+badges = html.Div(
     [
         html.H1(["Example heading", dbc.Badge("New", className="ml-1")]),
         html.H2(["Example heading", dbc.Badge("New", className="ml-1")]),

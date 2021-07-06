@@ -26,7 +26,7 @@ second_card = dbc.Card(
 )
 
 
-size_grid_cards = dbc.Row(
+cards = dbc.Row(
     [
         dbc.Col(first_card, width=4),
         dbc.Col(second_card, width=8),

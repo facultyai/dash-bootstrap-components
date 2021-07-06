@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-linked_badges = html_span([
+badges = html_span([
     dbc_badge("Primary", href="#", color="primary", className="mr-1"),
     dbc_badge("Secondary", href="#", color="secondary", className="mr-1"),
     dbc_badge("Success", href="#", color="success", className="mr-1"),

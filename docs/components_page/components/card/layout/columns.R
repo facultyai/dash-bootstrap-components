@@ -46,7 +46,7 @@ card_content_3 <- list(
   )
 )
 
-layout_columns_cards <- dbcCardColumns(
+cards <- dbcCardColumns(
   list(
     dbcCard(card_content_1, color = "primary", inverse = TRUE),
     dbcCard(card_content_2, body = TRUE),

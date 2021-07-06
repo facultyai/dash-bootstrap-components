@@ -150,7 +150,12 @@ Badge.propTypes = {
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * Sets the title attribute of the underlying HTML button.
+   */
+  title: PropTypes.string
 };
 
 export default Badge;
