@@ -34,7 +34,7 @@ card_content_3 = [
 ];
 
 
-layout_columns_cards = dbc_cardcolumns([
+cards = dbc_cardcolumns([
     dbc_card(card_content_1, color="primary", inverse=true),
     dbc_card(card_content_2, body=true),
     dbc_card(card_content_1, color="secondary", inverse=true),

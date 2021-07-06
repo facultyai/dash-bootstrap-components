@@ -19,7 +19,7 @@ bottom_card = dbc.Card(
     style={"width": "18rem"},
 )
 
-image_cards = dbc.Row(
+cards = dbc.Row(
     [
         dbc.Col(top_card, width="auto"),
         dbc.Col(bottom_card, width="auto"),

@@ -39,4 +39,4 @@ row_3 <- dbcRow(
   )
 )
 
-outline_cards <- htmlDiv(list(row_1, row_2, row_3))
+cards <- htmlDiv(list(row_1, row_2, row_3))

@@ -46,7 +46,7 @@ card_content_3 = [
 ]
 
 
-layout_columns_cards = dbc.CardColumns(
+cards = dbc.CardColumns(
     [
         dbc.Card(card_content_1, color="primary", inverse=True),
         dbc.Card(card_content_2, body=True),

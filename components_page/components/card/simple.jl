@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-simple_card = dbc_card(
+card = dbc_card(
     [
         dbc_cardimg(src="/static/images/placeholder286x180.png", top=true),
         dbc_cardbody([

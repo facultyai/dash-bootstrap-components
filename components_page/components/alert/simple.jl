@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-simple_alerts = html_div([
+alerts = html_div([
     dbc_alert("This is a primary alert", color="primary"),
     dbc_alert("This is a secondary alert", color="secondary"),
     dbc_alert("This is a success alert! Well done!", color="success"),
