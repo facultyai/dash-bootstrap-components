@@ -21,14 +21,14 @@ app = dash.Dash(__name__,
 
 
 def create_table(num_rows):
-    accordion = html.Div(
+    return html.Div(
         [
             dbc.Table(
                 [
                     html.Thead(
                         html.Tr([
-                            html.Th('Name'),
-                            html.Th('Number')
+                            html.Th('Name', style={'cursor': 'pointer'}),
+                            html.Th('Number', style={'cursor': 'pointer'})
                         ])
                     ),
                     html.Tbody([
@@ -46,11 +46,9 @@ def create_table(num_rows):
         ]
     )
 
-    return accordion
-
 
 app.layout = html.Div([
-    dbc.Input(id='num_rows', placeholder='Number of table rows', type='text'),
+    dbc.Input(id='num_rows', placeholder='Number of table rows', min=0, max=1000, step=1, type="number"),
     html.Br(),
     html.P(id='status-msg'),
     html.Div(id='table-div'),
@@ -72,17 +70,17 @@ def output_text(value):
 
 
 # This clientside callback is triggered by a change in the table contents (new table created) and mark the
-# table as sortable byt calling sorttable.makeSortable() JS function. An output is required despite not useful
+# table as sortable by calling sorttable.makeSortable() JS function. An output is required despite not useful
 # here as the goal of the callback is just to execute the JS function, so use a dcc.Store and write a dummy value.
 # This version of the callback demonstrates how to use the same callback to manage several tables using pattern-matching
 # callbacks.
 app.clientside_callback(
     """
     function make_table_sortable(dummy, table_id) {
+        /* Convert a dict ID into a string matching the JS ID*/
         if (!(typeof table_id === 'string' || table_id instanceof String)) {
             table_id = JSON.stringify(table_id, Object.keys(table_id).sort());
         };
-        /*alert('Mark sortable table with ID='+table_id);*/
         const tableObject = document.getElementById(table_id);
         sorttable.makeSortable(tableObject);
         return 0;
