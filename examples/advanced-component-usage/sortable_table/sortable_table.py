@@ -15,8 +15,11 @@ DUMMY_STORE_TYPE = 'dummy-store'
 SORTABLE_TABLE_TYPE = 'sortable-table'
 COMPONENT_ID_INDEX = 1
 
+# link fontawesome to get the chevron icons
+FA = "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+
 app = dash.Dash(__name__,
-                external_stylesheets=[dbc.themes.BOOTSTRAP],
+                external_stylesheets=[dbc.themes.BOOTSTRAP, FA],
                 suppress_callback_exceptions=True)
 
 
@@ -27,8 +30,10 @@ def create_table(num_rows):
                 [
                     html.Thead(
                         html.Tr([
-                            html.Th('Name', style={'cursor': 'pointer'}),
-                            html.Th('Number', style={'cursor': 'pointer'})
+                            html.Th([html.I('Name '),
+                                     html.I(className="fas fa-sort mr-3")]),
+                            html.Th([html.I('Number '),
+                                     html.I(className="fas fa-sort mr-3")]),
                         ])
                     ),
                     html.Tbody([

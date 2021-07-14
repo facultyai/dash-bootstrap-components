@@ -6,12 +6,5 @@ table.sortable th::after, th.sorttable_sorted::after, th.sorttable_sorted_revers
   width: 24px;
   height: 24px;
 }
-th.sorttable_sorted::after {
-  background: url(sort-up.png);
-  background-size: contain;
-}
-th.sorttable_sorted_reverse::after {
-  background: url(sort-down.png);
-  background-size: cover;
-}
+
 #sorttable_sortfwdind, #sorttable_sortrevind { display: none; }
