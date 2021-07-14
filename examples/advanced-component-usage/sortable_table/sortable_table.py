@@ -16,7 +16,6 @@ SORTABLE_TABLE_TYPE = 'sortable-table'
 COMPONENT_ID_INDEX = 1
 
 app = dash.Dash(__name__,
-                assets_folder='sorttable_assets',
                 external_stylesheets=[dbc.themes.BOOTSTRAP],
                 suppress_callback_exceptions=True)
 
