@@ -210,15 +210,16 @@ def copy_dist():
 
 
 @task
-def clean(ctx):
+def clean(_):
     make_and_clean_dir("dist")
     make_and_clean_dir("lib")
     make_and_clean_dir("dash_bootstrap_components/_components")
     make_and_clean_dir("src", "*.jl")
+    make_and_clean_dir("src/jl")
 
 
 @task
-def move_generated_files(ctx):
+def move_generated_files(_):
     info("Moving generated files")
     dir_ = HERE / "dash_bootstrap_components"
     for file_ in chain(dir_.glob("*.py"), dir_.glob("*.json")):
@@ -276,7 +277,7 @@ def build_jl(ctx):
     )
     copy_dist()
     move_generated_files(ctx)
-    shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "themes.jl")
+    shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "jl" / "themes.jl")
 
     with (HERE / "src" / "DashBootstrapComponents.jl").open() as f:
         lines = f.readlines()
@@ -286,7 +287,7 @@ def build_jl(ctx):
         if line.startswith("include"):
             break
 
-    lines.insert(n - i, 'include("themes.jl")\n')
+    lines.insert(n - i, 'include("jl/themes.jl")\n')
 
     with (HERE / "src" / "DashBootstrapComponents.jl").open("w") as f:
         f.writelines(lines)
