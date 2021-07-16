@@ -38,4 +38,5 @@ NAMESPACE
 # Julia build artifacts
 deps/
 src/*.jl
+src/jl
 Project.toml
