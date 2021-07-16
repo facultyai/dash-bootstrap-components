@@ -29,7 +29,9 @@ describe('Input', () => {
   });
 
   test('passes HTML attributes on to underlying input', () => {
-    const {container: {firstChild: input}} = render(
+    const {
+      container: {firstChild: input}
+    } = render(
       <Input
         autoComplete="username"
         disabled
@@ -91,13 +93,11 @@ describe('Input', () => {
       expect(mockSetProps.mock.calls[0][0]).toEqual({
         value: 'some-input-value'
       });
-      expect(inputElement).toHaveValue('some-input-value');
     });
 
     test('dispatches update for each typed character', () => {
       userEvent.type(inputElement, 'abc');
 
-      expect(inputElement).toHaveValue('abc');
       expect(mockSetProps.mock.calls).toHaveLength(3);
 
       const [call1, call2, call3] = mockSetProps.mock.calls;
@@ -194,7 +194,9 @@ describe('Input', () => {
 
     beforeEach(() => {
       mockSetProps = jest.fn();
-      const {container} = render(<Input setProps={mockSetProps} type="number" />);
+      const {container} = render(
+        <Input setProps={mockSetProps} type="number" />
+      );
       inputElement = container.firstChild;
     });
 
@@ -232,11 +234,10 @@ describe('Input', () => {
       userEvent.type(inputElement, '-1e4');
 
       expect(inputElement).toHaveValue(-10000);
-      expect(mockSetProps.mock.calls).toHaveLength(3);
+      expect(mockSetProps.mock.calls).toHaveLength(2);
 
-      const [call1, call2, call3] = mockSetProps.mock.calls;
+      const [call1, call3] = mockSetProps.mock.calls;
       expect(call1).toEqual([{value: -1}]);
-      expect(call2).toEqual([{value: null}]);
       expect(call3).toEqual([{value: -10000}]);
     });
 
@@ -245,6 +246,18 @@ describe('Input', () => {
 
       expect(inputElement).not.toHaveValue();
       expect(mockSetProps.mock.calls).toHaveLength(0);
+    });
+
+    test('passes value on to the underlying HTML input', () => {
+      const {
+        container: {firstChild: input},
+        rerender
+      } = render(<Input type="number" value={10} />);
+
+      expect(input).toHaveValue(10);
+
+      rerender(<Input type="number" value={12} />);
+      expect(input).toHaveValue(12);
     });
   });
 });

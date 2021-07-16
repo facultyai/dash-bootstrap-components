@@ -19,9 +19,7 @@ export {default as Col} from './components/layout/Col';
 export {default as Collapse} from './components/Collapse';
 export {default as Container} from './components/layout/Container';
 export {default as DropdownMenu} from './components/dropdownmenu/DropdownMenu';
-export {
-  default as DropdownMenuItem
-} from './components/dropdownmenu/DropdownMenuItem';
+export {default as DropdownMenuItem} from './components/dropdownmenu/DropdownMenuItem';
 export {default as Fade} from './components/Fade';
 export {default as Form} from './components/form/Form';
 export {default as FormFeedback} from './components/form/FormFeedback';
@@ -35,12 +33,8 @@ export {default as Jumbotron} from './components/Jumbotron';
 export {default as Label} from './components/Label';
 export {default as ListGroup} from './components/listgroup/ListGroup';
 export {default as ListGroupItem} from './components/listgroup/ListGroupItem';
-export {
-  default as ListGroupItemHeading
-} from './components/listgroup/ListGroupItemHeading';
-export {
-  default as ListGroupItemText
-} from './components/listgroup/ListGroupItemText';
+export {default as ListGroupItemHeading} from './components/listgroup/ListGroupItemHeading';
+export {default as ListGroupItemText} from './components/listgroup/ListGroupItemText';
 export {default as Modal} from './components/modal/Modal';
 export {default as ModalBody} from './components/modal/ModalBody';
 export {default as ModalFooter} from './components/modal/ModalFooter';
