@@ -154,8 +154,11 @@ available components, which include:
 We welcome contributions to _dash-bootstrap-components_. If you find a bug or
 something is unclear please [submit a bug report][bug-report], if you have ideas
 for new features please feel free to make a [feature request][feature-request].
+
 If you would like to submit a pull request, please read our
-[contributing guide][contribution-guide].
+[contributing guide][contribution-guide], which contains instructions on how to
+build and install _dash-bootstrap-components_ locally, how to check your code
+will pass our linting checks, and how to submit the pull request itself.
 
 ## Copyright and license
 
