@@ -4,9 +4,14 @@ from dash.dependencies import Input, Output, State
 
 progress = html.Div(
     [
-        dbc.Progress(value=80, id="animated-progress", striped=True),
+        dbc.Progress(
+            value=80, id="animated-progress", animated=False, striped=True
+        ),
         dbc.Button(
-            "Toggle animation", id="animation-toggle", className="mt-3"
+            "Toggle animation",
+            id="animation-toggle",
+            className="mt-3",
+            n_clicks=0,
         ),
     ]
 )

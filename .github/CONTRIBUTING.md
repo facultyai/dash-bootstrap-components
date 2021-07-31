@@ -129,7 +129,7 @@ license your work under the terms of the [Apache 2.0 License](../LICENSE).
 
 ### Python
 
-We use [`nox`](https://nox.thea.codes/en/stable/) to test and line Python code.
+We use [`nox`](https://nox.thea.codes/en/stable/) to test and lint Python code.
 
 ```sh
 pip install nox

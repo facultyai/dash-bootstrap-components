@@ -26,4 +26,9 @@ second_card = dbc.Card(
 )
 
 
-cards = dbc.Row([dbc.Col(first_card, width=4), dbc.Col(second_card, width=8)])
+cards = dbc.Row(
+    [
+        dbc.Col(first_card, width=4),
+        dbc.Col(second_card, width=8),
+    ]
+)

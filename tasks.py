@@ -210,15 +210,16 @@ def copy_dist():
 
 
 @task
-def clean(ctx):
+def clean(_):
     make_and_clean_dir("dist")
     make_and_clean_dir("lib")
     make_and_clean_dir("dash_bootstrap_components/_components")
     make_and_clean_dir("src", "*.jl")
+    make_and_clean_dir("src/jl")
 
 
 @task
-def move_generated_files(ctx):
+def move_generated_files(_):
     info("Moving generated files")
     dir_ = HERE / "dash_bootstrap_components"
     for file_ in chain(dir_.glob("*.py"), dir_.glob("*.json")):
@@ -256,6 +257,17 @@ def build_r(ctx):
     with (HERE / "NAMESPACE").open("a") as f:
         f.write("export(dbcThemes)\n")
 
+    # -dev suffix breaks local installs of R package
+    description = (HERE / "DESCRIPTION").read_text().split("\n")
+
+    for i in range(len(description)):
+        desc = description[i]
+        if desc.startswith("Version:") and desc.endswith("-dev"):
+            description[i] = desc[:-4]
+
+    with (HERE / "DESCRIPTION").open("w") as f:
+        f.write("\n".join(description))
+
 
 @task
 def build_jl(ctx):
@@ -265,22 +277,17 @@ def build_jl(ctx):
     )
     copy_dist()
     move_generated_files(ctx)
+    shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "jl" / "themes.jl")
 
-    # add themes include to DashBootstrapComponents.jl
     with (HERE / "src" / "DashBootstrapComponents.jl").open() as f:
         lines = f.readlines()
 
-    count = 0
-    for i, line in enumerate(lines):
+    n = len(lines)
+    for i, line in enumerate(reversed(lines)):
         if line.startswith("include"):
-            count += 1
-        elif count > 0:
             break
 
-    lines.insert(i, 'include("themes.jl")\n')
-    lines.insert(i + 1, "\n")
+    lines.insert(n - i, 'include("jl/themes.jl")\n')
 
     with (HERE / "src" / "DashBootstrapComponents.jl").open("w") as f:
         f.writelines(lines)
-
-    shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "themes.jl")

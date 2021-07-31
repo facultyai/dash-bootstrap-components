@@ -9,7 +9,11 @@ popover_children = [
 popovers = html.Div(
     [
         dbc.Button(
-            "Click", id="click-target", color="danger", className="mr-1"
+            "Click",
+            id="click-target",
+            color="danger",
+            className="mr-1",
+            n_clicks=0,
         ),
         dbc.Popover(
             popover_children,
@@ -18,7 +22,11 @@ popovers = html.Div(
             trigger="click",
         ),
         dbc.Button(
-            "Focus", id="focus-target", color="danger", className="mr-1"
+            "Focus",
+            id="focus-target",
+            color="danger",
+            className="mr-1",
+            n_clicks=0,
         ),
         dbc.Popover(
             popover_children,
@@ -27,7 +35,11 @@ popovers = html.Div(
             trigger="focus",
         ),
         dbc.Button(
-            "Hover", id="hover-target", color="danger", className="mr-1"
+            "Hover",
+            id="hover-target",
+            color="danger",
+            className="mr-1",
+            n_clicks=0,
         ),
         dbc.Popover(
             popover_children,
@@ -35,7 +47,7 @@ popovers = html.Div(
             target="hover-target",
             trigger="hover",
         ),
-        dbc.Button("Legacy", id="legacy-target", color="danger"),
+        dbc.Button("Legacy", id="legacy-target", color="danger", n_clicks=0),
         dbc.Popover(
             popover_children,
             id="legacy",

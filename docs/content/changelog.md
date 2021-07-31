@@ -6,6 +6,22 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.13.0 - 2021/7/31
+
+### Added
+
+- Adds a new `Carousel` component to display images in an animated slideshow. Thanks @AnnMarieW for the contribution! ([PR 587](https://github.com/facultyai/dash-bootstrap-components/pull/587))
+- Exposes `title` prop on `Button` and `Badge` ([PR 617](https://github.com/facultyai/dash-bootstrap-components/pull/617))
+- Added `links_left` prop to `NavbarSimple` to allow links to be left-aligned ([PR 618](https://github.com/facultyai/dash-bootstrap-components/pull/618))
+
+### Fixed
+
+- Fixed bug in `Spinner` component that meant `spinner_style` prop was not correctly applied to the spinner. ([PR 578](https://github.com/facultyai/dash-bootstrap-components/pull/578))
+
+### Changed
+
+- Updated behaviour of `Input` with `type="number"` to match behaviour in dash-core-components. If an invalid input is entered (i.e. one outside the range of `min` / `max` or with an invalid `step`) the component passes the value `None` to callbacks for the first invalid input, then doesn't fire again until a valid input is entered. [PR 626](https://github.com/facultyai/dash-bootstrap-components/pull/626))
+
 ## 0.12.2 - 2021/5/4
 
 ### Fixed

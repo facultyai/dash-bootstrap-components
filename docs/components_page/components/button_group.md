@@ -27,4 +27,38 @@ Stack buttons in the `ButtonGroup` vertically by setting `vertical=True`.
 
 {{example:components/button_group/vertical.py:button_group}}
 
+## RadioItems as ButtonGroup
+
+Sometimes you might like to use a `ButtonGroup` to let the user choose from a set of options, where the currently chosen option is indicated by that button being marked as "active". Since this requires that buttons respond to other buttons in the group being clicked on, it can be a little awkward to achieve when each button is a separate Dash component. Instead it is easier to use `RadioItems` and do some customisation of the styling. Most of the customisation is achieved with the `labelClassName` and `labelCheckedClassName` props of the `RadioItems` component, though some additional CSS is required (see below).
+
+{{example:components/button_group/radios.py:button_group}}
+
+```css
+/* Turn off existing buttons */
+.radio-group .custom-control-input ~ .custom-control-label::before {
+  content: none;
+}
+
+.radio-group .custom-radio .custom-control-input ~ .custom-control-label::after {
+  content: none;
+}
+
+/* restyle radio items */
+.radio-group .custom-control {
+  padding-left: 0;
+}
+
+.radio-group .btn-group > .custom-control:not(:last-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.radio-group .btn-group > .custom-control:not(:first-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+```
+
+
 {{apidoc:src/components/ButtonGroup.js}}

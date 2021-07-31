@@ -65,7 +65,7 @@ Bootstrap comes with several CSS utility classes built in, including some for si
 
 Finally, you can use custom CSS to control the size of your cards. In this example we use the `style` argument of `Card` to set inline style arguments. You can also write your own CSS classes that specify `width`, `max-width` etc. and apply them to the card.
 
-{{example:components/card/sizing/css.py:card}}
+{{example:components/card/sizing/css.py:cards}}
 
 ## Card style
 
