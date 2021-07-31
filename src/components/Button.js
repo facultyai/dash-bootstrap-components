@@ -160,6 +160,11 @@ Button.propTypes = {
   size: PropTypes.string,
 
   /**
+   * Sets the title attribute of the underlying HTML button.
+   */
+  title: PropTypes.string,
+
+  /**
    * Set outline button style, which removes background images and colors for a
    * lightweight style.
    */

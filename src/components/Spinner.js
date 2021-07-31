@@ -59,7 +59,7 @@ const Spinner = props => {
     ...fullscreen_style
   };
 
-  const SpinnerDiv = style => (
+  const SpinnerDiv = ({style}) => (
     <RSSpinner
       color={isBootstrapColor ? color : null}
       style={{color: !isBootstrapColor && color, ...style}}
@@ -175,7 +175,7 @@ Spinner.propTypes = {
   type: PropTypes.string,
 
   /**
-   * The spinner size. Options are 'sm', 'md' and 'lg'.
+   * The spinner size. Options are 'sm', and 'md'.
    */
   size: PropTypes.string,
 

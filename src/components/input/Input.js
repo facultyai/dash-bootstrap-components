@@ -1,10 +1,163 @@
-import React, {useEffect, useState} from 'react';
+import React, {forwardRef, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
+import {isNil, omit} from 'ramda';
 import isNumeric from 'fast-isnumeric';
 import classNames from 'classnames';
 
 const convert = val => (isNumeric(val) ? +val : NaN);
+const isEquivalent = (v1, v2) => v1 === v2 || (isNaN(v1) && isNaN(v2));
+
+const BaseInput = forwardRef((props, ref) => {
+  const {
+    debounce,
+    n_blur,
+    n_submit,
+    loading_state,
+    setProps,
+    onEvent,
+    onChange,
+    valid,
+    invalid,
+    ...otherProps
+  } = props;
+
+  const onBlur = () => {
+    if (setProps) {
+      const payload = {
+        n_blur: n_blur + 1,
+        n_blur_timestamp: Date.now()
+      };
+      if (debounce) {
+        onEvent(payload);
+      } else {
+        setProps(payload);
+      }
+    }
+  };
+
+  const onKeyPress = e => {
+    if (setProps && e.key === 'Enter') {
+      const payload = {
+        n_submit: n_submit + 1,
+        n_submit_timestamp: Date.now()
+      };
+      if (debounce) {
+        onEvent(payload);
+      } else {
+        setProps(payload);
+      }
+    }
+  };
+
+  return (
+    <input
+      ref={ref}
+      onChange={onChange}
+      onBlur={onBlur}
+      onKeyPress={onKeyPress}
+      {...omit(
+        [
+          'n_blur_timestamp',
+          'n_submit_timestamp',
+          'persistence',
+          'persistence_type',
+          'persisted_props'
+        ],
+        otherProps
+      )}
+      valid={valid ? 'true' : undefined}
+      invalid={invalid ? 'true' : undefined}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    />
+  );
+});
+
+const NumberInput = forwardRef((props, inputRef) => {
+  const {setProps, debounce, value, ...otherProps} = props;
+
+  const onChange = () => {
+    if (!debounce) {
+      onEvent();
+    }
+  };
+
+  useEffect(() => {
+    const inputValue = inputRef.current.value;
+    const inputValueAsNumber = inputRef.current.checkValidity()
+      ? convert(inputValue)
+      : NaN;
+    const valueAsNumber = convert(value);
+
+    if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
+      inputRef.current.value = isNil(valueAsNumber) ? valueAsNumber : value;
+    }
+  }, [value]);
+
+  const onEvent = (payload = {}) => {
+    const inputValue = inputRef.current.value;
+    const inputValueAsNumber = inputRef.current.checkValidity()
+      ? convert(inputValue)
+      : NaN;
+    const valueAsNumber = convert(value);
+
+    if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
+      setProps({...payload, value: inputValueAsNumber});
+    } else if (Object.keys(payload).length) {
+      setProps(payload);
+    }
+  };
+
+  return (
+    <BaseInput
+      ref={inputRef}
+      debounce={debounce}
+      onEvent={onEvent}
+      onChange={onChange}
+      setProps={setProps}
+      {...otherProps}
+    />
+  );
+});
+
+const NonNumberInput = forwardRef((props, inputRef) => {
+  const {value, debounce, setProps, ...otherProps} = props;
+  const [valueState, setValueState] = useState(value || '');
+
+  const onChange = () => {
+    if (!debounce) {
+      onEvent();
+    } else {
+      setValueState(inputRef.current.value);
+    }
+  };
+
+  useEffect(() => {
+    if (value !== null && value !== undefined) {
+      setValueState(value);
+    } else {
+      setValueState('');
+    }
+  }, [value]);
+
+  const onEvent = (payload = {}) => {
+    payload.value = inputRef.current.value;
+    setProps(payload);
+  };
+
+  return (
+    <BaseInput
+      ref={inputRef}
+      value={valueState}
+      debounce={debounce}
+      onEvent={onEvent}
+      onChange={onChange}
+      setProps={setProps}
+      {...otherProps}
+    />
+  );
+});
 
 /**
  * A basic HTML input control for entering text, numbers, or passwords, with
@@ -17,76 +170,8 @@ const convert = val => (isNumeric(val) ? +val : NaN);
  * are supported through separate components in other libraries.
  */
 const Input = props => {
-  const {
-    value,
-    className,
-    debounce,
-    n_blur,
-    n_submit,
-    valid,
-    invalid,
-    bs_size,
-    plaintext,
-    loading_state,
-    setProps,
-    ...otherProps
-  } = props;
-
-  const [valueState, setValueState] = useState(value || '');
-
-  useEffect(() => {
-    // "" == 0 in JavaScript, which means we need to check separately if a
-    // cleared input is being set to 0
-    if (value != valueState || (valueState === '' && value === 0)) {
-      if (value !== null && value !== undefined) {
-        setValueState(value);
-      } else {
-        setValueState('');
-      }
-    }
-  }, [value]);
-
-  const parseValue = value => {
-    if (props.type === 'number') {
-      const convertedValue = convert(value);
-      if (isNaN(convertedValue)) {
-        return null;
-      } else return convertedValue;
-    } else return value;
-  };
-
-  const onChange = e => {
-    setValueState(e.target.value);
-    if (!debounce && setProps) {
-      setProps({value: parseValue(e.target.value)});
-    }
-  };
-
-  const onBlur = () => {
-    if (setProps) {
-      const payload = {
-        n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now()
-      };
-      if (debounce) {
-        payload.value = parseValue(valueState);
-      }
-      setProps(payload);
-    }
-  };
-
-  const onKeyPress = e => {
-    if (setProps && e.key === 'Enter') {
-      const payload = {
-        n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now()
-      };
-      if (debounce) {
-        payload.value = parseValue(valueState);
-      }
-      setProps(payload);
-    }
-  };
+  const {plaintext, className, bs_size, ...otherProps} = props;
+  const inputRef = useRef(null);
 
   const formControlClass = plaintext
     ? 'form-control-plaintext'
@@ -94,36 +179,17 @@ const Input = props => {
 
   const classes = classNames(
     className,
-    invalid && 'is-invalid',
-    valid && 'is-valid',
+    props.invalid && 'is-invalid',
+    props.valid && 'is-valid',
     bs_size ? `form-control-${bs_size}` : false,
     formControlClass
   );
-  return (
-    <input
-      onChange={onChange}
-      onBlur={onBlur}
-      onKeyPress={onKeyPress}
-      className={classes}
-      value={valueState}
-      {...omit(
-        [
-          'n_blur_timestamp',
-          'n_submit_timestamp',
-          'selectionDirection',
-          'selectionEnd',
-          'selectionStart',
-          'persistence',
-          'persistence_type',
-          'persisted_props'
-        ],
-        otherProps
-      )}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
-    />
-  );
+
+  if (props.type === 'number') {
+    return <NumberInput ref={inputRef} {...otherProps} className={classes} />;
+  }
+
+  return <NonNumberInput ref={inputRef} {...otherProps} className={classes} />;
 };
 
 Input.propTypes = {
@@ -480,7 +546,8 @@ Input.defaultProps = {
   n_submit_timestamp: -1,
   debounce: false,
   persisted_props: ['value'],
-  persistence_type: 'local'
+  persistence_type: 'local',
+  step: 'any'
 };
 
 export default Input;

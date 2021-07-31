@@ -12,15 +12,14 @@ export {default as CardHeader} from './components/card/CardHeader';
 export {default as CardImg} from './components/card/CardImg';
 export {default as CardImgOverlay} from './components/card/CardImgOverlay';
 export {default as CardLink} from './components/card/CardLink';
+export {default as Carousel} from './components/Carousel'
 export {default as Checkbox} from './components/input/Checkbox';
 export {default as Checklist} from './components/input/Checklist';
 export {default as Col} from './components/layout/Col';
 export {default as Collapse} from './components/Collapse';
 export {default as Container} from './components/layout/Container';
 export {default as DropdownMenu} from './components/dropdownmenu/DropdownMenu';
-export {
-  default as DropdownMenuItem
-} from './components/dropdownmenu/DropdownMenuItem';
+export {default as DropdownMenuItem} from './components/dropdownmenu/DropdownMenuItem';
 export {default as Fade} from './components/Fade';
 export {default as Form} from './components/form/Form';
 export {default as FormFeedback} from './components/form/FormFeedback';
@@ -34,12 +33,8 @@ export {default as Jumbotron} from './components/Jumbotron';
 export {default as Label} from './components/Label';
 export {default as ListGroup} from './components/listgroup/ListGroup';
 export {default as ListGroupItem} from './components/listgroup/ListGroupItem';
-export {
-  default as ListGroupItemHeading
-} from './components/listgroup/ListGroupItemHeading';
-export {
-  default as ListGroupItemText
-} from './components/listgroup/ListGroupItemText';
+export {default as ListGroupItemHeading} from './components/listgroup/ListGroupItemHeading';
+export {default as ListGroupItemText} from './components/listgroup/ListGroupItemText';
 export {default as Modal} from './components/modal/Modal';
 export {default as ModalBody} from './components/modal/ModalBody';
 export {default as ModalFooter} from './components/modal/ModalFooter';
@@ -66,3 +61,4 @@ export {default as Table} from './components/Table';
 export {default as Textarea} from './components/input/Textarea';
 export {default as Toast} from './components/Toast';
 export {default as Tooltip} from './components/Tooltip';
+

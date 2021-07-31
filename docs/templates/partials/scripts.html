@@ -13,9 +13,10 @@
   integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
   crossorigin="anonymous"
 ></script>
-<script src="/static/js/highlight.pack.js"></script>
+<script src="/static/js/highlight.min.js"></script>
 <script>
-  hljs.initHighlightingOnLoad();
+  hljs.configure({ignoreUnescapedHTML: true});
+  hljs.highlightAll();
 </script>
 <script
   data-goatcounter="https://dbc-docs.goatcounter.com/count"

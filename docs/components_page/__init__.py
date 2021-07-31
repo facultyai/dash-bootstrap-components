@@ -16,7 +16,7 @@ HERE = Path(__file__).parent
 COMPONENTS = HERE / "components"
 TEMPLATES = HERE.parent / "templates"
 
-LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text()
+LOREM = (COMPONENTS / "modal" / "lorem.txt").read_text().strip()
 
 HIGHLIGHT_JS_CSS = (
     "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/"
@@ -64,6 +64,7 @@ def register_apps():
         "button": {"markdown_path": COMPONENTS / "button.md"},
         "button_group": {"markdown_path": COMPONENTS / "button_group.md"},
         "card": {"markdown_path": COMPONENTS / "card.md"},
+        "carousel": {"markdown_path": COMPONENTS / "carousel.md"},
         "collapse": {"markdown_path": COMPONENTS / "collapse.md"},
         "dropdown_menu": {"markdown_path": COMPONENTS / "dropdown.md"},
         "fade": {"markdown_path": COMPONENTS / "fade.md"},
@@ -147,6 +148,10 @@ def register_apps():
         if slug == "layout":
             app.layout = html.Div(
                 parse(app, **kwargs), className="layout-demo"
+            )
+        elif slug == "button_group":
+            app.layout = html.Div(
+                parse(app, **kwargs), className="button-group-demo"
             )
         else:
             app.layout = parse(app, **kwargs)

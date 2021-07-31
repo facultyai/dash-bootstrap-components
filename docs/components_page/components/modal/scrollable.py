@@ -4,17 +4,11 @@ from dash.dependencies import Input, Output, State
 
 modal = html.Div(
     [
-        dbc.Button("Scrolling modal", id="open-scroll", className="mr-1"),
-        dbc.Button("Modal with scrollable body", id="open-body-scroll"),
-        dbc.Modal(
-            [
-                dbc.ModalHeader("Header"),
-                dbc.ModalBody(LOREM),
-                dbc.ModalFooter(
-                    dbc.Button("Close", id="close-scroll", className="ml-auto")
-                ),
-            ],
-            id="modal-scroll",
+        dbc.Button(
+            "Scrolling modal", id="open-scroll", className="mr-1", n_clicks=0
+        ),
+        dbc.Button(
+            "Modal with scrollable body", id="open-body-scroll", n_clicks=0
         ),
         dbc.Modal(
             [
@@ -22,12 +16,32 @@ modal = html.Div(
                 dbc.ModalBody(LOREM),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close-body-scroll", className="ml-auto"
+                        "Close",
+                        id="close-scroll",
+                        className="ml-auto",
+                        n_clicks=0,
+                    )
+                ),
+            ],
+            id="modal-scroll",
+            is_open=False,
+        ),
+        dbc.Modal(
+            [
+                dbc.ModalHeader("Header"),
+                dbc.ModalBody(LOREM),
+                dbc.ModalFooter(
+                    dbc.Button(
+                        "Close",
+                        id="close-body-scroll",
+                        className="ml-auto",
+                        n_clicks=0,
                     )
                 ),
             ],
             id="modal-body-scroll",
             scrollable=True,
+            is_open=False,
         ),
     ]
 )

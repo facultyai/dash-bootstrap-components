@@ -20,5 +20,8 @@ bottom_card = dbc.Card(
 )
 
 cards = dbc.Row(
-    [dbc.Col(top_card, width="auto"), dbc.Col(bottom_card, width="auto")]
+    [
+        dbc.Col(top_card, width="auto"),
+        dbc.Col(bottom_card, width="auto"),
+    ]
 )

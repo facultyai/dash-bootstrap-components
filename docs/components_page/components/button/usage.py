@@ -4,8 +4,10 @@ from dash.dependencies import Input, Output
 
 button = html.Div(
     [
-        dbc.Button("Click me", id="example-button", className="mr-2"),
-        html.Span(id="example-output", style={"vertical-align": "middle"}),
+        dbc.Button(
+            "Click me", id="example-button", className="mr-2", n_clicks=0
+        ),
+        html.Span(id="example-output", style={"verticalAlign": "middle"}),
     ]
 )
 
