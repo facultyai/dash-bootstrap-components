@@ -259,5 +259,18 @@ describe('Input', () => {
       rerender(<Input type="number" value={12} />);
       expect(input).toHaveValue(12);
     });
+
+    test('returns NaN once for invalid number', () => {
+      const {
+        container: {firstChild: input}
+      } = render(
+        <Input type="number" min={0} value={0} setProps={mockSetProps} />
+      );
+
+      userEvent.type(input, '{backspace}-100');
+
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+      expect(mockSetProps.mock.calls[0][0]).toEqual({value: NaN});
+    });
   });
 });
