@@ -43,7 +43,7 @@ full-screen or not.}
 \item{show_initially}{Logical. Whether the Spinner should show on app start-up before the loading state
 has been determined. Default True.}
 
-\item{size}{Character. The spinner size. Options are 'sm', 'md' and 'lg'.}
+\item{size}{Character. The spinner size. Options are 'sm', and 'md'.}
 
 \item{spinnerClassName}{Character. CSS class names to apply to the spinner.}
 

@@ -56,7 +56,16 @@ those elements have the following types:
 
 \item{name}{Character. The name of the control, which is submitted with the form data.}
 
-\item{options}{List. An array of options}
+\item{options}{List of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
+those elements have the following types:
+  - label (character | numeric; required): the checkbox's label
+  - value (character | numeric; required): the value of the checkbox. this value corresponds to the items
+specified in the `value` property.
+  - disabled (logical; optional): if true, this checkbox is disabled and can't be clicked on.
+  - input_id (character; optional): id for this option's input, can be used to attach tooltips or apply
+css styles
+  - label_id (character; optional): id for this option's label, can be used to attach tooltips or apply
+css styless. An array of options}
 
 \item{persisted_props}{List of a value equal to: 'value's. Properties whose user interactions will persist after refreshing the
 component or the page. Since only `value` is allowed this prop can

@@ -38,7 +38,15 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{name}{Character. The name of the control, which is submitted with the form data.}
 
-\item{options}{List. An array of options for the select}
+\item{options}{List of lists containing elements 'label', 'value', 'disabled', 'title'.
+those elements have the following types:
+  - label (character | numeric; required): the options's label
+  - value (character; required): the value of the option. this value corresponds to the items
+specified in the `value` property.
+  - disabled (logical; optional): if true, this checkbox is disabled and can't be clicked on.
+  - title (character; optional): the html 'title' attribute for the option. allows for information on
+hover. for more information on this attribute, see
+https://developer.mozilla.org/en-us/docs/web/html/global_attributes/titles. An array of options for the select}
 
 \item{persisted_props}{List of a value equal to: 'value's. Properties whose user interactions will persist after refreshing the
 component or the page. Since only `value` is allowed this prop can

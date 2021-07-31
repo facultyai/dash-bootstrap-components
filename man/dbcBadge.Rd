@@ -13,7 +13,7 @@ Badges can be used to add counts or labels to other components.
 dbcBadge(children=NULL, id=NULL, className=NULL, color=NULL,
 external_link=NULL, href=NULL, key=NULL, loading_state=NULL,
 n_clicks=NULL, n_clicks_timestamp=NULL, pill=NULL,
-style=NULL, tag=NULL, target=NULL)
+style=NULL, tag=NULL, target=NULL, title=NULL)
 }
 
 \arguments{
@@ -63,6 +63,8 @@ which button was changed most recently.}
 \item{tag}{Character. HTML tag to use for the Badge. Default: span.}
 
 \item{target}{Character. Target attribute to pass on to the link. Only applies to external links.}
+
+\item{title}{Character. Sets the title attribute of the underlying HTML button.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

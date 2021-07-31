@@ -14,8 +14,8 @@ dbcButton(children=NULL, id=NULL, active=NULL, block=NULL,
 className=NULL, color=NULL, disabled=NULL, download=NULL,
 external_link=NULL, href=NULL, key=NULL, loading_state=NULL,
 n_clicks=NULL, n_clicks_timestamp=NULL, name=NULL,
-outline=NULL, size=NULL, style=NULL, target=NULL, type=NULL,
-value=NULL)
+outline=NULL, size=NULL, style=NULL, target=NULL,
+title=NULL, type=NULL, value=NULL)
 }
 
 \arguments{
@@ -79,6 +79,8 @@ lightweight style.}
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
 \item{target}{Character. Target attribute to pass on to link if using Button as an external link.}
+
+\item{title}{Character. Sets the title attribute of the underlying HTML button.}
 
 \item{type}{A value equal to: 'button', 'reset', 'submit'. The default behavior of the button. Possible values are: "button", "reset",
 "submit". If left unspecified the default depends on usage: for buttons

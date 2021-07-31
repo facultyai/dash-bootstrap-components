@@ -14,7 +14,7 @@ dbcNavbarSimple(children=NULL, id=NULL, brand=NULL,
 brand_external_link=NULL, brand_href=NULL, brand_style=NULL,
 className=NULL, color=NULL, dark=NULL, expand=NULL,
 fixed=NULL, fluid=NULL, key=NULL, light=NULL,
-loading_state=NULL, sticky=NULL, style=NULL)
+links_left=NULL, loading_state=NULL, sticky=NULL, style=NULL)
 }
 
 \arguments{
@@ -65,6 +65,8 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{light}{Logical. Applies the `navbar-light` class to the NavbarSimple, causing text in the
 children of the Navbar to use dark colors for contrast / visibility.}
+
+\item{links_left}{Logical. Align the navlinks in the navbar to the left. Default: False.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
