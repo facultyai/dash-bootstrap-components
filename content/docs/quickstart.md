@@ -62,7 +62,8 @@ Or alternatively you can install from source as follows
 ```julia-repl
 julia> using Pkg;
 julia> Pkg.add(PackageSpec(
-           url="https://github.com/facultyai/dash-bootstrap-components", rev="julia-release",
+           url="https://github.com/facultyai/dash-bootstrap-components",
+           rev="julia-release",
        ))
 ```
 ~~~
