@@ -22,7 +22,15 @@ any FormFeedback in the enclosing FormGroup with valid=False to display.
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
 - `name` (String; optional): The name of the control, which is submitted with the form data.
-- `options` (Array; optional): An array of options for the select
+- `options` (optional): An array of options for the select. options has the following type: Array of lists containing elements 'label', 'value', 'disabled', 'title'.
+Those elements have the following types:
+  - `label` (String | Real; required): The options's label
+  - `value` (String; required): The value of the option. This value corresponds to the items
+specified in the `value` property.
+  - `disabled` (Bool; optional): If true, this checkbox is disabled and can't be clicked on.
+  - `title` (String; optional): The HTML 'title' attribute for the option. Allows for information on
+hover. For more information on this attribute, see
+https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/titles
 - `persisted_props` (Array of a value equal to: 'value's; optional): Properties whose user interactions will persist after refreshing the
 component or the page. Since only `value` is allowed this prop can
 normally be ignored.

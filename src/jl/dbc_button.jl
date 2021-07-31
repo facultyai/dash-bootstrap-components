@@ -58,6 +58,7 @@ lightweight style.
 - `size` (String; optional): Button size, options: 'lg', 'md', 'sm'.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `target` (String; optional): Target attribute to pass on to link if using Button as an external link.
+- `title` (String; optional): Sets the title attribute of the underlying HTML button.
 - `type` (a value equal to: 'button', 'reset', 'submit'; optional): The default behavior of the button. Possible values are: "button", "reset",
 "submit". If left unspecified the default depends on usage: for buttons
 associated with a form (e.g. a dbc.Button inside a dbc.Form) the default is
@@ -67,7 +68,7 @@ with the form data. This value is passed to the server in params when the
 form is submitted.
 """
 function dbc_button(; kwargs...)
-        available_props = Symbol[:children, :id, :active, :block, :className, :color, :disabled, :download, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :name, :outline, :size, :style, :target, :type, :value]
+        available_props = Symbol[:children, :id, :active, :block, :className, :color, :disabled, :download, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :name, :outline, :size, :style, :target, :title, :type, :value]
         wild_props = Symbol[]
         return Component("dbc_button", "Button", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

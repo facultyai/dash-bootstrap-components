@@ -33,7 +33,7 @@ full-screen or not.
 - `fullscreen_style` (Dict; optional): Defines CSS styles for the container when fullscreen=True.
 - `show_initially` (Bool; optional): Whether the Spinner should show on app start-up before the loading state
 has been determined. Default True.
-- `size` (String; optional): The spinner size. Options are 'sm', 'md' and 'lg'.
+- `size` (String; optional): The spinner size. Options are 'sm', and 'md'.
 - `spinnerClassName` (String; optional): CSS class names to apply to the spinner.
 - `spinner_style` (Dict; optional): Inline CSS styles to apply to the spinner.
 - `type` (String; optional): The type of spinner. Options 'border' and 'grow'. Default 'border'.

@@ -46,6 +46,7 @@ performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
 - `light` (Bool; optional): Applies the `navbar-light` class to the NavbarSimple, causing text in the
 children of the Navbar to use dark colors for contrast / visibility.
+- `links_left` (Bool; optional): Align the navlinks in the navbar to the left. Default: False.
 - `loading_state` (optional): Object that holds the loading state object coming from dash-renderer. loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
@@ -59,7 +60,7 @@ the page.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
 function dbc_navbarsimple(; kwargs...)
-        available_props = Symbol[:children, :id, :brand, :brand_external_link, :brand_href, :brand_style, :className, :color, :dark, :expand, :fixed, :fluid, :key, :light, :loading_state, :sticky, :style]
+        available_props = Symbol[:children, :id, :brand, :brand_external_link, :brand_href, :brand_style, :className, :color, :dark, :expand, :fixed, :fluid, :key, :light, :links_left, :loading_state, :sticky, :style]
         wild_props = Symbol[]
         return Component("dbc_navbarsimple", "NavbarSimple", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

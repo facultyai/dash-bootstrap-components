@@ -44,9 +44,10 @@ which button was changed most recently.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `tag` (String; optional): HTML tag to use for the Badge. Default: span.
 - `target` (String; optional): Target attribute to pass on to the link. Only applies to external links.
+- `title` (String; optional): Sets the title attribute of the underlying HTML button.
 """
 function dbc_badge(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :color, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :pill, :style, :tag, :target]
+        available_props = Symbol[:children, :id, :className, :color, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :pill, :style, :tag, :target, :title]
         wild_props = Symbol[]
         return Component("dbc_badge", "Badge", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
