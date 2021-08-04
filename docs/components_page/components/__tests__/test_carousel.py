@@ -1,7 +1,7 @@
 """
 Testing of callbacks in non-Python Carousel snippets.
 """
-import time
+
 from pathlib import Path
 
 import dash.testing.wait as wait

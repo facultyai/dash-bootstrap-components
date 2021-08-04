@@ -28,7 +28,7 @@ carousel = html_div([
 callback!(
     app,
     Output("carousel", "active_index"),
-    Input("slider-number", "value"),
+    Input("slide-number", "value"),
 ) do idx
     return idx
 end;
