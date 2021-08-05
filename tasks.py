@@ -76,13 +76,16 @@ def copy_examples(ctx):
     """
     info("copying examples into docs directory")
     # TODO: have this determined by some configuration rather than hardcoded
-    run("cp examples/gallery/iris-kmeans/app.py docs/examples/vendor/iris.py")
     run(
-        "cp examples/advanced-component-usage/graphs_in_tabs.py "
+        "cp examples/python/gallery/iris-kmeans/app.py "
+        "docs/examples/vendor/iris.py"
+    )
+    run(
+        "cp examples/python/advanced-component-usage/graphs_in_tabs.py "
         "docs/examples/vendor/graphs_in_tabs.py"
     )
     run(
-        "cp examples/multi-page-apps/simple_sidebar.py "
+        "cp examples/python/templates/multi-page-apps/simple_sidebar.py "
         "docs/examples/vendor/simple_sidebar.py"
     )
 

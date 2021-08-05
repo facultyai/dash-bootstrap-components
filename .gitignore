@@ -40,3 +40,5 @@ deps/
 src/*.jl
 src/jl
 Project.toml
+examples/**/Manifest.toml
+!examples/**/Project.toml
