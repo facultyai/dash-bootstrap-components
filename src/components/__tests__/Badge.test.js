@@ -30,10 +30,10 @@ describe('Badge', () => {
       container: {firstChild: badgeDark},
     } = render(<Badge color="dark" />);
 
-    expect(badgeSecondary).toHaveClass('badge-secondary');
-    expect(badgePrimary).toHaveClass('badge-primary');
-    expect(badgeSuccess).toHaveClass('badge-success');
-    expect(badgeDark).toHaveClass('badge-dark');
+    expect(badgeSecondary).toHaveClass('badge bg-secondary');
+    expect(badgePrimary).toHaveClass('badge bg-primary');
+    expect(badgeSuccess).toHaveClass('badge bg-success');
+    expect(badgeDark).toHaveClass('badge bg-dark');
   });
 
   test('applies pill styles with "pill" prop', () => {
@@ -41,7 +41,7 @@ describe('Badge', () => {
       container: {firstChild: badge},
     } = render(<Badge pill />);
 
-    expect(badge).toHaveClass('badge-pill');
+    expect(badge).toHaveClass('badge rounded-pill');
   });
 
   test('render as a link when href is set', () => {
