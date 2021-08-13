@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Collapse as RSCollapse} from 'reactstrap';
+import {default as RBCollapse} from 'react-bootstrap/Collapse';
 
 /**
  * Hide or show content with a vertical collapsing animation. Visibility of the
@@ -18,8 +18,8 @@ const Collapse = props => {
     ...otherProps
   } = props;
   return (
-    <RSCollapse
-      isOpen={is_open}
+    <RBCollapse
+      in={is_open}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -27,7 +27,7 @@ const Collapse = props => {
       }
     >
       {children}
-    </RSCollapse>
+    </RBCollapse>
   );
 };
 
