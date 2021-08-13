@@ -25,7 +25,7 @@ const BaseInput = forwardRef((props, ref) => {
     if (setProps) {
       const payload = {
         n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now(),
+        n_blur_timestamp: Date.now()
       };
       if (debounce) {
         onEvent(payload);
@@ -35,11 +35,11 @@ const BaseInput = forwardRef((props, ref) => {
     }
   };
 
-  const onKeyPress = (e) => {
+  const onKeyPress = e => {
     if (setProps && e.key === 'Enter') {
       const payload = {
         n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now(),
+        n_submit_timestamp: Date.now()
       };
       if (debounce) {
         onEvent(payload);
@@ -170,7 +170,11 @@ const NonNumberInput = forwardRef((props, inputRef) => {
  * are supported through separate components in other libraries.
  */
 const Input = props => {
-  const {plaintext, className, class_name,     autoComplete,
+  const {
+    plaintext,
+    className,
+    class_name,
+    autoComplete,
     autocomplete,
     autoFocus,
     autofocus,
@@ -181,7 +185,10 @@ const Input = props => {
     minLength,
     minlength,
     tabIndex,
-    tabindex,bs_size, ...otherProps} = props;
+    tabindex,
+    bs_size,
+    ...otherProps
+  } = props;
   const inputRef = useRef(null);
 
   const formControlClass = plaintext
@@ -202,7 +209,6 @@ const Input = props => {
         ref={inputRef}
         {...otherProps}
         className={classes}
-        value={valueState}
         autoComplete={autocomplete || autoComplete}
         autoFocus={autofocus || autoFocus}
         inputMode={inputmode || inputMode}
@@ -218,7 +224,6 @@ const Input = props => {
       ref={inputRef}
       {...otherProps}
       className={classes}
-      value={valueState}
       autoComplete={autocomplete || autoComplete}
       autoFocus={autofocus || autoFocus}
       inputMode={inputmode || inputMode}
@@ -274,7 +279,7 @@ Input.propTypes = {
     'search',
     'tel',
     'url',
-    'hidden',
+    'hidden'
   ]),
 
   /**
@@ -309,7 +314,7 @@ Input.propTypes = {
    */
   autofocus: PropTypes.oneOfType([
     PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
-    PropTypes.bool,
+    PropTypes.bool
   ]),
 
   /**
@@ -322,7 +327,7 @@ Input.propTypes = {
    */
   autoFocus: PropTypes.oneOfType([
     PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
-    PropTypes.bool,
+    PropTypes.bool
   ]),
 
   /**
@@ -392,7 +397,7 @@ Input.propTypes = {
     /**
      * URL input. Use type="url" if possible instead.
      */
-    'url',
+    'url'
   ]),
 
   /**
@@ -464,7 +469,7 @@ Input.propTypes = {
     /**
      * URL input. Use type="url" if possible instead.
      */
-    'url',
+    'url'
   ]),
 
   /**
@@ -581,7 +586,7 @@ Input.propTypes = {
    */
   required: PropTypes.oneOfType([
     PropTypes.oneOf(['required', 'REQUIRED']),
-    PropTypes.bool,
+    PropTypes.bool
   ]),
 
   /**
@@ -662,7 +667,7 @@ Input.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
+    component_name: PropTypes.string
   }),
 
   /**
@@ -676,7 +681,7 @@ Input.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number,
+    PropTypes.number
   ]),
 
   /**
@@ -704,7 +709,7 @@ Input.propTypes = {
    *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
-  tabIndex: PropTypes.string,
+  tabIndex: PropTypes.string
 };
 
 Input.defaultProps = {
