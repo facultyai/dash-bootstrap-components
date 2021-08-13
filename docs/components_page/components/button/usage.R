@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 button <-  htmlDiv(
   list(
     dbcButton("Click me", id = "example-button", n_clicks = 0,
-              className = "mr-2"),
+              class_name = "mr-2"),
     htmlSpan(id = "example-output", style = list(verticalAlign = "middle"))
   )
 )

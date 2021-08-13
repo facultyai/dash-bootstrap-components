@@ -6,13 +6,14 @@ import {CardDeck as RSCardDeck} from 'reactstrap';
 /**
  * Create a set of cards with equal width and height using CardDeck.
  */
-const CardDeck = props => {
-  const {children, loading_state, ...otherProps} = props;
+const CardDeck = (props) => {
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardDeck
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
@@ -39,6 +40,13 @@ CardDeck.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -70,8 +78,8 @@ CardDeck.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default CardDeck;

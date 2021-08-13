@@ -34,13 +34,13 @@ app = dash.Dash(
 # it consists of a title, and a toggle, the latter is hidden on large screens
 sidebar_header = dbc.Row(
     [
-        dbc.Col(html.H2("Sidebar", className="display-4")),
+        dbc.Col(html.H2("Sidebar", class_name="display-4")),
         dbc.Col(
             [
                 html.Button(
                     # use the Bootstrap navbar-toggler classes to style
-                    html.Span(className="navbar-toggler-icon"),
-                    className="navbar-toggler",
+                    html.Span(class_name="navbar-toggler-icon"),
+                    class_name="navbar-toggler",
                     # the navbar-toggler classes don't set color
                     style={
                         "color": "rgba(0,0,0,.5)",
@@ -50,8 +50,8 @@ sidebar_header = dbc.Row(
                 ),
                 html.Button(
                     # use the Bootstrap navbar-toggler classes to style
-                    html.Span(className="navbar-toggler-icon"),
-                    className="navbar-toggler",
+                    html.Span(class_name="navbar-toggler-icon"),
+                    class_name="navbar-toggler",
                     # the navbar-toggler classes don't set color
                     style={
                         "color": "rgba(0,0,0,.5)",
@@ -80,7 +80,7 @@ sidebar = html.Div(
                 html.P(
                     "A responsive sidebar layout with collapsible navigation "
                     "links.",
-                    className="lead",
+                    class_name="lead",
                 ),
             ],
             id="blurb",
@@ -118,7 +118,7 @@ def render_page_content(pathname):
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
-            html.H1("404: Not found", className="text-danger"),
+            html.H1("404: Not found", class_name="text-danger"),
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ]
@@ -126,9 +126,9 @@ def render_page_content(pathname):
 
 
 @app.callback(
-    Output("sidebar", "className"),
+    Output("sidebar", "class_name"),
     [Input("sidebar-toggle", "n_clicks")],
-    [State("sidebar", "className")],
+    [State("sidebar", "class_name")],
 )
 def toggle_classname(n, classname):
     if n and classname == "":

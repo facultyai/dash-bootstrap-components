@@ -8,10 +8,11 @@ import {ListGroup as RSListGroup} from 'reactstrap';
  * in conjunction with `ListGroupItem`, `ListGroupItemHeading` and
  * `ListGroupItemText`.
  */
-const ListGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+const ListGroup = (props) => {
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSListGroup
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -41,6 +42,13 @@ ListGroup.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -79,7 +87,7 @@ ListGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
+    component_name: PropTypes.string,
   }),
 
   /**
@@ -89,7 +97,7 @@ ListGroup.propTypes = {
    * Note that horizontal ListGroups cannot be combined with flush ListGroups,
    * so if flush is True then horizontal has no effect.
    */
-  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
 export default ListGroup;

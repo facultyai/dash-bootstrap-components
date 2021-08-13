@@ -146,11 +146,11 @@ def register_apps():
 
         if slug == "layout":
             app.layout = html.Div(
-                parse(app, **kwargs), className="layout-demo"
+                parse(app, **kwargs), class_name="layout-demo"
             )
         elif slug == "button_group":
             app.layout = html.Div(
-                parse(app, **kwargs), className="button-group-demo"
+                parse(app, **kwargs), class_name="button-group-demo"
             )
         else:
             app.layout = parse(app, **kwargs)

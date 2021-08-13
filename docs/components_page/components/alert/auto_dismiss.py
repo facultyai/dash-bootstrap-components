@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 alert = html.Div(
     [
         dbc.Button(
-            "Toggle", id="alert-toggle-auto", className="mr-1", n_clicks=0
+            "Toggle", id="alert-toggle-auto", class_name="mr-1", n_clicks=0
         ),
         html.Hr(),
         dbc.Alert(

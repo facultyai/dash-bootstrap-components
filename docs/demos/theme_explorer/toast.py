@@ -10,15 +10,15 @@ toast = html.Div(
             "Open toast",
             id="auto-toast-toggle",
             color="primary",
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.Toast(
-            html.P("This is the content of the toast", className="mb-0"),
+            html.P("This is the content of the toast", class_name="mb-0"),
             id="auto-toast",
             header="This is the header",
             icon="primary",
             duration=4000,
         ),
     ],
-    className="mb-2",
+    class_name="mb-2",
 )

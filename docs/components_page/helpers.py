@@ -7,9 +7,9 @@ def HighlightedSource(py_source, r_source, jl_source):
     return dbc.Tabs(
         [
             dbc.Tab(
-                dcc.Markdown(f"```{lang}\n{source}\n```", className="m-3"),
+                dcc.Markdown(f"```{lang}\n{source}\n```", class_name="m-3"),
                 label=lang.capitalize(),
-                className="example-source",
+                class_name="example-source",
             )
             for lang, source in [
                 ("python", py_source),
@@ -18,17 +18,17 @@ def HighlightedSource(py_source, r_source, jl_source):
             ]
             if source is not None
         ],
-        className="px-3",
+        class_name="px-3",
     )
 
 
 def ExampleContainer(component, py_source, r_source, jl_source):
     return html.Div(
         [
-            html.Div(component, className="example"),
+            html.Div(component, class_name="example"),
             HighlightedSource(py_source, r_source, jl_source),
         ],
-        className="example-container",
+        class_name="example-container",
     )
 
 

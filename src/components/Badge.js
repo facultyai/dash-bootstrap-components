@@ -16,6 +16,8 @@ const Badge = props => {
     setProps,
     color,
     style,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -36,6 +38,7 @@ const Badge = props => {
       tag={href && Link}
       href={href}
       color={isBootstrapColor ? color : null}
+      className={class_name || className}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
@@ -72,6 +75,13 @@ Badge.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

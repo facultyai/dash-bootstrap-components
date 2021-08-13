@@ -11,7 +11,7 @@ modal = html.Div(
                 dbc.ModalBody("This is the content of the modal"),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close", className="ml-auto", n_clicks=0
+                        "Close", id="close", class_name="ml-auto", n_clicks=0
                     )
                 ),
             ],

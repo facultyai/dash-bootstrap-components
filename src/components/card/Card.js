@@ -4,15 +4,22 @@ import {omit} from 'ramda';
 import {Card as RSCard} from 'reactstrap';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
-
 /**
  * Component for creating Bootstrap cards. Use in conjunction with CardBody,
  * CardImg, CardLink, CardHeader and CardFooter. Can also be used in
  * conjunction with CardColumns, CardDeck, CardGroup for different layout
  * options.
  */
-const Card = props => {
-  const {children, color, style, loading_state, ...otherProps} = props;
+const Card = (props) => {
+  const {
+    children,
+    color,
+    style,
+    loading_state,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapColors.has(color);
   return (
     <RSCard
@@ -21,6 +28,7 @@ const Card = props => {
       }
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
@@ -47,6 +55,13 @@ Card.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -97,8 +112,8 @@ Card.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default Card;

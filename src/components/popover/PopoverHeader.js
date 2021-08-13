@@ -6,10 +6,11 @@ import {PopoverHeader as RSPopoverHeader} from 'reactstrap';
 /**
  * Creates a header for use inside the `Popover` component.
  */
-const PopoverHeader = props => {
-  const {children, loading_state, ...otherProps} = props;
+const PopoverHeader = (props) => {
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSPopoverHeader
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -38,6 +39,13 @@ PopoverHeader.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -69,8 +77,8 @@ PopoverHeader.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default PopoverHeader;

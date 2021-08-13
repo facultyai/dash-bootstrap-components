@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 cards <- dbcCard(
   dbcCardBody(
     list(
-      htmlH5("Custom CSS", className = "card-title"),
+      htmlH5("Custom CSS", class_name = "card-title"),
       htmlP(
         paste(
           "This card has inline styles applied controlling the width.",

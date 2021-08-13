@@ -3,7 +3,7 @@ import dash_html_components as html
 
 alert = dbc.Alert(
     [
-        html.H4("Well done!", className="alert-heading"),
+        html.H4("Well done!", class_name="alert-heading"),
         html.P(
             "This is a success alert with loads of extra text in it. So much "
             "that you can see how spacing within an alert works with this "
@@ -12,7 +12,7 @@ alert = dbc.Alert(
         html.Hr(),
         html.P(
             "Let's put some more text down here, but remove the bottom margin",
-            className="mb-0",
+            class_name="mb-0",
         ),
     ]
 )

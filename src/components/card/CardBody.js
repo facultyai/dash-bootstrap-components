@@ -7,13 +7,14 @@ import {CardBody as RSCardBody} from 'reactstrap';
  * Wrap the content of your `Card` in `CardBody` to apply padding and other
  * styles.
  */
-const CardBody = props => {
-  const {children, loading_state, ...otherProps} = props;
+const CardBody = (props) => {
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardBody
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
@@ -40,6 +41,13 @@ CardBody.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -71,8 +79,8 @@ CardBody.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default CardBody;

@@ -23,7 +23,7 @@ modal = html_div([
                 dbc_button(
                     "Close",
                     id="close-backdrop",
-                    className="ml-auto",
+                    class_name="ml-auto",
                     n_clicks=0,
                 ),
             ),

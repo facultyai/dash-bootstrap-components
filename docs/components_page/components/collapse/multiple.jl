@@ -5,14 +5,14 @@ collapses = html_div([
         "Toggle left",
         color="primary",
         id="left",
-        className="mr-1",
+        class_name="mr-1",
         n_clicks=0,
     ),
     dbc_button(
         "Toggle right",
         color="primary",
         id="right",
-        className="mr-1",
+        class_name="mr-1",
         n_clicks=0,
     ),
     dbc_button("Toggle both", color="primary", id="both", n_clicks=0),
@@ -33,7 +33,7 @@ collapses = html_div([
                 ),
             ),
         ],
-        className="mt-3",
+        class_name="mt-3",
     ),
 ]);
 

@@ -4,10 +4,10 @@ import dash_html_components as html
 inputs = html.Div(
     [
         dbc.Input(
-            placeholder="A large input...", bs_size="lg", className="mb-3"
+            placeholder="A large input...", bs_size="lg", class_name="mb-3"
         ),
         dbc.Input(
-            placeholder="A medium input...", bs_size="md", className="mb-3"
+            placeholder="A medium input...", bs_size="md", class_name="mb-3"
         ),
         dbc.Input(placeholder="A small input...", bs_size="sm"),
     ]

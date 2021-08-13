@@ -3,22 +3,22 @@ using DashBootstrapComponents, DashHtmlComponents
 standalone_radio_check = html_div([
     dbc_formgroup(
         [
-            dbc_checkbox(id="standalone-checkbox", className="form-check-input"),
+            dbc_checkbox(id="standalone-checkbox", class_name="form-check-input"),
             dbc_label(
                 "This is a checkbox",
                 html_for="standalone-checkbox",
-                className="form-check-label",
+                class_name="form-check-label",
             ),
         ],
         check=true,
     ),
     dbc_formgroup(
         [
-            dbc_radiobutton(id="standalone-radio", className="form-check-input"),
+            dbc_radiobutton(id="standalone-radio", class_name="form-check-input"),
             dbc_label(
                 "This is a radio button",
                 html_for="standalone-radio",
-                className="form-check-label",
+                class_name="form-check-label",
             ),
         ],
         check=true,

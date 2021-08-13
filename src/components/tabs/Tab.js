@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 /**
  * Create a single tab. Should be used as a component of Tabs.
  */
-const Tab = props => {
+const Tab = (props) => {
   return <div>{props.children}</div>;
 };
 
 Tab.defaultProps = {
-  disabled: false
+  disabled: false,
 };
 
 Tab.propTypes = {
@@ -58,9 +58,24 @@ Tab.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavItem in the tab.
+   */
+  tab_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `tab_class_name` instead
+   *
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the NavItem in the tab.
    */
@@ -71,15 +86,41 @@ Tab.propTypes = {
    * specified with this prop will be applied to the NavItem in the tab when it
    * is active.
    */
+  active_tab_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `active_tab_class_name` instead
+   *
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavItem in the tab when it
+   * is active.
+   */
   activeTabClassName: PropTypes.string,
 
   /**
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the NavLink in the tab.
    */
+  label_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `label_class_name` instead
+   *
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavLink in the tab.
+   */
   labelClassName: PropTypes.string,
 
   /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the NavLink in the tab when
+   * it is active.
+   */
+  active_label_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `active_label_class_name` instead
+   *
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the NavLink in the tab when
    * it is active.
@@ -126,8 +167,8 @@ Tab.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default Tab;

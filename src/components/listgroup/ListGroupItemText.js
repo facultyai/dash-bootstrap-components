@@ -8,10 +8,21 @@ import {bootstrapTextColors} from '../../private/BootstrapColors';
 /**
  * Apply consistent styling to text within a list group.
  */
-const ListGroupItemText = props => {
-  const {children, className, color, style, loading_state, ...otherProps} = props;
+const ListGroupItemText = (props) => {
+  const {
+    children,
+    className,
+    class_name,
+    color,
+    style,
+    loading_state,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapTextColors.has(color);
-  const classes = classNames(className, color && isBootstrapColor && `text-${color}`);
+  const classes = classNames(
+    class_name || className,
+    color && isBootstrapColor && `text-${color}`
+  );
   return (
     <RSListGroupItemText
       className={classes}
@@ -45,6 +56,13 @@ ListGroupItemText.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -82,8 +100,8 @@ ListGroupItemText.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default ListGroupItemText;

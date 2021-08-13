@@ -6,9 +6,16 @@ import {ModalHeader as RSModalHeader} from 'reactstrap';
 /**
  * Add a header to any modal.
  */
-const ModalHeader = props => {
-  const {children, ...otherProps} = props;
-  return <RSModalHeader {...omit(['setProps'], otherProps)}>{children}</RSModalHeader>;
+const ModalHeader = (props) => {
+  const {children, className, class_name, ...otherProps} = props;
+  return (
+    <RSModalHeader
+      className={class_name || className}
+      {...omit(['setProps'], otherProps)}
+    >
+      {children}
+    </RSModalHeader>
+  );
 };
 
 ModalHeader.propTypes = {
@@ -31,12 +38,19 @@ ModalHeader.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
    * HTML tag to use for the ModalHeader, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
 };
 
 export default ModalHeader;

@@ -15,6 +15,8 @@ const Fade = props => {
     is_in,
     loading_state,
     style,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -29,6 +31,7 @@ const Fade = props => {
       style={hidden ? {visibility: 'hidden', ...style} : style}
       onEnter={() => setHidden(false)}
       onExited={() => setHidden(true)}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -58,6 +61,13 @@ Fade.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

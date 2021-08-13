@@ -9,14 +9,14 @@ tabs = html.Div(
         dbc.Tabs(
             [
                 dbc.Tab(
-                    html.P("This is tab 1", className="py-3"), label="Tab 1"
+                    html.P("This is tab 1", class_name="py-3"), label="Tab 1"
                 ),
                 dbc.Tab(
                     dbc.Card(
                         [
                             html.P(
                                 "This tab has a card!",
-                                className="card-text",
+                                class_name="card-text",
                             ),
                             dbc.Button("Click here", color="success"),
                         ],
@@ -28,5 +28,5 @@ tabs = html.Div(
             ]
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )

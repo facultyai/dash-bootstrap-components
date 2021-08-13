@@ -8,9 +8,10 @@ import {ButtonGroup as RSButtonGroup} from 'reactstrap';
  * `DropdownMenu`.
  */
 const ButtonGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, class_name, className, ...otherProps} = props;
   return (
     <RSButtonGroup
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -40,6 +41,13 @@ ButtonGroup.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

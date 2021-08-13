@@ -4,23 +4,23 @@ form <- dbcForm(
   list(
     dbcFormGroup(
       list(
-        dbcLabel("Email", className = "mr-2"),
+        dbcLabel("Email", class_name = "mr-2"),
         dbcInput(
           type = "email",
           placeholder = "Enter email"
         )
       ),
-      className = "mr-3"
+      class_name = "mr-3"
     ),
     dbcFormGroup(
       list(
-        dbcLabel("Password", className = "mr-2"),
+        dbcLabel("Password", class_name = "mr-2"),
         dbcInput(
           type = "password",
           placeholder = "Enter password"
         )
       ),
-      className = "mr-3"
+      class_name = "mr-3"
     ),
     dbcButton("Submit", color = "primary")
   ),

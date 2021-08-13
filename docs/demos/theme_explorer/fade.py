@@ -18,7 +18,7 @@ fade = html.Div(
                         dbc.CardBody(
                             html.P(
                                 "This content fades in and out",
-                                className="card-text",
+                                class_name="card-text",
                             )
                         )
                     ),

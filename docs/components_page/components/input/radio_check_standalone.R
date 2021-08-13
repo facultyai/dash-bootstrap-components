@@ -7,12 +7,12 @@ standalone_radio_check <- htmlDiv(
       list(
         dbcCheckbox(
           id = "standalone-checkbox",
-          className = "form-check-input"
+          class_name = "form-check-input"
         ),
         dbcLabel(
           "This is a checkbox",
           html_for = "standalone-checkbox",
-          className = "form-check-label"
+          class_name = "form-check-label"
         )
       ),
       check = TRUE
@@ -21,12 +21,12 @@ standalone_radio_check <- htmlDiv(
       list(
         dbcRadioButton(
             id = "standalone-radio",
-            className = "form-check-input"
+            class_name = "form-check-input"
         ),
         dbcLabel(
           "This is a radio button",
           html_for = "standalone-radio",
-          className = "form-check-label"
+          class_name = "form-check-label"
         )
       ),
       check = TRUE,

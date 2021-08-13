@@ -4,12 +4,12 @@ fade = html_div([
     dbc_button(
         "Toggle fade",
         id="fade-transition-button",
-        className="mb-3",
+        class_name="mb-3",
         n_clicks=0,
     ),
     dbc_fade(
         dbc_card(
-            dbc_cardbody(html_p("This content fades in and out", className="card-text")),
+            dbc_cardbody(html_p("This content fades in and out", class_name="card-text")),
         ),
         id="fade-transition",
         is_in=true,

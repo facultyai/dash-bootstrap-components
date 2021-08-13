@@ -58,7 +58,7 @@ app.layout = dbc.Container(
         tooltip,
     ],
     fluid=True,
-    className="px-4",
+    class_name="px-4",
 )
 
 
