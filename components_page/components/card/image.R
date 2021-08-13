@@ -5,7 +5,7 @@ top_card <- dbcCard(
   list(
     dbcCardImg(src = "/static/images/placeholder286x180.png", top = TRUE),
     dbcCardBody(
-      htmlP("This card has an image at the top", className = "card-text")
+      htmlP("This card has an image at the top", class_name = "card-text")
     )
   ),
   style = list(width =  "18rem")
@@ -15,7 +15,7 @@ bottom_card <- dbcCard(
   list(
 
     dbcCardBody(
-      htmlP("This has a bottom image", className = "card-text")
+      htmlP("This has a bottom image", class_name = "card-text")
     ),
     dbcCardImg(src = "/static/images/placeholder286x180.png", bottom = TRUE)
   ),

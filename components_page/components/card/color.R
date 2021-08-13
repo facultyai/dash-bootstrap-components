@@ -5,10 +5,10 @@ card_content <- list(
   dbcCardHeader("Card header"),
   dbcCardBody(
     list(
-      htmlH5("Card title", className = "card-title"),
+      htmlH5("Card title", class_name = "card-title"),
       htmlP(
         "This is some card content that we'll reuse",
-        className = "card-text"
+        class_name = "card-text"
       )
     )
   )
@@ -22,7 +22,7 @@ cards <- htmlDiv(
         dbcCol(dbcCard(card_content, color = "secondary", inverse = TRUE)),
         dbcCol(dbcCard(card_content, color = "info", inverse = TRUE))
       ),
-      className = "mb-4"
+      class_name = "mb-4"
     ),
     dbcRow(
       list(
@@ -30,7 +30,7 @@ cards <- htmlDiv(
         dbcCol(dbcCard(card_content, color = "warning", inverse = TRUE)),
         dbcCol(dbcCard(card_content, color = "danger", inverse = TRUE))
       ),
-      className = "mb-4"
+      class_name = "mb-4"
     ),
     dbcRow(
       list(

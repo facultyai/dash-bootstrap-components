@@ -14,5 +14,5 @@ jumbotron = html.Div(
             ]
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )

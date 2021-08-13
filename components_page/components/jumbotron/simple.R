@@ -3,21 +3,21 @@ library(dashHtmlComponents)
 
 simple_jumbotron <- dbcJumbotron(
   list(
-    htmlH1("Jumbotron", className = "display-3"),
+    htmlH1("Jumbotron", class_name = "display-3"),
     htmlP(
         paste(
           "Use a jumbotron to call attention to",
           "featured content or information."
         ),
-        className = "lead",
+        class_name = "lead",
     ),
-    htmlHr(className = "my-2"),
+    htmlHr(class_name = "my-2"),
     htmlP(
         paste(
           "Jumbotrons use utility classes for typography and",
           "spacing to suit the larger container."
         )
     ),
-    htmlP(dbcButton("Learn more", color = "primary"), className = "lead")
+    htmlP(dbcButton("Learn more", color = "primary"), class_name = "lead")
   )
 )

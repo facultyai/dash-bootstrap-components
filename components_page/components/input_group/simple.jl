@@ -6,14 +6,14 @@ input_groups = html_div([
             dbc_inputgroupaddon("@", addon_type="prepend"),
             dbc_input(placeholder="Username"),
         ],
-        className="mb-3",
+        class_name="mb-3",
     ),
     dbc_inputgroup(
         [
             dbc_input(placeholder="Recipient's username"),
             dbc_inputgroupaddon("@example.com", addon_type="append"),
         ],
-        className="mb-3",
+        class_name="mb-3",
     ),
     dbc_inputgroup(
         [
@@ -21,11 +21,11 @@ input_groups = html_div([
             dbc_input(placeholder="Amount", type="number"),
             dbc_inputgroupaddon(".00", addon_type="append"),
         ],
-        className="mb-3",
+        class_name="mb-3",
     ),
     dbc_inputgroup(
         [dbc_inputgroupaddon("With textarea", addon_type="prepend"), dbc_textarea()],
-        className="mb-3",
+        class_name="mb-3",
     ),
     dbc_inputgroup([
         dbc_select(

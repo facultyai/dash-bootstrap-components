@@ -48,5 +48,5 @@ table = html.Div(
             hover=True,
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )

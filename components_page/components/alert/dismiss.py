@@ -7,7 +7,7 @@ alert = html.Div(
         dbc.Button(
             "Toggle alert with fade",
             id="alert-toggle-fade",
-            className="mr-1",
+            class_name="mr-1",
             n_clicks=0,
         ),
         dbc.Button(

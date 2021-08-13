@@ -5,7 +5,7 @@ top_card = dbc.Card(
     [
         dbc.CardImg(src="/static/images/placeholder286x180.png", top=True),
         dbc.CardBody(
-            html.P("This card has an image at the top", className="card-text")
+            html.P("This card has an image at the top", class_name="card-text")
         ),
     ],
     style={"width": "18rem"},
@@ -13,7 +13,9 @@ top_card = dbc.Card(
 
 bottom_card = dbc.Card(
     [
-        dbc.CardBody(html.P("This has a bottom image", className="card-text")),
+        dbc.CardBody(
+            html.P("This has a bottom image", class_name="card-text")
+        ),
         dbc.CardImg(src="/static/images/placeholder286x180.png", bottom=True),
     ],
     style={"width": "18rem"},

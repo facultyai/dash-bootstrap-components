@@ -8,14 +8,14 @@ input_groups = html.Div(
                 dbc.InputGroupAddon("@", addon_type="prepend"),
                 dbc.Input(placeholder="Username"),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.InputGroup(
             [
                 dbc.Input(placeholder="Recipient's username"),
                 dbc.InputGroupAddon("@example.com", addon_type="append"),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.InputGroup(
             [
@@ -23,14 +23,14 @@ input_groups = html.Div(
                 dbc.Input(placeholder="Amount", type="number"),
                 dbc.InputGroupAddon(".00", addon_type="append"),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.InputGroup(
             [
                 dbc.InputGroupAddon("With textarea", addon_type="prepend"),
                 dbc.Textarea(),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.InputGroup(
             [

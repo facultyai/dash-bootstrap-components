@@ -7,7 +7,7 @@ modal = html_div([
             dbc_modalheader("Header"),
             dbc_modalbody("This is the content of the modal"),
             dbc_modalfooter(
-                dbc_button("Close", id="close", className="ml-auto", n_clicks=0),
+                dbc_button("Close", id="close", class_name="ml-auto", n_clicks=0),
             ),
         ],
         id="modal",

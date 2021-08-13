@@ -5,7 +5,7 @@ function make_button(placement)
     return dbc_button(
         "Tooltip on $placement",
         id="tooltip-target-$placement",
-        className="mx-2",
+        class_name="mx-2",
         n_clicks=0,
     )
 end;
