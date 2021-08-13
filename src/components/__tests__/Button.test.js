@@ -58,7 +58,7 @@ describe('Button', () => {
     } = render(<Button disabled />);
 
     expect(buttonActive).toHaveClass('active');
-    expect(buttonDisabled).toHaveClass('disabled');
+    expect(buttonDisabled).toHaveAttribute("disabled");
 
     // button sizes
     const {
@@ -70,13 +70,6 @@ describe('Button', () => {
 
     expect(buttonSm).toHaveClass('btn-sm');
     expect(buttonLg).toHaveClass('btn-lg');
-
-    // block button
-    const {
-      container: {firstChild: buttonBlock},
-    } = render(<Button block />);
-
-    expect(buttonBlock).toHaveClass('btn-block');
   });
 
   test('render as a link when href is set', () => {
