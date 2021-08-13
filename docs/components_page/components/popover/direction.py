@@ -20,7 +20,7 @@ def make_button(placement):
     return dbc.Button(
         f"Popover on {placement}",
         id=f"popover-{placement}-target",
-        className="mx-2",
+        class_name="mx-2",
         n_clicks=0,
     )
 

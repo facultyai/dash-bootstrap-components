@@ -30,7 +30,7 @@ app.layout = html.Div(
             color="primary",
             dark=True,
         ),
-        dbc.Container(id="page-content", className="pt-4"),
+        dbc.Container(id="page-content", class_name="pt-4"),
     ]
 )
 
@@ -46,7 +46,7 @@ def render_page_content(pathname):
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
-            html.H1("404: Not found", className="text-danger"),
+            html.H1("404: Not found", class_name="text-danger"),
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ]

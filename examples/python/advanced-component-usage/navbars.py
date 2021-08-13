@@ -39,7 +39,7 @@ default = dbc.NavbarSimple(
     brand="Default",
     brand_href="#",
     sticky="top",
-    className="mb-5",
+    class_name="mb-5",
 )
 
 # here's how you can recreate the same thing using Navbar
@@ -51,14 +51,14 @@ custom_default = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler1"),
             dbc.Collapse(
                 dbc.Nav(
-                    [nav_item, dropdown], className="ml-auto", navbar=True
+                    [nav_item, dropdown], class_name="ml-auto", navbar=True
                 ),
                 id="navbar-collapse1",
                 navbar=True,
             ),
         ]
     ),
-    className="mb-5",
+    class_name="mb-5",
 )
 
 
@@ -71,7 +71,7 @@ logo = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Logo", className="ml-2")),
+                        dbc.Col(dbc.NavbarBrand("Logo", class_name="ml-2")),
                     ],
                     align="center",
                     no_gutters=True,
@@ -81,7 +81,7 @@ logo = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler2"),
             dbc.Collapse(
                 dbc.Nav(
-                    [nav_item, dropdown], className="ml-auto", navbar=True
+                    [nav_item, dropdown], class_name="ml-auto", navbar=True
                 ),
                 id="navbar-collapse2",
                 navbar=True,
@@ -90,7 +90,7 @@ logo = dbc.Navbar(
     ),
     color="dark",
     dark=True,
-    className="mb-5",
+    class_name="mb-5",
 )
 
 # this example has a search bar and button instead of navitems / dropdowns
@@ -107,7 +107,7 @@ search_navbar = dbc.Navbar(
                         ),
                         dbc.Col(
                             dbc.Button(
-                                "Search", color="primary", className="ml-2"
+                                "Search", color="primary", class_name="ml-2"
                             ),
                             # set width of button column to auto to allow
                             # search box to take up remaining space.
@@ -120,7 +120,7 @@ search_navbar = dbc.Navbar(
                     # larger screens (mt-md-0) when the navbar is expanded.
                     # keep button and search box on same row (flex-nowrap).
                     # align everything on the right with left margin (ml-auto).
-                    className="ml-auto flex-nowrap mt-3 mt-md-0",
+                    class_name="ml-auto flex-nowrap mt-3 mt-md-0",
                     align="center",
                 ),
                 id="navbar-collapse3",
@@ -128,7 +128,7 @@ search_navbar = dbc.Navbar(
             ),
         ]
     ),
-    className="mb-5",
+    class_name="mb-5",
 )
 
 # custom navbar based on https://getbootstrap.com/docs/4.1/examples/dashboard/

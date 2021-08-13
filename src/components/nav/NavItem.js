@@ -6,10 +6,11 @@ import {NavItem as RSNavItem} from 'reactstrap';
 /**
  * Create a single item in a `Nav`.
  */
-const NavItem = props => {
-  const {children, loading_state, ...otherProps} = props;
+const NavItem = (props) => {
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSNavItem
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -41,6 +42,13 @@ NavItem.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -70,8 +78,8 @@ NavItem.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default NavItem;

@@ -11,7 +11,7 @@ import {Popover as RSPopover} from 'reactstrap';
  * Use the `PopoverHeader` and `PopoverBody` components to control the layout
  * of the children.
  */
-const Popover = props => {
+const Popover = (props) => {
   const {
     children,
     is_open,
@@ -19,6 +19,10 @@ const Popover = props => {
     loading_state,
     setProps,
     trigger,
+    className,
+    class_name,
+    innerClassName,
+    inner_class_name,
     ...otherProps
   } = props;
 
@@ -34,6 +38,8 @@ const Popover = props => {
       // passed to the popover if `trigger` is not specified
       toggle={trigger ? toggle : undefined}
       trigger={trigger}
+      className={class_name || className}
+      innerClassName={inner_class_name || innerClassName}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -64,6 +70,13 @@ Popover.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -91,7 +104,7 @@ Popover.propTypes = {
     'bottom-end',
     'left',
     'left-start',
-    'left-end'
+    'left-end',
   ]),
 
   /**
@@ -131,6 +144,13 @@ Popover.propTypes = {
   /**
    * CSS class to apply to the popover.
    */
+  inner_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `inner_class_name` instead
+   *
+   * CSS class to apply to the popover.
+   */
   innerClassName: PropTypes.string,
 
   /**
@@ -138,7 +158,7 @@ Popover.propTypes = {
    */
   delay: PropTypes.oneOfType([
     PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
-    PropTypes.number
+    PropTypes.number,
   ]),
 
   /**
@@ -167,8 +187,8 @@ Popover.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default Popover;

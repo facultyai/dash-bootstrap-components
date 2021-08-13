@@ -4,7 +4,7 @@ alert = html_div([
     dbc_button(
         "Toggle alert with fade",
         id="alert-toggle-fade",
-        className="mr-1",
+        class_name="mr-1",
         n_clicks=0,
     ),
     dbc_button("Toggle alert without fade", id="alert-toggle-no-fade", n_clicks=0),

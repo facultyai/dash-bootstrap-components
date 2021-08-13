@@ -5,7 +5,7 @@ popover = html_div([
         "Toggle",
         id="toggle",
         color="success",
-        className="mr-4",
+        class_name="mr-4",
         n_clicks=0,
     ),
     dbc_button("Target", id="target", color="danger", n_clicks=0),

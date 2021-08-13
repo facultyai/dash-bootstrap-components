@@ -110,7 +110,7 @@ const Demo = () => (
         <DropdownMenuItem>Entry 3</DropdownMenuItem>
       </DropdownMenu>
     </NavbarSimple>
-    <Container className="mt-3">
+    <Container class_name="mt-3">
       <h1>Dash Bootstrap Components - Demo</h1>
       <p>
         This demonstrates all of the Dash Bootstrap Components as React
@@ -202,8 +202,8 @@ const Demo = () => (
           <Card color="dark" outline={true}>
             <CardHeader>Header</CardHeader>
             <CardBody>
-              <h5 className="card-title">This card has a header</h5>
-              <p className="card-text">And some text in the body</p>
+              <h5 class_name="card-title">This card has a header</h5>
+              <p class_name="card-text">And some text in the body</p>
             </CardBody>
             <CardFooter>Footer</CardFooter>
           </Card>
@@ -215,16 +215,16 @@ const Demo = () => (
               src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
             />
             <CardBody>
-              <h5 className="card-title">Card with image</h5>
-              <p className="card-text">This card has an image</p>
+              <h5 class_name="card-title">Card with image</h5>
+              <p class_name="card-text">This card has an image</p>
             </CardBody>
           </Card>
         </Col>
         <Col md={3}>
           <Card>
             <CardBody>
-              <h5 className="card-title">Here's another card</h5>
-              <p className="card-text">With some text, and a button</p>
+              <h5 class_name="card-title">Here's another card</h5>
+              <p class_name="card-text">With some text, and a button</p>
               <Button color="success">Click here</Button>
             </CardBody>
           </Card>
@@ -232,8 +232,8 @@ const Demo = () => (
         <Col md={3}>
           <Card>
             <CardBody>
-              <h5 className="card-title">Here's yet another card</h5>
-              <p className="card-text">With some text, and some links</p>
+              <h5 class_name="card-title">Here's yet another card</h5>
+              <p class_name="card-text">With some text, and some links</p>
               <CardLink href="https://www.asidatascience.com">
                 External
               </CardLink>
@@ -247,8 +247,8 @@ const Demo = () => (
       <CardDeck>
         <Card>
           <CardBody>
-            <h5 className="card-title">The first card</h5>
-            <p className="card-text">
+            <h5 class_name="card-title">The first card</h5>
+            <p class_name="card-text">
               This is a card with some text on it, it's the first one in the
               deck.
             </p>
@@ -256,8 +256,8 @@ const Demo = () => (
         </Card>
         <Card>
           <CardBody>
-            <h5 className="card-title">The second card</h5>
-            <p className="card-text">
+            <h5 class_name="card-title">The second card</h5>
+            <p class_name="card-text">
               This is a card with some text on it, it's the second one in the
               deck. It has a bit more text in it so that we can see how the
               vertical spacing will work.
@@ -266,9 +266,9 @@ const Demo = () => (
         </Card>
         <Card outline={true} color="primary">
           <CardBody>
-            <h5 className="card-title">The third card</h5>
-            <h6 className="card-subtitle">...and the last :(</h6>
-            <p className="card-text">This card doesn't have much text...</p>
+            <h5 class_name="card-title">The third card</h5>
+            <h6 class_name="card-subtitle">...and the last :(</h6>
+            <p class_name="card-text">This card doesn't have much text...</p>
             <Button color="danger">Click me</Button>
           </CardBody>
         </Card>
@@ -365,7 +365,7 @@ const Demo = () => (
       <FadeComponent>
         <Card>
           <CardBody>
-            <p className="card-text">This content fades in and out</p>
+            <p class_name="card-text">This content fades in and out</p>
           </CardBody>
         </Card>
       </FadeComponent>

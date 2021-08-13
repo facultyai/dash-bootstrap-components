@@ -22,7 +22,7 @@ function make_item(i)
     ])
 end;
 
-accordion = html_div([make_item(1), make_item(2), make_item(3)], className="accordion");
+accordion = html_div([make_item(1), make_item(2), make_item(3)], class_name="accordion");
 
 callback!(
     app,

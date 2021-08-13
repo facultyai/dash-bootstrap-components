@@ -15,13 +15,17 @@ const Toast = props => {
     icon,
     header_style,
     headerClassName,
+    header_class_name,
     body_style,
     bodyClassName,
+    body_class_name,
     dismissable,
     duration,
     n_dismiss,
     is_open,
     setProps,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -49,16 +53,23 @@ const Toast = props => {
   }, [is_open]);
 
   return (
-    <RSToast isOpen={is_open} {...omit(['n_dismiss_timestamp'], otherProps)}>
+    <RSToast
+      isOpen={is_open}
+      className={class_name || className}
+      {...omit(['n_dismiss_timestamp'], otherProps)}
+    >
       <ToastHeader
         icon={icon}
         style={header_style}
-        className={headerClassName}
+        className={header_class_name || headerClassName}
         toggle={dismissable && dismiss}
       >
         {header}
       </ToastHeader>
-      <ToastBody style={body_style} className={bodyClassName}>
+      <ToastBody
+        style={body_style}
+        className={body_class_name || bodyClassName}
+      >
         {children}
       </ToastBody>
     </RSToast>
@@ -92,6 +103,13 @@ Toast.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -104,6 +122,14 @@ Toast.propTypes = {
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the header of the toast.
    */
+  header_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `header_class_name` instead
+   *
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the header of the toast.
+   */
   headerClassName: PropTypes.string,
 
   /**
@@ -113,6 +139,14 @@ Toast.propTypes = {
   body_style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the body of the toast.
+   */
+  body_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `body_class_name` instead.
+   *
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the body of the toast.
    */

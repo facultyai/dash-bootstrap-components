@@ -4,7 +4,7 @@ using HTTP
 LOREM = rstrip(String(HTTP.get("https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt").body), ['\n'])
 
 modal = html_div([
-    dbc_button("Scrolling modal", id="open-scroll", className="mr-1", n_clicks=0),
+    dbc_button("Scrolling modal", id="open-scroll", class_name="mr-1", n_clicks=0),
     dbc_button("Modal with scrollable body", id="open-body-scroll", n_clicks=0),
     dbc_modal(
         [
@@ -14,7 +14,7 @@ modal = html_div([
                 dbc_button(
                     "Close",
                     id="close-scroll",
-                    className="ml-auto",
+                    class_name="ml-auto",
                     n_clicks=0,
                 ),
             ),
@@ -30,7 +30,7 @@ modal = html_div([
                 dbc_button(
                     "Close",
                     id="close-body-scroll",
-                    className="ml-auto",
+                    class_name="ml-auto",
                     n_clicks=0,
                 ),
             ),

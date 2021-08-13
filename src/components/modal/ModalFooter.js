@@ -6,9 +6,16 @@ import {ModalFooter as RSModalFooter} from 'reactstrap';
 /**
  * Add a footer to any modal.
  */
-const ModalFooter = props => {
-  const {children, ...otherProps} = props;
-  return <RSModalFooter {...omit(['setProps'], otherProps)}>{children}</RSModalFooter>;
+const ModalFooter = (props) => {
+  const {children, className, class_name, ...otherProps} = props;
+  return (
+    <RSModalFooter
+      className={class_name || className}
+      {...omit(['setProps'], otherProps)}
+    >
+      {children}
+    </RSModalFooter>
+  );
 };
 
 ModalFooter.propTypes = {
@@ -31,12 +38,19 @@ ModalFooter.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
    * HTML tag to use for the ModalFooter, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
 };
 
 export default ModalFooter;

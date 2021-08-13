@@ -7,9 +7,10 @@ import {Nav as RSNav} from 'reactstrap';
  * Nav can be used to group together a collection of navigation links.
  */
 const Nav = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSNav
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -39,6 +40,13 @@ Nav.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

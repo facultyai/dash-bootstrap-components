@@ -20,6 +20,8 @@ const Alert = props => {
     setProps,
     color,
     style,
+    class_name,
+    className,
     ...otherProps
   } = props;
 
@@ -48,6 +50,7 @@ const Alert = props => {
       isOpen={is_open}
       toggle={dismissable && dismiss}
       color={isBootstrapColor ? color : null}
+      className={class_name || className}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -84,6 +87,13 @@ Alert.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

@@ -7,14 +7,23 @@ import {bootstrapColors} from '../../private/BootstrapColors';
 /**
  * The Navbar component can be used to make fully customisable navbars.
  */
-const Navbar = props => {
-  const {children, color, style, loading_state, ...otherProps} = props;
+const Navbar = (props) => {
+  const {
+    children,
+    color,
+    style,
+    loading_state,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapColors.has(color);
 
   return (
     <RSNavbar
       color={isBootstrapColor ? color : null}
       style={{backgroundColor: !isBootstrapColor && color, ...style}}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -28,7 +37,7 @@ const Navbar = props => {
 Navbar.defaultProps = {
   color: 'light',
   light: true,
-  expand: 'md'
+  expand: 'md',
 };
 
 Navbar.propTypes = {
@@ -50,6 +59,13 @@ Navbar.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -126,8 +142,8 @@ Navbar.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string
-  })
+    component_name: PropTypes.string,
+  }),
 };
 
 export default Navbar;

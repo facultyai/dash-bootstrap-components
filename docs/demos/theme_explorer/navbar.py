@@ -36,14 +36,14 @@ navbar = html.Div(
             brand_href=DBC_HOME,
             color="primary",
             dark=True,
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.NavbarSimple(
             children=navbar_children,
             brand="Navbar",
             brand_href=DBC_HOME,
             color="light",
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.NavbarSimple(
             children=navbar_children,
@@ -53,5 +53,5 @@ navbar = html.Div(
             dark=True,
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )

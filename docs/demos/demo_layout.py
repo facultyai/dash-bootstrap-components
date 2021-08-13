@@ -56,7 +56,7 @@ odio dui."""
             ]
         )
     ],
-    className="mt-4",
+    class_name="mt-4",
 )
 
 _layout = html.Div([_navbar, _body])

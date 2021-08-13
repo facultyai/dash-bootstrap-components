@@ -57,7 +57,7 @@ checklist_items = html.Div(
                 ),
             ]
         ),
-        html.H5("Inline checklist", className="mt-3"),
+        html.H5("Inline checklist", class_name="mt-3"),
         dbc.Checklist(
             id="gallery_checklist3",
             options=[
@@ -67,7 +67,7 @@ checklist_items = html.Div(
             inline=True,
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )
 
 radio_items = html.Div(
@@ -80,7 +80,7 @@ radio_items = html.Div(
             ],
             value=0,
         ),
-        html.H5("Inline radioitems", className="mt-3"),
+        html.H5("Inline radioitems", class_name="mt-3"),
         dbc.RadioItems(
             id="gallery_radio2",
             options=[
@@ -103,7 +103,7 @@ input_group = html.Div(
                 ),
                 dbc.Input(type="text"),
             ],
-            className="my-3",
+            class_name="my-3",
         ),
         dbc.InputGroup(
             [
@@ -113,15 +113,15 @@ input_group = html.Div(
                     addon_type="append",
                 ),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.InputGroup(
             [
                 dbc.InputGroupAddon("@", addon_type="prepend"),
                 dbc.Input(type="text", placeholder="Enter username"),
             ],
-            className="mb-3",
+            class_name="mb-3",
         ),
     ],
-    className="mb-4",
+    class_name="mb-4",
 )

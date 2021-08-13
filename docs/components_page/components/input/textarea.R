@@ -2,11 +2,11 @@ library(dashBootstrapComponents)
 
 textareas <- htmlDiv(
   list(
-    dbcTextarea(className = "mb-3", placeholder = "A Textarea"),
+    dbcTextarea(class_name = "mb-3", placeholder = "A Textarea"),
     dbcTextarea(
       valid = TRUE,
       bs_size = "sm",
-      className = "mb-3",
+      class_name = "mb-3",
       placeholder = "A small, valid Textarea",
     ),
     dbcTextarea(

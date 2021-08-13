@@ -26,7 +26,7 @@ app.layout = dbc.Container(
             color="primary",
             block=True,
             id="button",
-            className="mb-3",
+            class_name="mb-3",
         ),
         dbc.Tabs(
             [
@@ -36,7 +36,7 @@ app.layout = dbc.Container(
             id="tabs",
             active_tab="scatter",
         ),
-        html.Div(id="tab-content", className="p-4"),
+        html.Div(id="tab-content", class_name="p-4"),
     ]
 )
 

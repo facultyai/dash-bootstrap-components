@@ -11,9 +11,9 @@ dropdown = html_div([
         label="large dropdown",
         bs_size="lg",
         children=items,
-        className="mb-3",
+        class_name="mb-3",
     ),
-    dbc_dropdownmenu(label="normal dropdown", children=items, className="mb-3"),
+    dbc_dropdownmenu(label="normal dropdown", children=items, class_name="mb-3"),
     dbc_dropdownmenu(label="small dropdown", bs_size="sm", children=items),
 ])
 ;

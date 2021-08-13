@@ -7,7 +7,7 @@ spinners = html.Div(
             dbc.Spinner(size="sm"),
             color="primary",
             disabled=True,
-            className="mr-1",
+            class_name="mr-1",
         ),
         dbc.Button(
             [dbc.Spinner(size="sm"), " Loading..."],
