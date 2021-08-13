@@ -715,10 +715,7 @@ Input.defaultProps = {
   debounce: false,
   persisted_props: ['value'],
   persistence_type: 'local',
-<<<<<<< HEAD
   step: 'any'
-=======
->>>>>>> 7dfcf7d (Format)
 };
 
 export default Input;
