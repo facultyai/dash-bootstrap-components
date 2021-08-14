@@ -9,45 +9,53 @@ offcanvas = html.Div(
         ),
         dbc.Offcanvas(
             [
-                dbc.OffcanvasHeader(title="Offcanvas with/without backdrop"),
-                dbc.OffcanvasBody(
+                html.Div(
+                    "Change the backdrop of this offcanvas with the "
+                    "radio buttons"
+                ),
+                dbc.FormGroup(
                     [
-                        html.Div(
-                            "Change the backdrop of this offcanvas with the "
-                            "radio buttons"
-                        ),
-                        dbc.FormGroup(
-                            [
-                                dbc.RadioItems(
-                                    id="offcanvas-backdrop-selector",
-                                    options=[
-                                        {
-                                            "label": "True (default)",
-                                            "value": True,
-                                        },
-                                        {"label": "False", "value": False},
-                                    ],
-                                    inline=True,
-                                    value=True,
-                                ),
+                        dbc.RadioItems(
+                            id="offcanvas-backdrop-selector",
+                            options=[
+                                {
+                                    "label": "True (default)",
+                                    "value": True,
+                                },
+                                {"label": "False", "value": False},
+                                {
+                                    "label": "Static (no dismiss)",
+                                    "value": "static",
+                                },
                             ],
-                            class_name="p-3 m-2 border",
+                            inline=True,
+                            value=True,
                         ),
-                        dbc.Button(
-                            "Close",
-                            id="close-offcanvas-backdrop",
-                            class_name="ml-auto",
-                            n_clicks=0,
-                        ),
-                    ]
+                    ],
+                    class_name="p-3 m-2 border",
+                ),
+                dbc.Button(
+                    "Close",
+                    id="close-offcanvas-backdrop",
+                    class_name="ml-auto",
+                    n_clicks=0,
                 ),
             ],
             id="offcanvas-backdrop",
-            is_open=False,
-            placement="end",
+            title="Offcanvas with/without backdrop",
         ),
     ]
 )
+
+import dash
+
+app = dash.Dash(
+    external_stylesheets=[
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    ]
+)
+
+app.layout = offcanvas
 
 
 @app.callback(
@@ -70,3 +78,7 @@ def toggle_offcanvas(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
+
+
+if __name__ == "__main__":
+    app.run_server(debug=True)

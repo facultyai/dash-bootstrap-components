@@ -11,25 +11,17 @@ offcanvas = html.Div(
         ),
         dbc.Offcanvas(
             [
-                dbc.OffcanvasHeader(title="Scrollable Offcanvas"),
-                dbc.OffcanvasBody(
-                    [
-                        html.Div(
-                            "The contents on the main page are now scrollable."
-                        ),
-                        dbc.Button(
-                            "Close",
-                            id="close-offcanvas-scrollable",
-                            class_name="ml-auto",
-                            n_clicks=0,
-                        ),
-                    ]
+                html.Div("The contents on the main page are now scrollable."),
+                dbc.Button(
+                    "Close",
+                    id="close-offcanvas-scrollable",
+                    class_name="ml-auto",
+                    n_clicks=0,
                 ),
             ],
             id="offcanvas-scrollable",
-            is_open=False,
-            placement="end",
             scrollable=True,
+            title="Scrollable Offcanvas",
         ),
     ]
 )

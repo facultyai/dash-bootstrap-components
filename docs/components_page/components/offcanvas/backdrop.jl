@@ -7,45 +7,43 @@ offcanvas = html_div(
         ),
         dbc_offcanvas(
             [
-                dbc_offcanvasheader(title="Offcanvas with/without backdrop"),
-                dbc_offcanvasbody(
-                    [
-                        html_div(
-                            "Change the backdrop of this offcanvas with the "
-                            "radio buttons"
-                        ),
-                        dbc_formgroup(
-                            [
-                                dbc_radioitems(
-                                    id="offcanvas-backdrop-selector",
-                                    options=[
-                                        Dict(
-                                            "label" => "True (default)",
-                                            "value" => true,
-                                        ),
-                                        Dict(
-                                            "label" => "False", 
-                                            "value" => false
-                                        ),
-                                    ],
-                                    inline=true,
-                                    value=true,
-                                ),
-                            ],
-                            class_name="p-3 m-2 border",
-                        ),
-                        dbc_button(
-                            "Close",
-                            id="close-offcanvas-backdrop",
-                            class_name="ml-auto",
-                            n_clicks=0,
-                        ),
-                    ]
+                html_div(
+                    "Change the backdrop of this offcanvas with the "
+                    "radio buttons"
                 ),
+                dbc_formgroup(
+                    [
+                        dbc_radioitems(
+                            id="offcanvas-backdrop-selector",
+                            options=[
+                                Dict(
+                                    "label" => "True (default)",
+                                    "value" => true,
+                                ),
+                                Dict(
+                                    "label" => "False", 
+                                    "value" => false
+                                ),
+                                Dict(
+                                    "label" => "Static (no dismiss)", 
+                                    "value" => "static"
+                                )
+                            ],
+                            inline=true,
+                            value=true,
+                        ),
+                    ],
+                    class_name="p-3 m-2 border",
+                ),
+                dbc_button(
+                    "Close",
+                    id="close-offcanvas-backdrop",
+                    class_name="ml-auto",
+                    n_clicks=0,
+                ),                    
             ],
             id="offcanvas-backdrop",
-            is_open=false,
-            placement="end",
+            title="Offcanvas with/without backdrop"
         ),
     ]
 )

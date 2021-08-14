@@ -12,44 +12,36 @@ offcanvas = html.Div(
         ),
         dbc.Offcanvas(
             [
-                dbc.OffcanvasHeader(title="Placement"),
-                dbc.OffcanvasBody(
+                html.Div(
+                    "Change the placement of this offcanvas with the "
+                    "options below"
+                ),
+                dbc.FormGroup(
+                    # FIXME: Fix styling here
                     [
-                        html.Div(
-                            "Change the placement of this offcanvas with the "
-                            "options below"
-                        ),
-                        dbc.FormGroup(
-                            # FIXME: Fix styling here
-                            [
-                                dbc.InputGroupAddon(
-                                    "Placement", addon_type="prepend"
-                                ),
-                                dbc.Select(
-                                    id="offcanvas-placement-selector",
-                                    options=[
-                                        {
-                                            "label": "start (Default)",
-                                            "value": "start",
-                                        },
-                                        {"label": "end", "value": "end"},
-                                        {
-                                            "label": "top",
-                                            "value": "top",
-                                        },
-                                        {"label": "bottom", "value": "bottom"},
-                                    ],
-                                    value="start",
-                                ),
+                        dbc.InputGroupAddon("Placement", addon_type="prepend"),
+                        dbc.Select(
+                            id="offcanvas-placement-selector",
+                            options=[
+                                {
+                                    "label": "start (Default)",
+                                    "value": "start",
+                                },
+                                {"label": "end", "value": "end"},
+                                {
+                                    "label": "top",
+                                    "value": "top",
+                                },
+                                {"label": "bottom", "value": "bottom"},
                             ],
-                            class_name="p-3 m-2 border",
+                            value="start",
                         ),
-                    ]
+                    ],
+                    class_name="p-3 m-2 border",
                 ),
             ],
             id="offcanvas-placement",
-            is_open=False,
-            placement="start",
+            title="Placement",
         ),
     ]
 )

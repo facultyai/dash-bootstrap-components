@@ -5,17 +5,15 @@ offcanvas <- htmlDiv(
     list(
         dbcButton("Open Offcanvas", id="open-offcanvas", n_clicks=0),
         dbcOffcanvas(
-            list(
-                dbcOffcanvasHeader(title="Header"),
-                dbcOffcanvasBody(
-                    "This is the content of the Offcanvas. "
-                    "Close it by clicking on the close button, or "
+            htmlP(
+                paste(
+                    "This is the content of the Offcanvas. ",
+                    "Close it by clicking on the close button, or ",
                     "the backdrop."
-                ),
-            ),
+                )
+            )
             id="offcanvas",
-            is_open=FALSE,
-            placement="end",
+            title="Title"
         ),
     )
 )

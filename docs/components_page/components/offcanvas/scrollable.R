@@ -10,25 +10,19 @@ offcanvas <- htmlDiv(
         ),
         dbcOffcanvas(
             list(
-                dbcOffcanvasHeader(title="Scrollable Offcanvas"),
-                dbcOffcanvasBody(
-                    list(
-                        htmlDiv(
-                            "The contents on the main page are now scrollable."
-                        ),
-                        dbcButton(
-                            "Close",
-                            id="close-offcanvas-scrollable",
-                            class_name="ml-auto",
-                            n_clicks=0,
-                        ),
-                    )
+                htmlDiv(
+                    "The contents on the main page are now scrollable."
                 ),
-            ),
+                dbcButton(
+                    "Close",
+                    id="close-offcanvas-scrollable",
+                    class_name="ml-auto",
+                    n_clicks=0,
+                ),
+            )
             id="offcanvas-scrollable",
-            is_open=FALSE,
-            placement="end",
             scrollable=TRUE,
+            title="Scrollable Offcanvas"
         ),
     )
 )

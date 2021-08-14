@@ -15,8 +15,10 @@ offcanvas <- htmlDiv(
                 dbcOffcanvasBody(
                     list(
                         htmlDiv(
-                            "Change the placement of this offcanvas with the "
-                            "options below"
+                            paste(
+                                "Change the placement of this offcanvas ",
+                                "with the options below"
+                            )
                         ),
                         dbcFormGroup(
                             # FIXME: Fix styling here
@@ -53,8 +55,6 @@ offcanvas <- htmlDiv(
                 ),
             ),
             id="offcanvas-placement",
-            is_open=FALSE,
-            placement="start",
         ),
     )
 )

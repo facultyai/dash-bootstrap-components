@@ -4,17 +4,13 @@ offcanvas = html_div(
     [
         dbc_button("Open Offcanvas", id="open-offcanvas", n_clicks=0),
         dbc_offcanvas(
-            [
-                dbc_offcanvasheader(title="Header"),
-                dbc_offcanvasbody(
-                    "This is the content of the Offcanvas. "
-                    "Close it by clicking on the close button, or "
-                    "the backdrop."
-                ),
-            ],
+            html_p(
+                "This is the content of the Offcanvas. " *
+                "Close it by clicking on the close button, or " *
+                "the backdrop."
+            ),
             id="offcanvas",
-            is_open=false,
-            placement="end",
+            title="Title"
         ),
     ]
 );

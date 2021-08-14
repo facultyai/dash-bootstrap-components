@@ -6,40 +6,38 @@ offcanvas <- htmlDiv(
         dbcButton("Open backdrop offcanvas", id="open-offcanvas-backdrop", n_clicks=0),
         dbcOffcanvas(
             list(
-                dbcOffcanvasHeader(title="Offcanvas with/without backdrop"),
-                dbcOffcanvasBody(
-                    list(
-                        htmlDiv(
-                            "Change the backdrop of this offcanvas with the "
-                            "radio buttons"
-                        ),
-                        dbcFormGroup(
-                            list(
-                                dbcRadioItems(
-                                    id="offcanvas-backdrop-selector",
-                                    options=list(
-                                        list(label="True (default)", value=TRUE,
-                                        ),
-                                        list(label="False", value=TRUE),
-                                    ),
-                                    inline=TRUE,
-                                    value=TRUE,
-                                ),
-                        ),
-                            class_name="p-3 m-2 border",
-                        ),
-                        dbcButton(
-                            "Close",
-                            id="close-offcanvas-backdrop",
-                            class_name="ml-auto",
-                            n_clicks=0,
-                        ),
-                    )
+                htmlDiv(
+                    "Change the backdrop of this offcanvas with the "
+                    "radio buttons"
                 ),
-        ),
+                dbcFormGroup(
+                    list(
+                        dbcRadioItems(
+                            id="offcanvas-backdrop-selector",
+                            options=list(
+                                list(
+                                    label="True (default)", value=TRUE,
+                                ),
+                                list(label="False", value=TRUE),
+                                list(
+                                    label="Static (no dismiss)", value="static"
+                                ),
+                            ),
+                            inline=TRUE,
+                            value=TRUE,
+                        ),
+                    ),
+                    class_name="p-3 m-2 border",
+                ),
+                dbcButton(
+                    "Close",
+                    id="close-offcanvas-backdrop",
+                    class_name="ml-auto",
+                    n_clicks=0,
+                ),
+            ),                
             id="offcanvas-backdrop",
-            is_open=False,
-            placement="end",
+            title="Offcanvas with/without backdrop"
         ),
     )
 )

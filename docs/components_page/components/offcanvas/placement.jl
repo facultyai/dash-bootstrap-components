@@ -10,50 +10,44 @@ offcanvas = html_div(
         ),
         dbc_offcanvas(
             [
-                dbc_offcanvasheader(title="Placement"),
-                dbc_offcanvasbody(
+                html_div(
+                    "Change the placement of this offcanvas with the " *
+                    "options below"
+                ),
+                dbc_formgroup(
+                    # FIXME: Fix styling here
                     [
-                        html_div(
-                            "Change the placement of this offcanvas with the "
-                            "options below"
+                        dbc_inputgroupaddon(
+                            "Placement", addon_type="prepend"
                         ),
-                        dbc_formgroup(
-                            # FIXME: Fix styling here
-                            [
-                                dbc_inputgroupaddon(
-                                    "Placement", addon_type="prepend"
+                        dbc_select(
+                            id="offcanvas-placement-selector",
+                            options=[
+                                Dict(
+                                    "label" => "start (Default)",
+                                    "value" => "start",
                                 ),
-                                dbc_select(
-                                    id="offcanvas-placement-selector",
-                                    options=[
-                                        Dict(
-                                            "label" => "start (Default)",
-                                            "value" => "start",
-                                        ),
-                                        Dict(
-                                            "label" => "end", 
-                                            "value" => "end"
-                                        ),
-                                        Dict(
-                                            "label" => "top",
-                                            "value" => "top",
-                                        ),
-                                        Dict(
-                                            "label" => "bottom", 
-                                            "value" => "bottom"
-                                        ),
-                                    ],
-                                    value="start",
+                                Dict(
+                                    "label" => "end", 
+                                    "value" => "end"
+                                ),
+                                Dict(
+                                    "label" => "top",
+                                    "value" => "top",
+                                ),
+                                Dict(
+                                    "label" => "bottom", 
+                                    "value" => "bottom"
                                 ),
                             ],
-                            class_name="p-3 m-2 border",
+                            value="start",
                         ),
-                    ]
+                    ],
+                    class_name="p-3 m-2 border",
                 ),
             ],
             id="offcanvas-placement",
-            is_open=false,
-            placement="start",
+            title="Placement"
         ),
     ]
 )

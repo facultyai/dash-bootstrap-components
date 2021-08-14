@@ -96,6 +96,22 @@ def check_offcanvas_backdrop_callbacks(runner):
         timeout=4,
     )
 
+    runner.find_element("#offcanvas-backdrop-selector").selectByValue(False)
+    wait.until(
+        # TODO: Once react-bootstrap has fixed this, need to change to
+        # offcanvas-backdrop
+        lambda: len(runner.find_elements(".modal-backdrop")) == 0,
+        timeout=4,
+    )
+
+    runner.find_element("#offcanvas-backdrop-selector").selectByValue("static")
+    wait.until(
+        # TODO: Once react-bootstrap has fixed this, need to change to
+        # offcanvas-backdrop
+        lambda: len(runner.find_elements(".modal-backdrop")) != 0,
+        timeout=4,
+    )
+
     runner.find_element("#close-offcanvas-backdrop").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) == 0,

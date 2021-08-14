@@ -9,25 +9,19 @@ offcanvas = html_div(
         ),
         dbc_offcanvas(
             [
-                dbc_offcanvasheader(title="Scrollable Offcanvas"),
-                dbc_offcanvasbody(
-                    [
-                        html_div(
-                            "The contents on the main page are now scrollable."
-                        ),
-                        dbc_button(
-                            "Close",
-                            id="close-offcanvas-scrollable",
-                            class_name="ml-auto",
-                            n_clicks=0,
-                        ),
-                    ]
+                html_div(
+                    "The contents on the main page are now scrollable."
                 ),
+                dbc_button(
+                    "Close",
+                    id="close-offcanvas-scrollable",
+                    class_name="ml-auto",
+                    n_clicks=0,
+                )
             ],
             id="offcanvas-scrollable",
-            is_open=false,
-            placement="end",
             scrollable=true,
+            title="Scrollable Offcanvas"
         ),
     ]
 )

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {default as RBOffcanvas} from 'react-bootstrap/Offcanvas';
 
 /**
- * Create a toggleable hidden sidebar using the Modal component.
+ * Create a toggleable hidden sidebar using the Offcanvas component.
  * Toggle the visibility with the `is_open` prop.
  */
 const Offcanvas = props => {
@@ -12,9 +12,13 @@ const Offcanvas = props => {
     setProps,
     children,
     class_name,
+    backdrop,
     backdrop_class_name,
     labelledby,
     scrollable,
+    autofocus,
+    close_button,
+    title,
     ...otherProps
   } = props;
 
@@ -24,20 +28,15 @@ const Offcanvas = props => {
     }
   };
 
-  // Left out:
-  // - container
-  // - autoFocus
-  // - enforceFocus
-  // - onEnter
-  // - onEntered
-  // - onEntering
-  // - onEscapeKeyDown
-  // - onExit
-  // - onExited
-  // - onExiting
-  // - onShow
-  // - restoreFocus
-  // - restoreFocusOptions
+  const header =
+    title || close_button ? (
+      <RBOffcanvas.Header
+        closeButton={close_button}
+        onHide={backdrop === 'static' && close_button ? onHide : null}
+      >
+        <RBOffcanvas.Title>{title}</RBOffcanvas.Title>
+      </RBOffcanvas.Header>
+    ) : null;
 
   return (
     <RBOffcanvas
@@ -45,13 +44,21 @@ const Offcanvas = props => {
       className={class_name}
       backdropClassName={backdrop_class_name}
       scroll={scrollable}
+      autoFocus={autofocus}
       show={is_open}
-      onHide={onHide}
+      onHide={backdrop !== 'static' ? onHide : null}
+      backdrop={backdrop || backdrop === 'static'}
       {...otherProps}
     >
-      {children}
+      {header}
+      <RBOffcanvas.Body>{children}</RBOffcanvas.Body>
     </RBOffcanvas>
   );
+};
+
+Offcanvas.defaultProps = {
+  close_button: true,
+  is_open: false
 };
 
 Offcanvas.propTypes = {
@@ -83,9 +90,10 @@ Offcanvas.propTypes = {
   labelledby: PropTypes.string,
 
   /**
-   * Includes a modal-backdrop element.
+   * Includes an offcanvas-backdrop element. Alternatively, specify 'static' for a
+   * backdrop which doesn't close the modal on click.
    */
-  backdrop: PropTypes.bool,
+  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['static'])]),
 
   /**
    * CSS class to apply to the backdrop.
@@ -110,7 +118,23 @@ Offcanvas.propTypes = {
   /**
    * Allow body scrolling while offcanvas is open.
    */
-  scrollable: PropTypes.bool
+  scrollable: PropTypes.bool,
+
+  /**
+   * 	Puts the focus on the offcanvas when initialized.
+   */
+  autofocus: PropTypes.bool,
+
+  /**
+   * The header title
+   */
+  title: PropTypes.string,
+
+  /**
+   * Specify whether the Component should contain a close button
+   * in the header
+   */
+  close_button: PropTypes.bool
 };
 
 export default Offcanvas;
