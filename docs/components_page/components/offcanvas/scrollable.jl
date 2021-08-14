@@ -7,7 +7,6 @@ offcanvas = html_div(
             id="open-offcanvas-scrollable",
             n_clicks=0,
         ),
-        html_div([html_p(LOREM) for _ in range(10)]), # FIXME
         dbc_offcanvas(
             [
                 dbc_offcanvasheader(title="Scrollable Offcanvas"),

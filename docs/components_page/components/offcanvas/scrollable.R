@@ -1,13 +1,6 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-LOREM <- paste(
-  readLines(
-    "https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt",
-  ),
-  collapse="\n"
-)
-
 offcanvas <- htmlDiv(
     list(
         dbcButton(
@@ -15,7 +8,6 @@ offcanvas <- htmlDiv(
             id="open-offcanvas-scrollable",
             n_clicks=0,
         ),
-        htmlDiv(list(htmlP(LOREM) for _ in range(10))),  # FIXME
         dbcOffcanvas(
             list(
                 dbcOffcanvasHeader(title="Scrollable Offcanvas"),

@@ -9,7 +9,6 @@ offcanvas = html.Div(
             id="open-offcanvas-scrollable",
             n_clicks=0,
         ),
-        html.Div([html.P(LOREM) for _ in range(10)]),
         dbc.Offcanvas(
             [
                 dbc.OffcanvasHeader(title="Scrollable Offcanvas"),
