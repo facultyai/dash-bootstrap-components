@@ -12,7 +12,7 @@ export {default as CardHeader} from './components/card/CardHeader';
 export {default as CardImg} from './components/card/CardImg';
 export {default as CardImgOverlay} from './components/card/CardImgOverlay';
 export {default as CardLink} from './components/card/CardLink';
-export {default as Carousel} from './components/Carousel'
+export {default as Carousel} from './components/Carousel';
 export {default as Checkbox} from './components/input/Checkbox';
 export {default as Checklist} from './components/input/Checklist';
 export {default as Col} from './components/layout/Col';
@@ -45,6 +45,9 @@ export {default as NavbarSimple} from './components/nav/NavbarSimple';
 export {default as NavbarToggler} from './components/nav/NavbarToggler';
 export {default as NavItem} from './components/nav/NavItem';
 export {default as NavLink} from './components/nav/NavLink';
+export {default as Offcanvas} from './components/offcanvas/Offcanvas';
+export {default as OffcanvasBody} from './components/offcanvas/OffcanvasBody';
+export {default as OffcanvasHeader} from './components/offcanvas/OffcanvasHeader';
 export {default as Popover} from './components/popover/Popover';
 export {default as PopoverBody} from './components/popover/PopoverBody';
 export {default as PopoverHeader} from './components/popover/PopoverHeader';
