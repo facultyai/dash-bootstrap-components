@@ -48,6 +48,8 @@ export {default as NavLink} from './components/nav/NavLink';
 export {default as Offcanvas} from './components/offcanvas/Offcanvas';
 export {default as OffcanvasBody} from './components/offcanvas/OffcanvasBody';
 export {default as OffcanvasHeader} from './components/offcanvas/OffcanvasHeader';
+export {default as Pagination} from './components/pagination/Pagination';
+export {default as PaginationItem} from './components/pagination/PaginationItem';
 export {default as Popover} from './components/popover/Popover';
 export {default as PopoverBody} from './components/popover/PopoverBody';
 export {default as PopoverHeader} from './components/popover/PopoverHeader';
