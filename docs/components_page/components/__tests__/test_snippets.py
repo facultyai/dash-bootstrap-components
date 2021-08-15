@@ -27,7 +27,7 @@ SKIP = ["components/table/kwargs.py", "components/tabs/active_tab.py"]
 ENVS = {
     "modal.md": {
         "LOREM": (HERE.parent / "modal" / "lorem.txt").read_text().strip()
-    }
+    },
 }
 
 R_PORT = 8051

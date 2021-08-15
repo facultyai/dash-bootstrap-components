@@ -79,6 +79,10 @@ def register_apps():
         },
         "nav": {"markdown_path": COMPONENTS / "nav.md"},
         "navbar": {"markdown_path": COMPONENTS / "navbar.md"},
+        "offcanvas": {
+            "markdown_path": COMPONENTS / "offcanvas.md",
+        },
+        "pagination": {"markdown_path": COMPONENTS / "pagination.md"},
         "popover": {"markdown_path": COMPONENTS / "popover.md"},
         "progress": {"markdown_path": COMPONENTS / "progress.md"},
         "spinner": {"markdown_path": COMPONENTS / "spinner.md"},
