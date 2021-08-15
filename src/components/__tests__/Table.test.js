@@ -52,6 +52,16 @@ describe('Table', () => {
     } = render(<Table striped />);
     expect(tableStriped).toHaveClass('table-striped');
 
+    // colorful tables
+    const {
+      container: {firstChild: tablePrimary}
+    } = render(<Table color="primary" />);
+    expect(tablePrimary).toHaveClass('table-primary');
+    const {
+      container: {firstChild: tableDanger}
+    } = render(<Table color="danger" />);
+    expect(tableDanger).toHaveClass('table-danger');
+
     // dark table
     const {
       container: {firstChild: tableDark}
