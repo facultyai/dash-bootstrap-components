@@ -1,25 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ListGroup as RSListGroup} from 'reactstrap';
+import {default as RBListGroup} from 'react-bootstrap/ListGroup';
 
 /**
  * Bootstrap list groups are a flexible way to display a series of content. Use
  * in conjunction with `ListGroupItem`, `ListGroupItemHeading` and
  * `ListGroupItemText`.
  */
-const ListGroup = (props) => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+const ListGroup = props => {
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    flush,
+    tag,
+    ...otherProps
+  } = props;
   return (
-    <RSListGroup
+    <RBListGroup
       className={class_name || className}
+      variant={flush ? 'flush' : null}
+      as={tag}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSListGroup>
+    </RBListGroup>
   );
 };
 
@@ -87,7 +97,7 @@ ListGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
+    component_name: PropTypes.string
   }),
 
   /**
@@ -97,7 +107,7 @@ ListGroup.propTypes = {
    * Note that horizontal ListGroups cannot be combined with flush ListGroups,
    * so if flush is True then horizontal has no effect.
    */
-  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default ListGroup;
