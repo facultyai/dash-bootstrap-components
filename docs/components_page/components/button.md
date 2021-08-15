@@ -29,7 +29,8 @@ Modify the size of the button by setting `size` to either `"sm"` or `"lg"` for a
 
 ## Block button
 
-Create a block level button (one which spans the full width of the parent) by seeing `block=True`.
+Create a Bootstrap 4 style block level button (one which spans the full width
+of the parent) by using Bootstrap's grid spacing utilities.
 
 {{example:components/button/block.py:button}}
 
