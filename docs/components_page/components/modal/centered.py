@@ -13,7 +13,7 @@ modal = html.Div(
                     dbc.Button(
                         "Close",
                         id="close-centered",
-                        class_name="ml-auto",
+                        class_name="ms-auto",
                         n_clicks=0,
                     )
                 ),

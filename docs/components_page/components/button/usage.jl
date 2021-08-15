@@ -1,7 +1,7 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 button = html_div([
-    dbc_button("Click me", id="example-button", class_name="mr-2", n_clicks=0),
+    dbc_button("Click me", id="example-button", class_name="me-2", n_clicks=0),
     html_span(id="example-output", style=Dict("verticalAlign" => "middle")),
 ]);
 

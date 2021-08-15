@@ -7,7 +7,7 @@ tabs = html_div([
     ]),
     html_br(),
     dbc_tabs([
-        dbc_tab(label="Tab 1", tab_class_name="ml-auto"),
+        dbc_tab(label="Tab 1", tab_class_name="ms-auto"),
         dbc_tab(label="Tab 2", label_class_name="text-success"),
     ]),
 ]);

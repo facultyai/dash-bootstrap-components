@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 modal = html.Div(
     [
         dbc.Button(
-            "Scrolling modal", id="open-scroll", class_name="mr-1", n_clicks=0
+            "Scrolling modal", id="open-scroll", class_name="me-1", n_clicks=0
         ),
         dbc.Button(
             "Modal with scrollable body", id="open-body-scroll", n_clicks=0
@@ -18,7 +18,7 @@ modal = html.Div(
                     dbc.Button(
                         "Close",
                         id="close-scroll",
-                        class_name="ml-auto",
+                        class_name="ms-auto",
                         n_clicks=0,
                     )
                 ),
@@ -34,7 +34,7 @@ modal = html.Div(
                     dbc.Button(
                         "Close",
                         id="close-body-scroll",
-                        class_name="ml-auto",
+                        class_name="ms-auto",
                         n_clicks=0,
                     )
                 ),
