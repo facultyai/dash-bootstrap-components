@@ -6,6 +6,12 @@ import Offcanvas from '../Offcanvas';
 jest.useFakeTimers();
 
 describe('Offcanvas', () => {
+  let div;
+  beforeAll(() => {
+    div = document.createElement('div');
+    div.setAttribute('id', 'test-target');
+  });
+
   test('renders a div with class "offcanvas"', () => {
     render(<Offcanvas is_open />);
 
@@ -76,19 +82,13 @@ describe('Offcanvas', () => {
   test('applies additional CSS classes with props', () => {
     // placement offcanvas
     const placements = ['end', 'top', 'bottom', 'start'];
+    let offcanvas = null;
     for (let i = 0; i < placements.length; i++) {
-      rerender(<Offcanvas is_open placement={placements[i]} />);
-      expect(document.body.querySelector('.offcanvas-dialog')).toHaveClass(
-        `offcanvas-${placements[i]}`
-      );
+      offcanvas = render(<Offcanvas is_open placement={placements[i]} />);
+      expect(
+        document.body.querySelector(`.offcanvas-${placements[i]}`)
+      ).not.toBe(null);
     }
-
-    // scrollable content
-    const {rerender} = render(<Offcanvas is_open />);
-    // Check body style="overflow: hidden;" when scrollable=false (default)
-    expect(document.body.querySelector('.body')).toHaveStyle({
-      overflow: 'hidden'
-    });
   });
 
   describe('backdrop', () => {
@@ -100,7 +100,7 @@ describe('Offcanvas', () => {
       const backdrop = document.body.querySelector('.modal-backdrop');
       expect(backdrop).not.toBe(null);
 
-      userEvent.click(document.body.querySelector('.offcanvas'));
+      userEvent.click(document.body.querySelector('.modal-backdrop'));
 
       rerender(<Offcanvas {...mockSetProps.mock.calls[0][0]} />);
       jest.runAllTimers();
@@ -123,10 +123,7 @@ describe('Offcanvas', () => {
       const backdrop = document.body.querySelector('.modal-backdrop');
       expect(backdrop).not.toBe(null);
 
-      // TODO: Check this - should the click not be on the backdrop?
-      // Left the same as Modal test for now
-      userEvent.click(document.body.querySelector('.offcanvas'));
-
+      userEvent.click(backdrop);
       expect(mockSetProps.mock.calls).toHaveLength(0);
 
       expect(document.body.querySelector('.offcanvas')).not.toBe(null);

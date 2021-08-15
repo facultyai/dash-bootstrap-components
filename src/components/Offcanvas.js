@@ -58,7 +58,8 @@ const Offcanvas = props => {
 
 Offcanvas.defaultProps = {
   close_button: true,
-  is_open: false
+  is_open: false,
+  backdrop: true
 };
 
 Offcanvas.propTypes = {
