@@ -3,6 +3,7 @@ import dash_html_components as html
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 
+# TODO: delete once Dash 2.0 is released
 def class_name_shim(fn):
     def new_init(self, *args, **kwargs):
         kwargs["className"] = kwargs.get("class_name", kwargs.get("className"))
@@ -21,6 +22,8 @@ for component in [
     html.Blockquote,
     html.Div,
     html.H1,
+    html.H2,
+    html.H3,
     html.H4,
     html.H5,
     html.H6,
