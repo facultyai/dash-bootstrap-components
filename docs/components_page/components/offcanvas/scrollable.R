@@ -36,7 +36,7 @@ app$callback(
         state("offcanvas-scrollable", "is_open")
     ),
     function(n1, n2, is_open) {
-        if (n1 | n2) {
+        if (n1 > 0 | n2 > 0) {
             return(!is_open)
         }
         return(is_open)

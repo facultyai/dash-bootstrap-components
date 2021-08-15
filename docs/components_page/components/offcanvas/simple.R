@@ -26,7 +26,7 @@ app$callback(
         state("offcanvas", "is_open")
     ),
     function(n1, is_open) {
-    if (n1) {
+    if (n1 > 0) {
         return(!is_open)
     }
     return(is_open)
