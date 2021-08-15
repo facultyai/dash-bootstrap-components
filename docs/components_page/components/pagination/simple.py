@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 
 pagination = html.Div(
     [
-        html.Div("Select a page", id="contents"),
+        html.Div("Select a page", id="pagination-contents"),
         dbc.Pagination(
             id="pagination",
             max_value=10,
@@ -25,7 +25,8 @@ pagination = html.Div(
 
 
 @app.callback(
-    Output("contents", "children"), [Input("pagination", "active_page")]
+    Output("pagination-contents", "children"),
+    [Input("pagination", "active_page")],
 )
 def change_page(page):
     if page:
