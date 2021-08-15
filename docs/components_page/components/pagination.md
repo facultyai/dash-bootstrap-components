@@ -3,9 +3,9 @@ title: Pagination
 lead: Use the pagination component to create a pagination UI.
 ---
 
-Pagination components are built up using an outer `Pagination` component, with nested `PaginationItems`. The behaviour of each button can be assigned to callbacks, or provided with a specific link using the `href` attribute of the `PaginationItems`. In addition, the items can be made `active` or `disabled` where required.
+`Pagination` components allow you to quickly create an easy-to-use pagination display. The `active_page` prop allows you to dynamically change which page is active, as well as be used in callbacks to identify when a user has clicked one of the buttons.
 
-It's important to note that this is merely a way of producing a nice pagination UI, rather than create a fully functioning pagination component.
+The number of values displayed is controlled using the `max_value` property, and this must be defined. See below for details about changing the `min_value` and `step`.
 
 {{example:components/pagination/simple.py:pagination}}
 
@@ -15,12 +15,16 @@ Set the size of the pagination items using the `size` prop. The options are `"sm
 
 {{example:components/pagination/size.py:pagination}}
 
-## Predefined pagination items
+## First, Previous, Next and Last icons
 
-There are some pre-defined pagination items including `first`, `previous`, `next`, `last` and `ellipsis` which can be used to render standard items. They can be selected using the `predefined_types` attribute and will overwrite the `item_title` attribute. The behaviour of these needs to be controlled in the same way as when `item_title` is specified.
+You can choose to include the First and Last icons to navigate to the first and last page respectively, by making use of the `first_last` property. Previous and Next icons can be added with the `previous_next` property.
 
-{{example:components/pagination/predefined.py:pagination}}
+{{example:components/pagination/navigation.py:pagination}}
+
+## Collapse
+
+If there are too many numbers, the pagination object can become unwieldy. Instead, set `fully_expanded=False` to replace some of the numbers with ellipsis. If the `max_value` is too small for this to make a difference, a standard pagination component showing all numbers is rendered instead, even when `fully_expanded=False`.
+
+{{example:components/pagination/collapse.py:pagination}}
 
 {{apidoc:src/components/pagination/Pagination.js}}
-
-{{apidoc:src/components/pagination/PaginationItem.js}}

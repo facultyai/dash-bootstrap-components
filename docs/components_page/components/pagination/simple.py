@@ -1,57 +1,40 @@
-import dash
 import dash_bootstrap_components as dbc
+import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output, State
-
-NUMBER_BUTTONS = 5
-
-
-def make_item(i):
-    # we use this function to make the example items to avoid code duplication
-    return dbc.PaginationItem(id=f"pagination-simple-{i}", item_title=f"{i}")
+from dash.dependencies import Input, Output
 
 
 pagination = html.Div(
     [
-        html.Div("Choose a page", id="pagination-simple-content"),
-        dbc.Pagination([make_item(i + 1) for i in range(NUMBER_BUTTONS)]),
+        html.Div("Select a page", id="contents"),
+        dbc.Pagination(
+            id="pagination",
+            max_value=10,
+        ),
+        html.Div("Or set the page dynamically using the slider below"),
+        dcc.Slider(
+            id="page-change",
+            min=1,
+            max=10,
+            step=1,
+            value=1,
+            marks={i: str(i) for i in range(1, 11)},
+        ),
     ]
 )
 
 
 @app.callback(
-    [Output("pagination-simple-content", "children")]
-    + [
-        Output(f"pagination-simple-{i+1}", "active")
-        for i in range(NUMBER_BUTTONS)
-    ],
-    [
-        Input(f"pagination-simple-{i+1}", "n_clicks")
-        for i in range(NUMBER_BUTTONS)
-    ],
-    [
-        State(f"pagination-simple-{i+1}", "active")
-        for i in range(NUMBER_BUTTONS)
-    ],
+    Output("contents", "children"), [Input("pagination", "active_page")]
 )
-def toggle_pages(*args):
-    ctx = dash.callback_context
+def change_page(page):
+    if page:
+        return f"Page selected: {page}"
+    return "Select a page"
 
-    if not ctx.triggered:
-        return "Choose a page", *(False for _ in range(NUMBER_BUTTONS))
-    else:
-        button_id = ctx.triggered[0]["prop_id"].split(".")[0]
-        # button_id = "pagination-simple-1" here need to get the number
-        button_id = button_id.split("-")[-1]
 
-    n = args[:NUMBER_BUTTONS]
-    active = args[NUMBER_BUTTONS:]
-
-    for i in range(NUMBER_BUTTONS):
-        if button_id == f"{i + 1}" and n[i]:
-            return f"Page {button_id} selected", *(
-                (not active[x]) if x == i else False
-                for x in range(NUMBER_BUTTONS)
-            )
-
-    return "Unknown page", *(False for _ in range(NUMBER_BUTTONS))
+@app.callback(
+    Output("pagination", "active_page"), [Input("page-change", "value")]
+)
+def change_active_page(value):
+    return value
