@@ -13,8 +13,7 @@ search_bar <- dbcRow(
       width = "auto"
     )
   ),
-  no_gutters = TRUE,
-  class_name = "ml-auto flex-nowrap mt-3 mt-md-0",
+  class_name = "ml-auto flex-nowrap mt-3 mt-md-0 g-0",
   align = "center",
 )
 

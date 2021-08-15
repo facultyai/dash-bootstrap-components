@@ -19,7 +19,7 @@ Create a horizontal form by setting `row=True` on the `FormGroup` component. Be 
 
 ## Using grid layout with forms
 
-You can also use the grid components `Row` and `Col` to build more complex layouts. You can set `form=True` in the `Row` component to reduce the size of the column gutters for tighter, more compact layouts.
+You can also use the grid components `Row` and `Col` to build more complex layouts. You can use Bootstrap's [gutter modifier classes](https://getbootstrap.com/docs/5.1/layout/gutters/) to adjust the spacing between the form comonents.
 
 {{example:components/form/grid.py:form}}
 

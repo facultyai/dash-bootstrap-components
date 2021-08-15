@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Col as RSCol} from 'reactstrap';
+import {default as RBCol} from 'react-bootstrap/Col';
 import classNames from 'classnames';
 
 const alignMap = {
@@ -9,7 +9,7 @@ const alignMap = {
   center: 'align-self-center',
   end: 'align-self-end',
   stretch: 'align-self-stretch',
-  baseline: 'align-self-baseline',
+  baseline: 'align-self-baseline'
 };
 
 /**
@@ -19,11 +19,16 @@ const alignMap = {
  * (xs, sm, md, lg, xl) to control the width of the columns on different screen
  * sizes to achieve a responsive layout.
  */
-const Col = (props) => {
+const Col = props => {
   const {
     children,
-    xs,
     width,
+    xs,
+    sm,
+    md,
+    lg,
+    xl,
+    xxl,
     align,
     className,
     class_name,
@@ -31,12 +36,23 @@ const Col = (props) => {
     ...otherProps
   } = props;
 
+  [width, xs, sm, md, lg, xl, xxl].forEach(breakpoint => {
+    if (typeof breakpoint === 'object' && breakpoint !== null) {
+      breakpoint.span = breakpoint.size;
+    }
+  });
+
   const alignClass = align && alignMap[align];
   const classes = classNames(class_name || className, alignClass);
 
   return (
-    <RSCol
+    <RBCol
       xs={xs || width}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
+      xxl={xxl}
       className={classes}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -44,13 +60,13 @@ const Col = (props) => {
       }
     >
       {children}
-    </RSCol>
+    </RBCol>
   );
 };
 
 const stringOrNumberProp = PropTypes.oneOfType([
   PropTypes.number,
-  PropTypes.string,
+  PropTypes.string
 ]);
 const columnProps = PropTypes.oneOfType([
   PropTypes.string,
@@ -60,15 +76,15 @@ const columnProps = PropTypes.oneOfType([
     size: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.number,
-      PropTypes.string,
+      PropTypes.string
     ]),
     // example size values:
     // 12 || "12" => col-12 or col-`width`-12
     // auto => col-auto or col-`width`-auto
     // true => col or col-`width`
     order: stringOrNumberProp,
-    offset: stringOrNumberProp,
-  }),
+    offset: stringOrNumberProp
+  })
 ]);
 
 Col.propTypes = {
@@ -164,6 +180,15 @@ Col.propTypes = {
   xl: columnProps,
 
   /**
+   * Specify column behaviour on an extra extra large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  xl: columnProps,
+
+  /**
    * Set vertical alignment of this column's content in the parent row. Options
    * are 'start', 'center', 'end', 'stretch', 'baseline'.
    */
@@ -184,8 +209,8 @@ Col.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Col;

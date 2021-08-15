@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Row as RSRow} from 'reactstrap';
+import {default as RBRow} from 'react-bootstrap/Row';
 import classNames from 'classnames';
 
 const alignMap = {
@@ -9,7 +9,7 @@ const alignMap = {
   center: 'align-items-center',
   end: 'align-items-end',
   stretch: 'align-items-stretch',
-  baseline: 'align-items-baseline',
+  baseline: 'align-items-baseline'
 };
 
 const justifyMap = {
@@ -17,7 +17,7 @@ const justifyMap = {
   center: 'justify-content-center',
   end: 'justify-content-end',
   around: 'justify-content-around',
-  between: 'justify-content-between',
+  between: 'justify-content-between'
 };
 
 /**
@@ -26,14 +26,13 @@ const justifyMap = {
  * vertical and horizontal alignment of its children, as well as the spacing
  * between columns.
  */
-const Row = (props) => {
+const Row = props => {
   const {
     children,
     className,
     class_name,
     align,
     justify,
-    no_gutters,
     loading_state,
     ...otherProps
   } = props;
@@ -43,16 +42,15 @@ const Row = (props) => {
 
   const classes = classNames(class_name || className, alignClass, justifyClass);
   return (
-    <RSRow
+    <RBRow
       className={classes}
-      noGutters={no_gutters}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSRow>
+    </RBRow>
   );
 };
 
@@ -94,12 +92,6 @@ Row.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Remove the "gutters" between columns in this row.
-   * see https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
-   */
-  no_gutters: PropTypes.bool,
-
-  /**
    * Set vertical alignment of columns in this row. Options are 'start',
    * 'center', 'end', 'stretch' and 'baseline'.
    */
@@ -110,12 +102,6 @@ Row.propTypes = {
    * 'start', 'center', 'end', 'around' and 'between'.
    */
   justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between']),
-
-  /**
-   * For use in forms. When set to True the `form-row` class is applied, which
-   * overrides the default column gutters for a tighter, more compact layout.
-   */
-  form: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
@@ -132,8 +118,8 @@ Row.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Row;

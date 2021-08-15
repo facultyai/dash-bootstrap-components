@@ -10,8 +10,7 @@ search_bar = dbc_row(
             width="auto",
         ),
     ],
-    no_gutters=true,
-    class_name="ms-auto flex-nowrap mt-3 mt-md-0",
+    class_name="ms-auto flex-nowrap mt-3 mt-md-0 g-0",
     align="center",
 );
 
@@ -25,7 +24,7 @@ navbar = dbc_navbar(
                     dbc_col(dbc_navbarbrand("Navbar", class_name="ms-2")),
                 ],
                 align="center",
-                no_gutters=true,
+                class_name="g-0",
             ),
             href="https://plotly.com",
         ),
