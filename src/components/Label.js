@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Label as RSLabel} from 'reactstrap';
+import Form from 'react-bootstrap/Form';
 import classNames from 'classnames';
 import {bootstrapTextColors} from '../private/BootstrapColors';
 
@@ -11,7 +11,7 @@ const alignMap = {
   end: 'align-self-end'
 };
 
-const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl'];
+const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 /**
  * A component for adding labels to inputs in forms with added sizing controls.
@@ -21,8 +21,14 @@ const Label = props => {
     children,
     html_for,
     width,
-    align,
     xs,
+    sm,
+    md,
+    lg,
+    xl,
+    xxl,
+    align,
+    size,
     className,
     class_name,
     color,
@@ -34,9 +40,13 @@ const Label = props => {
   const isBootstrapColor = bootstrapTextColors.has(color);
 
   // check if column width has been specified, use alignment attribute if so
-  const cols = colWidths.filter(
-    colWidth => props[colWidth] || props[colWidth] === ''
-  );
+  const cols = colWidths.filter(colWidth => props[colWidth]);
+
+  [width, xs, sm, md, lg, xl, xxl].forEach(breakpoint => {
+    if (typeof breakpoint === 'object' && breakpoint !== null) {
+      breakpoint.span = breakpoint.size;
+    }
+  });
 
   const alignClass = align && alignMap[align];
   const classes = classNames(
@@ -46,9 +56,15 @@ const Label = props => {
   );
 
   return (
-    <RSLabel
-      for={html_for}
+    <Form.Label
+      htmlFor={html_for}
+      column={size || cols.length > 0}
       xs={xs || width}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
+      xxl={xxl}
       className={classes}
       style={!isBootstrapColor ? {color: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
@@ -57,7 +73,7 @@ const Label = props => {
       }
     >
       {children}
-    </RSLabel>
+    </Form.Label>
   );
 };
 
