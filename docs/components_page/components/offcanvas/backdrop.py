@@ -2,6 +2,22 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
+backdrop_selector = dbc.FormGroup(
+    [
+        dbc.RadioItems(
+            id="offcanvas-backdrop-selector",
+            options=[
+                {"label": "True (default)", "value": True},
+                {"label": "False", "value": False},
+                {"label": "Static (no dismiss)", "value": "static"},
+            ],
+            inline=True,
+            value=True,
+        ),
+    ],
+    class_name="p-3 m-2 border",
+)
+
 offcanvas = html.Div(
     [
         dbc.Button(
@@ -13,27 +29,7 @@ offcanvas = html.Div(
                     "Change the backdrop of this offcanvas with the "
                     "radio buttons"
                 ),
-                dbc.FormGroup(
-                    [
-                        dbc.RadioItems(
-                            id="offcanvas-backdrop-selector",
-                            options=[
-                                {
-                                    "label": "True (default)",
-                                    "value": True,
-                                },
-                                {"label": "False", "value": False},
-                                {
-                                    "label": "Static (no dismiss)",
-                                    "value": "static",
-                                },
-                            ],
-                            inline=True,
-                            value=True,
-                        ),
-                    ],
-                    class_name="p-3 m-2 border",
-                ),
+                backdrop_selector,
                 dbc.Button(
                     "Close",
                     id="close-offcanvas-backdrop",

@@ -6,10 +6,7 @@ from dash.dependencies import Input, Output
 pagination = html.Div(
     [
         html.Div("Select a page", id="pagination-contents"),
-        dbc.Pagination(
-            id="pagination",
-            max_value=10,
-        ),
+        dbc.Pagination(id="pagination", max_value=10),
         html.Div("Or set the page dynamically using the slider below"),
         dcc.Slider(
             id="page-change",

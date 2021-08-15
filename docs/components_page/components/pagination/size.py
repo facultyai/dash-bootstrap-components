@@ -4,18 +4,10 @@ import dash_html_components as html
 pagination = html.Div(
     [
         html.Div("Small"),
-        dbc.Pagination(
-            max_value=5,
-            size="sm",
-        ),
+        dbc.Pagination(max_value=5, size="sm"),
         html.Div("Default"),
-        dbc.Pagination(
-            max_value=5,
-        ),
+        dbc.Pagination(max_value=5),
         html.Div("Large"),
-        dbc.Pagination(
-            max_value=5,
-            size="lg",
-        ),
+        dbc.Pagination(max_value=5, size="lg"),
     ]
 )

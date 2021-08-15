@@ -2,6 +2,24 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
+placement_selector = dbc.FormGroup(
+    # FIXME: Fix styling here
+    [
+        dbc.InputGroupAddon("Placement", addon_type="prepend"),
+        dbc.Select(
+            id="offcanvas-placement-selector",
+            options=[
+                {"label": "start (Default)", "value": "start"},
+                {"label": "end", "value": "end"},
+                {"label": "top", "value": "top"},
+                {"label": "bottom", "value": "bottom"},
+            ],
+            value="start",
+        ),
+    ],
+    class_name="p-3 m-2 border",
+)
+
 offcanvas = html.Div(
     [
         dbc.Button(
@@ -16,29 +34,7 @@ offcanvas = html.Div(
                     "Change the placement of this offcanvas with the "
                     "options below"
                 ),
-                dbc.FormGroup(
-                    # FIXME: Fix styling here
-                    [
-                        dbc.InputGroupAddon("Placement", addon_type="prepend"),
-                        dbc.Select(
-                            id="offcanvas-placement-selector",
-                            options=[
-                                {
-                                    "label": "start (Default)",
-                                    "value": "start",
-                                },
-                                {"label": "end", "value": "end"},
-                                {
-                                    "label": "top",
-                                    "value": "top",
-                                },
-                                {"label": "bottom", "value": "bottom"},
-                            ],
-                            value="start",
-                        ),
-                    ],
-                    class_name="p-3 m-2 border",
-                ),
+                placement_selector,
             ],
             id="offcanvas-placement",
             title="Placement",
