@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Spinner as RSSpinner} from 'reactstrap';
+import {default as RBSpinner} from 'react-bootstrap/Spinner';
 import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
@@ -25,6 +25,7 @@ const Spinner = props => {
     fullscreen_style,
     debounce,
     show_initially,
+    type,
     ...otherProps
   } = props;
 
@@ -62,8 +63,9 @@ const Spinner = props => {
   };
 
   const SpinnerDiv = ({style}) => (
-    <RSSpinner
-      color={isBootstrapColor ? color : null}
+    <RBSpinner
+      variant={isBootstrapColor ? color : null}
+      animation={type}
       style={{color: !isBootstrapColor && color, ...style}}
       className={spinner_class_name || spinnerClassName}
       {...omit(['setProps'], otherProps)}
@@ -130,7 +132,8 @@ Spinner._dashprivate_isLoadingComponent = true;
 
 Spinner.defaultProps = {
   debounce: 0,
-  show_initially: true
+  show_initially: true,
+  type: 'border'
 };
 
 Spinner.propTypes = {
