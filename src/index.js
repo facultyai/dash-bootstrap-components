@@ -29,7 +29,6 @@ export {default as Input} from './components/input/Input';
 export {default as InputGroup} from './components/input/InputGroup';
 export {default as InputGroupAddon} from './components/input/InputGroupAddon';
 export {default as InputGroupText} from './components/input/InputGroupText';
-export {default as Jumbotron} from './components/Jumbotron';
 export {default as Label} from './components/Label';
 export {default as ListGroup} from './components/listgroup/ListGroup';
 export {default as ListGroupItem} from './components/listgroup/ListGroupItem';
@@ -61,4 +60,3 @@ export {default as Table} from './components/Table';
 export {default as Textarea} from './components/input/Textarea';
 export {default as Toast} from './components/Toast';
 export {default as Tooltip} from './components/Tooltip';
-
