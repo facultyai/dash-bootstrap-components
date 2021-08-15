@@ -47,16 +47,6 @@ offcanvas = html.Div(
     ]
 )
 
-import dash
-
-app = dash.Dash(
-    external_stylesheets=[
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    ]
-)
-
-app.layout = offcanvas
-
 
 @app.callback(
     Output("offcanvas-backdrop", "backdrop"),
@@ -78,7 +68,3 @@ def toggle_offcanvas(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
-
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
