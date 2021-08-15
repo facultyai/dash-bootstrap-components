@@ -59,6 +59,7 @@ def _get_label(slug):
 
 def register_apps():
     component_bodies = {
+        "accordion": {"markdown_path": COMPONENTS / "accordion.md"},
         "alert": {"markdown_path": COMPONENTS / "alert.md"},
         "badge": {"markdown_path": COMPONENTS / "badge.md"},
         "button": {"markdown_path": COMPONENTS / "button.md"},
