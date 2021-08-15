@@ -32,8 +32,7 @@ def check_offcanvas_simple_callbacks(runner):
     )
 
     # When offcanvas-header.btn-close is clicked, the offcanvas disappears
-    # TODO: Check this syntax
-    runner.find_element(".offcanvas-header.btn-close").click()
+    runner.find_element(".offcanvas-header .btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) == 0,
         timeout=4,

@@ -3,7 +3,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-
 pagination = html.Div(
     [
         html.Div("Select a page", id="pagination-contents"),

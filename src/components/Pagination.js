@@ -37,6 +37,7 @@ const Pagination = props => {
   const getPaginationItem = i => {
     return (
       <RBPagination.Item
+        key={i}
         active={i === active_page}
         onClick={() => setActivePage(i)}
       >
@@ -51,6 +52,7 @@ const Pagination = props => {
   if (first_last) {
     paginationItems.push(
       <RBPagination.First
+        key={'first'}
         disabled={active_page === min_value}
         onClick={() => setActivePage(min_value)}
       />
@@ -61,6 +63,7 @@ const Pagination = props => {
   if (previous_next) {
     paginationItems.push(
       <RBPagination.Prev
+        key={'previous'}
         disabled={active_page === min_value}
         onClick={() => setActivePage(active_page - step)}
       />
@@ -82,21 +85,29 @@ const Pagination = props => {
       paginationItems.push(getPaginationItem(min_value + step * 2));
       paginationItems.push(getPaginationItem(min_value + step * 3));
       paginationItems.push(getPaginationItem(min_value + step * 4));
-      paginationItems.push(<RBPagination.Ellipsis disabled={true} />);
+      paginationItems.push(
+        <RBPagination.Ellipsis disabled={true} key={'ellipsis'} />
+      );
     } else if (active_page >= max_value - step * 3) {
       // If in the last 2 blocks, needs to be in the pattern 1, ..., 8, 9, 10
-      paginationItems.push(<RBPagination.Ellipsis disabled={true} />);
+      paginationItems.push(
+        <RBPagination.Ellipsis disabled={true} key={'ellipsis'} />
+      );
       paginationItems.push(getPaginationItem(max_value - step * 4));
       paginationItems.push(getPaginationItem(max_value - step * 3));
       paginationItems.push(getPaginationItem(max_value - step * 2));
       paginationItems.push(getPaginationItem(max_value - step));
     } else {
       // Otherwise, needs to be in the pattern 1, ..., 5, ..., 10
-      paginationItems.push(<RBPagination.Ellipsis disabled={true} />);
+      paginationItems.push(
+        <RBPagination.Ellipsis disabled={true} key={'ellipsis-1'} />
+      );
       paginationItems.push(getPaginationItem(active_page - step));
       paginationItems.push(getPaginationItem(active_page));
       paginationItems.push(getPaginationItem(active_page + step));
-      paginationItems.push(<RBPagination.Ellipsis disabled={true} />);
+      paginationItems.push(
+        <RBPagination.Ellipsis disabled={true} key={'ellipsis-2'} />
+      );
     }
     // Add the biggest number
     paginationItems.push(getPaginationItem(max_value));
@@ -105,6 +116,7 @@ const Pagination = props => {
   if (previous_next) {
     paginationItems.push(
       <RBPagination.Next
+        key={'next'}
         disabled={active_page === max_value}
         onClick={() => setActivePage(active_page + step)}
       />
@@ -115,6 +127,7 @@ const Pagination = props => {
   if (first_last) {
     paginationItems.push(
       <RBPagination.Last
+        key={'last'}
         disabled={active_page === max_value}
         onClick={() => setActivePage(max_value)}
       />

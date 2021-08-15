@@ -23,11 +23,8 @@ describe('Offcanvas', () => {
     const {rerender} = render(<Offcanvas is_open />);
     expect(document.body.querySelector('div.offcanvas-header')).not.toBe(null);
     // Check the offcanvas-header div contains a button with class btn-close
-    // TODO: Check syntax here
     expect(
-      document.body
-        .querySelector('div.offcanvas-header')
-        .querySelector('button.btn-close')
+      document.body.querySelector('div.offcanvas-header > button.btn-close')
     ).not.toBe(null);
 
     // Check that the header title renders as expected
