@@ -1,22 +1,22 @@
-import dash_bootstrap_components as dbc
-import dash_html_components as html
+library(dashBootstrapComponents)
+library(dashHtmlComponents)
 
-accordion = html.Div(
-    dbc.Accordion(
-        [
-            dbc.AccordionItem(
+accordion <- htmlDiv(
+    dbcAccordion(
+        list(
+            dbcAccordionItem(
                 "This is the content of the first section",
                 title="Item 1",
             ),
-            dbc.AccordionItem(
+            dbcAccordionItem(
                 "This is the content of the second section",
                 title="Item 2",
             ),
-            dbc.AccordionItem(
+            dbcAccordionItem(
                 "This is the content of the third section",
                 title="Item 3",
             ),
-        ],
-        flush=True,
+        ),
+        start_collapsed=TRUE,
     ),
 )

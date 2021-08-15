@@ -1,41 +1,40 @@
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+library(dashBootstrapComponents)
+library(dashCoreComponents)
+library(dashHtmlComponents)
 
-accordion = html.Div(
-    [
-        html.Div("Select an item", id="accordion-contents"),
-        dbc.Accordion(
-            [
-                dbc.AccordionItem(
+accordion <- htmlDiv(
+    list(
+        htmlDiv("Select an item", id="accordion-contents"),
+        dbcAccordion(
+            list(
+                dbcAccordionItem(
                     "This is the content of the first section",
                     title="Item 1",
                 ),
-                dbc.AccordionItem(
+                dbcAccordionItem(
                     "This is the content of the second section",
                     title="Item 2",
                 ),
-                dbc.AccordionItem(
+                dbcAccordionItem(
                     "This is the content of the third section",
                     title="Item 3",
                 ),
-            ],
+            ),
             id="accordion",
         ),
-        html.Div(
+        htmlDiv(
             "Or set the open item dynamically using the slider below",
             class_name="py-2",
         ),
-        dcc.Slider(
+        dccSlider(
             id="item-change",
             min=0,
             max=2,
             step=1,
             value=0,
-            marks={i: str(i) for i in range(3)},
+            marks=list(0="0", 1="1", 2="2")
         ),
-    ]
+    )
 )
 
 
