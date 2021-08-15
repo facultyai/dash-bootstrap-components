@@ -15,7 +15,7 @@ describe('Progress', () => {
   test('sets progress with the "value" prop', () => {
     const {
       container: {firstChild: progress},
-      rerender,
+      rerender
     } = render(<Progress value={50} />);
 
     expect(progress.firstChild).toHaveStyle({width: '50%'});
@@ -27,21 +27,21 @@ describe('Progress', () => {
 
   test('renders its content', () => {
     const {
-      container: {firstChild: progress},
-    } = render(<Progress value={25}>25%</Progress>);
+      container: {firstChild: progress}
+    } = render(<Progress value={25} label="25%" />);
 
     expect(progress.firstChild).toHaveTextContent('25%');
   });
 
   test('applies contextual colors with "color" prop', () => {
     const {
-      container: {firstChild: progressPrimary},
+      container: {firstChild: progressPrimary}
     } = render(<Progress color="primary" />);
     const {
-      container: {firstChild: progressSuccess},
+      container: {firstChild: progressSuccess}
     } = render(<Progress color="success" />);
     const {
-      container: {firstChild: progressDark},
+      container: {firstChild: progressDark}
     } = render(<Progress color="dark" />);
 
     expect(progressPrimary.firstChild).toHaveClass('bg-primary');
@@ -49,14 +49,14 @@ describe('Progress', () => {
     expect(progressDark.firstChild).toHaveClass('bg-dark');
   });
 
-  test('bars can be nested with "bar" prop', () => {
+  test('nested bars', () => {
     const {
-      container: {firstChild: progress},
+      container: {firstChild: progress}
     } = render(
-      <Progress multi>
-        <Progress value={25} color="success" bar />
-        <Progress value={25} color="warning" bar />
-        <Progress value={25} color="danger" bar />
+      <Progress>
+        <Progress value={25} color="success" />
+        <Progress value={25} color="warning" />
+        <Progress value={25} color="danger" />
       </Progress>
     );
 
@@ -71,13 +71,13 @@ describe('Progress', () => {
   test('applies additional CSS classes when props are set', () => {
     // striped progress
     const {
-      container: {firstChild: progressStriped},
+      container: {firstChild: progressStriped}
     } = render(<Progress striped />);
 
     expect(progressStriped.firstChild).toHaveClass('progress-bar-striped');
 
     const {
-      container: {firstChild: progressAnimated},
+      container: {firstChild: progressAnimated}
     } = render(<Progress striped animated />);
 
     expect(progressAnimated.firstChild).toHaveClass('progress-bar-animated');
@@ -85,21 +85,10 @@ describe('Progress', () => {
 
   test('sets className and style on the progress container and the bar', () => {
     const {
-      container: {firstChild: progress},
-    } = render(
-      <Progress
-        style={{height: '40px'}}
-        className="outer"
-        bar_style={{color: 'chartreuse'}}
-        barClassName="inner"
-      />
-    );
+      container: {firstChild: progress}
+    } = render(<Progress style={{height: '40px'}} className="outer" />);
 
     expect(progress).toHaveClass('outer');
     expect(progress).toHaveStyle('height:40px');
-
-    expect(progress.firstChild).toHaveClass('progress-bar');
-    expect(progress.firstChild).toHaveClass('inner');
-    expect(progress.firstChild).toHaveStyle('color:chartreuse');
   });
 });
