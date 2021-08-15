@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {default as RBPagination} from 'react-bootstrap/Pagination';
 
@@ -77,7 +77,7 @@ const Pagination = props => {
     // If it's not fully expanded, need to create the right blocks
     paginationItems.push(getPaginationItem(min_value));
     if (active_page <= min_value + step * 3) {
-      // If in the first 2 blocks, needs to be in the pattern 1, 2, 3, ..., 10
+      // If in the first 4 blocks, needs to be in the pattern 1, 2, 3, 4, 5, ..., 10
       paginationItems.push(getPaginationItem(min_value + step));
       paginationItems.push(getPaginationItem(min_value + step * 2));
       paginationItems.push(getPaginationItem(min_value + step * 3));

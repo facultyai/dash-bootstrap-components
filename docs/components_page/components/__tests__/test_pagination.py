@@ -26,25 +26,42 @@ def test_jl_pagination_simple(dashjl):
 
 def check_pagination_simple_callbacks(runner):
 
-    for i in range(1, 6):
-        runner.find_element(f"#pagination-simple-{i}").click()
-        wait.until(
-            # The selected item is active
-            lambda: runner.find_element(
-                f"#pagination-simple-{i}"
-            ).get_attribute("active")
-            # The non-selected items are not active
-            and (
-                all(
-                    not runner.find_element(
-                        f"#pagination-simple-{j}"
-                    ).get_attribute("active")
-                    for j in range(1, 6)
-                    if j != i
-                )
-            )
-            # The text is updated
-            and runner.find_element("#pagination-simple-content").text
-            == f"Page {i} selected",
-            timeout=4,
-        )
+    # Find the pagination object
+    pagination_comp = runner.find_element("#pagination")
+    pagination_text = runner.find_element("#pagination-contents")
+
+    # Check it has 10 page-items objects in it
+    pages = pagination_comp.find_elements(".page-item")
+    wait.until(
+        lambda: len(pages) == 10,
+        timeout=4,
+    )
+
+    # Click the link with text 7
+    wait.until(
+        lambda: pages[6].text == "7",
+        timeout=4,
+    )
+    pages[6].click()
+
+    # Check the text in contents changes to "Page selected: 7"
+    wait.until(
+        lambda: pagination_text.text == "Page selected: 7",
+        timeout=4,
+    )
+
+    # Change the slider to value 5
+    runner.click_at_coord_fractions(
+        runner.find_element("#page-change"), 0.5, 0.25
+    )
+
+    # Check the text in contents changes to "Page selected: 5"
+    wait.until(
+        lambda: pagination_text.text == "Page selected: 5",
+        timeout=4,
+    )
+
+    # Check that the <li> object inside pagination with number = 5
+    # has active as a class
+    pages = pagination_comp.find_element(".active")
+    wait.until(lambda: pages[4].text == "5")
