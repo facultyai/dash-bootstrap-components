@@ -29,7 +29,7 @@ Pass one of Bootstrap's contextual colors to the `color` argument of `ListGroupI
 
 ## Custom content
 
-You can pass any Dash components to the children of `ListGroupItem`. The components `ListGroupItemHeading` and `ListGroupItemText` automatically apply the relevant CSS classes for styling text content in list groups.
+You can pass any Dash components to the children of `ListGroupItem`.
 
 {{example:components/list_group/content.py:list_group}}
 
@@ -44,7 +44,3 @@ In the below example, the first list group is always horizontal, the second is h
 {{apidoc:src/components/listgroup/ListGroup.js}}
 
 {{apidoc:src/components/listgroup/ListGroupItem.js}}
-
-{{apidoc:src/components/listgroup/ListGroupItemHeading.js}}
-
-{{apidoc:src/components/listgroup/ListGroupItemText.js}}
