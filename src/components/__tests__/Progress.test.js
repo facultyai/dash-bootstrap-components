@@ -54,9 +54,9 @@ describe('Progress', () => {
       container: {firstChild: progress}
     } = render(
       <Progress>
-        <Progress value={25} color="success" />
-        <Progress value={25} color="warning" />
-        <Progress value={25} color="danger" />
+        <Progress value={25} color="success" bar />
+        <Progress value={25} color="warning" bar />
+        <Progress value={25} color="danger" bar />
       </Progress>
     );
 

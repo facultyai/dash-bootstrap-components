@@ -10,13 +10,12 @@ import {default as RBFade} from 'react-bootstrap/Fade';
 const Fade = props => {
   const {
     children,
-    base_class,
-    base_class_active,
     is_in,
     loading_state,
     style,
     className,
     class_name,
+    tag,
     ...otherProps
   } = props;
 
@@ -30,6 +29,7 @@ const Fade = props => {
       onEnter={() => setHidden(false)}
       onExited={() => setHidden(true)}
       className={class_name || className}
+      as={tag}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

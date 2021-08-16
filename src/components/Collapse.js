@@ -15,11 +15,13 @@ const Collapse = props => {
     loading_state,
     className,
     class_name,
+    tag,
     ...otherProps
   } = props;
   return (
     <RBCollapse
       in={is_open}
+      as={tag}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
