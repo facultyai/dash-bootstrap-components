@@ -10,14 +10,14 @@ input_ = html.Div(
             [
                 dbc.Label("Valid text input"),
                 dbc.Input(type="text", valid=True),
-                dbc.FormFeedback("That's a valid input!", valid=True),
+                dbc.FormFeedback("That's a valid input!", type="valid"),
             ]
         ),
         dbc.FormGroup(
             [
                 dbc.Label("Invalid text input"),
                 dbc.Input(type="text", invalid=True),
-                dbc.FormFeedback("That's an invalid input..."),
+                dbc.FormFeedback("That's an invalid input...", type="invalid"),
             ]
         ),
     ]

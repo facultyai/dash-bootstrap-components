@@ -11,6 +11,12 @@ The `FormGroup` is the easiest way to add structure to forms. It encourages prop
 
 {{example:components/form/simple.py:form}}
 
+
+## Floating labels
+
+Wrap an `Input` with `FloatingLabel` to create a label that floats over the form field.
+
+{{example:components/form/floating.py:form}}
 ## Horizontal form
 
 Create a horizontal form by setting `row=True` on the `FormGroup` component. Be sure to specify `width` on the `Label` component, and wrap your inputs in `Col` components.
@@ -35,7 +41,7 @@ Use the `valid` and `invalid` properties of `Input`, alongside the `FormFeedback
 
 The `Input` component has two properties, `valid` and `invalid`, that can be set in callbacks. They can be used to indicate whether the input value is valid or invalid. When `valid=True`, the `Input` will be styled with a green colored border, similarly when `invalid=True` the input will be styled with a red colored border.
 
-The `FormFeedback` component should be added to the `FormGroup` containing the `Input` it is associated with. Use the `valid` property to indicate whether the feedback should display for valid or invalid inputs. The feedback automatically display when the validity of the `Input` in the `FormGroup` matches that of the `FormFeedback`. This is perhaps easiest to see with an example such as the below.
+The `FormFeedback` component should be added to the `FormGroup` containing the `Input` it is associated with. Use the `type` property to indicate whether the feedback should display for valid or invalid inputs, it accepts the strings `"valid"` or `"invalid"`. The feedback automatically display when the validity of the `Input` in the `FormGroup` matches that of the `FormFeedback`. This is perhaps easiest to see with an example such as the below.
 
 {{example:components/form/feedback.py:email_input}}
 

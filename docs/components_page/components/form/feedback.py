@@ -10,11 +10,11 @@ email_input = html.Div(
                 dbc.Input(id="email-input", type="email", value=""),
                 dbc.FormText("We only accept gmail..."),
                 dbc.FormFeedback(
-                    "That looks like a gmail address :-)", valid=True
+                    "That looks like a gmail address :-)", type="valid"
                 ),
                 dbc.FormFeedback(
                     "Sorry, we only accept gmail for some reason...",
-                    valid=False,
+                    type="invalid",
                 ),
             ]
         )

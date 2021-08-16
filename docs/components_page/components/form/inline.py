@@ -18,5 +18,4 @@ form = dbc.Form(
         ),
         dbc.Button("Submit", color="primary"),
     ],
-    inline=True,
 )

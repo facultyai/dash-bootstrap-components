@@ -15,7 +15,6 @@ standalone_radio_check = html.Div(
                     class_name="form-check-label",
                 ),
             ],
-            check=True,
         ),
         dbc.FormGroup(
             [
@@ -28,7 +27,6 @@ standalone_radio_check = html.Div(
                     class_name="form-check-label",
                 ),
             ],
-            check=True,
         ),
         html.Br(),
         html.P(id="standalone-radio-check-output"),

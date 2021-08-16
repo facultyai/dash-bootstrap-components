@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Form as RSForm} from 'reactstrap';
+import {default as RBForm} from 'react-bootstrap/Form';
 
 /**
  * The Form component can be used to organise collections of input components
@@ -19,7 +19,7 @@ const Form = (props) => {
     ...otherProps
   } = props;
   return (
-    <RSForm
+    <RBForm
       onSubmit={(e) => {
         if (prevent_default_on_submit) {
           e.preventDefault();
@@ -38,7 +38,7 @@ const Form = (props) => {
       }
     >
       {children}
-    </RSForm>
+    </RBForm>
   );
 };
 
@@ -95,13 +95,6 @@ Form.propTypes = {
    * (default) or POST.
    */
   method: PropTypes.oneOf(['GET', 'POST']),
-
-  /**
-   * Use inline=True to apply the `form-inline` class, allowing you to display
-   * a series of labels, form controls, and buttons on a single horizontal row.
-   * Form controls within inline forms vary slightly from their default states.
-   */
-  inline: PropTypes.bool,
 
   /**
    * Number of times the `Enter` key was pressed while the input had focus.

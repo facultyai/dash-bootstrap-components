@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBFormGroup} from 'react-bootstrap/FormGroup';
+import {default as RBFloatingLabel} from 'react-bootstrap/FloatingLabel';
 
 /**
- * A component for grouping together inputs, labels, text and feedback.
+ * A component for adding float labels to form controls in forms.
  */
-const FormGroup = (props) => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+const FloatingLabel = props => {
+  const {
+    children,
+    html_for,
+    className,
+    class_name,
+    loading_state,
+    ...otherProps
+  } = props;
+
+  // TODO: check this component
   return (
-    <RBFormGroup
+    <RBFloatingLabel
+      htmlFor={html_for}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -17,11 +27,11 @@ const FormGroup = (props) => {
       }
     >
       {children}
-    </RBFormGroup>
+    </RBFloatingLabel>
   );
 };
 
-FormGroup.propTypes = {
+FloatingLabel.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -45,6 +55,11 @@ FormGroup.propTypes = {
   class_name: PropTypes.string,
 
   /**
+   * The text of the label.
+   */
+  label: PropTypes.string,
+
+  /**
    * **DEPRECATED** Use `class_name` instead.
    *
    * Often used with CSS to style elements with common properties.
@@ -57,6 +72,11 @@ FormGroup.propTypes = {
    * See https://reactjs.org/docs/lists-and-keys.html for more info
    */
   key: PropTypes.string,
+
+  /**
+   * Set the `for` attribute of the label to bind it to a particular element
+   */
+  html_for: PropTypes.string,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
@@ -73,8 +93,8 @@ FormGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
-export default FormGroup;
+export default FloatingLabel;

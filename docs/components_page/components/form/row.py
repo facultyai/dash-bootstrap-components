@@ -10,7 +10,7 @@ email_input = dbc.FormGroup(
             width=10,
         ),
     ],
-    row=True,
+    class_name="row",
 )
 
 password_input = dbc.FormGroup(
@@ -25,7 +25,7 @@ password_input = dbc.FormGroup(
             width=10,
         ),
     ],
-    row=True,
+    class_name="row",
 )
 
 radios_input = dbc.FormGroup(
@@ -47,7 +47,7 @@ radios_input = dbc.FormGroup(
             width=10,
         ),
     ],
-    row=True,
+    class_name="row",
 )
 
 form = dbc.Form([email_input, password_input, radios_input])
