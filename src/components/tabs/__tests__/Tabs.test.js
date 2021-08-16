@@ -7,6 +7,7 @@ import Tabs from '../Tabs';
 describe('Tabs', () => {
   test('renders a ul with classes and nav, nav-tabs', () => {
     const {container} = render(<Tabs />);
+    console.log(container.outerHTML);
     expect(container.querySelector('ul.nav.nav-tabs')).not.toBe(null);
   });
 
@@ -47,12 +48,7 @@ describe('Tabs', () => {
     expect(nav.children[1].firstChild).toHaveClass('active');
   });
 
-  test('adds "card-header-tabs" class with "card" prop', () => {
-    const {container} = render(<Tabs card />);
-    expect(
-      container.querySelector('ul.nav.nav-tabs.card-header-tabs')
-    ).not.toBe(null);
-  });
+  // TODO: add test with CardHeader component
 
   test('tracks most recently clicked tab with "active_tab" prop', () => {
     const mockSetProps = jest.fn();
