@@ -18,14 +18,14 @@ describe('Row', () => {
   test('applies additional CSS classes when props are set', () => {
     // row align
     const {
-      container: {firstChild: rowAlign},
+      container: {firstChild: rowAlign}
     } = render(<Row align="center" />);
 
     expect(rowAlign).toHaveClass('align-items-center');
 
     // row justify
     const {
-      container: {firstChild: rowJustify},
+      container: {firstChild: rowJustify}
     } = render(<Row justify="between" />);
 
     expect(rowJustify).toHaveClass('justify-content-between');

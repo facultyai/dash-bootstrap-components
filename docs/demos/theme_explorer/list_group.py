@@ -13,8 +13,8 @@ list_group = html.Div(
                 dbc.ListGroupItem("Item 3"),
                 dbc.ListGroupItem(
                     [
-                        dbc.ListGroupItemHeading("Item 4 heading"),
-                        dbc.ListGroupItemText("Item 4 text"),
+                        html.H5("Item 4 heading"),
+                        html.P("Item 4 text"),
                     ]
                 ),
             ]
