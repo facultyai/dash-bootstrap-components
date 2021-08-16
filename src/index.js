@@ -34,8 +34,6 @@ export {default as InputGroupText} from './components/input/InputGroupText';
 export {default as Label} from './components/Label';
 export {default as ListGroup} from './components/listgroup/ListGroup';
 export {default as ListGroupItem} from './components/listgroup/ListGroupItem';
-export {default as ListGroupItemHeading} from './components/listgroup/ListGroupItemHeading';
-export {default as ListGroupItemText} from './components/listgroup/ListGroupItemText';
 export {default as Modal} from './components/modal/Modal';
 export {default as ModalBody} from './components/modal/ModalBody';
 export {default as ModalFooter} from './components/modal/ModalFooter';
