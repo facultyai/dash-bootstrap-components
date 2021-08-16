@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardFooter as RSCardFooter} from 'reactstrap';
+import {default as RBCard} from 'react-bootstrap/Card';
 
 /**
  * Use the CardFooter component to add a footer to any card.
@@ -9,7 +9,7 @@ import {CardFooter as RSCardFooter} from 'reactstrap';
 const CardFooter = (props) => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardFooter
+    <RBCard.Footer
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -17,7 +17,7 @@ const CardFooter = (props) => {
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardFooter>
+    </RBCard.Footer>
   );
 };
 

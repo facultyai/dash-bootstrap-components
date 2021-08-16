@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Card as RSCard} from 'reactstrap';
+import {default as RBCard} from 'react-bootstrap/Card';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
@@ -14,6 +14,8 @@ const Card = (props) => {
   const {
     children,
     color,
+    inverse,
+    outline,
     style,
     loading_state,
     className,
@@ -22,17 +24,19 @@ const Card = (props) => {
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
   return (
-    <RSCard
+    <RBCard
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      color={isBootstrapColor ? color : null}
+      text={inverse ? 'white' :null}
+      bg={(isBootstrapColor && !outline) ? color : null}
+      border={(isBootstrapColor && outline) ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCard>
+    </RBCard>
   );
 };
 

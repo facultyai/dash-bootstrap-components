@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardGroup as RSCardGroup} from 'reactstrap';
+import RBCardGroup from 'react-bootstrap/CardGroup'
 
 /**
  * Use CardGroup to render cards as a single, attached element of columns with
@@ -10,7 +10,7 @@ import {CardGroup as RSCardGroup} from 'reactstrap';
 const CardGroup = (props) => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardGroup
+    <RBCardGroup
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -18,7 +18,7 @@ const CardGroup = (props) => {
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardGroup>
+    </RBCardGroup>
   );
 };
 

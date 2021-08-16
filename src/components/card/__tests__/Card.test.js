@@ -47,6 +47,14 @@ describe('Card', () => {
     expect(cardDark).toHaveClass('border-dark');
   });
 
+  test('applies text-white class with "inverse" prop', () => {
+    const {
+      container: {firstChild: cardInverse},
+    } = render(<Card inverse />);
+
+    expect(cardInverse).toHaveClass('text-white');
+  });
+
   test('applies card-body class with "body" prop', () => {
     const {
       container: {firstChild: cardBody},
@@ -55,11 +63,4 @@ describe('Card', () => {
     expect(cardBody).toHaveClass('card-body');
   });
 
-  test('applies text-white class with "inverse" prop', () => {
-    const {
-      container: {firstChild: cardInverse},
-    } = render(<Card inverse />);
-
-    expect(cardInverse).toHaveClass('text-white');
-  });
 });
