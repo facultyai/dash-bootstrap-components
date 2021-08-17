@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output, State
 
 modal = html.Div(
     [
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Backdrop:"),
                 dbc.RadioItems(

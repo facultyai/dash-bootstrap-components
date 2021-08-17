@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-placement_selector = dbc.FormGroup(
+placement_selector = html.Div(
     # FIXME: Fix styling here
     [
         dbc.InputGroupAddon("Placement", addon_type="prepend"),

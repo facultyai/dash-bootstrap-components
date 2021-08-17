@@ -6,14 +6,14 @@ from .util import make_subheading
 input_ = html.Div(
     [
         make_subheading("Input", "input"),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Valid text input"),
                 dbc.Input(type="text", valid=True),
                 dbc.FormFeedback("That's a valid input!", type="valid"),
             ]
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Invalid text input"),
                 dbc.Input(type="text", invalid=True),

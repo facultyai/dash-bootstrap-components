@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBFormGroup} from 'react-bootstrap/FormGroup';
+import {default as RBFormFloating} from 'react-bootstrap/FormFloating';
 
 /**
- * A component for grouping together inputs, labels, text and feedback.
+ * A component for adding float labels to form controls in forms.
  */
-const FormGroup = (props) => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+const FormFloating = props => {
+  const {
+    children,
+    html_for,
+    className,
+    class_name,
+    loading_state,
+    ...otherProps
+  } = props;
+
+  // TODO: check this component
   return (
-    <RBFormGroup
+    <RBFormFloating
+      htmlFor={html_for}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -17,11 +27,11 @@ const FormGroup = (props) => {
       }
     >
       {children}
-    </RBFormGroup>
+    </RBFormFloating>
   );
 };
 
-FormGroup.propTypes = {
+FormFloating.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -59,6 +69,11 @@ FormGroup.propTypes = {
   key: PropTypes.string,
 
   /**
+   * Set the `for` attribute of the label to bind it to a particular element
+   */
+  html_for: PropTypes.string,
+
+  /**
    * Object that holds the loading state object coming from dash-renderer
    */
   loading_state: PropTypes.shape({
@@ -73,8 +88,8 @@ FormGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
-export default FormGroup;
+export default FormFloating;

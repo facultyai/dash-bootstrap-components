@@ -17,7 +17,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 controls = dbc.Card(
     [
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Region"),
                 dcc.Dropdown(

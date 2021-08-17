@@ -72,9 +72,9 @@ max_vocab_slider = html.Div(
 
 controls = dbc.Card(
     [
-        dbc.FormGroup([dbc.Label("Choose a book:"), dropdown]),
-        dbc.FormGroup([dbc.Label("Minimum frequency:"), min_freq_slider]),
-        dbc.FormGroup(
+        html.Div([dbc.Label("Choose a book:"), dropdown]),
+        html.Div([dbc.Label("Minimum frequency:"), min_freq_slider]),
+        html.Div(
             [dbc.Label("Maximum number of words:"), max_vocab_slider]
         ),
     ],

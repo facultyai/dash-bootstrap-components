@@ -1,3 +1,8 @@
 import dash_bootstrap_components as dbc
 
-form = dbc.FloatingLabel(dbc.Input(type="email"), label="Email address")
+form = dbc.FormFloating(
+    [
+        dbc.Input(type="email", placeholder="example@internet.com"),
+        dbc.Label("Email address"),
+    ]
+)
