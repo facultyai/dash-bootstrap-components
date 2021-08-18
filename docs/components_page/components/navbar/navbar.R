@@ -27,13 +27,13 @@ navbar <- dbcNavbar(
           dbcCol(dbcNavbarBrand("Navbar", class_name = "ml-2"))
         ),
         align = "center",
-        no_gutters = TRUE
+        class_name="g-0"
       ),
       href = "https://plotly.com"
     ),
     dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
-    dbcCollapse(
-      search_bar, id = "navbar-collapse", is_open = FALSE, navbar = TRUE
+    dbcNavbarCollapse(
+      search_bar, id = "navbar-collapse", is_open = FALSE
     )
   ),
   color = "dark",
