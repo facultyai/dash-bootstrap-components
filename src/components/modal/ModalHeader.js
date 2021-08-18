@@ -1,20 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ModalHeader as RSModalHeader} from 'reactstrap';
+import Modal from 'react-bootstrap/Modal';
 
 /**
  * Add a header to any modal.
  */
-const ModalHeader = (props) => {
-  const {children, className, class_name, ...otherProps} = props;
+const ModalHeader = props => {
+  const {
+    children,
+    className,
+    class_name,
+    tag,
+    close_button,
+    ...otherProps
+  } = props;
   return (
-    <RSModalHeader
+    <Modal.Header
+      as={tag}
       className={class_name || className}
+      closeButton={close_button}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSModalHeader>
+    </Modal.Header>
   );
 };
 
@@ -48,9 +57,14 @@ ModalHeader.propTypes = {
   className: PropTypes.string,
 
   /**
+   * Add a close button to the header that can be used to close the modal.
+   */
+  close_button: PropTypes.bool,
+
+  /**
    * HTML tag to use for the ModalHeader, default: div
    */
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
 export default ModalHeader;

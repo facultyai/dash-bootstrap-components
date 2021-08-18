@@ -37,6 +37,7 @@ export {default as Modal} from './components/modal/Modal';
 export {default as ModalBody} from './components/modal/ModalBody';
 export {default as ModalFooter} from './components/modal/ModalFooter';
 export {default as ModalHeader} from './components/modal/ModalHeader';
+export {default as ModalTitle} from './components/modal/ModalTitle';
 export {default as Nav} from './components/nav/Nav';
 export {default as Navbar} from './components/nav/Navbar';
 export {default as NavbarBrand} from './components/nav/NavbarBrand';

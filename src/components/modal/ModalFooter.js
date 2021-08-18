@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ModalFooter as RSModalFooter} from 'reactstrap';
+import Modal from 'react-bootstrap/Modal';
 
 /**
  * Add a footer to any modal.
  */
-const ModalFooter = (props) => {
-  const {children, className, class_name, ...otherProps} = props;
+const ModalFooter = props => {
+  const {children, className, class_name, tag, ...otherProps} = props;
   return (
-    <RSModalFooter
+    <Modal.Footer
+      as={tag}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSModalFooter>
+    </Modal.Footer>
   );
 };
 
@@ -50,7 +51,7 @@ ModalFooter.propTypes = {
   /**
    * HTML tag to use for the ModalFooter, default: div
    */
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
 export default ModalFooter;
