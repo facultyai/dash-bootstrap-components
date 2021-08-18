@@ -15,9 +15,7 @@ describe('Select', () => {
       />
     );
 
-    expect(select.container.querySelector('select.form-select')).not.toBe(
-      null
-    );
+    expect(select.container.querySelector('select.form-select')).not.toBe(null);
     expect(select.container).toHaveTextContent('Item 1');
   });
 
