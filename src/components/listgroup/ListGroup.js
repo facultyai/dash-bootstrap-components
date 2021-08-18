@@ -33,6 +33,10 @@ const ListGroup = props => {
   );
 };
 
+ListGroup.defaultProps = {
+  tag: 'ul'
+};
+
 ListGroup.propTypes = {
   /**
    * The ID of this component, used to identify dash components

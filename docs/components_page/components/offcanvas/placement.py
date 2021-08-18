@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 placement_selector = html.Div(
     # FIXME: Fix styling here
     [
-        dbc.InputGroupAddon("Placement", addon_type="prepend"),
+        dbc.InputGroupText("Placement"),
         dbc.Select(
             id="offcanvas-placement-selector",
             options=[

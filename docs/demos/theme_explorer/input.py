@@ -97,10 +97,7 @@ input_group = html.Div(
         make_subheading("InputGroup and addons", "input_group"),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon(
-                    dbc.Button("To the left!", color="danger"),
-                    addon_type="prepend",
-                ),
+                dbc.Button("To the left!", color="danger"),
                 dbc.Input(type="text"),
             ],
             class_name="my-3",
@@ -108,16 +105,13 @@ input_group = html.Div(
         dbc.InputGroup(
             [
                 dbc.Input(type="text"),
-                dbc.InputGroupAddon(
-                    dbc.Button("To the right!", color="success"),
-                    addon_type="append",
-                ),
+                dbc.Button("To the right!", color="success"),
             ],
             class_name="mb-3",
         ),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon("@", addon_type="prepend"),
+                dbc.InputGroupText("@"),
                 dbc.Input(type="text", placeholder="Enter username"),
             ],
             class_name="mb-3",

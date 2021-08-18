@@ -7,7 +7,6 @@ import Tabs from '../Tabs';
 describe('Tabs', () => {
   test('renders a ul with classes and nav, nav-tabs', () => {
     const {container} = render(<Tabs />);
-    console.log(container.outerHTML);
     expect(container.querySelector('ul.nav.nav-tabs')).not.toBe(null);
   });
 
