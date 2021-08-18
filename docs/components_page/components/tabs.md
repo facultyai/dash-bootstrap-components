@@ -25,7 +25,7 @@ Use `card=True` when placing your `Tabs` inside a `CardHeader`. You must use a c
 
 You can modify the style of the tabs and labels using the `tab_style` and `label_style` properties. Use `tab_style` to modify the tab itself, for example to modify placement and spacing. Use `label_style` to modify the label, for example the font, text color, border-radius and so on.
 
-You can also apply CSS classes to the tab or label using the `tab_class_name` or `label_class_name` properties. In the below example we apply the Bootstrap classes `ml-auto`, which sets the left margin to `auto`, and `text-success`, which sets the text color to the theme's 'success' color.
+You can also apply CSS classes to the tab or label using the `tab_class_name` or `label_class_name` properties. In the below example we apply the Bootstrap classes `ms-auto`, which sets the left margin to `auto`, and `text-success`, which sets the text color to the theme's 'success' color.
 
 {{example:components/tabs/style.py:tabs}}
 

@@ -21,11 +21,11 @@ offcanvas = html_div(
                                     "value" => true,
                                 ),
                                 Dict(
-                                    "label" => "False", 
+                                    "label" => "False",
                                     "value" => false
                                 ),
                                 Dict(
-                                    "label" => "Static (no dismiss)", 
+                                    "label" => "Static (no dismiss)",
                                     "value" => "static"
                                 )
                             ],
@@ -38,9 +38,9 @@ offcanvas = html_div(
                 dbc_button(
                     "Close",
                     id="close-offcanvas-backdrop",
-                    class_name="ml-auto",
+                    class_name="ms-auto",
                     n_clicks=0,
-                ),                    
+                ),
             ],
             id="offcanvas-backdrop",
             title="Offcanvas with/without backdrop"

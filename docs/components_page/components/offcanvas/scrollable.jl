@@ -15,7 +15,7 @@ offcanvas = html_div(
                 dbc_button(
                     "Close",
                     id="close-offcanvas-scrollable",
-                    class_name="ml-auto",
+                    class_name="ms-auto",
                     n_clicks=0,
                 )
             ],

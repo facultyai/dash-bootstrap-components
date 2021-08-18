@@ -28,7 +28,7 @@ modal <- htmlDiv(
         dbcModalFooter(
             dbcButton(
               "Close", id = "close-backdrop", n_clicks = 0,
-              class_name = "ml-auto"
+              class_name = "ms-auto"
             )
         )
       ),
