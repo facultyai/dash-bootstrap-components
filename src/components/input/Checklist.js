@@ -339,11 +339,11 @@ Checklist.propTypes = {
 
 Checklist.defaultProps = {
   inputStyle: {},
-  input_style: {},
+  input_style: null,
   inputClassName: '',
   input_class_name: '',
   labelStyle: {},
-  label_style: {},
+  label_style: null,
   labelClassName: '',
   label_class_name: '',
   options: [],
