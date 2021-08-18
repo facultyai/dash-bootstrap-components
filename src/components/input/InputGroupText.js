@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {InputGroupText as RSInputGroupText} from 'reactstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 /**
  * Use for wrapping text in InputGroups.
@@ -9,7 +9,7 @@ import {InputGroupText as RSInputGroupText} from 'reactstrap';
 const InputGroupText = (props) => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSInputGroupText
+    <InputGroup.Text
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -17,7 +17,7 @@ const InputGroupText = (props) => {
       }
     >
       {children}
-    </RSInputGroupText>
+    </InputGroup.Text>
   );
 };
 

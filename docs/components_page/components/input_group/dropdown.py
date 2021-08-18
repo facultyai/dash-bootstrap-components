@@ -9,12 +9,10 @@ dropdown_menu_items = [
     dbc.DropdownMenuItem("Clear", id="dropdown-menu-item-clear"),
 ]
 
-
+# TODO: check this renders properly once DropdownMenu is updated
 input_group = dbc.InputGroup(
     [
-        dbc.DropdownMenu(
-            dropdown_menu_items, label="Generate", addon_type="prepend"
-        ),
+        dbc.DropdownMenu(dropdown_menu_items, label="Generate"),
         dbc.Input(id="input-group-dropdown-input", placeholder="name"),
     ]
 )

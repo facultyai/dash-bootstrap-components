@@ -29,7 +29,6 @@ export {default as FormFloating} from './components/form/FormFloating';
 export {default as FormText} from './components/form/FormText';
 export {default as Input} from './components/input/Input';
 export {default as InputGroup} from './components/input/InputGroup';
-export {default as InputGroupAddon} from './components/input/InputGroupAddon';
 export {default as InputGroupText} from './components/input/InputGroupText';
 export {default as Label} from './components/form/Label';
 export {default as ListGroup} from './components/listgroup/ListGroup';
