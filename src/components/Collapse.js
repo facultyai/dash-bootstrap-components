@@ -69,19 +69,9 @@ Collapse.propTypes = {
   key: PropTypes.string,
 
   /**
-   * HTML tag to use for the collapse contents. Default: div.
-   */
-  tag: PropTypes.string,
-
-  /**
    * Whether collapse is currently open.
    */
   is_open: PropTypes.bool,
-
-  /**
-   * Set to True when using a collapse inside a navbar.
-   */
-  navbar: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

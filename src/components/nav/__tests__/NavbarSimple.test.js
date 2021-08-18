@@ -51,12 +51,8 @@ describe('NavbarSimple', () => {
     const {
       container: {firstChild: navbarStickyTop}
     } = render(<NavbarSimple sticky="top" />);
-    const {
-      container: {firstChild: navbarStickyBottom}
-    } = render(<NavbarSimple sticky="bottom" />);
 
     expect(navbarStickyTop).toHaveClass('sticky-top');
-    expect(navbarStickyBottom).toHaveClass('sticky-bottom');
 
     // fixed navbars
     const {
