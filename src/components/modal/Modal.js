@@ -26,6 +26,7 @@ const Modal = props => {
     backdrop_class_name,
     tag,
     loading_state,
+    fade,
     ...otherProps
   } = props;
 
@@ -37,6 +38,7 @@ const Modal = props => {
 
   return (
     <RBModal
+      animation={fade}
       dialogAs={tag}
       dialogClassName={class_name || className}
       className={modal_class_name || modalClassName}
@@ -194,6 +196,15 @@ Modal.propTypes = {
    * Set to false for a modal that simply appears rather than fades into view.
    */
   fade: PropTypes.bool,
+
+  /**
+   * Renders a fullscreen modal. Specifying a breakpoint will render the modal
+   * as fullscreen below the breakpoint size.
+   */
+  fullscreen: PropTypes.oneOf([
+    PropTypes.bool,
+    PropTypes.oneOf(['sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'])
+  ]),
 
   /**
    * Set the z-index of the modal. Default 1050.

@@ -27,6 +27,10 @@ const ModalHeader = props => {
   );
 };
 
+ModalHeader.defaultProps = {
+  close_button: true
+};
+
 ModalHeader.propTypes = {
   /**
    * The ID of this component, used to identify dash components
