@@ -10,7 +10,7 @@ import {bootstrapColors} from '../../private/BootstrapColors';
  * conjunction with CardColumns, CardDeck, CardGroup for different layout
  * options.
  */
-const Card = (props) => {
+const Card = props => {
   const {
     children,
     color,
@@ -112,8 +112,8 @@ Card.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Card;

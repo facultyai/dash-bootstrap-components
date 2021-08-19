@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 /**
  * Create a single tab. Should be used as a component of Tabs.
  */
-const Tab = (props) => {
+const Tab = props => {
   return <div>{props.children}</div>;
 };
 
 Tab.defaultProps = {
-  disabled: false,
+  disabled: false
 };
 
 Tab.propTypes = {
@@ -167,8 +167,8 @@ Tab.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Tab;

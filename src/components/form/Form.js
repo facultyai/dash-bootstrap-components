@@ -7,7 +7,7 @@ import {default as RBForm} from 'react-bootstrap/Form';
  * The Form component can be used to organise collections of input components
  * and apply consistent styling.
  */
-const Form = (props) => {
+const Form = props => {
   const {
     children,
     loading_state,
@@ -20,14 +20,14 @@ const Form = (props) => {
   } = props;
   return (
     <RBForm
-      onSubmit={(e) => {
+      onSubmit={e => {
         if (prevent_default_on_submit) {
           e.preventDefault();
         }
         if (setProps) {
           setProps({
             n_submit: n_submit + 1,
-            n_submit_timestamp: Date.now(),
+            n_submit_timestamp: Date.now()
           });
         }
       }}
@@ -45,7 +45,7 @@ const Form = (props) => {
 Form.defaultProps = {
   prevent_default_on_submit: true,
   n_submit: 0,
-  n_submit_timestamp: -1,
+  n_submit_timestamp: -1
 };
 
 Form.propTypes = {
@@ -128,8 +128,8 @@ Form.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Form;

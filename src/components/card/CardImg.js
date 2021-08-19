@@ -6,7 +6,7 @@ import {CardImg as RSCardImg} from 'reactstrap';
 /**
  * Use CardImg to add images to your cards.
  */
-const CardImg = (props) => {
+const CardImg = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSCardImg
@@ -106,8 +106,8 @@ CardImg.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default CardImg;

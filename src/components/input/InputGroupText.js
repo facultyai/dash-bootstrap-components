@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 /**
  * Use for wrapping text in InputGroups.
  */
-const InputGroupText = (props) => {
+const InputGroupText = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <InputGroup.Text
@@ -73,8 +73,8 @@ InputGroupText.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default InputGroupText;

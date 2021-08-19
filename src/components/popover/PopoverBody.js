@@ -6,7 +6,7 @@ import {PopoverBody as RSPopoverBody} from 'reactstrap';
 /**
  * Componnet for wrapping the body (i.e. main content) of a `Popover`.
  */
-const PopoverBody = (props) => {
+const PopoverBody = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RSPopoverBody
@@ -77,8 +77,8 @@ PopoverBody.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default PopoverBody;

@@ -12,7 +12,7 @@ import NavbarToggler from './NavbarToggler';
  * A self-contained navbar ready for use. If you need more customisability try
  * `Navbar` instead.
  */
-const NavbarSimple = (props) => {
+const NavbarSimple = props => {
   const {
     children,
     brand,
@@ -70,7 +70,7 @@ NavbarSimple.defaultProps = {
   color: 'light',
   light: true,
   expand: 'md',
-  links_left: false,
+  links_left: false
 };
 
 NavbarSimple.propTypes = {
@@ -205,8 +205,8 @@ NavbarSimple.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default NavbarSimple;

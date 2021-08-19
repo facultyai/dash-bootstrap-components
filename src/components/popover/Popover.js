@@ -11,7 +11,7 @@ import {Popover as RSPopover} from 'reactstrap';
  * Use the `PopoverHeader` and `PopoverBody` components to control the layout
  * of the children.
  */
-const Popover = (props) => {
+const Popover = props => {
   const {
     children,
     is_open,
@@ -104,7 +104,7 @@ Popover.propTypes = {
     'bottom-end',
     'left',
     'left-start',
-    'left-end',
+    'left-end'
   ]),
 
   /**
@@ -158,7 +158,7 @@ Popover.propTypes = {
    */
   delay: PropTypes.oneOfType([
     PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
-    PropTypes.number,
+    PropTypes.number
   ]),
 
   /**
@@ -187,8 +187,8 @@ Popover.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Popover;
