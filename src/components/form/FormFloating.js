@@ -1,75 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import classNames from 'classnames';
-import InputGroupText from './InputGroupText';
-
-const isCheckOrRadio = (el) => {
-  return (
-    el.props &&
-    el.props._dashprivate_layout &&
-    (el.props._dashprivate_layout.type === 'RadioButton' ||
-      el.props._dashprivate_layout.type === 'Checkbox')
-  );
-};
-
-const parseChildrenToArray = (children) => {
-  if (children) {
-    if (!Array.isArray(children)) {
-      return [children];
-    }
-    return children;
-  }
-  return [];
-};
-
-const wrapChild = (child, i) => {
-  if (typeof child === 'string' || isCheckOrRadio(child)) {
-    return (
-      <React.Fragment key={i}>
-        <InputGroupText>{child}</InputGroupText>
-      </React.Fragment>
-    );
-  }
-  return <React.Fragment key={i}>{child}</React.Fragment>;
-};
+import {default as RBFormFloating} from 'react-bootstrap/FormFloating';
 
 /**
- * A component to wrap addons (such as text or buttons) when used with
- * InputGroup
+ * A component for adding float labels to form controls in forms.
  */
-const InputGroupAddon = (props) => {
-  let {
+const FormFloating = props => {
+  const {
     children,
-    loading_state,
+    html_for,
     className,
     class_name,
-    addon_type,
+    loading_state,
     ...otherProps
   } = props;
-  const classes = classNames(
-    class_name || className,
-    'input-group-' + addon_type
-  );
 
-  children = parseChildrenToArray(children);
-
+  // TODO: check this component
   return (
-    <div
-      className={classes}
+    <RBFormFloating
+      htmlFor={html_for}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      {children.map(wrapChild)}
-    </div>
+      {children}
+    </RBFormFloating>
   );
 };
 
-InputGroupAddon.defaultProps = {addon_type: 'prepend'};
-
-InputGroupAddon.propTypes = {
+FormFloating.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -78,7 +40,7 @@ InputGroupAddon.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component.
+   * The children of this component
    */
   children: PropTypes.node,
 
@@ -107,9 +69,9 @@ InputGroupAddon.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Whether to prepend or append the addon. Options: 'prepend', or 'append'.
+   * Set the `for` attribute of the label to bind it to a particular element
    */
-  addon_type: PropTypes.oneOf(['prepend', 'append']),
+  html_for: PropTypes.string,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
@@ -126,8 +88,8 @@ InputGroupAddon.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
-export default InputGroupAddon;
+export default FormFloating;

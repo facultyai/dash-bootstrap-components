@@ -2,10 +2,11 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classnames from 'classnames';
-import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import Nav from 'react-bootstrap/Nav';
+import Tab from 'react-bootstrap/Tab';
 import {isNil} from 'ramda';
 
-const resolveChildProps = (child) => {
+const resolveChildProps = child => {
   // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
   if (
     // disabled is a defaultProp (so it's always set)
@@ -24,7 +25,7 @@ const resolveChildProps = (child) => {
   }
 };
 
-const parseChildrenToArray = (children) => {
+const parseChildrenToArray = children => {
   if (children && !Array.isArray(children)) {
     // if dcc.Tabs.children contains just one single element, it gets passed as an object
     // instead of an array - so we put in in a array ourselves!
@@ -37,7 +38,7 @@ const parseChildrenToArray = (children) => {
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
  * get the currently active tab in a callback.
  */
-const Tabs = (props) => {
+const Tabs = props => {
   let {
     children,
     id,
@@ -48,7 +49,7 @@ const Tabs = (props) => {
     active_tab,
     key,
     loading_state,
-    setProps,
+    setProps
   } = props;
   children = parseChildrenToArray(children);
 
@@ -57,12 +58,12 @@ const Tabs = (props) => {
     if (setProps && active_tab === undefined) {
       setProps({
         active_tab:
-          children && (resolveChildProps(children[0]).tab_id || 'tab-0'),
+          children && (resolveChildProps(children[0]).tab_id || 'tab-0')
       });
     }
   }, []);
 
-  const toggle = (tab) => {
+  const toggle = tab => {
     if (setProps) {
       if (active_tab !== tab) {
         setProps({active_tab: tab});
@@ -78,7 +79,7 @@ const Tabs = (props) => {
       const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
       const active = active_tab === tabId;
       return (
-        <NavItem
+        <Nav.Item
           key={tabId}
           style={
             active
@@ -92,7 +93,7 @@ const Tabs = (props) => {
                 childProps.activeTabClassName)
           )}
         >
-          <NavLink
+          <Nav.Link
             className={classnames(
               childProps.label_class_name || childProps.labelClassName,
               active &&
@@ -100,7 +101,7 @@ const Tabs = (props) => {
                   childProps.activeLabelClassName),
               {active}
             )}
-            href="#"
+            // href="#"
             style={
               active
                 ? {...childProps.label_style, ...childProps.active_label_style}
@@ -114,8 +115,8 @@ const Tabs = (props) => {
             }}
           >
             {childProps.label}
-          </NavLink>
-        </NavItem>
+          </Nav.Link>
+        </Nav.Item>
       );
     });
 
@@ -144,9 +145,10 @@ const Tabs = (props) => {
         ...otherProps
       } = childProps;
       const tabId = tab_id || 'tab-' + idx;
+
       return (
-        <TabPane
-          tabId={tabId}
+        <Tab.Pane
+          eventKey={tabId}
           key={tabId}
           {...omit(
             ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
@@ -157,33 +159,35 @@ const Tabs = (props) => {
           }
         >
           {child}
-        </TabPane>
+        </Tab.Pane>
       );
     });
   return (
-    <div
+    <Tab.Container
       key={key}
+      activeKey={active_tab}
+      onSelect={id => setProps({active_tab: id})}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       <Nav
         id={id}
-        tabs
-        card={card}
+        variant="tabs"
+        as="ul"
         className={class_name || className}
         style={style}
       >
         {links}
       </Nav>
-      <TabContent activeTab={active_tab}>{tabs}</TabContent>
-    </div>
+      <Tab.Content>{tabs}</Tab.Content>
+    </Tab.Container>
   );
 };
 
 Tabs.defaultProps = {
   persisted_props: ['active_tab'],
-  persistence_type: 'local',
+  persistence_type: 'local'
 };
 
 Tabs.propTypes = {
@@ -231,11 +235,6 @@ Tabs.propTypes = {
   active_tab: PropTypes.string,
 
   /**
-   * Set to True if using tabs inside a CardHeader.
-   */
-  card: PropTypes.bool,
-
-  /**
    * Object that holds the loading state object coming from dash-renderer
    */
   loading_state: PropTypes.shape({
@@ -250,7 +249,7 @@ Tabs.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
+    component_name: PropTypes.string
   }),
 
   /**
@@ -264,7 +263,7 @@ Tabs.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number,
+    PropTypes.number
   ]),
 
   /**
@@ -280,7 +279,7 @@ Tabs.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
 };
 
 export default Tabs;

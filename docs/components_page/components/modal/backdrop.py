@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output, State
 
 modal = html.Div(
     [
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Backdrop:"),
                 dbc.RadioItems(
@@ -22,7 +22,7 @@ modal = html.Div(
         dbc.Button("Open modal", id="open-backdrop", n_clicks=0),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader(dbc.ModalTitle("Header"), close_button=True),
                 dbc.ModalBody(
                     "Change the backdrop of this modal with the radio buttons"
                 ),

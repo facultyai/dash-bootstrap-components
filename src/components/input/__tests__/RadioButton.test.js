@@ -7,8 +7,9 @@ describe('RadioButton', () => {
   test('renders a radio button', () => {
     const {
       container: {firstChild: radioButton}
-    } = render(<RadioButton />);
+    } = render(<RadioButton label="test-label" />);
 
+    expect(radioButton).toHaveClass('form-check-input');
     expect(radioButton).toHaveAttribute('type', 'radio');
   });
 
@@ -17,6 +18,7 @@ describe('RadioButton', () => {
       container: {firstChild: radioButton},
       rerender
     } = render(<RadioButton />);
+
     expect(radioButton.checked).toEqual(false);
 
     rerender(<RadioButton checked />);

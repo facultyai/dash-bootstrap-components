@@ -4,23 +4,22 @@ import {omit} from 'ramda';
 import Modal from 'react-bootstrap/Modal';
 
 /**
- * Use this component to add consistent padding to the body (main content) of
- * your Modals.
+ * Add a title to any modal. Should be used as a child of the ModalHeader.
  */
-const ModalBody = props => {
+const ModalTitle = props => {
   const {children, className, class_name, tag, ...otherProps} = props;
   return (
-    <Modal.Body
+    <Modal.Title
       as={tag}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </Modal.Body>
+    </Modal.Title>
   );
 };
 
-ModalBody.propTypes = {
+ModalTitle.propTypes = {
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -50,9 +49,9 @@ ModalBody.propTypes = {
   className: PropTypes.string,
 
   /**
-   * HTML tag to use for the ModalBody, default: div
+   * HTML tag to use for the ModalTitle, default: div
    */
   tag: PropTypes.string
 };
 
-export default ModalBody;
+export default ModalTitle;

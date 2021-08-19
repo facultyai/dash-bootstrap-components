@@ -32,10 +32,10 @@ offcanvas <- htmlDiv(
                 dbcButton(
                     "Close",
                     id="close-offcanvas-backdrop",
-                    class_name="ml-auto",
+                    class_name="ms-auto",
                     n_clicks=0,
                 ),
-            ),                
+            ),
             id="offcanvas-backdrop",
             title="Offcanvas with/without backdrop"
         ),
@@ -55,7 +55,7 @@ app$callback(
 app$callback(
     output("offcanvas-backdrop", "is_open"),
     list(
-        input("open-offcanvas-backdrop", "n_clicks"), 
+        input("open-offcanvas-backdrop", "n_clicks"),
         input("close-offcanvas-backdrop", "n_clicks"),
         state("offcanvas-backdrop", "is_open")
     ),

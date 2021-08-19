@@ -7,7 +7,7 @@ import {default as RBCard} from 'react-bootstrap/Card';
  * Use CardImgOverlay to turn an image into the background of your card and add
  * text on top of it.
  */
-const CardImgOverlay = (props) => {
+const CardImgOverlay = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RBCard.ImgOverlay
@@ -79,8 +79,8 @@ CardImgOverlay.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default CardImgOverlay;

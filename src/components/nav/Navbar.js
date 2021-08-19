@@ -7,7 +7,7 @@ import {bootstrapColors} from '../../private/BootstrapColors';
 /**
  * The Navbar component can be used to make fully customisable navbars.
  */
-const Navbar = (props) => {
+const Navbar = props => {
   const {
     children,
     color,
@@ -42,7 +42,7 @@ const Navbar = (props) => {
 Navbar.defaultProps = {
   color: 'light',
   light: true,
-  expand: 'md',
+  expand: 'md'
 };
 
 Navbar.propTypes = {
@@ -149,8 +149,8 @@ Navbar.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Navbar;

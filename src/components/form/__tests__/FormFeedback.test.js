@@ -5,10 +5,10 @@ import FormFeedback from '../FormFeedback';
 describe('FormFeedback', () => {
   test('renders a div with class "invalid-text"', () => {
     const formFeedback = render(<FormFeedback />);
-    const formFeedbackValid = render(<FormFeedback valid />);
-    const formFeedbackInvalid = render(<FormFeedback valid={false} />);
+    const formFeedbackValid = render(<FormFeedback type="valid" />);
+    const formFeedbackInvalid = render(<FormFeedback type="invalid" />);
 
-    expect(formFeedback.container.querySelector('.invalid-feedback')).not.toBe(
+    expect(formFeedback.container.querySelector('.valid-feedback')).not.toBe(
       null
     );
     expect(
@@ -31,10 +31,10 @@ describe('FormFeedback', () => {
 
   test('renders a tooltip with "tooltip" prop', () => {
     const formFeedback = render(<FormFeedback tooltip />);
-    const formFeedbackValid = render(<FormFeedback valid tooltip />);
-    const formFeedbackInvalid = render(<FormFeedback valid={false} tooltip />);
+    const formFeedbackValid = render(<FormFeedback type="valid" tooltip />);
+    const formFeedbackInvalid = render(<FormFeedback type="invalid" tooltip />);
 
-    expect(formFeedback.container.querySelector('.invalid-tooltip')).not.toBe(
+    expect(formFeedback.container.querySelector('.valid-tooltip')).not.toBe(
       null
     );
     expect(

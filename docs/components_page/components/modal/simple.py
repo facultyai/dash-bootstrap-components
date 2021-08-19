@@ -7,7 +7,7 @@ modal = html.Div(
         dbc.Button("Open modal", id="open", n_clicks=0),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader(dbc.ModalTitle("Header")),
                 dbc.ModalBody("This is the content of the modal"),
                 dbc.ModalFooter(
                     dbc.Button(

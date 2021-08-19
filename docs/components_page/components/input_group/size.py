@@ -3,18 +3,10 @@ import dash_html_components as html
 
 input_group = html.Div(
     [
-        dbc.InputGroup(
-            [dbc.InputGroupAddon("Large", addon_type="prepend"), dbc.Input()],
-            size="lg",
-        ),
+        dbc.InputGroup([dbc.InputGroupText("Large"), dbc.Input()], size="lg"),
         html.Br(),
-        dbc.InputGroup(
-            [dbc.InputGroupAddon("Default", addon_type="prepend"), dbc.Input()]
-        ),
+        dbc.InputGroup([dbc.InputGroupText("Default"), dbc.Input()]),
         html.Br(),
-        dbc.InputGroup(
-            [dbc.InputGroupAddon("Small", addon_type="prepend"), dbc.Input()],
-            size="sm",
-        ),
+        dbc.InputGroup([dbc.InputGroupText("Small"), dbc.Input()], size="sm"),
     ]
 )

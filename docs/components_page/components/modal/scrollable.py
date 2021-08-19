@@ -12,7 +12,7 @@ modal = html.Div(
         ),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader(dbc.ModalTitle("Scrolling modal")),
                 dbc.ModalBody(LOREM),
                 dbc.ModalFooter(
                     dbc.Button(
@@ -28,7 +28,7 @@ modal = html.Div(
         ),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader("Modal with scrollable body"),
                 dbc.ModalBody(LOREM),
                 dbc.ModalFooter(
                     dbc.Button(

@@ -7,7 +7,7 @@ spinners <- htmlDiv(
         dbcSpinner(size = "sm"),
         color = "primary",
         disabled = TRUE,
-        class_name = "mr-1"
+        class_name = "me-1"
     ),
     dbcButton(
       list(dbcSpinner(size = "sm"), " Loading..."),

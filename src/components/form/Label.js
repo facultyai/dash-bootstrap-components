@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import Form from 'react-bootstrap/Form';
 import classNames from 'classnames';
-import {bootstrapTextColors} from '../private/BootstrapColors';
+import {bootstrapTextColors} from '../../private/BootstrapColors';
 
 const alignMap = {
   start: 'align-self-start',

@@ -1,22 +1,20 @@
 import dash_bootstrap_components as dbc
 
 form = dbc.Form(
-    [
-        dbc.FormGroup(
-            [
-                dbc.Label("Email", class_name="me-2"),
+    dbc.Row(
+        [
+            dbc.Label("Email", width="auto"),
+            dbc.Col(
                 dbc.Input(type="email", placeholder="Enter email"),
-            ],
-            class_name="me-3",
-        ),
-        dbc.FormGroup(
-            [
-                dbc.Label("Password", class_name="me-2"),
+                class_name="me-3",
+            ),
+            dbc.Label("Password", width="auto"),
+            dbc.Col(
                 dbc.Input(type="password", placeholder="Enter password"),
-            ],
-            class_name="me-3",
-        ),
-        dbc.Button("Submit", color="primary"),
-    ],
-    inline=True,
+                class_name="me-3",
+            ),
+            dbc.Col(dbc.Button("Submit", color="primary"), width="auto"),
+        ],
+        class_name="g-2",
+    )
 )

@@ -7,7 +7,7 @@ import RBCardGroup from 'react-bootstrap/CardGroup'
  * Use CardGroup to render cards as a single, attached element of columns with
  * equal width and height.
  */
-const CardGroup = (props) => {
+const CardGroup = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RBCardGroup
@@ -79,8 +79,8 @@ CardGroup.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default CardGroup;

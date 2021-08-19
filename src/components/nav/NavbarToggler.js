@@ -1,39 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNavbar} from 'react-bootstrap/Navbar'
+import {NavbarToggler as RSNavbarToggler} from 'reactstrap';
 
 /**
  * Use this component to create a navbar toggle to show navlinks when the
  * navbar collapses on smaller screens.
  */
-const NavbarToggler = (props) => {
-  const {children, loading_state, className, class_name, type, ...otherProps} = props;
+const NavbarToggler = props => {
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RBNavbar.Toggle
+    <RSNavbarToggler
       onClick={() => {
         if (props.setProps) {
           props.setProps({
             n_clicks: props.n_clicks + 1,
-            n_clicks_timestamp: Date.now(),
+            n_clicks_timestamp: Date.now()
           });
         }
       }}
       className={class_name || className}
-      as={type}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RBNavbar.Toggle>
+    </RSNavbarToggler>
   );
 };
 
 NavbarToggler.defaultProps = {
   n_clicks: 0,
-  n_clicks_timestamp: -1,
+  n_clicks_timestamp: -1
 };
 
 NavbarToggler.propTypes = {
@@ -105,8 +104,8 @@ NavbarToggler.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default NavbarToggler;

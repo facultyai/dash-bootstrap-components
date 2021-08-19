@@ -6,7 +6,7 @@ import {default as RBCard} from 'react-bootstrap/Card';
 /**
  * Use the CardFooter component to add a footer to any card.
  */
-const CardFooter = (props) => {
+const CardFooter = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RBCard.Footer
@@ -78,8 +78,8 @@ CardFooter.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default CardFooter;

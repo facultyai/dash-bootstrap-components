@@ -8,7 +8,6 @@ card = dbc_card([
                 dbc_tab(label="Tab 2", tab_id="tab-2"),
             ],
             id="card-tabs",
-            card=true,
             active_tab="tab-1",
         ),
     ),

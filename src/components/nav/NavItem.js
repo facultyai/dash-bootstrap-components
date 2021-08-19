@@ -6,7 +6,7 @@ import {default as RBNav} from 'react-bootstrap/Nav';
 /**
  * Create a single item in a `Nav`.
  */
-const NavItem = (props) => {
+const NavItem = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
     <RBNav.Item
@@ -74,8 +74,8 @@ NavItem.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default NavItem;

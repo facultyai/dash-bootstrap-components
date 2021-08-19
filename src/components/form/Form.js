@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Form as RSForm} from 'reactstrap';
+import {default as RBForm} from 'react-bootstrap/Form';
 
 /**
  * The Form component can be used to organise collections of input components
  * and apply consistent styling.
  */
-const Form = (props) => {
+const Form = props => {
   const {
     children,
     loading_state,
@@ -19,15 +19,15 @@ const Form = (props) => {
     ...otherProps
   } = props;
   return (
-    <RSForm
-      onSubmit={(e) => {
+    <RBForm
+      onSubmit={e => {
         if (prevent_default_on_submit) {
           e.preventDefault();
         }
         if (setProps) {
           setProps({
             n_submit: n_submit + 1,
-            n_submit_timestamp: Date.now(),
+            n_submit_timestamp: Date.now()
           });
         }
       }}
@@ -38,14 +38,14 @@ const Form = (props) => {
       }
     >
       {children}
-    </RSForm>
+    </RBForm>
   );
 };
 
 Form.defaultProps = {
   prevent_default_on_submit: true,
   n_submit: 0,
-  n_submit_timestamp: -1,
+  n_submit_timestamp: -1
 };
 
 Form.propTypes = {
@@ -97,13 +97,6 @@ Form.propTypes = {
   method: PropTypes.oneOf(['GET', 'POST']),
 
   /**
-   * Use inline=True to apply the `form-inline` class, allowing you to display
-   * a series of labels, form controls, and buttons on a single horizontal row.
-   * Form controls within inline forms vary slightly from their default states.
-   */
-  inline: PropTypes.bool,
-
-  /**
    * Number of times the `Enter` key was pressed while the input had focus.
    */
   n_submit: PropTypes.number,
@@ -135,8 +128,8 @@ Form.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Form;
