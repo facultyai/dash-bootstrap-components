@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {default as RBNavbar} from 'react-bootstrap/Navbar'
-import {Container} from 'react-bootstrap'
+import {default as Container} from 'react-bootstrap/Container'
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 import Nav from './Nav';

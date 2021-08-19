@@ -97,7 +97,7 @@ Navbar.propTypes = {
   /**
    * Fix the navbar's position at the top or bottom of the page, options: top, bottom
    */
-  fixed: PropTypes.oneOf(['top', 'bottom']),
+  fixed: PropTypes.string,
 
   /**
    * Position the navbar at the top of the viewport, but only after scrolling past it.

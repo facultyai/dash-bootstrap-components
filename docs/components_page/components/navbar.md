@@ -29,4 +29,3 @@ Here is an example of a custom navbar, see the `examples/` folder in the [GitHub
 
 {{apidoc:src/components/nav/NavbarToggler.js}}
 
-{{apidoc:src/components/nav/NavbarCollapse.js}}

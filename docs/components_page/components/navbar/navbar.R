@@ -32,8 +32,8 @@ navbar <- dbcNavbar(
       href = "https://plotly.com"
     ),
     dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
-    dbcNavbarCollapse(
-      search_bar, id = "navbar-collapse", is_open = FALSE
+    dbcCollapse(
+      search_bar, id = "navbar-collapse", is_open = FALSE, navbar = TRUE
     )
   ),
   color = "dark",

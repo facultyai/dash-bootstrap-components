@@ -29,7 +29,7 @@ navbar = dbc_navbar(
             href="https://plotly.com",
         ),
         dbc_navbartoggler(id="navbar-toggler", n_clicks=0),
-        dbc_navbarcollapse(search_bar, id="navbar-collapse", is_open=false),
+        dbc_collapse(search_bar, id="navbar-collapse", is_open=false, navbar=true),
     ],
     color="dark",
     dark=true,

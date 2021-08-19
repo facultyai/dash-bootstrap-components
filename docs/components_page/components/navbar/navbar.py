@@ -33,8 +33,8 @@ navbar = dbc.Navbar(
             href="https://plotly.com",
         ),
         dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
-        dbc.NavbarCollapse(
-            search_bar, id="navbar-collapse", is_open=False
+        dbc.Collapse(
+            search_bar, id="navbar-collapse", is_open=False, navbar=True
         ),
     ],
     color="dark",

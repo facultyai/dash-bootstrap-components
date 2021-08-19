@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import {default as RBCollapse} from 'react-bootstrap/Collapse';
+import {default as RBNavbar} from 'react-bootstrap/Navbar';
 
 /**
  * Hide or show content with a vertical collapsing animation. Visibility of the
@@ -12,13 +13,17 @@ const Collapse = props => {
   const {
     children,
     is_open,
+    navbar,
     loading_state,
     className,
     class_name,
     ...otherProps
   } = props;
+
+  const Component = navbar ? RBNavbar.Collapse : RBCollapse;
+
   return (
-    <RBCollapse
+    <Component
       in={is_open}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
@@ -27,7 +32,7 @@ const Collapse = props => {
       }
     >
       {children}
-    </RBCollapse>
+    </Component>
   );
 };
 
@@ -72,6 +77,11 @@ Collapse.propTypes = {
    * Whether collapse is currently open.
    */
   is_open: PropTypes.bool,
+
+  /**
+   * Set to True when using a collapse inside a navbar.
+   */
+  navbar: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
