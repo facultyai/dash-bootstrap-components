@@ -27,7 +27,7 @@ navbar <- dbcNavbar(
           dbcCol(dbcNavbarBrand("Navbar", class_name = "ms-2"))
         ),
         align = "center",
-        no_gutters = TRUE
+        class_name="g-0"
       ),
       href = "https://plotly.com"
     ),

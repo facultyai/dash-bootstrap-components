@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardLink as RSCardLink} from 'reactstrap';
+import {default as RBCard} from 'react-bootstrap/Card';
 import Link from '../../private/Link';
 
 /**
@@ -28,18 +28,18 @@ const CardLink = props => {
   };
 
   return (
-    <RSCardLink
+    <RBCard.Link
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      tag={Link}
+      as={Link}
       preOnClick={incrementClicks}
       disabled={disabled}
       className={class_name || className}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
-    </RSCardLink>
+    </RBCard.Link>
   );
 };
 

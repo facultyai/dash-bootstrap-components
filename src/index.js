@@ -6,8 +6,6 @@ export {default as Button} from './components/Button';
 export {default as ButtonGroup} from './components/ButtonGroup';
 export {default as Card} from './components/card/Card';
 export {default as CardBody} from './components/card/CardBody';
-export {default as CardColumns} from './components/card/CardColumns';
-export {default as CardDeck} from './components/card/CardDeck';
 export {default as CardFooter} from './components/card/CardFooter';
 export {default as CardGroup} from './components/card/CardGroup';
 export {default as CardHeader} from './components/card/CardHeader';

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
+import {default as RBNavbar} from 'react-bootstrap/Navbar';
+import {default as Container} from 'react-bootstrap/Container';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 import Nav from './Nav';
@@ -22,6 +23,8 @@ const NavbarSimple = props => {
     links_left,
     fluid,
     color,
+    dark,
+    light,
     style,
     loading_state,
     className,
@@ -35,7 +38,9 @@ const NavbarSimple = props => {
   const toggle = () => setNavbarOpen(!navbarOpen);
 
   return (
-    <RSNavbar
+    <RBNavbar
+      variant={dark ? 'dark' : 'light'}
+      bg={isBootstrapColor ? color : null}
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
@@ -55,13 +60,11 @@ const NavbarSimple = props => {
           </NavbarBrand>
         )}
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={navbarOpen} navbar>
-          <Nav className={links_left ? 'mr-auto' : 'ml-auto'} navbar>
-            {children}
-          </Nav>
-        </Collapse>
+        <RBNavbar.Collapse in={navbarOpen}>
+          <Nav className={links_left ? 'mr-auto' : 'ml-auto'}>{children}</Nav>
+        </RBNavbar.Collapse>
       </Container>
-    </RSNavbar>
+    </RBNavbar>
   );
 };
 

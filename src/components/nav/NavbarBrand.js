@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
+import {default as RBNavbar} from 'react-bootstrap/Navbar';
 import Link from '../../private/Link';
 
 /**
@@ -10,16 +10,16 @@ import Link from '../../private/Link';
 const NavbarBrand = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSNavbarBrand
+    <RBNavbar.Brand
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
-      tag={props.href ? Link : 'span'}
+      as={props.href ? Link : 'span'}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSNavbarBrand>
+    </RBNavbar.Brand>
   );
 };
 

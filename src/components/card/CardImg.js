@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardImg as RSCardImg} from 'reactstrap';
+import {default as RBCard} from 'react-bootstrap/Card';
 
 /**
  * Use CardImg to add images to your cards.
@@ -9,7 +9,7 @@ import {CardImg as RSCardImg} from 'reactstrap';
 const CardImg = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardImg
+    <RBCard.Img
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -17,7 +17,7 @@ const CardImg = props => {
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardImg>
+    </RBCard.Img>
   );
 };
 

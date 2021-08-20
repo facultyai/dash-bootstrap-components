@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardImgOverlay as RSCardImgOverlay} from 'reactstrap';
+import {default as RBCard} from 'react-bootstrap/Card';
 
 /**
  * Use CardImgOverlay to turn an image into the background of your card and add
@@ -10,7 +10,7 @@ import {CardImgOverlay as RSCardImgOverlay} from 'reactstrap';
 const CardImgOverlay = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardImgOverlay
+    <RBCard.ImgOverlay
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -18,7 +18,7 @@ const CardImgOverlay = props => {
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardImgOverlay>
+    </RBCard.ImgOverlay>
   );
 };
 
