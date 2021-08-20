@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {DropdownItem as RSDropdownItem} from 'reactstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import Link, {isExternalLink} from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
@@ -21,6 +21,8 @@ const DropdownMenuItem = props => {
     setProps,
     className,
     class_name,
+    header,
+    divider,
     ...otherProps
   } = props;
 
@@ -33,24 +35,28 @@ const DropdownMenuItem = props => {
         n_clicks_timestamp: Date.now()
       });
     }
-    if (props.href) {
-      if (toggle && context.isOpen) {
-        context.toggle(e);
-      }
+    if (toggle && context.isOpen) {
+      context.toggle(e);
     }
   };
 
   const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
+
+  if (header) {
+    return <Dropdown.Header>{children}</Dropdown.Header>;
+  } else if (divider) {
+    return <Dropdown.Divider />;
+  }
+
   return (
-    <RSDropdownItem
-      tag={useLink ? Link : 'button'}
+    <Dropdown.Item
+      as={useLink ? Link : 'button'}
       // don't pass href if disabled otherwise reactstrap renders item
       // as link and the cursor becomes a pointer on hover
       href={disabled ? null : href}
       disabled={disabled}
       target={useLink && target}
-      toggle={toggle}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -58,7 +64,7 @@ const DropdownMenuItem = props => {
       }
     >
       {children}
-    </RSDropdownItem>
+    </Dropdown.Item>
   );
 };
 

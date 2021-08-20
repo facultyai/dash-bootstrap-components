@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Dropdown, DropdownToggle} from 'reactstrap';
-import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -39,6 +39,8 @@ const DropdownMenu = props => {
     }
   };
 
+  const Tag = nav ? NavDropdown : Dropdown;
+
   return (
     <DropdownMenuContext.Provider
       value={{
@@ -46,25 +48,21 @@ const DropdownMenu = props => {
         isOpen: dropdownOpen
       }}
     >
-      <Dropdown
-        isOpen={dropdownOpen}
-        toggle={toggle}
-        nav={nav}
+      <Tag
+        show={dropdownOpen}
         disabled={disabled}
-        inNavbar={in_navbar}
-        addonType={addon_type}
-        size={bs_size}
+        navbar={in_navbar}
         className={class_name || className}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        <DropdownToggle
-          nav={nav}
-          caret={caret}
+        <Dropdown.Toggle
+          onClick={toggle}
           disabled={disabled}
-          color={isBootstrapColor ? color : undefined}
+          size={bs_size}
+          variant={isBootstrapColor ? color : undefined}
           style={
             !isBootstrapColor
               ? {backgroundColor: color, ...toggle_style}
@@ -73,9 +71,11 @@ const DropdownMenu = props => {
           className={toggle_class_name || toggleClassName}
         >
           {label}
-        </DropdownToggle>
-        <RSDropdownMenu right={right}>{children}</RSDropdownMenu>
-      </Dropdown>
+        </Dropdown.Toggle>
+        <Dropdown.Menu renderOnMount right={right}>
+          {children}
+        </Dropdown.Menu>
+      </Tag>
     </DropdownMenuContext.Provider>
   );
 };

@@ -129,10 +129,10 @@ describe('DropdownMenuItem', () => {
     );
 
     userEvent.click(dropdownMenu.getByText('toggle'));
-
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
     );
+
     userEvent.click(dropdownMenu.getByText('Clickable'));
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
