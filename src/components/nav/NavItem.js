@@ -58,7 +58,6 @@ NavItem.propTypes = {
    */
   key: PropTypes.string,
 
-
   /**
    * Object that holds the loading state object coming from dash-renderer
    */

@@ -28,9 +28,9 @@ const Card = props => {
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      text={inverse ? 'white' :null}
-      bg={(isBootstrapColor && !outline) ? color : null}
-      border={(isBootstrapColor && outline) ? color : null}
+      text={inverse ? 'white' : null}
+      bg={isBootstrapColor && !outline ? color : null}
+      border={isBootstrapColor && outline ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}

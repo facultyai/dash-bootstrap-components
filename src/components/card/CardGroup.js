@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import RBCardGroup from 'react-bootstrap/CardGroup'
+import RBCardGroup from 'react-bootstrap/CardGroup';
 
 /**
  * Use CardGroup to render cards as a single, attached element of columns with

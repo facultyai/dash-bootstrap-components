@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNavbar} from 'react-bootstrap/Navbar'
+import {default as RBNavbar} from 'react-bootstrap/Navbar';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
@@ -24,7 +24,7 @@ const Navbar = props => {
 
   return (
     <RBNavbar
-      variant= {dark ? 'dark' : 'light'}
+      variant={dark ? 'dark' : 'light'}
       as={tag}
       bg={isBootstrapColor ? color : null}
       style={{backgroundColor: !isBootstrapColor && color, ...style}}

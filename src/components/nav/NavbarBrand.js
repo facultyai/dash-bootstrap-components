@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNavbar} from 'react-bootstrap/Navbar'
+import {default as RBNavbar} from 'react-bootstrap/Navbar';
 import Link from '../../private/Link';
 
 /**

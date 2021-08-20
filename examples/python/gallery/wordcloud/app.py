@@ -74,9 +74,7 @@ controls = dbc.Card(
     [
         html.Div([dbc.Label("Choose a book:"), dropdown]),
         html.Div([dbc.Label("Minimum frequency:"), min_freq_slider]),
-        html.Div(
-            [dbc.Label("Maximum number of words:"), max_vocab_slider]
-        ),
+        html.Div([dbc.Label("Maximum number of words:"), max_vocab_slider]),
     ],
     class_name="mb-3",
     body=True,
