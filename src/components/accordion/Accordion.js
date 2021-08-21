@@ -17,6 +17,10 @@ const resolveChildProps = child => {
   }
 };
 
+/**
+ * A self contained Accordion component. Build up the children using the
+ * AccordionItem component.
+ */
 const Accordion = props => {
   const {
     children,
@@ -151,7 +155,7 @@ Accordion.propTypes = {
   active_item: PropTypes.string,
 
   /**
-   *
+   * Set to True for all items to be collapsed initially.
    */
   start_collapsed: PropTypes.bool,
 

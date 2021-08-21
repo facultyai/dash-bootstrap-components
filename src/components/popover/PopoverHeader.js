@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {PopoverHeader as RSPopoverHeader} from 'reactstrap';
+import Popover from 'react-bootstrap/Popover';
 
 /**
  * Creates a header for use inside the `Popover` component.
@@ -9,7 +9,7 @@ import {PopoverHeader as RSPopoverHeader} from 'reactstrap';
 const PopoverHeader = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSPopoverHeader
+    <Popover.Header
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -17,7 +17,7 @@ const PopoverHeader = props => {
       }
     >
       {children}
-    </RSPopoverHeader>
+    </Popover.Header>
   );
 };
 

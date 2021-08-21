@@ -63,8 +63,7 @@
     "ramda": "^0.27.1",
     "react": "^16.13.1",
     "react-bootstrap": "^2.0.0-beta.4",
-    "react-dom": "^16.13.0",
-    "reactstrap": "^8.9.0"
+    "react-dom": "^16.13.0"
   },
   "jest": {
     "transform": {

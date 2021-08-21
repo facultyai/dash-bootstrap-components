@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
-import {Popover as RSPopover} from 'reactstrap';
+// import {omit} from 'ramda';
+import RBPopover from 'react-bootstrap/Popover';
+
+import Overlay from '../../private/Overlay';
 
 /**
  * Popover creates a toggleable overlay that can be used to provide additional
@@ -15,39 +17,36 @@ const Popover = props => {
   const {
     children,
     is_open,
-    hide_arrow,
     loading_state,
-    setProps,
-    trigger,
     className,
     class_name,
-    innerClassName,
-    inner_class_name,
+    style,
     ...otherProps
   } = props;
 
-  const toggle = () => {
-    setProps({is_open: !is_open});
-  };
-
   return (
-    <RSPopover
-      isOpen={is_open}
-      hideArrow={hide_arrow}
-      // to ensure proper backwards compatibility, the toggle function is only
-      // passed to the popover if `trigger` is not specified
-      toggle={trigger ? toggle : undefined}
-      trigger={trigger}
-      className={class_name || className}
-      innerClassName={inner_class_name || innerClassName}
-      {...omit(['setProps'], otherProps)}
+    <Overlay
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      defaultShow={is_open}
+      {...otherProps}
     >
-      {children}
-    </RSPopover>
+      <RBPopover
+        // hideArrow={hide_arrow}
+        // to ensure proper backwards compatibility, the toggle function is only
+        // passed to the popover if `trigger` is not specified
+        style={style}
+        className={class_name || className}
+      >
+        {children}
+      </RBPopover>
+    </Overlay>
   );
+};
+
+Popover.defaultProps = {
+  delay: {show: 0, hide: 50}
 };
 
 Popover.propTypes = {
