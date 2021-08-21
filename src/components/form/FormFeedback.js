@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import FormControl from 'react-bootstrap/FormControl';
+import RBFormControl from 'react-bootstrap/FormControl';
 
 /**
  * The FormFeedback component can be used to provide feedback on input values
@@ -11,7 +11,7 @@ import FormControl from 'react-bootstrap/FormControl';
 const FormFeedback = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <FormControl.Feedback
+    <RBFormControl.Feedback
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -19,7 +19,7 @@ const FormFeedback = props => {
       }
     >
       {children}
-    </FormControl.Feedback>
+    </RBFormControl.Feedback>
   );
 };
 

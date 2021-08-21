@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBButton} from 'react-bootstrap/Button';
+import RBButton from 'react-bootstrap/Button';
 import Link from '../private/Link';
 
 /**

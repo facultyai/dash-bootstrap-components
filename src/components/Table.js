@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBTable} from 'react-bootstrap/Table';
+import RBTable from 'react-bootstrap/Table';
 
 /**
  * A component for applying Bootstrap styles to HTML tables. Use this as a

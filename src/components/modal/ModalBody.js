@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import Modal from 'react-bootstrap/Modal';
+import RBModalBody from 'react-bootstrap/ModalBody';
 
 /**
  * Use this component to add consistent padding to the body (main content) of
@@ -10,13 +10,13 @@ import Modal from 'react-bootstrap/Modal';
 const ModalBody = props => {
   const {children, className, class_name, tag, ...otherProps} = props;
   return (
-    <Modal.Body
+    <RBModalBody
       as={tag}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </Modal.Body>
+    </RBModalBody>
   );
 };
 

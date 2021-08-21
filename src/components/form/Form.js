@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBForm} from 'react-bootstrap/Form';
+import RBForm from 'react-bootstrap/Form';
 
 /**
  * The Form component can be used to organise collections of input components

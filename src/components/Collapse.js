@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBCollapse} from 'react-bootstrap/Collapse';
-import {default as RBNavbar} from 'react-bootstrap/Navbar';
+import RBCollapse from 'react-bootstrap/Collapse';
+import RBNavbarCollapse from 'react-bootstrap/NavbarCollapse';
 
 /**
  * Hide or show content with a vertical collapsing animation. Visibility of the
@@ -21,7 +21,7 @@ const Collapse = props => {
     ...otherProps
   } = props;
 
-  const Component = navbar ? RBNavbar.Collapse : RBCollapse;
+  const Component = navbar ? RBNavbarCollapse : RBCollapse;
 
   return (
     <Component
@@ -33,7 +33,7 @@ const Collapse = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      {children}
+      <div>{children}</div>
     </Component>
   );
 };

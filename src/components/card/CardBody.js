@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBCard} from 'react-bootstrap/Card';
+import RBCard from 'react-bootstrap/Card';
 
 /**
  * Wrap the content of your `Card` in `CardBody` to apply padding and other

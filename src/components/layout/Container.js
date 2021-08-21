@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {default as RBContainer} from 'react-bootstrap/Container';
+import RBContainer from 'react-bootstrap/Container';
 import {omit} from 'ramda';
 
 /**

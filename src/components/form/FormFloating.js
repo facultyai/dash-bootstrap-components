@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBFormFloating} from 'react-bootstrap/FormFloating';
+import RBFormFloating from 'react-bootstrap/FormFloating';
 
 /**
  * A component for adding float labels to form controls in forms.
@@ -16,7 +16,6 @@ const FormFloating = props => {
     ...otherProps
   } = props;
 
-  // TODO: check this component
   return (
     <RBFormFloating
       htmlFor={html_for}

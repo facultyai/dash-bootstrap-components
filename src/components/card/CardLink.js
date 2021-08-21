@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBCard} from 'react-bootstrap/Card';
+import RBCard from 'react-bootstrap/Card';
 import Link from '../../private/Link';
 
 /**

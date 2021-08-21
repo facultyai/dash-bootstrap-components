@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNavbar} from 'react-bootstrap/Navbar';
+import RBNavbarBrand from 'react-bootstrap/NavbarBrand';
 import Link from '../../private/Link';
 
 /**
@@ -10,7 +10,7 @@ import Link from '../../private/Link';
 const NavbarBrand = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RBNavbar.Brand
+    <RBNavbarBrand
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       as={props.href ? Link : 'span'}
@@ -19,7 +19,7 @@ const NavbarBrand = props => {
       }
     >
       {children}
-    </RBNavbar.Brand>
+    </RBNavbarBrand>
   );
 };
 

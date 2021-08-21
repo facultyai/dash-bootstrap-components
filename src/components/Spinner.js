@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBSpinner} from 'react-bootstrap/Spinner';
+import RBSpinner from 'react-bootstrap/Spinner';
 import {bootstrapColors} from '../private/BootstrapColors';
 
 /**

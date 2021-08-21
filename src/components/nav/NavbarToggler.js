@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import Navbar from 'react-bootstrap/Navbar';
+import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
 
 /**
  * Use this component to create a navbar toggle to show navlinks when the
@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 const NavbarToggler = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <Navbar.Toggle
+    <RBNavbarToggle
       onClick={() => {
         if (props.setProps) {
           props.setProps({
@@ -26,7 +26,7 @@ const NavbarToggler = props => {
       }
     >
       {children}
-    </Navbar.Toggle>
+    </RBNavbarToggle>
   );
 };
 

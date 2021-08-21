@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBCol} from 'react-bootstrap/Col';
+import RBCol from 'react-bootstrap/Col';
 import classNames from 'classnames';
 
 const alignMap = {

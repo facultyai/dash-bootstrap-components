@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNav} from 'react-bootstrap/Nav';
+import RBNavItem from 'react-bootstrap/NavItem';
 
 /**
  * Create a single item in a `Nav`.
@@ -9,7 +9,7 @@ import {default as RBNav} from 'react-bootstrap/Nav';
 const NavItem = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RBNav.Item
+    <RBNavItem
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -17,7 +17,7 @@ const NavItem = props => {
       }
     >
       {children}
-    </RBNav.Item>
+    </RBNavItem>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {default as RBOffcanvas} from 'react-bootstrap/Offcanvas';
+import RBOffcanvas from 'react-bootstrap/Offcanvas';
 
 /**
  * Create a toggleable hidden sidebar using the Offcanvas component.

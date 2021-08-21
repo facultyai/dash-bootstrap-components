@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {omit} from 'ramda';
-import {default as RBToast} from 'react-bootstrap/Toast';
+import RBToast from 'react-bootstrap/Toast';
 
 /**
  * Toasts can be used to push messages and notifactions to users. Control

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNav} from 'react-bootstrap/Nav';
+import RBNav from 'react-bootstrap/Nav';
 import classNames from 'classnames';
 
 const horizontalMap = {

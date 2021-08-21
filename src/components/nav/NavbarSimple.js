@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBNavbar} from 'react-bootstrap/Navbar';
-import {default as Container} from 'react-bootstrap/Container';
+import RBNavbar from 'react-bootstrap/Navbar';
+import RBContainer from 'react-bootstrap/Container';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 import Nav from './Nav';
@@ -49,7 +49,7 @@ const NavbarSimple = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <Container fluid={fluid}>
+      <RBContainer fluid={fluid}>
         {brand && (
           <NavbarBrand
             href={brand_href}
@@ -63,7 +63,7 @@ const NavbarSimple = props => {
         <RBNavbar.Collapse in={navbarOpen}>
           <Nav className={links_left ? 'mr-auto' : 'ml-auto'}>{children}</Nav>
         </RBNavbar.Collapse>
-      </Container>
+      </RBContainer>
     </RBNavbar>
   );
 };

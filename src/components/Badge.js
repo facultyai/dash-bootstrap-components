@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBBadge} from 'react-bootstrap/Badge';
+import RBBadge from 'react-bootstrap/Badge';
 import Link from '../private/Link';
 import {bootstrapColors} from '../private/BootstrapColors';
 

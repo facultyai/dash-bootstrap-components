@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBListGroup} from 'react-bootstrap/ListGroup';
+import RBListGroup from 'react-bootstrap/ListGroup';
 
 /**
  * Bootstrap list groups are a flexible way to display a series of content. Use

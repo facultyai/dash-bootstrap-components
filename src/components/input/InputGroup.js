@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBInputGroup} from 'react-bootstrap/InputGroup';
+import RBInputGroup from 'react-bootstrap/InputGroup';
 
 /**
  * A component for grouping together inputs and buttons, dropdowns or text.

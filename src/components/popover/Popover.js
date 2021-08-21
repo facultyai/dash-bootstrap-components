@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import {omit} from 'ramda';
 import RBPopover from 'react-bootstrap/Popover';
 
 import Overlay from '../../private/Overlay';

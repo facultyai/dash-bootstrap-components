@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import RBProgressBar from 'react-bootstrap/ProgressBar';
 import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
@@ -22,7 +22,7 @@ const Progress = props => {
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
   return (
-    <ProgressBar
+    <RBProgressBar
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -34,7 +34,7 @@ const Progress = props => {
       visuallyHidden={hide_label}
     >
       {children}
-    </ProgressBar>
+    </RBProgressBar>
   );
 };
 

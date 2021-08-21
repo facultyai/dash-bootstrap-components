@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBRow} from 'react-bootstrap/Row';
+import RBRow from 'react-bootstrap/Row';
 import classNames from 'classnames';
 
 const alignMap = {

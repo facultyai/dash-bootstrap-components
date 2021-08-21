@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBListGroup} from 'react-bootstrap/ListGroup';
+import RBListGroupItem from 'react-bootstrap/ListGroupItem';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -36,7 +36,7 @@ const ListGroupItem = props => {
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
-    <RBListGroup.Item
+    <RBListGroupItem
       as={useLink ? Link : 'li'}
       target={useLink && target}
       disabled={disabled}
@@ -49,7 +49,7 @@ const ListGroupItem = props => {
       }
     >
       {children}
-    </RBListGroup.Item>
+    </RBListGroupItem>
   );
 };
 

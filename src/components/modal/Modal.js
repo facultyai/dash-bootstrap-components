@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBModal} from 'react-bootstrap/Modal';
+import RBModal from 'react-bootstrap/Modal';
 
 /**
  * Create a toggleable dialog using the Modal component. Toggle the visibility

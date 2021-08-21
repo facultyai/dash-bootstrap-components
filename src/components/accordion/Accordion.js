@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBAccordion} from 'react-bootstrap/Accordion';
+import RBAccordion from 'react-bootstrap/Accordion';
 
 const resolveChildProps = child => {
   // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed

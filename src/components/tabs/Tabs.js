@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classnames from 'classnames';
-import Nav from 'react-bootstrap/Nav';
-import Tab from 'react-bootstrap/Tab';
+import RBNav from 'react-bootstrap/Nav';
+import RBTab from 'react-bootstrap/Tab';
 import {isNil} from 'ramda';
 
 const resolveChildProps = child => {
@@ -79,7 +79,7 @@ const Tabs = props => {
       const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
       const active = active_tab === tabId;
       return (
-        <Nav.Item
+        <RBNav.Item
           key={tabId}
           style={
             active
@@ -93,7 +93,7 @@ const Tabs = props => {
                 childProps.activeTabClassName)
           )}
         >
-          <Nav.Link
+          <RBNav.Link
             className={classnames(
               childProps.label_class_name || childProps.labelClassName,
               active &&
@@ -115,8 +115,8 @@ const Tabs = props => {
             }}
           >
             {childProps.label}
-          </Nav.Link>
-        </Nav.Item>
+          </RBNav.Link>
+        </RBNav.Item>
       );
     });
 
@@ -147,7 +147,7 @@ const Tabs = props => {
       const tabId = tab_id || 'tab-' + idx;
 
       return (
-        <Tab.Pane
+        <RBTab.Pane
           eventKey={tabId}
           key={tabId}
           {...omit(
@@ -159,11 +159,11 @@ const Tabs = props => {
           }
         >
           {child}
-        </Tab.Pane>
+        </RBTab.Pane>
       );
     });
   return (
-    <Tab.Container
+    <RBTab.Container
       key={key}
       activeKey={active_tab}
       onSelect={id => setProps({active_tab: id})}
@@ -171,7 +171,7 @@ const Tabs = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <Nav
+      <RBNav
         id={id}
         variant="tabs"
         as="ul"
@@ -179,9 +179,9 @@ const Tabs = props => {
         style={style}
       >
         {links}
-      </Nav>
-      <Tab.Content>{tabs}</Tab.Content>
-    </Tab.Container>
+      </RBNav>
+      <RBTab.Content>{tabs}</RBTab.Content>
+    </RBTab.Container>
   );
 };
 

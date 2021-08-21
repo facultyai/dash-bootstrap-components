@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
-import {default as RBCarousel} from 'react-bootstrap/Carousel';
+import RBCarousel from 'react-bootstrap/Carousel';
 
 /**
  * Component for creating Bootstrap carousel.  This component is a slideshow

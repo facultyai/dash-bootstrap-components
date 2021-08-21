@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import Form from 'react-bootstrap/Form';
+import RBFormLabel from 'react-bootstrap/FormLabel';
 import classNames from 'classnames';
 import {bootstrapTextColors} from '../../private/BootstrapColors';
 
@@ -56,7 +56,7 @@ const Label = props => {
   );
 
   return (
-    <Form.Label
+    <RBFormLabel
       htmlFor={html_for}
       column={size || cols.length > 0}
       xs={xs || width}
@@ -73,7 +73,7 @@ const Label = props => {
       }
     >
       {children}
-    </Form.Label>
+    </RBFormLabel>
   );
 };
 

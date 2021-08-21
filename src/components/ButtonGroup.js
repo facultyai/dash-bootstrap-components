@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBButtonGroup} from 'react-bootstrap/ButtonGroup';
+import RBButtonGroup from 'react-bootstrap/ButtonGroup';
 
 /**
  * A component for creating groups of buttons. Can be used with `Button` or

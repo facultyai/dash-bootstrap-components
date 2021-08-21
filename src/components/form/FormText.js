@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {omit} from 'ramda';
-import {default as RBFormText} from 'react-bootstrap/FormText';
+import RBFormText from 'react-bootstrap/FormText';
 import {bootstrapTextColors} from '../../private/BootstrapColors';
 
 /**

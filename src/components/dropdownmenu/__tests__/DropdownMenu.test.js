@@ -1,23 +1,8 @@
 import React from 'react';
-import {act, render} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DropdownMenu from '../DropdownMenu';
 import DropdownMenuItem from '../DropdownMenuItem';
-
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
-
-  return class {
-    static placements = PopperJS.placements;
-
-    constructor() {
-      return {
-        destroy: () => {},
-        scheduleUpdate: () => {}
-      };
-    }
-  };
-});
 
 describe('DropdownMenu', () => {
   test('renders a button with class "dropdown-toggle"', () => {

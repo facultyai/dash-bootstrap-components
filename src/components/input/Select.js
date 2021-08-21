@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import FormSelect from 'react-bootstrap/FormSelect';
+import RBFormSelect from 'react-bootstrap/FormSelect';
 
 /**
  * Create a HTML select element with Bootstrap styles. Specify options as a
@@ -17,7 +17,7 @@ const Select = props => {
   };
 
   return (
-    <FormSelect
+    <RBFormSelect
       {...omit(
         [
           'setProps',
@@ -46,7 +46,7 @@ const Select = props => {
             {option.label}
           </option>
         ))}
-    </FormSelect>
+    </RBFormSelect>
   );
 };
 

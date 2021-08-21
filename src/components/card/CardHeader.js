@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBCard} from 'react-bootstrap/Card';
+import RBCardHeader from 'react-bootstrap/CardHeader';
 
 /**
  * Use the CardHeader component to add a header to any card.
@@ -9,7 +9,7 @@ import {default as RBCard} from 'react-bootstrap/Card';
 const CardHeader = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RBCard.Header
+    <RBCardHeader
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -17,7 +17,7 @@ const CardHeader = props => {
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RBCard.Header>
+    </RBCardHeader>
   );
 };
 

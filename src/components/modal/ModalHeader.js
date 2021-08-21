@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import Modal from 'react-bootstrap/Modal';
+import RBModalHeader from 'react-bootstrap/ModalHeader';
 
 /**
  * Add a header to any modal.
@@ -16,14 +16,14 @@ const ModalHeader = props => {
     ...otherProps
   } = props;
   return (
-    <Modal.Header
+    <RBModalHeader
       as={tag}
       className={class_name || className}
       closeButton={close_button}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </Modal.Header>
+    </RBModalHeader>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBFade} from 'react-bootstrap/Fade';
+import RBFade from 'react-bootstrap/Fade';
 
 /**
  * Hide or show content with a fading animation. Visibility of the children is

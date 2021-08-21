@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {default as RBPagination} from 'react-bootstrap/Pagination';
+import RBPagination from 'react-bootstrap/Pagination';
 
 /**
  * The container for presentational components for building a pagination UI.

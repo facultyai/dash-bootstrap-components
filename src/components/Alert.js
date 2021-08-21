@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {default as RBAlert} from 'react-bootstrap/Alert';
+import RBAlert from 'react-bootstrap/Alert';
 import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
