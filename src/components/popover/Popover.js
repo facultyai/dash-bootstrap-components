@@ -45,7 +45,9 @@ const Popover = props => {
 };
 
 Popover.defaultProps = {
-  delay: {show: 0, hide: 50}
+  delay: {show: 0, hide: 50},
+  placement: 'right',
+  flip: true
 };
 
 Popover.propTypes = {
@@ -111,11 +113,6 @@ Popover.propTypes = {
   target: PropTypes.string,
 
   /**
-   * Where to inject the popper DOM node, default body.
-   */
-  container: PropTypes.string,
-
-  /**
    * Space separated list of triggers (e.g. "click hover focus legacy"). These
    * specify ways in which the target component can toggle the popover. If not
    * specified you must toggle the popover yourself using callbacks. Options
@@ -152,7 +149,7 @@ Popover.propTypes = {
   innerClassName: PropTypes.string,
 
   /**
-   * Optionally override show/hide delays - default {show: 0, hide: 250}
+   * Optionally override show/hide delays
    */
   delay: PropTypes.oneOfType([
     PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
@@ -160,7 +157,7 @@ Popover.propTypes = {
   ]),
 
   /**
-   * Popover offset.
+   * Offset of the popover relative to its target
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
