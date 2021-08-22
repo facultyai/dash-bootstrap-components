@@ -1,18 +1,10 @@
 ---
 title: Breadcrumb
-lead: Use the Breadcrumb component to create a breadcrumb navigation.
+lead: Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.
 ---
 
-You can create a breadcrumb using the `Breadcrumb` and `BreadcrumbItem` components.
+You can create breadcrumbs using the `Breadcrumb` component. Items are specified with the `items` prop. You must specify a `label` for each item, and can optionally specify `href` to add a link, `external_link` to determine whether the link should be treated as a Dash style link or whether it should reload the page, and finally `active` to determine whether the item has the "active" style applied to indicate that it corresponds to the current location.
 
 {{example:components/breadcrumb/simple.py:breadcrumb}}
 
-## `active` property
-
-You can change which part of the breadcrumb has the `active` property by setting `active` on the breadcrumb items. Setting `active` to `"exact"` or `"partial"` automatically updates the links as the pages change. See below for details.
-
-{{example:components/breadcrumb/active.py:breadcrumb}}
-
 {{apidoc:src/components/breadcrumb/Breadcrumb.js}}
-
-{{apidoc:src/components/breadcrumb/BreadcrumbItem.js}}

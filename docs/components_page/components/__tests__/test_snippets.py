@@ -71,6 +71,9 @@ def test_r_snippets(dash_thread_server, dashr_server, config):
             )
             python_r_compare.append((py_snippet, r_snippet, f"{name}_{i}"))
 
+    with open("app.R", "w") as f:
+        f.write("\n".join(x[1] for x in python_r_compare))  # TODO: remove
+
     if python_r_compare:
         assert_layouts_equal(
             python_r_compare,
@@ -103,6 +106,9 @@ def test_jl_snippets(dash_thread_server, dashjl_server, config):
         if jl_snippet_path.exists():
             jl_snippet = rename_variable(jl_snippet_path, i, name)
             python_jl_compare.append((py_snippet, jl_snippet, f"{name}_{i}"))
+
+    with open("app.jl", "w") as f:
+        f.write("\n".join(x[1] for x in python_jl_compare)) # TODO: remove
 
     if python_jl_compare:
         assert_layouts_equal(

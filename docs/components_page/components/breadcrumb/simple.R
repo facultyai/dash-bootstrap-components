@@ -1,9 +1,9 @@
 library(dashBootstrapComponents)
 
 breadcrumb <- dbcBreadcrumb(
-    list(
-        dbcBreadcrumbItem("Docs", href="/docs"),
-        dbcBreadcrumbItem("Components", href="/docs/components"),
-        dbcBreadcrumbItem("Breadcrumb", href="/docs/components/breadcrumb")
+    items = list(
+        list("label" = "Docs", "href" = "/docs", "external_link" = TRUE),
+        list("label" = "Components", "href" = "/docs/components", "external_link" = TRUE),
+        list("label" = "Breadcrumb", "active" = TRUE)
     )
 )
