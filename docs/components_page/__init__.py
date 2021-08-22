@@ -96,6 +96,7 @@ def register_apps():
         "accordion": {"markdown_path": COMPONENTS / "accordion.md"},
         "alert": {"markdown_path": COMPONENTS / "alert.md"},
         "badge": {"markdown_path": COMPONENTS / "badge.md"},
+        "breadcrumb": {"markdown_path": COMPONENTS / "breadcrumb.md"},
         "button": {"markdown_path": COMPONENTS / "button.md"},
         "button_group": {"markdown_path": COMPONENTS / "button_group.md"},
         "card": {"markdown_path": COMPONENTS / "card.md"},
