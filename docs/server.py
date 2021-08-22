@@ -86,9 +86,9 @@ def create_server():
 
     @server.route("/docs/components/")
     def components_index():
-        return redirect("/docs/components/alert", 302)
+        return redirect("/docs/components/accordion", 302)
 
-    @server.route("/l/components/", defaults={"slug": "alert"})
+    @server.route("/l/components/", defaults={"slug": "accordion"})
     @server.route("/l/components/<slug>/")
     def components_redirect(slug):
         return redirect(f"/docs/components/{slug}", 302)
