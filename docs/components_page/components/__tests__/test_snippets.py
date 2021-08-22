@@ -130,13 +130,14 @@ def assert_layouts_equal(
     py_runner.start(app, port=py_port)
     py_layout = requests.get(f"{py_runner.url}/_dash-layout").json()
 
-    # Get other language snippet layout
     runner.start(
         wrapper.format(
             snippet="\n".join(x[1] for x in compare),
             components=", ".join(x[2] for x in compare),
             port=port,
-        )
+        ).replace(
+            "class_name", "className"
+        )  # TODO: remove
     )
     layout = requests.get(f"{runner.url}/_dash-layout").json()
 

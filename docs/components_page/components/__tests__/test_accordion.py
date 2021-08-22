@@ -20,6 +20,8 @@ def test_jl_simple(dashjl):
     jl_app = load_jl_app(
         (HERE.parent / "accordion" / "simple.jl"), "accordion"
     )
+    with open("app.jl", "w") as f:
+        f.write(jl_app)
     dashjl.start_server(jl_app)
     check_simple_callbacks(dashjl)
 
@@ -29,40 +31,25 @@ def check_simple_callbacks(runner):
     accordion_comp = runner.find_element("#accordion")
     accordion_text = runner.find_element("#accordion-contents")
 
-    # Check it has 3 page-items objects in it
-    pages = accordion_comp.find_elements(".accordion-item")
+    # Check it has 3 accordion-items in it
+    items = accordion_comp.find_elements_by_class_name("accordion-item")
     wait.until(
-        lambda: len(pages) == 3,
+        lambda: len(items) == 3,
         timeout=4,
     )
 
     # Click the third section
-    wait.until(
-        lambda: pages[2].find_elements(".accordion-collapse").text
-        == "This is the content of the third section",
-        timeout=4,
-    )
-    pages[2].find_elements(".accordion-button").click()
+    items[2].find_element_by_class_name("accordion-button").click()
 
-    # Check the text in contents changes to "Item selected: item-2"
+    # Check the text in contents changes to "Item selected: item-3"
     wait.until(
-        lambda: accordion_text.text == "Item selected: item-2",
-        timeout=4,
-    )
-
-    # Change the slider to value 1
-    runner.click_at_coord_fractions(
-        runner.find_element("#item-change"), 0.5, 0.25
-    )
-
-    # Check the text in contents changes to "Item selected: item-1"
-    wait.until(
-        lambda: accordion_text.text == "Item selected: item-1",
+        lambda: accordion_text.text == "Item selected: item-3",
         timeout=4,
     )
 
     # Check that the right section is showing
-    item = accordion_comp.find_element(".show")
+    item = accordion_comp.find_element_by_class_name("show")
     wait.until(
-        lambda: item.text == "This is the content of the second section"
+        lambda: item.text == "This is the content of the third section",
+        timeout=4,
     )
