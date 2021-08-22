@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBButton from 'react-bootstrap/Button';
-import Link from '../private/Link';
+import Link from '../../private/Link';
 
 /**
  * A component for creating Bootstrap buttons with different style options. The

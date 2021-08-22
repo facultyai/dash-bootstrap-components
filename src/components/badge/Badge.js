@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBBadge from 'react-bootstrap/Badge';
-import Link from '../private/Link';
-import {bootstrapColors} from '../private/BootstrapColors';
+import Link from '../../private/Link';
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * Badges can be used to add counts or labels to other components.

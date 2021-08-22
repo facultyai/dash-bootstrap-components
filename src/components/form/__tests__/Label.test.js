@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import Label from '../form/Label';
+import Label from '../Label';
 
 describe('Label', () => {
   test('renders a label', () => {

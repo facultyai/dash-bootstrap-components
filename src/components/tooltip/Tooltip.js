@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBTooltip from 'react-bootstrap/Tooltip';
 
-import Overlay from '../private/Overlay';
+import Overlay from '../../private/Overlay';
 
 /**
  * A component for adding tooltips to any element, no callbacks required!

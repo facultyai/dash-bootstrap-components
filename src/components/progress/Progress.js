@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBProgressBar from 'react-bootstrap/ProgressBar';
-import {bootstrapColors} from '../private/BootstrapColors';
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * A component for creating progress bars just with CSS. Control the current

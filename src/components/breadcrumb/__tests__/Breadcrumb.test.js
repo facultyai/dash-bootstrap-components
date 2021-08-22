@@ -44,7 +44,7 @@ describe('Breadcrumb', () => {
       '/item/subitem'
     );
     // last item has no href as it is active.
-    expect(breadcrumbItems.children[2].querySelector('a')).toBe(null)
+    expect(breadcrumbItems.children[2].querySelector('a')).toBe(null);
   });
 
   test('correctly applies the active class', () => {

@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAlert from 'react-bootstrap/Alert';
-import {bootstrapColors} from '../private/BootstrapColors';
+import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * Alert allows you to create contextual feedback messages on user actions.

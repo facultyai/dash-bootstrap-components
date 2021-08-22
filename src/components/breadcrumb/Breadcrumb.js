@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RBBreadcrumb from 'react-bootstrap/Breadcrumb';
 
-import Link from '../private/Link';
+import Link from '../../private/Link';
 
 /**
  * Use breadcrumbs to create a navigation breadcrumb in your app.
