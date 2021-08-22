@@ -115,6 +115,8 @@ describe('DropdownMenu', () => {
     expect(dropdownMenuSuccess.getByText('toggle success')).toHaveClass(
       'btn-success'
     );
-    expect(dropdownMenuDanger.getByText('toggle danger')).toHaveClass('btn-danger');
+    expect(dropdownMenuDanger.getByText('toggle danger')).toHaveClass(
+      'btn-danger'
+    );
   });
 });
