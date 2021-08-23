@@ -160,7 +160,8 @@ def register_apps():
                     "href": f"/docs/components/{slug}",
                     "label": _get_label(slug),
                 }
-                for slug in component_bodies if _get_label(slug) != "Main"
+                for slug in component_bodies
+                if _get_label(slug) != "Main"
             ],
         },
     ]

@@ -21,5 +21,5 @@ carousel = dbc.Carousel(
             "caption": "This slide has a caption only",
         },
     ],
-    variant="dark"
+    variant="dark",
 )

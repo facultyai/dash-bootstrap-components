@@ -8,14 +8,14 @@ color_selector = html.Div(
         dbc.Select(
             id="change-table-color",
             options=[
-                {"label" : "primary", "value" : "primary"},
-                {"label" : "secondary", "value" : "secondary"},
-                {"label" : "success", "value" : "success"},
-                {"label" : "danger", "value" : "danger"},
-                {"label" : "warning", "value" : "warning"},
-                {"label" : "info", "value" : "info"},
-                {"label" : "light", "value" : "light"},
-                {"label" : "dark", "value" : "dark"},
+                {"label": "primary", "value": "primary"},
+                {"label": "secondary", "value": "secondary"},
+                {"label": "success", "value": "success"},
+                {"label": "danger", "value": "danger"},
+                {"label": "warning", "value": "warning"},
+                {"label": "info", "value": "info"},
+                {"label": "light", "value": "light"},
+                {"label": "dark", "value": "dark"},
             ],
             value="primary",
         ),
@@ -35,9 +35,9 @@ table = html.Div(
     ]
 )
 
+
 @app.callback(
-    Output("table-color", "color"),
-    Input("change-table-color", "value")
+    Output("table-color", "color"), Input("change-table-color", "value")
 )
 def change_table_colour(color):
     return color

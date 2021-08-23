@@ -11,7 +11,9 @@ HERE = Path(__file__).parent
 
 
 def test_r_pagination_callback(dashr):
-    r_app = load_r_app((HERE.parent / "pagination" / "callback.R"), "pagination")
+    r_app = load_r_app(
+        (HERE.parent / "pagination" / "callback.R"), "pagination"
+    )
     dashr.start_server(r_app)
     check_pagination_callback_callbacks(dashr)
 

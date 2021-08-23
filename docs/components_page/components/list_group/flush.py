@@ -6,5 +6,5 @@ list_group = dbc.ListGroup(
         dbc.ListGroupItem("Item 2"),
         dbc.ListGroupItem("Item 3"),
     ],
-    flush=True
+    flush=True,
 )
