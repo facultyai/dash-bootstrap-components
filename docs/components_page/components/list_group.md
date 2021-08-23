@@ -27,6 +27,12 @@ Pass one of Bootstrap's contextual colors to the `color` argument of `ListGroupI
 
 {{example:components/list_group/colors.py:list_group}}
 
+## Flush
+
+Add flush to change some of the styling, including removing borders, and rounding some of the edges to fit in line with the parent container.
+
+{{example:components/list_group/flush.py:list_group}}
+
 ## Custom content
 
 You can pass any Dash components to the children of `ListGroupItem`.
