@@ -26,6 +26,16 @@ input_groups <- htmlDiv(
     ),
     dbcInputGroup(
       list(
+        dbcInputGroupText("Total:"),
+        dbcInputGroupText("$"),
+        dbcInput(placeholder = "Amount", type = "number"),
+        dbcInputGroupText(".00"),
+        dbcInputGroupText("only")
+      ),
+      class_name = "mb-3"
+    ),
+    dbcInputGroup(
+      list(
         dbcInputGroupText("With textarea"),
         dbcTextarea()
       ),
