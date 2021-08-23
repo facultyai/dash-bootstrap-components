@@ -8,13 +8,8 @@ modal <- htmlDiv(
     dbcButton("Extra large modal", n_clicks = 0, id = "open-xl"),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
-        dbcModalBody("A small modal."),
-        dbcModalFooter(
-          dbcButton(
-            "Close", id = "close-sm", n_clicks = 0, class_name = "ms-auto"
-          )
-        )
+        dbcModalHeader(dbcModalTitle("Header")),
+        dbcModalBody("A small modal.")
       ),
       id = "modal-sm",
       is_open = FALSE,
@@ -22,13 +17,8 @@ modal <- htmlDiv(
     ),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
-        dbcModalBody("A large modal."),
-        dbcModalFooter(
-          dbcButton(
-            "Close", id = "close-lg", n_clicks = 0, class_name = "ms-auto"
-          )
-        )
+        dbcModalHeader(dbcModalTitle("Header")),
+        dbcModalBody("A large modal.")
       ),
       id = "modal-lg",
       is_open = FALSE,
@@ -36,13 +26,8 @@ modal <- htmlDiv(
     ),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
-        dbcModalBody("An extra large modal."),
-        dbcModalFooter(
-          dbcButton(
-            "Close", id = "close-xl", n_clicks = 0, class_name = "ms-auto"
-          )
-        )
+        dbcModalHeader(dbcModalTitle("Header")),
+        dbcModalBody("An extra large modal.")
       ),
       id = "modal-xl",
       is_open = FALSE,

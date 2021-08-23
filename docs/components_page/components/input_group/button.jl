@@ -1,10 +1,7 @@
 using DashBootstrapComponents
 
 input_group = dbc_inputgroup([
-    dbc_inputgroupaddon(
-        dbc_button("Random name", id="input-group-button", n_clicks=0),
-        addon_type="prepend",
-    ),
+    dbc_button("Random name", id="input-group-button", n_clicks=0),
     dbc_input(id="input-group-button-input", placeholder="name"),
 ]);
 

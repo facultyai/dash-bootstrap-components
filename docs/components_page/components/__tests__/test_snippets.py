@@ -135,9 +135,9 @@ def assert_layouts_equal(
             snippet="\n".join(x[1] for x in compare),
             components=", ".join(x[2] for x in compare),
             port=port,
-        ).replace(
-            "class_name", "className"
-        )  # TODO: remove
+        )
+        .replace("class_name", "className")
+        .replace("_className", "_class_name")  # TODO: remove
     )
     layout = requests.get(f"{runner.url}/_dash-layout").json()
 

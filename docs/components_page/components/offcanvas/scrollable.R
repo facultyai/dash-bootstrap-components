@@ -18,12 +18,12 @@ offcanvas <- htmlDiv(
                     id="close-offcanvas-scrollable",
                     class_name="ms-auto",
                     n_clicks=0,
-                ),
-            )
+                )
+            ),
             id="offcanvas-scrollable",
             scrollable=TRUE,
             title="Scrollable Offcanvas"
-        ),
+        )
     )
 )
 

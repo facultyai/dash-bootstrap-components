@@ -9,7 +9,12 @@ def py_source_to_app(py_source, env):
     """
     env = env or {}
     # TODO: remove class_name modifiers
-    exec(py_source.replace("class_name", "className"), env)
+    exec(
+        py_source.replace("class_name", "className").replace(
+            "_className", "_class_name"
+        ),
+        env,
+    )
     return env["app"]
 
 
@@ -52,21 +57,31 @@ def rename_variable(snippet_path, suffix, variable, assign_op="="):
     return "\n".join(new_lines)
 
 
-def load_r_app(path, component_name):
-    return R_WRAPPER.format(
-        snippet=path.read_text(),
-        components=component_name,
-        port=8050,
-    ).replace(
-        "class_name", "className"
+def load_r_app(path, component_name, extra_args=""):
+    snippet = path.read_text()
+    if extra_args:
+        snippet = f"{extra_args}\n{snippet}"
+    return (
+        R_WRAPPER.format(
+            snippet=snippet,
+            components=component_name,
+            port=8050,
+        )
+        .replace("class_name", "className")
+        .replace("_className", "_class_name")
     )  # TODO: remove this in future
 
 
-def load_jl_app(path, component_name):
-    return JL_WRAPPER.format(
-        snippet=path.read_text(),
-        components=component_name,
-        port=8050,
-    ).replace(
-        "class_name", "className"
+def load_jl_app(path, component_name, extra_args=""):
+    snippet = path.read_text()
+    if extra_args:
+        snippet = f"{extra_args}\n{snippet}"
+    return (
+        JL_WRAPPER.format(
+            snippet=snippet,
+            components=component_name,
+            port=8050,
+        )
+        .replace("class_name", "className")
+        .replace("_className", "_class_name")
     )  # TODO: remove this in future

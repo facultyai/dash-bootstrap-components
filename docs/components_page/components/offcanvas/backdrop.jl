@@ -1,5 +1,21 @@
 using DashBootstrapComponents, DashHtmlComponents
 
+backdrop_selector = html_div(
+    [
+        dbc_radioitems(
+            id="offcanvas-backdrop-selector",
+            options=[
+                Dict("label"=> "True (default)", "value"=> true),
+                Dict("label"=> "False", "value"=> false),
+                Dict("label"=> "Static (no dismiss)", "value"=> "static"),
+            ],
+            inline=true,
+            value=true,
+        ),
+    ],
+    class_name="p-3 m-2 border",
+)
+
 offcanvas = html_div(
     [
         dbc_button(
@@ -8,33 +24,10 @@ offcanvas = html_div(
         dbc_offcanvas(
             [
                 html_div(
-                    "Change the backdrop of this offcanvas with the "
+                    "Change the backdrop of this offcanvas with the " *
                     "radio buttons"
                 ),
-                dbc_formgroup(
-                    [
-                        dbc_radioitems(
-                            id="offcanvas-backdrop-selector",
-                            options=[
-                                Dict(
-                                    "label" => "True (default)",
-                                    "value" => true,
-                                ),
-                                Dict(
-                                    "label" => "False",
-                                    "value" => false
-                                ),
-                                Dict(
-                                    "label" => "Static (no dismiss)",
-                                    "value" => "static"
-                                )
-                            ],
-                            inline=true,
-                            value=true,
-                        ),
-                    ],
-                    class_name="p-3 m-2 border",
-                ),
+                backdrop_selector,
                 dbc_button(
                     "Close",
                     id="close-offcanvas-backdrop",
@@ -43,7 +36,7 @@ offcanvas = html_div(
                 ),
             ],
             id="offcanvas-backdrop",
-            title="Offcanvas with/without backdrop"
+            title="Offcanvas with/without backdrop",
         ),
     ]
 )

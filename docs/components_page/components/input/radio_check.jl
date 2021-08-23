@@ -1,6 +1,6 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-radioitems = dbc_formgroup([
+radioitems = html_div([
     dbc_label("Choose one"),
     dbc_radioitems(
         options=[
@@ -13,7 +13,7 @@ radioitems = dbc_formgroup([
     ),
 ]);
 
-checklist = dbc_formgroup([
+checklist = html_div([
     dbc_label("Choose a bunch"),
     dbc_checklist(
         options=[
@@ -26,7 +26,7 @@ checklist = dbc_formgroup([
     ),
 ]);
 
-switches = dbc_formgroup([
+switches = html_div([
     dbc_label("Toggle a bunch"),
     dbc_checklist(
         options=[

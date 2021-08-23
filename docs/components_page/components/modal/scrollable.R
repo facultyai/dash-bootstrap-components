@@ -17,7 +17,7 @@ modal <- htmlDiv(
               n_clicks = 0),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
+        dbcModalHeader(dbcModalTitle("Scrolling modal")),
         dbcModalBody(LOREM),
         dbcModalFooter(
           dbcButton("Close", id = "close-scroll", n_clicks = 0,
@@ -29,7 +29,7 @@ modal <- htmlDiv(
     ),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
+        dbcModalHeader(dbcModalTitle("Modal with scrollable body")),
         dbcModalBody(LOREM),
         dbcModalFooter(
           dbcButton(

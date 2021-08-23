@@ -3,19 +3,15 @@ library(dashHtmlComponents)
 
 email_input <- htmlDiv(
   list(
-    dbcFormGroup(
-      list(
-        dbcLabel("Email"),
-        dbcInput(id = "email-input", type = "email", value = ""),
-        dbcFormText("We only accept gmail..."),
-        dbcFormFeedback(
-            "That looks like a gmail address :-)", type = "valid"
-        ),
-        dbcFormFeedback(
-            "Sorry, we only accept gmail for some reason...",
-            type = "invalid"
-        )
-      )
+    dbcLabel("Email"),
+    dbcInput(id = "email-input", type = "email", value = ""),
+    dbcFormText("We only accept gmail..."),
+    dbcFormFeedback(
+        "That looks like a gmail address :-)", type = "valid"
+    ),
+    dbcFormFeedback(
+        "Sorry, we only accept gmail for some reason...",
+        type = "invalid"
     )
   )
 )

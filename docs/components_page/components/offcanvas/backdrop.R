@@ -1,44 +1,46 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
+backdrop_selector <- htmlDiv(
+    list(
+        dbcRadioItems(
+            id="offcanvas-backdrop-selector",
+            options=list(
+                list("label"= "True (default)", "value"= TRUE),
+                list("label"= "False", "value"= FALSE),
+                list("label"= "Static (no dismiss)", "value"= "static")
+            ),
+            inline=TRUE,
+            value=TRUE
+        )
+    ),
+    class_name="p-3 m-2 border",
+)
+
 offcanvas <- htmlDiv(
     list(
-        dbcButton("Open backdrop offcanvas", id="open-offcanvas-backdrop", n_clicks=0),
+        dbcButton(
+            "Open backdrop offcanvas", id="open-offcanvas-backdrop", n_clicks=0
+        ),
         dbcOffcanvas(
             list(
                 htmlDiv(
-                    "Change the backdrop of this offcanvas with the "
-                    "radio buttons"
+                    paste(
+                        "Change the backdrop of this offcanvas with the",
+                        "radio buttons"
+                    )
                 ),
-                dbcFormGroup(
-                    list(
-                        dbcRadioItems(
-                            id="offcanvas-backdrop-selector",
-                            options=list(
-                                list(
-                                    label="True (default)", value=TRUE,
-                                ),
-                                list(label="False", value=TRUE),
-                                list(
-                                    label="Static (no dismiss)", value="static"
-                                ),
-                            ),
-                            inline=TRUE,
-                            value=TRUE,
-                        ),
-                    ),
-                    class_name="p-3 m-2 border",
-                ),
+                backdrop_selector,
                 dbcButton(
                     "Close",
                     id="close-offcanvas-backdrop",
                     class_name="ms-auto",
                     n_clicks=0,
-                ),
+                )
             ),
             id="offcanvas-backdrop",
             title="Offcanvas with/without backdrop"
-        ),
+        )
     )
 )
 

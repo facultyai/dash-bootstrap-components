@@ -3,7 +3,7 @@ using DashBootstrapComponents, DashHtmlComponents
 input_groups = html_div([
     dbc_inputgroup(
         [
-            dbc_inputgroupaddon("@", addon_type="prepend"),
+            dbc_inputgrouptext("@"),
             dbc_input(placeholder="Username"),
         ],
         class_name="mb-3",
@@ -11,20 +11,20 @@ input_groups = html_div([
     dbc_inputgroup(
         [
             dbc_input(placeholder="Recipient's username"),
-            dbc_inputgroupaddon("@example.com", addon_type="append"),
+            dbc_inputgrouptext("@example.com"),
         ],
         class_name="mb-3",
     ),
     dbc_inputgroup(
         [
-            dbc_inputgroupaddon("\$", addon_type="prepend"),
+            dbc_inputgrouptext("\$"),
             dbc_input(placeholder="Amount", type="number"),
-            dbc_inputgroupaddon(".00", addon_type="append"),
+            dbc_inputgrouptext(".00"),
         ],
         class_name="mb-3",
     ),
     dbc_inputgroup(
-        [dbc_inputgroupaddon("With textarea", addon_type="prepend"), dbc_textarea()],
+        [dbc_inputgrouptext("With textarea"), dbc_textarea()],
         class_name="mb-3",
     ),
     dbc_inputgroup([
@@ -34,6 +34,6 @@ input_groups = html_div([
                 Dict("label" => "Option 2", "value" => 2),
             ],
         ),
-        dbc_inputgroupaddon("With select", addon_type="append"),
+        dbc_inputgrouptext("With select"),
     ]),
 ]);

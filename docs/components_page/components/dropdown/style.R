@@ -25,8 +25,6 @@ dropdowns <- htmlDiv(
       items_style, label = "Danger", color = "danger", class_name = "m-1"
     ),
     dbcDropdownMenu(items_style, label = "Info", color = "info",
-                    class_name = "m-1"),
-    dbcDropdownMenu(items_style, label = "Link", color = "link",
                     class_name = "m-1")
   ),
   style = list(display = "flex", flexWrap = "wrap")

@@ -6,11 +6,8 @@ modal = html_div([
     dbc_button("Extra large modal", id="open-xl", n_clicks=0),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Header")),
             dbc_modalbody("A small modal."),
-            dbc_modalfooter(
-                dbc_button("Close", id="close-sm", class_name="ms-auto", n_clicks=0),
-            ),
         ],
         id="modal-sm",
         size="sm",
@@ -18,11 +15,8 @@ modal = html_div([
     ),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Header")),
             dbc_modalbody("A large modal."),
-            dbc_modalfooter(
-                dbc_button("Close", id="close-lg", class_name="ms-auto", n_clicks=0),
-            ),
         ],
         id="modal-lg",
         size="lg",
@@ -30,11 +24,8 @@ modal = html_div([
     ),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Header")),
             dbc_modalbody("An extra large modal."),
-            dbc_modalfooter(
-                dbc_button("Close", id="close-xl", class_name="ms-auto", n_clicks=0),
-            ),
         ],
         id="modal-xl",
         size="xl",

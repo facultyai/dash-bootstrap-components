@@ -1,6 +1,6 @@
-using DashBootstrapComponents
+using DashBootstrapComponents, DashHtmlComponents
 
-inline_radioitems = dbc_formgroup([
+inline_radioitems = html_div([
     dbc_label("Choose one"),
     dbc_radioitems(
         options=[
@@ -13,7 +13,7 @@ inline_radioitems = dbc_formgroup([
     ),
 ]);
 
-inline_checklist = dbc_formgroup([
+inline_checklist = html_div([
     dbc_label("Choose a bunch"),
     dbc_checklist(
         options=[
@@ -26,7 +26,7 @@ inline_checklist = dbc_formgroup([
     ),
 ]);
 
-inline_switches = dbc_formgroup([
+inline_switches = html_div([
     dbc_label("Toggle a bunch"),
     dbc_checklist(
         options=[

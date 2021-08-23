@@ -3,7 +3,7 @@ library(dashHtmlComponents)
 
 standalone_radio_check <- htmlDiv(
   list(
-    dbcFormGroup(
+    htmlDiv(
       list(
         dbcCheckbox(
           id = "standalone-checkbox",
@@ -14,10 +14,9 @@ standalone_radio_check <- htmlDiv(
           html_for = "standalone-checkbox",
           class_name = "form-check-label"
         )
-      ),
-      check = TRUE
+      )
     ),
-    dbcFormGroup(
+    htmlDiv(
       list(
         dbcRadioButton(
             id = "standalone-radio",
@@ -28,8 +27,7 @@ standalone_radio_check <- htmlDiv(
           html_for = "standalone-radio",
           class_name = "form-check-label"
         )
-      ),
-      check = TRUE,
+      )
     ),
     htmlBr(),
     htmlP(id = "standalone-radio-check-output")

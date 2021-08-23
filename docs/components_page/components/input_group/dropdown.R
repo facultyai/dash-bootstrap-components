@@ -10,7 +10,7 @@ dropdown_menu_items <- list(
 input_group <- dbcInputGroup(
   list(
     dbcDropdownMenu(
-      dropdown_menu_items, label = "Generate", addon_type = "prepend"
+      dropdown_menu_items, label = "Generate"
     ),
     dbcInput(id = "input-group-dropdown-input", placeholder = "name")
   )

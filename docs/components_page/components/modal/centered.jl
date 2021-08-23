@@ -4,7 +4,7 @@ modal = html_div([
     dbc_button("Open", id="open-centered"),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Header"), close_button=true),
             dbc_modalbody("This modal is vertically centered"),
             dbc_modalfooter(
                 dbc_button(

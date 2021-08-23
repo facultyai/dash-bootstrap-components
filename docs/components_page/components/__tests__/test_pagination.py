@@ -26,14 +26,17 @@ def test_jl_pagination_simple(dashjl):
 
 def check_pagination_simple_callbacks(runner):
 
-    # Find the pagination object
-    pagination_comp = runner.find_element("#pagination")
-    pagination_text = runner.find_element("#pagination-contents")
-
     # Check it has 10 page-items objects in it
-    pages = pagination_comp.find_elements(".page-item")
+    pages = runner.find_elements("#pagination .page-item")
     wait.until(
         lambda: len(pages) == 10,
+        timeout=4,
+    )
+
+    # Ensure that all the items have loaded
+    wait.until(
+        lambda: runner.find_element("#pagination-contents").text
+        == "Page selected: 1",
         timeout=4,
     )
 
@@ -42,26 +45,31 @@ def check_pagination_simple_callbacks(runner):
         lambda: pages[6].text == "7",
         timeout=4,
     )
+
     pages[6].click()
 
     # Check the text in contents changes to "Page selected: 7"
     wait.until(
-        lambda: pagination_text.text == "Page selected: 7",
+        lambda: runner.find_element("#pagination-contents").text
+        == "Page selected: 7",
         timeout=4,
     )
 
     # Change the slider to value 5
-    runner.click_at_coord_fractions(
-        runner.find_element("#page-change"), 0.5, 0.25
-    )
+    page_changer = runner.find_element("#page-change")
+    runner.click_at_coord_fractions(page_changer, 0.5, 0.25)
 
     # Check the text in contents changes to "Page selected: 5"
     wait.until(
-        lambda: pagination_text.text == "Page selected: 5",
+        lambda: runner.find_element("#pagination-contents").text
+        == "Page selected: 5",
         timeout=4,
     )
 
     # Check that the <li> object inside pagination with number = 5
     # has active as a class
-    pages = pagination_comp.find_element(".active")
-    wait.until(lambda: pages[4].text == "5")
+    active_page = runner.find_element("#pagination .active")
+    wait.until(
+        lambda: active_page.text.split("\n") == ["5", "(current)"],
+        timeout=4,
+    )

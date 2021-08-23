@@ -21,8 +21,9 @@ accordion = html_div(
                 ),
             ],
             id="accordion",
+            active_item="item-1"
         ),
-        html_div(id="accordion-contents", class_name="mt-3"),
+        html_div("Select an item", id="accordion-contents", class_name="mt-3"),
     ]
 )
 

@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-email_input_simple <- dbcFormGroup(
+email_input_simple <- htmlDiv(
   list(
     dbcLabel("Email", html_for = "example-email"),
     dbcInput(type = "email", id = "example-email", placeholder = "Enter email"),
@@ -8,10 +8,11 @@ email_input_simple <- dbcFormGroup(
       "Are you on email? You simply have to be these days",
       color = "secondary",
     )
-  )
+  ),
+  class_name="mb-3"
 )
 
-password_input_simple <- dbcFormGroup(
+password_input_simple <- htmlDiv(
   list(
     dbcLabel("Password", html_for = "example-password"),
     dbcInput(
@@ -23,7 +24,8 @@ password_input_simple <- dbcFormGroup(
         "A password stops mean people taking your stuff",
         color = "secondary"
     )
-  )
+  ),
+  class_name="mb-3"
 )
 
 form <- dbcForm(list(email_input_simple, password_input_simple))

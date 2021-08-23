@@ -26,5 +26,5 @@ callback!(
     Input("toggle", "n_clicks"),
     State("popover", "is_open"),
 ) do n, is_open
-    return n > 0 ? is_open == 0 : is_open
+    return n > 0 ? is_open == 0 : is_open == 1
 end;

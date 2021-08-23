@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 
-pagination <- html.Div(
+pagination <- htmlDiv(
     list(
         htmlDiv("Select a page", id="pagination-contents"),
         dbcPagination(
@@ -18,18 +18,18 @@ pagination <- html.Div(
             step=1,
             value=1,
             marks=list(
-                1="1",
-                2="2",
-                3="3",
-                4="4",
-                5="5",
-                6="6",
-                7="7",
-                8="8",
-                9="9",
-                10="10",
-            ),
-        ),
+                "1"="1",
+                "2"="2",
+                "3"="3",
+                "4"="4",
+                "5"="5",
+                "6"="6",
+                "7"="7",
+                "8"="8",
+                "9"="9",
+                "10"="10"
+            )
+        )
     )
 )
 
@@ -37,15 +37,16 @@ pagination <- html.Div(
 app$callback(
     output("pagination-contents", "children"),
     list(input("pagination", "active_page")),
-    function(page):
+    function(page){
         if (page > 0) {
             return(paste("Page selected: ", page))
         }
         return("Select a page")
+    }
 )
 
 app$callback(
-    output("pagination", "active_page"), 
+    output("pagination", "active_page"),
     list(input("page-change", "value")),
     function(value) {
         return(value)

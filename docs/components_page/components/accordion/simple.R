@@ -25,7 +25,7 @@ accordion <- htmlDiv(
       id = "accordion",
       active_item = "item-1"
     ),
-    htmlDiv("Select an item", id = "accordion-contents")
+    htmlDiv("Select an item", id = "accordion-contents", "className" = "mt-3")
   )
 )
 

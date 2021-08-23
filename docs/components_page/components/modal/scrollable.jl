@@ -8,7 +8,7 @@ modal = html_div([
     dbc_button("Modal with scrollable body", id="open-body-scroll", n_clicks=0),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Scrolling modal")),
             dbc_modalbody(LOREM),
             dbc_modalfooter(
                 dbc_button(
@@ -24,7 +24,7 @@ modal = html_div([
     ),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Modal with scrollable body")),
             dbc_modalbody(LOREM),
             dbc_modalfooter(
                 dbc_button(

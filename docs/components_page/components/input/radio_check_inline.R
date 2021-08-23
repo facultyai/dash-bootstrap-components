@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-inline_radioitems <- dbcFormGroup(
+inline_radioitems <- htmlDiv(
   list(
     dbcLabel("Choose one"),
     dbcRadioItems(
@@ -16,7 +16,7 @@ inline_radioitems <- dbcFormGroup(
   )
 )
 
-inline_checklist <- dbcFormGroup(
+inline_checklist <- htmlDiv(
   list(
     dbcLabel("Choose a bunch"),
     dbcChecklist(
@@ -31,7 +31,7 @@ inline_checklist <- dbcFormGroup(
   )
 )
 
-inline_switches <- dbcFormGroup(
+inline_switches <- htmlDiv(
   list(
     dbcLabel("Toggle a bunch"),
     dbcChecklist(

@@ -4,7 +4,7 @@ input_groups <- htmlDiv(
   list(
     dbcInputGroup(
       list(
-        dbcInputGroupAddon("@", addon_type = "prepend"),
+        dbcInputGroupText("@"),
         dbcInput(placeholder = "Username")
       ),
       class_name = "mb-3"
@@ -12,21 +12,21 @@ input_groups <- htmlDiv(
     dbcInputGroup(
       list(
         dbcInput(placeholder = "Recipient's username"),
-        dbcInputGroupAddon("@example.com", addon_type = "append")
+        dbcInputGroupText("@example.com")
       ),
       class_name = "mb-3"
     ),
     dbcInputGroup(
       list(
-        dbcInputGroupAddon("$", addon_type = "prepend"),
+        dbcInputGroupText("$"),
         dbcInput(placeholder = "Amount", type = "number"),
-        dbcInputGroupAddon(".00", addon_type = "append")
+        dbcInputGroupText(".00")
       ),
       class_name = "mb-3"
     ),
     dbcInputGroup(
       list(
-        dbcInputGroupAddon("With textarea", addon_type = "prepend"),
+        dbcInputGroupText("With textarea"),
         dbcTextarea()
       ),
       class_name = "mb-3"
@@ -39,7 +39,7 @@ input_groups <- htmlDiv(
             list(label =  "Option 2", value = 2)
           )
         ),
-        dbcInputGroupAddon("With select", addon_type = "append")
+        dbcInputGroupText("With select")
       )
     )
   )

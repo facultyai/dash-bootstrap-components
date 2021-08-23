@@ -1,61 +1,44 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
+placement_selector <- htmlDiv(
+    list(
+        dbcInputGroupText("Placement"),
+        dbcSelect(
+            id="offcanvas-placement-selector",
+            options=list(
+                list("label"= "start (Default)", "value"= "start"),
+                list("label"= "end", "value"= "end"),
+                list("label"= "top", "value"= "top"),
+                list("label"= "bottom", "value"= "bottom")
+            ),
+            value="start"
+        )
+    ),
+    class_name="p-3 m-2 border"
+)
+
 offcanvas <- htmlDiv(
     list(
         dbcButton(
             "Open Offcanvas",
             id="open-offcanvas-placement",
             n_clicks=0,
-            class_name="m-2",
+            class_name="m-2"
         ),
         dbcOffcanvas(
             list(
-                dbcOffcanvasHeader(title="Placement"),
-                dbcOffcanvasBody(
-                    list(
-                        htmlDiv(
-                            paste(
-                                "Change the placement of this offcanvas ",
-                                "with the options below"
-                            )
-                        ),
-                        dbcFormGroup(
-                            # FIXME: Fix styling here
-                            list(
-                                dbcInputGroupAddon(
-                                    "Placement", addon_type="prepend"
-                                ),
-                                dbcSelect(
-                                    id="offcanvas-placement-selector",
-                                    options=list(
-                                        list(
-                                            label="start (Default)",
-                                            value="start",
-                                        ),
-                                        list(
-                                            label="end", 
-                                            value="end"
-                                        ),
-                                        list(
-                                            label="top",
-                                            value="top",
-                                        ),
-                                        list(
-                                            label="bottom", 
-                                            value="bottom"
-                                        ),
-                                    ),
-                                    value="start",
-                                ),
-                            ),
-                            class_name="p-3 m-2 border",
-                        ),
+                htmlDiv(
+                    paste(
+                        "Change the placement of this offcanvas with the",
+                        "options below"
                     )
                 ),
+                placement_selector
             ),
             id="offcanvas-placement",
-        ),
+            title="Placement"
+        )
     )
 )
 

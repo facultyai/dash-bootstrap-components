@@ -6,7 +6,7 @@ modal <- htmlDiv(
     dbcButton("Open", id = "open-centered"),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
+        dbcModalHeader(dbcModalTitle("Header"), close_button=TRUE),
         dbcModalBody("This modal is vertically centered"),
         dbcModalFooter(
           dbcButton(
@@ -30,7 +30,7 @@ app$callback(
     state("modal-centered", "is_open")
   ),
   function(n1, n2, is_open) {
-    if (n1 | n2) {
+    if (n1 > 0 | n2 > 0) {
       return(!is_open)
     }
     return(is_open)

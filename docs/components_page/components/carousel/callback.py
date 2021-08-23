@@ -13,7 +13,7 @@ carousel = html.Div(
             ],
             controls=False,
             indicators=False,
-            interval=None,
+            interval=False,
         ),
         dbc.RadioItems(
             id="slide-number",

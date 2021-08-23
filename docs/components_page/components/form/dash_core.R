@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashCoreComponents)
 
-dropdown <-  dbcFormGroup(
+dropdown <-  htmlDiv(
   list(
     dbcLabel("Dropdown", html_for = "dropdown"),
     dccDropdown(
@@ -11,21 +11,24 @@ dropdown <-  dbcFormGroup(
         list(label = "Option 2", value =  2)
       )
     )
-  )
+  ),
+  class_name="mb-3",
 )
 
-slider <- dbcFormGroup(
+slider <- htmlDiv(
   list(
     dbcLabel("Slider", html_for = "slider"),
     dccSlider(id = "slider", min = 0, max = 10, step = 0.5, value = 3)
-  )
+  ),
+  class_name="mb-3"
 )
 
-range_slider <- dbcFormGroup(
+range_slider <- htmlDiv(
   list(
     dbcLabel("RangeSlider", html_for = "range-slider"),
     dccRangeSlider(id = "range-slider", min = 0, max = 10, value = list(3, 7))
-  )
+  ),
+  class_name="mb-3"
 )
 
 form <- dbcForm(list(dropdown, slider, range_slider))

@@ -6,16 +6,16 @@ pagination <- htmlDiv(
         htmlDiv("Small"),
         dbcPagination(
             max_value=5,
-            size="sm",
+            size="sm"
         ),
         htmlDiv("Default"),
         dbcPagination(
-            max_value=5,
+            max_value=5
         ),
         htmlDiv("Large"),
         dbcPagination(
             max_value=5,
-            size="lg",
-        ),
+            size="lg"
+        )
     )
 )

@@ -7,14 +7,14 @@ offcanvas <- htmlDiv(
         dbcOffcanvas(
             htmlP(
                 paste(
-                    "This is the content of the Offcanvas. ",
-                    "Close it by clicking on the close button, or ",
+                    "This is the content of the Offcanvas.",
+                    "Close it by clicking on the close button, or",
                     "the backdrop."
                 )
-            )
+            ),
             id="offcanvas",
             title="Title"
-        ),
+        )
     )
 )
 

@@ -6,7 +6,7 @@ modal <- htmlDiv(
     dbcButton("Open modal", id = "open", n_clicks = 0),
     dbcModal(
       list(
-        dbcModalHeader("Header"),
+        dbcModalHeader(dbcModalTitle("Header")),
         dbcModalBody("This is the content of the modal"),
         dbcModalFooter(
             dbcButton(

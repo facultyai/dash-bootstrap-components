@@ -1,5 +1,22 @@
 using DashBootstrapComponents, DashHtmlComponents
 
+placement_selector = html_div(
+    [
+        dbc_inputgrouptext("Placement"),
+        dbc_select(
+            id="offcanvas-placement-selector",
+            options=[
+                Dict("label"=> "start (Default)", "value"=> "start"),
+                Dict("label"=> "end", "value"=> "end"),
+                Dict("label"=> "top", "value"=> "top"),
+                Dict("label"=> "bottom", "value"=> "bottom"),
+            ],
+            value="start",
+        ),
+    ],
+    class_name="p-3 m-2 border",
+)
+
 offcanvas = html_div(
     [
         dbc_button(
@@ -14,40 +31,10 @@ offcanvas = html_div(
                     "Change the placement of this offcanvas with the " *
                     "options below"
                 ),
-                dbc_formgroup(
-                    # FIXME: Fix styling here
-                    [
-                        dbc_inputgroupaddon(
-                            "Placement", addon_type="prepend"
-                        ),
-                        dbc_select(
-                            id="offcanvas-placement-selector",
-                            options=[
-                                Dict(
-                                    "label" => "start (Default)",
-                                    "value" => "start",
-                                ),
-                                Dict(
-                                    "label" => "end", 
-                                    "value" => "end"
-                                ),
-                                Dict(
-                                    "label" => "top",
-                                    "value" => "top",
-                                ),
-                                Dict(
-                                    "label" => "bottom", 
-                                    "value" => "bottom"
-                                ),
-                            ],
-                            value="start",
-                        ),
-                    ],
-                    class_name="p-3 m-2 border",
-                ),
+                placement_selector,
             ],
             id="offcanvas-placement",
-            title="Placement"
+            title="Placement",
         ),
     ]
 )

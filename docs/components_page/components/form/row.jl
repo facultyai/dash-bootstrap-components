@@ -1,6 +1,6 @@
 using DashBootstrapComponents
 
-email_input = dbc_formgroup(
+email_input = dbc_row(
     [
         dbc_label("Email", html_for="example-email-row", width=2),
         dbc_col(
@@ -12,10 +12,10 @@ email_input = dbc_formgroup(
             width=10,
         ),
     ],
-    row=true,
+    class_name="mb-3"
 );
 
-password_input = dbc_formgroup(
+password_input = dbc_row(
     [
         dbc_label("Password", html_for="example-password-row", width=2),
         dbc_col(
@@ -27,10 +27,10 @@ password_input = dbc_formgroup(
             width=10,
         ),
     ],
-    row=true,
+    class_name="mb-3",
 );
 
-radios_input = dbc_formgroup(
+radios_input = dbc_row(
     [
         dbc_label("Radios", html_for="example-radios-row", width=2),
         dbc_col(
@@ -49,7 +49,7 @@ radios_input = dbc_formgroup(
             width=10,
         ),
     ],
-    row=true,
+    class_name="mb-3",
 );
 
 form = dbc_form([email_input, password_input, radios_input]);

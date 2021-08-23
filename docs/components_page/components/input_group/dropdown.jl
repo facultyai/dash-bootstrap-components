@@ -9,7 +9,7 @@ dropdown_menu_items = [
 
 
 input_group = dbc_inputgroup([
-    dbc_dropdownmenu(dropdown_menu_items, label="Generate", addon_type="prepend"),
+    dbc_dropdownmenu(dropdown_menu_items, label="Generate"),
     dbc_input(id="input-group-dropdown-input", placeholder="name"),
 ]);
 

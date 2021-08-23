@@ -1,13 +1,11 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 email_input = html_div([
-    dbc_formgroup([
         dbc_label("Email"),
         dbc_input(id="email-input", type="email", value=""),
         dbc_formtext("We only accept gmail..."),
         dbc_formfeedback("That looks like a gmail address :-)", type="valid"),
-        dbc_formfeedback("Sorry, we only accept gmail for some reason...", type="invalid"),
-    ]),
+        dbc_formfeedback("Sorry, we only accept gmail for some reason...", type="invalid")
 ]);
 
 

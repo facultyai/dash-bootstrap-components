@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-email_input <- dbcFormGroup(
+email_input <- dbcRow(
   list(
     dbcLabel("Email", html_for = "example-email-row", width = 2),
     dbcCol(
@@ -10,10 +10,10 @@ email_input <- dbcFormGroup(
       width = 10
     )
   ),
-  row = TRUE
+  class_name="mb-3",
 )
 
-password_input <- dbcFormGroup(
+password_input <- dbcRow(
   list(
     dbcLabel("Password", html_for = "example-password-row", width = 2),
     dbcCol(
@@ -25,10 +25,10 @@ password_input <- dbcFormGroup(
       width = 10
     )
   ),
-  row = TRUE
+  class_name="mb-3",
 )
 
-radios_input <- dbcFormGroup(
+radios_input <- dbcRow(
   list(
     dbcLabel("Radios", html_for = "example-radios-row", width = 2),
     dbcCol(
@@ -46,7 +46,7 @@ radios_input <- dbcFormGroup(
       width = 10
     )
   ),
-  row = TRUE
+  class_name="mb-3",
 )
 
 form <- dbcForm(list(email_input, password_input, radios_input))
