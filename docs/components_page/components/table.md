@@ -27,4 +27,10 @@ Manually constructing a HTML table can be tedious. The `Table` component has a `
 
 {{example:components/table/helper.py:table}}
 
+## Table from MultiIndex DataFrame
+
+If you have a columnar MultiIndex in your Pandas DataFrame, the `from_dataframe` method will automatically merge the relevant header cells for you.
+
+{{example:components/table/helper_multi.py:table}}
+
 {{apidoc:src/components/Table.js}}
