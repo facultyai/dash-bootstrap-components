@@ -26,10 +26,12 @@ describe('Tooltip', () => {
       container: document.body.appendChild(div)
     });
 
-    userEvent.hover(div);
+    fireEvent.mouseOver(div);
+    jest.runAllTimers();
     expect(document.body.querySelector('.tooltip')).not.toBe(null);
 
-    userEvent.unhover(div);
+    fireEvent.mouseLeave(div);
+    act(() => jest.runAllTimers());
     expect(document.body.querySelector('.tooltip')).toBe(null);
   });
 
@@ -38,8 +40,10 @@ describe('Tooltip', () => {
       container: document.body.appendChild(div)
     });
 
-    userEvent.hover(div);
-
+    fireEvent.mouseOver(div);
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(document.body.querySelector('.tooltip')).toHaveTextContent(
       'Tooltip content'
     );
