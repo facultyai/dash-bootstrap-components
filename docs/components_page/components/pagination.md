@@ -3,9 +3,7 @@ title: Pagination
 lead: Use the pagination component to create a pagination UI.
 ---
 
-`Pagination` components allow you to quickly create an easy-to-use pagination display. The `active_page` prop allows you to dynamically change which page is active, as well as be used in callbacks to identify when a user has clicked one of the buttons.
-
-The number of values displayed is controlled using the `max_value` property, and this must be defined. See below for details about changing the `min_value` and `step`.
+`Pagination` components allow you to quickly create an easy-to-use pagination display. The number of values displayed is controlled using the `max_value` property, and this must be defined. See below for details about changing the `min_value` and `step`.
 
 {{example:components/pagination/simple.py:pagination}}
 
@@ -26,5 +24,11 @@ You can choose to include the First and Last icons to navigate to the first and 
 If there are too many numbers, the pagination object can become unwieldy. Instead, set `fully_expanded=False` to replace some of the numbers with ellipsis. If the `max_value` is too small for this to make a difference, a standard pagination component showing all numbers is rendered instead, even when `fully_expanded=False`.
 
 {{example:components/pagination/collapse.py:pagination}}
+
+## Callbacks
+
+The `active_page` prop allows you to dynamically change which page is active, as well as be used in callbacks to identify when a user has clicked one of the buttons.
+
+{{example:components/pagination/callback.py:pagination}}
 
 {{apidoc:src/components/pagination/Pagination.js}}

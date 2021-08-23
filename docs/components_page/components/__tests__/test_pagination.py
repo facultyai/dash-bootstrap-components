@@ -10,21 +10,21 @@ from .helpers import load_jl_app, load_r_app
 HERE = Path(__file__).parent
 
 
-def test_r_pagination_simple(dashr):
-    r_app = load_r_app((HERE.parent / "pagination" / "simple.R"), "pagination")
+def test_r_pagination_callback(dashr):
+    r_app = load_r_app((HERE.parent / "pagination" / "callback.R"), "pagination")
     dashr.start_server(r_app)
-    check_pagination_simple_callbacks(dashr)
+    check_pagination_callback_callbacks(dashr)
 
 
-def test_jl_pagination_simple(dashjl):
+def test_jl_pagination_callback(dashjl):
     jl_app = load_jl_app(
-        (HERE.parent / "pagination" / "simple.jl"), "pagination"
+        (HERE.parent / "pagination" / "callback.jl"), "pagination"
     )
     dashjl.start_server(jl_app)
-    check_pagination_simple_callbacks(dashjl)
+    check_pagination_callback_callbacks(dashjl)
 
 
-def check_pagination_simple_callbacks(runner):
+def check_pagination_callback_callbacks(runner):
 
     # Check it has 10 page-items objects in it
     pages = runner.find_elements("#pagination .page-item")
