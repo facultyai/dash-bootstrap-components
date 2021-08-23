@@ -5,23 +5,28 @@ LOREM <- paste(
   readLines(
     "https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt",
   ),
-  collapse="\n"
+  collapse = "\n"
 )
 
 modal <- htmlDiv(
   list(
     dbcButton(
-      "Scrolling modal", id = "open-scroll", n_clicks = 0, class_name = "me-1"
+      "Scrolling modal",
+      id = "open-scroll", n_clicks = 0, class_name = "me-1"
     ),
-    dbcButton("Modal with scrollable body", id = "open-body-scroll",
-              n_clicks = 0),
+    dbcButton("Modal with scrollable body",
+      id = "open-body-scroll",
+      n_clicks = 0
+    ),
     dbcModal(
       list(
         dbcModalHeader(dbcModalTitle("Scrolling modal")),
         dbcModalBody(LOREM),
         dbcModalFooter(
-          dbcButton("Close", id = "close-scroll", n_clicks = 0,
-                    class_name = "ms-auto")
+          dbcButton("Close",
+            id = "close-scroll", n_clicks = 0,
+            class_name = "ms-auto"
+          )
         )
       ),
       id = "modal-scroll",
@@ -33,7 +38,8 @@ modal <- htmlDiv(
         dbcModalBody(LOREM),
         dbcModalFooter(
           dbcButton(
-            "Close", id = "close-body-scroll", n_clicks = 0,
+            "Close",
+            id = "close-body-scroll", n_clicks = 0,
             class_name = "ms-auto"
           )
         )
@@ -47,10 +53,10 @@ modal <- htmlDiv(
 
 
 toggle_modal <- function(n1, n2, is_open) {
-    if (n1 | n2) {
-      return(!is_open)
-    }
-    return(is_open)
+  if (n1 | n2) {
+    return(!is_open)
+  }
+  return(is_open)
 }
 
 

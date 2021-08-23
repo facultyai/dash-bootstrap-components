@@ -1,31 +1,29 @@
 using DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
 
-accordion = html_div(
-    [
-        dbc_accordion(
-            [
-                dbc_accordionitem(
-                    "This is the content of the first section",
-                    title="Item 1",
-                    item_id="item-1"
-                ),
-                dbc_accordionitem(
-                    "This is the content of the second section",
-                    title="Item 2",
-                    item_id="item-2"
-                ),
-                dbc_accordionitem(
-                    "This is the content of the third section",
-                    title="Item 3",
-                    item_id="item-3"
-                ),
-            ],
-            id="accordion",
-            active_item="item-1"
-        ),
-        html_div("Select an item", id="accordion-contents", class_name="mt-3"),
-    ]
-)
+accordion = html_div([
+    dbc_accordion(
+        [
+            dbc_accordionitem(
+                "This is the content of the first section",
+                title = "Item 1",
+                item_id = "item-1",
+            ),
+            dbc_accordionitem(
+                "This is the content of the second section",
+                title = "Item 2",
+                item_id = "item-2",
+            ),
+            dbc_accordionitem(
+                "This is the content of the third section",
+                title = "Item 3",
+                item_id = "item-3",
+            ),
+        ],
+        id = "accordion",
+        active_item = "item-1",
+    ),
+    html_div("Select an item", id = "accordion-contents", class_name = "mt-3"),
+])
 
 
 callback!(

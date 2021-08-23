@@ -1,7 +1,7 @@
 using DashBootstrapComponents
 
 carousel = dbc_carousel(
-    items=[
+    items = [
         Dict(
             "key" => "1",
             "src" => "/static/images/slide1.svg",
@@ -20,5 +20,5 @@ carousel = dbc_carousel(
             "header" => "",
             "caption" => "This slide has a caption only",
         ),
-    ]
+    ],
 );

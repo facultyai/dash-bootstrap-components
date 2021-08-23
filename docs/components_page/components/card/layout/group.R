@@ -15,7 +15,8 @@ cards <- dbcCardGroup(
             class_name = "card-text",
           ),
           dbcButton(
-            "Click here", color = "success", class_name = "mt-auto"
+            "Click here",
+            color = "success", class_name = "mt-auto"
           )
         )
       )
@@ -29,7 +30,8 @@ cards <- dbcCardGroup(
             class_name = "card-text",
           ),
           dbcButton(
-            "Click here", color = "warning", class_name = "mt-auto"
+            "Click here",
+            color = "warning", class_name = "mt-auto"
           )
         )
       )
@@ -48,7 +50,8 @@ cards <- dbcCardGroup(
             class_name = "card-text",
           ),
           dbcButton(
-            "Click here", color = "danger", class_name = "mt-auto"
+            "Click here",
+            color = "danger", class_name = "mt-auto"
           )
         )
       )

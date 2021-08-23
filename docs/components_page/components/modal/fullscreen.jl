@@ -1,17 +1,15 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-modal = html_div(
-    [
-        dbc_button("Open modal", id="open-fs"),
-        dbc_modal(
-            [
-                dbc_modalheader(dbc_modaltitle("Fullscreen modal")),
-                dbc_modalbody("Wow this thing takes up a lot of space..."),
-            ],
-            id="modal-fs",
-        ),
-    ]
-)
+modal = html_div([
+    dbc_button("Open modal", id = "open-fs"),
+    dbc_modal(
+        [
+            dbc_modalheader(dbc_modaltitle("Fullscreen modal")),
+            dbc_modalbody("Wow this thing takes up a lot of space..."),
+        ],
+        id = "modal-fs",
+    ),
+])
 
 
 callback!(

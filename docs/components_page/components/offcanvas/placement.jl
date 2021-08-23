@@ -4,40 +4,35 @@ placement_selector = html_div(
     [
         dbc_inputgrouptext("Placement"),
         dbc_select(
-            id="offcanvas-placement-selector",
-            options=[
-                Dict("label"=> "start (Default)", "value"=> "start"),
-                Dict("label"=> "end", "value"=> "end"),
-                Dict("label"=> "top", "value"=> "top"),
-                Dict("label"=> "bottom", "value"=> "bottom"),
+            id = "offcanvas-placement-selector",
+            options = [
+                Dict("label" => "start (Default)", "value" => "start"),
+                Dict("label" => "end", "value" => "end"),
+                Dict("label" => "top", "value" => "top"),
+                Dict("label" => "bottom", "value" => "bottom"),
             ],
-            value="start",
+            value = "start",
         ),
     ],
-    class_name="p-3 m-2 border",
+    class_name = "p-3 m-2 border",
 )
 
-offcanvas = html_div(
-    [
-        dbc_button(
-            "Open Offcanvas",
-            id="open-offcanvas-placement",
-            n_clicks=0,
-            class_name="m-2",
-        ),
-        dbc_offcanvas(
-            [
-                html_div(
-                    "Change the placement of this offcanvas with the " *
-                    "options below"
-                ),
-                placement_selector,
-            ],
-            id="offcanvas-placement",
-            title="Placement",
-        ),
-    ]
-)
+offcanvas = html_div([
+    dbc_button(
+        "Open Offcanvas",
+        id = "open-offcanvas-placement",
+        n_clicks = 0,
+        class_name = "m-2",
+    ),
+    dbc_offcanvas(
+        [
+            html_div("Change the placement of this offcanvas with the " * "options below"),
+            placement_selector,
+        ],
+        id = "offcanvas-placement",
+        title = "Placement",
+    ),
+])
 
 
 callback!(

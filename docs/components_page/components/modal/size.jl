@@ -1,35 +1,26 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 modal = html_div([
-    dbc_button("Small modal", id="open-sm", class_name="me-1", n_clicks=0),
-    dbc_button("Large modal", id="open-lg", class_name="me-1", n_clicks=0),
-    dbc_button("Extra large modal", id="open-xl", n_clicks=0),
+    dbc_button("Small modal", id = "open-sm", class_name = "me-1", n_clicks = 0),
+    dbc_button("Large modal", id = "open-lg", class_name = "me-1", n_clicks = 0),
+    dbc_button("Extra large modal", id = "open-xl", n_clicks = 0),
     dbc_modal(
-        [
-            dbc_modalheader(dbc_modaltitle("Header")),
-            dbc_modalbody("A small modal."),
-        ],
-        id="modal-sm",
-        size="sm",
-        is_open=false,
+        [dbc_modalheader(dbc_modaltitle("Header")), dbc_modalbody("A small modal.")],
+        id = "modal-sm",
+        size = "sm",
+        is_open = false,
     ),
     dbc_modal(
-        [
-            dbc_modalheader(dbc_modaltitle("Header")),
-            dbc_modalbody("A large modal."),
-        ],
-        id="modal-lg",
-        size="lg",
-        is_open=false,
+        [dbc_modalheader(dbc_modaltitle("Header")), dbc_modalbody("A large modal.")],
+        id = "modal-lg",
+        size = "lg",
+        is_open = false,
     ),
     dbc_modal(
-        [
-            dbc_modalheader(dbc_modaltitle("Header")),
-            dbc_modalbody("An extra large modal."),
-        ],
-        id="modal-xl",
-        size="xl",
-        is_open=false,
+        [dbc_modalheader(dbc_modaltitle("Header")), dbc_modalbody("An extra large modal.")],
+        id = "modal-xl",
+        size = "xl",
+        is_open = false,
     ),
 ]);
 

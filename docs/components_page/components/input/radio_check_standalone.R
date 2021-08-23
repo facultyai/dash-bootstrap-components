@@ -19,8 +19,8 @@ standalone_radio_check <- htmlDiv(
     htmlDiv(
       list(
         dbcRadioButton(
-            id = "standalone-radio",
-            class_name = "form-check-input"
+          id = "standalone-radio",
+          class_name = "form-check-input"
         ),
         dbcLabel(
           "This is a radio button",

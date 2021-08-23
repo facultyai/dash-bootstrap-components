@@ -1,8 +1,8 @@
 using DashBootstrapComponents, DashHtmlComponents, DashCoreComponents
 
 progress = html_div([
-    dcc_interval(id="progress-interval", n_intervals=0, interval=500),
-    dbc_progress(id="progress"),
+    dcc_interval(id = "progress-interval", n_intervals = 0, interval = 500),
+    dbc_progress(id = "progress"),
 ]);
 
 

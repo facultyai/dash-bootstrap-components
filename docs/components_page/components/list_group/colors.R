@@ -9,7 +9,7 @@ list_group <- dbcListGroup(
     dbcListGroupItem("A warning item", color = "warning"),
     dbcListGroupItem("A dangerous item", color = "danger"),
     dbcListGroupItem("An informative item", color = "info"),
-    dbcListGroupItem("A light item", color="light"),
-    dbcListGroupItem("A dark item", color="dark")
+    dbcListGroupItem("A light item", color = "light"),
+    dbcListGroupItem("A dark item", color = "dark")
   )
 )

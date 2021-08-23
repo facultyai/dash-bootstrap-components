@@ -1,26 +1,22 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-modal = html_div(
-    [
-        dbc_button("Open modal", id="open-dismiss"),
-        dbc_modal(
-            [
-                dbc_modalheader(
-                    dbc_modaltitle("Dismissing"), close_button=false
-                ),
-                dbc_modalbody(
-                    "This modal has no close button and can't be dismissed by " *
-                    "pressing ESC. Try clicking on the backdrop or the below " *
-                    "close button."
-                ),
-                dbc_modalfooter(dbc_button("Close", id="close-dismiss")),
-            ],
-            id="modal-dismiss",
-            keyboard=false,
-            backdrop="static",
-        ),
-    ],
-)
+modal = html_div([
+    dbc_button("Open modal", id = "open-dismiss"),
+    dbc_modal(
+        [
+            dbc_modalheader(dbc_modaltitle("Dismissing"), close_button = false),
+            dbc_modalbody(
+                "This modal has no close button and can't be dismissed by " *
+                "pressing ESC. Try clicking on the backdrop or the below " *
+                "close button.",
+            ),
+            dbc_modalfooter(dbc_button("Close", id = "close-dismiss")),
+        ],
+        id = "modal-dismiss",
+        keyboard = false,
+        backdrop = "static",
+    ),
+],)
 
 
 callback!(

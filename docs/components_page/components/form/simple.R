@@ -9,23 +9,23 @@ email_input_simple <- htmlDiv(
       color = "secondary",
     )
   ),
-  class_name="mb-3"
+  class_name = "mb-3"
 )
 
 password_input_simple <- htmlDiv(
   list(
     dbcLabel("Password", html_for = "example-password"),
     dbcInput(
-        type = "password",
-        id = "example-password",
-        placeholder = "Enter password",
+      type = "password",
+      id = "example-password",
+      placeholder = "Enter password",
     ),
     dbcFormText(
-        "A password stops mean people taking your stuff",
-        color = "secondary"
+      "A password stops mean people taking your stuff",
+      color = "secondary"
     )
   ),
-  class_name="mb-3"
+  class_name = "mb-3"
 )
 
 form <- dbcForm(list(email_input_simple, password_input_simple))

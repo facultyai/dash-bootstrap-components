@@ -1,28 +1,24 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 standalone_radio_check = html_div([
-    html_div(
-        [
-            dbc_checkbox(id="standalone-checkbox", class_name="form-check-input"),
-            dbc_label(
-                "This is a checkbox",
-                html_for="standalone-checkbox",
-                class_name="form-check-label",
-            ),
-        ]
-    ),
-    html_div(
-        [
-            dbc_radiobutton(id="standalone-radio", class_name="form-check-input"),
-            dbc_label(
-                "This is a radio button",
-                html_for="standalone-radio",
-                class_name="form-check-label",
-            ),
-        ]
-    ),
+    html_div([
+        dbc_checkbox(id = "standalone-checkbox", class_name = "form-check-input"),
+        dbc_label(
+            "This is a checkbox",
+            html_for = "standalone-checkbox",
+            class_name = "form-check-label",
+        ),
+    ]),
+    html_div([
+        dbc_radiobutton(id = "standalone-radio", class_name = "form-check-input"),
+        dbc_label(
+            "This is a radio button",
+            html_for = "standalone-radio",
+            class_name = "form-check-label",
+        ),
+    ]),
     html_br(),
-    html_p(id="standalone-radio-check-output"),
+    html_p(id = "standalone-radio-check-output"),
 ]);
 
 

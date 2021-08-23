@@ -7,11 +7,12 @@ email_input <- htmlDiv(
     dbcInput(id = "email-input", type = "email", value = ""),
     dbcFormText("We only accept gmail..."),
     dbcFormFeedback(
-        "That looks like a gmail address :-)", type = "valid"
+      "That looks like a gmail address :-)",
+      type = "valid"
     ),
     dbcFormFeedback(
-        "Sorry, we only accept gmail for some reason...",
-        type = "invalid"
+      "Sorry, we only accept gmail for some reason...",
+      type = "invalid"
     )
   )
 )

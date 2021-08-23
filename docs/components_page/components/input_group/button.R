@@ -15,7 +15,6 @@ app$callback(
     if (n_clicks > 0) {
       names <- c("Arthur Dent", "Ford Prefect", "Trillian Astra")
       return(sample(names, 1))
-
     }
     return("")
   }

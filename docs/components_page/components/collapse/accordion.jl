@@ -8,21 +8,21 @@ function make_item(i)
             html_h2(
                 dbc_button(
                     "Collapsible group #$i",
-                    color="link",
-                    id="group-$i-toggle",
-                    n_clicks=0,
+                    color = "link",
+                    id = "group-$i-toggle",
+                    n_clicks = 0,
                 ),
             ),
         ),
         dbc_collapse(
             dbc_cardbody("This is the content of group $i..."),
-            id="collapse-$i",
-            is_open=false,
+            id = "collapse-$i",
+            is_open = false,
         ),
     ])
 end;
 
-accordion = html_div([make_item(1), make_item(2), make_item(3)], class_name="accordion");
+accordion = html_div([make_item(1), make_item(2), make_item(3)], class_name = "accordion");
 
 callback!(
     app,

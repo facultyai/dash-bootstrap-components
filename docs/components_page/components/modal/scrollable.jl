@@ -1,11 +1,18 @@
 using DashBootstrapComponents, DashHtmlComponents
 using HTTP
 
-LOREM = rstrip(String(HTTP.get("https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt").body), ['\n'])
+LOREM = rstrip(
+    String(
+        HTTP.get(
+            "https://raw.githubusercontent.com/facultyai/dash-bootstrap-components/main/docs/components_page/components/modal/lorem.txt",
+        ).body,
+    ),
+    ['\n'],
+)
 
 modal = html_div([
-    dbc_button("Scrolling modal", id="open-scroll", class_name="me-1", n_clicks=0),
-    dbc_button("Modal with scrollable body", id="open-body-scroll", n_clicks=0),
+    dbc_button("Scrolling modal", id = "open-scroll", class_name = "me-1", n_clicks = 0),
+    dbc_button("Modal with scrollable body", id = "open-body-scroll", n_clicks = 0),
     dbc_modal(
         [
             dbc_modalheader(dbc_modaltitle("Scrolling modal")),
@@ -13,14 +20,14 @@ modal = html_div([
             dbc_modalfooter(
                 dbc_button(
                     "Close",
-                    id="close-scroll",
-                    class_name="ms-auto",
-                    n_clicks=0,
+                    id = "close-scroll",
+                    class_name = "ms-auto",
+                    n_clicks = 0,
                 ),
             ),
         ],
-        id="modal-scroll",
-        is_open=false,
+        id = "modal-scroll",
+        is_open = false,
     ),
     dbc_modal(
         [
@@ -29,15 +36,15 @@ modal = html_div([
             dbc_modalfooter(
                 dbc_button(
                     "Close",
-                    id="close-body-scroll",
-                    class_name="ms-auto",
-                    n_clicks=0,
+                    id = "close-body-scroll",
+                    class_name = "ms-auto",
+                    n_clicks = 0,
                 ),
             ),
         ],
-        id="modal-body-scroll",
-        scrollable=true,
-        is_open=false,
+        id = "modal-body-scroll",
+        scrollable = true,
+        is_open = false,
     ),
 ]);
 

@@ -6,8 +6,8 @@ inline_radioitems <- htmlDiv(
     dbcLabel("Choose one"),
     dbcRadioItems(
       options = list(
-        list(label =  "Option 1", value = 1),
-        list(label =  "Option 2", value = 2)
+        list(label = "Option 1", value = 1),
+        list(label = "Option 2", value = 2)
       ),
       value = 1,
       id = "radioitems-inline-input",
@@ -21,8 +21,8 @@ inline_checklist <- htmlDiv(
     dbcLabel("Choose a bunch"),
     dbcChecklist(
       options = list(
-        list(label =  "Option 1", value = 1),
-        list(label =  "Option 2", value = 2)
+        list(label = "Option 1", value = 1),
+        list(label = "Option 2", value = 2)
       ),
       value = list(),
       id = "checklist-inline-input",
@@ -36,8 +36,8 @@ inline_switches <- htmlDiv(
     dbcLabel("Toggle a bunch"),
     dbcChecklist(
       options = list(
-        list(label =  "Option 1", value = 1),
-        list(label =  "Option 2", value = 2)
+        list(label = "Option 1", value = 1),
+        list(label = "Option 2", value = 2)
       ),
       value = list(),
       id = "switches-inline-input",
@@ -48,5 +48,5 @@ inline_switches <- htmlDiv(
 )
 
 inline_inputs <- dbcForm(
-    list(inline_radioitems, inline_checklist, inline_switches)
+  list(inline_radioitems, inline_checklist, inline_switches)
 )

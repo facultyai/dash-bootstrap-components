@@ -9,9 +9,10 @@ modal <- htmlDiv(
         dbcModalHeader(dbcModalTitle("Header")),
         dbcModalBody("This is the content of the modal"),
         dbcModalFooter(
-            dbcButton(
-              "Close", id = "close", n_clicks = 0, class_name = "ms-auto"
-            )
+          dbcButton(
+            "Close",
+            id = "close", n_clicks = 0, class_name = "ms-auto"
+          )
         )
       ),
       id = "modal",
@@ -32,6 +33,6 @@ app$callback(
     if (n1 > 0 | n2 > 0) {
       return(!is_open)
     }
-  return(is_open)
+    return(is_open)
   }
 )

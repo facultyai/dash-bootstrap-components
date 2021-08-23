@@ -7,19 +7,19 @@ make_item <- function(i) {
     dbcCard(
       list(
         dbcCardHeader(
-            htmlH2(
-                dbcButton(
-                    sprintf("Collapsible group #%d", i),
-                    color = "link",
-                    id = sprintf("group-%d-toggle", i),
-                    n_clicks = 0
-                )
+          htmlH2(
+            dbcButton(
+              sprintf("Collapsible group #%d", i),
+              color = "link",
+              id = sprintf("group-%d-toggle", i),
+              n_clicks = 0
             )
+          )
         ),
         dbcCollapse(
-            dbcCardBody(sprintf("This is the content of group %d...", i)),
-            id = sprintf("collapse-%d", i),
-            is_open = FALSE
+          dbcCardBody(sprintf("This is the content of group %d...", i)),
+          id = sprintf("collapse-%d", i),
+          is_open = FALSE
         )
       )
     )
@@ -30,7 +30,7 @@ accordion <- htmlDiv(
   list(
     make_item(1), make_item(2), make_item(3)
   ),
-   class_name = "accordion"
+  class_name = "accordion"
 )
 
 
@@ -53,14 +53,16 @@ app$callback(
 
     button_id <- if (ctx$triggered$value) {
       unlist(strsplit(ctx$triggered$prop_id, "[.]"))[1]
-    } else return(list(FALSE, FALSE, FALSE))
+    } else {
+      return(list(FALSE, FALSE, FALSE))
+    }
 
     if (button_id == "group-1-toggle" && n1 > 0) {
-        return(list(!is_open1, FALSE, FALSE))
+      return(list(!is_open1, FALSE, FALSE))
     } else if (button_id == "group-2-toggle" && n2 > 0) {
-        return(list(FALSE, !is_open2, FALSE))
+      return(list(FALSE, !is_open2, FALSE))
     } else if (button_id == "group-3-toggle" && n3 > 0) {
-        return(list(FALSE, FALSE, !is_open3))
+      return(list(FALSE, FALSE, !is_open3))
     }
     return(list(FALSE, FALSE, FALSE))
   }

@@ -6,11 +6,12 @@ modal <- htmlDiv(
     dbcButton("Open", id = "open-centered"),
     dbcModal(
       list(
-        dbcModalHeader(dbcModalTitle("Header"), close_button=TRUE),
+        dbcModalHeader(dbcModalTitle("Header"), close_button = TRUE),
         dbcModalBody("This modal is vertically centered"),
         dbcModalFooter(
           dbcButton(
-            "Close", id = "close-centered", class_name = "ms-auto", n_clicks=0
+            "Close",
+            id = "close-centered", class_name = "ms-auto", n_clicks = 0
           )
         )
       ),

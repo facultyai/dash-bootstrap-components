@@ -35,8 +35,8 @@ input_groups <- htmlDiv(
       list(
         dbcSelect(
           options = list(
-            list(label =  "Option 1", value = 1),
-            list(label =  "Option 2", value = 2)
+            list(label = "Option 1", value = 1),
+            list(label = "Option 2", value = 2)
           )
         ),
         dbcInputGroupText("With select")
