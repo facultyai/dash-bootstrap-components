@@ -15,7 +15,7 @@ Badges scale to match the size of their parent by using relative font sizing.
 
 {{example:components/badge/size.py:badges}}
 
-## Conteztual variations
+## Background colors
 
 Use the `color` argument to apply one of Bootstrap's contextual color classes.
 

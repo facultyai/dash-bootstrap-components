@@ -7,6 +7,6 @@ badges = html_span([
     dbc_badge("Warning", pill = true, color = "warning", class_name = "me-1"),
     dbc_badge("Danger", pill = true, color = "danger", class_name = "me-1"),
     dbc_badge("Info", pill = true, color = "info", class_name = "me-1"),
-    dbc_badge("Light", pill = true, color = "light", class_name = "me-1"),
+    dbc_badge("Light", pill = true, color = "light", class_name = "me-1 text-dark"),
     dbc_badge("Dark", pill = true, color = "dark"),
 ]);
