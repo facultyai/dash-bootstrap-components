@@ -20,8 +20,6 @@ def test_jl_callback(dashjl):
     jl_app = load_jl_app(
         (HERE.parent / "accordion" / "callback.jl"), "accordion"
     )
-    with open("app.jl", "w") as f:
-        f.write(jl_app)
     dashjl.start_server(jl_app)
     check_callback_callbacks(dashjl)
 
