@@ -6,8 +6,23 @@ import Tooltip from '../Tooltip';
 jest.useFakeTimers();
 
 describe('Tooltip', () => {
-  let div;
+  // this is just a little hack to silence a warning that we'll get until we
+  // upgrade to 16.9. See also: https://github.com/facebook/react/pull/14853
+  const originalError = console.error;
+  beforeAll(() => {
+    console.error = (...args) => {
+      if (/Warning.*not wrapped in act/.test(args[0])) {
+        return;
+      }
+      originalError.call(console, ...args);
+    };
+  });
 
+  afterAll(() => {
+    console.error = originalError;
+  });
+
+  let div;
   beforeAll(() => {
     div = document.createElement('div');
     div.setAttribute('id', 'test-target');
@@ -27,7 +42,7 @@ describe('Tooltip', () => {
     });
 
     fireEvent.mouseOver(div);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(document.body.querySelector('.tooltip')).not.toBe(null);
 
     fireEvent.mouseLeave(div);
@@ -41,9 +56,7 @@ describe('Tooltip', () => {
     });
 
     fireEvent.mouseOver(div);
-    act(() => {
-      jest.runAllTimers();
-    });
+    act(() => jest.runAllTimers());
     expect(document.body.querySelector('.tooltip')).toHaveTextContent(
       'Tooltip content'
     );

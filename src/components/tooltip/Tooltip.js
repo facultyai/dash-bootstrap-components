@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBTooltip from 'react-bootstrap/Tooltip';
