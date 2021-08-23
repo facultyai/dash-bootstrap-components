@@ -15,6 +15,12 @@ The style of the table can be modified through a number of available keyword arg
 
 {{example:components/table/kwargs.py:table}}
 
+### Table Colors
+
+Alternatively colors can be added with the `color` property.
+
+{{example:components/table/color.py:table}}
+
 ## Table from DataFrame
 
 Manually constructing a HTML table can be tedious. The `Table` component has a `from_dataframe` method which allows you to easily construct a `Table` from a Pandas DataFrame. You will need to have Pandas installed. Either install it yourself or run `pip install -U dash-bootstrap-components[pandas]`.
