@@ -3,7 +3,7 @@ title: Progress
 lead: Add Bootstrap style progress bars to your app with the `Progress` component, featuring support for stacked bars, animated backgrounds, and text labels.
 ---
 
-## Basic example
+## Examples
 
 Use the `value` argument of `Progress` to set progress.
 

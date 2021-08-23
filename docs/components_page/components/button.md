@@ -3,7 +3,7 @@ title: Buttons
 lead: Documentation and examples for Bootstrap's button styles with _dash-bootstrap-components_.
 ---
 
-## Buttons
+## Examples
 
 Bootstrap includes several predefined button styles based on the predefined contextual colors. Chooose between them using the `color` argument.
 

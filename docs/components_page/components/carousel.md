@@ -3,7 +3,7 @@ title: Carousel
 lead: Use the Carousel component to create a slideshow that cycles through a series of content.
 ---
 
-## Simple example
+## Examples
 
 This is a carousel with slides only.  The default cycle time is 5000ms, but here we use the `interval` prop to set the cycle time to 2000ms. Note that hovering over a slide pauses the slideshow.
 

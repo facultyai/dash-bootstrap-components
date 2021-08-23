@@ -3,7 +3,7 @@ title: Badges
 lead: Documentation and examples for how to use Bootstrap badges with _dash-bootstrap-components_.
 ---
 
-## Simple example
+## Examples
 
 Badges can be used as part of buttons or links to provide a counter.
 

@@ -3,6 +3,8 @@ title: Pagination
 lead: Use the pagination component to create a pagination UI.
 ---
 
+## Examples
+
 `Pagination` components allow you to quickly create an easy-to-use pagination display. The number of values displayed is controlled using the `max_value` property, and this must be defined. See below for details about changing the `min_value` and `step`.
 
 {{example:components/pagination/simple.py:pagination}}

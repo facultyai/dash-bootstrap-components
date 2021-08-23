@@ -3,7 +3,7 @@ title: Collapse
 lead: Toggle the visibility of content in your apps using the `Collapse` component.
 ---
 
-## Simple example
+## Examples
 
 The `Collapse` component can be used to show and hide content in your apps. Simply set `is_open=True` to show the content, and `is_open=False` to hide it. This simple example uses a button click to toggle the `is_open` prop.
 

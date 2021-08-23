@@ -3,6 +3,8 @@ title: Modal
 lead: Use the `Modal` component to add dialogs to your app for lightboxes, user notifications, or completely custom content.
 ---
 
+## Examples
+
 Modals are built up using the `Modal`, `ModalHeader`, `ModalTitle`, `ModalBody` and `ModalFooter` components. Set the `is_open` prop of the `Modal` to `True` to open the modal. By default, the modal can be dismissed by clicking outside the modal, clicking the close button in the header, or by pressing the escape key (these behaviours can all be overridden, see below), though you can also write your own callbacks that set `is_open` to `False`.
 
 {{example:components/modal/simple.py:modal}}

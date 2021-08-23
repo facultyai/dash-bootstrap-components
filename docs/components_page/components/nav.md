@@ -3,7 +3,7 @@ title: Navs
 lead: Documentation and examples for how to use Bootstrap's navigation components with _dash-bootstrap-components_.
 ---
 
-## Base nav
+## Examples
 
 Navigation is built up using `Nav`, `NavItem`, `NavLink` and `DropdownMenu`. Use `nav=True` when using `DropdownMenu` inside a `Nav` for consistent styling with `NavItem` and `NavLink`.
 

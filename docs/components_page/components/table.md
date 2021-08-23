@@ -3,7 +3,7 @@ title: Table
 lead: Add Bootstrap styles HTML tables to your app with the `Table` component.
 ---
 
-## Simple example
+## Examples
 
 To add a Bootstrap styled table to your app, use `dbc.Table` as a drop-in replacement for `html.Table`, building up the content with `html.Thead`, `html.Tbody`, `html.Th`, `html.Tr` and `html.Td`.
 

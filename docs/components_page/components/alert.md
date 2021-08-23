@@ -3,7 +3,7 @@ title: Alerts
 lead: Provide contextual feedback messages for user actions with the `Alert` component.
 ---
 
-## Basic usage
+## Examples
 
 Set the color of `Alert` using the `color` argument and one of the eight supported contextual color names.
 

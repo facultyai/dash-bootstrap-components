@@ -3,7 +3,7 @@ title: ListGroup
 lead: A simple, flexible component for displaying a series of content.
 ---
 
-## Simple example
+## Examples
 
 The most basic `ListGroup` is an unordered list of `ListGroupItem` components.
 

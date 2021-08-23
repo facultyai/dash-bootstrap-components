@@ -3,6 +3,8 @@ title: Accordion
 lead: Use the Accordion component to create collapsible lists.
 ---
 
+## Examples
+
 You can create an accordion using the `Accordion` and `AccordionItem` components. Each section header is determined by the `title` prop of the `AccordionItem`.
 
 {{example:components/accordion/simple.py:accordion}}
