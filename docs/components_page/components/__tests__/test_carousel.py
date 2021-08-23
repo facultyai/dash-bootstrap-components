@@ -27,14 +27,19 @@ def test_jl_carousel(dashjl):
 
 def check_carousel_callbacks(runner):
 
-    runner.find_element(
-        "label[for='_dbcprivate_radioitems_slide-number_input_1']"
-    ).click()
+    item = "label[for='_dbcprivate_radioitems_slide-number_input_1']"
+
+    runner.find_element(item).click()
 
     wait.until(
-        lambda: runner.find_elements("div.carousel-item")[1].get_attribute(
-            "class"
+        lambda: len(
+            {"carousel-item", "active"}
+            - set(
+                runner.find_elements("div.carousel-item")[1].get_attribute(
+                    "class"
+                )
+            )
         )
-        == "carousel-item active",
+        == 0,
         timeout=4,
     )

@@ -12,7 +12,7 @@ carousel <- htmlDiv(
       ),
       controls = FALSE,
       indicators = FALSE,
-      interval = FALSE
+      interval = NULL
     ),
     dbcRadioItems(
       id = "slide-number",

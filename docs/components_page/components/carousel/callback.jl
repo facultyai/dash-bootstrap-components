@@ -10,7 +10,7 @@ carousel = html_div([
         ],
         controls = false,
         indicators = false,
-        interval = false,
+        interval = nothing,
     ),
     dbc_radioitems(
         id = "slide-number",
