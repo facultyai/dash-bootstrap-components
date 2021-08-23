@@ -9,6 +9,7 @@ This is a carousel with slides only.  The default cycle time is 5000ms, but here
 
 {{example:components/carousel/simple.py:carousel}}
 
+
 ## With controls
 
 Here we add the previous and next controls.  The default is for the slideshow to autoplay after the user manually cycles the first item. Set `ride="carousel"` to start the slideshow on page load.
@@ -29,6 +30,11 @@ You can add headings or captions to the slide by including the text in the `item
 {{example:components/carousel/captions.py:carousel}}
 
 
+## Dark variant
+
+Add `variant="dark"` to the Carousel for darker controls, indicators, and captions.
+
+{{example:components/carousel/dark.py:carousel}}
 
 ## Crossfade
 
@@ -42,6 +48,5 @@ Add `className="carousel-fade"` to your carousel to animate slides with a fade t
 Control which slide number is displayed by using the `active_index` in a callback. This slideshow is being controlled by `dbc.RadioItems`
 
 {{example:components/carousel/callback.py:carousel}}
-   
+
 {{apidoc:src/components/Carousel.js}}
-   

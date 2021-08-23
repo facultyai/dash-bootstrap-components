@@ -171,6 +171,12 @@ Carousel.propTypes = {
   slide: PropTypes.bool,
 
   /**
+   * Add `variant="dark"` to the Carousel for darker controls, indicators, and
+   * captions.
+   */
+  variant: PropTypes.oneOf(['dark']),
+
+  /**
    *the interval at which the carousel automatically cycles (default: 5000)
    * If set to None, carousel will not Autoplay (i.e. will not automatically cycle).
    */
