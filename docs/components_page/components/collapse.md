@@ -15,10 +15,4 @@ You can write arbitrarily complex callbacks to control the behaviour of your `Co
 
 {{example:components/collapse/multiple.py:collapses}}
 
-## Accordion
-
-You can replicate the accordion example in the [Bootstrap docs](https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example) by writing a callback with multiple outputs.
-
-{{example:components/collapse/accordion.py:accordion}}
-
 {{apidoc:src/components/Collapse.js}}
