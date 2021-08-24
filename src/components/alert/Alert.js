@@ -22,6 +22,7 @@ const Alert = props => {
     style,
     class_name,
     className,
+    fade,
     ...otherProps
   } = props;
 
@@ -52,6 +53,7 @@ const Alert = props => {
       onClose={dismissable ? dismiss : null}
       variant={isBootstrapColor ? color : null}
       className={class_name || className}
+      transition={fade}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={

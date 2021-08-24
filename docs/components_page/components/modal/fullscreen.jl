@@ -8,6 +8,7 @@ modal = html_div([
             dbc_modalbody("Wow this thing takes up a lot of space..."),
         ],
         id = "modal-fs",
+        fullscreen=true
     ),
 ])
 

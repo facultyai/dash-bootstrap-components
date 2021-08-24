@@ -29,7 +29,7 @@ TAB_OUTER_TEMPLATE = """<div class="card mb-3">
 """  # noqa
 
 TAB_TEMPLATE = """<li class="nav-item" role="presentation">
-  <a class="nav-link{2}" id="{0}-tab" data-toggle="tab" href="#{0}" role="tab" aria-controls="{0}" aria-selected="{3}">{1}</a>
+  <a class="nav-link{2}" id="{0}-tab" data-bs-toggle="tab" data-bs-target="#{0}" role="tab" aria-controls="{0}" aria-selected="{3}">{1}</a>
 </li>
 """  # noqa
 

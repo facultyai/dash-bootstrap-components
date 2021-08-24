@@ -137,7 +137,11 @@ const Pagination = props => {
   }
 
   // Create the pagination component
-  return <RBPagination className={class_name || className} {...otherProps}>{paginationItems}</RBPagination>;
+  return (
+    <RBPagination className={class_name || className} {...otherProps}>
+      {paginationItems}
+    </RBPagination>
+  );
 };
 
 Pagination.defaultProps = {
