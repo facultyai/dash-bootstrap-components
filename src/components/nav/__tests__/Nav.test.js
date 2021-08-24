@@ -3,10 +3,10 @@ import {render, fireEvent} from '@testing-library/react';
 import Nav from '../Nav';
 
 describe('Nav', () => {
-  test('renders a ul with class "nav"', () => {
-    const {container} = render(<Nav />);
+  test('renders a div with class "nav"', () => {
+    const nav = render(<Nav />);
 
-    expect(container.querySelector('ul.nav')).not.toBe(null);
+    expect(nav.container.querySelector('div.nav')).not.toBe(null);
   });
 
   test('renders its content', () => {
@@ -18,26 +18,26 @@ describe('Nav', () => {
   test('applies additional CSS classes when props are set', () => {
     // pills
     const {
-      container: {firstChild: navPills},
+      container: {firstChild: navPills}
     } = render(<Nav pills />);
 
     expect(navPills).toHaveClass('nav-pills');
 
     // vertical navs
     const {
-      container: {firstChild: navVertical},
+      container: {firstChild: navVertical}
     } = render(<Nav vertical />);
     const {
-      container: {firstChild: navVerticalSm},
+      container: {firstChild: navVerticalSm}
     } = render(<Nav vertical="sm" />);
     const {
-      container: {firstChild: navVerticalMd},
+      container: {firstChild: navVerticalMd}
     } = render(<Nav vertical="md" />);
     const {
-      container: {firstChild: navVerticalLg},
+      container: {firstChild: navVerticalLg}
     } = render(<Nav vertical="lg" />);
     const {
-      container: {firstChild: navVerticalXl},
+      container: {firstChild: navVerticalXl}
     } = render(<Nav vertical="xl" />);
 
     expect(navVertical).toHaveClass('flex-column');
@@ -48,10 +48,10 @@ describe('Nav', () => {
 
     // fill and justified
     const {
-      container: {firstChild: navFill},
+      container: {firstChild: navFill}
     } = render(<Nav fill />);
     const {
-      container: {firstChild: navJustified},
+      container: {firstChild: navJustified}
     } = render(<Nav justified />);
 
     expect(navFill).toHaveClass('nav-fill');
@@ -59,11 +59,11 @@ describe('Nav', () => {
 
     // horizontal alignment
     const {
-      container: {firstChild: navJustifyCenter},
+      container: {firstChild: navJustifyCenter}
     } = render(<Nav horizontal="center" />);
     expect(navJustifyCenter).toHaveClass('justify-content-center');
     const {
-      container: {firstChild: navJustifyAround},
+      container: {firstChild: navJustifyAround}
     } = render(<Nav horizontal="around" />);
     expect(navJustifyAround).toHaveClass('justify-content-around');
   });

@@ -14,7 +14,7 @@ def make_subheading(label, link):
             [
                 label,
                 html.A(
-                    html.I(class_name="fas fa-book fa-xs ml-2"),
+                    html.I(class_name="fas fa-book fa-xs ms-2"),
                     href=f"{DBC_DOCS}{link}",
                     target="_blank",
                     id=f"tooltip_target_{slug}",

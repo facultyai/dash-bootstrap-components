@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardBody as RSCardBody} from 'reactstrap';
+import RBCard from 'react-bootstrap/Card';
 
 /**
  * Wrap the content of your `Card` in `CardBody` to apply padding and other
  * styles.
  */
-const CardBody = (props) => {
+const CardBody = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardBody
+    <RBCard.Body
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -18,7 +18,7 @@ const CardBody = (props) => {
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardBody>
+    </RBCard.Body>
   );
 };
 
@@ -79,8 +79,8 @@ CardBody.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default CardBody;

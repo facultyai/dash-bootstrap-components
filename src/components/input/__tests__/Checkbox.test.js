@@ -10,24 +10,11 @@ describe('Checkbox', () => {
     expect(checkbox.container.firstChild).toHaveAttribute('type', 'checkbox');
   });
 
-  test('toggles checked value on click', () => {
-    const {
-      container: {firstChild: checkbox},
-    } = render(<Checkbox />);
-    expect(checkbox.checked).toEqual(false);
-
-    userEvent.click(checkbox);
-    expect(checkbox.checked).toEqual(true);
-
-    userEvent.click(checkbox);
-    expect(checkbox.checked).toEqual(false);
-  });
-
   test('dispatches updates to setProps if set', () => {
     const mockSetProps = jest.fn();
     const {
       container: {firstChild: checkbox},
-      rerender,
+      rerender
     } = render(<Checkbox setProps={mockSetProps} />);
 
     userEvent.click(checkbox);

@@ -3,12 +3,46 @@ from pathlib import Path
 
 import dash
 import dash_bootstrap_components as dbc
+import dash_core_components as dcc
 import dash_html_components as html
 from jinja2 import Environment, FileSystemLoader
 
-from .components.table.simple import table_body, table_header
-from .components.tabs.simple import tab1_content, tab2_content
-from .markdown_parser import parse
+
+# TODO: delete once Dash 2.0 is released
+def class_name_shim(fn):
+    def new_init(self, *args, **kwargs):
+        kwargs["className"] = kwargs.get("class_name", kwargs.get("className"))
+        return fn(
+            self,
+            *args,
+            **{k: v for k, v in kwargs.items() if k != "class_name"},
+        )
+
+    return new_init
+
+
+for component in [
+    dcc.Markdown,
+    html.A,
+    html.Blockquote,
+    html.Div,
+    html.H1,
+    html.H2,
+    html.H3,
+    html.H4,
+    html.H5,
+    html.H6,
+    html.Hr,
+    html.I,
+    html.P,
+    html.Small,
+]:
+    component.__init__ = class_name_shim(component.__init__)
+
+
+from .components.table.simple import table_body, table_header  # noqa
+from .components.tabs.simple import tab1_content, tab2_content  # noqa
+from .markdown_parser import parse  # noqa
 
 SERVE_LOCALLY = os.getenv("DBC_DOCS_MODE", "production") == "dev"
 
@@ -59,8 +93,10 @@ def _get_label(slug):
 
 def register_apps():
     component_bodies = {
+        "accordion": {"markdown_path": COMPONENTS / "accordion.md"},
         "alert": {"markdown_path": COMPONENTS / "alert.md"},
         "badge": {"markdown_path": COMPONENTS / "badge.md"},
+        "breadcrumb": {"markdown_path": COMPONENTS / "breadcrumb.md"},
         "button": {"markdown_path": COMPONENTS / "button.md"},
         "button_group": {"markdown_path": COMPONENTS / "button_group.md"},
         "card": {"markdown_path": COMPONENTS / "card.md"},
@@ -71,7 +107,6 @@ def register_apps():
         "form": {"markdown_path": COMPONENTS / "form.md"},
         "input": {"markdown_path": COMPONENTS / "input.md"},
         "input_group": {"markdown_path": COMPONENTS / "input_group.md"},
-        "jumbotron": {"markdown_path": COMPONENTS / "jumbotron.md"},
         "layout": {"markdown_path": COMPONENTS / "layout.md"},
         "list_group": {"markdown_path": COMPONENTS / "list_group.md"},
         "modal": {
@@ -80,6 +115,10 @@ def register_apps():
         },
         "nav": {"markdown_path": COMPONENTS / "nav.md"},
         "navbar": {"markdown_path": COMPONENTS / "navbar.md"},
+        "offcanvas": {
+            "markdown_path": COMPONENTS / "offcanvas.md",
+        },
+        "pagination": {"markdown_path": COMPONENTS / "pagination.md"},
         "popover": {"markdown_path": COMPONENTS / "popover.md"},
         "progress": {"markdown_path": COMPONENTS / "progress.md"},
         "spinner": {"markdown_path": COMPONENTS / "spinner.md"},

@@ -19,7 +19,7 @@ DATA = pd.read_csv("https://cdn.opensource.faculty.ai/old-faithful/data.csv")
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-dropdown = dbc.FormGroup(
+dropdown = html.Div(
     [
         dbc.Label("Number of bins in histogram (approximate):"),
         dcc.Dropdown(
@@ -30,7 +30,7 @@ dropdown = dbc.FormGroup(
     ]
 )
 
-checklist = dbc.FormGroup(
+checklist = html.Div(
     [
         dbc.Label("Extras:"),
         dbc.Checklist(

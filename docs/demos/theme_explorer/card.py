@@ -6,7 +6,7 @@ from .util import make_subheading
 cards = html.Div(
     [
         make_subheading("Card", "card"),
-        dbc.CardDeck(
+        dbc.CardGroup(
             [
                 dbc.Card(
                     [

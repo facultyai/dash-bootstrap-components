@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Fade as RSFade} from 'reactstrap';
+import RBFade from 'react-bootstrap/Fade';
 
 /**
  * Hide or show content with a fading animation. Visibility of the children is
@@ -10,13 +10,12 @@ import {Fade as RSFade} from 'reactstrap';
 const Fade = props => {
   const {
     children,
-    base_class,
-    base_class_active,
     is_in,
     loading_state,
     style,
     className,
     class_name,
+    tag,
     ...otherProps
   } = props;
 
@@ -24,21 +23,20 @@ const Fade = props => {
   const [hidden, setHidden] = useState(!is_in);
 
   return (
-    <RSFade
-      baseClass={base_class}
-      baseClassActive={base_class_active}
+    <RBFade
       in={is_in}
       style={hidden ? {visibility: 'hidden', ...style} : style}
       onEnter={() => setHidden(false)}
       onExited={() => setHidden(true)}
       className={class_name || className}
+      as={tag}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      {children}
-    </RSFade>
+      <div>{children}</div>
+    </RBFade>
   );
 };
 
@@ -116,17 +114,6 @@ Fade.propTypes = {
    * HTML tag to use for the fade component. Default: div.
    */
   tag: PropTypes.string,
-
-  /**
-   * CSS base class. Note that this class is always used, whether the
-   * components are showing or hidden. Default: 'fade'
-   */
-  base_class: PropTypes.string,
-
-  /**
-   * CSS class used when the fade contents are displayed. Default: 'show'.
-   */
-  base_class_active: PropTypes.string,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

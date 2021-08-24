@@ -258,7 +258,7 @@ def build_r(ctx):
     copy_dist()
     move_generated_files(ctx)
     with (HERE / "NAMESPACE").open("a") as f:
-        f.write("export(dbcThemes)\n")
+        f.write("\nexport(dbcThemes)\n")
 
     # -dev suffix breaks local installs of R package
     description = (HERE / "DESCRIPTION").read_text().split("\n")

@@ -20,7 +20,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 controls = dbc.Card(
     [
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("X variable"),
                 dcc.Dropdown(
@@ -32,7 +32,7 @@ controls = dbc.Card(
                 ),
             ]
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Y variable"),
                 dcc.Dropdown(
@@ -44,7 +44,7 @@ controls = dbc.Card(
                 ),
             ]
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Cluster count"),
                 dbc.Input(id="cluster-count", type="number", value=3),

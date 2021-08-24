@@ -24,7 +24,7 @@ describe('ButtonGroup', () => {
 
   test('applies vertical styles with "vertical" prop', () => {
     const {
-      container: {firstChild: buttonGroup},
+      container: {firstChild: buttonGroup}
     } = render(<ButtonGroup vertical />);
 
     expect(buttonGroup).toHaveClass('btn-group-vertical');
@@ -33,10 +33,10 @@ describe('ButtonGroup', () => {
   test('applies sizing CSS classes', () => {
     // buttonGroup sizes
     const {
-      container: {firstChild: buttonGroupSm},
+      container: {firstChild: buttonGroupSm}
     } = render(<ButtonGroup size="sm" />);
     const {
-      container: {firstChild: buttonGroupLg},
+      container: {firstChild: buttonGroupLg}
     } = render(<ButtonGroup size="lg" />);
 
     expect(buttonGroupSm).toHaveClass('btn-group-sm');

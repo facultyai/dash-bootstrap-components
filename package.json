@@ -13,8 +13,8 @@
     "build:jl": "inv build-jl",
     "clean": "inv clean",
     "demo": "webpack-dev-server --hot --inline --port=8888 --config=webpack/config.demo.js",
-    "format": "prettier src/**/*.js --write",
-    "lint": "prettier src/**/*.js --list-different",
+    "format": "prettier 'src/**/*.js' --write",
+    "lint": "prettier 'src/**/*.js' --list-different",
     "prepublishOnly": "NODE_ENV=production npm run build && NODE_ENV=production npm run build:lib",
     "test": "jest",
     "test:demo": "webpack --content-base=demo --config=webpack/config.demo.js",
@@ -62,8 +62,8 @@
     "prop-types": "^15.7.2",
     "ramda": "^0.27.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
-    "reactstrap": "^8.9.0"
+    "react-bootstrap": "^2.0.0-beta.4",
+    "react-dom": "^16.13.0"
   },
   "jest": {
     "transform": {

@@ -4,17 +4,9 @@ import dash_html_components as html
 input_groups = html.Div(
     [
         dbc.InputGroup(
-            [
-                dbc.InputGroupAddon(dbc.RadioButton(), addon_type="prepend"),
-                dbc.Input(),
-            ],
+            [dbc.InputGroupText(dbc.RadioButton()), dbc.Input()],
             class_name="mb-3",
         ),
-        dbc.InputGroup(
-            [
-                dbc.InputGroupAddon(dbc.Checkbox(), addon_type="prepend"),
-                dbc.Input(),
-            ]
-        ),
+        dbc.InputGroup([dbc.InputGroupText(dbc.Checkbox()), dbc.Input()]),
     ]
 )

@@ -18,36 +18,36 @@ describe('Badge', () => {
 
   test('applies contextual colors with "color" prop', () => {
     const {
-      container: {firstChild: badgeSecondary},
+      container: {firstChild: badgeSecondary}
     } = render(<Badge />);
     const {
-      container: {firstChild: badgePrimary},
+      container: {firstChild: badgePrimary}
     } = render(<Badge color="primary" />);
     const {
-      container: {firstChild: badgeSuccess},
+      container: {firstChild: badgeSuccess}
     } = render(<Badge color="success" />);
     const {
-      container: {firstChild: badgeDark},
+      container: {firstChild: badgeDark}
     } = render(<Badge color="dark" />);
 
-    expect(badgeSecondary).toHaveClass('badge-secondary');
-    expect(badgePrimary).toHaveClass('badge-primary');
-    expect(badgeSuccess).toHaveClass('badge-success');
-    expect(badgeDark).toHaveClass('badge-dark');
+    expect(badgeSecondary).toHaveClass('badge bg-secondary');
+    expect(badgePrimary).toHaveClass('badge bg-primary');
+    expect(badgeSuccess).toHaveClass('badge bg-success');
+    expect(badgeDark).toHaveClass('badge bg-dark');
   });
 
   test('applies pill styles with "pill" prop', () => {
     const {
-      container: {firstChild: badge},
+      container: {firstChild: badge}
     } = render(<Badge pill />);
 
-    expect(badge).toHaveClass('badge-pill');
+    expect(badge).toHaveClass('badge rounded-pill');
   });
 
   test('render as a link when href is set', () => {
     const href = '/test-href';
     const {
-      container: {firstChild: badge},
+      container: {firstChild: badge}
     } = render(<Badge href={href} />);
     expect(badge.getAttribute('href')).toBe(href);
   });

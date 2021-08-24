@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {NavbarBrand as RSNavbarBrand} from 'reactstrap';
+import RBNavbarBrand from 'react-bootstrap/NavbarBrand';
 import Link from '../../private/Link';
 
 /**
  * Call out attention to a brand name or site title within a navbar.
  */
-const NavbarBrand = (props) => {
+const NavbarBrand = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSNavbarBrand
+    <RBNavbarBrand
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
-      tag={props.href ? Link : 'span'}
+      as={props.href ? Link : 'span'}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSNavbarBrand>
+    </RBNavbarBrand>
   );
 };
 
@@ -89,8 +89,8 @@ NavbarBrand.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default NavbarBrand;

@@ -6,12 +6,11 @@ search_bar = dbc_row(
     [
         dbc_col(dbc_input(type="search", placeholder="Search")),
         dbc_col(
-            dbc_button("Search", color="primary", class_name="ml-2", n_clicks=0),
+            dbc_button("Search", color="primary", class_name="ms-2", n_clicks=0),
             width="auto",
         ),
     ],
-    no_gutters=true,
-    class_name="ml-auto flex-nowrap mt-3 mt-md-0",
+    class_name="ms-auto flex-nowrap mt-3 mt-md-0 g-0",
     align="center",
 );
 
@@ -22,15 +21,15 @@ navbar = dbc_navbar(
             dbc_row(
                 [
                     dbc_col(html_img(src=PLOTLY_LOGO, height="30px")),
-                    dbc_col(dbc_navbarbrand("Navbar", class_name="ml-2")),
+                    dbc_col(dbc_navbarbrand("Navbar", class_name="ms-2")),
                 ],
                 align="center",
-                no_gutters=true,
+                class_name="g-0",
             ),
             href="https://plotly.com",
         ),
         dbc_navbartoggler(id="navbar-toggler", n_clicks=0),
-        dbc_collapse(search_bar, id="navbar-collapse", navbar=true, is_open=false),
+        dbc_collapse(search_bar, id="navbar-collapse", is_open=false, navbar=true),
     ],
     color="dark",
     dark=true,

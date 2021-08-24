@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Container as RSContainer} from 'reactstrap';
+import RBContainer from 'react-bootstrap/Container';
 import {omit} from 'ramda';
 
 /**
  * Containers provide a means to center and horizontally pad your site’s
  * contents.
  */
-const Container = (props) => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+const Container = props => {
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    tag,
+    ...otherProps
+  } = props;
   return (
-    <RSContainer
+    <RBContainer
+      as={tag}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -18,7 +26,7 @@ const Container = (props) => {
       }
     >
       {children}
-    </RSContainer>
+    </RBContainer>
   );
 };
 
@@ -63,8 +71,13 @@ Container.propTypes = {
    * If True the container-fluid class will be applied, and the Container will
    * expand to fill available space. A non-fluid container resizes responsively
    * to a fixed width at the different breakpoints.
+   *
+   * You can also set the fluid property to one of the Bootstrap breakpoints:
+   * "sm", "md", "lg", "xl" or "xxl", so that the container fluidly expands to
+   * fill the screen until the specified breakpoint, then resize responsively
+   * at higher breakpoints.
    */
-  fluid: PropTypes.bool,
+  fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
    * HTML tag to apply the container class to, default: div
@@ -86,8 +99,8 @@ Container.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default Container;
