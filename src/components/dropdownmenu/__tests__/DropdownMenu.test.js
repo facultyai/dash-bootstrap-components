@@ -104,12 +104,12 @@ describe('DropdownMenu', () => {
   test('applies additional CSS classes when props are set', () => {
     // dropdownMenu sizes
     const dropdownMenuSm = render(
-      <DropdownMenu bs_size="sm" label="toggle small">
+      <DropdownMenu size="sm" label="toggle small">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
     );
     const dropdownMenuLg = render(
-      <DropdownMenu bs_size="lg" label="toggle large">
+      <DropdownMenu size="lg" label="toggle large">
         <DropdownMenuItem>Item 1</DropdownMenuItem>
       </DropdownMenu>
     );

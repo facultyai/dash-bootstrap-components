@@ -23,7 +23,11 @@ PARAMS = [
     for path in HERE.parent.glob("*.md")
 ]
 
-SKIP = ["components/table/kwargs.py", "components/tabs/active_tab.py"]
+SKIP = [
+    "components/table/kwargs.py",
+    "components/table/color.py",
+    "components/tabs/active_tab.py",
+]
 ENVS = {
     "modal.md": {
         "LOREM": (HERE.parent / "modal" / "lorem.txt").read_text().strip()

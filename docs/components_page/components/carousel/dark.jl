@@ -21,5 +21,5 @@ carousel = dbc_carousel(
             "caption" => "This slide has a caption only",
         ),
     ],
-    variant="dark"
+    variant = "dark",
 );

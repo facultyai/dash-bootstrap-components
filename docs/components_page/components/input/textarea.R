@@ -5,12 +5,12 @@ textareas <- htmlDiv(
     dbcTextarea(class_name = "mb-3", placeholder = "A Textarea"),
     dbcTextarea(
       valid = TRUE,
-      bs_size = "sm",
+      size = "sm",
       class_name = "mb-3",
       placeholder = "A small, valid Textarea",
     ),
     dbcTextarea(
-      invalid = TRUE, bs_size = "lg",
+      invalid = TRUE, size = "lg",
       placeholder = "A large, invalid Textarea"
     )
   )

@@ -6,5 +6,5 @@ list_group <- dbcListGroup(
     dbcListGroupItem("Item 2"),
     dbcListGroupItem("Item 3")
   ),
-  flush=TRUE
+  flush = TRUE
 )
