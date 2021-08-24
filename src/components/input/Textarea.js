@@ -18,7 +18,7 @@ const Textarea = props => {
     class_name,
     invalid,
     valid,
-    bs_size,
+    size,
     debounce,
     loading_state,
     autoFocus,
@@ -96,7 +96,7 @@ const Textarea = props => {
     class_name || className,
     invalid && 'is-invalid',
     valid && 'is-valid',
-    bs_size ? `form-control-${bs_size}` : false,
+    size ? `form-control-${size}` : false,
     'form-control'
   );
 
@@ -379,7 +379,7 @@ Textarea.propTypes = {
   /**
    * Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
 
   /**
    * Apply valid style to the Textarea for feedback purposes. This will cause

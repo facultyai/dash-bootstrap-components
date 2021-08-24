@@ -11,13 +11,13 @@ dropdown = html.Div(
     [
         dbc.DropdownMenu(
             label="large dropdown",
-            bs_size="lg",
+            size="lg",
             children=items,
             class_name="mb-3",
         ),
         dbc.DropdownMenu(
             label="normal dropdown", children=items, class_name="mb-3"
         ),
-        dbc.DropdownMenu(label="small dropdown", bs_size="sm", children=items),
+        dbc.DropdownMenu(label="small dropdown", size="sm", children=items),
     ]
 )

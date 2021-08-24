@@ -186,7 +186,8 @@ const Input = props => {
     minlength,
     tabIndex,
     tabindex,
-    bs_size,
+    size,
+    html_size,
     ...otherProps
   } = props;
   const inputRef = useRef(null);
@@ -199,7 +200,7 @@ const Input = props => {
     class_name || className,
     props.invalid && 'is-invalid',
     props.valid && 'is-valid',
-    bs_size ? `form-control-${bs_size}` : false,
+    size ? `form-control-${size}` : false,
     formControlClass
   );
 
@@ -215,6 +216,7 @@ const Input = props => {
         maxLength={maxlength || maxLength}
         minLength={minlength || minLength}
         tabIndex={tabindex || tabIndex}
+        size={html_size}
       />
     );
   }
@@ -230,6 +232,7 @@ const Input = props => {
       maxLength={maxlength || maxLength}
       minLength={minlength || minLength}
       tabIndex={tabindex || tabIndex}
+      size={html_size}
     />
   );
 };
@@ -555,13 +558,13 @@ Input.propTypes = {
    * ignored. In addition, the size must be greater than zero. If you do not
    * specify a size, a default value of 20 is used.
    */
-  size: PropTypes.string,
+  html_size: PropTypes.string,
 
   /**
    * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
    * or 'lg' (large). Default is 'md'.
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
 
   /**
    * Apply valid style to the Input for feedback purposes. This will cause

@@ -19,7 +19,7 @@ const DropdownMenu = props => {
     caret,
     in_navbar,
     addon_type,
-    bs_size,
+    size,
     right,
     loading_state,
     color,
@@ -61,7 +61,7 @@ const DropdownMenu = props => {
         <Dropdown.Toggle
           onClick={toggle}
           disabled={disabled}
-          size={bs_size}
+          size={size}
           variant={isBootstrapColor ? color : undefined}
           style={
             !isBootstrapColor
@@ -198,7 +198,7 @@ DropdownMenu.propTypes = {
    * Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
    * and 'lg' to large.
    */
-  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 
   /**
    * Object that holds the loading state object coming from dash-renderer
