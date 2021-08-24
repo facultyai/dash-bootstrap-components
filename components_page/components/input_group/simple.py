@@ -24,6 +24,16 @@ input_groups = html.Div(
         ),
         dbc.InputGroup(
             [
+                dbc.InputGroupText("Total:"),
+                dbc.InputGroupText("$"),
+                dbc.Input(placeholder="Amount", type="number"),
+                dbc.InputGroupText(".00"),
+                dbc.InputGroupText("only"),
+            ],
+            class_name="mb-3",
+        ),
+        dbc.InputGroup(
+            [
                 dbc.InputGroupText("With textarea"),
                 dbc.Textarea(),
             ],

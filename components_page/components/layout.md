@@ -3,6 +3,8 @@ title: Layout
 lead: Components for laying out your Dash app, including wrapping containers, and a powerful, responsive grid system.
 ---
 
+## Examples
+
 Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and five responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
 
 There are three main layout components in _dash-bootstrap-components_: `Container`, `Row`, and `Col`.

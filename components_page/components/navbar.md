@@ -3,6 +3,8 @@ title: Navbar
 lead: Easily create responsive navigation headers using the `NavbarSimple` and `Navbar` components.
 ---
 
+## Examples
+
 There are two navbar components in *dash-bootstrap-components*, `NavbarSimple` and `Navbar`. The `NavbarSimple` component is simpler but less flexible, whereas the `Navbar` component is fully customisable, but requires more boilerplate to get working.
 
 ## NavbarSimple

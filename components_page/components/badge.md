@@ -3,7 +3,7 @@ title: Badges
 lead: Documentation and examples for how to use Bootstrap badges with _dash-bootstrap-components_.
 ---
 
-## Simple example
+## Examples
 
 Badges can be used as part of buttons or links to provide a counter.
 
@@ -15,7 +15,7 @@ Badges scale to match the size of their parent by using relative font sizing.
 
 {{example:components/badge/size.py:badges}}
 
-## Conteztual variations
+## Background colors
 
 Use the `color` argument to apply one of Bootstrap's contextual color classes.
 

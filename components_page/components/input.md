@@ -5,7 +5,7 @@ lead: Documentation and examples for input components in _dash-bootstrap-compone
 
 _dash-bootstrap-components_ has its own versions of some of the input components available in _dash-core-components_. They have been designed to share the same interface as the corresponding components in _dash-core-components_ for familiarity, but have a few additional Bootstrap specific features.
 
-## Input
+## Examples
 
 The input component allows for text or numeric input, its basic usage is the same as `dcc.Input`, but Bootstrap styles will be applied for you.
 

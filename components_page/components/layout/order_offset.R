@@ -5,8 +5,8 @@ row <- htmlDiv(
   list(
     dbcRow(
       dbcCol(
-         htmlDiv("A single, half-width column"),
-         width = list(size = 6, offset = 3)
+        htmlDiv("A single, half-width column"),
+        width = list(size = 6, offset = 3)
       )
     ),
     dbcRow(

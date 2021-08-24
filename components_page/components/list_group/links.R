@@ -6,14 +6,17 @@ list_group <- htmlDiv(
     dbcListGroup(
       list(
         dbcListGroupItem(
-        "Internal link", href = "/l/components/list_group"
+          "Internal link",
+          href = "/l/components/list_group"
         ),
         dbcListGroupItem("External link", href = "https://google.com"),
         dbcListGroupItem(
-          "Disabled link", href = "https://google.com", disabled = TRUE
+          "Disabled link",
+          href = "https://google.com", disabled = TRUE
         ),
         dbcListGroupItem(
-          "Button", id = "button-item", n_clicks = 0, action = TRUE
+          "Button",
+          id = "button-item", n_clicks = 0, action = TRUE
         )
       )
     ),

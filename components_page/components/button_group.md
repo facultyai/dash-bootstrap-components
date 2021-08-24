@@ -3,7 +3,7 @@ title: ButtonGroup
 lead: Group a series of buttons on a single line with the `ButtonGroup` component.
 ---
 
-## Simple example
+## Examples
 
 Wrap a list of `Button` components with `ButtonGroup`.
 

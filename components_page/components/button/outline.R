@@ -5,7 +5,8 @@ buttons <- htmlDiv(
   list(
     dbcButton("Primary", outline = TRUE, color = "primary", class_name = "me-1"),
     dbcButton(
-        "Secondary", outline = TRUE, color = "secondary", class_name = "me-1"
+      "Secondary",
+      outline = TRUE, color = "secondary", class_name = "me-1"
     ),
     dbcButton("Success", outline = TRUE, color = "success", class_name = "me-1"),
     dbcButton("Warning", outline = TRUE, color = "warning", class_name = "me-1"),

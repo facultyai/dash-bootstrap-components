@@ -3,7 +3,7 @@ title: Tabs
 lead: A self-contained tabs component with Bootstrap styles.
 ---
 
-## Tabs as children
+## Examples
 
 The easiest way to use `Tabs` is to pass it one or more `Tab` components as children. Use the `label` argument to specify the label in the tab. `Tabs` will automatically switch between tabs for you by displaying and hiding the content of each `Tab` below the tab pane. You can also use the `disabled` argument to disable individual tabs. This will cause the label to be grayed out and make the tab unresponsive to being clicked.
 

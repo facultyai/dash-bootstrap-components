@@ -3,7 +3,6 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
 placement_selector = html.Div(
-    # FIXME: Fix styling here
     [
         dbc.InputGroupText("Placement"),
         dbc.Select(

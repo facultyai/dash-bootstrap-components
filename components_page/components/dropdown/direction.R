@@ -28,8 +28,10 @@ dropdown <- dbcRow(
       width = "auto"
     ),
     dbcCol(
-      dbcDropdownMenu(label = "Dropup", children = items_direction,
-                      direction = "up"),
+      dbcDropdownMenu(
+        label = "Dropup", children = items_direction,
+        direction = "up"
+      ),
       width = "auto"
     )
   ),

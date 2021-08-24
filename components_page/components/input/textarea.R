@@ -10,8 +10,8 @@ textareas <- htmlDiv(
       placeholder = "A small, valid Textarea",
     ),
     dbcTextarea(
-        invalid = TRUE, size = "lg",
-        placeholder = "A large, invalid Textarea"
+      invalid = TRUE, size = "lg",
+      placeholder = "A large, invalid Textarea"
     )
   )
 )

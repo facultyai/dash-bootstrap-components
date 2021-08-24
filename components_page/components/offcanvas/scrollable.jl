@@ -1,30 +1,22 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-offcanvas = html_div(
-    [
-        dbc_button(
-            "Open scrollable offcanvas",
-            id="open-offcanvas-scrollable",
-            n_clicks=0,
-        ),
-        dbc_offcanvas(
-            [
-                html_div(
-                    "The contents on the main page are now scrollable."
-                ),
-                dbc_button(
-                    "Close",
-                    id="close-offcanvas-scrollable",
-                    class_name="ms-auto",
-                    n_clicks=0,
-                )
-            ],
-            id="offcanvas-scrollable",
-            scrollable=true,
-            title="Scrollable Offcanvas"
-        ),
-    ]
-)
+offcanvas = html_div([
+    dbc_button("Open scrollable offcanvas", id = "open-offcanvas-scrollable", n_clicks = 0),
+    dbc_offcanvas(
+        [
+            html_div("The contents on the main page are now scrollable."),
+            dbc_button(
+                "Close",
+                id = "close-offcanvas-scrollable",
+                class_name = "ms-auto",
+                n_clicks = 0,
+            ),
+        ],
+        id = "offcanvas-scrollable",
+        scrollable = true,
+        title = "Scrollable Offcanvas",
+    ),
+])
 
 
 callback!(
