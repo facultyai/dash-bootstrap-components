@@ -3,7 +3,7 @@ title: Popover
 lead: Use the Popover component to add Bootstrap popovers to any component in your app.
 ---
 
-## Simple example
+## Examples
 
 To use `Popover`, add it to your layout, and set the `target` argument to the `id` of the component you would like to attach the popover to. The easiest way to trigger the popover is to specify the `trigger` property. This should be a string containing any of the following 4 values (space separated)
 

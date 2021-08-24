@@ -10,23 +10,21 @@ from .helpers import load_jl_app, load_r_app
 HERE = Path(__file__).parent
 
 
-def test_r_simple(dashr):
-    r_app = load_r_app((HERE.parent / "accordion" / "simple.R"), "accordion")
+def test_r_callback(dashr):
+    r_app = load_r_app((HERE.parent / "accordion" / "callback.R"), "accordion")
     dashr.start_server(r_app)
-    check_simple_callbacks(dashr)
+    check_callback_callbacks(dashr)
 
 
-def test_jl_simple(dashjl):
+def test_jl_callback(dashjl):
     jl_app = load_jl_app(
-        (HERE.parent / "accordion" / "simple.jl"), "accordion"
+        (HERE.parent / "accordion" / "callback.jl"), "accordion"
     )
-    with open("app.jl", "w") as f:
-        f.write(jl_app)
     dashjl.start_server(jl_app)
-    check_simple_callbacks(dashjl)
+    check_callback_callbacks(dashjl)
 
 
-def check_simple_callbacks(runner):
+def check_callback_callbacks(runner):
     # Find the accordion object
     accordion_comp = runner.find_element("#accordion")
     accordion_text = runner.find_element("#accordion-contents")

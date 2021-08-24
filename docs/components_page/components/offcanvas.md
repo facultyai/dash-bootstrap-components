@@ -3,6 +3,8 @@ title: Offcanvas
 lead: Use the `Offcanvas` component to add a customisable sidebar to your apps.
 ---
 
+## Examples
+
 `Offcanvas` components work in a similar fashion to a simplified `Modal`. Set the `is_open` prop of the `Offcanvas` to `True` to open the offcanvas. By default, the offcanvas can be dismissed by clicking the close button in the header, outside the offcanvas or by pressing the escape key (these behaviours can all be overridden, using `close_button=False`, `backdrop="static"` and `keyboard=False` respectively - see below), though you can also write your own callbacks that set `is_open` to `False`.
 
 {{example:components/offcanvas/simple.py:offcanvas}}

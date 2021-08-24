@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-row <-  htmlDiv(
+row <- htmlDiv(
   list(
     dbcRow(
       list(

@@ -3,7 +3,7 @@ title: InputGroup
 lead: Easily extend form controls by adding text, buttons or button groups on either side of `Input`, `Textarea` and `Select` components.
 ---
 
-## Basic example
+## Examples
 
 Wrap a compatible input component and either a `Button` or `InputGroupText` in an `InputGroup`.
 

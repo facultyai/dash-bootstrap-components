@@ -3,7 +3,8 @@ library(dashHtmlComponents)
 
 table_header <- list(
   htmlThead(
-    htmlTr(list(htmlTh("First Name"), htmlTh("Last Name"))))
+    htmlTr(list(htmlTh("First Name"), htmlTh("Last Name")))
+  )
 )
 
 row1 <- htmlTr(list(htmlTd("Arthur"), htmlTd("Dent")))

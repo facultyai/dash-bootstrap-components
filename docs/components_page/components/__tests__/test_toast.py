@@ -53,14 +53,28 @@ def test_jl_toast_icon(dashjl):
 def check_toast_icon_callbacks(runner):
 
     wait.until(
-        lambda: runner.find_element("#simple-toast").get_attribute("class")
-        == "toast fade show",
+        lambda: len(
+            {"toast", "fade", "show"}
+            - set(
+                runner.find_element("#simple-toast")
+                .get_attribute("class")
+                .split()
+            )
+        )
+        == 0,
         timeout=4,
     )
 
-    runner.find_element(".close").click()
+    runner.find_element("button.btn-close").click()
 
     wait.until(
         lambda: len(runner.find_elements("#simple-toast")) == 0,
+        timeout=4,
+    )
+
+    runner.find_element("#simple-toast-toggle").click()
+
+    wait.until(
+        lambda: len(runner.find_elements("#simple-toast")) > 0,
         timeout=4,
     )

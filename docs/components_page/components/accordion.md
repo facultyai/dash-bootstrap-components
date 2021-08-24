@@ -3,7 +3,9 @@ title: Accordion
 lead: Use the Accordion component to create collapsible lists.
 ---
 
-You can create an accordion using the `Accordion` and `AccordionItem` components. Each item in the accordion can be assiged a specific `item_id` which is used in the `active_item` property to determine which section is open. If no `item_id` is specified, the sections are labelled as `item-0`, `item-1`, ... consecutively. Each section header is determined by the `title` prop of the `AccordionItem`.
+## Examples
+
+You can create an accordion using the `Accordion` and `AccordionItem` components. Each section header is determined by the `title` prop of the `AccordionItem`.
 
 {{example:components/accordion/simple.py:accordion}}
 
@@ -19,4 +21,11 @@ Add flush to change some of the styling, including removing borders, and roundin
 
 {{example:components/accordion/flush.py:accordion}}
 
+## Callbacks
+
+Each item in the accordion can be assiged a specific `item_id` which is used in the `active_item` property to determine which section is open. If no `item_id` is specified, the sections are labelled as `item-0`, `item-1`, ... consecutively. This can be used within callbacks to determine which sections have been opened.
+
+{{example:components/accordion/callback.py:accordion}}
+
 {{apidoc:src/components/accordion/Accordion.js}}
+{{apidoc:src/components/accordion/AccordionItem.js}}

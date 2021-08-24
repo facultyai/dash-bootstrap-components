@@ -7,7 +7,7 @@ DropdownMenus are built up using the `DropdownMenu`, and `DropdownMenuItem` comp
 
 Note: our `DropdownMenu` is an analogue of Bootstrap's Dropdown component. We have changed the name to avoid a clash with the existing `Dropdown` component in _dash-core-components_ which serves a different purpose.
 
-## Simple example
+## Examples
 
 This example creates a simple dropdown menu with three items.
 

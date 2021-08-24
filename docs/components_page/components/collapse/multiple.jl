@@ -3,37 +3,37 @@ using DashBootstrapComponents, DashHtmlComponents
 collapses = html_div([
     dbc_button(
         "Toggle left",
-        color="primary",
-        id="left",
-        class_name="me-1",
-        n_clicks=0,
+        color = "primary",
+        id = "left",
+        class_name = "me-1",
+        n_clicks = 0,
     ),
     dbc_button(
         "Toggle right",
-        color="primary",
-        id="right",
-        class_name="me-1",
-        n_clicks=0,
+        color = "primary",
+        id = "right",
+        class_name = "me-1",
+        n_clicks = 0,
     ),
-    dbc_button("Toggle both", color="primary", id="both", n_clicks=0),
+    dbc_button("Toggle both", color = "primary", id = "both", n_clicks = 0),
     dbc_row(
         [
             dbc_col(
                 dbc_collapse(
-                    dbc_card("This is the left card!", body=true),
-                    id="left-collapse",
-                    is_open=true,
+                    dbc_card("This is the left card!", body = true),
+                    id = "left-collapse",
+                    is_open = true,
                 ),
             ),
             dbc_col(
                 dbc_collapse(
-                    dbc_card("This is the right card!", body=true),
-                    id="right-collapse",
-                    is_open=true,
+                    dbc_card("This is the right card!", body = true),
+                    id = "right-collapse",
+                    is_open = true,
                 ),
             ),
         ],
-        class_name="mt-3",
+        class_name = "mt-3",
     ),
 ]);
 

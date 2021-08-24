@@ -1,48 +1,48 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-radioitems = dbc_formgroup([
+radioitems = html_div([
     dbc_label("Choose one"),
     dbc_radioitems(
-        options=[
+        options = [
             Dict("label" => "Option 1", "value" => 1),
             Dict("label" => "Option 2", "value" => 2),
             Dict("label" => "Disabled Option", "value" => 3, "disabled" => true),
         ],
-        value=1,
-        id="radioitems-input",
+        value = 1,
+        id = "radioitems-input",
     ),
 ]);
 
-checklist = dbc_formgroup([
+checklist = html_div([
     dbc_label("Choose a bunch"),
     dbc_checklist(
-        options=[
+        options = [
             Dict("label" => "Option 1", "value" => 1),
             Dict("label" => "Option 2", "value" => 2),
             Dict("label" => "Disabled Option", "value" => 3, "disabled" => true),
         ],
-        value=[1],
-        id="checklist-input",
+        value = [1],
+        id = "checklist-input",
     ),
 ]);
 
-switches = dbc_formgroup([
+switches = html_div([
     dbc_label("Toggle a bunch"),
     dbc_checklist(
-        options=[
+        options = [
             Dict("label" => "Option 1", "value" => 1),
             Dict("label" => "Option 2", "value" => 2),
             Dict("label" => "Disabled Option", "value" => 3, "disabled" => true),
         ],
-        value=[1],
-        id="switches-input",
-        switch=true,
+        value = [1],
+        id = "switches-input",
+        switch = true,
     ),
 ]);
 
 inputs = html_div([
     dbc_form([radioitems, checklist, switches]),
-    html_p(id="radioitems-checklist-output"),
+    html_p(id = "radioitems-checklist-output"),
 ]);
 
 
