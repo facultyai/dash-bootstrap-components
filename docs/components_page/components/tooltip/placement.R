@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-make_button <- function(placement){
+make_button <- function(placement) {
   return(
     dbcButton(
       sprintf("Tooltip on %s", placement),
@@ -17,7 +17,7 @@ make_tooltip <- function(placement) {
   return(
     dbcTooltip(
       sprintf("Tooltip on %s", placement),
-      target=sprintf("tooltip-target-%s", placement),
+      target = sprintf("tooltip-target-%s", placement),
       placement = placement
     )
   )

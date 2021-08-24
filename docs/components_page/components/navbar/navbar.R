@@ -8,7 +8,8 @@ search_bar <- dbcRow(
     dbcCol(dbcInput(type = "search", placeholder = "Search")),
     dbcCol(
       dbcButton(
-        "Search", color = "primary", n_clicks = 0, class_name = "ms-2"
+        "Search",
+        color = "primary", n_clicks = 0, class_name = "ms-2"
       ),
       width = "auto"
     )
@@ -27,13 +28,14 @@ navbar <- dbcNavbar(
           dbcCol(dbcNavbarBrand("Navbar", class_name = "ms-2"))
         ),
         align = "center",
-        class_name="g-0"
+        class_name = "g-0"
       ),
       href = "https://plotly.com"
     ),
     dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
     dbcCollapse(
-      search_bar, id = "navbar-collapse", is_open = FALSE, navbar = TRUE
+      search_bar,
+      id = "navbar-collapse", is_open = FALSE, navbar = TRUE
     )
   ),
   color = "dark",

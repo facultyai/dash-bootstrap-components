@@ -2,10 +2,7 @@ library(dashBootstrapComponents)
 
 input_group <- dbcInputGroup(
   list(
-    dbcInputGroupAddon(
-      dbcButton("Random name", id = "input-group-button", n_clicks = 0),
-      addon_type = "prepend",
-    ),
+    dbcButton("Random name", id = "input-group-button", n_clicks = 0),
     dbcInput(id = "input-group-button-input", placeholder = "name")
   )
 )
@@ -18,7 +15,6 @@ app$callback(
     if (n_clicks > 0) {
       names <- c("Arthur Dent", "Ford Prefect", "Trillian Astra")
       return(sample(names, 1))
-
     }
     return("")
   }

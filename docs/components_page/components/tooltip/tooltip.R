@@ -7,9 +7,9 @@ tooltip <- htmlDiv(
       list(
         "I wonder what ",
         htmlSpan(
-            "floccinaucinihilipilification",
-            id = "tooltip-target",
-            style = list(textDecoration = "underline", cursor = "pointer"),
+          "floccinaucinihilipilification",
+          id = "tooltip-target",
+          style = list(textDecoration = "underline", cursor = "pointer"),
         ),
         " means?"
       )

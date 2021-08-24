@@ -3,7 +3,7 @@ title: Cards
 lead: Bootstrap's cards provide a flexible content container with multiple variants and options.
 ---
 
-## Simple example
+## Examples
 
 Below is an example of a basic card with mixed content and a fixed width, set using the `style` argument. By default, `Card` has no fixed width, so it'll naturally fill the full width of its parent element. This is easily customized with Bootstraps various sizing options detailed below.
 

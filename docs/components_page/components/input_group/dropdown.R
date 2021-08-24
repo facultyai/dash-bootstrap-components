@@ -1,16 +1,17 @@
 library(dashBootstrapComponents)
 
 dropdown_menu_items <- list(
-    dbcDropdownMenuItem("Deep thought", id = "dropdown-menu-item-1"),
-    dbcDropdownMenuItem("Hal", id = "dropdown-menu-item-2"),
-    dbcDropdownMenuItem(divider = TRUE),
-    dbcDropdownMenuItem("Clear", id = "dropdown-menu-item-clear")
+  dbcDropdownMenuItem("Deep thought", id = "dropdown-menu-item-1"),
+  dbcDropdownMenuItem("Hal", id = "dropdown-menu-item-2"),
+  dbcDropdownMenuItem(divider = TRUE),
+  dbcDropdownMenuItem("Clear", id = "dropdown-menu-item-clear")
 )
 
 input_group <- dbcInputGroup(
   list(
     dbcDropdownMenu(
-      dropdown_menu_items, label = "Generate", addon_type = "prepend"
+      dropdown_menu_items,
+      label = "Generate"
     ),
     dbcInput(id = "input-group-dropdown-input", placeholder = "name")
   )
@@ -29,7 +30,9 @@ app$callback(
 
     button_id <- if (ctx$triggered$value) {
       unlist(strsplit(ctx$triggered$prop_id, "[.]"))[1]
-    } else return("")
+    } else {
+      return("")
+    }
 
     if (button_id == "dropdown-menu-item-clear") {
       return("")

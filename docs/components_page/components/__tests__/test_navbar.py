@@ -27,14 +27,28 @@ def check_navbar_callbacks(runner):
     runner.driver.set_window_size(375, 667)
 
     wait.until(
-        lambda: runner.find_element("#navbar-collapse").get_attribute("class")
-        == "collapse navbar-collapse",
+        lambda: len(
+            {"navbar-collapse", "collapse"}
+            - set(
+                runner.find_element("#navbar-collapse")
+                .get_attribute("class")
+                .split()
+            )
+        )
+        == 0,
         timeout=4,
     )
 
     runner.find_element("#navbar-toggler").click()
     wait.until(
-        lambda: runner.find_element("#navbar-collapse").get_attribute("class")
-        == "collapse show navbar-collapse",
+        lambda: len(
+            {"navbar-collapse", "collapse", "show"}
+            - set(
+                runner.find_element("#navbar-collapse")
+                .get_attribute("class")
+                .split()
+            )
+        )
+        == 0,
         timeout=4,
     )

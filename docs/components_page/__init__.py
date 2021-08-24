@@ -109,6 +109,7 @@ def register_apps():
         "input_group": {"markdown_path": COMPONENTS / "input_group.md"},
         "layout": {"markdown_path": COMPONENTS / "layout.md"},
         "list_group": {"markdown_path": COMPONENTS / "list_group.md"},
+        "main": {"markdown_path": COMPONENTS / "main.md"},
         "modal": {
             "markdown_path": COMPONENTS / "modal.md",
             "extra_env_vars": {"LOREM": LOREM},
@@ -160,6 +161,7 @@ def register_apps():
                     "label": _get_label(slug),
                 }
                 for slug in component_bodies
+                if _get_label(slug) != "Main"
             ],
         },
     ]

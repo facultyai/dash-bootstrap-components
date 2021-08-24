@@ -3,7 +3,7 @@ title: ListGroup
 lead: A simple, flexible component for displaying a series of content.
 ---
 
-## Simple example
+## Examples
 
 The most basic `ListGroup` is an unordered list of `ListGroupItem` components.
 
@@ -26,6 +26,12 @@ You can use `ListGroupItem` as an internal, or external link, or use its `n_clic
 Pass one of Bootstrap's contextual colors to the `color` argument of `ListGroupItem` to set the background and text color of the contents.
 
 {{example:components/list_group/colors.py:list_group}}
+
+## Flush
+
+Add flush to change some of the styling, including removing borders, and rounding some of the edges to fit in line with the parent container.
+
+{{example:components/list_group/flush.py:list_group}}
 
 ## Custom content
 

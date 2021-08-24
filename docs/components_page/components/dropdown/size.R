@@ -1,7 +1,7 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-items_size <- list(
+items <- list(
   dbcDropdownMenuItem("First"),
   dbcDropdownMenuItem(divider = TRUE),
   dbcDropdownMenuItem("Second")
@@ -10,15 +10,17 @@ items_size <- list(
 dropdown <- htmlDiv(
   list(
     dbcDropdownMenu(
-        label = "large dropdown",
-        size = "lg",
-        children = items_size,
-        class_name = "mb-3"
+      label = "large dropdown",
+      size = "lg",
+      children = items,
+      class_name = "mb-3"
     ),
     dbcDropdownMenu(
-        label = "normal dropdown", children = items_size, class_name = "mb-3"
+      label = "normal dropdown", children = items, class_name = "mb-3"
     ),
-    dbcDropdownMenu(label = "small dropdown", size = "sm",
-                    children = items_size)
+    dbcDropdownMenu(
+      label = "small dropdown", size = "sm",
+      children = items
+    )
   )
 )

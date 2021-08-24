@@ -80,15 +80,11 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/dashr/")
-    def dashr():
-        return redirect("/docs/quickstart", 302)
-
     @server.route("/docs/components/")
     def components_index():
-        return redirect("/docs/components/accordion", 302)
+        return redirect("/docs/components/main", 302)
 
-    @server.route("/l/components/", defaults={"slug": "accordion"})
+    @server.route("/l/components/", defaults={"slug": "main"})
     @server.route("/l/components/<slug>/")
     def components_redirect(slug):
         return redirect(f"/docs/components/{slug}", 302)

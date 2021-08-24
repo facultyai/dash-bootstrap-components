@@ -1,52 +1,38 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-offcanvas = html_div(
+backdrop_selector = html_div(
     [
-        dbc_button(
-            "Open backdrop offcanvas", id="open-offcanvas-backdrop", n_clicks=0
-        ),
-        dbc_offcanvas(
-            [
-                html_div(
-                    "Change the backdrop of this offcanvas with the "
-                    "radio buttons"
-                ),
-                dbc_formgroup(
-                    [
-                        dbc_radioitems(
-                            id="offcanvas-backdrop-selector",
-                            options=[
-                                Dict(
-                                    "label" => "True (default)",
-                                    "value" => true,
-                                ),
-                                Dict(
-                                    "label" => "False",
-                                    "value" => false
-                                ),
-                                Dict(
-                                    "label" => "Static (no dismiss)",
-                                    "value" => "static"
-                                )
-                            ],
-                            inline=true,
-                            value=true,
-                        ),
-                    ],
-                    class_name="p-3 m-2 border",
-                ),
-                dbc_button(
-                    "Close",
-                    id="close-offcanvas-backdrop",
-                    class_name="ms-auto",
-                    n_clicks=0,
-                ),
+        dbc_radioitems(
+            id = "offcanvas-backdrop-selector",
+            options = [
+                Dict("label" => "True (default)", "value" => true),
+                Dict("label" => "False", "value" => false),
+                Dict("label" => "Static (no dismiss)", "value" => "static"),
             ],
-            id="offcanvas-backdrop",
-            title="Offcanvas with/without backdrop"
+            inline = true,
+            value = true,
         ),
-    ]
+    ],
+    class_name = "p-3 m-2 border",
 )
+
+offcanvas = html_div([
+    dbc_button("Open backdrop offcanvas", id = "open-offcanvas-backdrop", n_clicks = 0),
+    dbc_offcanvas(
+        [
+            html_div("Change the backdrop of this offcanvas with the " * "radio buttons"),
+            backdrop_selector,
+            dbc_button(
+                "Close",
+                id = "close-offcanvas-backdrop",
+                class_name = "ms-auto",
+                n_clicks = 0,
+            ),
+        ],
+        id = "offcanvas-backdrop",
+        title = "Offcanvas with/without backdrop",
+    ),
+])
 
 
 callback!(
