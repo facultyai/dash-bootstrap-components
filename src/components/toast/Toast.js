@@ -97,7 +97,8 @@ const Toast = props => {
 Toast.defaultProps = {
   is_open: true,
   n_dismiss: 0,
-  n_dismiss_timestamp: -1
+  n_dismiss_timestamp: -1,
+  dismissable: false
 };
 
 Toast.propTypes = {
