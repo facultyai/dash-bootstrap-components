@@ -4,20 +4,18 @@ import userEvent from '@testing-library/user-event';
 import Select from '../Select';
 
 describe('Select', () => {
-  test('renders a select with class "custom-select"', () => {
+  test('renders a select with class "form-select"', () => {
     const select = render(
       <Select
         id="test-select"
         options={[
           {label: 'Item 1', value: '1'},
-          {label: 'Item 2', value: '2'},
+          {label: 'Item 2', value: '2'}
         ]}
       />
     );
 
-    expect(select.container.querySelector('select.custom-select')).not.toBe(
-      null
-    );
+    expect(select.container.querySelector('select.form-select')).not.toBe(null);
     expect(select.container).toHaveTextContent('Item 1');
   });
 
@@ -27,50 +25,31 @@ describe('Select', () => {
 
   test('has no value by default', () => {
     const {
-      container: {firstChild: select},
+      container: {firstChild: select}
     } = render(
       <Select
         id="test-select"
         options={[
           {label: 'Item 1', value: '1'},
-          {label: 'Item 2', value: '2'},
+          {label: 'Item 2', value: '2'}
         ]}
       />
     );
 
     expect(select).not.toHaveValue();
-  });
-
-  test('updates value itself when setProps is not set', () => {
-    const {
-      container: {firstChild: select},
-    } = render(
-      <Select
-        id="test-select"
-        options={[
-          {label: 'Item 1', value: '1'},
-          {label: 'Item 2', value: '2'},
-        ]}
-      />
-    );
-
-    expect(select).not.toHaveValue();
-
-    userEvent.selectOptions(select, '2');
-    expect(select).toHaveValue('2');
   });
 
   test('dispatches value when selection is made and setProps is set', () => {
     const mockSetProps = jest.fn();
     const {
       container: {firstChild: select},
-      rerender,
+      rerender
     } = render(
       <Select
         id="test-select"
         options={[
           {label: 'Item 1', value: '1'},
-          {label: 'Item 2', value: '2'},
+          {label: 'Item 2', value: '2'}
         ]}
         setProps={mockSetProps}
       />
@@ -89,7 +68,7 @@ describe('Select', () => {
         id="test-select"
         options={[
           {label: 'Item 1', value: '1'},
-          {label: 'Item 2', value: '2'},
+          {label: 'Item 2', value: '2'}
         ]}
         setProps={mockSetProps}
         value="2"

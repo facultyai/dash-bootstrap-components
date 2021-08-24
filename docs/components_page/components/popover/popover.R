@@ -10,7 +10,7 @@ popovers <- htmlDiv(
   list(
     dbcButton(
       "Click", id = "click-target", n_clicks = 0,
-      color = "danger", class_name = "mr-1"
+      color = "danger", class_name = "me-1"
     ),
     dbcPopover(
       popover_children,
@@ -20,7 +20,7 @@ popovers <- htmlDiv(
     ),
     dbcButton(
       "Focus", id = "focus-target", n_clicks = 0,
-      color = "danger", class_name = "mr-1"
+      color = "danger", class_name = "me-1"
     ),
     dbcPopover(
       popover_children,
@@ -30,7 +30,7 @@ popovers <- htmlDiv(
     ),
     dbcButton(
       "Hover", id = "hover-target", n_clicks = 0,
-      color = "danger", class_name = "mr-1"
+      color = "danger", class_name = "me-1"
     ),
     dbcPopover(
       popover_children,

@@ -1,56 +1,42 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CustomInput} from 'reactstrap';
+import RBFormSelect from 'react-bootstrap/FormSelect';
 
 /**
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
  */
-const Select = (props) => {
+const Select = props => {
   const {className, class_name, ...otherProps} = props;
 
-  const [value, setValue] = useState(props.value || '');
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
+  const handleChange = e => {
     if (props.setProps) {
       props.setProps({value: e.target.value});
     }
   };
 
-  useEffect(() => {
-    if (props.value !== value) {
-      setValue(props.value || '');
-    }
-  }, [props.value]);
-
   return (
-    <CustomInput
+    <RBFormSelect
       {...omit(
         [
-          'value',
           'setProps',
-          'bs_size',
           'options',
           'persistence',
           'persistence_type',
           'persisted_props',
-          'loading_state',
+          'loading_state'
         ],
         otherProps
       )}
-      type="select"
       onChange={handleChange}
-      value={value}
-      bsSize={props.bs_size}
       className={class_name || className}
     >
       <option value="" disabled hidden>
         {props.placeholder}
       </option>
       {props.options &&
-        props.options.map((option) => (
+        props.options.map(option => (
           <option
             key={option.value}
             value={option.value}
@@ -60,7 +46,7 @@ const Select = (props) => {
             {option.label}
           </option>
         ))}
-    </CustomInput>
+    </RBFormSelect>
   );
 };
 
@@ -68,7 +54,7 @@ Select.defaultProps = {
   value: '',
   persisted_props: ['value'],
   persistence_type: 'local',
-  placeholder: '',
+  placeholder: ''
 };
 
 Select.propTypes = {
@@ -140,7 +126,7 @@ Select.propTypes = {
        * hover. For more information on this attribute, see
        * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
        */
-      title: PropTypes.string,
+      title: PropTypes.string
     })
   ),
 
@@ -160,7 +146,7 @@ Select.propTypes = {
    */
   required: PropTypes.oneOfType([
     PropTypes.oneOf(['required', 'REQUIRED']),
-    PropTypes.bool,
+    PropTypes.bool
   ]),
 
   /**
@@ -179,7 +165,7 @@ Select.propTypes = {
    * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
    * or 'lg' (large). Default is 'md'.
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
 
   /**
    * Used to allow user interactions in this component to be persisted when
@@ -192,7 +178,7 @@ Select.propTypes = {
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number,
+    PropTypes.number
   ]),
 
   /**
@@ -213,7 +199,7 @@ Select.propTypes = {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  name: PropTypes.string,
+  name: PropTypes.string
 };
 
 export default Select;

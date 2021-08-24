@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Button as RSButton} from 'reactstrap';
+import RBButton from 'react-bootstrap/Button';
 import Link from '../private/Link';
 
 /**
@@ -27,6 +27,8 @@ const Button = props => {
     value,
     className,
     class_name,
+    color,
+    outline,
     ...otherProps
   } = props;
 
@@ -42,8 +44,9 @@ const Button = props => {
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
-    <RSButton
-      tag={useLink ? Link : 'button'}
+    <RBButton
+      as={useLink ? Link : 'button'}
+      variant={outline ? `outline-${color}` : color}
       type={useLink ? null : type}
       target={useLink ? target : null}
       href={disabled ? null : href}
@@ -58,7 +61,7 @@ const Button = props => {
       }
     >
       {children}
-    </RSButton>
+    </RBButton>
   );
 };
 
@@ -146,12 +149,6 @@ Button.propTypes = {
    * Whether button is in active state. Default: False.
    */
   active: PropTypes.bool,
-
-  /**
-   * Create block level button, one that spans the full width of its parent.
-   * Default: False
-   */
-  block: PropTypes.bool,
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,

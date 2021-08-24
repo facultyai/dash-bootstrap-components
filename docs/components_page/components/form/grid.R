@@ -29,5 +29,5 @@ form <- dbcRow(
       width = 6
     )
   ),
-  form = TRUE
+  class_name = "g-3"
 )

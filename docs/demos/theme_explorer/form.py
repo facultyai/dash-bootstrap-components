@@ -8,7 +8,7 @@ form = html.Div(
         make_subheading("Form", "form"),
         dbc.Form(
             [
-                dbc.FormGroup(
+                html.Div(
                     [
                         dbc.Label("Username"),
                         dbc.Input(
@@ -28,7 +28,7 @@ form = html.Div(
                         ),
                     ]
                 ),
-                dbc.FormGroup(
+                html.Div(
                     [
                         dbc.Label("Username"),
                         dbc.Input(

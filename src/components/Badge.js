@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Badge as RSBadge} from 'reactstrap';
+import RBBadge from 'react-bootstrap/Badge';
 import Link from '../private/Link';
 import {bootstrapColors} from '../private/BootstrapColors';
 
@@ -18,6 +18,7 @@ const Badge = props => {
     style,
     className,
     class_name,
+    text_color,
     ...otherProps
   } = props;
 
@@ -34,10 +35,11 @@ const Badge = props => {
   otherProps[href ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
-    <RSBadge
-      tag={href && Link}
+    <RBBadge
+      as={href && Link}
       href={href}
-      color={isBootstrapColor ? color : null}
+      bg={isBootstrapColor ? color : null}
+      text={text_color}
       className={class_name || className}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
@@ -46,7 +48,7 @@ const Badge = props => {
       }
     >
       {children}
-    </RSBadge>
+    </RBBadge>
   );
 };
 
@@ -100,6 +102,14 @@ Badge.propTypes = {
    * Default: secondary.
    */
   color: PropTypes.string,
+
+  /**
+   * Badge color, options: primary, secondary, success, info, warning, danger,
+   * link or any valid CSS color of
+   * your choice (e.g. a hex code, a decimal code or a CSS color name)
+   * Default: secondary.
+   */
+  text_color: PropTypes.string,
 
   /**
    * Make badge "pill" shaped (rounded ends, like a pill). Default: False.

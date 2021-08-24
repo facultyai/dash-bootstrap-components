@@ -5,9 +5,9 @@ lead: Components for laying out your Dash app, including wrapping containers, an
 
 Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and five responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
 
-There are three main layout components in *dash-bootstrap-components*: `Container`, `Row`, and `Col`.
+There are three main layout components in _dash-bootstrap-components_: `Container`, `Row`, and `Col`.
 
-The `Container` component can be used to center and horizontally pad your app's content. The docs you are currently reading are themselves a Dash app built with *dash-bootstrap-components*. The content on this page has been centered by wrapping it in a `Container` component. By default the container has a responsive pixel width. Use the keyword argument `fluid=True` if you want your `Container` to fill available horizontal space and resize fluidly.
+The `Container` component can be used to center and horizontally pad your app's content. The docs you are currently reading are themselves a Dash app built with _dash-bootstrap-components_. The content on this page has been centered by wrapping it in a `Container` component. By default the container has a responsive pixel width. Use the keyword argument `fluid=True` if you want your `Container` to fill available horizontal space and resize fluidly.
 
 The `Row` component is a wrapper for columns. The layout of your app should be built as a series of rows of columns.
 
@@ -60,7 +60,7 @@ By setting different sizes, orders and offsets for the different responsive tier
 
 ## Row without 'gutters'
 
-By default, horizontal spacing is added between the columns. Use `no_gutters=True` to disable this.
+By default, horizontal spacing is added between the columns. Use Bootstrap's [gutter modifier classes](https://getbootstrap.com/docs/5.1/layout/gutters/) to adjust this.
 
 {{example:components/layout/no_gutters.py:row}}
 

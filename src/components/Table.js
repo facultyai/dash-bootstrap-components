@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Table as RSTable} from 'reactstrap';
+import RBTable from 'react-bootstrap/Table';
 
 /**
  * A component for applying Bootstrap styles to HTML tables. Use this as a
@@ -9,17 +9,26 @@ import {Table as RSTable} from 'reactstrap';
  * DataFrame using `dbc.Table.from_dataframe`.
  */
 const Table = props => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    color,
+    dark,
+    ...otherProps
+  } = props;
   return (
-    <RSTable
+    <RBTable
       className={class_name || className}
+      variant={color || (dark ? 'dark' : undefined)}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSTable>
+    </RBTable>
   );
 };
 
@@ -61,11 +70,6 @@ Table.propTypes = {
   key: PropTypes.string,
 
   /**
-   * HTML tag to use for the table, default: table
-   */
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-
-  /**
    * Specify table size, options: 'sm', 'md', 'lg'
    */
   size: PropTypes.string,
@@ -89,6 +93,14 @@ Table.propTypes = {
   striped: PropTypes.bool,
 
   /**
+   * Table color, options: primary, secondary, success, info, warning, danger,
+   * dark, light. Default: secondary.
+   */
+  color: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - Use color="dark" instead.
+   *
    * Apply the `table-dark` class for dark cell backgrounds and light text.
    */
   dark: PropTypes.bool,

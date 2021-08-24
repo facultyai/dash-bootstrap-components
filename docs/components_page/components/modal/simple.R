@@ -10,7 +10,7 @@ modal <- htmlDiv(
         dbcModalBody("This is the content of the modal"),
         dbcModalFooter(
             dbcButton(
-              "Close", id = "close", n_clicks = 0, class_name = "ml-auto"
+              "Close", id = "close", n_clicks = 0, class_name = "ms-auto"
             )
         )
       ),

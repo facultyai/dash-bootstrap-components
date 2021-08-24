@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output
 
 standalone_radio_check = html.Div(
     [
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Checkbox(
                     id="standalone-checkbox", class_name="form-check-input"
@@ -15,9 +15,8 @@ standalone_radio_check = html.Div(
                     class_name="form-check-label",
                 ),
             ],
-            check=True,
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.RadioButton(
                     id="standalone-radio", class_name="form-check-input"
@@ -28,7 +27,6 @@ standalone_radio_check = html.Div(
                     class_name="form-check-label",
                 ),
             ],
-            check=True,
         ),
         html.Br(),
         html.P(id="standalone-radio-check-output"),

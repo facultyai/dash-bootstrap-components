@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {PopoverBody as RSPopoverBody} from 'reactstrap';
+import RBPopoverBody from 'react-bootstrap/PopoverBody';
 
 /**
  * Componnet for wrapping the body (i.e. main content) of a `Popover`.
  */
-const PopoverBody = (props) => {
+const PopoverBody = props => {
   const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSPopoverBody
+    <RBPopoverBody
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -17,7 +17,7 @@ const PopoverBody = (props) => {
       }
     >
       {children}
-    </RSPopoverBody>
+    </RBPopoverBody>
   );
 };
 
@@ -77,8 +77,8 @@ PopoverBody.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default PopoverBody;

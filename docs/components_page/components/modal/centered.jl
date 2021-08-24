@@ -10,7 +10,7 @@ modal = html_div([
                 dbc_button(
                     "Close",
                     id="close-centered",
-                    class_name="ml-auto",
+                    class_name="ms-auto",
                     n_clicks=0,
                 ),
             ),

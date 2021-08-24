@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {omit} from 'ramda';
-import {Toast as RSToast, ToastBody, ToastHeader} from 'reactstrap';
+import RBToast from 'react-bootstrap/Toast';
 
 /**
  * Toasts can be used to push messages and notifactions to users. Control
@@ -26,6 +27,7 @@ const Toast = props => {
     setProps,
     className,
     class_name,
+    color,
     ...otherProps
   } = props;
 
@@ -53,26 +55,42 @@ const Toast = props => {
   }, [is_open]);
 
   return (
-    <RSToast
-      isOpen={is_open}
+    <RBToast
+      show={is_open}
+      onClose={dismissable && dismiss}
       className={class_name || className}
+      bg={color}
       {...omit(['n_dismiss_timestamp'], otherProps)}
     >
-      <ToastHeader
-        icon={icon}
+      <RBToast.Header
         style={header_style}
         className={header_class_name || headerClassName}
-        toggle={dismissable && dismiss}
+        closeButton={dismissable}
       >
-        {header}
-      </ToastHeader>
-      <ToastBody
+        {icon && (
+          <svg
+            className={`rounded text-${icon}`}
+            width="20"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            role="img"
+          >
+            <rect fill="currentColor" width="100%" height="100%"></rect>
+          </svg>
+        )}
+        <strong className={classNames('me-auto', icon && 'ms-2')}>
+          {header}
+        </strong>
+      </RBToast.Header>
+      <RBToast.Body
         style={body_style}
         className={body_class_name || bodyClassName}
       >
         {children}
-      </ToastBody>
-    </RSToast>
+      </RBToast.Body>
+    </RBToast>
   );
 };
 
@@ -170,11 +188,6 @@ Toast.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Set to false for a Toast that simply appears rather than fades into view.
-   */
-  fade: PropTypes.bool,
-
-  /**
    * Text to populate the header with
    */
   header: PropTypes.string,
@@ -210,7 +223,13 @@ Toast.propTypes = {
    * "primary", "secondary", "success", "warning", "danger", "info", "light" or
    * "dark".
    */
-  icon: PropTypes.string
+  icon: PropTypes.string,
+
+  /**
+   * Toast color, options: primary, secondary, success, info, warning, danger,
+   * light, dark. Default: secondary.
+   */
+  color: PropTypes.string
 };
 
 export default Toast;

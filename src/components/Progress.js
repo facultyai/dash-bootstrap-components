@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Progress as RSProgress} from 'reactstrap';
+import RBProgressBar from 'react-bootstrap/ProgressBar';
 import {bootstrapColors} from '../private/BootstrapColors';
-
-const CustomProgressTag = props => {
-  // This is a little trick to enable us to pass styles to the outer div
-  const {outer_style, style, ...otherProps} = props;
-  return <div style={outer_style} {...otherProps} />;
-};
 
 /**
  * A component for creating progress bars just with CSS. Control the current
@@ -18,34 +12,34 @@ const Progress = props => {
   const {
     children,
     loading_state,
-    bar_style,
     color,
-    style,
-    bar,
     className,
     class_name,
+    value,
+    hide_label,
+    bar,
     ...otherProps
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
   return (
-    <RSProgress
+    <RBProgressBar
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      // reactstrap handles these inconsistently atm, have to swap around
-      color={isBootstrapColor ? color : null}
-      barStyle={
-        !isBootstrapColor ? {backgroundColor: color, ...bar_style} : bar_style
-      }
-      outer_style={bar ? undefined : style}
-      bar={bar}
-      tag={bar ? 'div' : CustomProgressTag}
+      now={value}
+      isChild={bar}
+      variant={isBootstrapColor ? color : null}
+      visuallyHidden={hide_label}
     >
       {children}
-    </RSProgress>
+    </RBProgressBar>
   );
+};
+
+Progress.defaultProps = {
+  hide_label: false
 };
 
 Progress.propTypes = {
@@ -57,7 +51,7 @@ Progress.propTypes = {
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of this component. Use this to nest progress bars.
    */
   children: PropTypes.node,
 
@@ -86,29 +80,35 @@ Progress.propTypes = {
   key: PropTypes.string,
 
   /**
-   * HTML tag to use for the progress bar, default: div
-   */
-  tag: PropTypes.string,
-
-  /**
-   * Apply progress-bar class, for use inside a multi progress bar.
+   * Set to True when nesting Progress inside another Progress component to
+   * create a multi-progress bar.
    */
   bar: PropTypes.bool,
 
   /**
-   * Create container for multiple progress bars
+   * Upper limit for value, default: 100
    */
-  multi: PropTypes.bool,
+  min: PropTypes.number,
 
   /**
    * Upper limit for value, default: 100
    */
-  max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  max: PropTypes.number,
 
   /**
-   * Specify progress, value from 0 to max inclusive.
+   * Specify progress, value from min to max inclusive.
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Adds a label to the progress bar.
+   */
+  label: PropTypes.string,
+
+  /**
+   * Set to True to hide the label.
+   */
+  hide_label: PropTypes.bool,
 
   /**
    * Animate the bar, must have striped set to True to work.
@@ -126,16 +126,6 @@ Progress.propTypes = {
    * of your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
   color: PropTypes.string,
-
-  /**
-   * CSS classes to apply to the bar.
-   */
-  barClassName: PropTypes.string,
-
-  /**
-   * Style arguments to pass to the bar.
-   */
-  bar_style: PropTypes.object,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

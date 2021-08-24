@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import Input from '../Input';
 import InputGroup from '../InputGroup';
-import InputGroupAddon from '../InputGroupAddon';
+import InputGroupText from '../InputGroupText';
 
 describe('InputGroup', () => {
   test('renders a div with class "input-group"', () => {
@@ -16,7 +16,7 @@ describe('InputGroup', () => {
   test('renders its content', () => {
     const inputGroup = render(
       <InputGroup>
-        <InputGroupAddon>Addon</InputGroupAddon>
+        <InputGroupText>Addon</InputGroupText>
         <Input />
       </InputGroup>
     );
@@ -30,10 +30,10 @@ describe('InputGroup', () => {
   test('applies sizing CSS classes', () => {
     // inputGroup sizes
     const {
-      container: {firstChild: inputGroupSm},
+      container: {firstChild: inputGroupSm}
     } = render(<InputGroup size="sm" />);
     const {
-      container: {firstChild: inputGroupLg},
+      container: {firstChild: inputGroupLg}
     } = render(<InputGroup size="lg" />);
 
     expect(inputGroupSm).toHaveClass('input-group-sm');

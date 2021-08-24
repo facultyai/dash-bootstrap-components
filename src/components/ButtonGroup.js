@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ButtonGroup as RSButtonGroup} from 'reactstrap';
+import RBButtonGroup from 'react-bootstrap/ButtonGroup';
 
 /**
  * A component for creating groups of buttons. Can be used with `Button` or
@@ -10,7 +10,7 @@ import {ButtonGroup as RSButtonGroup} from 'reactstrap';
 const ButtonGroup = props => {
   const {children, loading_state, class_name, className, ...otherProps} = props;
   return (
-    <RSButtonGroup
+    <RBButtonGroup
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -18,7 +18,7 @@ const ButtonGroup = props => {
       }
     >
       {children}
-    </RSButtonGroup>
+    </RBButtonGroup>
   );
 };
 

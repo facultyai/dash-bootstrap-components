@@ -4,21 +4,6 @@ import userEvent from '@testing-library/user-event';
 import DropdownMenu from '../DropdownMenu';
 import DropdownMenuItem from '../DropdownMenuItem';
 
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
-
-  return class {
-    static placements = PopperJS.placements;
-
-    constructor() {
-      return {
-        destroy: () => {},
-        scheduleUpdate: () => {},
-      };
-    }
-  };
-});
-
 describe('DropdownMenuItem', () => {
   test('renders a button with class "dropdown-menu-item"', () => {
     const dropdownMenuItem = render(<DropdownMenuItem />);
@@ -129,10 +114,10 @@ describe('DropdownMenuItem', () => {
     );
 
     userEvent.click(dropdownMenu.getByText('toggle'));
-
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
     );
+
     userEvent.click(dropdownMenu.getByText('Clickable'));
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'

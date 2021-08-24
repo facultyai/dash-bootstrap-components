@@ -11,7 +11,7 @@ LOREM <- paste(
 modal <- htmlDiv(
   list(
     dbcButton(
-      "Scrolling modal", id = "open-scroll", n_clicks = 0, class_name = "mr-1"
+      "Scrolling modal", id = "open-scroll", n_clicks = 0, class_name = "me-1"
     ),
     dbcButton("Modal with scrollable body", id = "open-body-scroll",
               n_clicks = 0),
@@ -21,7 +21,7 @@ modal <- htmlDiv(
         dbcModalBody(LOREM),
         dbcModalFooter(
           dbcButton("Close", id = "close-scroll", n_clicks = 0,
-                    class_name = "ml-auto")
+                    class_name = "ms-auto")
         )
       ),
       id = "modal-scroll",
@@ -34,7 +34,7 @@ modal <- htmlDiv(
         dbcModalFooter(
           dbcButton(
             "Close", id = "close-body-scroll", n_clicks = 0,
-            class_name = "ml-auto"
+            class_name = "ms-auto"
           )
         )
       ),

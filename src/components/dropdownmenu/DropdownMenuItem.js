@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {DropdownItem as RSDropdownItem} from 'reactstrap';
+import RBDropdownItem from 'react-bootstrap/DropdownItem';
 
 import Link, {isExternalLink} from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
@@ -9,7 +9,7 @@ import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
  */
-const DropdownMenuItem = (props) => {
+const DropdownMenuItem = props => {
   let {
     children,
     href,
@@ -21,36 +21,42 @@ const DropdownMenuItem = (props) => {
     setProps,
     className,
     class_name,
+    header,
+    divider,
     ...otherProps
   } = props;
 
   const context = useContext(DropdownMenuContext);
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     if (!disabled && setProps) {
       setProps({
         n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now(),
+        n_clicks_timestamp: Date.now()
       });
     }
-    if (props.href) {
-      if (toggle && context.isOpen) {
-        context.toggle(e);
-      }
+    if (toggle && context.isOpen) {
+      context.toggle(e);
     }
   };
 
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = (e) => handleClick(e);
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
+
+  if (header) {
+    return <Dropdown.Header>{children}</Dropdown.Header>;
+  } else if (divider) {
+    return <Dropdown.Divider />;
+  }
+
   return (
-    <RSDropdownItem
-      tag={useLink ? Link : 'button'}
+    <RBDropdownItem
+      as={useLink ? Link : 'button'}
       // don't pass href if disabled otherwise reactstrap renders item
       // as link and the cursor becomes a pointer on hover
       href={disabled ? null : href}
       disabled={disabled}
       target={useLink && target}
-      toggle={toggle}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -58,7 +64,7 @@ const DropdownMenuItem = (props) => {
       }
     >
       {children}
-    </RSDropdownItem>
+    </RBDropdownItem>
   );
 };
 
@@ -169,19 +175,19 @@ DropdownMenuItem.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
+    component_name: PropTypes.string
   }),
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string,
+  target: PropTypes.string
 };
 
 DropdownMenuItem.defaultProps = {
   n_clicks: 0,
   n_clicks_timestamp: -1,
-  toggle: true,
+  toggle: true
 };
 
 export default DropdownMenuItem;

@@ -24,7 +24,6 @@ app.layout = dbc.Container(
         dbc.Button(
             "Regenerate graphs",
             color="primary",
-            block=True,
             id="button",
             class_name="mb-3",
         ),

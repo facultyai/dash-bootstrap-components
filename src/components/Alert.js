@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Alert as RSAlert} from 'reactstrap';
+import RBAlert from 'react-bootstrap/Alert';
 import {bootstrapColors} from '../private/BootstrapColors';
 
 /**
@@ -46,10 +46,11 @@ const Alert = props => {
 
   const isBootstrapColor = bootstrapColors.has(color);
   return (
-    <RSAlert
-      isOpen={is_open}
-      toggle={dismissable && dismiss}
-      color={isBootstrapColor ? color : null}
+    <RBAlert
+      show={is_open}
+      dismissible={dismissable}
+      onClose={dismissable ? dismiss : null}
+      variant={isBootstrapColor ? color : null}
       className={class_name || className}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
@@ -58,7 +59,7 @@ const Alert = props => {
       }
     >
       {children}
-    </RSAlert>
+    </RBAlert>
   );
 };
 

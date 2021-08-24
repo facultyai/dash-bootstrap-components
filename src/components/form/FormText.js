@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {omit} from 'ramda';
-import {FormText as RSFormText} from 'reactstrap';
+import RBFormText from 'react-bootstrap/FormText';
 import {bootstrapTextColors} from '../../private/BootstrapColors';
 
 /**
  * Add explanatory text below your input components.
  */
-const FormText = (props) => {
+const FormText = props => {
   const {
     children,
     loading_state,
@@ -18,18 +19,21 @@ const FormText = (props) => {
     ...otherProps
   } = props;
   const isBootstrapColor = bootstrapTextColors.has(color);
+  const classes = classNames(
+    class_name || className,
+    isBootstrapColor && `text-${color}`
+  );
   return (
-    <RSFormText
-      color={isBootstrapColor ? color : null}
+    <RBFormText
       style={!isBootstrapColor ? {color: color, ...style} : style}
-      className={class_name || className}
+      className={classes}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSFormText>
+    </RBFormText>
   );
 };
 
@@ -92,8 +96,8 @@ FormText.propTypes = {
     /**
      * Holds the name of the component that is loading
      */
-    component_name: PropTypes.string,
-  }),
+    component_name: PropTypes.string
+  })
 };
 
 export default FormText;

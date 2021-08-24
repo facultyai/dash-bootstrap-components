@@ -49,12 +49,22 @@ describe('Toast', () => {
     ).toHaveClass('text-dark');
   });
 
+  test('sets the background color with "color" prop', () => {
+    const toastPrimary = render(<Toast color="primary" />);
+    const toastSuccess = render(<Toast color="success" />);
+    const toastDark = render(<Toast color="dark" />);
+
+    expect(toastPrimary.container.firstChild).toHaveClass('bg-primary');
+    expect(toastSuccess.container.firstChild).toHaveClass('bg-success');
+    expect(toastDark.container.firstChild).toHaveClass('bg-dark');
+  });
+
   test('renders a dismiss button with dismissable=true', () => {
     const toastDismissable = render(<Toast dismissable />);
 
-    expect(toastDismissable.container.querySelector('button.close')).not.toBe(
-      null
-    );
+    expect(
+      toastDismissable.container.querySelector('button.btn-close')
+    ).not.toBe(null);
   });
 
   test('tracks clicks on dismiss button with n_dismiss', () => {
@@ -65,7 +75,7 @@ describe('Toast', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(toast.container.querySelector('.close'));
+    userEvent.click(toast.container.querySelector('.btn-close'));
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_dismiss).toBe(1);

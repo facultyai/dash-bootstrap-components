@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Tooltip as RSTooltip} from 'reactstrap';
+import RBTooltip from 'react-bootstrap/Tooltip';
+
+import Overlay from '../private/Overlay';
 
 /**
  * A component for adding tooltips to any element, no callbacks required!
@@ -13,41 +15,30 @@ const Tooltip = props => {
   const {
     id,
     children,
-    hide_arrow,
-    boundaries_element,
     loading_state,
     className,
     class_name,
-    arrowClassName,
-    arrow_class_name,
-    innerClassName,
-    inner_class_name,
+    style,
     ...otherProps
   } = props;
 
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-
-  const toggle = () => {
-    setTooltipOpen(!tooltipOpen);
-  };
-
   return (
-    <RSTooltip
-      toggle={toggle}
-      isOpen={tooltipOpen}
-      hideArrow={hide_arrow}
-      boundariesElement={boundaries_element}
-      className={class_name || className}
-      arrowClassName={arrow_class_name || arrowClassName}
-      innerClassName={inner_class_name || innerClassName}
-      {...omit(['setProps'], otherProps)}
+    <Overlay
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      {...omit(['setProps'], otherProps)}
+      trigger="hover focus"
     >
-      {children}
-    </RSTooltip>
+      <RBTooltip style={style} className={class_name || className}>
+        {children}
+      </RBTooltip>
+    </Overlay>
   );
+};
+
+Tooltip.defaultProps = {
+  delay: {show: 0, hide: 50}
 };
 
 Tooltip.propTypes = {
@@ -93,59 +84,6 @@ Tooltip.propTypes = {
   target: PropTypes.string,
 
   /**
-   * Boundaries for popper, can be scrollParent, window, viewport, or any DOM
-   * element
-   */
-  boundaries_element: PropTypes.string,
-
-  /**
-   * Hide arrow on tooltip
-   */
-  hide_arrow: PropTypes.bool,
-
-  /**
-   * Where to inject the popper DOM node, default body
-   */
-  container: PropTypes.string,
-
-  /**
-   * optionally override show/hide delays - default { show: 0, hide: 250 }
-   */
-  delay: PropTypes.oneOfType([
-    PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
-    PropTypes.number
-  ]),
-
-  /**
-   * CSS classes to apply to the inner-tooltip
-   */
-  inner_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - use `inner_class_name` instead.
-   *
-   * CSS classes to apply to the inner-tooltip
-   */
-  innerClassName: PropTypes.string,
-
-  /**
-   * CSS classes to apply to the arrow-tooltip ('arrow' by default)
-   */
-  arrow_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - use `arrow_class_name` instead.
-   *
-   * CSS classes to apply to the arrow-tooltip ('arrow' by default)
-   */
-  arrowClassName: PropTypes.string,
-
-  /**
-   * Optionally hide tooltip when hovering over tooltip content - default true
-   */
-  autohide: PropTypes.bool,
-
-  /**
    * How to place the tooltip.
    */
   placement: PropTypes.oneOf([
@@ -167,9 +105,9 @@ Tooltip.propTypes = {
   ]),
 
   /**
-   * Tooltip offset
+   * Control the delay of hide and show events.
    */
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  delay: PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
 
   /**
    * Object that holds the loading state object coming from dash-renderer

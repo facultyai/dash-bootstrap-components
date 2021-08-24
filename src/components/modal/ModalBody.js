@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ModalBody as RSModalBody} from 'reactstrap';
+import RBModalBody from 'react-bootstrap/ModalBody';
 
 /**
  * Use this component to add consistent padding to the body (main content) of
  * your Modals.
  */
-const ModalBody = (props) => {
-  const {children, className, class_name, ...otherProps} = props;
+const ModalBody = props => {
+  const {children, className, class_name, tag, ...otherProps} = props;
   return (
-    <RSModalBody
+    <RBModalBody
+      as={tag}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSModalBody>
+    </RBModalBody>
   );
 };
 
@@ -51,7 +52,7 @@ ModalBody.propTypes = {
   /**
    * HTML tag to use for the ModalBody, default: div
    */
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
 export default ModalBody;

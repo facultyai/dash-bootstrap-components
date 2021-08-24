@@ -1,49 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
-import {
-  Carousel as RSCarousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
+import RBCarousel from 'react-bootstrap/Carousel';
 
 /**
  * Component for creating Bootstrap carousel.  This component is a slideshow
  * for cycling through a series of content.
  */
 const Carousel = props => {
-  const [animating, setAnimating] = useState(false);
   const {
     items,
     active_index,
     style,
+    class_name,
     className,
     loading_state,
-    controls,
-    indicators,
     setProps,
     ...otherProps
   } = props;
-
-  const next = () => {
-    if (animating) return;
-    const nextIndex = active_index === items.length - 1 ? 0 : active_index + 1;
-    setProps({active_index: nextIndex});
-  };
-
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = active_index === 0 ? items.length - 1 : active_index - 1;
-    setProps({active_index: nextIndex});
-  };
-
-  const goToIndex = newIndex => {
-    if (animating) return;
-    setProps({active_index: newIndex});
-  };
 
   const slides = items.map(item => {
     // note - the default 'd-block w-100' is from the examples in the Bootstrap docs.
@@ -53,73 +28,35 @@ const Carousel = props => {
         : 'd-block w-100';
 
     return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.key}
-      >
+      <RBCarousel.Item key={item.key}>
         <img
           src={item.src}
-          className={item.imgClassName}
+          className={item.img_class_name || item.imgClassName}
           style={item.img_style}
           alt={item.alt}
         />
-
-        <CarouselCaption
-          captionText={item.caption}
-          captionHeader={item.header}
-          className={item.captionClassName}
-        />
-      </CarouselItem>
+        <RBCarousel.Caption
+          className={item.caption_class_name || item.captionClassName}
+        >
+          {item.header && <h5>{item.header}</h5>}
+          {item.caption && <p>{item.caption}</p>}
+        </RBCarousel.Caption>
+      </RBCarousel.Item>
     );
   });
 
-  const showControls = () => {
-    if (controls) {
-      return (
-        <React.Fragment>
-          <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={previous}
-          />
-          <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={next}
-          />
-        </React.Fragment>
-      );
-    }
-  };
-
-  const showIndicators = () => {
-    if (indicators) {
-      return (
-        <CarouselIndicators
-          items={items}
-          activeIndex={active_index}
-          onClickHandler={goToIndex}
-        />
-      );
-    }
-  };
-
   return (
-    <div style={style} className={className}>
-      <RSCarousel
+    <div style={style} className={class_name || className}>
+      <RBCarousel
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }
         activeIndex={active_index}
-        next={next}
-        previous={previous}
+        onSelect={idx => setProps({active_index: idx})}
         {...omit(['setProps'], otherProps)}
       >
-        {showIndicators()}
         {slides}
-        {showControls()}
-      </RSCarousel>
+      </RBCarousel>
     </div>
   );
 };
@@ -144,7 +81,14 @@ Carousel.propTypes = {
   style: PropTypes.object,
 
   /**
-   * Defines the className of the carousel container.  This is often used with CSS to style elements with common properties.
+   * Defines the className of the carousel container. Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * efines the className of the carousel container. Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
 
@@ -169,6 +113,12 @@ Carousel.propTypes = {
       /**
        * The className for the image.  The default is 'd-block w-100'
        */
+      img_class_name: PropTypes.string,
+      /**
+       * **DEPRECATED** Use `img_class_name` instead.
+       *
+       * The className for the image.  The default is 'd-block w-100'
+       */
       imgClassName: PropTypes.string,
       /**
        * The style for the image
@@ -183,7 +133,13 @@ Carousel.propTypes = {
        */
       caption: PropTypes.string,
       /**
-       * The className for the header and caption container
+       * The class name for the header and caption container
+       */
+      caption_class_name: PropTypes.string,
+      /**
+       * **DEPRECATED** Use `img_class_name` instead.
+       *
+       * The class name for the header and caption container
        */
       captionClassName: PropTypes.string
     })
@@ -216,13 +172,9 @@ Carousel.propTypes = {
 
   /**
    *the interval at which the carousel automatically cycles (default: 5000)
-   * If set to false, carousel will not Autoplay (i.e. will not automatically cycle).
+   * If set to None, carousel will not Autoplay (i.e. will not automatically cycle).
    */
-  interval: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.bool
-  ]),
+  interval: PropTypes.number,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

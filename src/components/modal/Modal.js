@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Modal as RSModal} from 'reactstrap';
+import {omit} from 'ramda';
+import RBModal from 'react-bootstrap/Modal';
 
 /**
  * Create a toggleable dialog using the Modal component. Toggle the visibility
  * with the `is_open` prop.
  */
-const Modal = (props) => {
+const Modal = props => {
   const {
     children,
     is_open,
@@ -23,28 +24,39 @@ const Modal = (props) => {
     content_class_name,
     backdropClassName,
     backdrop_class_name,
+    tag,
+    loading_state,
+    fade,
     ...otherProps
   } = props;
 
-  const toggle = () => {
+  const onHide = () => {
     if (setProps) {
-      setProps({is_open: !is_open});
+      setProps({is_open: false});
     }
   };
 
   return (
-    <RSModal
-      className={class_name || className}
-      modalClassName={modal_class_name || modalClassName}
+    <RBModal
+      animation={fade}
+      dialogAs={tag}
+      dialogClassName={class_name || className}
+      className={modal_class_name || modalClassName}
       backdropClassName={backdrop_class_name || backdropClassName}
       autoFocus={autofocus || autoFocus}
-      labelledBy={labelledby || labelledBy}
-      isOpen={is_open}
-      toggle={toggle}
-      {...otherProps}
+      aria-labelledby={labelledby || labelledBy}
+      show={is_open}
+      onHide={onHide}
+      {...omit(
+        ['persistence', 'persistence_type', 'persisted_props'],
+        otherProps
+      )}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
     >
       {children}
-    </RSModal>
+    </RBModal>
   );
 };
 
@@ -186,9 +198,18 @@ Modal.propTypes = {
   fade: PropTypes.bool,
 
   /**
+   * Renders a fullscreen modal. Specifying a breakpoint will render the modal
+   * as fullscreen below the breakpoint size.
+   */
+  fullscreen: PropTypes.oneOf([
+    PropTypes.bool,
+    PropTypes.oneOf(['sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'])
+  ]),
+
+  /**
    * Set the z-index of the modal. Default 1050.
    */
-  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Modal;
