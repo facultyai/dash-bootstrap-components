@@ -32,6 +32,13 @@ AccordionItem.propTypes = {
   class_name: PropTypes.string,
 
   /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
+  className: PropTypes.string,
+
+  /**
    * The title on display in the collapsed accordion item.
    */
   title: PropTypes.string,

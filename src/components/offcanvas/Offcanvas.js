@@ -12,11 +12,15 @@ const Offcanvas = props => {
     setProps,
     children,
     class_name,
+    className,
     backdrop,
     backdrop_class_name,
+    backdropClassName,
     labelledby,
+    labelledBy,
     scrollable,
     autofocus,
+    autoFocus,
     close_button,
     title,
     ...otherProps
@@ -40,11 +44,11 @@ const Offcanvas = props => {
 
   return (
     <RBOffcanvas
-      aria-labelledby={labelledby}
-      className={class_name}
-      backdropClassName={backdrop_class_name}
+      autoFocus={autofocus || autoFocus}
+      aria-labelledby={labelledby || labelledBy}
+      className={class_name || className}
+      backdropClassName={backdrop_class_name || backdropClassName}
       scroll={scrollable}
-      autoFocus={autofocus}
       show={is_open}
       onHide={backdrop !== 'static' ? onHide : null}
       backdrop={backdrop || backdrop === 'static'}
@@ -86,9 +90,23 @@ Offcanvas.propTypes = {
   class_name: PropTypes.string,
 
   /**
+   * **DEPRECATED** - Use class_name instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
+  className: PropTypes.string,
+
+  /**
    * The ARIA labelledby attribute
    */
   labelledby: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `labelledby` instead
+   *
+   * The ARIA labelledby attribute
+   */
+  labelledBy: PropTypes.string,
 
   /**
    * Includes an offcanvas-backdrop element. Alternatively, specify 'static' for a
@@ -100,6 +118,13 @@ Offcanvas.propTypes = {
    * CSS class to apply to the backdrop.
    */
   backdrop_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - Use backdrop_class_name instead.
+   *
+   * CSS class to apply to the backdrop.
+   */
+  backdropClassName: PropTypes.string,
 
   /**
    * Close the offcanvas when escape key is pressed.
@@ -125,6 +150,13 @@ Offcanvas.propTypes = {
    * 	Puts the focus on the offcanvas when initialized.
    */
   autofocus: PropTypes.bool,
+
+  /**
+   * **DEPRECATED** Use `autofocus` instead
+   *
+   * 	Puts the focus on the modal when initialized.
+   */
+  autoFocus: PropTypes.bool,
 
   /**
    * The header title
