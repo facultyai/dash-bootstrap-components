@@ -11,6 +11,7 @@ modal = html.Div(
                 dbc.ModalBody("Wow this thing takes up a lot of space..."),
             ],
             id="modal-fs",
+            fullscreen=True,
         ),
     ]
 )
