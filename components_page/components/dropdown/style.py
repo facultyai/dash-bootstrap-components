@@ -25,7 +25,6 @@ dropdowns = html.Div(
             items, label="Danger", color="danger", class_name="m-1"
         ),
         dbc.DropdownMenu(items, label="Info", color="info", class_name="m-1"),
-        dbc.DropdownMenu(items, label="Link", color="link", class_name="m-1"),
     ],
     style={"display": "flex", "flexWrap": "wrap"},
 )

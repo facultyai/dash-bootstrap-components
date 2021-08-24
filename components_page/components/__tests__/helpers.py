@@ -8,7 +8,8 @@ def py_source_to_app(py_source, env):
     Create a Dash app from a string defining the app.
     """
     env = env or {}
-    exec(py_source, env)
+    # TODO: remove class_name modifiers
+    exec(py_source.replace("class_name", "className"), env)
     return env["app"]
 
 
@@ -56,7 +57,9 @@ def load_r_app(path, component_name):
         snippet=path.read_text(),
         components=component_name,
         port=8050,
-    )
+    ).replace(
+        "class_name", "className"
+    )  # TODO: remove this in future
 
 
 def load_jl_app(path, component_name):
@@ -64,4 +67,6 @@ def load_jl_app(path, component_name):
         snippet=path.read_text(),
         components=component_name,
         port=8050,
-    )
+    ).replace(
+        "class_name", "className"
+    )  # TODO: remove this in future

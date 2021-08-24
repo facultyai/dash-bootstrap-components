@@ -8,7 +8,7 @@ popover = html.Div(
             "Toggle",
             id="toggle",
             color="success",
-            class_name="mr-4",
+            class_name="me-4",
             n_clicks=0,
         ),
         dbc.Button("Target", id="target", color="danger", n_clicks=0),

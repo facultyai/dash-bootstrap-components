@@ -11,7 +11,6 @@ card = dbc.Card(
                     dbc.Tab(label="Tab 2", tab_id="tab-2"),
                 ],
                 id="card-tabs",
-                card=True,
                 active_tab="tab-1",
             )
         ),

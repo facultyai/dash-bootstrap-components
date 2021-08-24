@@ -12,7 +12,7 @@ tabs = html.Div(
         html.Br(),
         dbc.Tabs(
             [
-                dbc.Tab(label="Tab 1", tab_class_name="ml-auto"),
+                dbc.Tab(label="Tab 1", tab_class_name="ms-auto"),
                 dbc.Tab(label="Tab 2", label_class_name="text-success"),
             ]
         ),

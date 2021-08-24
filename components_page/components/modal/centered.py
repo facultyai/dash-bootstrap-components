@@ -7,13 +7,13 @@ modal = html.Div(
         dbc.Button("Open", id="open-centered"),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader(dbc.ModalTitle("Header"), close_button=True),
                 dbc.ModalBody("This modal is vertically centered"),
                 dbc.ModalFooter(
                     dbc.Button(
                         "Close",
                         id="close-centered",
-                        class_name="ml-auto",
+                        class_name="ms-auto",
                         n_clicks=0,
                     )
                 ),

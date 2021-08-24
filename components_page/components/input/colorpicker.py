@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-colorpicker = dbc.FormGroup(
+colorpicker = html.Div(
     [
         dbc.Label(["Select a ", html.Span("color", id="color")]),
         dbc.Input(
@@ -16,7 +16,7 @@ colorpicker = dbc.FormGroup(
 
 app.clientside_callback(
     """
-    function(color) {                                      
+    function(color) {
         return {"color": color}
     }
     """,

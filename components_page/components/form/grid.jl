@@ -25,5 +25,5 @@ form = dbc_row(
             width=6,
         ),
     ],
-    form=true,
+    class_name="g-3",
 );

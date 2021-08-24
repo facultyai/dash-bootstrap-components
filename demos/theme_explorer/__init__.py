@@ -10,7 +10,6 @@ from .collapse import collapse
 from .fade import fade
 from .form import form
 from .input import checklist_items, input_, input_group, radio_items
-from .jumbotron import jumbotron
 from .list_group import list_group
 from .modal import modal
 from .navbar import navbar
@@ -45,7 +44,6 @@ app.layout = dbc.Container(
                 dbc.Col([radio_items], xs=12, md=6),
             ]
         ),
-        jumbotron,
         list_group,
         modal,
         navbar,

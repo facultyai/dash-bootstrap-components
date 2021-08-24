@@ -3,11 +3,11 @@ import dash_html_components as html
 
 badges = html.Div(
     [
-        html.H1(["Example heading", dbc.Badge("New", class_name="ml-1")]),
-        html.H2(["Example heading", dbc.Badge("New", class_name="ml-1")]),
-        html.H3(["Example heading", dbc.Badge("New", class_name="ml-1")]),
-        html.H4(["Example heading", dbc.Badge("New", class_name="ml-1")]),
-        html.H5(["Example heading", dbc.Badge("New", class_name="ml-1")]),
-        html.H6(["Example heading", dbc.Badge("New", class_name="ml-1")]),
+        html.H1(["Example heading", dbc.Badge("New", class_name="ms-1")]),
+        html.H2(["Example heading", dbc.Badge("New", class_name="ms-1")]),
+        html.H3(["Example heading", dbc.Badge("New", class_name="ms-1")]),
+        html.H4(["Example heading", dbc.Badge("New", class_name="ms-1")]),
+        html.H5(["Example heading", dbc.Badge("New", class_name="ms-1")]),
+        html.H6(["Example heading", dbc.Badge("New", class_name="ms-1")]),
     ]
 )

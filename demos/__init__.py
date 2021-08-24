@@ -21,7 +21,9 @@ SHEETS = [
     ("lux", dbc.themes.LUX),
     ("materia", dbc.themes.MATERIA),
     ("minty", dbc.themes.MINTY),
+    ("morph", dbc.themes.MORPH),
     ("pulse", dbc.themes.PULSE),
+    ("quartz", dbc.themes.QUARTZ),
     ("sandstone", dbc.themes.SANDSTONE),
     ("simplex", dbc.themes.SIMPLEX),
     ("sketchy", dbc.themes.SKETCHY),
@@ -30,7 +32,9 @@ SHEETS = [
     ("spacelab", dbc.themes.SPACELAB),
     ("superhero", dbc.themes.SUPERHERO),
     ("united", dbc.themes.UNITED),
+    ("vapor", dbc.themes.VAPOR),
     ("yeti", dbc.themes.YETI),
+    ("zephyr", dbc.themes.ZEPHYR),
 ]
 
 

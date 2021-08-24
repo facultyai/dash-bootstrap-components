@@ -7,5 +7,5 @@ row = dbc.Row(
         dbc.Col(html.Div("One of three columns")),
         dbc.Col(html.Div("One of three columns")),
     ],
-    no_gutters=True,
+    class_name="g-0",
 )

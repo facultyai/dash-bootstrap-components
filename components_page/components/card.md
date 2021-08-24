@@ -91,23 +91,7 @@ Use the `CardGroup` component to render cards as a single attached element with 
 
 {{example:components/card/layout/group.py:cards}}
 
-### Card deck
-
-The `CardDeck` component will lay cards out with equal width and height, without attaching them to one another like the `CardGroup` component.
-
-{{example:components/card/layout/deck.py:cards}}
-
-### Card columns
-
-Cards can be organised into [Masonry](https://masonry.desandro.com/)-like columns using the `CardColumns` component. Cards are ordered top to bottom and left to right.
-
-{{example:components/card/layout/columns.py:cards}}
-
-{{apidoc:src/components/card/CardDeck.js}}
-
 {{apidoc:src/components/card/CardGroup.js}}
-
-{{apidoc:src/components/card/CardColumns.js}}
 
 {{apidoc:src/components/card/Card.js}}
 
