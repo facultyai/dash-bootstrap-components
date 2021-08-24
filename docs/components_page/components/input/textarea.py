@@ -6,12 +6,12 @@ textareas = html.Div(
         dbc.Textarea(class_name="mb-3", placeholder="A Textarea"),
         dbc.Textarea(
             valid=True,
-            bs_size="sm",
+            size="sm",
             class_name="mb-3",
             placeholder="A small, valid Textarea",
         ),
         dbc.Textarea(
-            invalid=True, bs_size="lg", placeholder="A large, invalid Textarea"
+            invalid=True, size="lg", placeholder="A large, invalid Textarea"
         ),
     ]
 )

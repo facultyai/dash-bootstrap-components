@@ -47,7 +47,6 @@ def check_pagination_callback_callbacks(runner):
         lambda: pages[6].text == "7",
         timeout=4,
     )
-
     pages[6].click()
 
     # Check the text in contents changes to "Page selected: 7"

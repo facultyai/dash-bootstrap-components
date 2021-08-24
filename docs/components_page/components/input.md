@@ -37,7 +37,7 @@ Use the `FormGroup` component along with `Label` and `FormText` to control the l
 
 ## Input size
 
-You can control the size of the `Input` using the `bs_size` keyword argument. It accepts the values `sm`, `md` or `lg` for small, medium or large sizes respectively.
+You can control the size of the `Input` using the `size` keyword argument. It accepts the values `sm`, `md` or `lg` for small, medium or large sizes respectively. If you want to set the HTML size attribute of the underlying `<input>` use the `html_size` keyword argument.
 
 {{example:components/input/size.py:inputs}}
 
@@ -49,13 +49,13 @@ Add valid / invalid styles to your `Input` components using the `valid` and `inv
 
 ## Textarea
 
-The `Textarea` component works like the _dash-core-components_ analogue, but accepts the additional arguments `valid`, `invalid`, and `bs_size` much like `Input`.
+The `Textarea` component works like the _dash-core-components_ analogue, but accepts the additional arguments `valid`, `invalid`, and `size` much like `Input`.
 
 {{example:components/input/textarea.py:textareas}}
 
 ## Select
 
-The `Select` component can be used to render a Bootstrap themed select input. The options are specified with a list of dictionaries much like the `Dropdown` component in _dash-core-components_, i.e. with keys `'label'`, `'value'` and optional key `'disabled'`. Like `Input` it also accepts keyword arguments such as `bs_size`, `valid`, `invalid`, all of which can be targeted with callbacks.
+The `Select` component can be used to render a Bootstrap themed select input. The options are specified with a list of dictionaries much like the `Dropdown` component in _dash-core-components_, i.e. with keys `'label'`, `'value'` and optional key `'disabled'`. Like `Input` it also accepts keyword arguments such as `size`, `valid`, `invalid`, all of which can be targeted with callbacks.
 
 {{example:components/input/select.py:select}}
 
