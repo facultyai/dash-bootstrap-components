@@ -16,6 +16,8 @@ const Pagination = props => {
     previous_next,
     first_last,
     setProps,
+    class_name,
+    className,
     ...otherProps
   } = props;
 
@@ -135,7 +137,7 @@ const Pagination = props => {
   }
 
   // Create the pagination component
-  return <RBPagination {...otherProps}>{paginationItems}</RBPagination>;
+  return <RBPagination className={class_name || className} {...otherProps}>{paginationItems}</RBPagination>;
 };
 
 Pagination.defaultProps = {
@@ -159,6 +161,13 @@ Pagination.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - Use class_name instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
+  className: PropTypes.string,
 
   /**
    * Defines CSS styles which will override styles previously set.

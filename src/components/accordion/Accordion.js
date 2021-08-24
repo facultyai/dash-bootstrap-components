@@ -29,6 +29,8 @@ const Accordion = props => {
     loading_state,
     key,
     setProps,
+    class_name,
+    className,
     ...otherProps
   } = props;
 
@@ -59,6 +61,8 @@ const Accordion = props => {
         title,
         item_id,
         loading_state,
+        class_name,
+        className,
         ...otherProps
       } = childProps;
       const itemID = item_id || 'item-' + idx;
@@ -66,6 +70,7 @@ const Accordion = props => {
         <RBAccordion.Item
           key={itemID}
           eventKey={itemID}
+          className={class_name || className}
           {...omit(
             ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
             otherProps
@@ -96,6 +101,7 @@ const Accordion = props => {
       }
       activeKey={active_item}
       defaultActiveKey={start_collapsed ? null : active_item}
+      className={class_name || className}
       {...omit(
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
         otherProps
@@ -134,6 +140,13 @@ Accordion.propTypes = {
    * Often used with CSS to style elements with common properties.
    */
   class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
+  className: PropTypes.string,
 
   /**
    * A unique identifier for the component, used to improve

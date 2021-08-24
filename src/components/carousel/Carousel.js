@@ -137,7 +137,7 @@ Carousel.propTypes = {
        */
       caption_class_name: PropTypes.string,
       /**
-       * **DEPRECATED** Use `img_class_name` instead.
+       * **DEPRECATED** Use `caption_class_name` instead.
        *
        * The class name for the header and caption container
        */
