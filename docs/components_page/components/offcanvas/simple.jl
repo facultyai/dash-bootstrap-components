@@ -10,7 +10,7 @@ offcanvas = html_div([
         ),
         id = "offcanvas",
         title = "Title",
-        is_open = false
+        is_open = false,
     ),
 ]);
 

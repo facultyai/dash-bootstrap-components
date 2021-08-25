@@ -37,9 +37,9 @@ def check_carousel_callbacks(runner):
         lambda: len(
             {"carousel-item", "active"}
             - set(
-                runner.find_elements("div.carousel-item")[1].get_attribute(
-                    "class"
-                ).split()
+                runner.find_elements("div.carousel-item")[1]
+                .get_attribute("class")
+                .split()
             )
         )
         == 0,
