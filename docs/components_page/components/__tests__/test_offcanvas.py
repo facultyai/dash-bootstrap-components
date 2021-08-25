@@ -40,15 +40,12 @@ def check_offcanvas_simple_callbacks(runner):
 
     runner.find_element("#open-offcanvas").click()
     wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) != 0,
+        lambda: len(runner.find_elements(".offcanvas-backdrop.show")) != 0,
         timeout=4,
     )
 
-    # When modal-backdrop (to change to offcanvas-backdrop) is clicked,
-    # the offcanvas disappears
-    # TODO: Once react-bootstrap has fixed this, need to change to
-    # offcanvas-backdrop
-    runner.find_element(".modal-backdrop").click()
+    # When offcanvas-backdrop is clicked, the offcanvas disappears
+    runner.find_element(".offcanvas-backdrop").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) == 0,
         timeout=4,
@@ -79,35 +76,35 @@ def check_offcanvas_backdrop_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue(False)
+    runner.find_element(
+        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_false"
+    ).click()
     wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) == 0,
+        lambda: len(runner.find_elements(".offcanvas-backdrop")) == 0,
         timeout=4,
     )
 
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue(True)
+    runner.find_element(
+        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_true"
+    ).click()
     wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) != 0,
+        lambda: len(runner.find_elements(".offcanvas-backdrop")) != 0,
         timeout=4,
     )
 
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue(False)
+    runner.find_element(
+        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_false"
+    ).click()
     wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) == 0,
+        lambda: len(runner.find_elements(".offcanvas-backdrop")) == 0,
         timeout=4,
     )
 
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue("static")
+    runner.find_element(
+        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_static"
+    ).click()
     wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) != 0,
+        lambda: len(runner.find_elements(".offcanvas-backdrop")) != 0,
         timeout=4,
     )
 
@@ -182,16 +179,11 @@ def check_offcanvas_placement_callbacks(runner):
 
     # Changing placement
     for option in ["end", "top", "bottom", "start"]:
-        runner.find_element("#offcanvas-placement-selector").selectByValue(
-            option
-        )
+        runner.find_element(
+            "#_dbcprivate_radioitems_offcanvas-placement-selector_input_"
+            f"{option}"
+        ).click()
         wait.until(
             lambda: len(runner.find_elements(f".offcanvas-{option}")) != 0,
             timeout=4,
         )
-
-    runner.find_element("#close-offcanvas-placement").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
-    )

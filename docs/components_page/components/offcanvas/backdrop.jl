@@ -31,6 +31,7 @@ offcanvas = html_div([
         ],
         id = "offcanvas-backdrop",
         title = "Offcanvas with/without backdrop",
+        is_open = false,
     ),
 ])
 

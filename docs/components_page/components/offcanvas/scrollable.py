@@ -22,6 +22,7 @@ offcanvas = html.Div(
             id="offcanvas-scrollable",
             scrollable=True,
             title="Scrollable Offcanvas",
+            is_open=False,
         ),
     ]
 )

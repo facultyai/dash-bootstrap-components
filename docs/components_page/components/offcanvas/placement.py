@@ -2,21 +2,15 @@ import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-placement_selector = html.Div(
-    [
-        dbc.InputGroupText("Placement"),
-        dbc.Select(
-            id="offcanvas-placement-selector",
-            options=[
-                {"label": "start (Default)", "value": "start"},
-                {"label": "end", "value": "end"},
-                {"label": "top", "value": "top"},
-                {"label": "bottom", "value": "bottom"},
-            ],
-            value="start",
-        ),
+placement_selector = dbc.RadioItems(
+    id="offcanvas-placement-selector",
+    options=[
+        {"label": "start (Default)", "value": "start"},
+        {"label": "end", "value": "end"},
+        {"label": "top", "value": "top"},
+        {"label": "bottom", "value": "bottom"},
     ],
-    class_name="p-3 m-2 border",
+    value="start",
 )
 
 offcanvas = html.Div(
@@ -29,14 +23,16 @@ offcanvas = html.Div(
         ),
         dbc.Offcanvas(
             [
-                html.Div(
+                html.P(
                     "Change the placement of this offcanvas with the "
-                    "options below"
+                    "options below",
+                    class_name="mb-3",
                 ),
                 placement_selector,
             ],
             id="offcanvas-placement",
             title="Placement",
+            is_open=False,
         ),
     ]
 )

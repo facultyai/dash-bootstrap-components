@@ -20,6 +20,7 @@ const Popover = props => {
     className,
     class_name,
     style,
+    id,
     ...otherProps
   } = props;
 
@@ -36,6 +37,7 @@ const Popover = props => {
         // to ensure proper backwards compatibility, the toggle function is only
         // passed to the popover if `trigger` is not specified
         style={style}
+        id={id}
         className={class_name || className}
       >
         {children}

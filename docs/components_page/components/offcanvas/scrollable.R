@@ -22,7 +22,8 @@ offcanvas <- htmlDiv(
       ),
       id = "offcanvas-scrollable",
       scrollable = TRUE,
-      title = "Scrollable Offcanvas"
+      title = "Scrollable Offcanvas",
+      is_open = FALSE
     )
   )
 )

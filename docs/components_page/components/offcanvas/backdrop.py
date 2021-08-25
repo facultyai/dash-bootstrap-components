@@ -39,6 +39,7 @@ offcanvas = html.Div(
             ],
             id="offcanvas-backdrop",
             title="Offcanvas with/without backdrop",
+            is_open=False,
         ),
     ]
 )

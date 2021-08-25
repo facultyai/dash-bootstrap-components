@@ -1,20 +1,14 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-placement_selector = html_div(
-    [
-        dbc_inputgrouptext("Placement"),
-        dbc_select(
-            id = "offcanvas-placement-selector",
-            options = [
-                Dict("label" => "start (Default)", "value" => "start"),
-                Dict("label" => "end", "value" => "end"),
-                Dict("label" => "top", "value" => "top"),
-                Dict("label" => "bottom", "value" => "bottom"),
-            ],
-            value = "start",
-        ),
+placement_selector = dbc_radioitems(
+    id = "offcanvas-placement-selector",
+    options = [
+        Dict("label" => "start (Default)", "value" => "start"),
+        Dict("label" => "end", "value" => "end"),
+        Dict("label" => "top", "value" => "top"),
+        Dict("label" => "bottom", "value" => "bottom"),
     ],
-    class_name = "p-3 m-2 border",
+    value = "start",
 )
 
 offcanvas = html_div([
@@ -26,11 +20,15 @@ offcanvas = html_div([
     ),
     dbc_offcanvas(
         [
-            html_div("Change the placement of this offcanvas with the " * "options below"),
+            html_p(
+                "Change the placement of this offcanvas with the options below",
+                class_name = "mb-3",
+            ),
             placement_selector,
         ],
         id = "offcanvas-placement",
         title = "Placement",
+        is_open = false,
     ),
 ])
 

@@ -40,7 +40,8 @@ offcanvas <- htmlDiv(
         )
       ),
       id = "offcanvas-backdrop",
-      title = "Offcanvas with/without backdrop"
+      title = "Offcanvas with/without backdrop",
+      is_open = FALSE
     )
   )
 )

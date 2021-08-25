@@ -15,6 +15,7 @@ offcanvas = html_div([
         id = "offcanvas-scrollable",
         scrollable = true,
         title = "Scrollable Offcanvas",
+        is_open = false,
     ),
 ])
 
