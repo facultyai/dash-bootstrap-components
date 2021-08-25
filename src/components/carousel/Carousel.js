@@ -17,6 +17,7 @@ const Carousel = props => {
     className,
     loading_state,
     setProps,
+    interval,
     ...otherProps
   } = props;
 
@@ -53,6 +54,7 @@ const Carousel = props => {
         }
         activeIndex={active_index}
         onSelect={idx => setProps({active_index: idx})}
+        interval={interval || null}
         {...omit(['setProps'], otherProps)}
       >
         {slides}
