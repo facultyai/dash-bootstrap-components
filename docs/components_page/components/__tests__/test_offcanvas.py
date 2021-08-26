@@ -4,6 +4,7 @@ Testing of callbacks in non-Python Offcanvas snippets.
 from pathlib import Path
 
 import dash.testing.wait as wait
+from selenium.webdriver.common.action_chains import ActionChains
 
 from .helpers import load_jl_app, load_r_app
 
@@ -25,6 +26,11 @@ def test_jl_offcanvas_simple(dashjl):
 
 
 def check_offcanvas_simple_callbacks(runner):
+    wait.until(
+        lambda: len(runner.find_elements("#open-offcanvas")) != 0,
+        timeout=4,
+    )
+
     runner.find_element("#open-offcanvas").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) != 0,
@@ -32,7 +38,13 @@ def check_offcanvas_simple_callbacks(runner):
     )
 
     # When offcanvas-header.btn-close is clicked, the offcanvas disappears
-    runner.find_element(".offcanvas-header .btn-close").click()
+    wait.until(
+        lambda: len(runner.find_elements(".btn-close")) != 0,
+        timeout=4,
+    )
+
+    button = runner.find_element(".btn-close")
+    ActionChains(runner.driver).move_to_element(button).click(button).perform()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) == 0,
         timeout=4,
@@ -70,6 +82,11 @@ def test_jl_offcanvas_backdrop(dashjl):
 
 
 def check_offcanvas_backdrop_callbacks(runner):
+    wait.until(
+        lambda: len(runner.find_elements("#open-offcanvas-backdrop")) != 0,
+        timeout=4,
+    )
+
     runner.find_element("#open-offcanvas-backdrop").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) != 0,
@@ -135,9 +152,11 @@ def test_jl_offcanvas_scrollable(dashjl):
 
 
 def check_offcanvas_scrollable_callbacks(runner):
-    import time
+    wait.until(
+        lambda: len(runner.find_elements("#open-offcanvas-scrollable")) != 0,
+        timeout=4,
+    )
 
-    time.sleep(3)
     runner.find_element("#open-offcanvas-scrollable").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) != 0,
@@ -171,6 +190,10 @@ def test_jl_offcanvas_placement(dashjl):
 
 
 def check_offcanvas_placement_callbacks(runner):
+    wait.until(
+        lambda: len(runner.find_elements("#open-offcanvas-placement")) != 0,
+        timeout=4,
+    )
     runner.find_element("#open-offcanvas-placement").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) != 0,
