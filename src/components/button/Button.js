@@ -139,13 +139,6 @@ Button.propTypes = {
   n_clicks_timestamp: PropTypes.number,
 
   /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info.
-   */
-  key: PropTypes.string,
-
-  /**
    * Whether button is in active state. Default: False.
    */
   active: PropTypes.bool,
