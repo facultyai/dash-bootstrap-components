@@ -82,53 +82,48 @@ def test_jl_offcanvas_backdrop(dashjl):
 
 
 def check_offcanvas_backdrop_callbacks(runner):
+
     wait.until(
         lambda: len(runner.find_elements("#open-offcanvas-backdrop")) != 0,
-        timeout=4,
+        timeout=8,
     )
 
     runner.find_element("#open-offcanvas-backdrop").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas")) != 0,
-        timeout=4,
+        timeout=8,
     )
 
-    runner.find_element(
-        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_false"
-    ).click()
+    backdrop_selector = "#_dbcprivate_radioitems_offcanvas-backdrop-selector"
+
+    wait.until(
+        lambda: len(runner.find_elements(f"{backdrop_selector}_input_false"))
+        != 0,
+        timeout=8,
+    )
+
+    runner.find_element(f"{backdrop_selector}_input_false").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas-backdrop")) == 0,
-        timeout=4,
+        timeout=8,
     )
 
-    runner.find_element(
-        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_true"
-    ).click()
+    runner.find_element(f"{backdrop_selector}_input_true").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas-backdrop")) != 0,
-        timeout=4,
+        timeout=8,
     )
 
-    runner.find_element(
-        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_false"
-    ).click()
+    runner.find_element(f"{backdrop_selector}_input_false").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas-backdrop")) == 0,
-        timeout=4,
+        timeout=8,
     )
 
-    runner.find_element(
-        "#_dbcprivate_radioitems_offcanvas-backdrop-selector_input_static"
-    ).click()
+    runner.find_element(f"{backdrop_selector}_input_static").click()
     wait.until(
         lambda: len(runner.find_elements(".offcanvas-backdrop")) != 0,
-        timeout=4,
-    )
-
-    runner.find_element("#close-offcanvas-backdrop").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
+        timeout=8,
     )
 
 
