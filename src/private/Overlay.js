@@ -28,7 +28,10 @@ const Overlay = ({
   setProps,
   ...otherProps
 }) => {
-  const [isOpen, setIsOpen, isOpenRef] = useStateRef(defaultShow);
+  // isOpen should be false initially, even if defaultShow is true
+  // so that we can find the target in the DOM before rendering the
+  // overlay
+  const [isOpen, setIsOpen, isOpenRef] = useStateRef(false);
 
   const overlayRef = useRef(null);
   const targetRef = useRef(null);
@@ -117,16 +120,17 @@ const Overlay = ({
     }
   };
 
-  useEffect(() => setIsOpen(defaultShow), [defaultShow]);
-
   useEffect(() => {
-    let container = document.querySelector('footer');
-    if (!container) {
-      container = document.createElement('footer');
-      document.body.append(container);
+    if (!overlayRef.current) {
+      let container = document.querySelector('footer');
+      if (!container) {
+        container = document.createElement('footer');
+        document.body.append(container);
+      }
+      overlayRef.current = container;
     }
-    overlayRef.current = container;
-  }, []);
+    setIsOpen(defaultShow);
+  }, [defaultShow]);
 
   useEffect(() => {
     targetRef.current = document.getElementById(target);
@@ -134,12 +138,7 @@ const Overlay = ({
   }, [target]);
 
   return (
-    <RBOverlay
-      container={overlayRef.current}
-      show={isOpen}
-      target={targetRef.current}
-      {...otherProps}
-    >
+    <RBOverlay show={isOpen} target={targetRef.current} {...otherProps}>
       {children}
     </RBOverlay>
   );
