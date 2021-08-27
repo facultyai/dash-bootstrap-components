@@ -1,19 +1,22 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 modal = html_div([
-    html_div([
-        dbc_label("Backdrop:"),
-        dbc_radioitems(
-            id = "backdrop-selector",
-            options = [
-                Dict("label" => "True (default)", "value" => true),
-                Dict("label" => "False", "value" => false),
-                Dict("label" => "'static'", "value" => "static"),
-            ],
-            inline = true,
-            value = true,
-        ),
-    ]),
+    html_div(
+        [
+            dbc_label("Backdrop:"),
+            dbc_radioitems(
+                id = "backdrop-selector",
+                options = [
+                    Dict("label" => "True (default)", "value" => true),
+                    Dict("label" => "False", "value" => false),
+                    Dict("label" => "'static'", "value" => "static"),
+                ],
+                inline = true,
+                value = true,
+            ),
+        ],
+        class_name = "mb-2",
+    ),
     dbc_button("Open modal", id = "open-backdrop", n_clicks = 0),
     dbc_modal(
         [

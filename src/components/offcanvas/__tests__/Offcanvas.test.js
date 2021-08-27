@@ -93,11 +93,10 @@ describe('Offcanvas', () => {
       const mockSetProps = jest.fn();
       const {rerender} = render(<Offcanvas is_open setProps={mockSetProps} />);
 
-      // TODO: When react-bootstrap have changed this update to offcanvas-backdrop
-      const backdrop = document.body.querySelector('.modal-backdrop');
+      const backdrop = document.body.querySelector('.offcanvas-backdrop');
       expect(backdrop).not.toBe(null);
 
-      userEvent.click(document.body.querySelector('.modal-backdrop'));
+      userEvent.click(document.body.querySelector('.offcanvas-backdrop'));
 
       rerender(<Offcanvas {...mockSetProps.mock.calls[0][0]} />);
       jest.runAllTimers();
@@ -108,16 +107,14 @@ describe('Offcanvas', () => {
     test('when backdrop is False, nothing is rendered', () => {
       render(<Offcanvas is_open backdrop={false} />);
 
-      // TODO: When react-bootstrap have changed this update to offcanvas-backdrop
-      expect(document.body.querySelector('.modal-backdrop')).toBe(null);
+      expect(document.body.querySelector('.offcanvas-backdrop')).toBe(null);
     });
 
     test('when backdrop is "static", a backdrop is rendered, but does not dismiss the offcanvas on click', () => {
       const mockSetProps = jest.fn();
       render(<Offcanvas is_open backdrop="static" setProps={mockSetProps} />);
 
-      // TODO: When react-bootstrap have changed this update to offcanvas-backdrop
-      const backdrop = document.body.querySelector('.modal-backdrop');
+      const backdrop = document.body.querySelector('.offcanvas-backdrop');
       expect(backdrop).not.toBe(null);
 
       userEvent.click(backdrop);

@@ -4,10 +4,43 @@ Testing of callbacks in non-Python Offcanvas snippets.
 from pathlib import Path
 
 import dash.testing.wait as wait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 from .helpers import load_jl_app, load_r_app
 
 HERE = Path(__file__).parent
+
+
+def _click_open_button(runner, button_id):
+    btn = WebDriverWait(runner.driver, 5).until(
+        EC.presence_of_element_located((By.ID, button_id))
+    )
+    btn.click()
+    assert WebDriverWait(runner.driver, 5).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".offcanvas.show"))
+    )
+
+
+def _dismiss_with_esc(runner):
+    offcanvas = WebDriverWait(runner.driver, 5).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "offcanvas"))
+    )
+    offcanvas.send_keys(Keys.ESCAPE)
+    assert WebDriverWait(runner.driver, 5).until_not(
+        EC.presence_of_element_located((By.CLASS_NAME, "offcanvas"))
+    )
+
+
+def _click_radio(runner, radio_id, option):
+    label_id = f"_dbcprivate_radioitems_{radio_id}_input_{option}"
+    wait.until(
+        lambda: len(runner.find_elements(f"#{label_id}")) != 0,
+        timeout=8,
+    )
+    runner.driver.find_element_by_id(label_id).click()
 
 
 def test_r_offcanvas_simple(dashr):
@@ -25,34 +58,9 @@ def test_jl_offcanvas_simple(dashjl):
 
 
 def check_offcanvas_simple_callbacks(runner):
-    runner.find_element("#open-offcanvas").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) != 0,
-        timeout=4,
-    )
-
-    # When offcanvas-header.btn-close is clicked, the offcanvas disappears
-    runner.find_element(".offcanvas-header .btn-close").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
-    )
-
-    runner.find_element("#open-offcanvas").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) != 0,
-        timeout=4,
-    )
-
-    # When modal-backdrop (to change to offcanvas-backdrop) is clicked,
-    # the offcanvas disappears
-    # TODO: Once react-bootstrap has fixed this, need to change to
-    # offcanvas-backdrop
-    runner.find_element(".modal-backdrop").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
-    )
+    # When offcanvas-backdrop is clicked, the offcanvas disappears
+    _click_open_button(runner, "open-offcanvas")
+    _dismiss_with_esc(runner)
 
 
 # ------------------------------
@@ -73,49 +81,13 @@ def test_jl_offcanvas_backdrop(dashjl):
 
 
 def check_offcanvas_backdrop_callbacks(runner):
-    runner.find_element("#open-offcanvas-backdrop").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) != 0,
-        timeout=4,
-    )
+    _click_open_button(runner, "open-offcanvas-backdrop")
+    assert len(runner.find_elements(".offcanvas-backdrop")) != 0
+    _dismiss_with_esc(runner)
 
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue(False)
-    wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) == 0,
-        timeout=4,
-    )
-
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue(True)
-    wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) != 0,
-        timeout=4,
-    )
-
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue(False)
-    wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) == 0,
-        timeout=4,
-    )
-
-    runner.find_element("#offcanvas-backdrop-selector").selectByValue("static")
-    wait.until(
-        # TODO: Once react-bootstrap has fixed this, need to change to
-        # offcanvas-backdrop
-        lambda: len(runner.find_elements(".modal-backdrop")) != 0,
-        timeout=4,
-    )
-
-    runner.find_element("#close-offcanvas-backdrop").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
-    )
+    _click_radio(runner, "offcanvas-backdrop-selector", "false")
+    _click_open_button(runner, "open-offcanvas-backdrop")
+    assert len(runner.find_elements(".offcanvas-backdrop")) == 0
 
 
 # ------------------------------
@@ -138,20 +110,7 @@ def test_jl_offcanvas_scrollable(dashjl):
 
 
 def check_offcanvas_scrollable_callbacks(runner):
-    import time
-
-    time.sleep(3)
-    runner.find_element("#open-offcanvas-scrollable").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) != 0,
-        timeout=4,
-    )
-
-    runner.find_element("#close-offcanvas-scrollable").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
-    )
+    _click_open_button(runner, "open-offcanvas-scrollable")
 
 
 # ------------------------------
@@ -174,24 +133,8 @@ def test_jl_offcanvas_placement(dashjl):
 
 
 def check_offcanvas_placement_callbacks(runner):
-    runner.find_element("#open-offcanvas-placement").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) != 0,
-        timeout=4,
-    )
-
-    # Changing placement
     for option in ["end", "top", "bottom", "start"]:
-        runner.find_element("#offcanvas-placement-selector").selectByValue(
-            option
-        )
-        wait.until(
-            lambda: len(runner.find_elements(f".offcanvas-{option}")) != 0,
-            timeout=4,
-        )
-
-    runner.find_element("#close-offcanvas-placement").click()
-    wait.until(
-        lambda: len(runner.find_elements(".offcanvas")) == 0,
-        timeout=4,
-    )
+        _click_radio(runner, "offcanvas-placement-selector", option)
+        _click_open_button(runner, "open-offcanvas-placement")
+        assert len(runner.find_elements(f".offcanvas-{option}")) != 0
+        _dismiss_with_esc(runner)

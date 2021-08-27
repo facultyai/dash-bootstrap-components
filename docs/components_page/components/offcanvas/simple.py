@@ -13,6 +13,7 @@ offcanvas = html.Div(
             ),
             id="offcanvas",
             title="Title",
+            is_open=False,
         ),
     ]
 )

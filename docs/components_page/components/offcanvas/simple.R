@@ -13,7 +13,8 @@ offcanvas <- htmlDiv(
         )
       ),
       id = "offcanvas",
-      title = "Title"
+      title = "Title",
+      is_open = FALSE
     )
   )
 )

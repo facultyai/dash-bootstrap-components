@@ -10,7 +10,7 @@ modal <- htmlDiv(
         dbcModalBody("Wow this thing takes up a lot of space...")
       ),
       id = "modal-fs",
-      fullscreen=TRUE
+      fullscreen = TRUE
     )
   )
 )

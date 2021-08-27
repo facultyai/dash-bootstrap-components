@@ -4,8 +4,8 @@ from dash.dependencies import Input, Output, State
 
 placement_selector = html.Div(
     [
-        dbc.InputGroupText("Placement"),
-        dbc.Select(
+        dbc.Label("Placement:"),
+        dbc.RadioItems(
             id="offcanvas-placement-selector",
             options=[
                 {"label": "start (Default)", "value": "start"},
@@ -14,29 +14,23 @@ placement_selector = html.Div(
                 {"label": "bottom", "value": "bottom"},
             ],
             value="start",
+            inline=True,
         ),
     ],
-    class_name="p-3 m-2 border",
+    class_name="mb-2",
 )
 
 offcanvas = html.Div(
     [
+        placement_selector,
         dbc.Button(
-            "Open Offcanvas",
-            id="open-offcanvas-placement",
-            n_clicks=0,
-            class_name="m-2",
+            "Open Offcanvas", id="open-offcanvas-placement", n_clicks=0
         ),
         dbc.Offcanvas(
-            [
-                html.Div(
-                    "Change the placement of this offcanvas with the "
-                    "options below"
-                ),
-                placement_selector,
-            ],
+            html.P("Some offcanvas content..."),
             id="offcanvas-placement",
             title="Placement",
+            is_open=False,
         ),
     ]
 )

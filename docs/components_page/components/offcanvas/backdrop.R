@@ -3,6 +3,7 @@ library(dashHtmlComponents)
 
 backdrop_selector <- htmlDiv(
   list(
+    dbcLabel("Backdrop:"),
     dbcRadioItems(
       id = "offcanvas-backdrop-selector",
       options = list(
@@ -14,33 +15,22 @@ backdrop_selector <- htmlDiv(
       value = TRUE
     )
   ),
-  class_name = "p-3 m-2 border",
+  class_name = "mb-2"
 )
+
 
 offcanvas <- htmlDiv(
   list(
+    backdrop_selector,
     dbcButton(
       "Open backdrop offcanvas",
       id = "open-offcanvas-backdrop", n_clicks = 0
     ),
     dbcOffcanvas(
-      list(
-        htmlDiv(
-          paste(
-            "Change the backdrop of this offcanvas with the",
-            "radio buttons"
-          )
-        ),
-        backdrop_selector,
-        dbcButton(
-          "Close",
-          id = "close-offcanvas-backdrop",
-          class_name = "ms-auto",
-          n_clicks = 0,
-        )
-      ),
+      htmlP("Here is some content..."),
       id = "offcanvas-backdrop",
-      title = "Offcanvas with/without backdrop"
+      title = "Offcanvas with/without backdrop",
+      is_open = FALSE
     )
   )
 )
@@ -59,11 +49,10 @@ app$callback(
   output("offcanvas-backdrop", "is_open"),
   list(
     input("open-offcanvas-backdrop", "n_clicks"),
-    input("close-offcanvas-backdrop", "n_clicks"),
     state("offcanvas-backdrop", "is_open")
   ),
-  function(n1, n2, is_open) {
-    if (n1 > 0 | n2 > 0) {
+  function(n1, is_open) {
+    if (n1 > 0) {
       return(!is_open)
     }
     return(is_open)
