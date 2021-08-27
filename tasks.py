@@ -178,14 +178,18 @@ def normalize_version(version):
     return version_string
 
 
-def run(command, **kwargs):
+def run(command, exit_on_error=True, **kwargs):
     result = invoke_run(command, hide=True, warn=True, **kwargs)
     if result.exited != 0:
+        if not exit_on_error:
+            raise RuntimeError(result.stderr)
         error(f"Error running {command}")
         print(result.stdout)
         print()
         print(result.stderr)
         exit(result.exited)
+
+    return result.stdout.strip()
 
 
 def error(text):
@@ -294,3 +298,62 @@ def build_jl(ctx):
 
     with (HERE / "src" / "DashBootstrapComponents.jl").open("w") as f:
         f.writelines(lines)
+
+
+@task
+def install_built_packages(_):
+    info("Installing Python package")
+    run("pip install -e .")
+
+    if shutil.which("R") is not None:
+        info("Installing R package")
+        run("R CMD INSTALL .")
+    else:
+        info("R installation not found, skipping R package")
+
+    if shutil.which("julia") is not None:
+        info("Installing Julia package")
+        current_branch = run("git rev-parse --abbrev-ref HEAD")
+        run("git checkout -b inv-julia-install")
+        run(
+            "git add -f deps/_components/dash_bootstrap_components.min.js "
+            "src/*.jl src/jl/*.jl Project.toml"
+        )
+        run("git commit -m julia")
+        julia_command = (
+            'using Pkg; Pkg.add(["Dash", "DashCoreComponents", '
+            '"DashHtmlComponents", "HTTP"]); Pkg.add(path=".", '
+            'rev="inv-julia-install");'
+        )
+        run(f"julia -e '{julia_command}'")
+        run(f"git checkout {current_branch}")
+        run("git branch -D inv-julia-install")
+    else:
+        info("Julia installation not found, skipping Julia package")
+
+
+@task
+def format_r_jl(_):
+    if shutil.which("Rscript") is not None:
+        try:
+            info("Formatting R with styler")
+            run(
+                "Rscript -e 'library(styler); style_dir(\"docs\")'",
+                exit_on_error=False,
+            )
+        except RuntimeError:
+            error("styler not installed, skipping R formatting")
+    else:
+        error("R not installed, skipping R formatting")
+
+    if shutil.which("julia") is not None:
+        try:
+            info("Formatting Julia with JuliaFormatter")
+            run(
+                "julia -e 'using JuliaFormatter; format(\"docs\")'",
+                exit_on_error=False,
+            )
+        except RuntimeError:
+            error("JuliaFormatter not installed, skipping Julia formatting")
+    else:
+        error("Julia not installed, skipping Julia formatting")

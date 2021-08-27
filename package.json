@@ -6,6 +6,7 @@
   "main": "lib/dash-bootstrap-components.min.js",
   "scripts": {
     "build": "run-s clean build:js build:py build:r build:jl",
+    "build:install": "npm run build && inv install-built-packages",
     "build:lib": "webpack --config=webpack/config.lib.js",
     "build:js": "NODE_ENV=production webpack --config=webpack/config.dist.js",
     "build:py": "inv build-py",
