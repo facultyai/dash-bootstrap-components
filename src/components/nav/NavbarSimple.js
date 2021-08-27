@@ -61,7 +61,7 @@ const NavbarSimple = props => {
         )}
         <NavbarToggler onClick={toggle} />
         <RBNavbar.Collapse in={navbarOpen}>
-          <Nav className={links_left ? 'mr-auto' : 'ml-auto'}>{children}</Nav>
+          <Nav className={links_left ? 'me-auto' : 'ms-auto'}>{children}</Nav>
         </RBNavbar.Collapse>
       </RBContainer>
     </RBNavbar>

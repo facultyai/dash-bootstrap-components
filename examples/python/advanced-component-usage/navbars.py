@@ -51,7 +51,7 @@ custom_default = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler1"),
             dbc.Collapse(
                 dbc.Nav(
-                    [nav_item, dropdown], class_name="ml-auto", navbar=True
+                    [nav_item, dropdown], class_name="ms-auto", navbar=True
                 ),
                 id="navbar-collapse1",
                 navbar=True,
@@ -64,33 +64,37 @@ custom_default = dbc.Navbar(
 
 # this example that adds a logo to the navbar brand
 logo = dbc.Navbar(
-    dbc.Container(
-        [
-            html.A(
-                # Use row and col to control vertical alignment of logo / brand
-                dbc.Row(
-                    [
-                        dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Logo", class_name="ml-2")),
-                    ],
-                    align="center",
-                    no_gutters=True,
-                ),
-                href="https://plot.ly",
+    [
+        html.A(
+            # Use row and col to control vertical alignment of logo / brand
+            dbc.Row(
+                [
+                    dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                    dbc.Col(dbc.NavbarBrand("Logo", class_name="ms-2")),
+                ],
+                align="center",
+                class_name="g-0",
             ),
-            dbc.NavbarToggler(id="navbar-toggler2"),
-            dbc.Collapse(
-                dbc.Nav(
-                    [nav_item, dropdown], class_name="ml-auto", navbar=True
+            href="https://plotly.com",
+            style={"textDecoration": "none"},
+        ),
+        html.Div(
+            [
+                dbc.NavbarToggler(id="navbar-toggler2", n_clicks=0),
+                dbc.Collapse(
+                    dbc.Nav(
+                        [nav_item, dropdown], class_name="ms-auto", navbar=True
+                    ),
+                    id="navbar-collapse2",
+                    navbar=True,
                 ),
-                id="navbar-collapse2",
-                navbar=True,
-            ),
-        ]
-    ),
+            ],
+            className="ms-auto",
+        ),
+    ],
     color="dark",
     dark=True,
-    class_name="mb-5",
+    class_name="py-2 px-3 mb-5",
 )
 
 # this example has a search bar and button instead of navitems / dropdowns
@@ -107,20 +111,19 @@ search_navbar = dbc.Navbar(
                         ),
                         dbc.Col(
                             dbc.Button(
-                                "Search", color="primary", class_name="ml-2"
+                                "Search", color="primary", class_name="ms-2"
                             ),
                             # set width of button column to auto to allow
                             # search box to take up remaining space.
                             width="auto",
                         ),
                     ],
-                    no_gutters=True,
                     # add a top margin to make things look nice when the navbar
                     # isn't expanded (mt-3) remove the margin on medium or
                     # larger screens (mt-md-0) when the navbar is expanded.
                     # keep button and search box on same row (flex-nowrap).
-                    # align everything on the right with left margin (ml-auto).
-                    class_name="ml-auto flex-nowrap mt-3 mt-md-0",
+                    # align everything on the right with left margin (ms-auto).
+                    class_name="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
                     align="center",
                 ),
                 id="navbar-collapse3",
@@ -143,6 +146,7 @@ dashboard = dbc.Navbar(
     ],
     color="dark",
     dark=True,
+    class_name="py-2 px-3",
 )
 
 app.layout = html.Div(

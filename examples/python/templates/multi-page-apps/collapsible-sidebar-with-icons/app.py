@@ -38,13 +38,13 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink(
-                    [html.I(class_name="fas fa-home mr-2"), html.Span("Home")],
+                    [html.I(class_name="fas fa-home me-2"), html.Span("Home")],
                     href="/",
                     active="exact",
                 ),
                 dbc.NavLink(
                     [
-                        html.I(class_name="fas fa-calendar-alt mr-2"),
+                        html.I(class_name="fas fa-calendar-alt me-2"),
                         html.Span("Calendar"),
                     ],
                     href="/calendar",
@@ -52,7 +52,7 @@ sidebar = html.Div(
                 ),
                 dbc.NavLink(
                     [
-                        html.I(class_name="fas fa-envelope-open-text mr-2"),
+                        html.I(class_name="fas fa-envelope-open-text me-2"),
                         html.Span("Messages"),
                     ],
                     href="/messages",

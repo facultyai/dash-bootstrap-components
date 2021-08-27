@@ -27,13 +27,25 @@ navbar = dbc_navbar(
                 class_name = "g-0",
             ),
             href = "https://plotly.com",
+            style = Dict("textDecoration" => "none"),
         ),
-        dbc_navbartoggler(id = "navbar-toggler", n_clicks = 0),
-        dbc_collapse(search_bar, id = "navbar-collapse", is_open = false, navbar = true),
+        html_div(
+            [
+                dbc_navbartoggler(id = "navbar-toggler", n_clicks = 0),
+                dbc_collapse(
+                    search_bar,
+                    id = "navbar-collapse",
+                    is_open = false,
+                    navbar = true,
+                ),
+            ],
+            class_name = "ms-auto",
+        ),
     ],
     color = "dark",
     dark = true,
-);
+    class_name = "py-2 px-3",
+)
 
 
 # add callback for toggling the collapse on small screens

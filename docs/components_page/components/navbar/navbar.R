@@ -15,7 +15,7 @@ search_bar <- dbcRow(
     )
   ),
   class_name = "ms-auto flex-nowrap mt-3 mt-md-0 g-0",
-  align = "center",
+  align = "center"
 )
 
 navbar <- dbcNavbar(
@@ -30,16 +30,25 @@ navbar <- dbcNavbar(
         align = "center",
         class_name = "g-0"
       ),
-      href = "https://plotly.com"
+      href = "https://plotly.com",
+      style = list("textDecoration" = "none")
     ),
-    dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
-    dbcCollapse(
-      search_bar,
-      id = "navbar-collapse", is_open = FALSE, navbar = TRUE
+    htmlDiv(
+      list(
+        dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
+        dbcCollapse(
+          search_bar,
+          id = "navbar-collapse",
+          is_open = FALSE,
+          navbar = TRUE
+        )
+      ),
+      class_name = "ms-auto"
     )
   ),
   color = "dark",
-  dark = TRUE
+  dark = TRUE,
+  class_name = "py-2 px-3"
 )
 
 
