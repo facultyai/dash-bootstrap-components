@@ -1,36 +1,30 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-placement_selector <- dbcRadioItems(
-  id = "offcanvas-placement-selector",
-  options = list(
-    list("label" = "start (Default)", "value" = "start"),
-    list("label" = "end", "value" = "end"),
-    list("label" = "top", "value" = "top"),
-    list("label" = "bottom", "value" = "bottom")
+placement_selector <- htmlDiv(
+  list(
+    dbcLabel("Placement:"),
+    dbcRadioItems(
+      id = "offcanvas-placement-selector",
+      options = list(
+        list("label" = "start (Default)", "value" = "start"),
+        list("label" = "end", "value" = "end"),
+        list("label" = "top", "value" = "top"),
+        list("label" = "bottom", "value" = "bottom")
+      ),
+      value = "start",
+      inline = TRUE
+    )
   ),
-  value = "start"
+  class_name = "mb-2"
 )
 
 offcanvas <- htmlDiv(
   list(
-    dbcButton(
-      "Open Offcanvas",
-      id = "open-offcanvas-placement",
-      n_clicks = 0,
-      class_name = "m-2"
-    ),
+    placement_selector,
+    dbcButton("Open Offcanvas", id = "open-offcanvas-placement", n_clicks = 0),
     dbcOffcanvas(
-      list(
-        htmlP(
-          paste(
-            "Change the placement of this offcanvas with the",
-            "options below"
-          ),
-          class_name = "mb-3"
-        ),
-        placement_selector
-      ),
+      htmlP("Some offcanvas content..."),
       id = "offcanvas-placement",
       title = "Placement",
       is_open = FALSE

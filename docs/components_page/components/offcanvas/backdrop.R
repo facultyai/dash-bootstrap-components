@@ -1,32 +1,33 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-backdrop_selector <- dbcRadioItems(
-  id = "offcanvas-backdrop-selector",
-  options = list(
-    list("label" = "True (default)", "value" = TRUE),
-    list("label" = "False", "value" = FALSE),
-    list("label" = "Static (no dismiss)", "value" = "static")
+backdrop_selector <- htmlDiv(
+  list(
+    dbcLabel("Backdrop:"),
+    dbcRadioItems(
+      id = "offcanvas-backdrop-selector",
+      options = list(
+        list("label" = "True (default)", "value" = TRUE),
+        list("label" = "False", "value" = FALSE),
+        list("label" = "Static (no dismiss)", "value" = "static")
+      ),
+      inline = TRUE,
+      value = TRUE
+    )
   ),
-  inline = TRUE,
-  value = TRUE
+  class_name = "mb-2"
 )
 
 
 offcanvas <- htmlDiv(
   list(
+    backdrop_selector,
     dbcButton(
       "Open backdrop offcanvas",
       id = "open-offcanvas-backdrop", n_clicks = 0
     ),
     dbcOffcanvas(
-      list(
-        htmlP(
-          "Change the backdrop of this offcanvas with the radio buttons",
-          class_name = "mb-3"
-        ),
-        backdrop_selector
-      ),
+      htmlP("Here is some content..."),
       id = "offcanvas-backdrop",
       title = "Offcanvas with/without backdrop",
       is_open = FALSE

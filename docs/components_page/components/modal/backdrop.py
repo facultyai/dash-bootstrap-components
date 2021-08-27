@@ -17,7 +17,8 @@ modal = html.Div(
                     inline=True,
                     value=True,
                 ),
-            ]
+            ],
+            class_name="mb-2",
         ),
         dbc.Button("Open modal", id="open-backdrop", n_clicks=0),
         dbc.Modal(

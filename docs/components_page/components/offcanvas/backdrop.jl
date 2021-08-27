@@ -1,26 +1,27 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-backdrop_selector = dbc_radioitems(
-    id = "offcanvas-backdrop-selector",
-    options = [
-        Dict("label" => "True (default)", "value" => true),
-        Dict("label" => "False", "value" => false),
-        Dict("label" => "Static (no dismiss)", "value" => "static"),
+backdrop_selector = html_div(
+    [
+        dbc_label("Backdrop:"),
+        dbc_radioitems(
+            id = "offcanvas-backdrop-selector",
+            options = [
+                Dict("label" => "True (default)", "value" => true),
+                Dict("label" => "False", "value" => false),
+                Dict("label" => "Static (no dismiss)", "value" => "static"),
+            ],
+            inline = true,
+            value = true,
+        ),
     ],
-    inline = true,
-    value = true,
+    class_name = "mb-2",
 )
 
 offcanvas = html_div([
+    backdrop_selector,
     dbc_button("Open backdrop offcanvas", id = "open-offcanvas-backdrop", n_clicks = 0),
     dbc_offcanvas(
-        [
-            html_p(
-                "Change the backdrop of this offcanvas with the radio buttons",
-                class_name = "mb-3",
-            ),
-            backdrop_selector,
-        ],
+        html_p("Here is some content..."),
         id = "offcanvas-backdrop",
         title = "Offcanvas with/without backdrop",
         is_open = false,

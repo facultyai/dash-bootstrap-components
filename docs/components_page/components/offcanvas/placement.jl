@@ -1,31 +1,28 @@
 using DashBootstrapComponents, DashHtmlComponents
 
-placement_selector = dbc_radioitems(
-    id = "offcanvas-placement-selector",
-    options = [
-        Dict("label" => "start (Default)", "value" => "start"),
-        Dict("label" => "end", "value" => "end"),
-        Dict("label" => "top", "value" => "top"),
-        Dict("label" => "bottom", "value" => "bottom"),
+placement_selector = html_div(
+    [
+        dbc_label("Placement:"),
+        dbc_radioitems(
+            id = "offcanvas-placement-selector",
+            options = [
+                Dict("label" => "start (Default)", "value" => "start"),
+                Dict("label" => "end", "value" => "end"),
+                Dict("label" => "top", "value" => "top"),
+                Dict("label" => "bottom", "value" => "bottom"),
+            ],
+            value = "start",
+            inline = true,
+        ),
     ],
-    value = "start",
+    class_name = "mb-2",
 )
 
 offcanvas = html_div([
-    dbc_button(
-        "Open Offcanvas",
-        id = "open-offcanvas-placement",
-        n_clicks = 0,
-        class_name = "m-2",
-    ),
+    placement_selector,
+    dbc_button("Open Offcanvas", id = "open-offcanvas-placement", n_clicks = 0),
     dbc_offcanvas(
-        [
-            html_p(
-                "Change the placement of this offcanvas with the options below",
-                class_name = "mb-3",
-            ),
-            placement_selector,
-        ],
+        html_p("Some offcanvas content..."),
         id = "offcanvas-placement",
         title = "Placement",
         is_open = false,
