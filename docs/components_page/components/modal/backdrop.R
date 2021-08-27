@@ -16,7 +16,8 @@ modal <- htmlDiv(
           inline = TRUE,
           value = TRUE,
         )
-      )
+      ),
+      class_name = "mb-2"
     ),
     dbcButton("Open modal", id = "open-backdrop", n_clicks = 0),
     dbcModal(
