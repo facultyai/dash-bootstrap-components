@@ -27,7 +27,6 @@ def test_jl_popover(dashjl):
 
 
 def check_popover_callbacks(runner):
-
     assert len(runner.find_elements("#popover")) == 0
     runner.find_element("#toggle").click()
     wait.until(

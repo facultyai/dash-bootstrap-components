@@ -13,6 +13,8 @@ HERE = Path(__file__).parent
 
 def test_r_carousel(dashr):
     r_app = load_r_app((HERE.parent / "carousel" / "callback.R"), "carousel")
+    with open("app.R", "w") as f:
+        f.write(r_app)
     dashr.start_server(r_app)
     check_carousel_callbacks(dashr)
 
@@ -35,9 +37,9 @@ def check_carousel_callbacks(runner):
         lambda: len(
             {"carousel-item", "active"}
             - set(
-                runner.find_elements("div.carousel-item")[1].get_attribute(
-                    "class"
-                )
+                runner.find_elements("div.carousel-item")[1]
+                .get_attribute("class")
+                .split()
             )
         )
         == 0,

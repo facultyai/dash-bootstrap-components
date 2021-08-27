@@ -58,7 +58,7 @@ def check_modal_size_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#close-sm").click()
+    runner.find_element(".btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,
@@ -70,7 +70,7 @@ def check_modal_size_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#close-lg").click()
+    runner.find_element(".btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,
@@ -82,7 +82,7 @@ def check_modal_size_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#close-xl").click()
+    runner.find_element(".btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,
