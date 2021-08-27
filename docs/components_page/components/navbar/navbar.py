@@ -1,6 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
+from dash_bootstrap_components._components.Container import Container
 
 PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
@@ -31,14 +32,24 @@ navbar = dbc.Navbar(
                 class_name="g-0",
             ),
             href="https://plotly.com",
+            style={"textDecoration": "none"},
         ),
-        dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
-        dbc.Collapse(
-            search_bar, id="navbar-collapse", is_open=False, navbar=True
+        html.Div(
+            [
+                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+                dbc.Collapse(
+                    search_bar,
+                    id="navbar-collapse",
+                    is_open=False,
+                    navbar=True,
+                ),
+            ],
+            class_name="ms-auto",
         ),
     ],
     color="dark",
     dark=True,
+    class_name="py-2 px-3",
 )
 
 
