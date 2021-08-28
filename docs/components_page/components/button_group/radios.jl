@@ -5,8 +5,9 @@ button_group = html_div(
         dbc_radioitems(
             id = "radios",
             class_name = "btn-group",
-            label_class_name = "btn btn-secondary",
-            label_checked_class_name = "active",
+            input_class_name="btn-check",
+            label_class_name = "btn btn-outline-secondary",
+            label_checked_class_name = "active btn-secondary",
             options = [
                 Dict("label" => "Option 1", "value" => 1),
                 Dict("label" => "Option 2", "value" => 2),

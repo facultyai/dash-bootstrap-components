@@ -6,8 +6,9 @@ button_group <- htmlDiv(
     dbcRadioItems(
       id = "radios",
       class_name = "btn-group",
-      label_class_name = "btn btn-secondary",
-      label_checked_class_name = "active",
+      input_class_name="btn-check",
+      label_class_name = "btn btn-outline-secondary",
+      label_checked_class_name = "active btn-secondary",
       options = list(
         list(label = "Option 1", value = 1),
         list(label = "Option 2", value = 2),

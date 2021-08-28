@@ -31,6 +31,10 @@ span.hljs-meta {
   color: #66d9ef;
 }
 
+a {
+  text-decoration: none;
+}
+
 .demo-layout-container {
   height: 600px;
   margin-right: 0rem;
@@ -134,8 +138,8 @@ span.hljs-meta {
 
 /* Custom checkbox example CSS */
 #checklist-selected-style
-  .custom-control-input:checked
-  ~ .custom-control-label::before {
+  .form-check-input:checked
+  ~ .form-check-label::before {
   background-color: #fa7268;
   border-color: #ea6258;
 }
@@ -152,29 +156,14 @@ span.hljs-meta {
 }
 
 /* radio button group example */
-.button-group-demo
-  .radio-group
-  .custom-control-input
-  ~ .custom-control-label::before {
-  content: none;
-}
-
-.button-group-demo
-  .radio-group
-  .custom-radio
-  .custom-control-input
-  ~ .custom-control-label::after {
-  content: none;
-}
-
-.button-group-demo .radio-group .custom-control {
+.button-group-demo .radio-group .form-check {
   padding-left: 0;
 }
 
 .button-group-demo
   .radio-group
   .btn-group
-  > .custom-control:not(:last-child)
+  > .form-check:not(:last-child)
   > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -183,7 +172,7 @@ span.hljs-meta {
 .button-group-demo
   .radio-group
   .btn-group
-  > .custom-control:not(:first-child)
+  > .form-check:not(:first-child)
   > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
