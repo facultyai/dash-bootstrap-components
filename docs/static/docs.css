@@ -136,14 +136,6 @@ a {
   display: none;
 }
 
-/* Custom checkbox example CSS */
-#checklist-selected-style
-  .form-check-input:checked
-  ~ .form-check-label::before {
-  background-color: #fa7268;
-  border-color: #ea6258;
-}
-
 /* invalid input styling */
 #styled-numeric-input input:invalid {
   border-color: #dc3545;
