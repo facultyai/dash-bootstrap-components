@@ -27,6 +27,12 @@ Set `pill=True` to make the badges more rounded (with a larger `border-radius` a
 
 {{example:components/badge/pills.py:badges}}
 
+## Positioning
+
+Use the `position` classes to modify a badge and position it in the corner of a link or button.
+
+{{example:components/badge/positioned.py:badge}}
+
 ## Links
 
 Add a link with the `href` argument to create actionable badges with hover and focus states.
