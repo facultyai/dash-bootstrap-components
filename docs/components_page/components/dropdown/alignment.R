@@ -14,12 +14,12 @@ dropdown <- dbcRow(
       dbcDropdownMenu(
         label = "Left-aligned menu (default)",
         children = items,
-        right = FALSE
+        align_end = FALSE
       )
     ),
     dbcCol(
       dbcDropdownMenu(
-        label = "Right-aligned menu", children = items, right = TRUE
+        label = "Right-aligned menu", children = items, align_end = TRUE
       )
     )
   )

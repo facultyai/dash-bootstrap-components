@@ -14,12 +14,12 @@ dropdown = dbc.Row(
             dbc.DropdownMenu(
                 label="Left-aligned menu (default)",
                 children=items,
-                right=False,
+                align_end=False,
             )
         ),
         dbc.Col(
             dbc.DropdownMenu(
-                label="Right-aligned menu", children=items, right=True
+                label="Right-aligned menu", children=items, align_end=True
             )
         ),
     ]

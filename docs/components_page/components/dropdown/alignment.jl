@@ -13,8 +13,8 @@ dropdown = dbc_row([
         dbc_dropdownmenu(
             label = "Left-aligned menu (default)",
             children = items,
-            right = false,
+            align_end = false,
         ),
     ),
-    dbc_col(dbc_dropdownmenu(label = "Right-aligned menu", children = items, right = true)),
+    dbc_col(dbc_dropdownmenu(label = "Right-aligned menu", children = items, align_end = true)),
 ]);
