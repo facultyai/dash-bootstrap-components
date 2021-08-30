@@ -2,36 +2,40 @@ using DashBootstrapComponents
 
 items = [
     dbc_dropdownmenuitem("First"),
-    dbc_dropdownmenuitem(divider=true),
+    dbc_dropdownmenuitem(divider = true),
     dbc_dropdownmenuitem("Second"),
 ]
 
-dropdown = dbc.Row(
+dropdown = dbc_row(
     [
-        dbc.Col(
+        dbc_col(
             dbc_dropdownmenu(
-                label="Auto close (Default)", children=items, auto_close=true
+                label = "Auto close (Default)",
+                children = items,
+                auto_close = true,
             ),
-            width="auto",
+            width = "auto",
         ),
-        dbc.Col(
+        dbc_col(
             dbc_dropdownmenu(
-                label="Clickable Outside", children=items, auto_close="inside"
+                label = "Clickable Outside",
+                children = items,
+                auto_close = "inside",
             ),
-            width="auto",
+            width = "auto",
         ),
-        dbc.Col(
+        dbc_col(
             dbc_dropdownmenu(
-                label="Clickable Inside", children=items, auto_close="outside"
+                label = "Clickable Inside",
+                children = items,
+                auto_close = "outside",
             ),
-            width="auto",
+            width = "auto",
         ),
-        dbc.Col(
-            dbc_dropdownmenu(
-                label="No auto close", children=items, auto_close=false
-            ),
-            width="auto",
+        dbc_col(
+            dbc_dropdownmenu(label = "No auto close", children = items, auto_close = false),
+            width = "auto",
         ),
     ],
-    justify="between",
+    justify = "between",
 )
