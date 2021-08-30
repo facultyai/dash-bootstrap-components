@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBDropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -27,6 +28,7 @@ const DropdownMenu = props => {
     auto_close,
     loading_state,
     color,
+    group,
     toggle_style,
     toggleClassName,
     toggle_class_name,
@@ -51,7 +53,7 @@ const DropdownMenu = props => {
       }}
     >
       <RBDropdown
-        as={nav ? Nav.Item : undefined}
+        as={nav ? Nav.Item : group ? ButtonGroup : undefined}
         show={dropdownOpen}
         disabled={disabled}
         navbar={in_navbar}
