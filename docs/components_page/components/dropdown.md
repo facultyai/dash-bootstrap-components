@@ -17,6 +17,12 @@ Each `DropdownMenuItem` can be used like `dash_core_components.Link`, as a regul
 
 {{example:components/dropdown/menu_items.py:dropdown}}
 
+## Dark Dropdown
+
+Set `menu_variant="dark"` to change the dropdown menu to a dark colour scheme.
+
+{{example:components/dropdown/dark.py:dropdown}}
+
 ## Styling the toggle
 
 You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggle_class_name` arguments.
@@ -31,13 +37,13 @@ Control the size of the `DropdownMenu` toggle using the `size` argument. You can
 
 ## DropdownMenu direction
 
-Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'left'`, or `'right'`.
+Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'start'`, or `'end'`.
 
 {{example:components/dropdown/direction.py:dropdown}}
 
 ## DropdownMenu alignment
 
-By default the menu is aligned with left of the toggle. Set `right=True` for a right aligned menu.
+By default the menu is aligned with left of the toggle. Set `align_end=True` for a right aligned menu.
 
 {{example:components/dropdown/alignment.py:dropdown}}
 
@@ -46,6 +52,12 @@ By default the menu is aligned with left of the toggle. Set `right=True` for a r
 Use the `active` and `disabled` arguments of `DropdownMenuItem` to set the active and disabled styles of menu items respectively. You can also use the `header` or `divider` arguments to create headers and dividers to help structure the menu. You can also include custom content such as text.
 
 {{example:components/dropdown/content.py:dropdown}}
+
+## AutoClose
+
+By default, drop down menus will close when the mouse is clicked either inside or outside the dropdown. You can use `autoClose` property to change this behaviour. Setting it to `"inside"` will dismiss the menu only when clicking inside the menu, `"outside"` will allow you to click inside, but dismiss when clicking outside and setting to `False` will only allow the menu to dismiss when the original button is clicked.
+
+{{example:components/dropdown/autoclose.py:dropdown}}
 
 {{apidoc:src/components/dropdownmenu/DropdownMenu.js}}
 
