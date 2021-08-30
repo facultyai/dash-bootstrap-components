@@ -34,6 +34,24 @@ of the parent) by using Bootstrap's grid spacing utilities.
 
 {{example:components/button/block.py:button}}
 
+## Smaller block buttons
+
+Adjusting the width of the block button can be achieved using the grid column width classes. This button is made half-size using `.col-6` and centered with `.mx-auto`.
+
+{{example:components/button/half_block.py:button}}
+
+## Responsive block buttons
+
+A responsive variation on the block button can be created by making using of breakpoints to specify behaviour. Resize your screen to see how adding the `.d-md-block` class changes the button behaviour on smaller screens.
+
+{{example:components/button/responsive_block.py:button}}
+
+## Flex layout
+
+Flex and margin utilities can be used to adjust the alignment of the buttons in their horizontal state too. Here we use them in conjuction with the responsive block button above to control the layout on larger and smaller screens.
+
+{{example:components/button/flex_block.py:button}}
+
 ## Active and disabled states
 
 When a user hovers the cursor over a button the background and border will darken in response. You can enforce this active state if needed by setting `active=True`.
