@@ -13,7 +13,7 @@ progress <- htmlDiv(
 app$callback(
   list(
     output("progress", "value"),
-    output("progress", "children")
+    output("progress", "label")
   ),
   list(input("progress-interval", "n_intervals")),
   function(n) {
