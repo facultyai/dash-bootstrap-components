@@ -58,4 +58,10 @@ When a user hovers the cursor over a button the background and border will darke
 
 {{example:components/button/active_disabled.py:buttons}}
 
+## Download option
+
+The `download` prop for the Button allows a button to function basically like `html.A`, but with the styling of a Bootstrap Button. It allows you to specify a different file name on download than the filename specified in the href.
+
+{{example:components/button/download.py:button}}
+
 {{apidoc:src/components/Button.js}}
