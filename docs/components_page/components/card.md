@@ -33,6 +33,12 @@ Use `CardImg` when adding images to cards. The `top` argument can be used when t
 
 {{example:components/card/image.py:cards}}
 
+### Image Overlays
+
+Use `CardImgOverlay` to display the card content over the top of the card image. Depending on the image, you may or may not need additional styles or utilities.
+
+{{example:components/card/image_overlay.py:card}}
+
 ### List groups
 
 Create lists of content in a card with a `ListGroup` component by setting `flush=True`.
