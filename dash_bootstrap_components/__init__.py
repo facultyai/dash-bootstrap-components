@@ -2,8 +2,8 @@
 import os
 import sys
 
-from dash_bootstrap_components import themes  # noqa
 from dash_bootstrap_components import icons  # noqa
+from dash_bootstrap_components import themes  # noqa
 from dash_bootstrap_components import _components
 from dash_bootstrap_components._components import *  # noqa
 from dash_bootstrap_components._table import _generate_table_from_df
