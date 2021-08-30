@@ -9,7 +9,7 @@ button_group = html.Div(
             class_name="btn-group",
             input_class_name="btn-check",
             label_class_name="btn btn-outline-primary",
-            label_checked_class_name="active btn-primary",
+            label_checked_class_name="active",
             options=[
                 {"label": "Option 1", "value": 1},
                 {"label": "Option 2", "value": 2},
