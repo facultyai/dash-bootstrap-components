@@ -7,8 +7,8 @@ button_group <- htmlDiv(
       id = "radios",
       class_name = "btn-group",
       input_class_name="btn-check",
-      label_class_name = "btn btn-outline-secondary",
-      label_checked_class_name = "active btn-secondary",
+      label_class_name = "btn btn-outline-primary",
+      label_checked_class_name = "active btn-primary",
       options = list(
         list(label = "Option 1", value = 1),
         list(label = "Option 2", value = 2),
