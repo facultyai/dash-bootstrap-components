@@ -67,6 +67,12 @@ Bootstrap comes with several CSS utility classes built in, including some for si
 
 {{example:components/card/sizing/utility.py:cards}}
 
+### Horizontal
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+{{example:components/card/sizing/horizontal.py:card}}
+
 ### Using custom CSS
 
 Finally, you can use custom CSS to control the size of your cards. In this example we use the `style` argument of `Card` to set inline style arguments. You can also write your own CSS classes that specify `width`, `max-width` etc. and apply them to the card.
