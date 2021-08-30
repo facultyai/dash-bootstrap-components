@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import Dropdown from 'react-bootstrap/Dropdown';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import RBDropdown from 'react-bootstrap/Dropdown';
+import Nav from 'react-bootstrap/Nav';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -21,6 +21,10 @@ const DropdownMenu = props => {
     addon_type,
     size,
     right,
+    align_end,
+    menu_variant,
+    direction,
+    auto_close,
     loading_state,
     color,
     toggle_style,
@@ -39,8 +43,6 @@ const DropdownMenu = props => {
     }
   };
 
-  const Tag = nav ? NavDropdown : Dropdown;
-
   return (
     <DropdownMenuContext.Provider
       value={{
@@ -48,17 +50,28 @@ const DropdownMenu = props => {
         isOpen: dropdownOpen
       }}
     >
-      <Tag
+      <RBDropdown
+        as={nav ? Nav.Item : undefined}
         show={dropdownOpen}
         disabled={disabled}
         navbar={in_navbar}
         className={class_name || className}
+        drop={
+          direction === 'left'
+            ? 'start'
+            : direction === 'right'
+            ? 'end'
+            : direction
+        }
+        align={align_end ? 'end' : right ? 'end' : 'start'}
+        autoClose={auto_close}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        <Dropdown.Toggle
+        <RBDropdown.Toggle
+          as={nav ? Nav.Link : undefined}
           onClick={toggle}
           disabled={disabled}
           size={size}
@@ -71,18 +84,23 @@ const DropdownMenu = props => {
           className={toggle_class_name || toggleClassName}
         >
           {label}
-        </Dropdown.Toggle>
-        <Dropdown.Menu renderOnMount right={right}>
+        </RBDropdown.Toggle>
+        <RBDropdown.Menu
+          renderOnMount
+          variant={menu_variant === 'dark' ? 'dark' : undefined}
+        >
           {children}
-        </Dropdown.Menu>
-      </Tag>
+        </RBDropdown.Menu>
+      </RBDropdown>
     </DropdownMenuContext.Provider>
   );
 };
 
 DropdownMenu.defaultProps = {
   caret: true,
-  disabled: false
+  disabled: false,
+  auto_close: true,
+  menu_variant: 'light'
 };
 
 DropdownMenu.propTypes = {
@@ -128,11 +146,28 @@ DropdownMenu.propTypes = {
   label: PropTypes.string,
 
   /**
-   * Direction in which to expand the DropdownMenu. Default: 'down'.
+   * Direction in which to expand the DropdownMenu. Default: 'down'. `left`
+   * and `right` have been deprecated, and `start` and `end` should be used
+   * instead.
    */
-  direction: PropTypes.oneOf(['down', 'left', 'right', 'up']),
+  direction: PropTypes.oneOf([
+    'down',
+    'start',
+    'end',
+    'up',
+    'left',
+    'right',
+    'end'
+  ]),
 
   /**
+   * Align the DropdownMenu along the right side of its parent. Default: False.
+   */
+  align_end: PropTypes.bool,
+
+  /**
+   * **DEPRECATED** Use `align_end` instead.
+   *
    * Align the DropdownMenu along the right side of its parent. Default: False.
    */
   right: PropTypes.bool,
@@ -173,6 +208,11 @@ DropdownMenu.propTypes = {
    * Default: 'secondary'
    */
   color: PropTypes.string,
+
+  /**
+   * Set `menu_variant="dark"` to create a dark-mode drop down instead
+   */
+  menu_variant: PropTypes.oneOf(['light', 'dark']),
 
   /**
    * Defines CSS styles which will override styles previously set. The styles
@@ -221,7 +261,14 @@ DropdownMenu.propTypes = {
   /**
    * Set group to True if the DropdownMenu is inside a ButtonGroup.
    */
-  group: PropTypes.bool
+  group: PropTypes.bool,
+
+  /**
+   * Controls the auto close behaviour of the dropdown when clicking outside
+   * of the button or the list. Default behaviour is to close when the mouse
+   * is clicked (True).
+   */
+  auto_close: PropTypes.oneOf([PropTypes.bool, 'inside', 'outside'])
 };
 
 export default DropdownMenu;
