@@ -181,6 +181,7 @@ Check out these [example apps][examples] made with _dash-bootstrap-components_.
 [dash-docs]: https://dash.plotly.com
 [dash-docs-external]: https://dash.plotly.com/external-resources
 [docs-themes]: /docs/themes
+[docs-icons]: /docs/icons
 [docs-components]: /docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [examples]: /examples

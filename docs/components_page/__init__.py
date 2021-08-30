@@ -150,6 +150,7 @@ def register_apps():
             "label": "Quickstart",
         },
         {"name": "themes", "href": "/docs/themes", "label": "Themes"},
+        {"name": "icons", "href": "/docs/icons", "label": "Icons"},
         {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
         {
             "name": "components",
@@ -173,7 +174,10 @@ def register_apps():
 
     for slug, kwargs in component_bodies.items():
         app = dash.Dash(
-            external_stylesheets=["/static/loading.css"],
+            external_stylesheets=[
+                "/static/loading.css",
+                dbc.icons.BOOTSTRAP,
+            ],
             requests_pathname_prefix=f"/docs/components/{slug}/",
             suppress_callback_exceptions=True,
             serve_locally=SERVE_LOCALLY,
