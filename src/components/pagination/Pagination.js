@@ -18,6 +18,7 @@ const Pagination = props => {
     setProps,
     class_name,
     className,
+    loading_state,
     ...otherProps
   } = props;
 
@@ -138,7 +139,13 @@ const Pagination = props => {
 
   // Create the pagination component
   return (
-    <RBPagination className={class_name || className} {...otherProps}>
+    <RBPagination
+      className={class_name || className}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+      {...otherProps}
+    >
       {paginationItems}
     </RBPagination>
   );
@@ -221,7 +228,25 @@ Pagination.propTypes = {
    * When True, this will display a first and last icon at the beginning
    * and end of the component.
    */
-  first_last: PropTypes.bool
+  first_last: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Pagination;

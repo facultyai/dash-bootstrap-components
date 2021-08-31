@@ -7,11 +7,21 @@ import RBModalFooter from 'react-bootstrap/ModalFooter';
  * Add a footer to any modal.
  */
 const ModalFooter = props => {
-  const {children, className, class_name, tag, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    tag,
+    ...otherProps
+  } = props;
   return (
     <RBModalFooter
       as={tag}
       className={class_name || className}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
       {...omit(['setProps'], otherProps)}
     >
       {children}
@@ -51,7 +61,25 @@ ModalFooter.propTypes = {
   /**
    * HTML tag to use for the ModalFooter, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default ModalFooter;
