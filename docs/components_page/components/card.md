@@ -33,6 +33,12 @@ Use `CardImg` when adding images to cards. The `top` argument can be used when t
 
 {{example:components/card/image.py:cards}}
 
+### Image Overlays
+
+Use `CardImgOverlay` to display the card content over the top of the card image. Depending on the image, you may or may not need additional styles or utilities.
+
+{{example:components/card/image_overlay.py:card}}
+
 ### List groups
 
 Create lists of content in a card with a `ListGroup` component by setting `flush=True`.
@@ -68,6 +74,12 @@ Finally, you can use custom CSS to control the size of your cards. In this examp
 {{example:components/card/sizing/css.py:cards}}
 
 ## Card style
+
+### Horizontal
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+{{example:components/card/sizing/horizontal.py:card}}
 
 ### Background and color
 
