@@ -42,7 +42,7 @@ In addition to the simple width arguments outlined above, you can pass a diction
 
 `size` takes any of the simple arguments that `width` understands, i.e. `True`, "auto", or an integer `1`,...,`12`, and specifies the size / width of the column.
 
-`order` can be used to reorder the columns. It accepts the integers `1`,...,`12`, or the strings `"first"` and `"last"`. Columns will then be ordered numerically, with columns specified as `"first"` or `"last"` being placed first and last respectively. If two columns have the same order, they will keep the order they are specified in the source.
+`order` can be used to reorder the columns. It accepts the integers `1`,...,`5`, or the strings `"first"` and `"last"`. Columns will then be ordered numerically, with columns specified as `"first"` or `"last"` being placed first and last respectively. If two columns have the same order, they will keep the order they are specified in the source.
 
 Finally `offset` accepts the integers `1`, ..., `12` and increases the left margin of the column by that number of grid columns.
 
