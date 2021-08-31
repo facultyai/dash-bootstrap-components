@@ -9,8 +9,10 @@ card <- dbcCard(
                 list(
                     htmlH4("Card title", class_name="card-title"),
                     htmlP(
-                        "An example of using an image in the background of "
+                        paste(
+                        "An example of using an image in the background of",
                         "a card.",
+                        )
                         class_name="card-text"
                     ),
                     dbcButton("Go somewhere", color="primary")

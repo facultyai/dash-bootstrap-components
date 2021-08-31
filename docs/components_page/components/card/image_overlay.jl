@@ -8,7 +8,7 @@ card <- dbc_card(
                 [
                     html_h4("Card title", class_name="card-title"),
                     html_p(
-                        "An example of using an image in the background of "
+                        "An example of using an image in the background of " *
                         "a card.",
                         class_name="card-text",
                     ),
