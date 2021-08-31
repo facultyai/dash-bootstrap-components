@@ -31,8 +31,6 @@ Stack buttons in the `ButtonGroup` vertically by setting `vertical=True`.
 
 Sometimes you might like to use a `ButtonGroup` to let the user choose from a set of options, where the currently chosen option is indicated by that button being marked as "active". Since this requires that buttons respond to other buttons in the group being clicked on, it can be a little awkward to achieve when each button is a separate Dash component. Instead it is easier to use `RadioItems` and do some customisation of the styling. Most of the customisation is achieved with the `input_class_name`, `label_class_name` and `label_checked_class_name` props of the `RadioItems` component, though some additional CSS is required (see below).
 
-{{example:components/button_group/radios.py:button_group}}
-
 ```css
 /* restyle radio items */
 .radio-group .form-check {
@@ -50,5 +48,7 @@ Sometimes you might like to use a `ButtonGroup` to let the user choose from a se
   margin-left: -1px;
 }
 ```
+
+{{example:components/button_group/radios.py:button_group}}
 
 {{apidoc:src/components/ButtonGroup.js}}
