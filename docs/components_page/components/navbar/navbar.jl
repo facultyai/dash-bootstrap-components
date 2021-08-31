@@ -15,7 +15,7 @@ search_bar = dbc_row(
 );
 
 navbar = dbc_navbar(
-    [
+    dbc_container([
         html_a(
             # Use row and col to control vertical alignment of logo / brand
             dbc_row(
@@ -41,10 +41,9 @@ navbar = dbc_navbar(
             ],
             class_name = "ms-auto",
         ),
-    ],
+    ]),
     color = "dark",
     dark = true,
-    class_name = "py-2 px-3",
 )
 
 

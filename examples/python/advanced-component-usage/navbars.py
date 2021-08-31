@@ -64,37 +64,41 @@ custom_default = dbc.Navbar(
 
 # this example that adds a logo to the navbar brand
 logo = dbc.Navbar(
-    [
-        html.A(
-            # Use row and col to control vertical alignment of logo / brand
-            dbc.Row(
-                [
-                    dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                    dbc.Col(dbc.NavbarBrand("Logo", class_name="ms-2")),
-                ],
-                align="center",
-                class_name="g-0",
-            ),
-            href="https://plotly.com",
-            style={"textDecoration": "none"},
-        ),
-        html.Div(
-            [
-                dbc.NavbarToggler(id="navbar-toggler2", n_clicks=0),
-                dbc.Collapse(
-                    dbc.Nav(
-                        [nav_item, dropdown], class_name="ms-auto", navbar=True
-                    ),
-                    id="navbar-collapse2",
-                    navbar=True,
+    dbc.Container(
+        [
+            html.A(
+                # Use row and col to control vertical alignment of logo / brand
+                dbc.Row(
+                    [
+                        dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                        dbc.Col(dbc.NavbarBrand("Logo", class_name="ms-2")),
+                    ],
+                    align="center",
+                    class_name="g-0",
                 ),
-            ],
-            className="ms-auto",
-        ),
-    ],
+                href="https://plotly.com",
+                style={"textDecoration": "none"},
+            ),
+            html.Div(
+                [
+                    dbc.NavbarToggler(id="navbar-toggler2", n_clicks=0),
+                    dbc.Collapse(
+                        dbc.Nav(
+                            [nav_item, dropdown],
+                            class_name="ms-auto",
+                            navbar=True,
+                        ),
+                        id="navbar-collapse2",
+                        navbar=True,
+                    ),
+                ],
+                className="ms-auto",
+            ),
+        ],
+    ),
     color="dark",
     dark=True,
-    class_name="py-2 px-3 mb-5",
+    class_name="mb-5",
 )
 
 # this example has a search bar and button instead of navitems / dropdowns
@@ -136,17 +140,18 @@ search_navbar = dbc.Navbar(
 
 # custom navbar based on https://getbootstrap.com/docs/4.1/examples/dashboard/
 dashboard = dbc.Navbar(
-    [
-        dbc.Col(dbc.NavbarBrand("Dashboard", href="#"), sm=3, md=2),
-        dbc.Col(dbc.Input(type="search", placeholder="Search here")),
-        dbc.Col(
-            dbc.Nav(dbc.NavItem(dbc.NavLink("Sign out")), navbar=True),
-            width="auto",
-        ),
-    ],
+    dbc.Container(
+        [
+            dbc.Col(dbc.NavbarBrand("Dashboard", href="#"), sm=3, md=2),
+            dbc.Col(dbc.Input(type="search", placeholder="Search here")),
+            dbc.Col(
+                dbc.Nav(dbc.NavItem(dbc.NavLink("Sign out")), navbar=True),
+                width="auto",
+            ),
+        ],
+    ),
     color="dark",
     dark=True,
-    class_name="py-2 px-3",
 )
 
 app.layout = html.Div(

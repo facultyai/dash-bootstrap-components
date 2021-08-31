@@ -19,36 +19,37 @@ search_bar <- dbcRow(
 )
 
 navbar <- dbcNavbar(
-  list(
-    htmlA(
-      # Use row and col to control vertical alignment of logo / brand
-      dbcRow(
-        list(
-          dbcCol(htmlImg(src = PLOTLY_LOGO, height = "30px")),
-          dbcCol(dbcNavbarBrand("Navbar", class_name = "ms-2"))
+  dbcContainer(
+    list(
+      htmlA(
+        # Use row and col to control vertical alignment of logo / brand
+        dbcRow(
+          list(
+            dbcCol(htmlImg(src = PLOTLY_LOGO, height = "30px")),
+            dbcCol(dbcNavbarBrand("Navbar", class_name = "ms-2"))
+          ),
+          align = "center",
+          class_name = "g-0"
         ),
-        align = "center",
-        class_name = "g-0"
+        href = "https://plotly.com",
+        style = list("textDecoration" = "none")
       ),
-      href = "https://plotly.com",
-      style = list("textDecoration" = "none")
-    ),
-    htmlDiv(
-      list(
-        dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
-        dbcCollapse(
-          search_bar,
-          id = "navbar-collapse",
-          is_open = FALSE,
-          navbar = TRUE
-        )
-      ),
-      class_name = "ms-auto"
+      htmlDiv(
+        list(
+          dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
+          dbcCollapse(
+            search_bar,
+            id = "navbar-collapse",
+            is_open = FALSE,
+            navbar = TRUE
+          )
+        ),
+        class_name = "ms-auto"
+      )
     )
   ),
   color = "dark",
-  dark = TRUE,
-  class_name = "py-2 px-3"
+  dark = TRUE
 )
 
 
