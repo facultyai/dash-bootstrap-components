@@ -21,6 +21,12 @@ Use the `color` argument to apply one of Bootstrap's contextual color classes.
 
 {{example:components/badge/color.py:badges}}
 
+## Text colors
+
+Use the `text_color` argument to apply one of Bootstrap's contextual color classes to the font.
+
+{{example:components/badge/text_color.py:badges}}
+
 ## Pill badges
 
 Set `pill=True` to make the badges more rounded (with a larger `border-radius` and additional horizontal padding).
