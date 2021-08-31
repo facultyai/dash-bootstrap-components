@@ -35,13 +35,13 @@ Set `pill=True` to make the badges more rounded (with a larger `border-radius` a
 
 ## Positioning
 
-Use the `position` classes to modify a badge and position it in the corner of a link or button.
+Use the Bootstrap's [position utility classes](https://getbootstrap.com/docs/5.0/utilities/position/) to modify a badge and position it in the corner of a link or button.
 
 {{example:components/badge/positioned.py:badge}}
 
 ## Links
 
-Add a link with the `href` argument to create actionable badges with hover and focus states.
+Add a link with the `href` argument to create actionable badges with hover and focus states. In Bootstrap 5 links are underlined by default. You can use the `text-decoration-none` class to override this if you wish.
 
 {{example:components/badge/links.py:badges}}
 
