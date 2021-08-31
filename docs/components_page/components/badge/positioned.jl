@@ -7,8 +7,8 @@ badge = dbc_button(
             "99+",
             color = "danger",
             pill = true,
-            class_name = "text-white " *
-                         "position-absolute top-0 start-100 translate-middle",
+            text_color = "white",
+            class_name = "position-absolute top-0 start-100 translate-middle",
         ),
     ],
     color = "primary",

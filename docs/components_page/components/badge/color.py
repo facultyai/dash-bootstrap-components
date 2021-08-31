@@ -9,7 +9,7 @@ badges = html.Span(
         dbc.Badge("Warning", color="warning", class_name="me-1"),
         dbc.Badge("Danger", color="danger", class_name="me-1"),
         dbc.Badge("Info", color="info", class_name="me-1"),
-        dbc.Badge("Light", color="light", class_name="me-1"),
+        dbc.Badge("Light", text_color="dark", color="light", class_name="me-1"),
         dbc.Badge("Dark", color="dark"),
     ]
 )
