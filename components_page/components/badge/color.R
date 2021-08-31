@@ -9,7 +9,7 @@ badges <- htmlSpan(
     dbcBadge("Warning", color = "warning", class_name = "me-1"),
     dbcBadge("Danger", color = "danger", class_name = "me-1"),
     dbcBadge("Info", color = "info", class_name = "me-1"),
-    dbcBadge("Light", color = "light", class_name = "me-1"),
+    dbcBadge("Light", text_color = "dark", color = "light", class_name = "me-1"),
     dbcBadge("Dark", color = "dark")
   )
 )
