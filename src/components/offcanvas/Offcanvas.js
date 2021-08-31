@@ -11,6 +11,7 @@ const Offcanvas = props => {
     is_open,
     setProps,
     children,
+    loading_state,
     class_name,
     className,
     backdrop,
@@ -52,6 +53,9 @@ const Offcanvas = props => {
       show={is_open}
       onHide={backdrop !== 'static' ? onHide : null}
       backdrop={backdrop || backdrop === 'static'}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
       {...otherProps}
     >
       {header}
@@ -167,7 +171,25 @@ Offcanvas.propTypes = {
    * Specify whether the Component should contain a close button
    * in the header
    */
-  close_button: PropTypes.bool
+  close_button: PropTypes.bool,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Offcanvas;

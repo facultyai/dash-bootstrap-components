@@ -12,6 +12,7 @@ import RBToast from 'react-bootstrap/Toast';
 const Toast = props => {
   const {
     children,
+    loading_state,
     header,
     icon,
     header_style,
@@ -60,6 +61,9 @@ const Toast = props => {
       onClose={dismissable && dismiss}
       className={class_name || className}
       bg={color}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
       {...omit(['n_dismiss_timestamp'], otherProps)}
     >
       <RBToast.Header
@@ -230,7 +234,25 @@ Toast.propTypes = {
    * Toast color, options: primary, secondary, success, info, warning, danger,
    * light, dark. Default: secondary.
    */
-  color: PropTypes.string
+  color: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default Toast;
