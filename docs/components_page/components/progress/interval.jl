@@ -9,7 +9,7 @@ progress = html_div([
 callback!(
     app,
     Output("progress", "value"),
-    Output("progress", "children"),
+    Output("progress", "label"),
     Input("progress-interval", "n_intervals"),
 ) do n
     # check progress of some background process, in this example we'll just
