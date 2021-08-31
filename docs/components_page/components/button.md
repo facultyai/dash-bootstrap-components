@@ -30,19 +30,19 @@ Modify the size of the button by setting `size` to either `"sm"` or `"lg"` for a
 ## Block button
 
 Create a Bootstrap 4 style block level button (one which spans the full width
-of the parent) by using Bootstrap's grid spacing utilities.
+of the parent) by using Bootstrap's [spacing utility classes](https://getbootstrap.com/docs/5.0/utilities/spacing/).
 
 {{example:components/button/block.py:button}}
 
 ## Smaller block buttons
 
-Adjusting the width of the block button can be achieved using the grid column width classes. This button is made half-size using `.col-6` and centered with `.mx-auto`.
+You can adjust the width of the block button can be achieved using grid column width classes. This button is made half-size using `.col-6` and centered with `.mx-auto`.
 
 {{example:components/button/half_block.py:button}}
 
 ## Responsive block buttons
 
-A responsive variation on the block button can be created by making using of breakpoints to specify behaviour. Resize your screen to see how adding the `.d-md-block` class changes the button behaviour on smaller screens.
+A responsive variation on the block button can be created by making using of breakpoints to specify behaviour. Resize your screen to see how adding the `d-md-block` class changes the button behaviour on smaller screens.
 
 {{example:components/button/responsive_block.py:button}}
 
@@ -60,7 +60,7 @@ When a user hovers the cursor over a button the background and border will darke
 
 ## Download option
 
-The `download` prop for the Button allows a button to function basically like `html.A`, but with the styling of a Bootstrap Button. It allows you to specify a different file name on download than the filename specified in the href.
+The `download` prop allows you to specify the filename for a downloaded file that can differ from the filename on the server.
 
 {{example:components/button/download.py:button}}
 
