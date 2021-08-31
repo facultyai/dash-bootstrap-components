@@ -15,6 +15,18 @@ Instead of setting the `size` prop of each button in the group, you can set the 
 
 {{example:components/button_group/size.py:button_groups}}
 
+## Mixed styles
+
+You can apply styles to individual buttons within the group.
+
+{{example:components/button_group/mixed.py:button_group}}
+
+## Outline style
+
+Create a group of outline buttons using `outline=True` and setting the `color` as required.
+
+{{example:components/button_group/outline.py:button_group}}
+
 ## Dropdown
 
 As well as `Button` you can include `DropdownMenu` in your button groups by setting `group=True`.
