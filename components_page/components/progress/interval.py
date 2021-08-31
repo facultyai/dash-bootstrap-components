@@ -12,7 +12,7 @@ progress = html.Div(
 
 
 @app.callback(
-    [Output("progress", "value"), Output("progress", "children")],
+    [Output("progress", "value"), Output("progress", "label")],
     [Input("progress-interval", "n_intervals")],
 )
 def update_progress(n):
