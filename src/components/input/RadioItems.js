@@ -26,8 +26,12 @@ const RadioItems = props => {
       id,
       inputClassName,
       input_class_name,
+      inputCheckedStyle,
+      input_checked_style,
       inputStyle,
       input_style,
+      inputCheckedClassName,
+      input_checked_class_name,
       labelClassName,
       label_class_name,
       labelCheckedClassName,
@@ -70,10 +74,15 @@ const RadioItems = props => {
           checked={checked}
           className={classNames(
             'form-check-input',
-            input_class_name || inputClassName
+            input_class_name || inputClassName,
+            checked && (input_checked_class_name || inputCheckedClassName)
           )}
           disabled={Boolean(option.disabled)}
-          style={input_style || inputStyle}
+          style={
+            checked
+              ? input_checked_style || inputCheckedStyle
+              : input_style || inputStyle
+          }
           type="radio"
           onChange={() => {
             setProps({value: option.value});
@@ -199,6 +208,20 @@ RadioItems.propTypes = {
   inputStyle: PropTypes.object,
 
   /**
+   * Additional inline style arguments to apply to <input> elements on checked
+   * items.
+   */
+  input_checked_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `input_checked_style` instead.
+   *
+   * Additional inline style arguments to apply to <input> elements on checked
+   * items.
+   */
+  inputCheckedStyle: PropTypes.object,
+
+  /**
    * The class of the <input> radio element
    */
   input_class_name: PropTypes.string,
@@ -209,6 +232,20 @@ RadioItems.propTypes = {
    * The class of the <input> radio element
    */
   inputClassName: PropTypes.string,
+
+  /**
+   * Additional CSS classes to apply to the <input> element when the
+   * corresponding radio is checked.
+   */
+  input_checked_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `input_checked_class_name` instead.
+   *
+   * Additional CSS classes to apply to the <input> element when the
+   * corresponding radio is checked.
+   */
+  inputCheckedClassName: PropTypes.string,
 
   /**
    * Inline style arguments to apply to the <label> element for each item.

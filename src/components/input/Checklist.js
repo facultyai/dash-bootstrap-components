@@ -27,8 +27,12 @@ const Checklist = props => {
       id,
       inputClassName,
       input_class_name,
+      inputCheckedClassName,
+      input_checked_class_name,
       inputStyle,
       input_style,
+      inputCheckedStyle,
+      input_checked_style,
       labelClassName,
       label_class_name,
       labelCheckedClassName,
@@ -44,6 +48,13 @@ const Checklist = props => {
     } = props;
 
     const checked = includes(option.value, value);
+
+    const mergedInputStyle = checked
+      ? {
+          ...(input_style || inputStyle),
+          ...(input_checked_style || inputCheckedStyle)
+        }
+      : input_style || inputStyle;
 
     const mergedLabelStyle = checked
       ? {
@@ -70,10 +81,11 @@ const Checklist = props => {
           checked={checked}
           className={classNames(
             'form-check-input',
-            input_class_name || inputClassName
+            input_class_name || inputClassName,
+            checked && (input_checked_class_name || inputCheckedClassName)
           )}
           disabled={Boolean(option.disabled)}
-          style={input_style || inputStyle}
+          style={mergedInputStyle}
           type="checkbox"
           onChange={() => {
             let newValue;
@@ -206,6 +218,20 @@ Checklist.propTypes = {
   inputStyle: PropTypes.object,
 
   /**
+   * Additional inline style arguments to apply to <input> elements on checked
+   * items.
+   */
+  input_checked_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `input_checked_style` instead.
+   *
+   * Additional inline style arguments to apply to <input> elements on checked
+   * items.
+   */
+  inputCheckedStyle: PropTypes.object,
+
+  /**
    * The class of the <input> checkbox element
    */
   input_class_name: PropTypes.string,
@@ -216,6 +242,20 @@ Checklist.propTypes = {
    * The class of the <input> checkbox element
    */
   inputClassName: PropTypes.string,
+
+  /**
+   * Additional CSS classes to apply to the <input> element when the
+   * corresponding checkbox is checked.
+   */
+  input_checked_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `input_checked_class_name` instead.
+   *
+   * Additional CSS classes to apply to the <input> element when the
+   * corresponding checkbox is checked.
+   */
+  inputCheckedClassName: PropTypes.string,
 
   /**
    * Inline style arguments to apply to the <label> element for each item.
