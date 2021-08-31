@@ -209,6 +209,13 @@ Modal.propTypes = {
   /**
    * Set the z-index of the modal. Default 1050.
    */
+  zindex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
+  /**
+   * **DEPRECATED** Use `zindex` instead
+   *
+   * Set the z-index of the modal. Default 1050.
+   */
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
