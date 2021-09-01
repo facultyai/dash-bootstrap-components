@@ -214,6 +214,7 @@ span.hljs-meta {
   font-weight: 500;
   font-size: 1.25rem;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .dbcd-nav-link:hover {
@@ -232,6 +233,7 @@ span.hljs-meta {
 .dbcd-nav-links ul > li > a {
   padding: 0.25rem 0rem;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .dbcd-nav-links ul > li.active > a {
