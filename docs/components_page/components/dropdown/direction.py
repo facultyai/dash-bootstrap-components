@@ -16,14 +16,12 @@ dropdown = dbc.Row(
         ),
         dbc.Col(
             dbc.DropdownMenu(
-                label="Dropleft", children=items, direction="left"
+                label="Dropstart", children=items, direction="start"
             ),
             width="auto",
         ),
         dbc.Col(
-            dbc.DropdownMenu(
-                label="Dropright", children=items, direction="right"
-            ),
+            dbc.DropdownMenu(label="Dropend", children=items, direction="end"),
             width="auto",
         ),
         dbc.Col(

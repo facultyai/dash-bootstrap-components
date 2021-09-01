@@ -17,11 +17,11 @@ dropdown = dbc_row(
             width = "auto",
         ),
         dbc_col(
-            dbc_dropdownmenu(label = "Dropleft", children = items, direction = "left"),
+            dbc_dropdownmenu(label = "Dropstart", children = items, direction = "start"),
             width = "auto",
         ),
         dbc_col(
-            dbc_dropdownmenu(label = "Dropright", children = items, direction = "right"),
+            dbc_dropdownmenu(label = "Dropend", children = items, direction = "end"),
             width = "auto",
         ),
         dbc_col(
