@@ -107,6 +107,7 @@ def register_apps():
         "form": {"markdown_path": COMPONENTS / "form.md"},
         "input": {"markdown_path": COMPONENTS / "input.md"},
         "input_group": {"markdown_path": COMPONENTS / "input_group.md"},
+        "jumbotron": {"markdown_path": COMPONENTS / "jumbotron.md"},
         "layout": {"markdown_path": COMPONENTS / "layout.md"},
         "list_group": {"markdown_path": COMPONENTS / "list_group.md"},
         "main": {"markdown_path": COMPONENTS / "main.md"},
