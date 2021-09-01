@@ -17,13 +17,13 @@ dropdown <- dbcRow(
     ),
     dbcCol(
       dbcDropdownMenu(
-        label = "Dropleft", children = items_direction, direction = "left"
+        label = "Dropstart", children = items_direction, direction = "start"
       ),
       width = "auto"
     ),
     dbcCol(
       dbcDropdownMenu(
-        label = "Dropright", children = items_direction, direction = "right"
+        label = "Dropend", children = items_direction, direction = "end"
       ),
       width = "auto"
     ),

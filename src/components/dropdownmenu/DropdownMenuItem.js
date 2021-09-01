@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import RBDropdownItem from 'react-bootstrap/DropdownItem';
+import RBDropdown from 'react-bootstrap/Dropdown';
 
 import Link, {isExternalLink} from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
@@ -44,13 +44,13 @@ const DropdownMenuItem = props => {
   otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
 
   if (header) {
-    return <Dropdown.Header>{children}</Dropdown.Header>;
+    return <RBDropdown.Header>{children}</RBDropdown.Header>;
   } else if (divider) {
-    return <Dropdown.Divider />;
+    return <RBDropdown.Divider />;
   }
 
   return (
-    <RBDropdownItem
+    <RBDropdown.Item
       as={useLink ? Link : 'button'}
       // don't pass href if disabled otherwise reactstrap renders item
       // as link and the cursor becomes a pointer on hover
@@ -64,7 +64,7 @@ const DropdownMenuItem = props => {
       }
     >
       {children}
-    </RBDropdownItem>
+    </RBDropdown.Item>
   );
 };
 

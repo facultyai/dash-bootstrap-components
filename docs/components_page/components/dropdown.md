@@ -17,6 +17,12 @@ Each `DropdownMenuItem` can be used like `dash_core_components.Link`, as a regul
 
 {{example:components/dropdown/menu_items.py:dropdown}}
 
+## Dark Dropdown
+
+Set `menu_variant="dark"` to change the dropdown menu to a dark colour scheme.
+
+{{example:components/dropdown/dark.py:dropdown}}
+
 ## Styling the toggle
 
 You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggle_class_name` arguments.
@@ -31,13 +37,13 @@ Control the size of the `DropdownMenu` toggle using the `size` argument. You can
 
 ## DropdownMenu direction
 
-Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'left'`, or `'right'`.
+Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'start'`, or `'end'`.
 
 {{example:components/dropdown/direction.py:dropdown}}
 
 ## DropdownMenu alignment
 
-By default the menu is aligned with left of the toggle. Set `right=True` for a right aligned menu.
+By default the menu is aligned with left of the toggle. Set `align_end=True` for a right aligned menu.
 
 {{example:components/dropdown/alignment.py:dropdown}}
 
