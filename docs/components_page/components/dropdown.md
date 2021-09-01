@@ -53,12 +53,6 @@ Use the `active` and `disabled` arguments of `DropdownMenuItem` to set the activ
 
 {{example:components/dropdown/content.py:dropdown}}
 
-## AutoClose
-
-By default, drop down menus will close when the mouse is clicked either inside or outside the dropdown. You can use `autoClose` property to change this behaviour. Setting it to `"inside"` will dismiss the menu only when clicking inside the menu, `"outside"` will allow you to click inside, but dismiss when clicking outside and setting to `False` will only allow the menu to dismiss when the original button is clicked.
-
-{{example:components/dropdown/autoclose.py:dropdown}}
-
 {{apidoc:src/components/dropdownmenu/DropdownMenu.js}}
 
 {{apidoc:src/components/dropdownmenu/DropdownMenuItem.js}}

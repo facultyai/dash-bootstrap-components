@@ -25,7 +25,6 @@ const DropdownMenu = props => {
     align_end,
     menu_variant,
     direction,
-    auto_close,
     loading_state,
     color,
     group,
@@ -66,7 +65,6 @@ const DropdownMenu = props => {
             : direction
         }
         align={align_end ? 'end' : right ? 'end' : 'start'}
-        autoClose={auto_close}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
@@ -101,7 +99,6 @@ const DropdownMenu = props => {
 DropdownMenu.defaultProps = {
   caret: true,
   disabled: false,
-  auto_close: true,
   menu_variant: 'light'
 };
 
@@ -263,14 +260,7 @@ DropdownMenu.propTypes = {
   /**
    * Set group to True if the DropdownMenu is inside a ButtonGroup.
    */
-  group: PropTypes.bool,
-
-  /**
-   * Controls the auto close behaviour of the dropdown when clicking outside
-   * of the button or the list. Default behaviour is to close when the mouse
-   * is clicked (True).
-   */
-  auto_close: PropTypes.oneOf([PropTypes.bool, 'inside', 'outside'])
+  group: PropTypes.bool
 };
 
 export default DropdownMenu;
