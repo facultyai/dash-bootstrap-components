@@ -10,12 +10,12 @@ search_bar = dbc_row(
             width = "auto",
         ),
     ],
-    class_name = "ms-auto flex-nowrap mt-3 mt-md-0 g-0",
+    class_name = "g-0 ms-auto flex-nowrap mt-3 mt-md-0",
     align = "center",
 );
 
 navbar = dbc_navbar(
-    [
+    dbc_container([
         html_a(
             # Use row and col to control vertical alignment of logo / brand
             dbc_row(
@@ -29,22 +29,11 @@ navbar = dbc_navbar(
             href = "https://plotly.com",
             style = Dict("textDecoration" => "none"),
         ),
-        html_div(
-            [
-                dbc_navbartoggler(id = "navbar-toggler", n_clicks = 0),
-                dbc_collapse(
-                    search_bar,
-                    id = "navbar-collapse",
-                    is_open = false,
-                    navbar = true,
-                ),
-            ],
-            class_name = "ms-auto",
-        ),
-    ],
+        dbc_navbartoggler(id = "navbar-toggler", n_clicks = 0),
+        dbc_collapse(search_bar, id = "navbar-collapse", is_open = false, navbar = true),
+    ]),
     color = "dark",
     dark = true,
-    class_name = "py-2 px-3",
 )
 
 

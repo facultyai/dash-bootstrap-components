@@ -15,41 +15,37 @@ search_bar = dbc.Row(
             width="auto",
         ),
     ],
-    class_name="ms-auto flex-nowrap mt-3 mt-md-0 g-0",
+    class_name="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
     align="center",
 )
 
 navbar = dbc.Navbar(
-    [
-        html.A(
-            # Use row and col to control vertical alignment of logo / brand
-            dbc.Row(
-                [
-                    dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                    dbc.Col(dbc.NavbarBrand("Navbar", class_name="ms-2")),
-                ],
-                align="center",
-                class_name="g-0",
-            ),
-            href="https://plotly.com",
-            style={"textDecoration": "none"},
-        ),
-        html.Div(
-            [
-                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
-                dbc.Collapse(
-                    search_bar,
-                    id="navbar-collapse",
-                    is_open=False,
-                    navbar=True,
+    dbc.Container(
+        [
+            html.A(
+                # Use row and col to control vertical alignment of logo / brand
+                dbc.Row(
+                    [
+                        dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                        dbc.Col(dbc.NavbarBrand("Navbar", class_name="ms-2")),
+                    ],
+                    align="center",
+                    class_name="g-0",
                 ),
-            ],
-            class_name="ms-auto",
-        ),
-    ],
+                href="https://plotly.com",
+                style={"textDecoration": "none"},
+            ),
+            dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+            dbc.Collapse(
+                search_bar,
+                id="navbar-collapse",
+                is_open=False,
+                navbar=True,
+            ),
+        ]
+    ),
     color="dark",
     dark=True,
-    class_name="py-2 px-3",
 )
 
 
