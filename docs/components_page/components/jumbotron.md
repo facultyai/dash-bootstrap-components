@@ -5,12 +5,12 @@ lead: Lightweight styling for showcasing key content and messages.
 
 ## Examples
 
-The Jumbotron was retired from Bootstrap use in Bootstrap 5, but as it's a useful layout, here are examples of how to combine the Bootstrap styling with Dash components to create a Jumbotron-like experience.
+The Jumbotron component was removed in Bootstrap 5, so there is no longer a dedicated `Jumbotron` component in _dash-bootstrap-components_ either. However, thanks to Bootstrap's flexible utility classes, it is easy to recreate a jumbotron-like layout yourself. Here's a simple example
 
 {{example:components/jumbotron/simple.py:jumbotron}}
 
-### Styling the Jumbotron
+### Styling the "Jumbotron"
 
-There are lots of styles and spacing options available in Bootstrap. Creating the perfect component is just about combining the ones you want in the right way.
+There are [many utility classes](https://getbootstrap.com/docs/5.0/utilities/spacing/) available in Bootstrap. By combining them you can easily customise the look and feel of your app.
 
 {{example:components/jumbotron/custom.py:jumbotron}}
