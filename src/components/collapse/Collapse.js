@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCollapse from 'react-bootstrap/Collapse';
-import RBNavbarCollapse from 'react-bootstrap/NavbarCollapse';
 
 /**
  * Hide or show content with a vertical collapsing animation. Visibility of the
  * children is controlled by the `is_open` prop which can be targetted by
  * callbacks.
  */
-const Collapse = props => {
+const Collapse = React.forwardRef((props, ref) => {
   const {
     children,
     is_open,
@@ -21,10 +20,8 @@ const Collapse = props => {
     ...otherProps
   } = props;
 
-  const Component = navbar ? RBNavbarCollapse : RBCollapse;
-
   return (
-    <Component
+    <RBCollapse
       in={is_open}
       as={tag}
       className={class_name || className}
@@ -33,10 +30,12 @@ const Collapse = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <div>{children}</div>
-    </Component>
+      <div ref={ref} className={navbar && 'navbar-collapse'}>
+        {children}
+      </div>
+    </RBCollapse>
   );
-};
+});
 
 Collapse.propTypes = {
   /**

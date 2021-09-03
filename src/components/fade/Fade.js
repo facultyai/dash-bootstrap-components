@@ -7,7 +7,7 @@ import RBFade from 'react-bootstrap/Fade';
  * Hide or show content with a fading animation. Visibility of the children is
  * controlled by the `is_open` prop which can be targetted by callbacks.
  */
-const Fade = props => {
+const Fade = React.forwardRef((props, ref) => {
   const {
     children,
     is_in,
@@ -35,10 +35,10 @@ const Fade = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <div>{children}</div>
+      <div ref={ref}>{children}</div>
     </RBFade>
   );
-};
+});
 
 Fade.propTypes = {
   /**
