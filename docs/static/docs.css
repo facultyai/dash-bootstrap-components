@@ -315,10 +315,6 @@ span.hljs-meta {
   background-color: #2b3e50;
 }
 
-.superhero-demo .navbar {
-  padding: 0.25rem 1rem;
-}
-
 .superhero-demo .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.75);
 }
