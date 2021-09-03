@@ -79,20 +79,15 @@ logo = dbc.Navbar(
                 href="https://plotly.com",
                 style={"textDecoration": "none"},
             ),
-            html.Div(
-                [
-                    dbc.NavbarToggler(id="navbar-toggler2", n_clicks=0),
-                    dbc.Collapse(
-                        dbc.Nav(
-                            [nav_item, dropdown],
-                            class_name="ms-auto",
-                            navbar=True,
-                        ),
-                        id="navbar-collapse2",
-                        navbar=True,
-                    ),
-                ],
-                className="ms-auto",
+            dbc.NavbarToggler(id="navbar-toggler2", n_clicks=0),
+            dbc.Collapse(
+                dbc.Nav(
+                    [nav_item, dropdown],
+                    class_name="ms-auto",
+                    navbar=True,
+                ),
+                id="navbar-collapse2",
+                navbar=True,
             ),
         ],
     ),
@@ -145,7 +140,10 @@ dashboard = dbc.Navbar(
             dbc.Col(dbc.NavbarBrand("Dashboard", href="#"), sm=3, md=2),
             dbc.Col(dbc.Input(type="search", placeholder="Search here")),
             dbc.Col(
-                dbc.Nav(dbc.NavItem(dbc.NavLink("Sign out")), navbar=True),
+                dbc.Nav(
+                    dbc.Container(dbc.NavItem(dbc.NavLink("Sign out"))),
+                    navbar=True,
+                ),
                 width="auto",
             ),
         ],
