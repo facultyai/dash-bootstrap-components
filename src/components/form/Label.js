@@ -34,6 +34,7 @@ const Label = props => {
     color,
     style,
     loading_state,
+    check,
     ...otherProps
   } = props;
 
@@ -52,7 +53,8 @@ const Label = props => {
   const classes = classNames(
     class_name || className,
     cols.length && alignClass,
-    color && isBootstrapColor && `text-${color}`
+    color && isBootstrapColor && `text-${color}`,
+    check && 'form-check-label'
   );
 
   return (
@@ -142,6 +144,11 @@ Label.propTypes = {
    * Set the `for` attribute of the label to bind it to a particular element
    */
   html_for: PropTypes.string,
+
+  /**
+   * Set to True when using to label a Checkbox or RadioButton.
+   */
+  check: PropTypes.bool,
 
   /**
    * Specify width of label for use in grid layouts. Accepts the same values

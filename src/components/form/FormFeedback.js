@@ -5,7 +5,7 @@ import RBFormControl from 'react-bootstrap/FormControl';
 
 /**
  * The FormFeedback component can be used to provide feedback on input values
- * in a form. Add the form feedback to a `FormGroup` and set the `valid` or
+ * in a form. Add the form feedback to your layout and set the `valid` or
  * `invalid` props of the associated input to toggle visibility.
  */
 const FormFeedback = props => {

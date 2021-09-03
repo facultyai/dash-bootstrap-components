@@ -31,7 +31,7 @@ When using `Input` with `type='number'`, the `value` prop will be given the valu
 
 ## Labels and text
 
-Use the `FormGroup` component along with `Label` and `FormText` to control the layout of your `Input` components. See the [documentation for forms](/l/components/form) for more details.
+Use the `Label` and `FormText` components to add additional information about the `Input` to your layout. See the [documentation for forms](/docs/components/form/) for more details.
 
 {{example:components/input/text_label.py:text_input}}
 
@@ -63,8 +63,6 @@ The `Select` component can be used to render a Bootstrap themed select input. Th
 
 `RadioItems` and `Checklist` components also work like _dash-core-components_. Provided you specify an `id`, _dash-bootstrap-components_ will render custom themed radio buttons or checkboxes rather than using the native browser buttons. When using `Checklist` you can also specify `switch=True` to render toggle-like switches rather than checkboxes. If you prefer to use the native buttons and checkboxes, set `custom=False`. Note that there is no native browser switch, so if you set `custom=False` then `switch` will be ignored.
 
-Use these components with `FormGroup` for automatic spacing and padding.
-
 {{example:components/input/radio_check.py:inputs}}
 
 Set `inline=True` to make the radio items or checklists fit next to each other on a line.
@@ -79,7 +77,7 @@ Use the `input_checked_style`, `input_checked_class_name`, `label_checked_style`
 
 ## Standalone checkboxes and radio buttons
 
-If you need more granular control over checkboxes and radio buttons, you can also create standalone components. Bind callbacks to the `checked` keyword to react to changes in the input state. To attach a label, create a FormGroup with `check=True` and use the label's `html_for` keyword to bind it to the checkbox.
+If you need more granular control over checkboxes and radio buttons, you can also create standalone components. Bind callbacks to the `checked` keyword to react to changes in the input state. To attach a label, wrap the input and a `Label` with a `html.Div` and add the class `form-check`. You can use the label's `html_for` keyword to bind it to the checkbox or radio button.
 
 {{example:components/input/radio_check_standalone.py:standalone_radio_check}}
 
