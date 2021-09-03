@@ -50,7 +50,7 @@ def rename_variable(snippet_path, suffix, variable, assign_op="="):
     for line in lines:
         if line.startswith(f"{variable} {assign_op}"):
             line = line.replace(
-                f"{variable} {assign_op}", f"{variable}_{suffix} {assign_op}"
+                f"{variable} {assign_op}", f"{variable}__{suffix} {assign_op}"
             )
         new_lines.append(line)
 
