@@ -33,13 +33,13 @@ Use the `vertical` argument to stack navigation items. You can pass either a Boo
 
 ## Pills
 
-Use the `pills` argument to indicate active state with pill styled nav items. The `active` property can be set to `True` or `False` to manually control whether the link is active, or to `"exact"` to automatically set the `active` property when the current pathname matches the `href`, or to `"partial"` to automatically set the `active` property when the current pathname starts with `href`.
+Use the `pills` argument to indicate active state with pill styled nav links. The `active` property of `NavLink` can be set to `True` or `False` to manually control whether the link is active, to `"exact"` to automatically set the `active` property when the current pathname matches the `href`, or to `"partial"` to automatically set the `active` property when the current pathname starts with `href`.
 
 {{example:components/nav/pill.py:nav}}
 
 ## Tabs
 
-Bootstrap also lets you apply tab styling to navs, check out our self-contained `Tabs` component [here](/l/components/tabs).
+Bootstrap also lets you apply tab styling to navs, check out our self-contained `Tabs` component [here](/docs/components/tabs).
 
 {{apidoc:src/components/nav/Nav.js}}
 
