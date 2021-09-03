@@ -47,6 +47,12 @@ To vertically center the modal on the page, set `centered=True`.
 
 {{example:components/modal/centered.py:modal}}
 
+## Toggle between modals
+
+With some clever use of callbacks, you can also create modals that open other modals.
+
+{{example:components/modal/toggle.py:modal}}
+
 {{apidoc:src/components/modal/Modal.js}}
 
 {{apidoc:src/components/modal/ModalHeader.js}}
