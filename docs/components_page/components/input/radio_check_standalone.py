@@ -6,29 +6,26 @@ standalone_radio_check = html.Div(
     [
         html.Div(
             [
-                dbc.Checkbox(
-                    id="standalone-checkbox", class_name="form-check-input"
-                ),
+                dbc.Checkbox(id="standalone-checkbox"),
                 dbc.Label(
                     "This is a checkbox",
                     html_for="standalone-checkbox",
-                    class_name="form-check-label",
+                    check=True,
                 ),
             ],
+            class_name="form-check",
         ),
         html.Div(
             [
-                dbc.RadioButton(
-                    id="standalone-radio", class_name="form-check-input"
-                ),
+                dbc.RadioButton(id="standalone-radio"),
                 dbc.Label(
                     "This is a radio button",
                     html_for="standalone-radio",
-                    class_name="form-check-label",
+                    check=True,
                 ),
             ],
+            class_name="form-check",
         ),
-        html.Br(),
         html.P(id="standalone-radio-check-output"),
     ]
 )
