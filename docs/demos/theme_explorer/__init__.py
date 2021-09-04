@@ -21,8 +21,9 @@ from .tabs import tabs
 from .toast import toast
 from .tooltip import tooltip
 
-FONT_AWESOME = "https://use.fontawesome.com/releases/v5.10.2/css/all.css"
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, FONT_AWESOME])
+app = dash.Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME]
+)
 
 app.layout = dbc.Container(
     [

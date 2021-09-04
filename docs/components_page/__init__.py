@@ -150,6 +150,7 @@ def register_apps():
             "label": "Quickstart",
         },
         {"name": "themes", "href": "/docs/themes", "label": "Themes"},
+        {"name": "icons", "href": "/docs/icons", "label": "Icons"},
         {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
         {
             "name": "components",

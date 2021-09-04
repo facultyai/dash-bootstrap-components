@@ -236,6 +236,7 @@ def move_generated_files(_):
             "__init__.py",
             "_table.py",
             "_version.py",
+            "icons.py",
             "themes.py",
         ):
             continue
@@ -263,6 +264,7 @@ def build_r(ctx):
     move_generated_files(ctx)
     with (HERE / "NAMESPACE").open("a") as f:
         f.write("\nexport(dbcThemes)\n")
+        f.write("\nexport(dbcIcons)\n")
 
     # -dev suffix breaks local installs of R package
     description = (HERE / "DESCRIPTION").read_text().split("\n")
@@ -285,6 +287,7 @@ def build_jl(ctx):
     copy_dist()
     move_generated_files(ctx)
     shutil.copy(HERE / "jl" / "themes.jl", HERE / "src" / "jl" / "themes.jl")
+    shutil.copy(HERE / "jl" / "icons.jl", HERE / "src" / "jl" / "icons.jl")
 
     with (HERE / "src" / "DashBootstrapComponents.jl").open() as f:
         lines = f.readlines()
@@ -295,6 +298,7 @@ def build_jl(ctx):
             break
 
     lines.insert(n - i, 'include("jl/themes.jl")\n')
+    lines.insert(n - i, 'include("jl/icons.jl")\n')
 
     with (HERE / "src" / "DashBootstrapComponents.jl").open("w") as f:
         f.writelines(lines)
