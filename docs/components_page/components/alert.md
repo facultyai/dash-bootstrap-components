@@ -33,10 +33,4 @@ You can have your `Alert` components dismiss themselves by using the `duration` 
 
 {{example:components/alert/auto_dismiss.py:alert}}
 
-## Icons
-
-You can additionally make use of the [Bootstrap Icon](/docs/icons) library to create alerts using icons.
-
-{{example:components/alert/icon.py:alerts}}
-
 {{apidoc:src/components/Alert.js}}

@@ -174,10 +174,7 @@ def register_apps():
 
     for slug, kwargs in component_bodies.items():
         app = dash.Dash(
-            external_stylesheets=[
-                "/static/loading.css",
-                dbc.icons.BOOTSTRAP,
-            ],
+            external_stylesheets=["/static/loading.css"],
             requests_pathname_prefix=f"/docs/components/{slug}/",
             suppress_callback_exceptions=True,
             serve_locally=SERVE_LOCALLY,
