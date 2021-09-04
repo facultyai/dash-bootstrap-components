@@ -4,6 +4,7 @@ from jinja2 import TemplateNotFound
 DOCS_SIDENAV_ITEMS = [
     {"name": "quickstart", "href": "/docs/quickstart", "label": "Quickstart"},
     {"name": "themes", "href": "/docs/themes", "label": "Themes"},
+    {"name": "icons", "href": "/docs/icons", "label": "Icons"},
     {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
@@ -66,6 +67,17 @@ def create_server():
     def theme_explorer():
         try:
             return render_template("theme-explorer.html")
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/docs/icons/")
+    def icons():
+        try:
+            return render_template(
+                "generated/docs/icons.html",
+                sidenav_items=DOCS_SIDENAV_ITEMS,
+                sidenav_active="icons",
+            )
         except TemplateNotFound:
             abort(404)
 
