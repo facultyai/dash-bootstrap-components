@@ -88,6 +88,8 @@ def _get_label(slug):
         return "InputGroup"
     if slug == "list_group":
         return "ListGroup"
+    if slug == "index":
+        return "Components"
     return slug.capitalize()
 
 
@@ -110,7 +112,7 @@ def register_apps():
         "jumbotron": {"markdown_path": COMPONENTS / "jumbotron.md"},
         "layout": {"markdown_path": COMPONENTS / "layout.md"},
         "list_group": {"markdown_path": COMPONENTS / "list_group.md"},
-        "main": {"markdown_path": COMPONENTS / "main.md"},
+        "index": {"markdown_path": COMPONENTS / "index.md"},
         "modal": {
             "markdown_path": COMPONENTS / "modal.md",
             "extra_env_vars": {"LOREM": LOREM},
@@ -163,7 +165,7 @@ def register_apps():
                     "label": _get_label(slug),
                 }
                 for slug in component_bodies
-                if _get_label(slug) != "Main"
+                if slug != "index"
             ],
         },
     ]
@@ -173,9 +175,14 @@ def register_apps():
     template = env.from_string(INDEX_STRING_TEMPLATE)
 
     for slug, kwargs in component_bodies.items():
+        requests_pathname_prefix = (
+            f"/docs/components/{slug}/"
+            if slug != "index"
+            else "/docs/components/"
+        )
         app = dash.Dash(
             external_stylesheets=["/static/loading.css"],
-            requests_pathname_prefix=f"/docs/components/{slug}/",
+            requests_pathname_prefix=requests_pathname_prefix,
             suppress_callback_exceptions=True,
             serve_locally=SERVE_LOCALLY,
             index_string=template.render(
@@ -197,6 +204,9 @@ def register_apps():
             )
         else:
             app.layout = parse(app, **kwargs)
-        routes[f"/docs/components/{slug}"] = app
+        if slug == "index":
+            routes["/docs/components"] = app
+        else:
+            routes[f"/docs/components/{slug}"] = app
 
     return routes

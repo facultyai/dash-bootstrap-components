@@ -92,10 +92,6 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/components/")
-    def components_index():
-        return redirect("/docs/components/main", 302)
-
     @server.route("/l/components/", defaults={"slug": "main"})
     @server.route("/l/components/<slug>/")
     def components_redirect(slug):
