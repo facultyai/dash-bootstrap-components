@@ -4,11 +4,7 @@ standalone_radio_check = html_div([
     html_div(
         [
             dbc_checkbox(id = "standalone-checkbox"),
-            dbc_label(
-                "This is a checkbox",
-                html_for = "standalone-checkbox",
-                check = true,
-            ),
+            dbc_label("This is a checkbox", html_for = "standalone-checkbox", check = true),
         ],
         class_name = "form-check",
     ),
