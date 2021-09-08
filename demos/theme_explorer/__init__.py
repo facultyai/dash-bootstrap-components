@@ -1,6 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State
 
 from .alert import alerts
 from .badge import badges
