@@ -1,8 +1,8 @@
 from dash import Dash
 from dash.dependencies import Input, Output
 from dash_bootstrap_components import NavLink
-from dash_core_components import Location
-from dash_html_components import Div
+from dash.dcc import Location
+from dash.html import Div
 from selenium.webdriver.support.wait import WebDriverWait
 
 

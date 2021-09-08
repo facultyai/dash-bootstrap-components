@@ -1,6 +1,6 @@
 from dash import Dash
 from dash_bootstrap_components import Alert
-from dash_html_components import Div
+from dash.html import Div
 
 
 def test_dbal001_alert_content(dash_duo):
