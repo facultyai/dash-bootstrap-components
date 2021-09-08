@@ -9,11 +9,9 @@ plotly.figure_factory.create_distplot, so it doesn't feature in this example.
 """
 import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
 import pandas as pd
 import plotly.figure_factory as ff
-from dash.dependencies import Input, Output
+from dash import Input, Output, dcc, html
 
 DATA = pd.read_csv("https://cdn.opensource.faculty.ai/old-faithful/data.csv")
 
