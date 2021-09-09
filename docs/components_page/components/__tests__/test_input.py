@@ -95,7 +95,7 @@ def check_input_radio_check_standalone_callbacks(runner):
 
     wait.until(
         lambda: runner.find_element("#standalone-radio-check-output").text
-        == "Radio button 1, 1 checklist item and 1 switch selected.",
+        == "Selections: Checkbox: False, Toggle Switch: False, Radio Button: False",
         timeout=10,
     )
 
@@ -104,7 +104,7 @@ def check_input_radio_check_standalone_callbacks(runner):
     runner.find_element_by_id("standalone-radio").click()
 
     wait.until(
-        lambda: runner.find_element("#radioitems-checklist-output").text
-        == "Radio button 2, 2 checklist items and 2 switches selected.",
+        lambda: runner.find_element("#standalone-radio-check-output").text
+        == "Selections: Checkbox: True, Toggle Switch: True, Radio Button: True",
         timeout=10,
     )

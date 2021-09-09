@@ -36,8 +36,8 @@ callback!(
 ) do checkbox_checked, switch_checked, radio_checked
     output_string =
         """Selections:  """ *
-        """Checkbox: $(checkbox_checked ? "true" : "false") """ *
-        """Toggle Switch: $(switch_checked ? "true" : "false") """ *
-        """Radio Button: $(radio_checked ? "true" : "false") """
+        """Checkbox: $(checkbox_checked ? "True" : "False") """ *
+        """Toggle Switch: $(switch_checked ? "True" : "False") """ *
+        """Radio Button: $(radio_checked ? "True" : "False") """
     return output_string
 end;
