@@ -8,7 +8,7 @@ describe('Checkbox', () => {
     const checkbox = render(<Checkbox />);
     const [input, label] = checkbox.container.firstChild.children;
 
-    expect(checkbox.container.firstChild).toHaveClass('form-check')
+    expect(checkbox.container.firstChild).toHaveClass('form-check');
     expect(input).toHaveClass('form-check-input');
     expect(label).toHaveClass('form-check-label');
     expect(input).toHaveAttribute('type', 'checkbox');

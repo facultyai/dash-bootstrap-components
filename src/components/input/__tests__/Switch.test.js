@@ -8,7 +8,9 @@ describe('Switch', () => {
     const toggleSwitch = render(<Switch />);
     const [input, label] = toggleSwitch.container.firstChild.children;
 
-    expect(toggleSwitch.container.firstChild).toHaveClass('form-check form-switch')
+    expect(toggleSwitch.container.firstChild).toHaveClass(
+      'form-check form-switch'
+    );
     expect(input).toHaveClass('form-check-input');
     expect(label).toHaveClass('form-check-label');
     expect(input).toHaveAttribute('type', 'checkbox');
