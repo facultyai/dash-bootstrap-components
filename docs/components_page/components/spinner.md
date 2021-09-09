@@ -15,7 +15,7 @@ To create a simple spinner, just add `dbc.Spinner()` to your layout. By default,
 
 If you pass children to `dbc.Spinner`, it will behave like `dcc.Loading`, which is to say it will render a spinner until the children component have loaded.
 
-The spinner is rendered inside a `html.Div`. The `html.Div` that the spinner is rendered in will expand to fill the available width, and add a top and bottom margin. This can be overridden using `spinner_style` or `spinner_class_name`.
+The spinner is rendered inside a `html.Div`. The `html.Div` that the spinner is rendered in will expand to fill the available width, and add a top and bottom margin. This can be overridden using `spinner_style` or `spinnerClassName`.
 
 {{example:components/spinner/loading.py:loading_spinner}}
 

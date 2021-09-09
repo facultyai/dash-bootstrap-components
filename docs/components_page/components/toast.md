@@ -25,7 +25,7 @@ You can have your `Toast` components dismiss themselves by using the `duration` 
 
 ## Positioning
 
-Toasts can be placed using CSS. If positioning a single toast you can use the `style` and `class_name` arguments to place it. If you will display multiple notifications consider wrapping them in a container and positioning the container so that the notifications stack properly.
+Toasts can be placed using CSS. If positioning a single toast you can use the `style` and `className` arguments to place it. If you will display multiple notifications consider wrapping them in a container and positioning the container so that the notifications stack properly.
 
 {{example:components/toast/position.py:toast}}
 

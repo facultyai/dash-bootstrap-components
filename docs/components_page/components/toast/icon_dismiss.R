@@ -8,10 +8,10 @@ toast <- htmlDiv(
       id = "simple-toast-toggle",
       color = "primary",
       n_clicks = 0,
-      class_name = "mb-3",
+      className = "mb-3",
     ),
     dbcToast(
-      list(htmlP("This is the content of the toast", class_name = "mb-0")),
+      list(htmlP("This is the content of the toast", className = "mb-0")),
       id = "simple-toast",
       header = "This is the header",
       icon = "primary",

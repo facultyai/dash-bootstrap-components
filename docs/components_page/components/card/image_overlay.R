@@ -7,13 +7,13 @@ card <- dbcCard(
     dbcCardImgOverlay(
       dbcCardBody(
         list(
-          htmlH4("Card title", class_name = "card-title"),
+          htmlH4("Card title", className = "card-title"),
           htmlP(
             paste(
               "An example of using an image in the background of",
               "a card."
             ),
-            class_name = "card-text"
+            className = "card-text"
           ),
           dbcButton("Go somewhere", color = "primary")
         )

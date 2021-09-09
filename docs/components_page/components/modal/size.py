@@ -3,8 +3,8 @@ from dash import Input, Output, State, html
 
 modal = html.Div(
     [
-        dbc.Button("Small modal", id="open-sm", class_name="me-1", n_clicks=0),
-        dbc.Button("Large modal", id="open-lg", class_name="me-1", n_clicks=0),
+        dbc.Button("Small modal", id="open-sm", className="me-1", n_clicks=0),
+        dbc.Button("Large modal", id="open-lg", className="me-1", n_clicks=0),
         dbc.Button("Extra large modal", id="open-xl", n_clicks=0),
         dbc.Modal(
             [

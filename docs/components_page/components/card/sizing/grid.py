@@ -4,7 +4,7 @@ from dash import html
 first_card = dbc.Card(
     dbc.CardBody(
         [
-            html.H5("Card title", class_name="card-title"),
+            html.H5("Card title", className="card-title"),
             html.P("This card has some text content, but not much else"),
             dbc.Button("Go somewhere", color="primary"),
         ]
@@ -15,7 +15,7 @@ first_card = dbc.Card(
 second_card = dbc.Card(
     dbc.CardBody(
         [
-            html.H5("Card title", class_name="card-title"),
+            html.H5("Card title", className="card-title"),
             html.P(
                 "This card also has some text content and not much else, but "
                 "it is twice as wide as the first card."

@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 first_card <- dbcCard(
   dbcCardBody(
     list(
-      htmlH5("Card title", class_name = "card-title"),
+      htmlH5("Card title", className = "card-title"),
       htmlP("This card has some text content, but not much else"),
       dbcButton("Go somewhere", color = "primary")
     )
@@ -14,7 +14,7 @@ first_card <- dbcCard(
 second_card <- dbcCard(
   dbcCardBody(
     list(
-      htmlH5("Card title", class_name = "card-title"),
+      htmlH5("Card title", className = "card-title"),
       htmlP(
         paste(
           "This card also has some text content and not much else, but",

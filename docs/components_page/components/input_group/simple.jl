@@ -3,14 +3,14 @@ using DashBootstrapComponents, DashHtmlComponents
 input_groups = html_div([
     dbc_inputgroup(
         [dbc_inputgrouptext("@"), dbc_input(placeholder = "Username")],
-        class_name = "mb-3",
+        className = "mb-3",
     ),
     dbc_inputgroup(
         [
             dbc_input(placeholder = "Recipient's username"),
             dbc_inputgrouptext("@example.com"),
         ],
-        class_name = "mb-3",
+        className = "mb-3",
     ),
     dbc_inputgroup(
         [
@@ -18,7 +18,7 @@ input_groups = html_div([
             dbc_input(placeholder = "Amount", type = "number"),
             dbc_inputgrouptext(".00"),
         ],
-        class_name = "mb-3",
+        className = "mb-3",
     ),
     dbc_inputgroup(
         [
@@ -28,11 +28,11 @@ input_groups = html_div([
             dbc_inputgrouptext(".00"),
             dbc_inputgrouptext("only"),
         ],
-        class_name = "mb-3",
+        className = "mb-3",
     ),
     dbc_inputgroup(
         [dbc_inputgrouptext("With textarea"), dbc_textarea()],
-        class_name = "mb-3",
+        className = "mb-3",
     ),
     dbc_inputgroup([
         dbc_select(

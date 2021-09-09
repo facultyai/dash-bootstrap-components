@@ -10,21 +10,21 @@ items = [
 dropdowns = html.Div(
     [
         dbc.DropdownMenu(
-            items, label="Primary", color="primary", class_name="m-1"
+            items, label="Primary", color="primary", className="m-1"
         ),
         dbc.DropdownMenu(
-            items, label="Secondary", color="secondary", class_name="m-1"
+            items, label="Secondary", color="secondary", className="m-1"
         ),
         dbc.DropdownMenu(
-            items, label="Success", color="success", class_name="m-1"
+            items, label="Success", color="success", className="m-1"
         ),
         dbc.DropdownMenu(
-            items, label="Warning", color="warning", class_name="m-1"
+            items, label="Warning", color="warning", className="m-1"
         ),
         dbc.DropdownMenu(
-            items, label="Danger", color="danger", class_name="m-1"
+            items, label="Danger", color="danger", className="m-1"
         ),
-        dbc.DropdownMenu(items, label="Info", color="info", class_name="m-1"),
+        dbc.DropdownMenu(items, label="Info", color="info", className="m-1"),
     ],
     style={"display": "flex", "flexWrap": "wrap"},
 )

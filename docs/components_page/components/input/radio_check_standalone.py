@@ -12,7 +12,7 @@ standalone_radio_check = html.Div(
                     check=True,
                 ),
             ],
-            class_name="form-check",
+            className="form-check",
         ),
         html.Div(
             [
@@ -23,7 +23,7 @@ standalone_radio_check = html.Div(
                     check=True,
                 ),
             ],
-            class_name="form-check",
+            className="form-check",
         ),
         html.P(id="standalone-radio-check-output"),
     ]

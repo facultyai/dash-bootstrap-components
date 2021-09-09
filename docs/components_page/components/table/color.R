@@ -19,7 +19,7 @@ color_selector <- htmlDiv(
       value = "primary"
     )
   ),
-  class_name = "p-3 m-2 border"
+  className = "p-3 m-2 border"
 )
 
 table <- htmlDiv(

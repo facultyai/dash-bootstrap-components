@@ -3,7 +3,7 @@ library(dashHtmlComponents)
 
 alert <- dbcAlert(
   list(
-    htmlH4("Well done!", class_name = "alert-heading"),
+    htmlH4("Well done!", className = "alert-heading"),
     htmlP(
       paste(
         "This is a success alert with loads of extra text in it. So much",
@@ -14,7 +14,7 @@ alert <- dbcAlert(
     htmlHr(),
     htmlP(
       "Let's put some more text down here, but remove the bottom margin",
-      class_name = "mb-0",
+      className = "mb-0",
     )
   )
 )

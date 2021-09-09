@@ -6,5 +6,5 @@ button <- htmlDiv(
     dbcButton("Block button", color = "primary"),
     dbcButton("Block button", color = "secondary")
   ),
-  class_name = "d-grid gap-2"
+  className = "d-grid gap-2"
 )

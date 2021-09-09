@@ -10,7 +10,7 @@ list_group = html.Div(
                 dbc.ListGroupItem("Item 3"),
             ],
             horizontal=True,
-            class_name="mb-2",
+            className="mb-2",
         ),
         dbc.ListGroup(
             [

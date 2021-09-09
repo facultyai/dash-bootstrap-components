@@ -30,19 +30,19 @@ sidebar = html.Div(
                 html.Img(src=PLOTLY_LOGO, style={"width": "3rem"}),
                 html.H2("Sidebar"),
             ],
-            class_name="sidebar-header",
+            className="sidebar-header",
         ),
         html.Hr(),
         dbc.Nav(
             [
                 dbc.NavLink(
-                    [html.I(class_name="fas fa-home me-2"), html.Span("Home")],
+                    [html.I(className="fas fa-home me-2"), html.Span("Home")],
                     href="/",
                     active="exact",
                 ),
                 dbc.NavLink(
                     [
-                        html.I(class_name="fas fa-calendar-alt me-2"),
+                        html.I(className="fas fa-calendar-alt me-2"),
                         html.Span("Calendar"),
                     ],
                     href="/calendar",
@@ -50,7 +50,7 @@ sidebar = html.Div(
                 ),
                 dbc.NavLink(
                     [
-                        html.I(class_name="fas fa-envelope-open-text me-2"),
+                        html.I(className="fas fa-envelope-open-text me-2"),
                         html.Span("Messages"),
                     ],
                     href="/messages",
@@ -61,10 +61,10 @@ sidebar = html.Div(
             pills=True,
         ),
     ],
-    class_name="sidebar",
+    className="sidebar",
 )
 
-content = html.Div(id="page-content", class_name="content")
+content = html.Div(id="page-content", className="content")
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
@@ -81,7 +81,7 @@ def render_page_content(pathname):
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
-            html.H1("404: Not found", class_name="text-danger"),
+            html.H1("404: Not found", className="text-danger"),
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ]

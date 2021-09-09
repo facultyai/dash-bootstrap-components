@@ -24,8 +24,8 @@ checklist = html.Div(
                 {"label": "Option 2", "value": 2},
                 {"label": "Option 3", "value": 3},
             ],
-            label_checked_class_name="text-success",
-            input_checked_class_name="border border-success bg-success",
+            labelCheckedClassName="text-success",
+            inputCheckedClassName="border border-success bg-success",
         ),
     ]
 )

@@ -6,14 +6,14 @@ alerts <- htmlDiv(
     dbcAlert(
       list(
         "This is a primary alert with an ",
-        htmlA("example link", href = "#", class_name = "alert-link")
+        htmlA("example link", href = "#", className = "alert-link")
       ),
       color = "primary"
     ),
     dbcAlert(
       list(
         "This is a danger alert with an ",
-        htmlA("example link", href = "#", class_name = "alert-link")
+        htmlA("example link", href = "#", className = "alert-link")
       ),
       color = "danger"
     )

@@ -12,7 +12,7 @@ email_input = dbc_row(
             width = 10,
         ),
     ],
-    class_name = "mb-3",
+    className = "mb-3",
 );
 
 password_input = dbc_row(
@@ -27,7 +27,7 @@ password_input = dbc_row(
             width = 10,
         ),
     ],
-    class_name = "mb-3",
+    className = "mb-3",
 );
 
 radios_input = dbc_row(
@@ -49,7 +49,7 @@ radios_input = dbc_row(
             width = 10,
         ),
     ],
-    class_name = "mb-3",
+    className = "mb-3",
 );
 
 form = dbc_form([email_input, password_input, radios_input]);

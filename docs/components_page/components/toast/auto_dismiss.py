@@ -7,11 +7,11 @@ toast = html.Div(
             "Open toast",
             id="auto-toast-toggle",
             color="primary",
-            class_name="mb-3",
+            className="mb-3",
             n_clicks=0,
         ),
         dbc.Toast(
-            [html.P("This is the content of the toast", class_name="mb-0")],
+            [html.P("This is the content of the toast", className="mb-0")],
             id="auto-toast",
             header="This is the header",
             icon="primary",

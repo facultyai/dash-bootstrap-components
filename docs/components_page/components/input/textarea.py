@@ -3,11 +3,11 @@ from dash import html
 
 textareas = html.Div(
     [
-        dbc.Textarea(class_name="mb-3", placeholder="A Textarea"),
+        dbc.Textarea(className="mb-3", placeholder="A Textarea"),
         dbc.Textarea(
             valid=True,
             size="sm",
-            class_name="mb-3",
+            className="mb-3",
             placeholder="A small, valid Textarea",
         ),
         dbc.Textarea(

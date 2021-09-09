@@ -12,7 +12,7 @@ dropdown <- htmlDiv(
       )
     )
   ),
-  class_name = "mb-3",
+  className = "mb-3",
 )
 
 slider <- htmlDiv(
@@ -20,7 +20,7 @@ slider <- htmlDiv(
     dbcLabel("Slider", html_for = "slider"),
     dccSlider(id = "slider", min = 0, max = 10, step = 0.5, value = 3)
   ),
-  class_name = "mb-3"
+  className = "mb-3"
 )
 
 range_slider <- htmlDiv(
@@ -28,7 +28,7 @@ range_slider <- htmlDiv(
     dbcLabel("RangeSlider", html_for = "range-slider"),
     dccRangeSlider(id = "range-slider", min = 0, max = 10, value = list(3, 7))
   ),
-  class_name = "mb-3"
+  className = "mb-3"
 )
 
 form <- dbcForm(list(dropdown, slider, range_slider))

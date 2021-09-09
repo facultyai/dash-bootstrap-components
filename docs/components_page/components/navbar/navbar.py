@@ -9,12 +9,12 @@ search_bar = dbc.Row(
         dbc.Col(dbc.Input(type="search", placeholder="Search")),
         dbc.Col(
             dbc.Button(
-                "Search", color="primary", class_name="ms-2", n_clicks=0
+                "Search", color="primary", className="ms-2", n_clicks=0
             ),
             width="auto",
         ),
     ],
-    class_name="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
+    className="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
     align="center",
 )
 
@@ -26,10 +26,10 @@ navbar = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Navbar", class_name="ms-2")),
+                        dbc.Col(dbc.NavbarBrand("Navbar", className="ms-2")),
                     ],
                     align="center",
-                    class_name="g-0",
+                    className="g-0",
                 ),
                 href="https://plotly.com",
                 style={"textDecoration": "none"},

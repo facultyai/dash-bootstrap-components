@@ -2,18 +2,18 @@ using DashBootstrapComponents, DashHtmlComponents
 
 tab1_content = dbc_card(
     dbc_cardbody([
-        html_p("This is tab 1!", class_name = "card-text"),
+        html_p("This is tab 1!", className = "card-text"),
         dbc_button("Click here", color = "success"),
     ]),
-    class_name = "mt-3",
+    className = "mt-3",
 );
 
 tab2_content = dbc_card(
     dbc_cardbody([
-        html_p("This is tab 2!", class_name = "card-text"),
+        html_p("This is tab 2!", className = "card-text"),
         dbc_button("Don't click here", color = "danger"),
     ]),
-    class_name = "mt-3",
+    className = "mt-3",
 );
 
 

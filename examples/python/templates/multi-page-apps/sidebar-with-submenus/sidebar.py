@@ -45,11 +45,11 @@ submenu_1 = [
             [
                 dbc.Col("Menu 1"),
                 dbc.Col(
-                    html.I(class_name="fas fa-chevron-right me-3"),
+                    html.I(className="fas fa-chevron-right me-3"),
                     width="auto",
                 ),
             ],
-            class_name="my-1",
+            className="my-1",
         ),
         style={"cursor": "pointer"},
         id="submenu-1",
@@ -70,11 +70,11 @@ submenu_2 = [
             [
                 dbc.Col("Menu 2"),
                 dbc.Col(
-                    html.I(class_name="fas fa-chevron-right me-3"),
+                    html.I(className="fas fa-chevron-right me-3"),
                     width="auto",
                 ),
             ],
-            class_name="my-1",
+            className="my-1",
         ),
         style={"cursor": "pointer"},
         id="submenu-2",
@@ -91,10 +91,10 @@ submenu_2 = [
 
 sidebar = html.Div(
     [
-        html.H2("Sidebar", class_name="display-4"),
+        html.H2("Sidebar", className="display-4"),
         html.Hr(),
         html.P(
-            "A sidebar with collapsible navigation links", class_name="lead"
+            "A sidebar with collapsible navigation links", className="lead"
         ),
         dbc.Nav(submenu_1 + submenu_2, vertical=True),
     ],
@@ -129,7 +129,7 @@ for i in [1, 2]:
     )(toggle_collapse)
 
     app.callback(
-        Output(f"submenu-{i}", "class_name"),
+        Output(f"submenu-{i}", "className"),
         [Input(f"submenu-{i}-collapse", "is_open")],
     )(set_navitem_class)
 
@@ -147,7 +147,7 @@ def render_page_content(pathname):
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
-            html.H1("404: Not found", class_name="text-danger"),
+            html.H1("404: Not found", className="text-danger"),
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ]

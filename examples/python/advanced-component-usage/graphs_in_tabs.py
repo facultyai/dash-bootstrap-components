@@ -23,7 +23,7 @@ app.layout = dbc.Container(
             "Regenerate graphs",
             color="primary",
             id="button",
-            class_name="mb-3",
+            className="mb-3",
         ),
         dbc.Tabs(
             [
@@ -33,7 +33,7 @@ app.layout = dbc.Container(
             id="tabs",
             active_tab="scatter",
         ),
-        html.Div(id="tab-content", class_name="p-4"),
+        html.Div(id="tab-content", className="p-4"),
     ]
 )
 

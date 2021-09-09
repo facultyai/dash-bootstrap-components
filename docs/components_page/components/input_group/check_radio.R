@@ -8,7 +8,7 @@ input_groups <- htmlDiv(
         dbcInputGroupText(dbcRadioButton()),
         dbcInput()
       ),
-      class_name = "mb-3",
+      className = "mb-3",
     ),
     dbcInputGroup(
       list(

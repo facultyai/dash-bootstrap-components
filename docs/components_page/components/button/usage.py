@@ -4,7 +4,7 @@ from dash import Input, Output, html
 button = html.Div(
     [
         dbc.Button(
-            "Click me", id="example-button", class_name="me-2", n_clicks=0
+            "Click me", id="example-button", className="me-2", n_clicks=0
         ),
         html.Span(id="example-output", style={"verticalAlign": "middle"}),
     ]
