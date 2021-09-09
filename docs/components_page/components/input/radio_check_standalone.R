@@ -35,9 +35,9 @@ app$callback(
     input("standalone-radio", "value")
   ),
   function(checkbox_checked, switch_checked, radio_checked) {
-    check <- if (checkbox_checked == TRUE) "true" else "false"
-    switch <- if (switch_checked == TRUE) "true" else "false"
-    radio <- if (radio_checked == TRUE) "true" else "false"
+    check <- if (checkbox_checked) "True" else "False"
+    switch <- if (switch_checked) "True" else "False"
+    radio <- if (radio_checked) "True" else "False"
 
 
     template <- "Selections:  Checkbox: %s, Toggle Switch: %s, Radio Button: %s"
