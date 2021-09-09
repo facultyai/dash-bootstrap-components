@@ -75,9 +75,9 @@ Use the `input_checked_style`, `input_checked_class_name`, `label_checked_style`
 
 {{example:components/input/selected_styles.py:checklist}}
 
-## Standalone checkboxes and radio buttons
+## Standalone checkboxes, toggle switches and radio buttons
 
-If you need more granular control over checkboxes and radio buttons, you can also create standalone components. Bind callbacks to the `checked` keyword to react to changes in the input state. To attach a label, wrap the input and a `Label` with a `html.Div` and add the class `form-check`. You can use the label's `html_for` keyword to bind it to the checkbox or radio button.
+If you need more granular control over checkboxes and radio buttons, you can also create standalone components. Bind callbacks to the `value` keyword to react to changes in the input state. Bind the `label` to the checkbox, switch or radio button by specifying an `id`.
 
 {{example:components/input/radio_check_standalone.py:standalone_radio_check}}
 

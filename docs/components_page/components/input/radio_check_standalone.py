@@ -1,30 +1,26 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, html
 
 standalone_radio_check = html.Div(
     [
         html.Div(
             [
-                dbc.Checkbox(id="standalone-checkbox"),
-                dbc.Label(
-                    "This is a checkbox",
-                    html_for="standalone-checkbox",
-                    check=True,
+                dbc.Checkbox(
+                    id="standalone-checkbox",
+                    label="This is a checkbox",
+                    value=False,
                 ),
-            ],
-            class_name="form-check",
-        ),
-        html.Div(
-            [
-                dbc.RadioButton(id="standalone-radio"),
-                dbc.Label(
-                    "This is a radio button",
-                    html_for="standalone-radio",
-                    check=True,
+                dbc.Switch(
+                    id="standalone-switch",
+                    label="This is a toggle switch",
+                    value=False,
                 ),
-            ],
-            class_name="form-check",
+                dbc.RadioButton(
+                    id="standalone-radio",
+                    label="this is a radio button",
+                    value=False,
+                ),
+            ]
         ),
         html.P(id="standalone-radio-check-output"),
     ]
@@ -34,14 +30,10 @@ standalone_radio_check = html.Div(
 @app.callback(
     Output("standalone-radio-check-output", "children"),
     [
-        Input("standalone-checkbox", "checked"),
-        Input("standalone-radio", "checked"),
+        Input("standalone-checkbox", "value"),
+        Input("standalone-switch", "value"),
+        Input("standalone-radio", "value"),
     ],
 )
-def on_form_change(checkbox_checked, radio_checked):
-    if checkbox_checked and radio_checked:
-        return "Both checked."
-    elif checkbox_checked or radio_checked:
-        return "One checked."
-    else:
-        return "None checked."
+def on_form_change(checkbox_checked, switch_checked, radio_checked):
+    return f"Selections:  Checkbox: {checkbox_checked}, Toggle Switch: {switch_checked}, Radio Button: {radio_checked}"

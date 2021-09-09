@@ -55,6 +55,7 @@ export {default as RadioButton} from './components/input/RadioButton';
 export {default as Row} from './components/layout/Row';
 export {default as Select} from './components/input/Select';
 export {default as Spinner} from './components/spinner/Spinner';
+export {default as Switch} from './components/input/Switch';
 export {default as Tab} from './components/tabs/Tab';
 export {default as Tabs} from './components/tabs/Tabs';
 export {default as Table} from './components/table/Table';

@@ -10,7 +10,7 @@ import classNames from 'classnames';
  * Each checkbox is rendered as an input / label pair. `Checklist` must be
  * given an `id` to work properly.
  */
-const RadioButton = props => {
+const Switch = props => {
   const {
     value,
     disabled,
@@ -33,7 +33,7 @@ const RadioButton = props => {
 
   return (
     <div
-      className={classNames('form-check', class_name || className)}
+      className={classNames('form-check form-switch', class_name || className)}
       style={style}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -49,15 +49,14 @@ const RadioButton = props => {
         )}
         disabled={disabled}
         style={input_style}
-        type="radio"
-        onClick={() => {
+        type="checkbox"
+        onChange={() => {
           if (!disabled) {
             if (setProps) {
               setProps({value: !value});
             }
           }
         }}
-        onChange={() => {}}
       />
       <label
         id={label_id}
@@ -75,7 +74,7 @@ const RadioButton = props => {
   );
 };
 
-RadioButton.propTypes = {
+Switch.propTypes = {
   /**
    * The ID of this component, used to identify dash components in callbacks.
    * The ID needs to be unique across all of the components in an app.
@@ -168,7 +167,7 @@ RadioButton.propTypes = {
   value: PropTypes.bool,
 
   /**
-   * Disable the RadioButton.
+   * Disable the Switch.
    **/
   disabled: PropTypes.bool,
 
@@ -225,7 +224,7 @@ RadioButton.propTypes = {
   setProps: PropTypes.func
 };
 
-RadioButton.defaultProps = {
+Switch.defaultProps = {
   inputStyle: {},
   input_style: null,
   inputClassName: '',
@@ -240,4 +239,4 @@ RadioButton.defaultProps = {
   disabled: false
 };
 
-export default RadioButton;
+export default Switch;

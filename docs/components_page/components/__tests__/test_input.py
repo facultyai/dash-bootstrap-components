@@ -68,3 +68,43 @@ def check_input_radio_check_callbacks(runner):
         == "Radio button 2, 2 checklist items and 2 switches selected.",
         timeout=10,
     )
+
+
+# --------------------------------
+
+
+def test_r_input_radio_check_standalone(dashr):
+    r_app = load_r_app(
+        (HERE.parent / "input" / "radio_check_standalone.R"),
+        "standalone_radio_check",
+    )
+    dashr.start_server(r_app)
+    check_input_radio_check_standalone_callbacks(dashr)
+
+
+def test_jl_input_radio_check_standalone(dashjl):
+    jl_app = load_jl_app(
+        (HERE.parent / "input" / "radio_check_standalone.jl"),
+        "standalone_radio_check",
+    )
+    dashjl.start_server(jl_app)
+    check_input_radio_check_standalone_callbacks(dashjl)
+
+
+def check_input_radio_check_standalone_callbacks(runner):
+
+    wait.until(
+        lambda: runner.find_element("#standalone-radio-check-output").text
+        == "Radio button 1, 1 checklist item and 1 switch selected.",
+        timeout=10,
+    )
+
+    runner.find_element_by_id("standalone-checkbox").click()
+    runner.find_element_by_id("standalone-switch").click()
+    runner.find_element_by_id("standalone-radio").click()
+
+    wait.until(
+        lambda: runner.find_element("#radioitems-checklist-output").text
+        == "Radio button 2, 2 checklist items and 2 switches selected.",
+        timeout=10,
+    )
