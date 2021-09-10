@@ -9,7 +9,7 @@ collapse = html.Div(
         html.Div(
             [
                 dbc.Button(
-                    "Open collapse", id="collapse-button", class_name="mb-2"
+                    "Open collapse", id="collapse-button", className="mb-2"
                 ),
                 dbc.Collapse(
                     dbc.Card(
@@ -20,5 +20,5 @@ collapse = html.Div(
             ]
         ),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )

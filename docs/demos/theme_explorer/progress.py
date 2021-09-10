@@ -7,8 +7,8 @@ progress = html.Div(
     [
         make_subheading("Progress", "progress"),
         dbc.Progress("25%", value=25),
-        dbc.Progress(value=50, striped=True, class_name="my-2"),
+        dbc.Progress(value=50, striped=True, className="my-2"),
         dbc.Progress(value=75, color="success"),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )

@@ -19,5 +19,5 @@ popover = html.Div(
             target="popover-target",
         ),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )

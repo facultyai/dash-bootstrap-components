@@ -18,7 +18,7 @@ row = html_div([
         ),
         dbc_col(
             html_div("The second of three columns"),
-            width = Dict("size" => 3, "order" => 12),
+            width = Dict("size" => 3, "order" => 5),
         ),
     ]),
 ]);

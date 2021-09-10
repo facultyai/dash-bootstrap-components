@@ -35,7 +35,7 @@ def parse(app, markdown_path, extra_env_vars=None):
 
     content = [
         html.H1(meta["title"][0]),
-        html.Div(dcc.Markdown(meta["lead"][0]), class_name="lead"),
+        html.Div(dcc.Markdown(meta["lead"][0]), className="lead"),
     ]
 
     raw = HEADER_PATTERN.sub("", raw).strip()
@@ -96,7 +96,7 @@ def _parse_code_example(data):
     source = (HERE / source_path).read_text().strip()
     return html.Div(
         dcc.Markdown(f"```{language}\n{source}\n```"),
-        class_name="source-container",
+        className="source-container",
     )
 
 
@@ -139,4 +139,4 @@ def component_reference(component_name):
     docs = docs.replace("\n-", "\n")
 
     return_div.append(dcc.Markdown(docs))
-    return html.Div(return_div, class_name="reference")
+    return html.Div(return_div, className="reference")
