@@ -17,7 +17,7 @@ standalone_radio_check = html.Div(
                 ),
                 dbc.RadioButton(
                     id="standalone-radio",
-                    label="this is a radio button",
+                    label="This is a radio button",
                     value=False,
                 ),
             ]

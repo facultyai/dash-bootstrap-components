@@ -8,17 +8,17 @@ standalone_radio_check <- htmlDiv(
         dbcCheckbox(
           id = "standalone-checkbox",
           label = "This is a checkbox",
-          value = TRUE
+          value = FALSE
         ),
         dbcSwitch(
           id = "standalone-switch",
-          label = "This is toggle switch",
-          value = TRUE
+          label = "This is a toggle switch",
+          value = FALSE
         ),
         dbcRadioButton(
           id = "standalone-radio",
           label = "This is a radio button",
-          value = TRUE
+          value = FALSE
         )
       )
     ),

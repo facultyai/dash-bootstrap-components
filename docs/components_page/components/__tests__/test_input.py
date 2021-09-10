@@ -93,18 +93,32 @@ def test_jl_input_radio_check_standalone(dashjl):
 
 def check_input_radio_check_standalone_callbacks(runner):
 
+    outcome = (
+        "Selections: Checkbox: {0}, Toggle Switch: {0}, Radio Button: {0}"
+    )
+
     wait.until(
         lambda: runner.find_element("#standalone-radio-check-output").text
-        == "Selections: Checkbox: False, Toggle Switch: False, Radio Button: False",
+        == outcome.format(False),
         timeout=10,
     )
 
-    runner.find_element_by_id("standalone-checkbox").click()
-    runner.find_element_by_id("standalone-switch").click()
-    runner.find_element_by_id("standalone-radio").click()
+    runner.find_element("#standalone-checkbox").click()
+    runner.find_element("#standalone-switch").click()
+    runner.find_element("#standalone-radio").click()
 
     wait.until(
         lambda: runner.find_element("#standalone-radio-check-output").text
-        == "Selections: Checkbox: True, Toggle Switch: True, Radio Button: True",
+        == outcome.format(True),
+        timeout=10,
+    )
+
+    runner.find_element("#standalone-checkbox").click()
+    runner.find_element("#standalone-switch").click()
+    runner.find_element("#standalone-radio").click()
+
+    wait.until(
+        lambda: runner.find_element("#standalone-radio-check-output").text
+        == outcome.format(False),
         timeout=10,
     )
