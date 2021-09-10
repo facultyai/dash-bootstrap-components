@@ -42,7 +42,6 @@ const Tabs = props => {
   let {
     children,
     id,
-    card,
     className,
     class_name,
     style,

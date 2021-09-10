@@ -17,7 +17,7 @@ You can also use the `active_tab` prop of `Tabs` in a callback to switch between
 
 ## Tabs in cards
 
-Use `card=True` when placing your `Tabs` inside a `CardHeader`. You must use a callback to insert the tab content into the card body rather than relying on the tabs as children approach outlined above.
+You can also place your `Tabs` inside a `CardHeader`. You must use a callback to insert the tab content into the card body rather than relying on the tabs as children approach outlined above.
 
 {{example:components/tabs/card.py:card}}
 
