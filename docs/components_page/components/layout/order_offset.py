@@ -21,7 +21,7 @@ row = html.Div(
                 ),
                 dbc.Col(
                     html.Div("The second of three columns"),
-                    width={"size": 3, "order": 12},
+                    width={"size": 3, "order": 5},
                 ),
             ]
         ),

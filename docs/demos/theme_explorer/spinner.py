@@ -17,7 +17,7 @@ spinner = html.Div(
                     "danger",
                 ]
             ],
-            class_name="mb-2",
+            className="mb-2",
         ),
         html.Div(
             [
@@ -30,8 +30,8 @@ spinner = html.Div(
                     "danger",
                 ]
             ],
-            class_name="mb-2",
+            className="mb-2",
         ),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )

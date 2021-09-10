@@ -15,11 +15,9 @@ cards = html.Div(
                             [
                                 html.H5(
                                     "This card has a title",
-                                    class_name="card-title",
+                                    className="card-title",
                                 ),
-                                html.P(
-                                    "And some text", class_name="card-text"
-                                ),
+                                html.P("And some text", className="card-text"),
                             ]
                         ),
                     ]
@@ -30,11 +28,11 @@ cards = html.Div(
                             [
                                 html.H5(
                                     "This card has a title",
-                                    class_name="card-title",
+                                    className="card-title",
                                 ),
                                 html.P(
                                     "and some text, but no header",
-                                    class_name="card-text",
+                                    className="card-text",
                                 ),
                             ]
                         )
@@ -48,11 +46,11 @@ cards = html.Div(
                             [
                                 html.H5(
                                     "This card has a title",
-                                    class_name="card-title",
+                                    className="card-title",
                                 ),
                                 html.P(
                                     "and some text, and a footer!",
-                                    class_name="card-text",
+                                    className="card-text",
                                 ),
                             ]
                         ),
@@ -64,5 +62,5 @@ cards = html.Div(
             ]
         ),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )
