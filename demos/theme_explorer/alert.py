@@ -27,5 +27,5 @@ alerts2 = dbc.Col(
 
 alerts = html.Div(
     [make_subheading("Alert", "alert"), dbc.Row([alerts1, alerts2])],
-    class_name="mb-4",
+    className="mb-4",
 )

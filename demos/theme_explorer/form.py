@@ -21,7 +21,7 @@ form = html.Div(
                                 html.A(
                                     "Click here.",
                                     href="#",
-                                    class_name="text-muted",
+                                    className="text-muted",
                                     style={"textDecoration": "underline"},
                                 ),
                             ]
@@ -41,7 +41,7 @@ form = html.Div(
                                 html.A(
                                     "Click here.",
                                     href="#",
-                                    class_name="text-muted",
+                                    className="text-muted",
                                     style={"textDecoration": "underline"},
                                 ),
                             ]
@@ -51,5 +51,5 @@ form = html.Div(
             ]
         ),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )

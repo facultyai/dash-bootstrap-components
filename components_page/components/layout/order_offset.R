@@ -21,7 +21,7 @@ row <- htmlDiv(
         ),
         dbcCol(
           htmlDiv("The second of three columns"),
-          width = list(size = 3, order = 12)
+          width = list(size = 3, order = 5)
         )
       )
     )

@@ -74,7 +74,7 @@ _dash-bootstrap-components_ is a component library for use with Plotly Dash. If 
 
 To use _dash-bootstrap-components_ you must do two things:
 
-- Link a Bootstrap v4 compatible stylesheet
+- Link a Bootstrap v5 compatible stylesheet
 - Incorporate _dash-bootstrap-components_ into the layout of your app.
 
 ### Linking a stylesheet

@@ -8,16 +8,16 @@ buttons1 = dbc.Col(
         make_subheading("Button", "button"),
         html.Div(
             [
-                dbc.Button("Primary", color="primary", class_name="me-1 mt-1"),
+                dbc.Button("Primary", color="primary", className="me-1 mt-1"),
                 dbc.Button(
-                    "Secondary", color="secondary", class_name="me-1 mt-1"
+                    "Secondary", color="secondary", className="me-1 mt-1"
                 ),
-                dbc.Button("Success", color="success", class_name="me-1 mt-1"),
-                dbc.Button("Warning", color="warning", class_name="me-1 mt-1"),
-                dbc.Button("Danger", color="danger", class_name="me-1 mt-1"),
-                dbc.Button("Info", color="info", class_name="me-1 mt-1"),
+                dbc.Button("Success", color="success", className="me-1 mt-1"),
+                dbc.Button("Warning", color="warning", className="me-1 mt-1"),
+                dbc.Button("Danger", color="danger", className="me-1 mt-1"),
+                dbc.Button("Info", color="info", className="me-1 mt-1"),
             ],
-            class_name="mb-2",
+            className="mb-2",
         ),
         html.Div(
             [
@@ -25,63 +25,63 @@ buttons1 = dbc.Col(
                     "Primary",
                     outline=True,
                     color="primary",
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Secondary",
                     outline=True,
                     color="secondary",
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Success",
                     outline=True,
                     color="success",
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Warning",
                     outline=True,
                     color="warning",
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Danger",
                     outline=True,
                     color="danger",
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
-                    "Info", outline=True, color="info", class_name="me-1 mt-1"
+                    "Info", outline=True, color="info", className="me-1 mt-1"
                 ),
             ],
-            class_name="mb-2",
+            className="mb-2",
         ),
         html.Div(
             [
-                dbc.Button("Regular", color="primary", class_name="me-1 mt-1"),
+                dbc.Button("Regular", color="primary", className="me-1 mt-1"),
                 dbc.Button(
                     "Active",
                     color="primary",
                     active=True,
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Disabled",
                     color="primary",
                     disabled=True,
-                    class_name="me-1 mt-1",
+                    className="me-1 mt-1",
                 ),
             ],
-            class_name="mb-2",
+            className="mb-2",
         ),
         html.Div(
             [
-                dbc.Button("Large button", size="lg", class_name="me-1 mt-1"),
-                dbc.Button("Regular button", class_name="me-1 mt-1"),
-                dbc.Button("Small button", size="sm", class_name="me-1 mt-1"),
+                dbc.Button("Large button", size="lg", className="me-1 mt-1"),
+                dbc.Button("Regular button", className="me-1 mt-1"),
+                dbc.Button("Small button", size="sm", className="me-1 mt-1"),
             ],
-            class_name="mb-2",
+            className="mb-2",
         ),
     ],
     lg=6,
@@ -99,7 +99,7 @@ buttons2 = dbc.Col(
                     dbc.Button("Danger", color="danger"),
                 ]
             ),
-            class_name="mb-2",
+            className="mb-2",
         ),
         html.Div(
             dbc.ButtonGroup(
@@ -117,11 +117,11 @@ buttons2 = dbc.Col(
                 ],
                 vertical=True,
             ),
-            class_name="mb-2",
+            className="mb-2",
         ),
     ],
     lg=6,
     xs=12,
 )
 
-buttons = dbc.Row([buttons1, buttons2], class_name="mb-4")
+buttons = dbc.Row([buttons1, buttons2], className="mb-4")

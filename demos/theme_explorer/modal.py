@@ -23,5 +23,5 @@ modal = html.Div(
             ]
         ),
     ],
-    class_name="mb-4",
+    className="mb-4",
 )
