@@ -82,7 +82,7 @@ You can also control horizontal alignment of columns using the `justify` keyword
 
 Sometimes you may wish to use Bootstrap's grid system for specifying the layout of your app, but you don't want the changes Bootstrap makes to the typography, or to load all the additional CSS classes that Bootstrap specifies. In such a situation, you can link only the CSS required for the grid system using the `themes` module.
 
-{{code-example:components/layout/grid_only.py:python}}
+{{code-example:components/layout/grid_only.py}}
 
 Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/4.2/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plot.ly/external-resources) for details.
 
