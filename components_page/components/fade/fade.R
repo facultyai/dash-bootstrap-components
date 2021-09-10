@@ -5,14 +5,14 @@ fade <- htmlDiv(
   list(
     dbcButton("Toggle fade",
       id = "fade-button", n_clicks = 0,
-      class_name = "mb-3"
+      className = "mb-3"
     ),
     dbcFade(
       dbcCard(
         dbcCardBody(
           htmlP(
             "This content fades in and out",
-            class_name = "card-text"
+            className = "card-text"
           )
         )
       ),

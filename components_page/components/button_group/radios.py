@@ -5,10 +5,10 @@ button_group = html.Div(
     [
         dbc.RadioItems(
             id="radios",
-            class_name="btn-group",
-            input_class_name="btn-check",
-            label_class_name="btn btn-outline-primary",
-            label_checked_class_name="active",
+            className="btn-group",
+            inputClassName="btn-check",
+            labelClassName="btn btn-outline-primary",
+            labelCheckedClassName="active",
             options=[
                 {"label": "Option 1", "value": 1},
                 {"label": "Option 2", "value": 2},
@@ -18,7 +18,7 @@ button_group = html.Div(
         ),
         html.Div(id="output"),
     ],
-    class_name="radio-group",
+    className="radio-group",
 )
 
 

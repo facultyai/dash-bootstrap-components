@@ -22,7 +22,7 @@ dropdown = html.Div(
             ],
             label="Menu",
         ),
-        html.P(id="item-clicks", class_name="mt-3"),
+        html.P(id="item-clicks", className="mt-3"),
     ]
 )
 

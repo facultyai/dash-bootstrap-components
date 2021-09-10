@@ -6,17 +6,17 @@ cards <- dbcCardGroup(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("Card 1", class_name = "card-title"),
+          htmlH5("Card 1", className = "card-title"),
           htmlP(
             paste(
               "This card has some text content, which is a little",
               "bit longer than the second card."
             ),
-            class_name = "card-text",
+            className = "card-text",
           ),
           dbcButton(
             "Click here",
-            color = "success", class_name = "mt-auto"
+            color = "success", className = "mt-auto"
           )
         )
       )
@@ -24,14 +24,14 @@ cards <- dbcCardGroup(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("Card 2", class_name = "card-title"),
+          htmlH5("Card 2", className = "card-title"),
           htmlP(
             "This card has some text content.",
-            class_name = "card-text",
+            className = "card-text",
           ),
           dbcButton(
             "Click here",
-            color = "warning", class_name = "mt-auto"
+            color = "warning", className = "mt-auto"
           )
         )
       )
@@ -39,7 +39,7 @@ cards <- dbcCardGroup(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("Card 3", class_name = "card-title"),
+          htmlH5("Card 3", className = "card-title"),
           htmlP(
             paste(
               "This card has some text content, which is longer",
@@ -47,11 +47,11 @@ cards <- dbcCardGroup(
               "demonstrate the equal height property of cards in a",
               "card group."
             ),
-            class_name = "card-text",
+            className = "card-text",
           ),
           dbcButton(
             "Click here",
-            color = "danger", class_name = "mt-auto"
+            color = "danger", className = "mt-auto"
           )
         )
       )

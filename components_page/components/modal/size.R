@@ -3,8 +3,8 @@ library(dashHtmlComponents)
 
 modal <- htmlDiv(
   list(
-    dbcButton("Small modal", id = "open-sm", n_clicks = 0, class_name = "me-1"),
-    dbcButton("Large modal", id = "open-lg", n_clicks = 0, class_name = "me-1"),
+    dbcButton("Small modal", id = "open-sm", n_clicks = 0, className = "me-1"),
+    dbcButton("Large modal", id = "open-lg", n_clicks = 0, className = "me-1"),
     dbcButton("Extra large modal", n_clicks = 0, id = "open-xl"),
     dbcModal(
       list(

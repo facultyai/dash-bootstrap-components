@@ -24,7 +24,7 @@ accordion = html.Div(
             id="accordion",
             active_item="item-1",
         ),
-        html.Div(id="accordion-contents", class_name="mt-3"),
+        html.Div(id="accordion-contents", className="mt-3"),
     ]
 )
 

@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 alert <- htmlDiv(
   list(
     dbcButton("Toggle",
-      id = "alert-toggle-auto", class_name = "me-1",
+      id = "alert-toggle-auto", className = "me-1",
       n_clicks = 0
     ),
     htmlHr(),

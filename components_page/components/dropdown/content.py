@@ -12,7 +12,7 @@ dropdown = dbc.DropdownMenu(
         dbc.DropdownMenuItem(divider=True),
         html.P(
             "You can have other content here like text if you like.",
-            class_name="text-muted px-4 mt-4",
+            className="text-muted px-4 mt-4",
         ),
     ],
     label="Menu",

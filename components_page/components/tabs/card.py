@@ -13,7 +13,7 @@ card = dbc.Card(
                 active_tab="tab-1",
             )
         ),
-        dbc.CardBody(html.P(id="card-content", class_name="card-text")),
+        dbc.CardBody(html.P(id="card-content", className="card-text")),
     ]
 )
 

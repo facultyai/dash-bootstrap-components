@@ -4,21 +4,21 @@ from dash import html
 tab1_content = dbc.Card(
     dbc.CardBody(
         [
-            html.P("This is tab 1!", class_name="card-text"),
+            html.P("This is tab 1!", className="card-text"),
             dbc.Button("Click here", color="success"),
         ]
     ),
-    class_name="mt-3",
+    className="mt-3",
 )
 
 tab2_content = dbc.Card(
     dbc.CardBody(
         [
-            html.P("This is tab 2!", class_name="card-text"),
+            html.P("This is tab 2!", className="card-text"),
             dbc.Button("Don't click here", color="danger"),
         ]
     ),
-    class_name="mt-3",
+    className="mt-3",
 )
 
 

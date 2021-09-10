@@ -12,7 +12,7 @@ dropdown = html.Div(
             ],
         ),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 slider = html.Div(
@@ -20,7 +20,7 @@ slider = html.Div(
         dbc.Label("Slider", html_for="slider"),
         dcc.Slider(id="slider", min=0, max=10, step=0.5, value=3),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 range_slider = html.Div(
@@ -28,7 +28,7 @@ range_slider = html.Div(
         dbc.Label("RangeSlider", html_for="range-slider"),
         dcc.RangeSlider(id="range-slider", min=0, max=10, value=[3, 7]),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 form = dbc.Form([dropdown, slider, range_slider])

@@ -7,13 +7,13 @@ list_group = dbc.ListGroup(
             [
                 html.Div(
                     [
-                        html.H5("This item has a heading", class_name="mb-1"),
-                        html.Small("Yay!", class_name="text-success"),
+                        html.H5("This item has a heading", className="mb-1"),
+                        html.Small("Yay!", className="text-success"),
                     ],
-                    class_name="d-flex w-100 justify-content-between",
+                    className="d-flex w-100 justify-content-between",
                 ),
-                html.P("And some text underneath", class_name="mb-1"),
-                html.Small("Plus some small print.", class_name="text-muted"),
+                html.P("And some text underneath", className="mb-1"),
+                html.Small("Plus some small print.", className="text-muted"),
             ]
         ),
         dbc.ListGroupItem(
@@ -21,15 +21,15 @@ list_group = dbc.ListGroup(
                 html.Div(
                     [
                         html.H5(
-                            "This item also has a heading", class_name="mb-1"
+                            "This item also has a heading", className="mb-1"
                         ),
-                        html.Small("Ok!", class_name="text-warning"),
+                        html.Small("Ok!", className="text-warning"),
                     ],
-                    class_name="d-flex w-100 justify-content-between",
+                    className="d-flex w-100 justify-content-between",
                 ),
-                html.P("And some more text underneath too", class_name="mb-1"),
+                html.P("And some more text underneath too", className="mb-1"),
                 html.Small(
-                    "Plus even more small print.", class_name="text-muted"
+                    "Plus even more small print.", className="text-muted"
                 ),
             ]
         ),

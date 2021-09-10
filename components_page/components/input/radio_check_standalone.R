@@ -12,7 +12,7 @@ standalone_radio_check <- htmlDiv(
           check = TRUE
         )
       ),
-      class_name = "form-check"
+      className = "form-check"
     ),
     htmlDiv(
       list(
@@ -23,7 +23,7 @@ standalone_radio_check <- htmlDiv(
           check = TRUE
         )
       ),
-      class_name = "form-check"
+      className = "form-check"
     ),
     htmlP(id = "standalone-radio-check-output")
   )

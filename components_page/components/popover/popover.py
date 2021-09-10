@@ -12,7 +12,7 @@ popovers = html.Div(
             "Click",
             id="click-target",
             color="danger",
-            class_name="me-1",
+            className="me-1",
             n_clicks=0,
         ),
         dbc.Popover(
@@ -25,7 +25,7 @@ popovers = html.Div(
             "Focus",
             id="focus-target",
             color="danger",
-            class_name="me-1",
+            className="me-1",
             n_clicks=0,
         ),
         dbc.Popover(
@@ -38,7 +38,7 @@ popovers = html.Div(
             "Hover",
             id="hover-target",
             color="danger",
-            class_name="me-1",
+            className="me-1",
             n_clicks=0,
         ),
         dbc.Popover(

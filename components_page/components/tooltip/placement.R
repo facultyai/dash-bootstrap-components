@@ -7,7 +7,7 @@ make_button <- function(placement) {
       sprintf("Tooltip on %s", placement),
       id = sprintf("tooltip-target-%s", placement),
       n_clicks = 0,
-      class_name = "mx-2"
+      className = "mx-2"
     )
   )
 }

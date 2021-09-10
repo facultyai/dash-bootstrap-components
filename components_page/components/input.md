@@ -71,7 +71,7 @@ Set `inline=True` to make the radio items or checklists fit next to each other o
 
 ## Checked item styles
 
-Use the `input_checked_style`, `input_checked_class_name`, `label_checked_style` and `label_checked_class_name` arguments to apply different styles to the labels of checked items.
+Use the `input_checked_style`, `inputCheckedClassName`, `label_checked_style` and `labelCheckedClassName` arguments to apply different styles to the labels of checked items.
 
 {{example:components/input/selected_styles.py:checklist}}
 

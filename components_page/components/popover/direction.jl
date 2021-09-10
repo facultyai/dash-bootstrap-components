@@ -15,7 +15,7 @@ function make_button(placement)
     return dbc_button(
         "Popover on $placement",
         id = "popover-$placement-target",
-        class_name = "mx-2",
+        className = "mx-2",
         n_clicks = 0,
     )
 end;

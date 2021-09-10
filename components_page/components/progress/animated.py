@@ -9,7 +9,7 @@ progress = html.Div(
         dbc.Button(
             "Toggle animation",
             id="animation-toggle",
-            class_name="mt-3",
+            className="mt-3",
             n_clicks=0,
         ),
     ]

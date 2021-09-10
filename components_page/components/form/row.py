@@ -10,7 +10,7 @@ email_input = dbc.Row(
             width=10,
         ),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 password_input = dbc.Row(
@@ -25,7 +25,7 @@ password_input = dbc.Row(
             width=10,
         ),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 radios_input = dbc.Row(
@@ -47,7 +47,7 @@ radios_input = dbc.Row(
             width=10,
         ),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 form = dbc.Form([email_input, password_input, radios_input])

@@ -3,41 +3,8 @@ from pathlib import Path
 
 import dash
 import dash_bootstrap_components as dbc
-from dash import dcc, html
+from dash import html
 from jinja2 import Environment, FileSystemLoader
-
-
-# TODO: delete once Dash 2.0 is released
-def class_name_shim(fn):
-    def new_init(self, *args, **kwargs):
-        kwargs["className"] = kwargs.get("class_name", kwargs.get("className"))
-        return fn(
-            self,
-            *args,
-            **{k: v for k, v in kwargs.items() if k != "class_name"},
-        )
-
-    return new_init
-
-
-for component in [
-    dcc.Markdown,
-    html.A,
-    html.Blockquote,
-    html.Div,
-    html.H1,
-    html.H2,
-    html.H3,
-    html.H4,
-    html.H5,
-    html.H6,
-    html.Hr,
-    html.I,
-    html.P,
-    html.Small,
-]:
-    component.__init__ = class_name_shim(component.__init__)
-
 
 from .components.table.simple import table_body, table_header  # noqa
 from .components.tabs.simple import tab1_content, tab2_content  # noqa
@@ -195,11 +162,11 @@ def register_apps():
 
         if slug == "layout":
             app.layout = html.Div(
-                parse(app, **kwargs), class_name="layout-demo"
+                parse(app, **kwargs), className="layout-demo"
             )
         elif slug == "button_group":
             app.layout = html.Div(
-                parse(app, **kwargs), class_name="button-group-demo"
+                parse(app, **kwargs), className="button-group-demo"
             )
         else:
             app.layout = parse(app, **kwargs)

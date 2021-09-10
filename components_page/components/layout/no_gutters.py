@@ -7,5 +7,5 @@ row = dbc.Row(
         dbc.Col(html.Div("One of three columns")),
         dbc.Col(html.Div("One of three columns")),
     ],
-    class_name="g-0",
+    className="g-0",
 )

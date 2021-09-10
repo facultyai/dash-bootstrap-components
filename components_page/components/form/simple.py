@@ -10,7 +10,7 @@ email_input = html.Div(
             color="secondary",
         ),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 password_input = html.Div(
@@ -25,7 +25,7 @@ password_input = html.Div(
             "A password stops mean people taking your stuff", color="secondary"
         ),
     ],
-    class_name="mb-3",
+    className="mb-3",
 )
 
 form = dbc.Form([email_input, password_input])

@@ -12,7 +12,7 @@ dropdown <- dbcDropdownMenu(
     dbcDropdownMenuItem(divider = TRUE),
     htmlP(
       "You can have other content here like text if you like.",
-      class_name = "text-muted px-4 mt-4"
+      className = "text-muted px-4 mt-4"
     )
   ),
   label = "Menu"

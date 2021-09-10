@@ -16,7 +16,7 @@ placement_selector = html.Div(
             inline=True,
         ),
     ],
-    class_name="mb-2",
+    className="mb-2",
 )
 
 offcanvas = html.Div(

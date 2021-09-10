@@ -22,7 +22,7 @@ dropdown <- htmlDiv(
       ),
       label = "Menu"
     ),
-    htmlP(id = "item-clicks", class_name = "mt-3")
+    htmlP(id = "item-clicks", className = "mt-3")
   )
 )
 

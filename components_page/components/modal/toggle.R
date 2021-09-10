@@ -9,7 +9,7 @@ modal_1 <- dbcModal(
       dbcButton(
         "Open Modal 2",
         id = "open-toggle-modal-2",
-        class_name = "ms-auto",
+        className = "ms-auto",
         n_clicks = 0
       )
     )
@@ -26,7 +26,7 @@ modal_2 <- dbcModal(
       dbcButton(
         "Back to Modal 1",
         id = "open-toggle-modal-1",
-        class_name = "ms-auto",
+        className = "ms-auto",
         n_clicks = 0
       )
     )
