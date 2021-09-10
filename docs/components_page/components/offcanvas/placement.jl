@@ -15,7 +15,7 @@ placement_selector = html_div(
             inline = true,
         ),
     ],
-    class_name = "mb-2",
+    className = "mb-2",
 )
 
 offcanvas = html_div([

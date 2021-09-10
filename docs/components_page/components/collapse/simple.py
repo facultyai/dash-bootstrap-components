@@ -6,7 +6,7 @@ collapse = html.Div(
         dbc.Button(
             "Open collapse",
             id="collapse-button",
-            class_name="mb-3",
+            className="mb-3",
             color="primary",
             n_clicks=0,
         ),

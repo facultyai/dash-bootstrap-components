@@ -12,7 +12,7 @@ modal <- htmlDiv(
   list(
     dbcButton(
       "Scrolling modal",
-      id = "open-scroll", n_clicks = 0, class_name = "me-1"
+      id = "open-scroll", n_clicks = 0, className = "me-1"
     ),
     dbcButton("Modal with scrollable body",
       id = "open-body-scroll",
@@ -25,7 +25,7 @@ modal <- htmlDiv(
         dbcModalFooter(
           dbcButton("Close",
             id = "close-scroll", n_clicks = 0,
-            class_name = "ms-auto"
+            className = "ms-auto"
           )
         )
       ),
@@ -40,7 +40,7 @@ modal <- htmlDiv(
           dbcButton(
             "Close",
             id = "close-body-scroll", n_clicks = 0,
-            class_name = "ms-auto"
+            className = "ms-auto"
           )
         )
       ),

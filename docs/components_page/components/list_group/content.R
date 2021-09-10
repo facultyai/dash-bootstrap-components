@@ -6,13 +6,13 @@ list_group <- dbcListGroup(
       list(
         htmlDiv(
           list(
-            htmlH5("This item has a heading", class_name = "mb-1"),
-            htmlSmall("Yay!", class_name = "text-success")
+            htmlH5("This item has a heading", className = "mb-1"),
+            htmlSmall("Yay!", className = "text-success")
           ),
-          class_name = "d-flex w-100 justify-content-between"
+          className = "d-flex w-100 justify-content-between"
         ),
-        htmlP("And some text underneath", class_name = "mb-1"),
-        htmlSmall("Plus some small print.", class_name = "text-muted")
+        htmlP("And some text underneath", className = "mb-1"),
+        htmlSmall("Plus some small print.", className = "text-muted")
       )
     ),
     dbcListGroupItem(
@@ -21,16 +21,16 @@ list_group <- dbcListGroup(
           list(
             htmlH5(
               "This item also has a heading",
-              class_name = "mb-1"
+              className = "mb-1"
             ),
-            htmlSmall("Ok!", class_name = "text-warning")
+            htmlSmall("Ok!", className = "text-warning")
           ),
-          class_name = "d-flex w-100 justify-content-between"
+          className = "d-flex w-100 justify-content-between"
         ),
-        htmlP("And some more text underneath too", class_name = "mb-1"),
+        htmlP("And some more text underneath too", className = "mb-1"),
         htmlSmall(
           "Plus even more small print.",
-          class_name = "text-muted"
+          className = "text-muted"
         )
       )
     )

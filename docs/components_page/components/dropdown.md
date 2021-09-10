@@ -25,7 +25,7 @@ Set `menu_variant="dark"` to change the dropdown menu to a dark colour scheme.
 
 ## Styling the toggle
 
-You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggle_class_name` arguments.
+You can use the `color` prop of `DropdownMenu` to set the color to one of the Bootstrap contextual colors. If you want to further customise the style you can use the `toggle_style` and `toggleClassName` arguments.
 
 {{example:components/dropdown/style.py:dropdowns}}
 

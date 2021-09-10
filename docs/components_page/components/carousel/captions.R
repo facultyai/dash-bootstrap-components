@@ -22,7 +22,3 @@ carousel <- dbcCarousel(
     )
   )
 )
-
-
-
-

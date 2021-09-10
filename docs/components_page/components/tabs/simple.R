@@ -4,21 +4,21 @@ library(dashHtmlComponents)
 tab1_content <- dbcCard(
   dbcCardBody(
     list(
-      htmlP("This is tab 1!", class_name = "card-text"),
+      htmlP("This is tab 1!", className = "card-text"),
       dbcButton("Click here", color = "success")
     )
   ),
-  class_name = "mt-3"
+  className = "mt-3"
 )
 
 tab2_content <- dbcCard(
   dbcCardBody(
     list(
-      htmlP("This is tab 2!", class_name = "card-text"),
+      htmlP("This is tab 2!", className = "card-text"),
       dbcButton("Don't click here", color = "danger")
     )
   ),
-  class_name = "mt-3",
+  className = "mt-3",
 )
 
 

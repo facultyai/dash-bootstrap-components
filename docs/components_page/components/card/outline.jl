@@ -3,8 +3,8 @@ using DashBootstrapComponents, DashHtmlComponents
 card_content = [
     dbc_cardheader("Card header"),
     dbc_cardbody([
-        html_h5("Card title", class_name = "card-title"),
-        html_p("This is some card content that we'll reuse", class_name = "card-text"),
+        html_h5("Card title", className = "card-title"),
+        html_p("This is some card content that we'll reuse", className = "card-text"),
     ]),
 ];
 
@@ -14,7 +14,7 @@ row_1 = dbc_row(
         dbc_col(dbc_card(card_content, color = "secondary", outline = true)),
         dbc_col(dbc_card(card_content, color = "info", outline = true)),
     ],
-    class_name = "mb-4",
+    className = "mb-4",
 );
 
 row_2 = dbc_row(
@@ -23,7 +23,7 @@ row_2 = dbc_row(
         dbc_col(dbc_card(card_content, color = "warning", outline = true)),
         dbc_col(dbc_card(card_content, color = "danger", outline = true)),
     ],
-    class_name = "mb-4",
+    className = "mb-4",
 );
 
 row_3 = dbc_row([

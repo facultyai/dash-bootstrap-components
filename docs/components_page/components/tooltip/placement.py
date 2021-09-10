@@ -6,7 +6,7 @@ def make_button(placement):
     return dbc.Button(
         f"Tooltip on {placement}",
         id=f"tooltip-target-{placement}",
-        class_name="mx-2",
+        className="mx-2",
         n_clicks=0,
     )
 

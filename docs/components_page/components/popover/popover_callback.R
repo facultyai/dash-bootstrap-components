@@ -5,7 +5,7 @@ popover <- htmlDiv(
   list(
     dbcButton("Toggle",
       id = "toggle", n_clicks = 0,
-      color = "success", class_name = "me-4"
+      color = "success", className = "me-4"
     ),
     dbcButton("Target", id = "target", n_clicks = 0, color = "danger"),
     dbcPopover(

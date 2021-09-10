@@ -14,7 +14,7 @@ dropdown = html_div([
         ],
         label = "Menu",
     ),
-    html_p(id = "item-clicks", class_name = "mt-3"),
+    html_p(id = "item-clicks", className = "mt-3"),
 ]);
 
 callback!(app, Output("item-clicks", "children"), Input("dropdown-button", "n_clicks")) do n

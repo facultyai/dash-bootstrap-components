@@ -6,34 +6,34 @@ cards = html.Div(
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.H5("75% width card", class_name="card-title"),
+                    html.H5("75% width card", className="card-title"),
                     html.P(
                         [
                             "This card uses the ",
                             html.Code("w-75"),
                             " class to set the width to 75%",
                         ],
-                        class_name="card-text",
+                        className="card-text",
                     ),
                 ]
             ),
-            class_name="w-75 mb-3",
+            className="w-75 mb-3",
         ),
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.H5("50% width card", class_name="card-title"),
+                    html.H5("50% width card", className="card-title"),
                     html.P(
                         [
                             "This card uses the ",
                             html.Code("w-50"),
                             " class to set the width to 50%",
                         ],
-                        class_name="card-text",
+                        className="card-text",
                     ),
                 ]
             ),
-            class_name="w-50",
+            className="w-50",
         ),
     ]
 )

@@ -8,7 +8,7 @@ list_group = html_div([
             dbc_listgroupitem("Item 3"),
         ],
         horizontal = true,
-        class_name = "mb-2",
+        className = "mb-2",
     ),
     dbc_listgroup(
         [

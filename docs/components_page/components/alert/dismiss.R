@@ -6,7 +6,7 @@ alert <- htmlDiv(
     dbcButton(
       "Toggle alert with fade",
       id = "alert-toggle-fade", n_clicks = 0,
-      class_name = "me-1"
+      className = "me-1"
     ),
     dbcButton("Toggle alert without fade",
       id = "alert-toggle-no-fade",

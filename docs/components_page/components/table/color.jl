@@ -18,7 +18,7 @@ color_selector = html_div(
             value = "primary",
         ),
     ],
-    class_name = "p-3 m-2 border",
+    className = "p-3 m-2 border",
 )
 
 table = html_div([

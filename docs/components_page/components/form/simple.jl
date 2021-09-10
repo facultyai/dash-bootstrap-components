@@ -9,7 +9,7 @@ email_input = html_div(
             color = "secondary",
         ),
     ],
-    class_name = "mb-3",
+    className = "mb-3",
 );
 
 password_input = html_div(
@@ -22,7 +22,7 @@ password_input = html_div(
         ),
         dbc_formtext("A password stops mean people taking your stuff", color = "secondary"),
     ],
-    class_name = "mb-3",
+    className = "mb-3",
 );
 
 form = dbc_form([email_input, password_input]);

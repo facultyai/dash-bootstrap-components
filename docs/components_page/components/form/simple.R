@@ -9,7 +9,7 @@ email_input_simple <- htmlDiv(
       color = "secondary",
     )
   ),
-  class_name = "mb-3"
+  className = "mb-3"
 )
 
 password_input_simple <- htmlDiv(
@@ -25,7 +25,7 @@ password_input_simple <- htmlDiv(
       color = "secondary"
     )
   ),
-  class_name = "mb-3"
+  className = "mb-3"
 )
 
 form <- dbcForm(list(email_input_simple, password_input_simple))

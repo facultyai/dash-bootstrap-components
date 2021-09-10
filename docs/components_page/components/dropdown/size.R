@@ -13,10 +13,10 @@ dropdown <- htmlDiv(
       label = "large dropdown",
       size = "lg",
       children = items,
-      class_name = "mb-3"
+      className = "mb-3"
     ),
     dbcDropdownMenu(
-      label = "normal dropdown", children = items, class_name = "mb-3"
+      label = "normal dropdown", children = items, className = "mb-3"
     ),
     dbcDropdownMenu(
       label = "small dropdown", size = "sm",

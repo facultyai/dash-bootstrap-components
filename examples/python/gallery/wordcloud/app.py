@@ -53,7 +53,7 @@ min_freq_slider = html.Div(
         value=15,
         marks={1: "1", **{i: str(i) for i in range(5, 51, 5)}},
     ),
-    class_name="p-3 mb-2",
+    className="p-3 mb-2",
 )
 
 max_vocab_slider = html.Div(
@@ -65,7 +65,7 @@ max_vocab_slider = html.Div(
         value=100,
         marks={1: "1", **{i: str(i) for i in range(30, 301, 30)}},
     ),
-    class_name="p-3",
+    className="p-3",
 )
 
 controls = dbc.Card(
@@ -74,7 +74,7 @@ controls = dbc.Card(
         html.Div([dbc.Label("Minimum frequency:"), min_freq_slider]),
         html.Div([dbc.Label("Maximum number of words:"), max_vocab_slider]),
     ],
-    class_name="mb-3",
+    className="mb-3",
     body=True,
 )
 

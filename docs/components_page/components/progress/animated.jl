@@ -5,7 +5,7 @@ progress = html_div([
     dbc_button(
         "Toggle animation",
         id = "animation-toggle",
-        class_name = "mt-3",
+        className = "mt-3",
         n_clicks = 0,
     ),
 ]);

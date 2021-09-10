@@ -342,7 +342,8 @@ def format_r_jl(_):
         try:
             info("Formatting R with styler")
             run(
-                "Rscript -e 'library(styler); style_dir(\"docs\")'",
+                'Rscript -e \'library(styler); style_dir("docs"); '
+                'style_dir("examples")\'',
                 exit_on_error=False,
             )
         except RuntimeError:
@@ -354,7 +355,8 @@ def format_r_jl(_):
         try:
             info("Formatting Julia with JuliaFormatter")
             run(
-                "julia -e 'using JuliaFormatter; format(\"docs\")'",
+                'julia -e \'using JuliaFormatter; format("docs"); '
+                'format("examples");\'',
                 exit_on_error=False,
             )
         except RuntimeError:

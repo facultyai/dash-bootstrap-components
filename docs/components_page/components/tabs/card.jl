@@ -11,7 +11,7 @@ card = dbc_card([
             active_tab = "tab-1",
         ),
     ),
-    dbc_cardbody(html_p(id = "card-content", class_name = "card-text")),
+    dbc_cardbody(html_p(id = "card-content", className = "card-text")),
 ]);
 
 callback!(
