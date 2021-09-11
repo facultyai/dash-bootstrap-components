@@ -19,4 +19,4 @@ badge = dbc_button(
 app.layout = dbc_container(badge, fluid = true)
 
 # 5. Start the Dash server
-run_server(app, "0.0.0.0", 8080)
+run_server(app, "0.0.0.0", 8050)

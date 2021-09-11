@@ -20,4 +20,4 @@ badge <- dbcButton(
 app$layout(dbcContainer(badge, fluid = TRUE))
 
 # 5. Start the Dash server
-app$run_server(showcase = TRUE)
+app$run_server(port = 8050)
