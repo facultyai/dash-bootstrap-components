@@ -106,14 +106,14 @@ span.hljs-meta {
   background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0) calc(100% - 15px),
-      #fff calc(100% - 15px)
+      rgba(0, 0, 0, 0) calc(100% - 0.75rem),
+      #fff calc(100% - 0.75rem)
     ),
-    linear-gradient(to right, #fff, #fff 15px, rgba(0, 0, 0, 0) 15px),
+    linear-gradient(to right, #fff, #fff 0.75rem, rgba(0, 0, 0, 0) 0.75rem),
     linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
-.layout-demo .row.no-gutters {
+.layout-demo .row.g-0 {
   background: linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
@@ -132,14 +132,6 @@ span.hljs-meta {
   display: none;
 }
 
-/* Custom checkbox example CSS */
-#checklist-selected-style
-  .custom-control-input:checked
-  ~ .custom-control-label::before {
-  background-color: #fa7268;
-  border-color: #ea6258;
-}
-
 /* invalid input styling */
 #styled-numeric-input input:invalid {
   border-color: #dc3545;
@@ -152,29 +144,14 @@ span.hljs-meta {
 }
 
 /* radio button group example */
-.button-group-demo
-  .radio-group
-  .custom-control-input
-  ~ .custom-control-label::before {
-  content: none;
-}
-
-.button-group-demo
-  .radio-group
-  .custom-radio
-  .custom-control-input
-  ~ .custom-control-label::after {
-  content: none;
-}
-
-.button-group-demo .radio-group .custom-control {
+.button-group-demo .radio-group .form-check {
   padding-left: 0;
 }
 
 .button-group-demo
   .radio-group
   .btn-group
-  > .custom-control:not(:last-child)
+  > .form-check:not(:last-child)
   > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -183,7 +160,7 @@ span.hljs-meta {
 .button-group-demo
   .radio-group
   .btn-group
-  > .custom-control:not(:first-child)
+  > .form-check:not(:first-child)
   > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -237,6 +214,7 @@ span.hljs-meta {
   font-weight: 500;
   font-size: 1.25rem;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .dbcd-nav-link:hover {
@@ -255,6 +233,7 @@ span.hljs-meta {
 .dbcd-nav-links ul > li > a {
   padding: 0.25rem 0rem;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .dbcd-nav-links ul > li.active > a {
@@ -334,10 +313,6 @@ span.hljs-meta {
   line-height: 1.5;
   color: #ebebeb;
   background-color: #2b3e50;
-}
-
-.superhero-demo .navbar {
-  padding: 0.25rem 1rem;
 }
 
 .superhero-demo .navbar-dark .navbar-nav .nav-link {

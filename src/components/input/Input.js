@@ -170,7 +170,26 @@ const NonNumberInput = forwardRef((props, inputRef) => {
  * are supported through separate components in other libraries.
  */
 const Input = props => {
-  const {plaintext, className, bs_size, ...otherProps} = props;
+  const {
+    plaintext,
+    className,
+    class_name,
+    autoComplete,
+    autocomplete,
+    autoFocus,
+    autofocus,
+    inputMode,
+    inputmode,
+    maxLength,
+    maxlength,
+    minLength,
+    minlength,
+    tabIndex,
+    tabindex,
+    size,
+    html_size,
+    ...otherProps
+  } = props;
   const inputRef = useRef(null);
 
   const formControlClass = plaintext
@@ -178,18 +197,44 @@ const Input = props => {
     : 'form-control';
 
   const classes = classNames(
-    className,
+    class_name || className,
     props.invalid && 'is-invalid',
     props.valid && 'is-valid',
-    bs_size ? `form-control-${bs_size}` : false,
+    size ? `form-control-${size}` : false,
     formControlClass
   );
 
   if (props.type === 'number') {
-    return <NumberInput ref={inputRef} {...otherProps} className={classes} />;
+    return (
+      <NumberInput
+        ref={inputRef}
+        {...otherProps}
+        className={classes}
+        autoComplete={autocomplete || autoComplete}
+        autoFocus={autofocus || autoFocus}
+        inputMode={inputmode || inputMode}
+        maxLength={maxlength || maxLength}
+        minLength={minlength || minLength}
+        tabIndex={tabindex || tabIndex}
+        size={html_size}
+      />
+    );
   }
 
-  return <NonNumberInput ref={inputRef} {...otherProps} className={classes} />;
+  return (
+    <NonNumberInput
+      ref={inputRef}
+      {...otherProps}
+      className={classes}
+      autoComplete={autocomplete || autoComplete}
+      autoFocus={autofocus || autoFocus}
+      inputMode={inputmode || inputMode}
+      maxLength={maxlength || maxLength}
+      minLength={minlength || minLength}
+      tabIndex={tabindex || tabIndex}
+      size={html_size}
+    />
+  );
 };
 
 Input.propTypes = {
@@ -206,6 +251,13 @@ Input.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -247,9 +299,30 @@ Input.propTypes = {
    * This attribute indicates whether the value of the control can be
    * automatically completed by the browser.
    */
+  autocomplete: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `autocomplete` instead.
+   *
+   * This attribute indicates whether the value of the control can be
+   * automatically completed by the browser.
+   */
   autoComplete: PropTypes.string,
 
   /**
+   * The element should be automatically focused after the page loaded.
+   * autoFocus is an HTML boolean attribute - it is enabled by a boolean or
+   * 'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
+   * are also acccepted.
+   */
+  autofocus: PropTypes.oneOfType([
+    PropTypes.oneOf(['autoFocus', 'autofocus', 'AUTOFOCUS']),
+    PropTypes.bool
+  ]),
+
+  /**
+   * **DEPRECATED** Use `autofocus` instead.
+   *
    * The element should be automatically focused after the page loaded.
    * autoFocus is an HTML boolean attribute - it is enabled by a boolean or
    * 'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
@@ -261,6 +334,78 @@ Input.propTypes = {
   ]),
 
   /**
+   * Provides a hint to the browser as to the type of data that might be
+   * entered by the user while editing the element or its contents.
+   */
+  inputmode: PropTypes.oneOf([
+    /**
+     * Alphanumeric, non-prose content such as usernames and passwords.
+     */
+    'verbatim',
+
+    /**
+     * Latin-script input in the user's preferred language with typing aids
+     * such as text prediction enabled. For human-to-computer communication
+     * such as search boxes.
+     */
+    'latin',
+
+    /**
+     * As latin, but for human names.
+     */
+    'latin-name',
+
+    /**
+     * As latin, but with more aggressive typing aids. For human-to-human
+     * communication such as instant messaging or email.
+     */
+    'latin-prose',
+
+    /**
+     * As latin-prose, but for the user's secondary languages.
+     */
+    'full-width-latin',
+
+    /**
+     * Kana or romaji input, typically hiragana input, using full-width
+     * characters, with support for converting to kanji. Intended for Japanese text input.
+     */
+    'kana',
+
+    /**
+     * Katakana input, using full-width characters, with support for converting
+     * to kanji. Intended for Japanese text input.
+     */
+    'katakana',
+
+    /**
+     * Numeric input, including keys for the digits 0 to 9, the user's preferred
+     * thousands separator character, and the character for indicating negative
+     * numbers. Intended for numeric codes (e.g. credit card numbers). For
+     * actual numbers, prefer using type="number"
+     */
+    'numeric',
+
+    /**
+     * Telephone input, including asterisk and pound key. Use type="tel" if
+     * possible instead.
+     */
+    'tel',
+
+    /**
+     * Email input. Use type="email" if possible instead.
+     */
+    'email',
+
+    /**
+     * URL input. Use type="url" if possible instead.
+     */
+    'url'
+  ]),
+
+  /**
+   * **DEPRECATED** Use `inputmode` instead.
+   *
    * Provides a hint to the browser as to the type of data that might be
    * entered by the user while editing the element or its contents.
    */
@@ -356,6 +501,20 @@ Input.propTypes = {
    * user can enter an unlimited number of characters). The constraint is
    * evaluated only when the value of the attribute has been changed.
    */
+  maxlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `maxlength` instead.
+   *
+   * If the value of the type attribute is text, email, search, password, tel,
+   * or url, this attribute specifies the maximum number of characters
+   * (in UTF-16 code units) that the user can enter. For other control types,
+   * it is ignored. It can exceed the value of the size attribute. If it is not
+   * specified, the user can enter an unlimited number of characters.
+   * Specifying a negative number results in the default behavior (i.e. the
+   * user can enter an unlimited number of characters). The constraint is
+   * evaluated only when the value of the attribute has been changed.
+   */
   maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
@@ -365,6 +524,16 @@ Input.propTypes = {
   min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
+   * If the value of the type attribute is text, email, search, password, tel,
+   * or url, this attribute specifies the minimum number of characters (in
+   * Unicode code points) that the user can enter. For other control types, it
+   * is ignored.
+   */
+  minlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `minlength` instead.
+   *
    * If the value of the type attribute is text, email, search, password, tel,
    * or url, this attribute specifies the minimum number of characters (in
    * Unicode code points) that the user can enter. For other control types, it
@@ -389,23 +558,23 @@ Input.propTypes = {
    * ignored. In addition, the size must be greater than zero. If you do not
    * specify a size, a default value of 20 is used.
    */
-  size: PropTypes.string,
+  html_size: PropTypes.string,
 
   /**
    * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
    * or 'lg' (large). Default is 'md'.
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
 
   /**
    * Apply valid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=True to display.
+   * any FormFeedback in the enclosing div with valid=True to display.
    */
   valid: PropTypes.bool,
 
   /**
    * Apply invalid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=False to display.
+   * any FormFeedback in the enclosing div with valid=False to display.
    */
   invalid: PropTypes.bool,
 
@@ -534,6 +703,13 @@ Input.propTypes = {
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
 
   /**
+   * Overrides the browser's default tab order and follows the one specified instead.
+   */
+  tabindex: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `tabindex` instead.
+   *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
   tabIndex: PropTypes.string

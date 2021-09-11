@@ -4,19 +4,19 @@ using DashBootstrapComponents, DashHtmlComponents
 function make_popover(placement)
     return dbc_popover(
         [dbc_popoverheader("Header"), dbc_popoverbody("This is a $placement popover")],
-        id="popover-$placement",
-        target="popover-$placement-target",
-        placement=placement,
-        is_open=false,
+        id = "popover-$placement",
+        target = "popover-$placement-target",
+        placement = placement,
+        is_open = false,
     )
 end;
 
 function make_button(placement)
     return dbc_button(
         "Popover on $placement",
-        id="popover-$placement-target",
-        className="mx-2",
-        n_clicks=0,
+        id = "popover-$placement-target",
+        className = "mx-2",
+        n_clicks = 0,
     )
 end;
 

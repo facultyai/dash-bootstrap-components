@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 tabs = html.Div(
     [
@@ -12,7 +12,7 @@ tabs = html.Div(
         html.Br(),
         dbc.Tabs(
             [
-                dbc.Tab(label="Tab 1", tabClassName="ml-auto"),
+                dbc.Tab(label="Tab 1", tabClassName="ms-auto"),
                 dbc.Tab(label="Tab 2", labelClassName="text-success"),
             ]
         ),

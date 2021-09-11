@@ -33,20 +33,20 @@ describe('Input', () => {
       container: {firstChild: input}
     } = render(
       <Input
-        autoComplete="username"
+        autocomplete="username"
         disabled
-        inputMode="verbatim"
+        inputmode="verbatim"
         list="datalist-id"
         max={10}
-        maxLength="20"
+        maxlength="20"
         min={1}
-        minLength="2"
+        minlength="2"
         name="test-name"
         pattern="test-pattern"
         placeholder="test-placeholder"
-        size="42"
+        html_size="42"
         step={2}
-        tabIndex="3"
+        tabindex="3"
         type="text"
       />
     );

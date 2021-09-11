@@ -14,9 +14,7 @@ documentation: https://dash.plot.ly/urls
 """
 import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, dcc, html
 
 FA = "https://use.fontawesome.com/releases/v5.15.1/css/all.css"
 PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
@@ -38,13 +36,13 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink(
-                    [html.I(className="fas fa-home mr-2"), html.Span("Home")],
+                    [html.I(className="fas fa-home me-2"), html.Span("Home")],
                     href="/",
                     active="exact",
                 ),
                 dbc.NavLink(
                     [
-                        html.I(className="fas fa-calendar-alt mr-2"),
+                        html.I(className="fas fa-calendar-alt me-2"),
                         html.Span("Calendar"),
                     ],
                     href="/calendar",
@@ -52,7 +50,7 @@ sidebar = html.Div(
                 ),
                 dbc.NavLink(
                     [
-                        html.I(className="fas fa-envelope-open-text mr-2"),
+                        html.I(className="fas fa-envelope-open-text me-2"),
                         html.Span("Messages"),
                     ],
                     href="/messages",

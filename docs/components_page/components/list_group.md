@@ -3,7 +3,7 @@ title: ListGroup
 lead: A simple, flexible component for displaying a series of content.
 ---
 
-## Simple example
+## Examples
 
 The most basic `ListGroup` is an unordered list of `ListGroupItem` components.
 
@@ -27,9 +27,15 @@ Pass one of Bootstrap's contextual colors to the `color` argument of `ListGroupI
 
 {{example:components/list_group/colors.py:list_group}}
 
+## Flush
+
+Add flush to change some of the styling, including removing borders, and rounding some of the edges to fit in line with the parent container.
+
+{{example:components/list_group/flush.py:list_group}}
+
 ## Custom content
 
-You can pass any Dash components to the children of `ListGroupItem`. The components `ListGroupItemHeading` and `ListGroupItemText` automatically apply the relevant CSS classes for styling text content in list groups.
+You can pass any Dash components to the children of `ListGroupItem`.
 
 {{example:components/list_group/content.py:list_group}}
 
@@ -44,7 +50,3 @@ In the below example, the first list group is always horizontal, the second is h
 {{apidoc:src/components/listgroup/ListGroup.js}}
 
 {{apidoc:src/components/listgroup/ListGroupItem.js}}
-
-{{apidoc:src/components/listgroup/ListGroupItemHeading.js}}
-
-{{apidoc:src/components/listgroup/ListGroupItemText.js}}

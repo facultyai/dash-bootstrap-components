@@ -68,3 +68,57 @@ def check_input_radio_check_callbacks(runner):
         == "Radio button 2, 2 checklist items and 2 switches selected.",
         timeout=10,
     )
+
+
+# --------------------------------
+
+
+def test_r_input_radio_check_standalone(dashr):
+    r_app = load_r_app(
+        (HERE.parent / "input" / "radio_check_standalone.R"),
+        "standalone_radio_check",
+    )
+    dashr.start_server(r_app)
+    check_input_radio_check_standalone_callbacks(dashr)
+
+
+def test_jl_input_radio_check_standalone(dashjl):
+    jl_app = load_jl_app(
+        (HERE.parent / "input" / "radio_check_standalone.jl"),
+        "standalone_radio_check",
+    )
+    dashjl.start_server(jl_app)
+    check_input_radio_check_standalone_callbacks(dashjl)
+
+
+def check_input_radio_check_standalone_callbacks(runner):
+
+    outcome = (
+        "Selections: Checkbox: {0}, Toggle Switch: {0}, Radio Button: {0}"
+    )
+
+    wait.until(
+        lambda: runner.find_element("#standalone-radio-check-output").text
+        == outcome.format(False),
+        timeout=10,
+    )
+
+    runner.find_element("#standalone-checkbox").click()
+    runner.find_element("#standalone-switch").click()
+    runner.find_element("#standalone-radio").click()
+
+    wait.until(
+        lambda: runner.find_element("#standalone-radio-check-output").text
+        == outcome.format(True),
+        timeout=10,
+    )
+
+    runner.find_element("#standalone-checkbox").click()
+    runner.find_element("#standalone-switch").click()
+    runner.find_element("#standalone-radio").click()
+
+    wait.until(
+        lambda: runner.find_element("#standalone-radio-check-output").text
+        == outcome.format(False),
+        timeout=10,
+    )

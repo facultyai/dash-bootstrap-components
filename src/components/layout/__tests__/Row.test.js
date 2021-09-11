@@ -16,13 +16,6 @@ describe('Row', () => {
   });
 
   test('applies additional CSS classes when props are set', () => {
-    // no gutters
-    const {
-      container: {firstChild: rowNoGutters}
-    } = render(<Row no_gutters />);
-
-    expect(rowNoGutters).toHaveClass('no-gutters');
-
     // row align
     const {
       container: {firstChild: rowAlign}
@@ -36,12 +29,5 @@ describe('Row', () => {
     } = render(<Row justify="between" />);
 
     expect(rowJustify).toHaveClass('justify-content-between');
-
-    // row form
-    const {
-      container: {firstChild: rowForm}
-    } = render(<Row form />);
-
-    expect(rowForm).toHaveClass('form-row');
   });
 });

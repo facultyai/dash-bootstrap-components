@@ -1,5 +1,5 @@
 build
-dash[dev]>=1.21.0
+dash[dev]>=2.0.0
 invoke
 semver
 termcolor

@@ -110,7 +110,7 @@ const Demo = () => (
         <DropdownMenuItem>Entry 3</DropdownMenuItem>
       </DropdownMenu>
     </NavbarSimple>
-    <Container className="mt-3">
+    <Container class_name="mt-3">
       <h1>Dash Bootstrap Components - Demo</h1>
       <p>
         This demonstrates all of the Dash Bootstrap Components as React

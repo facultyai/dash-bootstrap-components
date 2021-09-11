@@ -4,22 +4,23 @@ import userEvent from '@testing-library/user-event';
 import DropdownMenu from '../DropdownMenu';
 import DropdownMenuItem from '../DropdownMenuItem';
 
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
-
-  return class {
-    static placements = PopperJS.placements;
-
-    constructor() {
-      return {
-        destroy: () => {},
-        scheduleUpdate: () => {}
-      };
-    }
-  };
-});
-
 describe('DropdownMenuItem', () => {
+  // this is just a little hack to silence a warning that we'll get until we
+  // upgrade to 16.9. See also: https://github.com/facebook/react/pull/14853
+  const originalError = console.error;
+  beforeAll(() => {
+    console.error = (...args) => {
+      if (/Warning.*not wrapped in act/.test(args[0])) {
+        return;
+      }
+      originalError.call(console, ...args);
+    };
+  });
+
+  afterAll(() => {
+    console.error = originalError;
+  });
+
   test('renders a button with class "dropdown-menu-item"', () => {
     const dropdownMenuItem = render(<DropdownMenuItem />);
 
@@ -129,13 +130,13 @@ describe('DropdownMenuItem', () => {
     );
 
     userEvent.click(dropdownMenu.getByText('toggle'));
-
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
     );
+
     userEvent.click(dropdownMenu.getByText('Clickable'));
-    expect(
-      dropdownMenu.container.querySelector('.dropdown-menu')
-    ).toHaveClass('show');
+    expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
+      'show'
+    );
   });
 });

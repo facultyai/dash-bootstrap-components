@@ -6,6 +6,7 @@
   "main": "lib/dash-bootstrap-components.min.js",
   "scripts": {
     "build": "run-s clean build:js build:py build:r build:jl",
+    "build:install": "npm run build && inv install-built-packages",
     "build:lib": "webpack --config=webpack/config.lib.js",
     "build:js": "NODE_ENV=production webpack --config=webpack/config.dist.js",
     "build:py": "inv build-py",
@@ -13,8 +14,8 @@
     "build:jl": "inv build-jl",
     "clean": "inv clean",
     "demo": "webpack-dev-server --hot --inline --port=8888 --config=webpack/config.demo.js",
-    "format": "prettier src/**/*.js --write",
-    "lint": "prettier src/**/*.js --list-different",
+    "format": "prettier 'src/**/*.js' --write",
+    "lint": "prettier 'src/**/*.js' --list-different",
     "prepublishOnly": "NODE_ENV=production npm run build && NODE_ENV=production npm run build:lib",
     "test": "jest",
     "test:demo": "webpack --content-base=demo --config=webpack/config.demo.js",
@@ -34,12 +35,12 @@
   "homepage": "https://dash-bootstrap-components.opensource.faculty.ai",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@testing-library/jest-dom": "^5.11.3",
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^10.4.8",
     "@testing-library/user-event": "^10.0.1",
     "babel-jest": "^24.9.0",
@@ -61,9 +62,9 @@
     "is-absolute-url": "^2.1.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.27.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.0",
-    "reactstrap": "^8.9.0"
+    "react": "^16.14.0",
+    "react-bootstrap": "^2.0.0-beta.6",
+    "react-dom": "^16.14.0"
   },
   "jest": {
     "transform": {

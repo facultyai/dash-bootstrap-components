@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Col as RSCol} from 'reactstrap';
+import RBCol from 'react-bootstrap/Col';
 import classNames from 'classnames';
 
 const alignMap = {
@@ -22,20 +22,37 @@ const alignMap = {
 const Col = props => {
   const {
     children,
-    xs,
     width,
+    xs,
+    sm,
+    md,
+    lg,
+    xl,
+    xxl,
     align,
     className,
+    class_name,
     loading_state,
     ...otherProps
   } = props;
 
+  [width, xs, sm, md, lg, xl, xxl].forEach(breakpoint => {
+    if (typeof breakpoint === 'object' && breakpoint !== null) {
+      breakpoint.span = breakpoint.size;
+    }
+  });
+
   const alignClass = align && alignMap[align];
-  const classes = classNames(className, alignClass);
+  const classes = classNames(class_name || className, alignClass);
 
   return (
-    <RSCol
+    <RBCol
       xs={xs || width}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
+      xxl={xxl}
       className={classes}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -43,7 +60,7 @@ const Col = props => {
       }
     >
       {children}
-    </RSCol>
+    </RBCol>
   );
 };
 
@@ -89,6 +106,13 @@ Col.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -148,6 +172,15 @@ Col.propTypes = {
 
   /**
    * Specify column behaviour on an extra large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  xl: columnProps,
+
+  /**
+   * Specify column behaviour on an extra extra large screen.
    *
    * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
    * dictionary with keys 'offset', 'order', 'size'. See the documentation for

@@ -1,12 +1,9 @@
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
+from dash import Input, Output
 
 input_group = dbc.InputGroup(
     [
-        dbc.InputGroupAddon(
-            dbc.Button("Random name", id="input-group-button", n_clicks=0),
-            addon_type="prepend",
-        ),
+        dbc.Button("Random name", id="input-group-button", n_clicks=0),
         dbc.Input(id="input-group-button-input", placeholder="name"),
     ]
 )

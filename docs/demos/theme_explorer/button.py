@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 from .util import make_subheading
 
@@ -8,14 +8,14 @@ buttons1 = dbc.Col(
         make_subheading("Button", "button"),
         html.Div(
             [
-                dbc.Button("Primary", color="primary", className="mr-1 mt-1"),
+                dbc.Button("Primary", color="primary", className="me-1 mt-1"),
                 dbc.Button(
-                    "Secondary", color="secondary", className="mr-1 mt-1"
+                    "Secondary", color="secondary", className="me-1 mt-1"
                 ),
-                dbc.Button("Success", color="success", className="mr-1 mt-1"),
-                dbc.Button("Warning", color="warning", className="mr-1 mt-1"),
-                dbc.Button("Danger", color="danger", className="mr-1 mt-1"),
-                dbc.Button("Info", color="info", className="mr-1 mt-1"),
+                dbc.Button("Success", color="success", className="me-1 mt-1"),
+                dbc.Button("Warning", color="warning", className="me-1 mt-1"),
+                dbc.Button("Danger", color="danger", className="me-1 mt-1"),
+                dbc.Button("Info", color="info", className="me-1 mt-1"),
             ],
             className="mb-2",
         ),
@@ -25,61 +25,61 @@ buttons1 = dbc.Col(
                     "Primary",
                     outline=True,
                     color="primary",
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Secondary",
                     outline=True,
                     color="secondary",
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Success",
                     outline=True,
                     color="success",
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Warning",
                     outline=True,
                     color="warning",
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Danger",
                     outline=True,
                     color="danger",
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
-                    "Info", outline=True, color="info", className="mr-1 mt-1"
+                    "Info", outline=True, color="info", className="me-1 mt-1"
                 ),
             ],
             className="mb-2",
         ),
         html.Div(
             [
-                dbc.Button("Regular", color="primary", className="mr-1 mt-1"),
+                dbc.Button("Regular", color="primary", className="me-1 mt-1"),
                 dbc.Button(
                     "Active",
                     color="primary",
                     active=True,
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
                 dbc.Button(
                     "Disabled",
                     color="primary",
                     disabled=True,
-                    className="mr-1 mt-1",
+                    className="me-1 mt-1",
                 ),
             ],
             className="mb-2",
         ),
         html.Div(
             [
-                dbc.Button("Large button", size="lg", className="mr-1 mt-1"),
-                dbc.Button("Regular button", className="mr-1 mt-1"),
-                dbc.Button("Small button", size="sm", className="mr-1 mt-1"),
+                dbc.Button("Large button", size="lg", className="me-1 mt-1"),
+                dbc.Button("Regular button", className="me-1 mt-1"),
+                dbc.Button("Small button", size="sm", className="me-1 mt-1"),
             ],
             className="mb-2",
         ),

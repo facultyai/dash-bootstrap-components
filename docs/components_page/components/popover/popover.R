@@ -2,15 +2,16 @@ library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
 popover_children <- list(
-    dbcPopoverHeader("Popover header"),
-    dbcPopoverBody("And here's some amazing content. Cool!")
+  dbcPopoverHeader("Popover header"),
+  dbcPopoverBody("And here's some amazing content. Cool!")
 )
 
 popovers <- htmlDiv(
   list(
     dbcButton(
-      "Click", id = "click-target", n_clicks = 0,
-      color = "danger", className = "mr-1"
+      "Click",
+      id = "click-target", n_clicks = 0,
+      color = "danger", className = "me-1"
     ),
     dbcPopover(
       popover_children,
@@ -19,8 +20,9 @@ popovers <- htmlDiv(
       trigger = "click"
     ),
     dbcButton(
-      "Focus", id = "focus-target", n_clicks = 0,
-      color = "danger", className = "mr-1"
+      "Focus",
+      id = "focus-target", n_clicks = 0,
+      color = "danger", className = "me-1"
     ),
     dbcPopover(
       popover_children,
@@ -29,8 +31,9 @@ popovers <- htmlDiv(
       trigger = "focus"
     ),
     dbcButton(
-      "Hover", id = "hover-target", n_clicks = 0,
-      color = "danger", className = "mr-1"
+      "Hover",
+      id = "hover-target", n_clicks = 0,
+      color = "danger", className = "me-1"
     ),
     dbcPopover(
       popover_children,
@@ -38,13 +41,15 @@ popovers <- htmlDiv(
       target = "hover-target",
       trigger = "hover",
     ),
-    dbcButton("Legacy", id = "legacy-target", n_clicks = 0,
-              color = "danger"),
+    dbcButton("Legacy",
+      id = "legacy-target", n_clicks = 0,
+      color = "danger"
+    ),
     dbcPopover(
-        popover_children,
-        id = "legacy",
-        target = "legacy-target",
-        trigger = "legacy"
+      popover_children,
+      id = "legacy",
+      target = "legacy-target",
+      trigger = "legacy"
     )
   )
 )

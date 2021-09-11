@@ -9,4 +9,4 @@ row4 = html_tr([html_td("Trillian"), html_td("Astra")]);
 
 table_body = [html_tbody([row1, row2, row3, row4])];
 
-table = dbc_table([table_header ; table_body], bordered=true);
+table = dbc_table([table_header; table_body], bordered = true);

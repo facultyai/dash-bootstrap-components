@@ -58,7 +58,7 @@ def check_modal_size_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#close-sm").click()
+    runner.find_element(".btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,
@@ -70,7 +70,7 @@ def check_modal_size_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#close-lg").click()
+    runner.find_element(".btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,
@@ -82,7 +82,7 @@ def check_modal_size_callbacks(runner):
         timeout=4,
     )
 
-    runner.find_element("#close-xl").click()
+    runner.find_element(".btn-close").click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,
@@ -185,6 +185,63 @@ def check_modal_centered_callbacks(runner):
     )
 
     runner.find_element("#close-centered").click()
+    wait.until(
+        lambda: len(runner.find_elements(".modal-content")) == 0,
+        timeout=4,
+    )
+
+
+# ------------------------------
+
+
+def test_r_modal_toggle(dashr):
+    r_app = load_r_app((HERE.parent / "modal" / "toggle.R"), "modal")
+    dashr.start_server(r_app)
+    check_modal_toggle_callbacks(dashr)
+
+
+def test_jl_modal_toggle(dashjl):
+    jl_app = load_jl_app((HERE.parent / "modal" / "toggle.jl"), "modal")
+    dashjl.start_server(jl_app)
+    check_modal_toggle_callbacks(dashjl)
+
+
+def check_modal_toggle_callbacks(runner):
+    runner.find_element("#open-toggle-modal").click()
+    wait.until(
+        lambda: len(runner.find_elements(".modal-content")) != 0,
+        timeout=4,
+    )
+    wait.until(
+        lambda: len(runner.find_elements("#toggle-modal-1")) == 1,
+        timeout=4,
+    )
+    wait.until(
+        lambda: len(runner.find_elements("#toggle-modal-2")) == 0,
+        timeout=4,
+    )
+
+    runner.find_element("#open-toggle-modal-2").click()
+    wait.until(
+        lambda: len(runner.find_elements("#toggle-modal-2")) == 1,
+        timeout=4,
+    )
+    wait.until(
+        lambda: len(runner.find_elements("#toggle-modal-1")) == 0,
+        timeout=4,
+    )
+
+    runner.find_element("#open-toggle-modal-1").click()
+    wait.until(
+        lambda: len(runner.find_elements("#toggle-modal-1")) == 1,
+        timeout=4,
+    )
+    wait.until(
+        lambda: len(runner.find_elements("#toggle-modal-2")) == 0,
+        timeout=4,
+    )
+
+    runner.find_elements(".modal-header > .btn-close")[0].click()
     wait.until(
         lambda: len(runner.find_elements(".modal-content")) == 0,
         timeout=4,

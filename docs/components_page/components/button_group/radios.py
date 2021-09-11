@@ -1,13 +1,13 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, html
 
 button_group = html.Div(
     [
         dbc.RadioItems(
             id="radios",
             className="btn-group",
-            labelClassName="btn btn-secondary",
+            inputClassName="btn-check",
+            labelClassName="btn btn-outline-primary",
             labelCheckedClassName="active",
             options=[
                 {"label": "Option 1", "value": 1},

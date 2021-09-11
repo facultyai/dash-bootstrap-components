@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardLink as RSCardLink} from 'reactstrap';
+import RBCard from 'react-bootstrap/Card';
 import Link from '../../private/Link';
 
 /**
@@ -9,7 +9,14 @@ import Link from '../../private/Link';
  * used like buttons, external links, or internal Dash style links.
  */
 const CardLink = props => {
-  const {children, loading_state, disabled, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    disabled,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
 
   const incrementClicks = () => {
     if (!disabled && props.setProps) {
@@ -21,17 +28,18 @@ const CardLink = props => {
   };
 
   return (
-    <RSCardLink
+    <RBCard.Link
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      tag={Link}
+      as={Link}
       preOnClick={incrementClicks}
       disabled={disabled}
+      className={class_name || className}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
-    </RSCardLink>
+    </RBCard.Link>
   );
 };
 
@@ -59,6 +67,13 @@ CardLink.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

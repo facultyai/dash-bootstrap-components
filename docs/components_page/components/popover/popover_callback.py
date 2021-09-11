@@ -1,6 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 popover = html.Div(
     [
@@ -8,7 +7,7 @@ popover = html.Div(
             "Toggle",
             id="toggle",
             color="success",
-            className="mr-4",
+            className="me-4",
             n_clicks=0,
         ),
         dbc.Button("Target", id="target", color="danger", n_clicks=0),

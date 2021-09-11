@@ -15,11 +15,30 @@ const Textarea = props => {
     n_submit,
     setProps,
     className,
+    class_name,
     invalid,
     valid,
-    bs_size,
+    size,
     debounce,
     loading_state,
+    autoFocus,
+    autofocus,
+    maxLength,
+    maxlength,
+    minLength,
+    minlength,
+    readOnly,
+    readonly,
+    accessKey,
+    accesskey,
+    contentEditable,
+    contenteditable,
+    contextMenu,
+    contextmenu,
+    spellCheck,
+    spellcheck,
+    tabIndex,
+    tabindex,
     ...otherProps
   } = props;
   const [valueState, setValueState] = useState(value || '');
@@ -74,10 +93,10 @@ const Textarea = props => {
   };
 
   const classes = classNames(
-    className,
+    class_name || className,
     invalid && 'is-invalid',
     valid && 'is-valid',
-    bs_size ? `form-control-${bs_size}` : false,
+    size ? `form-control-${size}` : false,
     'form-control'
   );
 
@@ -89,6 +108,15 @@ const Textarea = props => {
       onBlur={onBlur}
       onKeyPress={onKeyPress}
       onClick={onClick}
+      autoFocus={autofocus || autoFocus}
+      maxLength={maxlength || maxLength}
+      minLength={minlength || minLength}
+      readOnly={readonly || readOnly}
+      accessKey={accesskey || accessKey}
+      contentEditable={contenteditable || contentEditable}
+      contextMenu={contextmenu || contextMenu}
+      spellCheck={spellcheck || spellCheck}
+      tabIndex={tabindex || tabIndex}
       {...omit(
         [
           'n_blur_timestamp',
@@ -129,6 +157,13 @@ Textarea.propTypes = {
   /**
    * The element should be automatically focused after the page loaded.
    */
+  autofocus: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `autofocus` instead
+   *
+   * The element should be automatically focused after the page loaded.
+   */
   autoFocus: PropTypes.string,
 
   /**
@@ -149,9 +184,23 @@ Textarea.propTypes = {
   /**
    * Defines the maximum number of characters allowed in the element.
    */
+  maxlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `maxlength` instead
+   *
+   * Defines the maximum number of characters allowed in the element.
+   */
   maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
+   * Defines the minimum number of characters allowed in the element.
+   */
+  minlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `minlength` instead
+   *
    * Defines the minimum number of characters allowed in the element.
    */
   minLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -167,6 +216,16 @@ Textarea.propTypes = {
   placeholder: PropTypes.string,
 
   /**
+   * Indicates whether the element can be edited.
+   */
+  readonly: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['readOnly', 'readonly', 'READONLY'])
+  ]),
+
+  /**
+   * **DEPRECATED** Use `readonly` instead
+   *
    * Indicates whether the element can be edited.
    */
   readOnly: PropTypes.oneOfType([
@@ -201,9 +260,23 @@ Textarea.propTypes = {
   /**
    * Defines a keyboard shortcut to activate or add focus to the element.
    */
+  accesskey: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `accesskey` instead
+   *
+   * Defines a keyboard shortcut to activate or add focus to the element.
+   */
   accessKey: PropTypes.string,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -211,9 +284,23 @@ Textarea.propTypes = {
   /**
    * Indicates whether the element's content is editable.
    */
+  contenteditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `contenteditable` instead
+   *
+   * Indicates whether the element's content is editable.
+   */
   contentEditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
+   * Defines the ID of a <menu> element which will serve as the element's context menu.
+   */
+  contextmenu: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `contextmenu` instead
+   *
    * Defines the ID of a <menu> element which will serve as the element's context menu.
    */
   contextMenu: PropTypes.string,
@@ -245,6 +332,17 @@ Textarea.propTypes = {
   /**
    * Indicates whether spell checking is allowed for the element.
    */
+  spellcheck: PropTypes.oneOfType([
+    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
+    PropTypes.oneOf(['true', 'false']),
+    PropTypes.bool
+  ]),
+
+  /**
+   * **DEPRECATED** Use `spellcheck` instead
+   *
+   * Indicates whether spell checking is allowed for the element.
+   */
   spellCheck: PropTypes.oneOfType([
     // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
     PropTypes.oneOf(['true', 'false']),
@@ -257,6 +355,13 @@ Textarea.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Overrides the browser's default tab order and follows the one specified instead.
+   */
+  tabindex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `tabindex` instead
+   *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
   tabIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -274,17 +379,17 @@ Textarea.propTypes = {
   /**
    * Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
 
   /**
    * Apply valid style to the Textarea for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=True to display.
+   * any FormFeedback in the enclosing div with valid=True to display.
    */
   valid: PropTypes.bool,
 
   /**
    * Apply invalid style to the Textarea for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=False to display.
+   * any FormFeedback in the enclosing div with valid=False to display.
    */
   invalid: PropTypes.bool,
 

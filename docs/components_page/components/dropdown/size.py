@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 items = [
     dbc.DropdownMenuItem("First"),
@@ -11,13 +11,13 @@ dropdown = html.Div(
     [
         dbc.DropdownMenu(
             label="large dropdown",
-            bs_size="lg",
+            size="lg",
             children=items,
             className="mb-3",
         ),
         dbc.DropdownMenu(
             label="normal dropdown", children=items, className="mb-3"
         ),
-        dbc.DropdownMenu(label="small dropdown", bs_size="sm", children=items),
+        dbc.DropdownMenu(label="small dropdown", size="sm", children=items),
     ]
 )

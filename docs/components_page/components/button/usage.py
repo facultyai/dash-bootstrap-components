@@ -1,11 +1,10 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, html
 
 button = html.Div(
     [
         dbc.Button(
-            "Click me", id="example-button", className="mr-2", n_clicks=0
+            "Click me", id="example-button", className="me-2", n_clicks=0
         ),
         html.Span(id="example-output", style={"verticalAlign": "middle"}),
     ]

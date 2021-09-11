@@ -3,24 +3,24 @@ using DashBootstrapComponents, DashHtmlComponents
 alert = html_div([
     dbc_button(
         "Toggle alert with fade",
-        id="alert-toggle-fade",
-        className="mr-1",
-        n_clicks=0,
+        id = "alert-toggle-fade",
+        className = "me-1",
+        n_clicks = 0,
     ),
-    dbc_button("Toggle alert without fade", id="alert-toggle-no-fade", n_clicks=0),
+    dbc_button("Toggle alert without fade", id = "alert-toggle-no-fade", n_clicks = 0),
     html_hr(),
     dbc_alert(
         "Hello! I am an alert",
-        id="alert-fade",
-        dismissable=true,
-        is_open=true,
+        id = "alert-fade",
+        dismissable = true,
+        is_open = true,
     ),
     dbc_alert(
         "Hello! I am an alert that doesn't fade in or out",
-        id="alert-no-fade",
-        dismissable=true,
-        fade=false,
-        is_open=true,
+        id = "alert-no-fade",
+        dismissable = true,
+        fade = false,
+        is_open = true,
     ),
 ]);
 

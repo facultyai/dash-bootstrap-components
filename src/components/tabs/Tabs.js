@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classnames from 'classnames';
-import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import RBNav from 'react-bootstrap/Nav';
+import RBTab from 'react-bootstrap/Tab';
 import {isNil} from 'ramda';
 
 const resolveChildProps = child => {
@@ -41,8 +42,8 @@ const Tabs = props => {
   let {
     children,
     id,
-    card,
     className,
+    class_name,
     style,
     active_tab,
     key,
@@ -77,7 +78,7 @@ const Tabs = props => {
       const tabId = childProps.key || childProps.tab_id || 'tab-' + idx;
       const active = active_tab === tabId;
       return (
-        <NavItem
+        <RBNav.Item
           key={tabId}
           style={
             active
@@ -85,17 +86,21 @@ const Tabs = props => {
               : childProps.tab_style
           }
           className={classnames(
-            childProps.tabClassName,
-            active && childProps.activeTabClassName
+            childProps.tab_class_name || childProps.tabClassName,
+            active &&
+              (childProps.active_tab_class_name ||
+                childProps.activeTabClassName)
           )}
         >
-          <NavLink
+          <RBNav.Link
             className={classnames(
-              childProps.labelClassName,
-              active && childProps.activeLabelClassName,
+              childProps.label_class_name || childProps.labelClassName,
+              active &&
+                (childProps.active_label_class_name ||
+                  childProps.activeLabelClassName),
               {active}
             )}
-            href="#"
+            // href="#"
             style={
               active
                 ? {...childProps.label_style, ...childProps.active_label_style}
@@ -109,8 +114,8 @@ const Tabs = props => {
             }}
           >
             {childProps.label}
-          </NavLink>
-        </NavItem>
+          </RBNav.Link>
+        </RBNav.Item>
       );
     });
 
@@ -128,16 +133,21 @@ const Tabs = props => {
         label_style,
         active_label_style,
         tabClassName,
+        tab_class_name,
         activeTabClassName,
+        active_tab_class_name,
         labelClassName,
+        label_class_name,
         activeLabelClassName,
+        active_label_class_name,
         loading_state,
         ...otherProps
       } = childProps;
       const tabId = tab_id || 'tab-' + idx;
+
       return (
-        <TabPane
-          tabId={tabId}
+        <RBTab.Pane
+          eventKey={tabId}
           key={tabId}
           {...omit(
             ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
@@ -148,21 +158,29 @@ const Tabs = props => {
           }
         >
           {child}
-        </TabPane>
+        </RBTab.Pane>
       );
     });
   return (
-    <div
+    <RBTab.Container
       key={key}
+      activeKey={active_tab}
+      onSelect={id => setProps({active_tab: id})}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <Nav id={id} tabs card={card} className={className} style={style}>
+      <RBNav
+        id={id}
+        variant="tabs"
+        as="ul"
+        className={class_name || className}
+        style={style}
+      >
         {links}
-      </Nav>
-      <TabContent activeTab={active_tab}>{tabs}</TabContent>
-    </div>
+      </RBNav>
+      <RBTab.Content>{tabs}</RBTab.Content>
+    </RBTab.Container>
   );
 };
 
@@ -192,6 +210,13 @@ Tabs.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -207,11 +232,6 @@ Tabs.propTypes = {
    * (starting from 0) of the tab.
    */
   active_tab: PropTypes.string,
-
-  /**
-   * Set to True if using tabs inside a CardHeader.
-   */
-  card: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

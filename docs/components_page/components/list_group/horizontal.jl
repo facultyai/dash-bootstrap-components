@@ -7,8 +7,8 @@ list_group = html_div([
             dbc_listgroupitem("Item 2"),
             dbc_listgroupitem("Item 3"),
         ],
-        horizontal=true,
-        className="mb-2",
+        horizontal = true,
+        className = "mb-2",
     ),
     dbc_listgroup(
         [
@@ -16,6 +16,6 @@ list_group = html_div([
             dbc_listgroupitem("Item 2"),
             dbc_listgroupitem("Item 3"),
         ],
-        horizontal="lg",
+        horizontal = "lg",
     ),
 ]);

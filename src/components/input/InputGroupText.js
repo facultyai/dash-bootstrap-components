@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {InputGroupText as RSInputGroupText} from 'reactstrap';
+import RBInputGroup from 'react-bootstrap/InputGroup';
 
 /**
  * Use for wrapping text in InputGroups.
  */
 const InputGroupText = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSInputGroupText
+    <RBInputGroup.Text
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSInputGroupText>
+    </RBInputGroup.Text>
   );
 };
 
@@ -46,6 +47,13 @@ InputGroupText.propTypes = {
   key: PropTypes.string,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

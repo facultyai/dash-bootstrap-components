@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import CustomInput from '../../private/CustomInput';
 
 /**
  * RadioItems is a component that encapsulates several radio item inputs.
@@ -11,95 +10,99 @@ import CustomInput from '../../private/CustomInput';
  * siblings of each other.
  */
 const RadioItems = props => {
-  const {id, className, style, options, key, loading_state, name} = props;
+  const {
+    id,
+    className,
+    class_name,
+    style,
+    options,
+    key,
+    loading_state,
+    name
+  } = props;
 
   const listItem = option => {
     const {
       id,
       inputClassName,
+      input_class_name,
+      inputCheckedStyle,
+      input_checked_style,
       inputStyle,
+      input_style,
+      inputCheckedClassName,
+      input_checked_class_name,
       labelClassName,
+      label_class_name,
       labelCheckedClassName,
+      label_checked_class_name,
       labelStyle,
+      label_style,
       labelCheckedStyle,
+      label_checked_style,
       setProps,
       inline,
       value,
-      custom,
       switch: switches
     } = props;
 
     const checked = option.value === value;
 
     const mergedLabelStyle = checked
-      ? {...labelStyle, ...labelCheckedStyle}
-      : labelStyle;
+      ? {
+          ...(label_style || labelStyle),
+          ...(label_checked_style || labelCheckedStyle)
+        }
+      : label_style || labelStyle;
 
-    if (id && custom) {
-      const inputId =
-        option.input_id || `_dbcprivate_radioitems_${id}_input_${option.value}`;
-      return (
-        <CustomInput
+    const inputId =
+      option.input_id || `_dbcprivate_radioitems_${id}_input_${option.value}`;
+
+    return (
+      <div
+        className={classNames(
+          'form-check',
+          inline && 'form-check-inline',
+          switches && 'form-switch'
+        )}
+        key={option.value}
+      >
+        <input
           id={inputId}
           name={name}
           value={option.value}
-          labelId={option.label_id}
           checked={checked}
-          className={inputClassName}
-          disabled={Boolean(option.disabled)}
-          type={switches ? 'switch' : 'radio'}
-          label={option.label}
-          labelStyle={mergedLabelStyle}
-          labelClassName={classNames(
-            labelClassName,
-            checked && labelCheckedClassName
+          className={classNames(
+            'form-check-input',
+            input_class_name || inputClassName,
+            checked && (input_checked_class_name || inputCheckedClassName)
           )}
-          inline={inline}
+          disabled={Boolean(option.disabled)}
+          style={
+            checked
+              ? input_checked_style || inputCheckedStyle
+              : input_style || inputStyle
+          }
+          type="radio"
           onChange={() => {
             setProps({value: option.value});
           }}
-          key={option.value}
         />
-      );
-    } else {
-      // it shouldn't ever really happen that an id isn't supplied, but in case
-      // it is we use _dbcprivate_radioitems
-      const inputId =
-        option.input_id || `_dbcprivate_radioitems_${id}_input_${option.value}`;
-      return (
-        <div
-          className={classNames('form-check', inline && 'form-check-inline')}
+        <label
+          id={option.label_id}
+          style={mergedLabelStyle}
+          className={classNames(
+            'form-check-label',
+            label_class_name || labelClassName,
+            checked && (label_checked_class_name || labelCheckedClassName)
+          )}
           key={option.value}
+          htmlFor={inputId}
         >
-          <input
-            id={inputId}
-            name={name}
-            value={option.value}
-            checked={checked}
-            className={classNames('form-check-input', inputClassName)}
-            disabled={Boolean(option.disabled)}
-            style={inputStyle}
-            type="radio"
-            onChange={() => {
-              setProps({value: option.value});
-            }}
-          />
-          <label
-            id={option.label_id}
-            style={mergedLabelStyle}
-            className={classNames(
-              'form-check-label',
-              labelClassName,
-              checked && labelCheckedClassName
-            )}
-            key={option.value}
-            htmlFor={inputId}
-          >
-            {option.label}
-          </label>
-        </div>
-      );
-    }
+          {option.label}
+        </label>
+      </div>
+    );
   };
 
   const items = options.map(option => listItem(option));
@@ -107,7 +110,7 @@ const RadioItems = props => {
   return (
     <div
       id={id}
-      className={className}
+      className={class_name || className}
       style={style}
       key={key}
       data-dash-is-loading={
@@ -183,19 +186,75 @@ RadioItems.propTypes = {
   /**
    * The class of the container (div)
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * The class of the container (div)
+   */
   className: PropTypes.string,
 
   /**
    * The style of the <input> radio element
    */
+  input_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `input_style` instead.
+   *
+   * The style of the <input> radio element
+   */
   inputStyle: PropTypes.object,
 
   /**
+   * Additional inline style arguments to apply to <input> elements on checked
+   * items.
+   */
+  input_checked_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `input_checked_style` instead.
+   *
+   * Additional inline style arguments to apply to <input> elements on checked
+   * items.
+   */
+  inputCheckedStyle: PropTypes.object,
+
+  /**
+   * The class of the <input> radio element
+   */
+  input_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `input_class_name` instead.
+   *
    * The class of the <input> radio element
    */
   inputClassName: PropTypes.string,
 
   /**
+   * Additional CSS classes to apply to the <input> element when the
+   * corresponding radio is checked.
+   */
+  input_checked_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `input_checked_class_name` instead.
+   *
+   * Additional CSS classes to apply to the <input> element when the
+   * corresponding radio is checked.
+   */
+  inputCheckedClassName: PropTypes.string,
+
+  /**
+   * Inline style arguments to apply to the <label> element for each item.
+   */
+  label_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `label_style` instead.
+   *
    * Inline style arguments to apply to the <label> element for each item.
    */
   labelStyle: PropTypes.object,
@@ -204,14 +263,37 @@ RadioItems.propTypes = {
    * Additional inline style arguments to apply to <label> elements on checked
    * items.
    */
+  label_checked_style: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `label_checked_style` instead.
+   *
+   * Additional inline style arguments to apply to <label> elements on checked
+   * items.
+   */
   labelCheckedStyle: PropTypes.object,
 
   /**
    * CSS classes to apply to the <label> element for each item.
    */
+  label_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `label_class_name` instead.
+   *
+   * CSS classes to apply to the <label> element for each item.
+   */
   labelClassName: PropTypes.string,
 
   /**
+   * Additional CSS classes to apply to the <label> element when the
+   * corresponding radio is checked.
+   */
+  label_checked_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `label_checked_class_name` instead.
+   *
    * Additional CSS classes to apply to the <label> element when the
    * corresponding radio is checked.
    */
@@ -228,16 +310,9 @@ RadioItems.propTypes = {
   inline: PropTypes.bool,
 
   /**
-   * Set to True to render toggle-like switches instead of radios. Ignored if
-   * custom=False
+   * Set to True to render toggle-like switches instead of radios.
    */
   switch: PropTypes.bool,
-
-  /**
-   * RadioItems uses custom radio buttons by default. To use native radios set
-   * custom to False.
-   */
-  custom: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
@@ -294,11 +369,14 @@ RadioItems.propTypes = {
 
 RadioItems.defaultProps = {
   inputStyle: {},
+  input_style: null,
   inputClassName: '',
+  input_class_name: '',
   labelStyle: {},
+  label_style: null,
   labelClassName: '',
+  label_class_name: '',
   options: [],
-  custom: true,
   persisted_props: ['value'],
   persistence_type: 'local'
 };

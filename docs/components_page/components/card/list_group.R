@@ -11,5 +11,5 @@ card <- dbcCard(
     ),
     flush = TRUE
   ),
-  style = list(width =  "18rem")
+  style = list(width = "18rem")
 )

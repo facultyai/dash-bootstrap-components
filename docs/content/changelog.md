@@ -6,6 +6,23 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.0.0 - 2021/XX/XX
+
+v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully for full details.
+
+### Added
+- Six new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
+- New CDN links for icons from Bootstrap Icons and Font Awesome ([PR 661](https://github.com/facultyai/dash-bootstrap-components/pull/661))
+- CDN Links for four new Bootswatch themes: `QUARTZ`, `MORPH`, `VAPOR` and `ZEPHYR`.
+- All components now accept `class_name` as an alternative to `className`. If both are specified then `class_name` will take precedence. `class_name` should be preferred from now on. ([PR 642](https://github.com/facultyai/dash-bootstrap-components/pull/642))
+
+### Fixed
+- The `loading_state` is no longer passed to underlying DOM nodes in any components ([PR 666](https://github.com/facultyai/dash-bootstrap-components/pull/666))
+- `Popover` doesn't error if `is_open` defaults to true. ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646))
+
+### Changed
+- Components are all now built for Bootstrap 5. CDN links have all been updated. There are multiple breaking changes in the component props. Please see the [migration-guide](/migration-guide) for full details on the changes ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)).
+
 ## 0.13.0 - 2021/7/31
 
 ### Added
@@ -167,7 +184,7 @@ This version marks the first release of dash-bootstrap-components for Julia. The
 
 ### Changed
 
-- Removed `style` and `className` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+- Removed `style` and `class_name` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
 
 ## 0.9.2 - 2020/4/5
 

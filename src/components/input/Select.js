@@ -1,47 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CustomInput} from 'reactstrap';
+import RBFormSelect from 'react-bootstrap/FormSelect';
 
 /**
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const [value, setValue] = useState(props.value || '');
+  const {className, class_name, ...otherProps} = props;
 
   const handleChange = e => {
-    setValue(e.target.value);
     if (props.setProps) {
       props.setProps({value: e.target.value});
     }
   };
 
-  useEffect(() => {
-    if (props.value !== value) {
-      setValue(props.value || '');
-    }
-  }, [props.value]);
-
   return (
-    <CustomInput
+    <RBFormSelect
       {...omit(
         [
-          'value',
           'setProps',
-          'bs_size',
           'options',
           'persistence',
           'persistence_type',
           'persisted_props',
           'loading_state'
         ],
-        props
+        otherProps
       )}
-      type="select"
       onChange={handleChange}
-      value={value}
-      bsSize={props.bs_size}
+      className={class_name || className}
     >
       <option value="" disabled hidden>
         {props.placeholder}
@@ -57,7 +46,7 @@ const Select = props => {
             {option.label}
           </option>
         ))}
-    </CustomInput>
+    </RBFormSelect>
   );
 };
 
@@ -82,6 +71,13 @@ Select.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -155,13 +151,13 @@ Select.propTypes = {
 
   /**
    * Apply valid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=True to display.
+   * any FormFeedback in the enclosing div with valid=True to display.
    */
   valid: PropTypes.bool,
 
   /**
    * Apply invalid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=False to display.
+   * any FormFeedback in the enclosing div with valid=False to display.
    */
   invalid: PropTypes.bool,
 
@@ -169,7 +165,7 @@ Select.propTypes = {
    * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
    * or 'lg' (large). Default is 'md'.
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
 
   /**
    * Used to allow user interactions in this component to be persisted when

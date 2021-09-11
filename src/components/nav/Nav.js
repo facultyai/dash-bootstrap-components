@@ -1,22 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Nav as RSNav} from 'reactstrap';
+import RBNav from 'react-bootstrap/Nav';
+import classNames from 'classnames';
+
+const horizontalMap = {
+  start: 'justify-content-start',
+  center: 'justify-content-center',
+  end: 'justify-content-end',
+  around: 'justify-content-around',
+  between: 'justify-content-between'
+};
+
+const verticalMap = {
+  xs: 'flex-xs-column',
+  sm: 'flex-sm-column',
+  md: 'flex-md-column',
+  lg: 'flex-lg-column',
+  xl: 'flex-xl-column'
+};
 
 /**
  * Nav can be used to group together a collection of navigation links.
  */
 const Nav = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    pills,
+    justified,
+    horizontal,
+    vertical,
+    navbar_scroll,
+    ...otherProps
+  } = props;
+
+  const horizontalClass = horizontal && horizontalMap[horizontal];
+
+  const verticalClass =
+    vertical === true ? 'flex-column' : vertical && verticalMap[vertical];
+
+  const classes = classNames(
+    class_name || className,
+    horizontalClass,
+    verticalClass
+  );
+
   return (
-    <RSNav
+    <RBNav
+      className={classes}
+      variant={pills ? 'pills' : null}
+      justify={justified}
+      navbarScroll={navbar_scroll}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSNav>
+    </RBNav>
   );
 };
 
@@ -39,6 +83,13 @@ Nav.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -91,6 +142,11 @@ Nav.propTypes = {
    * Navbar better.
    */
   navbar: PropTypes.bool,
+
+  /**
+   * Enable vertical scrolling within the toggleable contents of a collapsed Navbar.
+   */
+  navbar_scroll: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

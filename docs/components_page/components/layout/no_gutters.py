@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 row = dbc.Row(
     [
@@ -7,5 +7,5 @@ row = dbc.Row(
         dbc.Col(html.Div("One of three columns")),
         dbc.Col(html.Div("One of three columns")),
     ],
-    no_gutters=True,
+    className="g-0",
 )

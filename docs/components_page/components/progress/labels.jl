@@ -1,3 +1,3 @@
 using DashBootstrapComponents
 
-progress = dbc_progress("25%", value=25);
+progress = dbc_progress(label = "25%", value = 25);

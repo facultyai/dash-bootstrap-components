@@ -3,10 +3,10 @@ import {render, fireEvent} from '@testing-library/react';
 import Nav from '../Nav';
 
 describe('Nav', () => {
-  test('renders a ul with class "nav"', () => {
-    const {container} = render(<Nav />);
+  test('renders a div with class "nav"', () => {
+    const nav = render(<Nav />);
 
-    expect(container.querySelector('ul.nav')).not.toBe(null);
+    expect(nav.container.querySelector('div.nav')).not.toBe(null);
   });
 
   test('renders its content', () => {

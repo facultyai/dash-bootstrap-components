@@ -1,37 +1,40 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 modal = html_div([
-    dbc_formgroup([
-        dbc_label("Backdrop:"),
-        dbc_radioitems(
-            id="backdrop-selector",
-            options=[
-                Dict("label" => "True (default)", "value" => true),
-                Dict("label" => "False", "value" => false),
-                Dict("label" => "'static'", "value" => "static"),
-            ],
-            inline=true,
-            value=true,
-        ),
-    ]),
-    dbc_button("Open modal", id="open-backdrop", n_clicks=0),
+    html_div(
+        [
+            dbc_label("Backdrop:"),
+            dbc_radioitems(
+                id = "backdrop-selector",
+                options = [
+                    Dict("label" => "True (default)", "value" => true),
+                    Dict("label" => "False", "value" => false),
+                    Dict("label" => "'static'", "value" => "static"),
+                ],
+                inline = true,
+                value = true,
+            ),
+        ],
+        className = "mb-2",
+    ),
+    dbc_button("Open modal", id = "open-backdrop", n_clicks = 0),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Header"), close_button = true),
             dbc_modalbody("Change the backdrop of this modal with the radio buttons"),
             dbc_modalfooter(
                 dbc_button(
                     "Close",
-                    id="close-backdrop",
-                    className="ml-auto",
-                    n_clicks=0,
+                    id = "close-backdrop",
+                    className = "ms-auto",
+                    n_clicks = 0,
                 ),
             ),
         ],
-        id="modal-backdrop",
-        is_open=false,
+        id = "modal-backdrop",
+        is_open = false,
     ),
-]);
+])
 
 callback!(
     app,

@@ -1,3 +1,3 @@
 library(dashBootstrapComponents)
 
-progress <- dbcProgress("25%", value = 25)
+progress <- dbcProgress(label = "25%", value = 25)

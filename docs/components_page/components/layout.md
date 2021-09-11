@@ -3,11 +3,13 @@ title: Layout
 lead: Components for laying out your Dash app, including wrapping containers, and a powerful, responsive grid system.
 ---
 
+## Examples
+
 Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and five responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
 
-There are three main layout components in *dash-bootstrap-components*: `Container`, `Row`, and `Col`.
+There are three main layout components in _dash-bootstrap-components_: `Container`, `Row`, and `Col`.
 
-The `Container` component can be used to center and horizontally pad your app's content. The docs you are currently reading are themselves a Dash app built with *dash-bootstrap-components*. The content on this page has been centered by wrapping it in a `Container` component. By default the container has a responsive pixel width. Use the keyword argument `fluid=True` if you want your `Container` to fill available horizontal space and resize fluidly.
+The `Container` component can be used to center and horizontally pad your app's content. The docs you are currently reading are themselves a Dash app built with _dash-bootstrap-components_. The content on this page has been centered by wrapping it in a `Container` component. By default the container has a responsive pixel width. Use the keyword argument `fluid=True` if you want your `Container` to fill available horizontal space and resize fluidly.
 
 The `Row` component is a wrapper for columns. The layout of your app should be built as a series of rows of columns.
 
@@ -40,7 +42,7 @@ In addition to the simple width arguments outlined above, you can pass a diction
 
 `size` takes any of the simple arguments that `width` understands, i.e. `True`, "auto", or an integer `1`,...,`12`, and specifies the size / width of the column.
 
-`order` can be used to reorder the columns. It accepts the integers `1`,...,`12`, or the strings `"first"` and `"last"`. Columns will then be ordered numerically, with columns specified as `"first"` or `"last"` being placed first and last respectively. If two columns have the same order, they will keep the order they are specified in the source.
+`order` can be used to reorder the columns. It accepts the integers `1`,...,`5`, or the strings `"first"` and `"last"`. Columns will then be ordered numerically, with columns specified as `"first"` or `"last"` being placed first and last respectively. If two columns have the same order, they will keep the order they are specified in the source.
 
 Finally `offset` accepts the integers `1`, ..., `12` and increases the left margin of the column by that number of grid columns.
 
@@ -60,7 +62,7 @@ By setting different sizes, orders and offsets for the different responsive tier
 
 ## Row without 'gutters'
 
-By default, horizontal spacing is added between the columns. Use `no_gutters=True` to disable this.
+By default, horizontal spacing is added between the columns. Use Bootstrap's [gutter modifier classes](https://getbootstrap.com/docs/5.1/layout/gutters/) to adjust this.
 
 {{example:components/layout/no_gutters.py:row}}
 
@@ -80,7 +82,7 @@ You can also control horizontal alignment of columns using the `justify` keyword
 
 Sometimes you may wish to use Bootstrap's grid system for specifying the layout of your app, but you don't want the changes Bootstrap makes to the typography, or to load all the additional CSS classes that Bootstrap specifies. In such a situation, you can link only the CSS required for the grid system using the `themes` module.
 
-{{code-example:components/layout/grid_only.py:python}}
+{{code-example:components/layout/grid_only.py}}
 
 Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/4.2/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plot.ly/external-resources) for details.
 

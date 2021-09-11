@@ -7,7 +7,7 @@ card = dbc_card(
             dbc_listgroupitem("Item 2"),
             dbc_listgroupitem("Item 3"),
         ],
-        flush=true,
+        flush = true,
     ),
-    style=Dict("width" => "18rem"),
+    style = Dict("width" => "18rem"),
 );

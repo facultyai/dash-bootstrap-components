@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import Input from '../Input';
 import InputGroup from '../InputGroup';
-import InputGroupAddon from '../InputGroupAddon';
+import InputGroupText from '../InputGroupText';
 
 describe('InputGroup', () => {
   test('renders a div with class "input-group"', () => {
@@ -16,7 +16,7 @@ describe('InputGroup', () => {
   test('renders its content', () => {
     const inputGroup = render(
       <InputGroup>
-        <InputGroupAddon>Addon</InputGroupAddon>
+        <InputGroupText>Addon</InputGroupText>
         <Input />
       </InputGroup>
     );

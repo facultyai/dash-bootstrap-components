@@ -1,6 +1,7 @@
 import dash_bootstrap_components as dbc
+from dash import html
 
-email_input = dbc.FormGroup(
+email_input = html.Div(
     [
         dbc.Label("Email", html_for="example-email"),
         dbc.Input(type="email", id="example-email", placeholder="Enter email"),
@@ -8,10 +9,11 @@ email_input = dbc.FormGroup(
             "Are you on email? You simply have to be these days",
             color="secondary",
         ),
-    ]
+    ],
+    className="mb-3",
 )
 
-password_input = dbc.FormGroup(
+password_input = html.Div(
     [
         dbc.Label("Password", html_for="example-password"),
         dbc.Input(
@@ -22,7 +24,8 @@ password_input = dbc.FormGroup(
         dbc.FormText(
             "A password stops mean people taking your stuff", color="secondary"
         ),
-    ]
+    ],
+    className="mb-3",
 )
 
 form = dbc.Form([email_input, password_input])

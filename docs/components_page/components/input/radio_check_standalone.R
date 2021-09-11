@@ -3,35 +3,25 @@ library(dashHtmlComponents)
 
 standalone_radio_check <- htmlDiv(
   list(
-    dbcFormGroup(
+    htmlDiv(
       list(
         dbcCheckbox(
           id = "standalone-checkbox",
-          className = "form-check-input"
+          label = "This is a checkbox",
+          value = FALSE
         ),
-        dbcLabel(
-          "This is a checkbox",
-          html_for = "standalone-checkbox",
-          className = "form-check-label"
-        )
-      ),
-      check = TRUE
-    ),
-    dbcFormGroup(
-      list(
+        dbcSwitch(
+          id = "standalone-switch",
+          label = "This is a toggle switch",
+          value = FALSE
+        ),
         dbcRadioButton(
-            id = "standalone-radio",
-            className = "form-check-input"
-        ),
-        dbcLabel(
-          "This is a radio button",
-          html_for = "standalone-radio",
-          className = "form-check-label"
+          id = "standalone-radio",
+          label = "This is a radio button",
+          value = FALSE
         )
-      ),
-      check = TRUE,
+      )
     ),
-    htmlBr(),
     htmlP(id = "standalone-radio-check-output")
   )
 )
@@ -40,16 +30,20 @@ standalone_radio_check <- htmlDiv(
 app$callback(
   output("standalone-radio-check-output", "children"),
   list(
-    input("standalone-checkbox", "checked"),
-    input("standalone-radio", "checked")
+    input("standalone-checkbox", "value"),
+    input("standalone-switch", "value"),
+    input("standalone-radio", "value")
   ),
-  function(checkbox_checked, radio_checked) {
-    if (checkbox_checked & radio_checked) {
-      return("Both checked.")
-    } else if (checkbox_checked | radio_checked) {
-      return("One checked.")
-    } else {
-      return("None checked.")
-    }
+  function(checkbox_checked, switch_checked, radio_checked) {
+    check <- if (checkbox_checked) "True" else "False"
+    switch <- if (switch_checked) "True" else "False"
+    radio <- if (radio_checked) "True" else "False"
+
+
+    template <- "Selections:  Checkbox: %s, Toggle Switch: %s, Radio Button: %s"
+
+    return(
+      sprintf(template, check, switch, radio)
+    )
   }
 )

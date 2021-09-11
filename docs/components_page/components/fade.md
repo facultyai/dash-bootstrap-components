@@ -3,7 +3,7 @@ title: Fade
 lead: Toggle the visibility of content in your apps with a fade animation using the `Fade` component.
 ---
 
-## Simple example
+## Examples
 
 The `Fade` component can be used to show and hide content in your apps. When the visibility is toggled, the content will fade in / out. Simply set `is_in=True` to show the content, and `is_in=False` to hide it again. The simple example below uses a button click to toggle in the `is_in` prop.
 

@@ -1,12 +1,12 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 from .util import make_subheading
 
 cards = html.Div(
     [
         make_subheading("Card", "card"),
-        dbc.CardDeck(
+        dbc.CardGroup(
             [
                 dbc.Card(
                     [

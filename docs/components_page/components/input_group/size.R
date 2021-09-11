@@ -5,20 +5,20 @@ input_group <- htmlDiv(
   list(
     dbcInputGroup(
       list(
-        dbcInputGroupAddon("Large", addon_type = "prepend"), dbcInput()
+        dbcInputGroupText("Large"), dbcInput()
       ),
       size = "lg"
     ),
     htmlBr(),
     dbcInputGroup(
       list(
-        dbcInputGroupAddon("Default", addon_type = "prepend"), dbcInput()
+        dbcInputGroupText("Default"), dbcInput()
       )
     ),
     htmlBr(),
     dbcInputGroup(
       list(
-        dbcInputGroupAddon("Small", addon_type = "prepend"), dbcInput()
+        dbcInputGroupText("Small"), dbcInput()
       ),
       size = "sm"
     )

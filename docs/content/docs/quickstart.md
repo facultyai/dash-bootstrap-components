@@ -74,7 +74,7 @@ _dash-bootstrap-components_ is a component library for use with Plotly Dash. If 
 
 To use _dash-bootstrap-components_ you must do two things:
 
-- Link a Bootstrap v4 compatible stylesheet
+- Link a Bootstrap v5 compatible stylesheet
 - Incorporate _dash-bootstrap-components_ into the layout of your app.
 
 ### Linking a stylesheet
@@ -135,7 +135,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dbc.Container(
     dbc.Alert("Hello Bootstrap!", color="success"),
-    className="p-5",
+    class_name="p-5",
 )
 
 if __name__ == "__main__":
@@ -152,7 +152,7 @@ library(dashBootstrapComponents)
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
 app$layout(dbcContainer(dbcAlert("Hello Bootstrap!", color = "success"),
-                        className = "p-5"))
+                        class_name = "p-5"))
 
 app$run_server(showcase = TRUE)
 ```
@@ -167,7 +167,7 @@ app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
 
 app.layout = dbc_container(
     dbc_alert("Hello Bootstrap!", color="success"),
-    className="p-5",
+    class_name="p-5",
 )
 
 run_server(app, "0.0.0.0", 8080)
@@ -181,6 +181,7 @@ Check out these [example apps][examples] made with _dash-bootstrap-components_.
 [dash-docs]: https://dash.plotly.com
 [dash-docs-external]: https://dash.plotly.com/external-resources
 [docs-themes]: /docs/themes
+[docs-icons]: /docs/icons
 [docs-components]: /docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [examples]: /examples

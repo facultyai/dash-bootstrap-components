@@ -3,8 +3,10 @@ library(dashHtmlComponents)
 
 popover <- htmlDiv(
   list(
-    dbcButton("Toggle", id = "toggle", n_clicks = 0,
-              color = "success", className = "mr-4"),
+    dbcButton("Toggle",
+      id = "toggle", n_clicks = 0,
+      color = "success", className = "me-4"
+    ),
     dbcButton("Target", id = "target", n_clicks = 0, color = "danger"),
     dbcPopover(
       list(

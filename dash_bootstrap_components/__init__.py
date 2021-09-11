@@ -2,6 +2,7 @@
 import os
 import sys
 
+from dash_bootstrap_components import icons  # noqa
 from dash_bootstrap_components import themes  # noqa
 from dash_bootstrap_components import _components
 from dash_bootstrap_components._components import *  # noqa
@@ -37,47 +38,3 @@ for _component_name in _components.__all__:
 sys.modules[__name__].Table.from_dataframe = classmethod(
     _generate_table_from_df
 )
-
-
-# DatePicker deprecation warnings
-class DatePickerSingle(object):
-    def __init__(self, *args, **kwargs):
-        raise AttributeError(
-            "DatePickerSingle has been removed from dash-bootstrap-components."
-            " Use DatePickerSingle from dash-core-components instead."
-        )
-
-
-class DatePickerRange(object):
-    def __init__(self, *args, **kwargs):
-        raise AttributeError(
-            "DatePickerRange has been removed from dash-bootstrap-components. "
-            "Use DatePickerRange from dash-core-components instead."
-        )
-
-
-class CardTitle(object):
-    def __init__(self, *args, **kwargs):
-        raise AttributeError(
-            "CardTitle has been removed from dash-bootstrap-components. Set "
-            "className='card-title' on a html.H* component instead. CardTitle "
-            "originally used H5."
-        )
-
-
-class CardSubtitle(object):
-    def __init__(self, *args, **kwargs):
-        raise AttributeError(
-            "CardSubtitle has been removed from dash-bootstrap-components. "
-            "Set className='card-subtitle' on a html.H* component instead. "
-            "CardSubtitle originally used H6."
-        )
-
-
-class CardText(object):
-    def __init__(self, *args, **kwargs):
-        raise AttributeError(
-            "CardText has been removed from dash-bootstrap-components. Set "
-            "className='card-text' on a html component such as Div, or P "
-            "instead. CardText originally used P."
-        )

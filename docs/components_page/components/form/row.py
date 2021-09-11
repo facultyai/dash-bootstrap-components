@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 
-email_input = dbc.FormGroup(
+email_input = dbc.Row(
     [
         dbc.Label("Email", html_for="example-email-row", width=2),
         dbc.Col(
@@ -10,10 +10,10 @@ email_input = dbc.FormGroup(
             width=10,
         ),
     ],
-    row=True,
+    className="mb-3",
 )
 
-password_input = dbc.FormGroup(
+password_input = dbc.Row(
     [
         dbc.Label("Password", html_for="example-password-row", width=2),
         dbc.Col(
@@ -25,10 +25,10 @@ password_input = dbc.FormGroup(
             width=10,
         ),
     ],
-    row=True,
+    className="mb-3",
 )
 
-radios_input = dbc.FormGroup(
+radios_input = dbc.Row(
     [
         dbc.Label("Radios", html_for="example-radios-row", width=2),
         dbc.Col(
@@ -47,7 +47,7 @@ radios_input = dbc.FormGroup(
             width=10,
         ),
     ],
-    row=True,
+    className="mb-3",
 )
 
 form = dbc.Form([email_input, password_input, radios_input])

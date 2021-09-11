@@ -7,7 +7,8 @@ progress <- htmlDiv(
       value = 80, id = "animated-progress", striped = TRUE, animated = FALSE
     ),
     dbcButton(
-      "Toggle animation", id = "animation-toggle", n_clicks = 0,
+      "Toggle animation",
+      id = "animation-toggle", n_clicks = 0,
       className = "mt-3"
     )
   )

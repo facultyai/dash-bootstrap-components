@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
-import {Popover as RSPopover} from 'reactstrap';
+import RBPopover from 'react-bootstrap/Popover';
+
+import Overlay from '../../private/Overlay';
 
 /**
  * Popover creates a toggleable overlay that can be used to provide additional
@@ -15,33 +16,40 @@ const Popover = props => {
   const {
     children,
     is_open,
-    hide_arrow,
     loading_state,
-    setProps,
-    trigger,
+    className,
+    class_name,
+    style,
+    id,
     ...otherProps
   } = props;
 
-  const toggle = () => {
-    setProps({is_open: !is_open});
-  };
-
   return (
-    <RSPopover
-      isOpen={is_open}
-      hideArrow={hide_arrow}
-      // to ensure proper backwards compatibility, the toggle function is only
-      // passed to the popover if `trigger` is not specified
-      toggle={trigger ? toggle : undefined}
-      trigger={trigger}
-      {...omit(['setProps'], otherProps)}
+    <Overlay
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      defaultShow={is_open}
+      {...otherProps}
     >
-      {children}
-    </RSPopover>
+      <RBPopover
+        // hideArrow={hide_arrow}
+        // to ensure proper backwards compatibility, the toggle function is only
+        // passed to the popover if `trigger` is not specified
+        style={style}
+        id={id}
+        className={class_name || className}
+      >
+        {children}
+      </RBPopover>
+    </Overlay>
   );
+};
+
+Popover.defaultProps = {
+  delay: {show: 0, hide: 50},
+  placement: 'right',
+  flip: true
 };
 
 Popover.propTypes = {
@@ -62,6 +70,13 @@ Popover.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -100,11 +115,6 @@ Popover.propTypes = {
   target: PropTypes.string,
 
   /**
-   * Where to inject the popper DOM node, default body.
-   */
-  container: PropTypes.string,
-
-  /**
    * Space separated list of triggers (e.g. "click hover focus legacy"). These
    * specify ways in which the target component can toggle the popover. If not
    * specified you must toggle the popover yourself using callbacks. Options
@@ -131,10 +141,17 @@ Popover.propTypes = {
   /**
    * CSS class to apply to the popover.
    */
+  inner_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `inner_class_name` instead
+   *
+   * CSS class to apply to the popover.
+   */
   innerClassName: PropTypes.string,
 
   /**
-   * Optionally override show/hide delays - default {show: 0, hide: 250}
+   * Optionally override show/hide delays
    */
   delay: PropTypes.oneOfType([
     PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
@@ -142,7 +159,7 @@ Popover.propTypes = {
   ]),
 
   /**
-   * Popover offset.
+   * Offset of the popover relative to its target
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
