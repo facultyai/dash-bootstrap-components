@@ -1,14 +1,16 @@
 import React from 'react';
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Checkbox from '../Checkbox';
+import Switch from '../Switch';
 
-describe('Checkbox', () => {
-  test('renders a checkbox', () => {
-    const checkbox = render(<Checkbox />);
-    const [input, label] = checkbox.container.firstChild.children;
+describe('Switch', () => {
+  test('renders a toggle toggleSwitch', () => {
+    const toggleSwitch = render(<Switch />);
+    const [input, label] = toggleSwitch.container.firstChild.children;
 
-    expect(checkbox.container.firstChild).toHaveClass('form-check');
+    expect(toggleSwitch.container.firstChild).toHaveClass(
+      'form-check form-switch'
+    );
     expect(input).toHaveClass('form-check-input');
     expect(label).toHaveClass('form-check-label');
     expect(input).toHaveAttribute('type', 'checkbox');
@@ -17,17 +19,17 @@ describe('Checkbox', () => {
   test('dispatches updates to setProps if set', () => {
     const mockSetProps = jest.fn();
     const {
-      container: {firstChild: checkbox},
+      container: {firstChild: toggleSwitch},
       rerender
-    } = render(<Checkbox setProps={mockSetProps} />);
+    } = render(<Switch setProps={mockSetProps} />);
 
-    const [input, label] = checkbox.children;
+    const [input, label] = toggleSwitch.children;
     userEvent.click(input);
     expect(mockSetProps.mock.calls).toHaveLength(1);
 
     // props passed to setProps get passed back to the component by Dash renderer
     const arg1 = mockSetProps.mock.calls[0][0];
-    rerender(<Checkbox setProps={mockSetProps} {...arg1} />);
+    rerender(<Switch setProps={mockSetProps} {...arg1} />);
 
     userEvent.click(input);
     expect(mockSetProps.mock.calls).toHaveLength(2);
