@@ -5,7 +5,8 @@ import dash_bootstrap_components as dbc
 # 2. Create a Dash app instance
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-# 3. Add the example
+# 3. Add the example to the app's layout
+# First we copy the snippet from the docs
 badge = dbc.Button(
     [
         "Notifications",
@@ -14,8 +15,9 @@ badge = dbc.Button(
     color="primary",
 )
 
-# 4. Assign your layout to the app layout
-app.layout = badge
+# Then we incorporate the snippet into our layout.
+# This example keeps it simple and just wraps it in a Container
+app.layout = dbc.Container(badge, fluid=True)
 
 # 5. Start the Dash server
 if __name__ == "__main__":
