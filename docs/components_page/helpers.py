@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 
-def HighlightedSource(py_source, r_source, jl_source):
+def HighlightedSource(py_source, r_source, jl_source, className="px-3"):
     return dbc.Tabs(
         [
             dbc.Tab(
@@ -17,7 +17,7 @@ def HighlightedSource(py_source, r_source, jl_source):
             ]
             if source is not None
         ],
-        className="px-3",
+        className=className,
     )
 
 
