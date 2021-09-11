@@ -11,7 +11,7 @@ This page documents notable changes in dash-bootstrap-components releases.
 v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully for full details.
 
 ### Added
-- Six new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 685](https://github.com/facultyai/dash-bootstrap-components/pull/685))
+- Six new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
 - New CDN links for icons from Bootstrap Icons and Font Awesome ([PR 661](https://github.com/facultyai/dash-bootstrap-components/pull/661))
 - CDN Links for four new Bootswatch themes: `QUARTZ`, `MORPH`, `VAPOR` and `ZEPHYR`.
 - All components now accept `class_name` as an alternative to `className`. If both are specified then `class_name` will take precedence. `class_name` should be preferred from now on. ([PR 642](https://github.com/facultyai/dash-bootstrap-components/pull/642))
