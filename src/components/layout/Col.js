@@ -186,7 +186,7 @@ Col.propTypes = {
    * dictionary with keys 'offset', 'order', 'size'. See the documentation for
    * more details.
    */
-  xl: columnProps,
+  xxl: columnProps,
 
   /**
    * Set vertical alignment of this column's content in the parent row. Options
