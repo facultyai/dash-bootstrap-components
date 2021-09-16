@@ -7,9 +7,45 @@ title: Migration guide
 _dash-bootstrap-components_ v1 contains loads of new features, but also some breaking changes. This is for two reasons:
 
 - First, now that the library has matured, we have taken the opportunity to clean up the API and make things more consistent across components.
-- Second we have updated all components to support Bootstrap 5 (previously we supported Bootstrap 4). Since Bootstrap 5 also contains a number of breaking changes, we have inherited those in _dash-bootstrap-components_. For more information about the changes in Bootstrap 5, see the upstream [Bootstrap migration guide.](https://v5.getbootstrap.com/docs/5.0/migration) and the [Bootstrap 5 Documentation](https://getbootstrap.com/docs/5.0/layout/grid/).
+- Second we have updated all components to support Bootstrap 5 (previously we supported Bootstrap 4). Since Bootstrap 5 also contains a number of breaking changes, we have inherited those in _dash-bootstrap-components_. For more information about the changes in Bootstrap 5, see the upstream [Bootstrap migration guide](https://v5.getbootstrap.com/docs/5.0/migration) and the [Bootstrap 5 Documentation](https://getbootstrap.com/docs/5.0/layout/grid/).
 
 This guide introduces the new features, and also covers the changes you must make to run your apps with _dash-bootstrap-components_ 1.0.0 rather than 0.13.x (the final v0 releases). If you find any issues not covered here, or bugs in v1 please [raise an issue](https://github.com/facultyai/dash-bootstrap-components/issues/new/choose) on our GitHub repository.
+
+If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers.
+
+~~~bootstrap-tabs
+Python
+### PyPI
+
+To install the last v0 release of _dash-bootstrap-components_ from PyPI use
+
+```sh
+pip install "dash-bootstrap-components<1"
+```
+
+### Anaconda
+
+If you installed _dash-bootstrap-components_ with `conda` you can use
+
+```sh
+conda install -c conda-forge "dash-bootstrap-components<1"
+```
+-----
+R
+You can install earlier versions of _dash-bootstrap-components_ from our GitHub repository by specifying the relevant tag
+
+```r
+library(devtools)
+install_github('facultyai/dash-bootstrap-components@r0.13.0')
+```
+-----
+Julia
+You can install earlier versions of `DashBootstrapComponents` by adding the version number to the install command.
+
+```julia-repl
+pkg> add DashBootstrapComponents@0.13.0
+```
+~~~
 
 ## Dependencies
 
