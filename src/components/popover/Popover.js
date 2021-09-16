@@ -13,18 +13,6 @@ import Overlay from '../../private/Overlay';
  * of the children.
  */
 
-// stringifies object ids used in pattern matching callbacks
-const stringifyId = id => {
-  if (typeof id !== 'object') {
-    return id;
-  }
-  const stringifyVal = v => (v && v.wild) || JSON.stringify(v);
-  const parts = Object.keys(id)
-    .sort()
-    .map(k => JSON.stringify(k) + ':' + stringifyVal(id[k]));
-  return '{' + parts.join(',') + '}';
-};
-
 const Popover = props => {
   const {
     children,
@@ -34,7 +22,6 @@ const Popover = props => {
     class_name,
     style,
     id,
-    target,
     ...otherProps
   } = props;
 
@@ -44,7 +31,6 @@ const Popover = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
       defaultShow={is_open}
-      target={stringifyId(target)}
       {...otherProps}
     >
       <RBPopover
@@ -127,7 +113,7 @@ Popover.propTypes = {
   /**
    * ID of the component to attach the popover to.
    */
-  target: PropTypes.string,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
   /**
    * Space separated list of triggers (e.g. "click hover focus legacy"). These

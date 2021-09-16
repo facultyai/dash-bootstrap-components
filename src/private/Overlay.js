@@ -19,6 +19,18 @@ function useStateRef(initialValue) {
   return [value, setValue, ref];
 }
 
+// stringifies object ids used in pattern matching callbacks
+const stringifyId = id => {
+  if (typeof id !== 'object') {
+    return id;
+  }
+  const stringifyVal = v => (v && v.wild) || JSON.stringify(v);
+  const parts = Object.keys(id)
+    .sort()
+    .map(k => JSON.stringify(k) + ':' + stringifyVal(id[k]));
+  return '{' + parts.join(',') + '}';
+};
+
 const Overlay = ({
   children,
   target,
@@ -39,6 +51,8 @@ const Overlay = ({
   const showTimeout = useRef(null);
 
   const triggers = typeof trigger === 'string' ? trigger.split(' ') : [];
+
+  const targetStr = stringifyId(target);
 
   const hide = () => {
     if (isOpenRef.current) {
@@ -133,9 +147,9 @@ const Overlay = ({
   }, [defaultShow]);
 
   useEffect(() => {
-    targetRef.current = document.getElementById(target);
+    targetRef.current = document.getElementById(targetStr);
     addEventListeners(targetRef.current);
-  }, [target]);
+  }, [targetStr]);
 
   return (
     <RBOverlay show={isOpen} target={targetRef.current} {...otherProps}>
