@@ -78,9 +78,7 @@ Notably previously there was a mix of `size` and `bs_size` props for controlling
 
 ### Buttons
 - <span class="badge bg-danger">Breaking</span> The default color for the buttons is now `primary` rather than `secondary`.  This change was made to match the Bootstrap convention.
-
 - <span class="badge bg-danger">Breaking</span> The `block` property has been dropped. Instead, wrap the buttons in a `html.Div` and use the Bootstrap utilities classes such as `"d-grid"` and a `"gap-*"` in the `className` to space the buttons as needed. See [the docs](/docs/components/button) for examples.
-
 - Disabled buttons now have `pointer-events: none` as a default.
 
 ### ButtonGroup
@@ -89,12 +87,15 @@ Notably previously there was a mix of `size` and `bs_size` props for controlling
 ### Card
 - <span class="badge bg-danger">Breaking</span> Dropped `CardDeck` component. Use the Bootstrap grid classes to arrange the cards like a card deck.  See
 the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-columns) for more information.
-
 - <span class="badge bg-danger">Breaking</span> Dropped `CardColumns` component. `CardColumns` had many [issues in Bootstrap 4](https://github.com/twbs/bootstrap/pull/28922) and was dropped in Bootstrap 5.
 
 ### Carousel
 - Added `dark` property for dark text, controls, and indicators. This is great for lighter backgrounds.
 - Replaced chevron icons for carousel controls with new SVGs from Bootstrap Icons.
+
+### Col
+- <span class="badge bg-danger">Breaking</span> When specifying the `order` of the columns, it accepts the integers 1, ..., 5,  only rather than integers 1, ..., 12.
+- Added `xxl` prop corresponding to the new `xxl` breakpoint in Bootstrap 5. Allows you to control the layout on extra large screens.
 
 ### Collapse
 - <span class="badge bg-danger">Breaking</span> Dropped the `tag` property.
@@ -126,10 +127,6 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 ### Jumbotron
 - <span class="badge bg-danger">Breaking</span> Dropped the Jumbotron component. The [docs have an example](/docs/components/jumbotron/) of how to replicate it with Bootstrap utilities.
 
-### Layout
-- <span class="badge bg-danger">Breaking</span> Dropped `no_gutters` prop.  Use gutter modifier classes instead. See the [docs](/docs/components/layout/) for examples.
-- <span class="badge bg-danger">Breaking</span>  When specifying the `order` of the columns, it accepts the integers 1, ..., 5,  only rather than integers 1, ..., 12.
-
 ### ListGroup
 - <span class="badge bg-danger">Breaking</span> Dropped the `ListGroupHeading` and `ListGroupItemText` components. Both are unnecessary since you can pass any Dash components to the children of `ListGroupItem`. See the [docs](/docs/components/list_group/) for updated examples.
 
@@ -157,18 +154,21 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - Added a `label` property that should be used instead of `children` to render text on the progress bar.
 - Added a `hide_label` property to hide the label.
 
+### Row
+- <span class="badge bg-danger">Breaking</span> Dropped `no_gutters` prop.  Use gutter modifier classes instead. See the [docs](/docs/components/layout/) for examples.
+
 ### Select
 - <span class="badge bg-danger">Breaking</span> Dropped `bs_size` property.  Use `size` instead.
 
 ### Switch <span class="badge bg-success">New</span>
--  New `Switch` component. See the documentation [here](/docs/components/input)
+- New `Switch` component. See the documentation [here](/docs/components/input)
 
 ### Table
- - <span class="badge bg-danger">Breaking</span> Dropped `tag` property.
- - Added `color` property.
+- <span class="badge bg-danger">Breaking</span> Dropped `tag` property.
+- Added `color` property.
 
 ### Tabs
- - <span class="badge bg-danger">Breaking</span> Dropped `card` property.  It's no longer necessary to set `card=True` to put tabs in a `Card`.
+- <span class="badge bg-danger">Breaking</span> Dropped `card` property.  It's no longer necessary to set `card=True` to put tabs in a `Card`.
 
 ### TextArea
 - <span class="badge bg-danger">Breaking</span> Dropped `bs_size` property.  Use `size` instead.
