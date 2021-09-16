@@ -11,6 +11,19 @@ import Overlay from '../../private/Overlay';
  * Simply add the Tooltip to you layout, and give it a target (id of a
  * component to which the tooltip should be attached)
  */
+
+// stringifies object ids used in pattern matching callbacks
+const stringifyId = id => {
+  if (typeof id !== 'object') {
+    return id;
+  }
+  const stringifyVal = v => (v && v.wild) || JSON.stringify(v);
+  const parts = Object.keys(id)
+    .sort()
+    .map(k => JSON.stringify(k) + ':' + stringifyVal(id[k]));
+  return '{' + parts.join(',') + '}';
+};
+
 const Tooltip = props => {
   const {
     id,
@@ -19,6 +32,7 @@ const Tooltip = props => {
     className,
     class_name,
     style,
+    target,
     ...otherProps
   } = props;
 
@@ -29,6 +43,7 @@ const Tooltip = props => {
       }
       {...omit(['setProps'], otherProps)}
       trigger="hover focus"
+      target={stringifyId(target)}
     >
       <RBTooltip style={style} className={class_name || className}>
         {children}
