@@ -50,7 +50,7 @@ Finally `offset` accepts the integers `1`, ..., `12` and increases the left marg
 
 ## Specify width for different screen sizes
 
-Bootstrap’s grid includes five responsive tiers for building complex responsive layouts. Customize the size, order and offset of your columns on extra small, small, medium, large, or extra large devices using the `xs`, `sm`, `md`, `lg`, and `xl` keyword arguments. Each takes the same arguments as `width` and specifies the column behaviour for that size of screen or larger. `width` secretly just sets `xs`. If you specify both, `xs` will override `width`.
+Bootstrap’s grid includes six responsive tiers for building complex responsive layouts. Customize the size, order and offset of your columns on devices ranging in size from extra small to extra extra large using the `xs`, `sm`, `md`, `lg`, `xl` and `xxl` keyword arguments. Each takes the same arguments as `width` and specifies the column behaviour for that size of screen or larger. `width` secretly just sets `xs`. If you specify both, `xs` will override `width`.
 
 The first of the following two examples has three columns, we set `md=4` indicating that on a 'medium' sized or larger screen each column should take up a third of the width. Since we don't specify behaviour on smaller size screens Bootstrap will allow the rows to wrap so as not to squash the content. You will see this happening if you resize the window you are reading this in.
 
