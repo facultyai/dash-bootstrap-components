@@ -23,27 +23,50 @@ const Spinner = props => {
     fullscreenClassName,
     fullscreen_class_name,
     fullscreen_style,
-    debounce,
+    hide_delay,
+    show_delay,
     show_initially,
     type,
     ...otherProps
   } = props;
 
   const [showSpinner, setShowSpinner] = useState(show_initially);
-  const timer = useRef();
+  const dismissTimer = useRef();
+  const showTimer = useRef();
 
   useEffect(() => {
     if (loading_state) {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
-      if (loading_state.is_loading && !showSpinner) {
-        setShowSpinner(true);
-      } else if (!loading_state.is_loading && showSpinner) {
-        timer.current = setTimeout(() => setShowSpinner(false), debounce);
+      if (loading_state.is_loading) {
+        // if component is currently loading and there's a dismiss timer active
+        // we need to clear it.
+        if (dismissTimer.current) {
+          dismissTimer.current = clearTimeout(dismissTimer.current);
+        }
+        // if component is currently loading but the spinner is not showing and
+        // there is no timer set to show, then set a timeout to show
+        if (!showSpinner && !showTimer.current) {
+          showTimer.current = setTimeout(() => {
+            setShowSpinner(true);
+            showTimer.current = null;
+          }, show_delay);
+        }
+      } else {
+        // if component is not currently loading and there's a show timer
+        // active we need to clear it
+        if (showTimer.current) {
+          showTimer.current = clearTimeout(showTimer.current);
+        }
+        // if component is not currently loading and the spinner is showing and
+        // there's no timer set to dismiss it, then set a timeout to hide it
+        if (showSpinner && !dismissTimer.current) {
+          dismissTimer.current = setTimeout(() => {
+            setShowSpinner(false);
+            dismissTimer.current = null;
+          }, hide_delay);
+        }
       }
     }
-  }, [loading_state]);
+  }, [hide_delay, show_delay, loading_state]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -131,7 +154,8 @@ const Spinner = props => {
 Spinner._dashprivate_isLoadingComponent = true;
 
 Spinner.defaultProps = {
-  debounce: 0,
+  hide_delay: 0,
+  show_delay: 0,
   show_initially: true,
   type: 'border'
 };
@@ -213,7 +237,13 @@ Spinner.propTypes = {
    * When using the spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being removed to prevent flickering.
    */
-  debounce: PropTypes.number,
+  hide_delay: PropTypes.number,
+
+  /**
+   * When using the spinner as a loading spinner, add a time delay (in ms) to
+   * the spinner being shown after the loading_state is set to true.
+   */
+  show_delay: PropTypes.number,
 
   /**
    * Whether the Spinner should show on app start-up before the loading state
