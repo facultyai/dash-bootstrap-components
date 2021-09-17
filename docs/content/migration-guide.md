@@ -160,6 +160,10 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 ### Select
 - <span class="badge bg-danger">Breaking</span> Dropped `bs_size` property.  Use `size` instead.
 
+### Spinner
+- `Spinner` has a new prop `show_delay` which can be used to control how long a component should be loading for before the spinner shows.
+- <span class="badge bg-danger">Breaking</span> `debounce` prop has been renamed to `hide_delay` to mirror `show_delay`. This prop adds a delay to the spinner being hidden once the child component has finished loading.
+
 ### Switch <span class="badge bg-success">New</span>
 - New `Switch` component. See the documentation [here](/docs/components/input)
 
