@@ -11,6 +11,7 @@ import Overlay from '../../private/Overlay';
  * Simply add the Tooltip to you layout, and give it a target (id of a
  * component to which the tooltip should be attached)
  */
+
 const Tooltip = props => {
   const {
     id,
@@ -81,7 +82,7 @@ Tooltip.propTypes = {
   /**
    * The id of the element to attach the tooltip to
    */
-  target: PropTypes.string,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
   /**
    * How to place the tooltip.

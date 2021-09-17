@@ -12,6 +12,7 @@ import Overlay from '../../private/Overlay';
  * Use the `PopoverHeader` and `PopoverBody` components to control the layout
  * of the children.
  */
+
 const Popover = props => {
   const {
     children,
@@ -112,7 +113,7 @@ Popover.propTypes = {
   /**
    * ID of the component to attach the popover to.
    */
-  target: PropTypes.string,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
   /**
    * Space separated list of triggers (e.g. "click hover focus legacy"). These
