@@ -23,8 +23,8 @@ const Spinner = props => {
     fullscreenClassName,
     fullscreen_class_name,
     fullscreen_style,
-    hide_delay,
-    show_delay,
+    delay_hide,
+    delay_show,
     show_initially,
     type,
     ...otherProps
@@ -48,7 +48,7 @@ const Spinner = props => {
           showTimer.current = setTimeout(() => {
             setShowSpinner(true);
             showTimer.current = null;
-          }, show_delay);
+          }, delay_show);
         }
       } else {
         // if component is not currently loading and there's a show timer
@@ -62,11 +62,11 @@ const Spinner = props => {
           dismissTimer.current = setTimeout(() => {
             setShowSpinner(false);
             dismissTimer.current = null;
-          }, hide_delay);
+          }, delay_hide);
         }
       }
     }
-  }, [hide_delay, show_delay, loading_state]);
+  }, [delay_hide, delay_show, loading_state]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -154,8 +154,8 @@ const Spinner = props => {
 Spinner._dashprivate_isLoadingComponent = true;
 
 Spinner.defaultProps = {
-  hide_delay: 0,
-  show_delay: 0,
+  delay_hide: 0,
+  delay_show: 0,
   show_initially: true,
   type: 'border'
 };
@@ -237,13 +237,13 @@ Spinner.propTypes = {
    * When using the spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being removed to prevent flickering.
    */
-  hide_delay: PropTypes.number,
+  delay_hide: PropTypes.number,
 
   /**
    * When using the spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being shown after the loading_state is set to true.
    */
-  show_delay: PropTypes.number,
+  delay_show: PropTypes.number,
 
   /**
    * Whether the Spinner should show on app start-up before the loading state
