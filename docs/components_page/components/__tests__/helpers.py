@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from .wrappers import JL_WRAPPER, R_WRAPPER
+
 
 def py_source_to_app(py_source, env):
     """
@@ -47,3 +49,19 @@ def rename_variable(snippet_path, suffix, variable, assign_op="="):
         new_lines.append(line)
 
     return "\n".join(new_lines)
+
+
+def load_r_app(path, component_name):
+    return R_WRAPPER.format(
+        snippet=path.read_text(),
+        components=component_name,
+        port=8050,
+    )
+
+
+def load_jl_app(path, component_name):
+    return JL_WRAPPER.format(
+        snippet=path.read_text(),
+        components=component_name,
+        port=8050,
+    )
