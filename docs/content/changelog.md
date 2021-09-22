@@ -6,6 +6,12 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 0.13.1 - 2021/9/22
+
+### Fixed
+
+- Fix cursor jump issue in `Input` component. ([PR 712](https://github.com/facultyai/dash-bootstrap-components/pull/712))
+
 ## 0.13.0 - 2021/7/31
 
 ### Added
