@@ -7,19 +7,105 @@ import classNames from 'classnames';
 const convert = val => (isNumeric(val) ? +val : NaN);
 const isEquivalent = (v1, v2) => v1 === v2 || (isNaN(v1) && isNaN(v2));
 
-const BaseInput = forwardRef((props, ref) => {
+/**
+ * A basic HTML input control for entering text, numbers, or passwords, with
+ * Bootstrap styles automatically applied. This component is much like its
+ * counterpart in dash_core_components, but with a few additions such as the
+ * `valid` and `invalid` props for providing user feedback.
+ *
+ * Note that checkbox and radio types are supported through
+ * the Checklist and RadioItems component. Dates, times, and file uploads
+ * are supported through separate components in other libraries.
+ */
+const Input = props => {
   const {
-    debounce,
+    type,
+    value,
     n_blur,
     n_submit,
-    loading_state,
-    setProps,
-    onEvent,
-    onChange,
     valid,
     invalid,
+    plaintext,
+    size,
+    html_size,
+    setProps,
+    debounce,
+    loading_state,
+    className,
+    class_name,
+    autoComplete,
+    autocomplete,
+    autoFocus,
+    autofocus,
+    inputMode,
+    inputmode,
+    maxLength,
+    maxlength,
+    minLength,
+    minlength,
+    tabIndex,
+    tabindex,
     ...otherProps
   } = props;
+  const inputRef = useRef(null);
+
+  const formControlClass = plaintext
+    ? 'form-control-plaintext'
+    : 'form-control';
+
+  const classes = classNames(
+    class_name || className,
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    size ? `form-control-${size}` : false,
+    formControlClass
+  );
+
+  const onChange = () => {
+    if (!debounce) {
+      onEvent();
+    }
+  };
+
+  useEffect(() => {
+    if (type === 'number') {
+      const inputValue = inputRef.current.value;
+      const inputValueAsNumber = inputRef.current.checkValidity()
+        ? convert(inputValue)
+        : NaN;
+      const valueAsNumber = convert(value);
+
+      if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
+        inputRef.current.value = isNil(valueAsNumber) ? valueAsNumber : value;
+      }
+    } else {
+      const inputValue = inputRef.current.value;
+
+      if (value !== inputValue) {
+        inputRef.current.value =
+          value !== null && value !== undefined ? value : '';
+      }
+    }
+  }, [value]);
+
+  const onEvent = (payload = {}) => {
+    if (type === 'number') {
+      const inputValue = inputRef.current.value;
+      const inputValueAsNumber = inputRef.current.checkValidity()
+        ? convert(inputValue)
+        : NaN;
+      const valueAsNumber = convert(value);
+
+      if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
+        setProps({...payload, value: inputValueAsNumber});
+      } else if (Object.keys(payload).length) {
+        setProps(payload);
+      }
+    } else {
+      payload.value = inputRef.current.value;
+      setProps(payload);
+    }
+  };
 
   const onBlur = () => {
     if (setProps) {
@@ -51,7 +137,9 @@ const BaseInput = forwardRef((props, ref) => {
 
   return (
     <input
-      ref={ref}
+      ref={inputRef}
+      type={type}
+      className={classes}
       onChange={onChange}
       onBlur={onBlur}
       onKeyPress={onKeyPress}
@@ -70,162 +158,6 @@ const BaseInput = forwardRef((props, ref) => {
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-    />
-  );
-});
-
-const NumberInput = forwardRef((props, inputRef) => {
-  const {setProps, debounce, value, ...otherProps} = props;
-
-  const onChange = () => {
-    if (!debounce) {
-      onEvent();
-    }
-  };
-
-  useEffect(() => {
-    const inputValue = inputRef.current.value;
-    const inputValueAsNumber = inputRef.current.checkValidity()
-      ? convert(inputValue)
-      : NaN;
-    const valueAsNumber = convert(value);
-
-    if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
-      inputRef.current.value = isNil(valueAsNumber) ? valueAsNumber : value;
-    }
-  }, [value]);
-
-  const onEvent = (payload = {}) => {
-    const inputValue = inputRef.current.value;
-    const inputValueAsNumber = inputRef.current.checkValidity()
-      ? convert(inputValue)
-      : NaN;
-    const valueAsNumber = convert(value);
-
-    if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
-      setProps({...payload, value: inputValueAsNumber});
-    } else if (Object.keys(payload).length) {
-      setProps(payload);
-    }
-  };
-
-  return (
-    <BaseInput
-      ref={inputRef}
-      debounce={debounce}
-      onEvent={onEvent}
-      onChange={onChange}
-      setProps={setProps}
-      {...otherProps}
-    />
-  );
-});
-
-const NonNumberInput = forwardRef((props, inputRef) => {
-  const {value, debounce, setProps, ...otherProps} = props;
-  const [valueState, setValueState] = useState(value || '');
-
-  const onChange = () => {
-    if (!debounce) {
-      onEvent();
-    } else {
-      setValueState(inputRef.current.value);
-    }
-  };
-
-  useEffect(() => {
-    if (value !== null && value !== undefined) {
-      setValueState(value);
-    } else {
-      setValueState('');
-    }
-  }, [value]);
-
-  const onEvent = (payload = {}) => {
-    payload.value = inputRef.current.value;
-    setProps(payload);
-  };
-
-  return (
-    <BaseInput
-      ref={inputRef}
-      value={valueState}
-      debounce={debounce}
-      onEvent={onEvent}
-      onChange={onChange}
-      setProps={setProps}
-      {...otherProps}
-    />
-  );
-});
-
-/**
- * A basic HTML input control for entering text, numbers, or passwords, with
- * Bootstrap styles automatically applied. This component is much like its
- * counterpart in dash_core_components, but with a few additions such as the
- * `valid` and `invalid` props for providing user feedback.
- *
- * Note that checkbox and radio types are supported through
- * the Checklist and RadioItems component. Dates, times, and file uploads
- * are supported through separate components in other libraries.
- */
-const Input = props => {
-  const {
-    plaintext,
-    className,
-    class_name,
-    autoComplete,
-    autocomplete,
-    autoFocus,
-    autofocus,
-    inputMode,
-    inputmode,
-    maxLength,
-    maxlength,
-    minLength,
-    minlength,
-    tabIndex,
-    tabindex,
-    size,
-    html_size,
-    ...otherProps
-  } = props;
-  const inputRef = useRef(null);
-
-  const formControlClass = plaintext
-    ? 'form-control-plaintext'
-    : 'form-control';
-
-  const classes = classNames(
-    class_name || className,
-    props.invalid && 'is-invalid',
-    props.valid && 'is-valid',
-    size ? `form-control-${size}` : false,
-    formControlClass
-  );
-
-  if (props.type === 'number') {
-    return (
-      <NumberInput
-        ref={inputRef}
-        {...otherProps}
-        className={classes}
-        autoComplete={autocomplete || autoComplete}
-        autoFocus={autofocus || autoFocus}
-        inputMode={inputmode || inputMode}
-        maxLength={maxlength || maxLength}
-        minLength={minlength || minLength}
-        tabIndex={tabindex || tabIndex}
-        size={html_size}
-      />
-    );
-  }
-
-  return (
-    <NonNumberInput
-      ref={inputRef}
-      {...otherProps}
-      className={classes}
       autoComplete={autocomplete || autoComplete}
       autoFocus={autofocus || autoFocus}
       inputMode={inputmode || inputMode}
