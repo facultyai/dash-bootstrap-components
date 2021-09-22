@@ -39,7 +39,9 @@ const Tooltip = props => {
 };
 
 Tooltip.defaultProps = {
-  delay: {show: 0, hide: 50}
+  delay: {show: 0, hide: 50},
+  placement: 'auto',
+  flip: true
 };
 
 Tooltip.propTypes = {
@@ -104,6 +106,12 @@ Tooltip.propTypes = {
     'left-start',
     'left-end'
   ]),
+
+  /**
+   * Whether to flip the direction of the popover if too close to the container
+   * edge, default True.
+   */
+  flip: PropTypes.bool,
 
   /**
    * Control the delay of hide and show events.
