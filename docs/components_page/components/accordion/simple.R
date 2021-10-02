@@ -6,11 +6,17 @@ accordion <- htmlDiv(
   dbcAccordion(
     list(
       dbcAccordionItem(
-        "This is the content of the first section",
+        list(
+          htmlP("This is the content of the first section"),
+          dbcButton("Click here")
+        ),
         title = "Item 1"
       ),
       dbcAccordionItem(
-        "This is the content of the second section",
+        list(
+          htmlP("This is the content of the second section"),
+          dbcButton("Don't click me!", color = "danger")
+        ),
         title = "Item 2"
       ),
       dbcAccordionItem(
