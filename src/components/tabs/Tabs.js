@@ -4,35 +4,8 @@ import {omit} from 'ramda';
 import classnames from 'classnames';
 import RBNav from 'react-bootstrap/Nav';
 import RBTab from 'react-bootstrap/Tab';
-import {isNil} from 'ramda';
 
-const resolveChildProps = child => {
-  // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
-  if (
-    // disabled is a defaultProp (so it's always set)
-    // meaning that if it's not set on child.props, the actual
-    // props we want are lying a bit deeper - which means they
-    // are coming from Dash
-    isNil(child.props.disabled) &&
-    child.props._dashprivate_layout &&
-    child.props._dashprivate_layout.props
-  ) {
-    // props are coming from Dash
-    return child.props._dashprivate_layout.props;
-  } else {
-    // else props are coming from React (e.g. Demo.js, or Tabs.test.js)
-    return child.props;
-  }
-};
-
-const parseChildrenToArray = children => {
-  if (children && !Array.isArray(children)) {
-    // if dcc.Tabs.children contains just one single element, it gets passed as an object
-    // instead of an array - so we put in in a array ourselves!
-    return [children];
-  }
-  return children;
-};
+import {parseChildrenToArray, resolveChildProps} from '../../private/util';
 
 /**
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get

@@ -3,26 +3,14 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAccordion from 'react-bootstrap/Accordion';
 
-const resolveChildProps = child => {
-  // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
-  if (
-    child.props._dashprivate_layout &&
-    child.props._dashprivate_layout.props
-  ) {
-    // props are coming from Dash
-    return child.props._dashprivate_layout.props;
-  } else {
-    // else props are coming from React (e.g. Demo.js, or Tabs.test.js)
-    return child.props;
-  }
-};
+import {parseChildrenToArray, resolveChildProps} from '../../private/util';
 
 /**
  * A self contained Accordion component. Build up the children using the
  * AccordionItem component.
  */
 const Accordion = props => {
-  const {
+  let {
     children,
     active_item,
     start_collapsed,
@@ -33,6 +21,7 @@ const Accordion = props => {
     className,
     ...otherProps
   } = props;
+  children = parseChildrenToArray(children);
 
   // if active_item not set initially, choose first item
   useEffect(() => {
@@ -89,7 +78,7 @@ const Accordion = props => {
           >
             {title}
           </RBAccordion.Header>
-          <RBAccordion.Body>{children}</RBAccordion.Body>
+          <RBAccordion.Body>{child}</RBAccordion.Body>
         </RBAccordion.Item>
       );
     });

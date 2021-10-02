@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  * A component to build up the children of the accordion.
  */
 const AccordionItem = props => {
-  return <></>;
+  return <>{props.children}</>;
 };
 
 AccordionItem.propTypes = {
