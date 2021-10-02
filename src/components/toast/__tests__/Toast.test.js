@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {act, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -87,7 +91,6 @@ describe('Toast', () => {
 
     // toast exists and timeout is set with duration 5000
     expect(toast.container.querySelector('.toast')).not.toBe(null);
-    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
 
     act(() => jest.advanceTimersByTime(4000));
     // toast hasn't dismissed yet
