@@ -9,7 +9,6 @@ function isInDOMSubtree(element, subtreeRoot) {
 
 function useStateRef(initialValue) {
   const [value, setValue] = useState(initialValue);
-
   const ref = useRef(value);
 
   useEffect(() => {
@@ -146,9 +145,23 @@ const Overlay = ({
     setIsOpen(defaultShow);
   }, [defaultShow]);
 
+  const wait = ms => new Promise(res => setTimeout(res, ms));
+
+  const getTarget = async (target, depth = 0) => {
+    const targetRef = document.getElementById(target);
+    if (targetRef === null && depth < 4) {
+      await wait(2 ** depth * 100);
+      return getTarget(target, depth + 1);
+    }
+    return targetRef;
+  };
+
   useEffect(() => {
-    targetRef.current = document.getElementById(targetStr);
-    addEventListeners(targetRef.current);
+    const attachListenersToTarget = async () => {
+      targetRef.current = await getTarget(targetStr);
+      addEventListeners(targetRef.current);
+    };
+    attachListenersToTarget();
   }, [targetStr]);
 
   return (

@@ -3,13 +3,17 @@
  */
 
 import React from 'react';
-import {act, fireEvent, render} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Tooltip from '../../components/tooltip/Tooltip';
-
+import {render} from '@testing-library/react';
+import Overlay from '../Overlay';
 jest.useFakeTimers();
 
-describe('Tooltip with dict id', () => {
+const CustomChild = React.forwardRef((props, ref) => (
+  <div ref={ref} id="content">
+    Some test content
+  </div>
+));
+
+describe('Overlay with dict id', () => {
   // this is just a little hack to silence a warning that we'll get until we
   // upgrade to 16.9. See also: https://github.com/facebook/react/pull/14853
   const originalError = console.error;
@@ -34,41 +38,27 @@ describe('Tooltip with dict id', () => {
 
   test('renders nothing by default', () => {
     render(
-      <Tooltip target={{type: 'target', index: 1}}>Test content</Tooltip>,
+      <Overlay target={{type: 'target', index: 1}}>
+        <CustomChild />
+      </Overlay>,
       {
         container: document.body.appendChild(div)
       }
     );
 
-    expect(document.body.querySelector('.tooltip')).toBe(null);
-  });
-
-  test('renders a div with class "tooltip"', () => {
-    render(<Tooltip target={{type: 'target', index: 1}} />, {
-      container: document.body.appendChild(div)
-    });
-
-    fireEvent.mouseOver(div);
-    act(() => jest.runAllTimers());
-    expect(document.body.querySelector('.tooltip')).not.toBe(null);
-
-    fireEvent.mouseLeave(div);
-    act(() => jest.runAllTimers());
-    expect(document.body.querySelector('.tooltip')).toBe(null);
+    expect(document.body.querySelector('#content')).toBe(null);
   });
 
   test('renders its content', () => {
     render(
-      <Tooltip target={{type: 'target', index: 1}}>Tooltip content</Tooltip>,
+      <Overlay defaultShow target={{type: 'target', index: 1}}>
+        <CustomChild />
+      </Overlay>,
       {
         container: document.body.appendChild(div)
       }
     );
 
-    fireEvent.mouseOver(div);
-    act(() => jest.runAllTimers());
-    expect(document.body.querySelector('.tooltip')).toHaveTextContent(
-      'Tooltip content'
-    );
+    expect(document.body.querySelector('#content')).not.toBe(null);
   });
 });
