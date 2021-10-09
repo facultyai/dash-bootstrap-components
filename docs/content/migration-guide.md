@@ -63,9 +63,9 @@ Include Bootstrap and Font Awesome icons to your app as easily as adding a Boots
 
 ## Components
 
-There are six new components in _dash-bootstrap-components_: `Accordion`, `Breadcrumb`, `FormFloating`, `Offcanvas`, `Pagination`, and `Switch`. Additionally many components have changes to their props.
+There are seven new components in _dash-bootstrap-components_: `Accordion`, `Breadcrumb`, `FormFloating`, `ModalTitle`, `Offcanvas`, `Pagination`, and `Switch`. Additionally many components have changes to their props.
 
-Notably previously there was a mix of `size` and `bs_size` props for controlling the size of some components. All components that allow size to be changed now consistently use `size`. To set the HTML `size` property of the underlying `<input />` in the `Input` component, use `html_size` instead.
+Notably previously there was a mix of `size` and `bs_size` props for controlling the size of some components. All components that allow size to be changed now consistently use `size`. To set the HTML `size` property of the underlying `<input />` in the `Input` component, or the underlying `<select />` in the `Select` component, use `html_size` instead.
 
 ### Accordion <span class="badge bg-success">New</span>
 - Added new accordion component. Check out the documentation [here](/docs/components/accordion)
@@ -131,15 +131,16 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - <span class="badge bg-danger">Breaking</span> Dropped the `ListGroupHeading` and `ListGroupItemText` components. Both are unnecessary since you can pass any Dash components to the children of `ListGroupItem`. See the [docs](/docs/components/list_group/) for updated examples.
 
 ### Modal
+- <span class="badge bg-danger">Breaking</span> Wrap any title text with the new `ModalTitle` component to make sure the font size and style is set appropriately. This change is to allow more flexibility in the allowed children of the `ModalHeader`.
 - Added `fullscreen` property
 - Added `keyboard` property to close modal when escape key is pressed.
 
 ### Nav
-- <span class="badge bg-danger">Breaking</span> - Dropped `active` property in `NavItem`. You should only need to set `active` on the child `NavLink` instead.
+- <span class="badge bg-danger">Breaking</span> Dropped `active` property in `NavItem`. You should only need to set `active` on the child `NavLink` instead.
 - Added `navbar_scroll` property. This enables vertical scrolling within the toggleable contents of the nav when used inside a collapsed `Navbar`.
 
 ### Navbar
-- <span class="badge bg-danger">Breaking</span> - Bootstrap navbars now must be constructed with a container. If you're using `NavbarSimple` you don't need to make any changes! If you are using `Navbar` with a custom layout you probably will need to make changes. See the [docs](/docs/components/list_group/) for updated examples.
+- <span class="badge bg-danger">Breaking</span> Bootstrap navbars now must be constructed with a container. If you're using `NavbarSimple` you don't need to make any changes! If you are using `Navbar` with a custom layout you probably will need to make changes. See the [docs](/docs/components/list_group/) for updated examples.
 
 ### Offcanvas <span class="badge bg-success">New</span>
 - Added the new offcanvas component. See the [docs](/docs/components/offcanvas) for more information.
