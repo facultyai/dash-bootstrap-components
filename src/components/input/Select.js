@@ -8,7 +8,7 @@ import RBFormSelect from 'react-bootstrap/FormSelect';
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const {className, class_name, ...otherProps} = props;
+  const {className, class_name, html_size, ...otherProps} = props;
 
   const handleChange = e => {
     if (props.setProps) {
@@ -31,6 +31,7 @@ const Select = props => {
       )}
       onChange={handleChange}
       className={class_name || className}
+      htmlSize={html_size}
     >
       <option value="" disabled hidden>
         {props.placeholder}
@@ -166,6 +167,13 @@ Select.propTypes = {
    * or 'lg' (large). Default is 'md'.
    */
   size: PropTypes.string,
+
+  /**
+   * This represents the number of rows in the select that should be visible at
+   * one time. It will result in the Select being rendered as a scrolling list
+   * box rather than a dropdown.
+   */
+  html_size: PropTypes.string,
 
   /**
    * Used to allow user interactions in this component to be persisted when
