@@ -17,7 +17,7 @@ def test_dbpo001_popover_click(dash_duo):
                 [PopoverHeader("Test Header"), PopoverBody("Test content")],
                 id="popover",
                 target="popover-target",
-                trigger="hover",
+                trigger="click",
             ),
             html.Div("Target", id="popover-target"),
         ],
