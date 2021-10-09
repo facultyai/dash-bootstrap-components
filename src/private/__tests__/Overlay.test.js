@@ -1,7 +1,12 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {act, fireEvent, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Tooltip from '../../components/tooltip/Tooltip';
+
 jest.useFakeTimers();
 
 describe('Tooltip with dict id', () => {

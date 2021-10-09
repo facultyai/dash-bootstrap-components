@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -267,7 +271,7 @@ describe('Input', () => {
         <Input type="number" min={0} value={0} setProps={mockSetProps} />
       );
 
-      userEvent.type(input, '{backspace}-100');
+      userEvent.type(input, '-100');
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
       expect(mockSetProps.mock.calls[0][0]).toEqual({value: NaN});

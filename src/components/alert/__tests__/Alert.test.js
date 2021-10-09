@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {act, render} from '@testing-library/react';
 import Alert from '../Alert';
@@ -65,7 +69,6 @@ describe('Alert', () => {
 
     // alert exists and timeout is set with duration 5000
     expect(alert.container.querySelector('.alert')).not.toBe(null);
-    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
 
     act(() => jest.advanceTimersByTime(4000));
     // alert hasn't dismissed yet
