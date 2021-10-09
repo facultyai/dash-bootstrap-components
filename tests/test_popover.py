@@ -27,7 +27,7 @@ def test_dbpo001_popover_click(dash_duo):
     dash_duo.start_server(app)
 
     dash_duo.wait_for_element_by_id("popover-target").click()
-    assert dash_duo.wait_for_element(".popover-body").text == "Test content"
+    dash_duo.wait_for_text_to_equal(".popover-body", "Test content", timeout=4)
 
 
 def test_dbpo002_popover_hover(dash_duo):
@@ -52,4 +52,4 @@ def test_dbpo002_popover_hover(dash_duo):
         dash_duo.wait_for_element_by_id("popover-target")
     )
     hover.perform()
-    assert dash_duo.wait_for_element(".popover-body").text == "Test content"
+    dash_duo.wait_for_text_to_equal(".popover-body", "Test content", timeout=4)

@@ -20,4 +20,6 @@ def test_dbtt001_tooltip_content(dash_duo):
         dash_duo.wait_for_element_by_id("tooltip-target")
     )
     hover.perform()
-    assert dash_duo.wait_for_element(".tooltip-inner").text == "Test content"
+    dash_duo.wait_for_text_to_equal(
+        ".tooltip-inner", "Test content", timeout=4
+    )
