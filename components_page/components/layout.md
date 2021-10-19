@@ -5,7 +5,7 @@ lead: Components for laying out your Dash app, including wrapping containers, an
 
 ## Examples
 
-Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and five responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
+Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and six responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
 
 There are three main layout components in _dash-bootstrap-components_: `Container`, `Row`, and `Col`.
 
@@ -20,7 +20,7 @@ For best results, make sure you adhere to the following two rules when construct
 1. Only use `Row` and `Col` inside a `Container`. A single `Container` wrapping your entire app's content is fine. Set `fluid=True` if you don't want the margins that `Container` adds by default. Since the content of this page is wrapped with a `Container`, the snippets below don't explicitly include them.
 2. The immediate children of any `Row` component should always be `Col` components. Your content should go inside the `Col` components.
 
-For much more detail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/4.2/layout/grid/).
+For much more detail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/5.1/layout/grid/).
 
 ## Row with columns
 
@@ -84,7 +84,7 @@ Sometimes you may wish to use Bootstrap's grid system for specifying the layout 
 
 {{code-example:components/layout/grid_only.py}}
 
-Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/4.2/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plot.ly/external-resources) for details.
+Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/5.1/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plotly.com/external-resources) for details.
 
 {{apidoc:src/components/layout/Container.js}}
 
