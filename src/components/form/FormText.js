@@ -1,26 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {omit} from 'ramda';
-import {FormText as RSFormText} from 'reactstrap';
+import RBFormText from 'react-bootstrap/FormText';
 import {bootstrapTextColors} from '../../private/BootstrapColors';
 
 /**
  * Add explanatory text below your input components.
  */
 const FormText = props => {
-  const {children, loading_state, color, style, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    color,
+    style,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapTextColors.has(color);
+  const classes = classNames(
+    class_name || className,
+    isBootstrapColor && `text-${color}`
+  );
   return (
-    <RSFormText
-      color={isBootstrapColor ? color : null}
+    <RBFormText
       style={!isBootstrapColor ? {color: color, ...style} : style}
+      className={classes}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSFormText>
+    </RBFormText>
   );
 };
 
@@ -43,6 +56,13 @@ FormText.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

@@ -1,12 +1,12 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 progress = html_div([
-    dbc_progress(value=80, id="animated-progress", animated=false, striped=true),
+    dbc_progress(value = 80, id = "animated-progress", animated = false, striped = true),
     dbc_button(
         "Toggle animation",
-        id="animation-toggle",
-        className="mt-3",
-        n_clicks=0,
+        id = "animation-toggle",
+        className = "mt-3",
+        n_clicks = 0,
     ),
 ]);
 

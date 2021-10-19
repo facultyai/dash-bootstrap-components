@@ -7,8 +7,7 @@ Requires dash-bootstrap-components 0.3.0 or later
 """
 import dash
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
@@ -51,7 +50,7 @@ custom_default = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler1"),
             dbc.Collapse(
                 dbc.Nav(
-                    [nav_item, dropdown], className="ml-auto", navbar=True
+                    [nav_item, dropdown], className="ms-auto", navbar=True
                 ),
                 id="navbar-collapse1",
                 navbar=True,
@@ -71,22 +70,25 @@ logo = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Logo", className="ml-2")),
+                        dbc.Col(dbc.NavbarBrand("Logo", className="ms-2")),
                     ],
                     align="center",
-                    no_gutters=True,
+                    className="g-0",
                 ),
-                href="https://plot.ly",
+                href="https://plotly.com",
+                style={"textDecoration": "none"},
             ),
-            dbc.NavbarToggler(id="navbar-toggler2"),
+            dbc.NavbarToggler(id="navbar-toggler2", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav(
-                    [nav_item, dropdown], className="ml-auto", navbar=True
+                    [nav_item, dropdown],
+                    className="ms-auto",
+                    navbar=True,
                 ),
                 id="navbar-collapse2",
                 navbar=True,
             ),
-        ]
+        ],
     ),
     color="dark",
     dark=True,
@@ -107,20 +109,19 @@ search_navbar = dbc.Navbar(
                         ),
                         dbc.Col(
                             dbc.Button(
-                                "Search", color="primary", className="ml-2"
+                                "Search", color="primary", className="ms-2"
                             ),
                             # set width of button column to auto to allow
                             # search box to take up remaining space.
                             width="auto",
                         ),
                     ],
-                    no_gutters=True,
                     # add a top margin to make things look nice when the navbar
                     # isn't expanded (mt-3) remove the margin on medium or
                     # larger screens (mt-md-0) when the navbar is expanded.
                     # keep button and search box on same row (flex-nowrap).
-                    # align everything on the right with left margin (ml-auto).
-                    className="ml-auto flex-nowrap mt-3 mt-md-0",
+                    # align everything on the right with left margin (ms-auto).
+                    className="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
                     align="center",
                 ),
                 id="navbar-collapse3",
@@ -133,14 +134,19 @@ search_navbar = dbc.Navbar(
 
 # custom navbar based on https://getbootstrap.com/docs/4.1/examples/dashboard/
 dashboard = dbc.Navbar(
-    [
-        dbc.Col(dbc.NavbarBrand("Dashboard", href="#"), sm=3, md=2),
-        dbc.Col(dbc.Input(type="search", placeholder="Search here")),
-        dbc.Col(
-            dbc.Nav(dbc.NavItem(dbc.NavLink("Sign out")), navbar=True),
-            width="auto",
-        ),
-    ],
+    dbc.Container(
+        [
+            dbc.Col(dbc.NavbarBrand("Dashboard", href="#"), sm=3, md=2),
+            dbc.Col(dbc.Input(type="search", placeholder="Search here")),
+            dbc.Col(
+                dbc.Nav(
+                    dbc.Container(dbc.NavItem(dbc.NavLink("Sign out"))),
+                    navbar=True,
+                ),
+                width="auto",
+            ),
+        ],
+    ),
     color="dark",
     dark=True,
 )

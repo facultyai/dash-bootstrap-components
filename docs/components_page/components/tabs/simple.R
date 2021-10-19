@@ -12,13 +12,13 @@ tab1_content <- dbcCard(
 )
 
 tab2_content <- dbcCard(
-    dbcCardBody(
-      list(
-        htmlP("This is tab 2!", className = "card-text"),
-        dbcButton("Don't click here", color = "danger")
-      )
-    ),
-    className = "mt-3",
+  dbcCardBody(
+    list(
+      htmlP("This is tab 2!", className = "card-text"),
+      dbcButton("Don't click here", color = "danger")
+    )
+  ),
+  className = "mt-3",
 )
 
 
@@ -27,7 +27,8 @@ tabs <- dbcTabs(
     dbcTab(tab1_content, label = "Tab 1"),
     dbcTab(tab2_content, label = "Tab 2"),
     dbcTab(
-        "This tab's content is never seen", label = "Tab 3", disabled = TRUE
+      "This tab's content is never seen",
+      label = "Tab 3", disabled = TRUE
     )
   )
 )

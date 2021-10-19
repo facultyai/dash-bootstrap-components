@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {InputGroup as RSInputGroup} from 'reactstrap';
+import RBInputGroup from 'react-bootstrap/InputGroup';
 
 /**
  * A component for grouping together inputs and buttons, dropdowns or text.
  */
 const InputGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSInputGroup
+    <RBInputGroup
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSInputGroup>
+    </RBInputGroup>
   );
 };
 
@@ -39,6 +40,13 @@ InputGroup.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

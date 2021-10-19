@@ -4,6 +4,7 @@ from jinja2 import TemplateNotFound
 DOCS_SIDENAV_ITEMS = [
     {"name": "quickstart", "href": "/docs/quickstart", "label": "Quickstart"},
     {"name": "themes", "href": "/docs/themes", "label": "Themes"},
+    {"name": "icons", "href": "/docs/icons", "label": "Icons"},
     {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
@@ -69,6 +70,17 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
+    @server.route("/docs/icons/")
+    def icons():
+        try:
+            return render_template(
+                "generated/docs/icons.html",
+                sidenav_items=DOCS_SIDENAV_ITEMS,
+                sidenav_active="icons",
+            )
+        except TemplateNotFound:
+            abort(404)
+
     @server.route("/docs/faq/")
     def faq():
         try:
@@ -80,15 +92,7 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/dashr/")
-    def dashr():
-        return redirect("/docs/quickstart", 302)
-
-    @server.route("/docs/components/")
-    def components_index():
-        return redirect("/docs/components/alert", 302)
-
-    @server.route("/l/components/", defaults={"slug": "alert"})
+    @server.route("/l/components/", defaults={"slug": "main"})
     @server.route("/l/components/<slug>/")
     def components_redirect(slug):
         return redirect(f"/docs/components/{slug}", 302)
@@ -104,6 +108,13 @@ def create_server():
     def changelog():
         try:
             return render_template("generated/changelog.html")
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/migration-guide/")
+    def migration_guide():
+        try:
+            return render_template("generated/migration-guide.html")
         except TemplateNotFound:
             abort(404)
 

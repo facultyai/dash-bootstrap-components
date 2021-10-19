@@ -5,11 +5,9 @@ https://shiny.rstudio.com/gallery/kmeans-example.html
 """
 import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
-from dash.dependencies import Input, Output
+from dash import Input, Output, dcc, html
 from sklearn import datasets
 from sklearn.cluster import KMeans
 
@@ -20,7 +18,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 controls = dbc.Card(
     [
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("X variable"),
                 dcc.Dropdown(
@@ -32,7 +30,7 @@ controls = dbc.Card(
                 ),
             ]
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Y variable"),
                 dcc.Dropdown(
@@ -44,7 +42,7 @@ controls = dbc.Card(
                 ),
             ]
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Cluster count"),
                 dbc.Input(id="cluster-count", type="number", value=3),

@@ -7,5 +7,5 @@ row <- dbcRow(
     dbcCol(htmlDiv("One of three columns")),
     dbcCol(htmlDiv("One of three columns"))
   ),
-  no_gutters = TRUE,
+  className = "g-0"
 )

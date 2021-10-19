@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Form as RSForm} from 'reactstrap';
+import RBForm from 'react-bootstrap/Form';
 
 /**
  * The Form component can be used to organise collections of input components
@@ -14,10 +14,12 @@ const Form = props => {
     n_submit,
     prevent_default_on_submit,
     setProps,
+    className,
+    class_name,
     ...otherProps
   } = props;
   return (
-    <RSForm
+    <RBForm
       onSubmit={e => {
         if (prevent_default_on_submit) {
           e.preventDefault();
@@ -29,13 +31,14 @@ const Form = props => {
           });
         }
       }}
+      className={class_name || className}
       {...omit(['n_submit_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSForm>
+    </RBForm>
   );
 };
 
@@ -66,6 +69,13 @@ Form.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -84,14 +94,7 @@ Form.propTypes = {
    * Defines which HTTP method to use when submitting the form. Can be GET
    * (default) or POST.
    */
-  method: PropTypes.oneOf(["GET", "POST"]),
-
-  /**
-   * Use inline=True to apply the `form-inline` class, allowing you to display
-   * a series of labels, form controls, and buttons on a single horizontal row.
-   * Form controls within inline forms vary slightly from their default states.
-   */
-  inline: PropTypes.bool,
+  method: PropTypes.oneOf(['GET', 'POST']),
 
   /**
    * Number of times the `Enter` key was pressed while the input had focus.

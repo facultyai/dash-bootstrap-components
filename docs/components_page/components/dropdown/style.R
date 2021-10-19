@@ -10,24 +10,29 @@ items_style <- list(
 dropdowns <- htmlDiv(
   list(
     dbcDropdownMenu(
-      items_style, label = "Primary", color = "primary", className = "m-1"
+      items_style,
+      label = "Primary", color = "primary", className = "m-1"
     ),
     dbcDropdownMenu(
-      items_style, label = "Secondary", color = "secondary", className = "m-1"
+      items_style,
+      label = "Secondary", color = "secondary", className = "m-1"
     ),
     dbcDropdownMenu(
-      items_style, label = "Success", color = "success", className = "m-1"
+      items_style,
+      label = "Success", color = "success", className = "m-1"
     ),
     dbcDropdownMenu(
-      items_style, label = "Warning", color = "warning", className = "m-1"
+      items_style,
+      label = "Warning", color = "warning", className = "m-1"
     ),
     dbcDropdownMenu(
-      items_style, label = "Danger", color = "danger", className = "m-1"
+      items_style,
+      label = "Danger", color = "danger", className = "m-1"
     ),
-    dbcDropdownMenu(items_style, label = "Info", color = "info",
-                    className = "m-1"),
-    dbcDropdownMenu(items_style, label = "Link", color = "link",
-                    className = "m-1")
+    dbcDropdownMenu(items_style,
+      label = "Info", color = "info",
+      className = "m-1"
+    )
   ),
   style = list(display = "flex", flexWrap = "wrap")
 )

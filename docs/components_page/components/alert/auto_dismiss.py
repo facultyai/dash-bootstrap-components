@@ -1,11 +1,10 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 alert = html.Div(
     [
         dbc.Button(
-            "Toggle", id="alert-toggle-auto", className="mr-1", n_clicks=0
+            "Toggle", id="alert-toggle-auto", className="me-1", n_clicks=0
         ),
         html.Hr(),
         dbc.Alert(

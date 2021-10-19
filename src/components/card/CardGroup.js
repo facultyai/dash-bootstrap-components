@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardGroup as RSCardGroup} from 'reactstrap';
+import RBCardGroup from 'react-bootstrap/CardGroup';
 
 /**
  * Use CardGroup to render cards as a single, attached element of columns with
  * equal width and height.
  */
 const CardGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardGroup
+    <RBCardGroup
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardGroup>
+    </RBCardGroup>
   );
 };
 
@@ -40,6 +41,13 @@ CardGroup.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

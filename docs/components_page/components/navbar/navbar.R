@@ -8,33 +8,39 @@ search_bar <- dbcRow(
     dbcCol(dbcInput(type = "search", placeholder = "Search")),
     dbcCol(
       dbcButton(
-        "Search", color = "primary", n_clicks = 0, className = "ml-2"
+        "Search",
+        color = "primary", n_clicks = 0, className = "ms-2"
       ),
       width = "auto"
     )
   ),
-  no_gutters = TRUE,
-  className = "ml-auto flex-nowrap mt-3 mt-md-0",
-  align = "center",
+  className = "g-0 ms-auto flex-nowrap mt-3 mt-md-0",
+  align = "center"
 )
 
 navbar <- dbcNavbar(
-  list(
-    htmlA(
-      # Use row and col to control vertical alignment of logo / brand
-      dbcRow(
-        list(
-          dbcCol(htmlImg(src = PLOTLY_LOGO, height = "30px")),
-          dbcCol(dbcNavbarBrand("Navbar", className = "ml-2"))
+  dbcContainer(
+    list(
+      htmlA(
+        # Use row and col to control vertical alignment of logo / brand
+        dbcRow(
+          list(
+            dbcCol(htmlImg(src = PLOTLY_LOGO, height = "30px")),
+            dbcCol(dbcNavbarBrand("Navbar", className = "ms-2"))
+          ),
+          align = "center",
+          className = "g-0"
         ),
-        align = "center",
-        no_gutters = TRUE
+        href = "https://plotly.com",
+        style = list("textDecoration" = "none")
       ),
-      href = "https://plotly.com"
-    ),
-    dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
-    dbcCollapse(
-      search_bar, id = "navbar-collapse", is_open = FALSE, navbar = TRUE
+      dbcNavbarToggler(id = "navbar-toggler", n_clicks = 0),
+      dbcCollapse(
+        search_bar,
+        id = "navbar-collapse",
+        is_open = FALSE,
+        navbar = TRUE
+      )
     )
   ),
   color = "dark",

@@ -1,27 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Navbar as RSNavbar} from 'reactstrap';
+import RBNavbar from 'react-bootstrap/Navbar';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 /**
  * The Navbar component can be used to make fully customisable navbars.
  */
 const Navbar = props => {
-  const {children, color, style, loading_state, ...otherProps} = props;
+  const {
+    children,
+    color,
+    style,
+    loading_state,
+    className,
+    class_name,
+    light,
+    dark,
+    tag,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapColors.has(color);
 
   return (
-    <RSNavbar
-      color={isBootstrapColor ? color : null}
+    <RBNavbar
+      variant={dark ? 'dark' : 'light'}
+      as={tag}
+      bg={isBootstrapColor ? color : null}
       style={{backgroundColor: !isBootstrapColor && color, ...style}}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSNavbar>
+    </RBNavbar>
   );
 };
 
@@ -52,6 +66,13 @@ Navbar.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -79,13 +100,15 @@ Navbar.propTypes = {
   fixed: PropTypes.string,
 
   /**
-   * Stick the navbar to the top or the bottom of the viewport, options: top, bottom
+   * Position the navbar at the top of the viewport, but only after scrolling past it.
+   * A convenience prop for the sticky-top positioning class. Not supported in <= IE11
+   * and other older browsers
    *
    * With `sticky`, the navbar remains in the viewport when you scroll. By
    * contrast, with `fixed`, the navbar will remain at the top or bottom of
-   * the page.
+   * the page.  sticky='top'
    */
-  sticky: PropTypes.string,
+  sticky: PropTypes.oneOf(['top']),
 
   /**
    * Sets the color of the Navbar. Main options are primary, light and dark, default light.

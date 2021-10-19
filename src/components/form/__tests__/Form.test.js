@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import Form from '../Form';
@@ -15,11 +19,5 @@ describe('Form', () => {
     expect(form.container).toHaveTextContent('Some form content');
   });
 
-  test('applies form-inline class with "inline" prop', () => {
-    const {
-      container: {firstChild: form}
-    } = render(<Form inline />);
-
-    expect(form).toHaveClass('form-inline');
-  });
+  // TODO: integration tests for form submit actions?
 });

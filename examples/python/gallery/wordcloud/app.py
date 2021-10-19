@@ -10,9 +10,7 @@ from urllib.request import urlopen
 
 import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, dcc, html
 from wordcloud import WordCloud
 
 BASE_URL = "https://cdn.opensource.faculty.ai/wordcloud"
@@ -72,11 +70,9 @@ max_vocab_slider = html.Div(
 
 controls = dbc.Card(
     [
-        dbc.FormGroup([dbc.Label("Choose a book:"), dropdown]),
-        dbc.FormGroup([dbc.Label("Minimum frequency:"), min_freq_slider]),
-        dbc.FormGroup(
-            [dbc.Label("Maximum number of words:"), max_vocab_slider]
-        ),
+        html.Div([dbc.Label("Choose a book:"), dropdown]),
+        html.Div([dbc.Label("Minimum frequency:"), min_freq_slider]),
+        html.Div([dbc.Label("Maximum number of words:"), max_vocab_slider]),
     ],
     className="mb-3",
     body=True,

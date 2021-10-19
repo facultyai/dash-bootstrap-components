@@ -44,24 +44,30 @@ def rename_variable(snippet_path, suffix, variable, assign_op="="):
     for line in lines:
         if line.startswith(f"{variable} {assign_op}"):
             line = line.replace(
-                f"{variable} {assign_op}", f"{variable}_{suffix} {assign_op}"
+                f"{variable} {assign_op}", f"{variable}__{suffix} {assign_op}"
             )
         new_lines.append(line)
 
     return "\n".join(new_lines)
 
 
-def load_r_app(path, component_name):
+def load_r_app(path, component_name, extra_args=""):
+    snippet = path.read_text()
+    if extra_args:
+        snippet = f"{extra_args}\n{snippet}"
     return R_WRAPPER.format(
-        snippet=path.read_text(),
+        snippet=snippet,
         components=component_name,
         port=8050,
     )
 
 
-def load_jl_app(path, component_name):
+def load_jl_app(path, component_name, extra_args=""):
+    snippet = path.read_text()
+    if extra_args:
+        snippet = f"{extra_args}\n{snippet}"
     return JL_WRAPPER.format(
-        snippet=path.read_text(),
+        snippet=snippet,
         components=component_name,
         port=8050,
     )

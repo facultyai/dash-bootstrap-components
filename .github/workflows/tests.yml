@@ -51,7 +51,7 @@ jobs:
     strategy:
       max-parallel: 6
       matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8, 3.9]
+        python-version: [3.6, 3.7, 3.8, 3.9]
     services:
       hub:
         image: selenium/hub:3.141.59-gold

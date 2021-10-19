@@ -3,18 +3,18 @@ using DashBootstrapComponents, DashHtmlComponents
 fade = html_div([
     dbc_button(
         "Toggle fade",
-        id="fade-transition-button",
-        className="mb-3",
-        n_clicks=0,
+        id = "fade-transition-button",
+        className = "mb-3",
+        n_clicks = 0,
     ),
     dbc_fade(
         dbc_card(
-            dbc_cardbody(html_p("This content fades in and out", className="card-text")),
+            dbc_cardbody(html_p("This content fades in and out", className = "card-text")),
         ),
-        id="fade-transition",
-        is_in=true,
-        style=Dict("transition" => "opacity 2000ms ease"),
-        timeout=2000,
+        id = "fade-transition",
+        is_in = true,
+        style = Dict("transition" => "opacity 2000ms ease"),
+        timeout = 2000,
     ),
 ]);
 

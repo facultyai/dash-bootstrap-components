@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import CardBody from '../CardBody';
@@ -14,4 +18,4 @@ describe('CardBody', () => {
 
     expect(cardBody.container).toHaveTextContent('Some card body content');
   });
-})
+});

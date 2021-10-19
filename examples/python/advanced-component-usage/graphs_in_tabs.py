@@ -8,11 +8,9 @@ import time
 
 import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
 import numpy as np
 import plotly.graph_objs as go
-from dash.dependencies import Input, Output
+from dash import Input, Output, dcc, html
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -24,7 +22,6 @@ app.layout = dbc.Container(
         dbc.Button(
             "Regenerate graphs",
             color="primary",
-            block=True,
             id="button",
             className="mb-3",
         ),

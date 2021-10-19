@@ -1,6 +1,7 @@
 import dash_bootstrap_components as dbc
+from dash import html
 
-inline_radioitems = dbc.FormGroup(
+inline_radioitems = html.Div(
     [
         dbc.Label("Choose one"),
         dbc.RadioItems(
@@ -15,7 +16,7 @@ inline_radioitems = dbc.FormGroup(
     ]
 )
 
-inline_checklist = dbc.FormGroup(
+inline_checklist = html.Div(
     [
         dbc.Label("Choose a bunch"),
         dbc.Checklist(
@@ -30,7 +31,7 @@ inline_checklist = dbc.FormGroup(
     ]
 )
 
-inline_switches = dbc.FormGroup(
+inline_switches = html.Div(
     [
         dbc.Label("Toggle a bunch"),
         dbc.Checklist(

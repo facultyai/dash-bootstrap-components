@@ -1,6 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State
 
 from .alert import alerts
 from .badge import badges
@@ -10,7 +10,6 @@ from .collapse import collapse
 from .fade import fade
 from .form import form
 from .input import checklist_items, input_, input_group, radio_items
-from .jumbotron import jumbotron
 from .list_group import list_group
 from .modal import modal
 from .navbar import navbar
@@ -22,8 +21,9 @@ from .tabs import tabs
 from .toast import toast
 from .tooltip import tooltip
 
-FONT_AWESOME = "https://use.fontawesome.com/releases/v5.10.2/css/all.css"
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, FONT_AWESOME])
+app = dash.Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME]
+)
 
 app.layout = dbc.Container(
     [
@@ -45,7 +45,6 @@ app.layout = dbc.Container(
                 dbc.Col([radio_items], xs=12, md=6),
             ]
         ),
-        jumbotron,
         list_group,
         modal,
         navbar,

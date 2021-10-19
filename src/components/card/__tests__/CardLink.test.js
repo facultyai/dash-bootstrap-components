@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -46,9 +50,7 @@ describe('CardLink', () => {
   });
 
   test('relative links are internal by default', () => {
-    const cardLink = render(
-      <CardLink href="/relative">Clickable</CardLink>
-    );
+    const cardLink = render(<CardLink href="/relative">Clickable</CardLink>);
 
     const mockEventListener = jest.fn();
     window.addEventListener('_dashprivate_pushstate', mockEventListener);

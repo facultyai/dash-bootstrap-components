@@ -1,33 +1,40 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 input_groups = html.Div(
     [
         dbc.InputGroup(
-            [
-                dbc.InputGroupAddon("@", addon_type="prepend"),
-                dbc.Input(placeholder="Username"),
-            ],
+            [dbc.InputGroupText("@"), dbc.Input(placeholder="Username")],
             className="mb-3",
         ),
         dbc.InputGroup(
             [
                 dbc.Input(placeholder="Recipient's username"),
-                dbc.InputGroupAddon("@example.com", addon_type="append"),
+                dbc.InputGroupText("@example.com"),
             ],
             className="mb-3",
         ),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon("$", addon_type="prepend"),
+                dbc.InputGroupText("$"),
                 dbc.Input(placeholder="Amount", type="number"),
-                dbc.InputGroupAddon(".00", addon_type="append"),
+                dbc.InputGroupText(".00"),
             ],
             className="mb-3",
         ),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon("With textarea", addon_type="prepend"),
+                dbc.InputGroupText("Total:"),
+                dbc.InputGroupText("$"),
+                dbc.Input(placeholder="Amount", type="number"),
+                dbc.InputGroupText(".00"),
+                dbc.InputGroupText("only"),
+            ],
+            className="mb-3",
+        ),
+        dbc.InputGroup(
+            [
+                dbc.InputGroupText("With textarea"),
                 dbc.Textarea(),
             ],
             className="mb-3",
@@ -40,7 +47,7 @@ input_groups = html.Div(
                         {"label": "Option 2", "value": 2},
                     ]
                 ),
-                dbc.InputGroupAddon("With select", addon_type="append"),
+                dbc.InputGroupText("With select"),
             ]
         ),
     ]

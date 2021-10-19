@@ -12,7 +12,7 @@ def get_component_metadata(component_path):
 
 @lru_cache(maxsize=1)
 def _load_metadata():
-    return _get_metadata(dbc.METADATA_PATH)
+    return _get_metadata(dbc._METADATA_PATH)
 
 
 def _get_metadata(metadata_path):

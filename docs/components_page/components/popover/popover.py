@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 popover_children = [
     dbc.PopoverHeader("Popover header"),
@@ -12,7 +12,7 @@ popovers = html.Div(
             "Click",
             id="click-target",
             color="danger",
-            className="mr-1",
+            className="me-1",
             n_clicks=0,
         ),
         dbc.Popover(
@@ -25,7 +25,7 @@ popovers = html.Div(
             "Focus",
             id="focus-target",
             color="danger",
-            className="mr-1",
+            className="me-1",
             n_clicks=0,
         ),
         dbc.Popover(
@@ -38,7 +38,7 @@ popovers = html.Div(
             "Hover",
             id="hover-target",
             color="danger",
-            className="mr-1",
+            className="me-1",
             n_clicks=0,
         ),
         dbc.Popover(

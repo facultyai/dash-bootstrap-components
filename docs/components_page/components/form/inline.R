@@ -1,28 +1,20 @@
 library(dashBootstrapComponents)
 
 form <- dbcForm(
-  list(
-    dbcFormGroup(
-      list(
-        dbcLabel("Email", className = "mr-2"),
-        dbcInput(
-          type = "email",
-          placeholder = "Enter email"
-        )
+  dbcRow(
+    list(
+      dbcLabel("Email", width = "auto"),
+      dbcCol(
+        dbcInput(type = "email", placeholder = "Enter email"),
+        className = "me-3",
       ),
-      className = "mr-3"
-    ),
-    dbcFormGroup(
-      list(
-        dbcLabel("Password", className = "mr-2"),
-        dbcInput(
-          type = "password",
-          placeholder = "Enter password"
-        )
+      dbcLabel("Password", width = "auto"),
+      dbcCol(
+        dbcInput(type = "password", placeholder = "Enter password"),
+        className = "me-3",
       ),
-      className = "mr-3"
+      dbcCol(dbcButton("Submit", color = "primary"), width = "auto")
     ),
-    dbcButton("Submit", color = "primary")
-  ),
-  inline =  TRUE
+    className = "g-2",
+  )
 )

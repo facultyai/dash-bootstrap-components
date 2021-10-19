@@ -1,15 +1,15 @@
 using DashBootstrapComponents, DashHtmlComponents, DashCoreComponents
 
 progress = html_div([
-    dcc_interval(id="progress-interval", n_intervals=0, interval=500),
-    dbc_progress(id="progress"),
+    dcc_interval(id = "progress-interval", n_intervals = 0, interval = 500),
+    dbc_progress(id = "progress"),
 ]);
 
 
 callback!(
     app,
     Output("progress", "value"),
-    Output("progress", "children"),
+    Output("progress", "label"),
     Input("progress-interval", "n_intervals"),
 ) do n
     # check progress of some background process, in this example we'll just

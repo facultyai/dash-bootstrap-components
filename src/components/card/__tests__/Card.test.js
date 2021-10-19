@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import Card from '../Card';
@@ -52,7 +56,7 @@ describe('Card', () => {
       container: {firstChild: cardBody}
     } = render(<Card body />);
 
-    expect(cardBody).toHaveClass('card-body');
+    expect(cardBody.firstChild).toHaveClass('card-body');
   });
 
   test('applies text-white class with "inverse" prop', () => {

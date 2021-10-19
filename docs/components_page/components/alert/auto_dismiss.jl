@@ -1,13 +1,13 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 alert = html_div([
-    dbc_button("Toggle", id="alert-toggle-auto", className="mr-1", n_clicks=0),
+    dbc_button("Toggle", id = "alert-toggle-auto", className = "me-1", n_clicks = 0),
     html_hr(),
     dbc_alert(
         "Hello! I am an auto-dismissing alert!",
-        id="alert-auto",
-        is_open=true,
-        duration=4000,
+        id = "alert-auto",
+        is_open = true,
+        duration = 4000,
     ),
 ]);
 

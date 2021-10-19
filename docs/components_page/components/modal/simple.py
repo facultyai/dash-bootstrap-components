@@ -1,17 +1,16 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 modal = html.Div(
     [
         dbc.Button("Open modal", id="open", n_clicks=0),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader(dbc.ModalTitle("Header")),
                 dbc.ModalBody("This is the content of the modal"),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close", className="ml-auto", n_clicks=0
+                        "Close", id="close", className="ms-auto", n_clicks=0
                     )
                 ),
             ],

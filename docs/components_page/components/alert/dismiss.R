@@ -4,11 +4,14 @@ library(dashHtmlComponents)
 alert <- htmlDiv(
   list(
     dbcButton(
-      "Toggle alert with fade", id = "alert-toggle-fade", n_clicks = 0,
-      className = "mr-1"
+      "Toggle alert with fade",
+      id = "alert-toggle-fade", n_clicks = 0,
+      className = "me-1"
     ),
-    dbcButton("Toggle alert without fade", id = "alert-toggle-no-fade",
-              n_clicks = 0),
+    dbcButton("Toggle alert without fade",
+      id = "alert-toggle-no-fade",
+      n_clicks = 0
+    ),
     htmlHr(),
     dbcAlert(
       "Hello! I am an alert",

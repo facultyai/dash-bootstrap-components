@@ -2,7 +2,7 @@ from functools import reduce
 from itertools import groupby
 from operator import add
 
-import dash_html_components as html
+from dash import html
 
 
 def _generate_table_from_df(

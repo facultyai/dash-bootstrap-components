@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardBody as RSCardBody} from 'reactstrap';
+import RBCard from 'react-bootstrap/Card';
 
 /**
  * Wrap the content of your `Card` in `CardBody` to apply padding and other
  * styles.
  */
 const CardBody = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardBody
+    <RBCard.Body
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardBody>
+    </RBCard.Body>
   );
 };
 
@@ -40,6 +41,13 @@ CardBody.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

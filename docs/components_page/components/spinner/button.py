@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 spinners = html.Div(
     [
@@ -7,7 +7,7 @@ spinners = html.Div(
             dbc.Spinner(size="sm"),
             color="primary",
             disabled=True,
-            className="mr-1",
+            className="me-1",
         ),
         dbc.Button(
             [dbc.Spinner(size="sm"), " Loading..."],

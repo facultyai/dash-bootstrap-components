@@ -7,7 +7,7 @@ DropdownMenus are built up using the `DropdownMenu`, and `DropdownMenuItem` comp
 
 Note: our `DropdownMenu` is an analogue of Bootstrap's Dropdown component. We have changed the name to avoid a clash with the existing `Dropdown` component in _dash-core-components_ which serves a different purpose.
 
-## Simple example
+## Examples
 
 This example creates a simple dropdown menu with three items.
 
@@ -16,6 +16,12 @@ This example creates a simple dropdown menu with three items.
 Each `DropdownMenuItem` can be used like `dash_core_components.Link`, as a regular hyperlink, or as a button by defining a callback that uses the `n_clicks` prop as an input. By default, `DropdownMenuItem` will behave like `dash_core_components.Link` if you assign a relative path to `href`, and like a regular hyperlink if you assign an absolute path. If you want to override this, for example you might like to access a route on the underlying Flask server, you can set `external_link=True`.
 
 {{example:components/dropdown/menu_items.py:dropdown}}
+
+## Dark Dropdown
+
+Set `menu_variant="dark"` to change the dropdown menu to a dark colour scheme.
+
+{{example:components/dropdown/dark.py:dropdown}}
 
 ## Styling the toggle
 
@@ -31,13 +37,13 @@ Control the size of the `DropdownMenu` toggle using the `size` argument. You can
 
 ## DropdownMenu direction
 
-Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'left'`, or `'right'`.
+Use the `direction` argument to control where the menu is rendered relative to the toggle. The possible options are `'up'`, `'down'` (default), `'start'`, or `'end'`.
 
 {{example:components/dropdown/direction.py:dropdown}}
 
 ## DropdownMenu alignment
 
-By default the menu is aligned with left of the toggle. Set `right=True` for a right aligned menu.
+By default the menu is aligned with left of the toggle. Set `align_end=True` for a right aligned menu.
 
 {{example:components/dropdown/alignment.py:dropdown}}
 

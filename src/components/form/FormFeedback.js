@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {FormFeedback as RSFormFeedback} from 'reactstrap';
+import RBFormControl from 'react-bootstrap/FormControl';
 
 /**
  * The FormFeedback component can be used to provide feedback on input values
- * in a form. Add the form feedback to a `FormGroup` and set the `valid` or
+ * in a form. Add the form feedback to your layout and set the `valid` or
  * `invalid` props of the associated input to toggle visibility.
  */
 const FormFeedback = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSFormFeedback
+    <RBFormControl.Feedback
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSFormFeedback>
+    </RBFormControl.Feedback>
   );
 };
 
@@ -43,6 +44,13 @@ FormFeedback.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -53,10 +61,9 @@ FormFeedback.propTypes = {
   key: PropTypes.string,
 
   /**
-   * If True apply the valid styling to the feedback, else apply invalid
-   * styling.
+   * Either 'valid' or 'invalid'.
    */
-  valid: PropTypes.bool,
+  type: PropTypes.string,
 
   /**
    * Use styled tooltips to display validation feedback.

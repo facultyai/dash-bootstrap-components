@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import Container from '../Container';
@@ -21,5 +25,11 @@ describe('Container', () => {
     } = render(<Container fluid />);
 
     expect(container).toHaveClass('container-fluid');
+
+    const {
+      container: {firstChild: containerMd}
+    } = render(<Container fluid="md" />);
+
+    expect(containerMd).toHaveClass('container-md');
   });
 });
