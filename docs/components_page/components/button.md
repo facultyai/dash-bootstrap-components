@@ -5,7 +5,7 @@ lead: Documentation and examples for Bootstrap's button styles with _dash-bootst
 
 ## Examples
 
-Bootstrap includes several predefined button styles based on the predefined contextual colors. Chooose between them using the `color` argument.
+Bootstrap includes several predefined button styles based on the predefined contextual colors. Choose between them using the `color` argument.
 
 {{example:components/button/simple.py:buttons}}
 

@@ -6,12 +6,12 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
-## 1.0.0 - 2021/XX/XX
+## 1.0.0 - 2021/10/19
 
-v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully for full details.
+v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully, and refer to the [migration guide](/migration-guide/) for full details of the changes.
 
 ### Added
-- Six new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
+- Seven new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form),  [ModalTitle](/docs/components/modal), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
 - New CDN links for icons from Bootstrap Icons and Font Awesome ([PR 661](https://github.com/facultyai/dash-bootstrap-components/pull/661))
 - CDN Links for four new Bootswatch themes: `QUARTZ`, `MORPH`, `VAPOR` and `ZEPHYR`.
 - All components now accept `class_name` as an alternative to `className`. If both are specified then `class_name` will take precedence. `class_name` should be preferred from now on. ([PR 642](https://github.com/facultyai/dash-bootstrap-components/pull/642))
@@ -22,6 +22,12 @@ v1 of _dash-bootstrap-components_! This release contains loads of new features, 
 
 ### Changed
 - Components are all now built for Bootstrap 5. CDN links have all been updated. There are multiple breaking changes in the component props. Please see the [migration-guide](/migration-guide) for full details on the changes ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)).
+
+## 0.13.1 - 2021/9/22
+
+### Fixed
+
+- Fix cursor jump issue in `Input` component. ([PR 707](https://github.com/facultyai/dash-bootstrap-components/pull/707))
 
 ## 0.13.0 - 2021/7/31
 
