@@ -7,10 +7,12 @@ dropdown <- htmlDiv(
       list(
         dbcDropdownMenuItem("A button", id = "dropdown-button", n_clicks = 0),
         dbcDropdownMenuItem(
-          "Internal link", href = "/docs/components/dropdown_menu"
+          "Internal link",
+          href = "/docs/components/dropdown_menu"
         ),
         dbcDropdownMenuItem(
-          "External Link", href = "https://github.com"
+          "External Link",
+          href = "https://github.com"
         ),
         dbcDropdownMenuItem(
           "External relative",

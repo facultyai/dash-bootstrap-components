@@ -20,10 +20,10 @@ make_popover <- function(placement) {
 make_button <- function(placement) {
   return(
     dbcButton(
-        sprintf("Popover on %s", placement),
-        id = sprintf("popover-%s-target", placement),
-        className = "mx-2",
-        n_clicks = 0
+      sprintf("Popover on %s", placement),
+      id = sprintf("popover-%s-target", placement),
+      className = "mx-2",
+      n_clicks = 0
     )
   )
 }
@@ -39,21 +39,21 @@ popovers <- htmlDiv(
 )
 
 
-toggle_popover <-  function(n, is_open) {
-    if (n > 0) {
-      return(!is_open)
-    }
-    return(is_open)
+toggle_popover <- function(n, is_open) {
+  if (n > 0) {
+    return(!is_open)
+  }
+  return(is_open)
 }
 
 position <- list("top", "left", "right", "bottom")
 for (p in position) {
-    app$callback(
-      output(sprintf("popover-%s", p), "is_open"),
-      list(
-        input(sprintf("popover-%s-target", p), "n_clicks"),
-        state(sprintf("popover-%s", p), "is_open")
-      ),
-      toggle_popover
-    )
+  app$callback(
+    output(sprintf("popover-%s", p), "is_open"),
+    list(
+      input(sprintf("popover-%s-target", p), "n_clicks"),
+      state(sprintf("popover-%s", p), "is_open")
+    ),
+    toggle_popover
+  )
 }

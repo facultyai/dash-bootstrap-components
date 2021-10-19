@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -37,22 +41,22 @@ describe('Textarea', () => {
       container: {firstChild: textarea}
     } = render(
       <Textarea
-        accessKey="k"
+        accesskey="k"
         cols="33"
         dir="ltr"
         disabled
         draggable
         form="form-id"
         lang="en-GB"
-        maxLength="20"
-        minLength="2"
+        maxlength="20"
+        minlength="2"
         name="test-name"
         placeholder="test-placeholder"
-        readOnly
+        readonly
         required
         rows="6"
-        spellCheck
-        tabIndex="3"
+        spellcheck
+        tabindex="3"
         title="test-title"
         wrap="hard"
       />
@@ -108,9 +112,9 @@ describe('Textarea', () => {
       userEvent.type(textarea, 'abc');
 
       expect(textarea).toHaveValue('abc');
-      expect(mockSetProps.mock.calls).toHaveLength(3);
+      expect(mockSetProps.mock.calls).toHaveLength(4);
 
-      const [call1, call2, call3] = mockSetProps.mock.calls;
+      const [call0, call1, call2, call3] = mockSetProps.mock.calls;
       expect(call1).toEqual([{value: 'a'}]);
       expect(call2).toEqual([{value: 'ab'}]);
       expect(call3).toEqual([{value: 'abc'}]);

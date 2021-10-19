@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
+import RBNavbar from 'react-bootstrap/Navbar';
+import RBContainer from 'react-bootstrap/Container';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 import Nav from './Nav';
@@ -22,8 +23,12 @@ const NavbarSimple = props => {
     links_left,
     fluid,
     color,
+    dark,
+    light,
     style,
     loading_state,
+    className,
+    class_name,
     ...otherProps
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
@@ -33,15 +38,18 @@ const NavbarSimple = props => {
   const toggle = () => setNavbarOpen(!navbarOpen);
 
   return (
-    <RSNavbar
+    <RBNavbar
+      variant={dark ? 'dark' : 'light'}
+      bg={isBootstrapColor ? color : null}
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <Container fluid={fluid}>
+      <RBContainer fluid={fluid}>
         {brand && (
           <NavbarBrand
             href={brand_href}
@@ -52,13 +60,11 @@ const NavbarSimple = props => {
           </NavbarBrand>
         )}
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={navbarOpen} navbar>
-          <Nav className={links_left ? 'mr-auto' : 'ml-auto'} navbar>
-            {children}
-          </Nav>
-        </Collapse>
-      </Container>
-    </RSNavbar>
+        <RBNavbar.Collapse in={navbarOpen}>
+          <Nav className={links_left ? 'me-auto' : 'ms-auto'}>{children}</Nav>
+        </RBNavbar.Collapse>
+      </RBContainer>
+    </RBNavbar>
   );
 };
 
@@ -67,7 +73,7 @@ NavbarSimple.defaultProps = {
   color: 'light',
   light: true,
   expand: 'md',
-  links_left: false,
+  links_left: false
 };
 
 NavbarSimple.propTypes = {
@@ -89,6 +95,13 @@ NavbarSimple.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

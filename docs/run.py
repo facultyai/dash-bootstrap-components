@@ -1,10 +1,10 @@
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from components_page import register_apps as register_component_apps
-from demos import register_apps as register_demo_apps
-from examples import register_apps as register_example_apps
-from markdown_to_html import convert_all_markdown_files
-from server import create_server
+from components_page import register_apps as register_component_apps  # noqa
+from demos import register_apps as register_demo_apps  # noqa
+from examples import register_apps as register_example_apps  # noqa
+from markdown_to_html import convert_all_markdown_files  # noqa
+from server import create_server  # noqa
 
 convert_all_markdown_files()
 

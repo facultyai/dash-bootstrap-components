@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Dropdown, DropdownToggle} from 'reactstrap';
-import {DropdownMenu as RSDropdownMenu} from 'reactstrap';
+import RBDropdown from 'react-bootstrap/Dropdown';
+import Nav from 'react-bootstrap/Nav';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -19,12 +20,19 @@ const DropdownMenu = props => {
     caret,
     in_navbar,
     addon_type,
-    bs_size,
+    size,
     right,
+    align_end,
+    menu_variant,
+    direction,
     loading_state,
     color,
+    group,
     toggle_style,
     toggleClassName,
+    toggle_class_name,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -43,38 +51,55 @@ const DropdownMenu = props => {
         isOpen: dropdownOpen
       }}
     >
-      <Dropdown
-        isOpen={dropdownOpen}
-        toggle={toggle}
-        nav={nav}
+      <RBDropdown
+        as={nav ? Nav.Item : group ? ButtonGroup : undefined}
+        show={dropdownOpen}
         disabled={disabled}
-        inNavbar={in_navbar}
-        addonType={addon_type}
-        size={bs_size}
+        navbar={in_navbar}
+        className={class_name || className}
+        drop={
+          direction === 'left'
+            ? 'start'
+            : direction === 'right'
+            ? 'end'
+            : direction
+        }
+        align={align_end ? 'end' : right ? 'end' : 'start'}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        <DropdownToggle
-          nav={nav}
-          caret={caret}
+        <RBDropdown.Toggle
+          as={nav ? Nav.Link : undefined}
+          onClick={toggle}
           disabled={disabled}
-          color={isBootstrapColor ? color : undefined}
-          style={!isBootstrapColor ? {backgroundColor: color, ...toggle_style} : toggle_style}
-          className={toggleClassName}
+          size={size}
+          variant={isBootstrapColor ? color : undefined}
+          style={
+            !isBootstrapColor
+              ? {backgroundColor: color, ...toggle_style}
+              : toggle_style
+          }
+          className={toggle_class_name || toggleClassName}
         >
           {label}
-        </DropdownToggle>
-        <RSDropdownMenu right={right}>{children}</RSDropdownMenu>
-      </Dropdown>
+        </RBDropdown.Toggle>
+        <RBDropdown.Menu
+          renderOnMount
+          variant={menu_variant === 'dark' ? 'dark' : undefined}
+        >
+          {children}
+        </RBDropdown.Menu>
+      </RBDropdown>
     </DropdownMenuContext.Provider>
   );
 };
 
 DropdownMenu.defaultProps = {
   caret: true,
-  disabled: false
+  disabled: false,
+  menu_variant: 'light'
 };
 
 DropdownMenu.propTypes = {
@@ -98,6 +123,13 @@ DropdownMenu.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -113,11 +145,28 @@ DropdownMenu.propTypes = {
   label: PropTypes.string,
 
   /**
-   * Direction in which to expand the DropdownMenu. Default: 'down'.
+   * Direction in which to expand the DropdownMenu. Default: 'down'. `left`
+   * and `right` have been deprecated, and `start` and `end` should be used
+   * instead.
    */
-  direction: PropTypes.oneOf(['down', 'left', 'right', 'up']),
+  direction: PropTypes.oneOf([
+    'down',
+    'start',
+    'end',
+    'up',
+    'left',
+    'right',
+    'end'
+  ]),
 
   /**
+   * Align the DropdownMenu along the right side of its parent. Default: False.
+   */
+  align_end: PropTypes.bool,
+
+  /**
+   * **DEPRECATED** Use `align_end` instead.
+   *
    * Align the DropdownMenu along the right side of its parent. Default: False.
    */
   right: PropTypes.bool,
@@ -160,6 +209,11 @@ DropdownMenu.propTypes = {
   color: PropTypes.string,
 
   /**
+   * Set `menu_variant="dark"` to create a dark-mode drop down instead
+   */
+  menu_variant: PropTypes.oneOf(['light', 'dark']),
+
+  /**
    * Defines CSS styles which will override styles previously set. The styles
    * set here apply to the DropdownMenu toggle.
    */
@@ -169,13 +223,21 @@ DropdownMenu.propTypes = {
    * Often used with CSS to style elements with common properties. The classes
    * specified with this prop will be applied to the DropdownMenu toggle.
    */
+  toggle_class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `toggle_class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties. The classes
+   * specified with this prop will be applied to the DropdownMenu toggle.
+   */
   toggleClassName: PropTypes.string,
 
   /**
    * Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
    * and 'lg' to large.
    */
-  bs_size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 
   /**
    * Object that holds the loading state object coming from dash-renderer

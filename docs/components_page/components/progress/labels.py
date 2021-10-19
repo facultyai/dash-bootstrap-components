@@ -1,3 +1,3 @@
 import dash_bootstrap_components as dbc
 
-progress = dbc.Progress("25%", value=25)
+progress = dbc.Progress(label="25%", value=25)

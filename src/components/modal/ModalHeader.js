@@ -1,14 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ModalHeader as RSModalHeader} from 'reactstrap';
+import RBModalHeader from 'react-bootstrap/ModalHeader';
 
 /**
  * Add a header to any modal.
  */
 const ModalHeader = props => {
-  const {children, ...otherProps} = props;
-  return <RSModalHeader {...omit(['setProps'], otherProps)}>{children}</RSModalHeader>;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    tag,
+    close_button,
+    ...otherProps
+  } = props;
+  return (
+    <RBModalHeader
+      as={tag}
+      className={class_name || className}
+      closeButton={close_button}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+      {...omit(['setProps'], otherProps)}
+    >
+      {children}
+    </RBModalHeader>
+  );
+};
+
+ModalHeader.defaultProps = {
+  close_button: true
 };
 
 ModalHeader.propTypes = {
@@ -31,12 +55,42 @@ ModalHeader.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
+
+  /**
+   * Add a close button to the header that can be used to close the modal.
+   */
+  close_button: PropTypes.bool,
 
   /**
    * HTML tag to use for the ModalHeader, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * Object that holds the loading state object coming from dash-renderer
+   */
+  loading_state: PropTypes.shape({
+    /**
+     * Determines if the component is loading or not
+     */
+    is_loading: PropTypes.bool,
+    /**
+     * Holds which property is loading
+     */
+    prop_name: PropTypes.string,
+    /**
+     * Holds the name of the component that is loading
+     */
+    component_name: PropTypes.string
+  })
 };
 
 export default ModalHeader;

@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 from .util import make_subheading
 
@@ -8,7 +8,7 @@ form = html.Div(
         make_subheading("Form", "form"),
         dbc.Form(
             [
-                dbc.FormGroup(
+                html.Div(
                     [
                         dbc.Label("Username"),
                         dbc.Input(
@@ -28,7 +28,7 @@ form = html.Div(
                         ),
                     ]
                 ),
-                dbc.FormGroup(
+                html.Div(
                     [
                         dbc.Label("Username"),
                         dbc.Input(

@@ -3,7 +3,7 @@ title: Cards
 lead: Bootstrap's cards provide a flexible content container with multiple variants and options.
 ---
 
-## Simple example
+## Examples
 
 Below is an example of a basic card with mixed content and a fixed width, set using the `style` argument. By default, `Card` has no fixed width, so it'll naturally fill the full width of its parent element. This is easily customized with Bootstraps various sizing options detailed below.
 
@@ -32,6 +32,12 @@ The `CardLink` component can be used like `dash_core_components.Link`, as a regu
 Use `CardImg` when adding images to cards. The `top` argument can be used when the image is at the top of the card to remove the border radius from the bottom corners. Similarly the `bottom` argument can be used when the image is at the bottom of the card.
 
 {{example:components/card/image.py:cards}}
+
+### Image Overlays
+
+Use `CardImgOverlay` to display the card content over the top of the card image. Depending on the image, you may or may not need additional styles or utilities.
+
+{{example:components/card/image_overlay.py:card}}
 
 ### List groups
 
@@ -69,6 +75,12 @@ Finally, you can use custom CSS to control the size of your cards. In this examp
 
 ## Card style
 
+### Horizontal
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+{{example:components/card/sizing/horizontal.py:card}}
+
 ### Background and color
 
 Use the `color` argument of `Card` to set the background and border colors of `Card` to one of Bootstrap's contextual colors. When setting a dark color, use `inverse=True` to invert the text colors for better contrast.
@@ -91,23 +103,7 @@ Use the `CardGroup` component to render cards as a single attached element with 
 
 {{example:components/card/layout/group.py:cards}}
 
-### Card deck
-
-The `CardDeck` component will lay cards out with equal width and height, without attaching them to one another like the `CardGroup` component.
-
-{{example:components/card/layout/deck.py:cards}}
-
-### Card columns
-
-Cards can be organised into [Masonry](https://masonry.desandro.com/)-like columns using the `CardColumns` component. Cards are ordered top to bottom and left to right.
-
-{{example:components/card/layout/columns.py:cards}}
-
-{{apidoc:src/components/card/CardDeck.js}}
-
 {{apidoc:src/components/card/CardGroup.js}}
-
-{{apidoc:src/components/card/CardColumns.js}}
 
 {{apidoc:src/components/card/Card.js}}
 

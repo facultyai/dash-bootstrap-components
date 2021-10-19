@@ -4,15 +4,14 @@ card = dbc_card([
     dbc_cardheader(
         dbc_tabs(
             [
-                dbc_tab(label="Tab 1", tab_id="tab-1"),
-                dbc_tab(label="Tab 2", tab_id="tab-2"),
+                dbc_tab(label = "Tab 1", tab_id = "tab-1"),
+                dbc_tab(label = "Tab 2", tab_id = "tab-2"),
             ],
-            id="card-tabs",
-            card=true,
-            active_tab="tab-1",
+            id = "card-tabs",
+            active_tab = "tab-1",
         ),
     ),
-    dbc_cardbody(html_p(id="card-content", className="card-text")),
+    dbc_cardbody(html_p(id = "card-content", className = "card-text")),
 ]);
 
 callback!(

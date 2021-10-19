@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 DBC_DOCS = (
     "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
@@ -14,7 +14,7 @@ def make_subheading(label, link):
             [
                 label,
                 html.A(
-                    html.I(className="fas fa-book fa-xs ml-2"),
+                    html.I(className="fas fa-book fa-xs ms-2"),
                     href=f"{DBC_DOCS}{link}",
                     target="_blank",
                     id=f"tooltip_target_{slug}",

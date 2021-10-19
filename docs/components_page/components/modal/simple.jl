@@ -1,17 +1,17 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 modal = html_div([
-    dbc_button("Open modal", id="open", n_clicks=0),
+    dbc_button("Open modal", id = "open", n_clicks = 0),
     dbc_modal(
         [
-            dbc_modalheader("Header"),
+            dbc_modalheader(dbc_modaltitle("Header")),
             dbc_modalbody("This is the content of the modal"),
             dbc_modalfooter(
-                dbc_button("Close", id="close", className="ml-auto", n_clicks=0),
+                dbc_button("Close", id = "close", className = "ms-auto", n_clicks = 0),
             ),
         ],
-        id="modal",
-        is_open=false,
+        id = "modal",
+        is_open = false,
     ),
 ]);
 

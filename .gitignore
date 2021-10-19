@@ -30,9 +30,10 @@ docs/examples/vendor
 # R build artifacts
 inst
 man
-R
+R/*
 DESCRIPTION
 NAMESPACE
+!R/icons.R
 !R/themes.R
 
 # Julia build artifacts

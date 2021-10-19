@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -47,12 +51,7 @@ describe('Tabs', () => {
     expect(nav.children[1].firstChild).toHaveClass('active');
   });
 
-  test('adds "card-header-tabs" class with "card" prop', () => {
-    const {container} = render(<Tabs card />);
-    expect(
-      container.querySelector('ul.nav.nav-tabs.card-header-tabs')
-    ).not.toBe(null);
-  });
+  // TODO: add test with CardHeader component
 
   test('tracks most recently clicked tab with "active_tab" prop', () => {
     const mockSetProps = jest.fn();

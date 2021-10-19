@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {NavItem as RSNavItem} from 'reactstrap';
+import RBNavItem from 'react-bootstrap/NavItem';
 
 /**
  * Create a single item in a `Nav`.
  */
 const NavItem = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSNavItem
+    <RBNavItem
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSNavItem>
+    </RBNavItem>
   );
 };
 
@@ -41,6 +42,13 @@ NavItem.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -49,11 +57,6 @@ NavItem.propTypes = {
    * See https://reactjs.org/docs/lists-and-keys.html for more info
    */
   key: PropTypes.string,
-
-  /**
-   * Apply active style to item.
-   */
-  active: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

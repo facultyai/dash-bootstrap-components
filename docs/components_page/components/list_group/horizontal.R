@@ -10,7 +10,7 @@ list_group <- htmlDiv(
         dbcListGroupItem("Item 3")
       ),
       horizontal = TRUE,
-      className = "mb-2",
+      className = "mb-2"
     ),
     dbcListGroup(
       list(

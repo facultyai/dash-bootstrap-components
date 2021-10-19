@@ -10,7 +10,6 @@ card <- dbcCard(
           dbcTab(label = "Tab 2", tab_id = "tab-2")
         ),
         id = "card-tabs",
-        card = TRUE,
         active_tab = "tab-1"
       )
     ),

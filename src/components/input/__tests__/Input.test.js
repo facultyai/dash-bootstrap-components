@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -33,20 +37,20 @@ describe('Input', () => {
       container: {firstChild: input}
     } = render(
       <Input
-        autoComplete="username"
+        autocomplete="username"
         disabled
-        inputMode="verbatim"
+        inputmode="verbatim"
         list="datalist-id"
         max={10}
-        maxLength="20"
+        maxlength="20"
         min={1}
-        minLength="2"
+        minlength="2"
         name="test-name"
         pattern="test-pattern"
         placeholder="test-placeholder"
-        size="42"
+        html_size="42"
         step={2}
-        tabIndex="3"
+        tabindex="3"
         type="text"
       />
     );
@@ -267,7 +271,7 @@ describe('Input', () => {
         <Input type="number" min={0} value={0} setProps={mockSetProps} />
       );
 
-      userEvent.type(input, '{backspace}-100');
+      userEvent.type(input, '-100');
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
       expect(mockSetProps.mock.calls[0][0]).toEqual({value: NaN});

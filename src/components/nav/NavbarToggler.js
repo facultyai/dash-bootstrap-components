@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {NavbarToggler as RSNavbarToggler} from 'reactstrap';
+import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
 
 /**
  * Use this component to create a navbar toggle to show navlinks when the
  * navbar collapses on smaller screens.
  */
 const NavbarToggler = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSNavbarToggler
+    <RBNavbarToggle
       onClick={() => {
         if (props.setProps) {
           props.setProps({
@@ -19,13 +19,14 @@ const NavbarToggler = props => {
           });
         }
       }}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSNavbarToggler>
+    </RBNavbarToggle>
   );
 };
 
@@ -52,6 +53,13 @@ NavbarToggler.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

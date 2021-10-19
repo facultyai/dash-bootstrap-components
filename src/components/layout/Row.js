@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Row as RSRow} from 'reactstrap';
+import RBRow from 'react-bootstrap/Row';
 import classNames from 'classnames';
 
 const alignMap = {
@@ -30,9 +30,9 @@ const Row = props => {
   const {
     children,
     className,
+    class_name,
     align,
     justify,
-    no_gutters,
     loading_state,
     ...otherProps
   } = props;
@@ -40,18 +40,17 @@ const Row = props => {
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
 
-  const classes = classNames(className, alignClass, justifyClass);
+  const classes = classNames(class_name || className, alignClass, justifyClass);
   return (
-    <RSRow
+    <RBRow
       className={classes}
-      noGutters={no_gutters}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSRow>
+    </RBRow>
   );
 };
 
@@ -76,6 +75,13 @@ Row.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -84,12 +90,6 @@ Row.propTypes = {
    * See https://reactjs.org/docs/lists-and-keys.html for more info
    */
   key: PropTypes.string,
-
-  /**
-   * Remove the "gutters" between columns in this row.
-   * see https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
-   */
-  no_gutters: PropTypes.bool,
 
   /**
    * Set vertical alignment of columns in this row. Options are 'start',
@@ -102,12 +102,6 @@ Row.propTypes = {
    * 'start', 'center', 'end', 'around' and 'between'.
    */
   justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between']),
-
-  /**
-   * For use in forms. When set to True the `form-row` class is applied, which
-   * overrides the default column gutters for a tighter, more compact layout.
-   */
-  form: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

@@ -1,3 +1,10 @@
 library(dashBootstrapComponents)
+library(dashHtmlComponents)
 
-button <- dbcButton("Block button", color = "primary", block = TRUE)
+button <- htmlDiv(
+  list(
+    dbcButton("Block button", color = "primary"),
+    dbcButton("Block button", color = "secondary")
+  ),
+  className = "d-grid gap-2"
+)

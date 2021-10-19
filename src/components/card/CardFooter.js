@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CardFooter as RSCardFooter} from 'reactstrap';
+import RBCard from 'react-bootstrap/Card';
 
 /**
  * Use the CardFooter component to add a footer to any card.
  */
 const CardFooter = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {children, loading_state, className, class_name, ...otherProps} = props;
   return (
-    <RSCardFooter
+    <RBCard.Footer
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCardFooter>
+    </RBCard.Footer>
   );
 };
 
@@ -39,6 +40,13 @@ CardFooter.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

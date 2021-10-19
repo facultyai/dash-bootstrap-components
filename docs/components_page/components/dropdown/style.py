@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 items = [
     dbc.DropdownMenuItem("Item 1"),
@@ -25,7 +25,6 @@ dropdowns = html.Div(
             items, label="Danger", color="danger", className="m-1"
         ),
         dbc.DropdownMenu(items, label="Info", color="info", className="m-1"),
-        dbc.DropdownMenu(items, label="Link", color="link", className="m-1"),
     ],
     style={"display": "flex", "flexWrap": "wrap"},
 )

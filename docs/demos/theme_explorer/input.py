@@ -1,23 +1,23 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 from .util import make_subheading
 
 input_ = html.Div(
     [
         make_subheading("Input", "input"),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Valid text input"),
                 dbc.Input(type="text", valid=True),
-                dbc.FormFeedback("That's a valid input!", valid=True),
+                dbc.FormFeedback("That's a valid input!", type="valid"),
             ]
         ),
-        dbc.FormGroup(
+        html.Div(
             [
                 dbc.Label("Invalid text input"),
                 dbc.Input(type="text", invalid=True),
-                dbc.FormFeedback("That's an invalid input..."),
+                dbc.FormFeedback("That's an invalid input...", type="invalid"),
             ]
         ),
     ]
@@ -97,10 +97,7 @@ input_group = html.Div(
         make_subheading("InputGroup and addons", "input_group"),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon(
-                    dbc.Button("To the left!", color="danger"),
-                    addon_type="prepend",
-                ),
+                dbc.Button("To the left!", color="danger"),
                 dbc.Input(type="text"),
             ],
             className="my-3",
@@ -108,16 +105,13 @@ input_group = html.Div(
         dbc.InputGroup(
             [
                 dbc.Input(type="text"),
-                dbc.InputGroupAddon(
-                    dbc.Button("To the right!", color="success"),
-                    addon_type="append",
-                ),
+                dbc.Button("To the right!", color="success"),
             ],
             className="mb-3",
         ),
         dbc.InputGroup(
             [
-                dbc.InputGroupAddon("@", addon_type="prepend"),
+                dbc.InputGroupText("@"),
                 dbc.Input(type="text", placeholder="Enter username"),
             ],
             className="mb-3",

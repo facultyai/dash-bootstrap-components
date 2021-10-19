@@ -8,18 +8,17 @@ top_card <- dbcCard(
       htmlP("This card has an image at the top", className = "card-text")
     )
   ),
-  style = list(width =  "18rem")
+  style = list(width = "18rem")
 )
 
 bottom_card <- dbcCard(
   list(
-
     dbcCardBody(
       htmlP("This has a bottom image", className = "card-text")
     ),
     dbcCardImg(src = "/static/images/placeholder286x180.png", bottom = TRUE)
   ),
-  style = list(width =  "18rem")
+  style = list(width = "18rem")
 )
 
 cards <- dbcRow(

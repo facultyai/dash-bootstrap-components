@@ -23,11 +23,15 @@ PARAMS = [
     for path in HERE.parent.glob("*.md")
 ]
 
-SKIP = ["components/table/kwargs.py", "components/tabs/active_tab.py"]
+SKIP = [
+    "components/table/kwargs.py",
+    "components/table/color.py",
+    "components/tabs/active_tab.py",
+]
 ENVS = {
     "modal.md": {
         "LOREM": (HERE.parent / "modal" / "lorem.txt").read_text().strip()
-    }
+    },
 }
 
 R_PORT = 8051
@@ -69,7 +73,7 @@ def test_r_snippets(dash_thread_server, dashr_server, config):
             r_snippet = rename_variable(
                 r_snippet_path, i, name, assign_op="<-"
             )
-            python_r_compare.append((py_snippet, r_snippet, f"{name}_{i}"))
+            python_r_compare.append((py_snippet, r_snippet, f"{name}__{i}"))
 
     if python_r_compare:
         assert_layouts_equal(
@@ -102,7 +106,7 @@ def test_jl_snippets(dash_thread_server, dashjl_server, config):
 
         if jl_snippet_path.exists():
             jl_snippet = rename_variable(jl_snippet_path, i, name)
-            python_jl_compare.append((py_snippet, jl_snippet, f"{name}_{i}"))
+            python_jl_compare.append((py_snippet, jl_snippet, f"{name}__{i}"))
 
     if python_jl_compare:
         assert_layouts_equal(
@@ -114,6 +118,35 @@ def test_jl_snippets(dash_thread_server, dashjl_server, config):
             env,
             8052,
         )
+
+
+def test_landing_page_example(dash_thread_server, dashr_server, dashjl_server):
+    index_dir = HERE.parent / "index"
+    py_source = (index_dir / "simple.py").read_text()
+    r_source = (
+        (index_dir / "simple.R").read_text().replace("8050", str(R_PORT))
+    )
+    jl_source = (
+        (index_dir / "simple.jl").read_text().replace("8050", str(JL_PORT))
+    )
+
+    app = py_source_to_app(py_source, {})
+    dash_thread_server.start(app, port=8050)
+    py_layout = requests.get(f"{dash_thread_server.url}/_dash-layout").json()
+
+    dashr_server.start(r_source)
+    r_layout = requests.get(f"{dashr_server.url}/_dash-layout").json()
+
+    dashjl_server.start(jl_source)
+    jl_layout = requests.get(f"{dashjl_server.url}/_dash-layout").json()
+
+    # Test layouts match
+    unittest.TestCase().assertDictEqual(
+        drop_keys(py_layout), drop_keys(r_layout)
+    )
+    unittest.TestCase().assertDictEqual(
+        drop_keys(py_layout), drop_keys(jl_layout)
+    )
 
 
 def assert_layouts_equal(
@@ -130,7 +163,6 @@ def assert_layouts_equal(
     py_runner.start(app, port=py_port)
     py_layout = requests.get(f"{py_runner.url}/_dash-layout").json()
 
-    # Get other language snippet layout
     runner.start(
         wrapper.format(
             snippet="\n".join(x[1] for x in compare),

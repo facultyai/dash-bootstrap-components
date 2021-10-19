@@ -2,11 +2,14 @@ import re
 from pathlib import Path
 
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
 import markdown
+from dash import dcc, html
 
-from .helpers import ExampleContainer, load_source_with_environment
+from .helpers import (
+    ExampleContainer,
+    HighlightedSource,
+    load_source_with_environment,
+)
 
 __all__ = ["parse"]
 
@@ -92,12 +95,17 @@ def _safe_load_source(source_path, ext):
         return None
 
 
-def _parse_code_example(data):
-    source_path, language = data.split(":")
-    source = (HERE / source_path).read_text().strip()
+def _parse_code_example(filename):
+    source_path = HERE / filename
+    py_source = (HERE / source_path).read_text().strip()
+    r_source = _safe_load_source(source_path, "R")
+    jl_source = _safe_load_source(source_path, "jl")
+
     return html.Div(
-        dcc.Markdown(f"```{language}\n{source}\n```"),
-        className="source-container",
+        HighlightedSource(
+            py_source, r_source, jl_source, className="pb-0 card-header"
+        ),
+        className="border source-container rounded",
     )
 
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Card as RSCard} from 'reactstrap';
+import RBCard from 'react-bootstrap/Card';
 import {bootstrapColors} from '../../private/BootstrapColors';
-
 
 /**
  * Component for creating Bootstrap cards. Use in conjunction with CardBody,
@@ -12,19 +11,32 @@ import {bootstrapColors} from '../../private/BootstrapColors';
  * options.
  */
 const Card = props => {
-  const {children, color, style, loading_state, ...otherProps} = props;
+  const {
+    children,
+    color,
+    inverse,
+    outline,
+    style,
+    loading_state,
+    className,
+    class_name,
+    ...otherProps
+  } = props;
   const isBootstrapColor = bootstrapColors.has(color);
   return (
-    <RSCard
+    <RBCard
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      color={isBootstrapColor ? color : null}
+      text={inverse ? 'white' : null}
+      bg={isBootstrapColor && !outline ? color : null}
+      border={isBootstrapColor && outline ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
     >
       {children}
-    </RSCard>
+    </RBCard>
   );
 };
 
@@ -47,6 +59,13 @@ Card.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
