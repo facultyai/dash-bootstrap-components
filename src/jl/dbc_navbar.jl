@@ -15,7 +15,10 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Sets the color of the Navbar. Main options are primary, light and dark, default light.
 
 You can also choose one of the other contextual classes provided by Bootstrap
@@ -36,16 +39,18 @@ Those elements have the following types:
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `role` (String; optional): The ARIA role attribute.
-- `sticky` (String; optional): Stick the navbar to the top or the bottom of the viewport, options: top, bottom
+- `sticky` (a value equal to: 'top'; optional): Position the navbar at the top of the viewport, but only after scrolling past it.
+A convenience prop for the sticky-top positioning class. Not supported in <= IE11
+and other older browsers
 
 With `sticky`, the navbar remains in the viewport when you scroll. By
 contrast, with `fixed`, the navbar will remain at the top or bottom of
-the page.
+the page.  sticky='top'
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `tag` (String; optional): HTML tag to use for the Navbar, default 'nav'
 """
 function dbc_navbar(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :color, :dark, :expand, :fixed, :key, :light, :loading_state, :role, :sticky, :style, :tag]
+        available_props = Symbol[:children, :id, :className, :class_name, :color, :dark, :expand, :fixed, :key, :light, :loading_state, :role, :sticky, :style, :tag]
         wild_props = Symbol[]
         return Component("dbc_navbar", "Navbar", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

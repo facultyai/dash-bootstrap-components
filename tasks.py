@@ -323,7 +323,7 @@ def install_built_packages(_):
             "git add -f deps/_components/dash_bootstrap_components.min.js "
             "src/*.jl src/jl/*.jl Project.toml"
         )
-        run("git commit -m julia")
+        run("git commit -m julia --allow-empty")
         julia_command = (
             'using Pkg; Pkg.add(["Dash", "DashCoreComponents", '
             '"DashHtmlComponents", "HTTP"]); Pkg.add(path=".", '

@@ -16,7 +16,10 @@ Keyword arguments:
 in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `active` (Bool; optional): Style this item as 'active'.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `disabled` (Bool; optional): Style this item as 'disabled'.
 - `divider` (Bool; optional): Set to True if this entry is a divider. Typically, it will have
 no children.
@@ -47,7 +50,7 @@ which button was changed most recently.
 - `toggle` (Bool; optional): Whether to toggle the DropdownMenu on click. Default: True.
 """
 function dbc_dropdownmenuitem(; kwargs...)
-        available_props = Symbol[:children, :id, :active, :className, :disabled, :divider, :external_link, :header, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :target, :toggle]
+        available_props = Symbol[:children, :id, :active, :className, :class_name, :disabled, :divider, :external_link, :header, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :target, :toggle]
         wild_props = Symbol[]
         return Component("dbc_dropdownmenuitem", "DropdownMenuItem", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

@@ -20,9 +20,10 @@ in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `align` (a value equal to: 'start', 'center', 'end', 'stretch', 'baseline'; optional): Set vertical alignment of columns in this row. Options are 'start',
 'center', 'end', 'stretch' and 'baseline'.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
-- `form` (Bool; optional): For use in forms. When set to True the `form-row` class is applied, which
-overrides the default column gutters for a tighter, more compact layout.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `justify` (a value equal to: 'start', 'center', 'end', 'around', 'between'; optional): Set horizontal spacing and alignment of columns in this row. Options are
 'start', 'center', 'end', 'around' and 'between'.
 - `key` (String; optional): A unique identifier for the component, used to improve
@@ -33,12 +34,10 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `no_gutters` (Bool; optional): Remove the "gutters" between columns in this row.
-see https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
 function dbc_row(; kwargs...)
-        available_props = Symbol[:children, :id, :align, :className, :form, :justify, :key, :loading_state, :no_gutters, :style]
+        available_props = Symbol[:children, :id, :align, :className, :class_name, :justify, :key, :loading_state, :style]
         wild_props = Symbol[]
         return Component("dbc_row", "Row", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

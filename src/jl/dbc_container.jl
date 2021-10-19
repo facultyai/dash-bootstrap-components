@@ -16,10 +16,18 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
-- `fluid` (Bool; optional): If True the container-fluid class will be applied, and the Container will
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
+- `fluid` (Bool | String; optional): If True the container-fluid class will be applied, and the Container will
 expand to fill available space. A non-fluid container resizes responsively
 to a fixed width at the different breakpoints.
+
+You can also set the fluid property to one of the Bootstrap breakpoints:
+"sm", "md", "lg", "xl" or "xxl", so that the container fluidly expands to
+fill the screen until the specified breakpoint, then resize responsively
+at higher breakpoints.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -32,7 +40,7 @@ Those elements have the following types:
 - `tag` (String; optional): HTML tag to apply the container class to, default: div
 """
 function dbc_container(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :fluid, :key, :loading_state, :style, :tag]
+        available_props = Symbol[:children, :id, :className, :class_name, :fluid, :key, :loading_state, :style, :tag]
         wild_props = Symbol[]
         return Component("dbc_container", "Container", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

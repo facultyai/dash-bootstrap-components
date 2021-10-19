@@ -16,7 +16,10 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `external_link` (Bool; optional): If true, the browser will treat this as an external link,
 forcing a page refresh at the new location. If false,
 this just changes the location without triggering a page
@@ -41,7 +44,7 @@ which button was changed most recently.
 - `target` (String; optional): Target attribute to pass on to the link. Only applies to external links.
 """
 function dbc_cardlink(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :target]
+        available_props = Symbol[:children, :id, :className, :class_name, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :target]
         wild_props = Symbol[]
         return Component("dbc_cardlink", "CardLink", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

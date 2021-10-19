@@ -27,7 +27,10 @@ For example
   "/my-page" but not "/my-page/other" or "/random"
 - dbc.NavLink(..., href="/my-page", active="partial") will be active on
   "/my-page" and "/my-page/other" but not "/random"
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `disabled` (Bool; optional): Disable the link
 - `external_link` (Bool; optional): If true, the browser will treat this as an external link,
 forcing a page refresh at the new location. If false,
@@ -53,7 +56,7 @@ which button was changed most recently.
 - `target` (String; optional): Target attribute to pass on to the link. Only applies to external links.
 """
 function dbc_navlink(; kwargs...)
-        available_props = Symbol[:children, :id, :active, :className, :disabled, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :target]
+        available_props = Symbol[:children, :id, :active, :className, :class_name, :disabled, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :target]
         wild_props = Symbol[]
         return Component("dbc_navlink", "NavLink", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

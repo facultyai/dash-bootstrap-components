@@ -17,7 +17,10 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `flush` (Bool; optional): When True the `list-group-flush` class is applied which removes some borders
 and rounded corners from the list group in order that they can be rendered
 edge-to-edge in the parent container (e.g. a Card).
@@ -38,7 +41,7 @@ Those elements have the following types:
 - `tag` (String; optional): HTML tag to use for the list, default: ul
 """
 function dbc_listgroup(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :flush, :horizontal, :key, :loading_state, :style, :tag]
+        available_props = Symbol[:children, :id, :className, :class_name, :flush, :horizontal, :key, :loading_state, :style, :tag]
         wild_props = Symbol[]
         return Component("dbc_listgroup", "ListGroup", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

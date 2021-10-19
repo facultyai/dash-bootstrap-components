@@ -19,7 +19,10 @@ components in an app.
 - `bottom` (Bool; optional): Set to True if image is at bottom of card. This will apply the
 card-img-bottom class which rounds the bottom corners to match the corners
 of the card.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -36,7 +39,7 @@ Those elements have the following types:
 class which rounds the top corners to match the corners of the card.
 """
 function dbc_cardimg(; kwargs...)
-        available_props = Symbol[:children, :id, :alt, :bottom, :className, :key, :loading_state, :src, :style, :tag, :title, :top]
+        available_props = Symbol[:children, :id, :alt, :bottom, :className, :class_name, :key, :loading_state, :src, :style, :tag, :title, :top]
         wild_props = Symbol[]
         return Component("dbc_cardimg", "CardImg", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

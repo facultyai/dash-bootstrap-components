@@ -25,21 +25,29 @@ body, muted, white-50, black-50. You can also specify any valid CSS color
 of your choice (e.g. a hex code, a decimal code or a CSS color name)
 
 If not specified will default to text colour.
-- `debounce` (Real; optional): When using the spinner as a loading spinner, add a time delay (in ms) to
+- `delay_hide` (Real; optional): When using the spinner as a loading spinner, add a time delay (in ms) to
 the spinner being removed to prevent flickering.
+- `delay_show` (Real; optional): When using the spinner as a loading spinner, add a time delay (in ms) to
+the spinner being shown after the loading_state is set to true.
 - `fullscreen` (Bool; optional): Boolean that determines if the loading spinner will be displayed
 full-screen or not.
-- `fullscreenClassName` (String; optional): Often used with CSS to style elements with common properties.
+- `fullscreenClassName` (String; optional): **DEPRECATED** - use `fullscreen_class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `fullscreen_class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `fullscreen_style` (Dict; optional): Defines CSS styles for the container when fullscreen=True.
 - `show_initially` (Bool; optional): Whether the Spinner should show on app start-up before the loading state
 has been determined. Default True.
 - `size` (String; optional): The spinner size. Options are 'sm', and 'md'.
-- `spinnerClassName` (String; optional): CSS class names to apply to the spinner.
+- `spinnerClassName` (String; optional): **DEPRECATED** - use `spinner_class_name` instead.
+
+CSS class names to apply to the spinner.
+- `spinner_class_name` (String; optional): CSS class names to apply to the spinner.
 - `spinner_style` (Dict; optional): Inline CSS styles to apply to the spinner.
 - `type` (String; optional): The type of spinner. Options 'border' and 'grow'. Default 'border'.
 """
 function dbc_spinner(; kwargs...)
-        available_props = Symbol[:children, :id, :color, :debounce, :fullscreen, :fullscreenClassName, :fullscreen_style, :show_initially, :size, :spinnerClassName, :spinner_style, :type]
+        available_props = Symbol[:children, :id, :color, :delay_hide, :delay_show, :fullscreen, :fullscreenClassName, :fullscreen_class_name, :fullscreen_style, :show_initially, :size, :spinnerClassName, :spinner_class_name, :spinner_style, :type]
         wild_props = Symbol[]
         return Component("dbc_spinner", "Spinner", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

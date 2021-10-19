@@ -17,7 +17,11 @@ in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `align` (a value equal to: 'start', 'center', 'end'; optional): Set vertical alignment of the label, options: 'start', 'center', 'end',
 default: 'center'
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `check` (Bool; optional): Set to True when using to label a Checkbox or RadioButton.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Text color, options: primary, secondary, success, warning, danger, info,
 muted, light, dark, body, white, black-50, white-50 or any valid CSS color of
 your choice (e.g. a hex code, a decimal code or a CSS color name).
@@ -62,7 +66,7 @@ dictionary with keys 'offset', 'order', 'size'. See the documentation for
 more details.
 """
 function dbc_label(; kwargs...)
-        available_props = Symbol[:children, :id, :align, :className, :color, :hidden, :html_for, :key, :lg, :loading_state, :md, :size, :sm, :style, :width, :xl, :xs]
+        available_props = Symbol[:children, :id, :align, :check, :className, :class_name, :color, :hidden, :html_for, :key, :lg, :loading_state, :md, :size, :sm, :style, :width, :xl, :xs]
         wild_props = Symbol[]
         return Component("dbc_label", "Label", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

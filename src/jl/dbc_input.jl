@@ -18,24 +18,45 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `autoComplete` (String; optional): This attribute indicates whether the value of the control can be
+- `autoComplete` (String; optional): **DEPRECATED** Use `autocomplete` instead.
+
+This attribute indicates whether the value of the control can be
 automatically completed by the browser.
-- `autoFocus` (a value equal to: 'autoFocus', 'autofocus', 'AUTOFOCUS' | Bool; optional): The element should be automatically focused after the page loaded.
+- `autoFocus` (a value equal to: 'autoFocus', 'autofocus', 'AUTOFOCUS' | Bool; optional): **DEPRECATED** Use `autofocus` instead.
+
+The element should be automatically focused after the page loaded.
 autoFocus is an HTML boolean attribute - it is enabled by a boolean or
 'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
 are also acccepted.
-- `bs_size` (String; optional): Set the size of the Input. Options: 'sm' (small), 'md' (medium)
-or 'lg' (large). Default is 'md'.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `autocomplete` (String; optional): This attribute indicates whether the value of the control can be
+automatically completed by the browser.
+- `autofocus` (a value equal to: 'autoFocus', 'autofocus', 'AUTOFOCUS' | Bool; optional): The element should be automatically focused after the page loaded.
+autoFocus is an HTML boolean attribute - it is enabled by a boolean or
+'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
+are also acccepted.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `debounce` (Bool; optional): If true, changes to input will be sent back to the Dash server
 only when the enter key is pressed or when the component loses
 focus.  If it's false, it will sent the value back on every
 change.
 - `disabled` (Bool; optional): Set to True to disable the Input.
-- `inputMode` (a value equal to: "verbatim", "latin", "latin-name", "latin-prose", "full-width-latin", "kana", "katakana", "numeric", "tel", "email", "url"; optional): Provides a hint to the browser as to the type of data that might be
+- `html_size` (String; optional): The initial size of the control. This value is in pixels unless the value
+of the type attribute is text or password, in which case it is an integer
+number of characters. This attribute applies only when the type attribute
+is set to text, search, tel, url, email, or password, otherwise it is
+ignored. In addition, the size must be greater than zero. If you do not
+specify a size, a default value of 20 is used.
+- `inputMode` (a value equal to: "verbatim", "latin", "latin-name", "latin-prose", "full-width-latin", "kana", "katakana", "numeric", "tel", "email", "url"; optional): **DEPRECATED** Use `inputmode` instead.
+
+Provides a hint to the browser as to the type of data that might be
+entered by the user while editing the element or its contents.
+- `inputmode` (a value equal to: "verbatim", "latin", "latin-name", "latin-prose", "full-width-latin", "kana", "katakana", "numeric", "tel", "email", "url"; optional): Provides a hint to the browser as to the type of data that might be
 entered by the user while editing the element or its contents.
 - `invalid` (Bool; optional): Apply invalid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=False to display.
+any FormFeedback in the enclosing div with valid=False to display.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -52,7 +73,17 @@ Those elements have the following types:
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `max` (String | Real; optional): The maximum (numeric or date-time) value for this item, which must not be
 less than its minimum (min attribute) value.
-- `maxLength` (String | Real; optional): If the value of the type attribute is text, email, search, password, tel,
+- `maxLength` (String | Real; optional): **DEPRECATED** Use `maxlength` instead.
+
+If the value of the type attribute is text, email, search, password, tel,
+or url, this attribute specifies the maximum number of characters
+(in UTF-16 code units) that the user can enter. For other control types,
+it is ignored. It can exceed the value of the size attribute. If it is not
+specified, the user can enter an unlimited number of characters.
+Specifying a negative number results in the default behavior (i.e. the
+user can enter an unlimited number of characters). The constraint is
+evaluated only when the value of the attribute has been changed.
+- `maxlength` (String | Real; optional): If the value of the type attribute is text, email, search, password, tel,
 or url, this attribute specifies the maximum number of characters
 (in UTF-16 code units) that the user can enter. For other control types,
 it is ignored. It can exceed the value of the size attribute. If it is not
@@ -62,7 +93,13 @@ user can enter an unlimited number of characters). The constraint is
 evaluated only when the value of the attribute has been changed.
 - `min` (String | Real; optional): The minimum (numeric or date-time) value for this item, which must not be
 greater than its maximum (max attribute) value.
-- `minLength` (String | Real; optional): If the value of the type attribute is text, email, search, password, tel,
+- `minLength` (String | Real; optional): **DEPRECATED** Use `minlength` instead.
+
+If the value of the type attribute is text, email, search, password, tel,
+or url, this attribute specifies the minimum number of characters (in
+Unicode code points) that the user can enter. For other control types, it
+is ignored.
+- `minlength` (String | Real; optional): If the value of the type attribute is text, email, search, password, tel,
 or url, this attribute specifies the minimum number of characters (in
 Unicode code points) that the user can enter. For other control types, it
 is ignored.
@@ -109,26 +146,25 @@ image, or a button type (submit, reset, or button). The :optional and
 required is an HTML boolean attribute - it is enabled by a boolean or
 'required'. Alternative capitalizations `REQUIRED`
 are also acccepted.
-- `size` (String; optional): The initial size of the control. This value is in pixels unless the value
-of the type attribute is text or password, in which case it is an integer
-number of characters. This attribute applies only when the type attribute
-is set to text, search, tel, url, email, or password, otherwise it is
-ignored. In addition, the size must be greater than zero. If you do not
-specify a size, a default value of 20 is used.
+- `size` (String; optional): Set the size of the Input. Options: 'sm' (small), 'md' (medium)
+or 'lg' (large). Default is 'md'.
 - `step` (String | Real; optional): Works with the min and max attributes to limit the increments at which a
 numeric or date-time value can be set. It can be the string any or a
 positive floating point number. If this attribute is not set to any, the
 control accepts only values at multiples of the step value greater than
 the minimum.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
-- `tabIndex` (String; optional): Overrides the browser's default tab order and follows the one specified instead.
+- `tabIndex` (String; optional): **DEPRECATED** Use `tabindex` instead.
+
+Overrides the browser's default tab order and follows the one specified instead.
+- `tabindex` (String; optional): Overrides the browser's default tab order and follows the one specified instead.
 - `type` (a value equal to: "text", 'number', 'password', 'email', 'range', 'search', 'tel', 'url', 'hidden'; optional): The type of control to render
 - `valid` (Bool; optional): Apply valid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=True to display.
+any FormFeedback in the enclosing div with valid=True to display.
 - `value` (String | Real; optional): The value of the Input
 """
 function dbc_input(; kwargs...)
-        available_props = Symbol[:id, :autoComplete, :autoFocus, :bs_size, :className, :debounce, :disabled, :inputMode, :invalid, :key, :list, :loading_state, :max, :maxLength, :min, :minLength, :n_blur, :n_blur_timestamp, :n_submit, :n_submit_timestamp, :name, :pattern, :persisted_props, :persistence, :persistence_type, :placeholder, :plaintext, :required, :size, :step, :style, :tabIndex, :type, :valid, :value]
+        available_props = Symbol[:id, :autoComplete, :autoFocus, :autocomplete, :autofocus, :className, :class_name, :debounce, :disabled, :html_size, :inputMode, :inputmode, :invalid, :key, :list, :loading_state, :max, :maxLength, :maxlength, :min, :minLength, :minlength, :n_blur, :n_blur_timestamp, :n_submit, :n_submit_timestamp, :name, :pattern, :persisted_props, :persistence, :persistence_type, :placeholder, :plaintext, :required, :size, :step, :style, :tabIndex, :tabindex, :type, :valid, :value]
         wild_props = Symbol[]
         return Component("dbc_input", "Input", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

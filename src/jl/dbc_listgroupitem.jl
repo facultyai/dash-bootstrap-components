@@ -17,7 +17,10 @@ in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `action` (Bool; optional): Apply list-group-item-action class for hover animation etc.
 - `active` (Bool; optional): Apply active style to item
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Item color, options: primary, secondary, success, info, warning,
 danger, or any valid CSS color of
 your choice (e.g. a hex code, a decimal code or a CSS color name)
@@ -48,7 +51,7 @@ which button was changed most recently.
 - `target` (String; optional): Target attribute to pass on to the link. Only applies to external links.
 """
 function dbc_listgroupitem(; kwargs...)
-        available_props = Symbol[:children, :id, :action, :active, :className, :color, :disabled, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :tag, :target]
+        available_props = Symbol[:children, :id, :action, :active, :className, :class_name, :color, :disabled, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :style, :tag, :target]
         wild_props = Symbol[]
         return Component("dbc_listgroupitem", "ListGroupItem", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

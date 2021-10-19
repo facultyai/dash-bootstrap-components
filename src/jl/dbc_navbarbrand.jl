@@ -15,7 +15,10 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `external_link` (Bool; optional): If true, the browser will treat this as an external link,
 forcing a page refresh at the new location. If false,
 this just changes the location without triggering a page
@@ -34,7 +37,7 @@ Those elements have the following types:
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
 function dbc_navbarbrand(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :external_link, :href, :key, :loading_state, :style]
+        available_props = Symbol[:children, :id, :className, :class_name, :external_link, :href, :key, :loading_state, :style]
         wild_props = Symbol[]
         return Component("dbc_navbarbrand", "NavbarBrand", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

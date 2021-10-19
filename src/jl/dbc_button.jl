@@ -21,9 +21,10 @@ Keyword arguments:
 in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `active` (Bool; optional): Whether button is in active state. Default: False.
-- `block` (Bool; optional): Create block level button, one that spans the full width of its parent.
-Default: False
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Button color, options: primary, secondary, success, info, warning, danger,
 link. Default: secondary.
 - `disabled` (Bool; optional): Disable button (make unclickable). Default: False.
@@ -68,7 +69,7 @@ with the form data. This value is passed to the server in params when the
 form is submitted.
 """
 function dbc_button(; kwargs...)
-        available_props = Symbol[:children, :id, :active, :block, :className, :color, :disabled, :download, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :name, :outline, :size, :style, :target, :title, :type, :value]
+        available_props = Symbol[:children, :id, :active, :className, :class_name, :color, :disabled, :download, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :name, :outline, :size, :style, :target, :title, :type, :value]
         wild_props = Symbol[]
         return Component("dbc_button", "Button", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

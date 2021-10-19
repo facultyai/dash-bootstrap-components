@@ -34,6 +34,8 @@ const Input = props => {
     className,
     class_name,
     autoComplete,
+    autocomplete,
+    autoFocus,
     autofocus,
     inputMode,
     inputmode,
@@ -46,6 +48,7 @@ const Input = props => {
     ...otherProps
   } = props;
   const inputRef = useRef(null);
+
   const formControlClass = plaintext
     ? 'form-control-plaintext'
     : 'form-control';

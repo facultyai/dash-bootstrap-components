@@ -14,21 +14,54 @@ siblings of each other.
 Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components in callbacks.
 The ID needs to be unique across all of the components in an app.
-- `className` (String; optional): The class of the container (div)
-- `custom` (Bool; optional): RadioItems uses custom radio buttons by default. To use native radios set
-custom to False.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+The class of the container (div)
+- `class_name` (String; optional): The class of the container (div)
 - `inline` (Bool; optional): Arrange RadioItems inline
-- `inputClassName` (String; optional): The class of the <input> radio element
-- `inputStyle` (Dict; optional): The style of the <input> radio element
+- `inputCheckedClassName` (String; optional): **DEPRECATED** Use `input_checked_class_name` instead.
+
+Additional CSS classes to apply to the <input> element when the
+corresponding radio is checked.
+- `inputCheckedStyle` (Dict; optional): **DEPRECATED** Use `input_checked_style` instead.
+
+Additional inline style arguments to apply to <input> elements on checked
+items.
+- `inputClassName` (String; optional): **DEPRECATED** Use `input_class_name` instead.
+
+The class of the <input> radio element
+- `inputStyle` (Dict; optional): **DEPRECATED** Use `input_style` instead.
+
+The style of the <input> radio element
+- `input_checked_class_name` (String; optional): Additional CSS classes to apply to the <input> element when the
+corresponding radio is checked.
+- `input_checked_style` (Dict; optional): Additional inline style arguments to apply to <input> elements on checked
+items.
+- `input_class_name` (String; optional): The class of the <input> radio element
+- `input_style` (Dict; optional): The style of the <input> radio element
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
-- `labelCheckedClassName` (String; optional): Additional CSS classes to apply to the <label> element when the
+- `labelCheckedClassName` (String; optional): **DEPRECATED** Use `label_checked_class_name` instead.
+
+Additional CSS classes to apply to the <label> element when the
 corresponding radio is checked.
-- `labelCheckedStyle` (Dict; optional): Additional inline style arguments to apply to <label> elements on checked
+- `labelCheckedStyle` (Dict; optional): **DEPRECATED** Use `label_checked_style` instead.
+
+Additional inline style arguments to apply to <label> elements on checked
 items.
-- `labelClassName` (String; optional): CSS classes to apply to the <label> element for each item.
-- `labelStyle` (Dict; optional): Inline style arguments to apply to the <label> element for each item.
+- `labelClassName` (String; optional): **DEPRECATED** Use `label_class_name` instead.
+
+CSS classes to apply to the <label> element for each item.
+- `labelStyle` (Dict; optional): **DEPRECATED** Use `label_style` instead.
+
+Inline style arguments to apply to the <label> element for each item.
+- `label_checked_class_name` (String; optional): Additional CSS classes to apply to the <label> element when the
+corresponding radio is checked.
+- `label_checked_style` (Dict; optional): Additional inline style arguments to apply to <label> elements on checked
+items.
+- `label_class_name` (String; optional): CSS classes to apply to the <label> element for each item.
+- `label_style` (Dict; optional): Inline style arguments to apply to the <label> element for each item.
 - `loading_state` (optional): Object that holds the loading state object coming from dash-renderer. loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
@@ -59,12 +92,11 @@ memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.
 - `style` (Dict; optional): The style of the container (div)
-- `switch` (Bool; optional): Set to True to render toggle-like switches instead of radios. Ignored if
-custom=False
+- `switch` (Bool; optional): Set to True to render toggle-like switches instead of radios.
 - `value` (String | Real; optional): The currently selected value
 """
 function dbc_radioitems(; kwargs...)
-        available_props = Symbol[:id, :className, :custom, :inline, :inputClassName, :inputStyle, :key, :labelCheckedClassName, :labelCheckedStyle, :labelClassName, :labelStyle, :loading_state, :name, :options, :persisted_props, :persistence, :persistence_type, :style, :switch, :value]
+        available_props = Symbol[:id, :className, :class_name, :inline, :inputCheckedClassName, :inputCheckedStyle, :inputClassName, :inputStyle, :input_checked_class_name, :input_checked_style, :input_class_name, :input_style, :key, :labelCheckedClassName, :labelCheckedStyle, :labelClassName, :labelStyle, :label_checked_class_name, :label_checked_style, :label_class_name, :label_style, :loading_state, :name, :options, :persisted_props, :persistence, :persistence_type, :style, :switch, :value]
         wild_props = Symbol[]
         return Component("dbc_radioitems", "RadioItems", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

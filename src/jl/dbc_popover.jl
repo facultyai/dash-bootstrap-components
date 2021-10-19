@@ -20,16 +20,21 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
-- `container` (String; optional): Where to inject the popper DOM node, default body.
-- `delay` (optional): Optionally override show/hide delays - default {show: 0, hide: 250}. delay has the following type: lists containing elements 'show', 'hide'.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
+- `delay` (optional): Optionally override show/hide delays. delay has the following type: lists containing elements 'show', 'hide'.
 Those elements have the following types:
   - `show` (Real; optional)
   - `hide` (Real; optional) | Real
 - `flip` (Bool; optional): Whether to flip the direction of the popover if too close to the container
 edge, default True.
 - `hide_arrow` (Bool; optional): Hide popover arrow.
-- `innerClassName` (String; optional): CSS class to apply to the popover.
+- `innerClassName` (String; optional): **DEPRECATED** Use `inner_class_name` instead
+
+CSS class to apply to the popover.
+- `inner_class_name` (String; optional): CSS class to apply to the popover.
 - `is_open` (Bool; optional): Whether the Popover is open or not.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -39,10 +44,10 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `offset` (String | Real; optional): Popover offset.
+- `offset` (String | Real; optional): Offset of the popover relative to its target
 - `placement` (a value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'; optional): Specify popover placement.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
-- `target` (String; optional): ID of the component to attach the popover to.
+- `target` (String | Dict; optional): ID of the component to attach the popover to.
 - `trigger` (String; optional): Space separated list of triggers (e.g. "click hover focus legacy"). These
 specify ways in which the target component can toggle the popover. If not
 specified you must toggle the popover yourself using callbacks. Options
@@ -55,7 +60,7 @@ cursor.
 dismiss the popover when the user clicks outside of the popover.
 """
 function dbc_popover(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :container, :delay, :flip, :hide_arrow, :innerClassName, :is_open, :key, :loading_state, :offset, :placement, :style, :target, :trigger]
+        available_props = Symbol[:children, :id, :className, :class_name, :delay, :flip, :hide_arrow, :innerClassName, :inner_class_name, :is_open, :key, :loading_state, :offset, :placement, :style, :target, :trigger]
         wild_props = Symbol[]
         return Component("dbc_popover", "Popover", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

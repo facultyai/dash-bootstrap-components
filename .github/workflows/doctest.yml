@@ -50,7 +50,7 @@ jobs:
       - name: Add Julia artifacts to repo for local install
         run: |
           git add -f deps/_components/dash_bootstrap_components.min.js src/*.jl src/jl/*.jl Project.toml
-          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "Add Julia build artifacts"
+          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "Add Julia build artifacts" --allow-empty
       - name: Install Julia dependencies
         run: julia -e 'using Pkg; Pkg.add(["Dash", "DashCoreComponents", "DashHtmlComponents", "HTTP"]); Pkg.add(path=".");'
       - name: Test Julia installation

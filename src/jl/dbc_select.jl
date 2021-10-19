@@ -12,12 +12,16 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `bs_size` (String; optional): Set the size of the Input. Options: 'sm' (small), 'md' (medium)
-or 'lg' (large). Default is 'md'.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `disabled` (Bool; optional): Set to True to disable the Select.
+- `html_size` (String; optional): This represents the number of rows in the select that should be visible at
+one time. It will result in the Select being rendered as a scrolling list
+box rather than a dropdown.
 - `invalid` (Bool; optional): Apply invalid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=False to display.
+any FormFeedback in the enclosing div with valid=False to display.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -52,13 +56,15 @@ image, or a button type (submit, reset, or button). The :optional and
 required is an HTML boolean attribute - it is enabled by a boolean or
 'required'. Alternative capitalizations `REQUIRED`
 are also acccepted.
+- `size` (String; optional): Set the size of the Input. Options: 'sm' (small), 'md' (medium)
+or 'lg' (large). Default is 'md'.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `valid` (Bool; optional): Apply valid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=True to display.
+any FormFeedback in the enclosing div with valid=True to display.
 - `value` (String | Real; optional): The value of the currently selected option.
 """
 function dbc_select(; kwargs...)
-        available_props = Symbol[:id, :bs_size, :className, :disabled, :invalid, :key, :name, :options, :persisted_props, :persistence, :persistence_type, :placeholder, :required, :style, :valid, :value]
+        available_props = Symbol[:id, :className, :class_name, :disabled, :html_size, :invalid, :key, :name, :options, :persisted_props, :persistence, :persistence_type, :placeholder, :required, :size, :style, :valid, :value]
         wild_props = Symbol[]
         return Component("dbc_select", "Select", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

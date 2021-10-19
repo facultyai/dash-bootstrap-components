@@ -1,28 +1,29 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export dbc_tabs
+export dbc_accordion
 
 """
-    dbc_tabs(;kwargs...)
-    dbc_tabs(children::Any;kwargs...)
-    dbc_tabs(children_maker::Function;kwargs...)
+    dbc_accordion(;kwargs...)
+    dbc_accordion(children::Any;kwargs...)
+    dbc_accordion(children_maker::Function;kwargs...)
 
 
-A Tabs component.
-Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
-get the currently active tab in a callback.
+An Accordion component.
+A self contained Accordion component. Build up the children using the
+AccordionItem component.
 Keyword arguments:
 - `children` (a list of or a singular dash component, string or number; optional): The children of this component
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `active_tab` (String; optional): The tab_id of the currently active tab. If tab_id has not been specified
-for the active tab, this will default to tab-i, where i is the index
-(starting from 0) of the tab.
+- `active_item` (String; optional): The item_id of the currently active item. If item_id has not been specified
+for the active item, this will default to item-i, where i is the index
+(starting from 0) of the item.
 - `className` (String; optional): **DEPRECATED** Use `class_name` instead.
 
 Often used with CSS to style elements with common properties.
 - `class_name` (String; optional): Often used with CSS to style elements with common properties.
+- `flush` (Bool; optional): Renders accordion edge-to-edge with its parent container
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -31,7 +32,7 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `persisted_props` (Array of a value equal to: 'active_tab's; optional): Properties whose user interactions will persist after refreshing the
+- `persisted_props` (Array of a value equal to: 'active_item's; optional): Properties whose user interactions will persist after refreshing the
 component or the page. Since only `value` is allowed this prop can
 normally be ignored.
 - `persistence` (Bool | String | Real; optional): Used to allow user interactions in this component to be persisted when
@@ -44,14 +45,15 @@ Used in conjunction with `persistence_type`.
 memory: only kept in memory, reset on page refresh.
 local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.
+- `start_collapsed` (Bool; optional): Set to True for all items to be collapsed initially.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
-function dbc_tabs(; kwargs...)
-        available_props = Symbol[:children, :id, :active_tab, :className, :class_name, :key, :loading_state, :persisted_props, :persistence, :persistence_type, :style]
+function dbc_accordion(; kwargs...)
+        available_props = Symbol[:children, :id, :active_item, :className, :class_name, :flush, :key, :loading_state, :persisted_props, :persistence, :persistence_type, :start_collapsed, :style]
         wild_props = Symbol[]
-        return Component("dbc_tabs", "Tabs", "dash_bootstrap_components", available_props, wild_props; kwargs...)
+        return Component("dbc_accordion", "Accordion", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
 
-dbc_tabs(children::Any; kwargs...) = dbc_tabs(;kwargs..., children = children)
-dbc_tabs(children_maker::Function; kwargs...) = dbc_tabs(children_maker(); kwargs...)
+dbc_accordion(children::Any; kwargs...) = dbc_accordion(;kwargs..., children = children)
+dbc_accordion(children_maker::Function; kwargs...) = dbc_accordion(children_maker(); kwargs...)
 

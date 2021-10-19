@@ -17,10 +17,10 @@ Keyword arguments:
 in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `appear` (Bool; optional): Show fade-in animation on initial page load. Default: True.
-- `base_class` (String; optional): CSS base class. Note that this class is always used, whether the
-components are showing or hidden. Default: 'fade'
-- `base_class_active` (String; optional): CSS class used when the fade contents are displayed. Default: 'show'.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `enter` (Bool; optional): Enable or disable enter transitions. Default: True.
 - `exit` (Bool; optional): Enable or disable exit transitions. Default: True.
 - `is_in` (Bool; optional): Controls whether the children of the Fade component are currently visible
@@ -44,7 +44,7 @@ Those elements have the following types:
   - `exit` (Real; optional)
 """
 function dbc_fade(; kwargs...)
-        available_props = Symbol[:children, :id, :appear, :base_class, :base_class_active, :className, :enter, :exit, :is_in, :key, :loading_state, :style, :tag, :timeout]
+        available_props = Symbol[:children, :id, :appear, :className, :class_name, :enter, :exit, :is_in, :key, :loading_state, :style, :tag, :timeout]
         wild_props = Symbol[]
         return Component("dbc_fade", "Fade", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

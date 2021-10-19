@@ -15,23 +15,40 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `activeLabelClassName` (String; optional): Often used with CSS to style elements with common properties. The classes
+- `activeLabelClassName` (String; optional): **DEPRECATED** Use `active_label_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavLink in the tab when
 it is active.
-- `activeTabClassName` (String; optional): Often used with CSS to style elements with common properties. The classes
+- `activeTabClassName` (String; optional): **DEPRECATED** Use `active_tab_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavItem in the tab when it
 is active.
+- `active_label_class_name` (String; optional): Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavLink in the tab when
+it is active.
 - `active_label_style` (Dict; optional): Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavLink in the tab when it is active
+- `active_tab_class_name` (String; optional): Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavItem in the tab when it
+is active.
 - `active_tab_style` (Dict; optional): Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavItem in the tab when it is active.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `disabled` (Bool; optional): Determines if tab is disabled or not - defaults to false
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
 - `label` (String; optional): The tab's label, displayed in the tab itself.
-- `labelClassName` (String; optional): Often used with CSS to style elements with common properties. The classes
+- `labelClassName` (String; optional): **DEPRECATED** Use `label_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavLink in the tab.
+- `label_class_name` (String; optional): Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavLink in the tab.
 - `label_style` (Dict; optional): Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavLink in the tab.
@@ -42,7 +59,11 @@ Those elements have the following types:
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set. The styles
 set here apply to the content of the Tab
-- `tabClassName` (String; optional): Often used with CSS to style elements with common properties. The classes
+- `tabClassName` (String; optional): **DEPRECATED** Use `tab_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavItem in the tab.
+- `tab_class_name` (String; optional): Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavItem in the tab.
 - `tab_id` (String; optional): Optional identifier for tab used for determining which tab is visible
 if not specified, and Tab is being used inside Tabs component, the tabId
@@ -52,7 +73,7 @@ tabs pased to Tabs component.
 set here apply to the NavItem in the tab.
 """
 function dbc_tab(; kwargs...)
-        available_props = Symbol[:children, :id, :activeLabelClassName, :activeTabClassName, :active_label_style, :active_tab_style, :className, :disabled, :key, :label, :labelClassName, :label_style, :loading_state, :style, :tabClassName, :tab_id, :tab_style]
+        available_props = Symbol[:children, :id, :activeLabelClassName, :activeTabClassName, :active_label_class_name, :active_label_style, :active_tab_class_name, :active_tab_style, :className, :class_name, :disabled, :key, :label, :labelClassName, :label_class_name, :label_style, :loading_state, :style, :tabClassName, :tab_class_name, :tab_id, :tab_style]
         wild_props = Symbol[]
         return Component("dbc_tab", "Tab", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

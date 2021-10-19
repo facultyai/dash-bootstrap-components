@@ -15,7 +15,10 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Badge color, options: primary, secondary, success, info, warning, danger,
 link or any valid CSS color of
 your choice (e.g. a hex code, a decimal code or a CSS color name)
@@ -44,10 +47,14 @@ which button was changed most recently.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `tag` (String; optional): HTML tag to use for the Badge. Default: span.
 - `target` (String; optional): Target attribute to pass on to the link. Only applies to external links.
+- `text_color` (String; optional): Badge color, options: primary, secondary, success, info, warning, danger,
+link or any valid CSS color of
+your choice (e.g. a hex code, a decimal code or a CSS color name)
+Default: secondary.
 - `title` (String; optional): Sets the title attribute of the underlying HTML button.
 """
 function dbc_badge(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :color, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :pill, :style, :tag, :target, :title]
+        available_props = Symbol[:children, :id, :className, :class_name, :color, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :pill, :style, :tag, :target, :text_color, :title]
         wild_props = Symbol[]
         return Component("dbc_badge", "Badge", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

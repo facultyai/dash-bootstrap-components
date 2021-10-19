@@ -21,8 +21,15 @@ components in an app.
 table and cells.
 - `borderless` (Bool; optional): Apply the `table-borderless` class which removes all borders from the
 table and cells.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
-- `dark` (Bool; optional): Apply the `table-dark` class for dark cell backgrounds and light text.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
+- `color` (String; optional): Table color, options: primary, secondary, success, info, warning, danger,
+dark, light. Default: secondary.
+- `dark` (Bool; optional): **DEPRECATED** - Use color="dark" instead.
+
+Apply the `table-dark` class for dark cell backgrounds and light text.
 - `hover` (Bool; optional): Apply the `table-hover` class which enables a hover state on table rows
 within the table body.
 - `key` (String; optional): A unique identifier for the component, used to improve
@@ -39,10 +46,9 @@ scroll horizontally at lower breakpoints.
 - `striped` (Bool; optional): Apply the `table-striped` class which applies 'zebra striping' to rows in
 the table body.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
-- `tag` (String; optional): HTML tag to use for the table, default: table
 """
 function dbc_table(; kwargs...)
-        available_props = Symbol[:children, :id, :bordered, :borderless, :className, :dark, :hover, :key, :loading_state, :responsive, :size, :striped, :style, :tag]
+        available_props = Symbol[:children, :id, :bordered, :borderless, :className, :class_name, :color, :dark, :hover, :key, :loading_state, :responsive, :size, :striped, :style]
         wild_props = Symbol[]
         return Component("dbc_table", "Table", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

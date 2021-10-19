@@ -21,7 +21,10 @@ in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `align` (a value equal to: 'start', 'center', 'end', 'stretch', 'baseline'; optional): Set vertical alignment of this column's content in the parent row. Options
 are 'start', 'center', 'end', 'stretch', 'baseline'.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -62,9 +65,14 @@ more details.
 Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
 dictionary with keys 'offset', 'order', 'size'. See the documentation for
 more details.
+- `xxl` (optional): Specify column behaviour on an extra extra large screen.
+
+Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+dictionary with keys 'offset', 'order', 'size'. See the documentation for
+more details.
 """
 function dbc_col(; kwargs...)
-        available_props = Symbol[:children, :id, :align, :className, :key, :lg, :loading_state, :md, :sm, :style, :width, :xl, :xs]
+        available_props = Symbol[:children, :id, :align, :className, :class_name, :key, :lg, :loading_state, :md, :sm, :style, :width, :xl, :xs, :xxl]
         wild_props = Symbol[]
         return Component("dbc_col", "Col", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

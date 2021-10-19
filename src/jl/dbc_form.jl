@@ -17,10 +17,10 @@ Keyword arguments:
 in callbacks. The ID needs to be unique across all of the
 components in an app.
 - `action` (String; optional): The URI of a program that processes the information submitted via the form.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
-- `inline` (Bool; optional): Use inline=True to apply the `form-inline` class, allowing you to display
-a series of labels, form controls, and buttons on a single horizontal row.
-Form controls within inline forms vary slightly from their default states.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -29,7 +29,7 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `method` (a value equal to: "GET", "POST"; optional): Defines which HTTP method to use when submitting the form. Can be GET
+- `method` (a value equal to: 'GET', 'POST'; optional): Defines which HTTP method to use when submitting the form. Can be GET
 (default) or POST.
 - `n_submit` (Real; optional): Number of times the `Enter` key was pressed while the input had focus.
 - `n_submit_timestamp` (Real; optional): Last time that `Enter` was pressed.
@@ -39,7 +39,7 @@ prevent_default_on_submit to False. Defaults to True.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
 function dbc_form(; kwargs...)
-        available_props = Symbol[:children, :id, :action, :className, :inline, :key, :loading_state, :method, :n_submit, :n_submit_timestamp, :prevent_default_on_submit, :style]
+        available_props = Symbol[:children, :id, :action, :className, :class_name, :key, :loading_state, :method, :n_submit, :n_submit_timestamp, :prevent_default_on_submit, :style]
         wild_props = Symbol[]
         return Component("dbc_form", "Form", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

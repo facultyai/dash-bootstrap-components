@@ -25,7 +25,10 @@ instance. Defaults to true for absolute URLs and false
 otherwise.
 - `brand_href` (String; optional): Link to attach to brand.
 - `brand_style` (Dict; optional): CSS style options for brand.
-- `className` (String; optional): Often used with CSS to style elements with common properties.
+- `className` (String; optional): **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.
+- `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Sets the color of the NavbarSimple. Main options are primary, light and dark, default light.
 
 You can also choose one of the other contextual classes provided by Bootstrap
@@ -60,7 +63,7 @@ the page.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
 function dbc_navbarsimple(; kwargs...)
-        available_props = Symbol[:children, :id, :brand, :brand_external_link, :brand_href, :brand_style, :className, :color, :dark, :expand, :fixed, :fluid, :key, :light, :links_left, :loading_state, :sticky, :style]
+        available_props = Symbol[:children, :id, :brand, :brand_external_link, :brand_href, :brand_style, :className, :class_name, :color, :dark, :expand, :fixed, :fluid, :key, :light, :links_left, :loading_state, :sticky, :style]
         wild_props = Symbol[]
         return Component("dbc_navbarsimple", "NavbarSimple", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
