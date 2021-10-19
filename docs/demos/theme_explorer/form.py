@@ -28,24 +28,13 @@ form = html.Div(
                         ),
                     ]
                 ),
-                html.Div(
+                dbc.FormFloating(
                     [
-                        dbc.Label("Username"),
                         dbc.Input(
-                            placeholder="Enter your password",
-                            type="password",
+                            type="Password (Floating Label)",
+                            placeholder="*****",
                         ),
-                        dbc.FormText(
-                            [
-                                "Can't remember your password? ",
-                                html.A(
-                                    "Click here.",
-                                    href="#",
-                                    className="text-muted",
-                                    style={"textDecoration": "underline"},
-                                ),
-                            ]
-                        ),
+                        dbc.Label("Password"),
                     ]
                 ),
             ]
