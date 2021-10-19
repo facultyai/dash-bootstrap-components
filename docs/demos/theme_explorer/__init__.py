@@ -17,9 +17,9 @@ from .input import checklist_items, input_, input_group, radio_items
 from .layout import layout
 from .list_group import list_group
 from .modal import modal
-from .offcanvas import offcanvas
 from .nav import nav
 from .navbar import navbar
+from .offcanvas import offcanvas
 from .pagination import pagination
 from .popover import popover
 from .progress import progress
