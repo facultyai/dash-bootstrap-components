@@ -7,7 +7,7 @@ When building Dash apps we rarely make use of HTML forms, instead attaching call
 
 ## Examples
 
-The `FormGroup` is the easiest way to add structure to forms. It encourages proper grouping of labels, controls, optional help text, and form validation messaging. See this simple example.
+Bootstrap's form components can be used to group labels, controls, optional help text, and form validation messaging. See this simple example.
 
 {{example:components/form/simple.py:form}}
 
@@ -47,7 +47,7 @@ The `FormFeedback` component should be added to a `html.Div` containing the `Inp
 
 ## Dash Core Components
 
-The `Form` and `FormGroup` components can also be used with _dash-core-components_.
+`Form` and other components can also be used with _dash-core-components_.
 
 {{example:components/form/dash_core.py:form}}
 
