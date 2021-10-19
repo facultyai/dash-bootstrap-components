@@ -11,7 +11,7 @@ _dash-bootstrap-components_ v1 contains loads of new features, but also some bre
 
 This guide introduces the new features, and also covers the changes you must make to run your apps with _dash-bootstrap-components_ 1.0.0 rather than 0.13.x (the final v0 releases). If you find any issues not covered here, or bugs in v1 please [raise an issue](https://github.com/facultyai/dash-bootstrap-components/issues/new/choose) on our GitHub repository.
 
-If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers.
+If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers. You can still see documentation for version 0 [here](https://dbc-v0.herokuapp.com).
 
 ~~~bootstrap-tabs
 Python
