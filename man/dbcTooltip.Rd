@@ -10,11 +10,9 @@ A component for adding tooltips to any element, no callbacks required!  Simply a
 }
 
 \usage{
-dbcTooltip(children=NULL, id=NULL, arrowClassName=NULL, autohide=NULL,
-boundaries_element=NULL, className=NULL, container=NULL,
-delay=NULL, hide_arrow=NULL, innerClassName=NULL, key=NULL,
-loading_state=NULL, offset=NULL, placement=NULL, style=NULL,
-target=NULL)
+dbcTooltip(children=NULL, id=NULL, className=NULL, class_name=NULL,
+delay=NULL, flip=NULL, key=NULL, loading_state=NULL,
+placement=NULL, style=NULL, target=NULL)
 }
 
 \arguments{
@@ -24,25 +22,19 @@ target=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{arrowClassName}{Character. CSS classes to apply to the arrow-tooltip ('arrow' by default)}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{autohide}{Logical. Optionally hide tooltip when hovering over tooltip content - default true}
+Often used with CSS to style elements with common properties.}
 
-\item{boundaries_element}{Character. Boundaries for popper, can be scrollParent, window, viewport, or any DOM
-element}
-
-\item{className}{Character. Often used with CSS to style elements with common properties.}
-
-\item{container}{Character. Where to inject the popper DOM node, default body}
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{delay}{Lists containing elements 'show', 'hide'.
 those elements have the following types:
   - show (numeric; optional)
-  - hide (numeric; optional) | numeric. optionally override show/hide delays - default { show: 0, hide: 250 }}
+  - hide (numeric; optional). Control the delay of hide and show events.}
 
-\item{hide_arrow}{Logical. Hide arrow on tooltip}
-
-\item{innerClassName}{Character. CSS classes to apply to the inner-tooltip}
+\item{flip}{Logical. Whether to flip the direction of the popover if too close to the container
+edge, default True.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -54,13 +46,11 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
-\item{offset}{Character | numeric. Tooltip offset}
-
 \item{placement}{A value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'. How to place the tooltip.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
-\item{target}{Character. The id of the element to attach the tooltip to}
+\item{target}{Character | named list. The id of the element to attach the tooltip to}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

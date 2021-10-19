@@ -11,7 +11,7 @@ Create a single item in a `ListGroup`.
 
 \usage{
 dbcListGroupItem(children=NULL, id=NULL, action=NULL, active=NULL,
-className=NULL, color=NULL, disabled=NULL,
+className=NULL, class_name=NULL, color=NULL, disabled=NULL,
 external_link=NULL, href=NULL, key=NULL, loading_state=NULL,
 n_clicks=NULL, n_clicks_timestamp=NULL, style=NULL,
 tag=NULL, target=NULL)
@@ -28,7 +28,11 @@ components in an app.}
 
 \item{active}{Logical. Apply active style to item}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Item color, options: primary, secondary, success, info, warning,
 danger, or any valid CSS color of

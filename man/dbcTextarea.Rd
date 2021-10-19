@@ -10,17 +10,20 @@ A basic HTML textarea for entering multiline text based on the corresponding com
 }
 
 \usage{
-dbcTextarea(id=NULL, accessKey=NULL, autoFocus=NULL, bs_size=NULL,
-className=NULL, cols=NULL, contentEditable=NULL,
-contextMenu=NULL, debounce=NULL, dir=NULL, disabled=NULL,
-draggable=NULL, form=NULL, hidden=NULL, invalid=NULL,
-key=NULL, lang=NULL, loading_state=NULL, maxLength=NULL,
-minLength=NULL, n_blur=NULL, n_blur_timestamp=NULL,
+dbcTextarea(id=NULL, accessKey=NULL, accesskey=NULL, autoFocus=NULL,
+autofocus=NULL, className=NULL, class_name=NULL, cols=NULL,
+contentEditable=NULL, contenteditable=NULL,
+contextMenu=NULL, contextmenu=NULL, debounce=NULL, dir=NULL,
+disabled=NULL, draggable=NULL, form=NULL, hidden=NULL,
+invalid=NULL, key=NULL, lang=NULL, loading_state=NULL,
+maxLength=NULL, maxlength=NULL, minLength=NULL,
+minlength=NULL, n_blur=NULL, n_blur_timestamp=NULL,
 n_clicks=NULL, n_clicks_timestamp=NULL, n_submit=NULL,
 n_submit_timestamp=NULL, name=NULL, persisted_props=NULL,
 persistence=NULL, persistence_type=NULL, placeholder=NULL,
-readOnly=NULL, required=NULL, rows=NULL, spellCheck=NULL,
-style=NULL, tabIndex=NULL, title=NULL, valid=NULL,
+readOnly=NULL, readonly=NULL, required=NULL, rows=NULL,
+size=NULL, spellCheck=NULL, spellcheck=NULL, style=NULL,
+tabIndex=NULL, tabindex=NULL, title=NULL, valid=NULL,
 value=NULL, wrap=NULL)
 }
 
@@ -29,19 +32,37 @@ value=NULL, wrap=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{accessKey}{Character. Defines a keyboard shortcut to activate or add focus to the element.}
+\item{accessKey}{Character. **DEPRECATED** Use `accesskey` instead
 
-\item{autoFocus}{Character. The element should be automatically focused after the page loaded.}
+Defines a keyboard shortcut to activate or add focus to the element.}
 
-\item{bs_size}{Character. Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'}
+\item{accesskey}{Character. Defines a keyboard shortcut to activate or add focus to the element.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{autoFocus}{Character. **DEPRECATED** Use `autofocus` instead
+
+The element should be automatically focused after the page loaded.}
+
+\item{autofocus}{Character. The element should be automatically focused after the page loaded.}
+
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{cols}{Character | numeric. Defines the number of columns in a textarea.}
 
-\item{contentEditable}{Character | numeric. Indicates whether the element's content is editable.}
+\item{contentEditable}{Character | numeric. **DEPRECATED** Use `contenteditable` instead
 
-\item{contextMenu}{Character. Defines the ID of a <menu> element which will serve as the element's context menu.}
+Indicates whether the element's content is editable.}
+
+\item{contenteditable}{Character | numeric. Indicates whether the element's content is editable.}
+
+\item{contextMenu}{Character. **DEPRECATED** Use `contextmenu` instead
+
+Defines the ID of a <menu> element which will serve as the element's context menu.}
+
+\item{contextmenu}{Character. Defines the ID of a <menu> element which will serve as the element's context menu.}
 
 \item{debounce}{Logical. If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
 If it's false, it will sent the value back on every change.}
@@ -57,7 +78,7 @@ If it's false, it will sent the value back on every change.}
 \item{hidden}{Character. Prevents rendering of given element, while keeping child elements, e.g. script elements, active.}
 
 \item{invalid}{Logical. Apply invalid style to the Textarea for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=False to display.}
+any FormFeedback in the enclosing div with valid=False to display.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -71,9 +92,17 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
-\item{maxLength}{Character | numeric. Defines the maximum number of characters allowed in the element.}
+\item{maxLength}{Character | numeric. **DEPRECATED** Use `maxlength` instead
 
-\item{minLength}{Character | numeric. Defines the minimum number of characters allowed in the element.}
+Defines the maximum number of characters allowed in the element.}
+
+\item{maxlength}{Character | numeric. Defines the maximum number of characters allowed in the element.}
+
+\item{minLength}{Character | numeric. **DEPRECATED** Use `minlength` instead
+
+Defines the minimum number of characters allowed in the element.}
+
+\item{minlength}{Character | numeric. Defines the minimum number of characters allowed in the element.}
 
 \item{n_blur}{Numeric. Number of times the input lost focus.}
 
@@ -110,7 +139,11 @@ session: window.sessionStorage, data is cleared once the browser quit.}
 
 \item{placeholder}{Character. Provides a hint to the user of what can be entered in the field.}
 
-\item{readOnly}{Logical | a value equal to: 'readonly', 'readonly', 'readonly'. Indicates whether the element can be edited.}
+\item{readOnly}{Logical | a value equal to: 'readonly', 'readonly', 'readonly'. **DEPRECATED** Use `readonly` instead
+
+Indicates whether the element can be edited.}
+
+\item{readonly}{Logical | a value equal to: 'readonly', 'readonly', 'readonly'. Indicates whether the element can be edited.}
 
 \item{required}{A value equal to: 'required', 'required' | logical. This attribute specifies that the user must fill in a value before
 submitting a form. It cannot be used when the type attribute is hidden,
@@ -122,16 +155,26 @@ are also acccepted.}
 
 \item{rows}{Character | numeric. Defines the number of rows in a text area.}
 
-\item{spellCheck}{A value equal to: 'true', 'false' | logical. Indicates whether spell checking is allowed for the element.}
+\item{size}{Character. Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'}
+
+\item{spellCheck}{A value equal to: 'true', 'false' | logical. **DEPRECATED** Use `spellcheck` instead
+
+Indicates whether spell checking is allowed for the element.}
+
+\item{spellcheck}{A value equal to: 'true', 'false' | logical. Indicates whether spell checking is allowed for the element.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
-\item{tabIndex}{Character | numeric. Overrides the browser's default tab order and follows the one specified instead.}
+\item{tabIndex}{Character | numeric. **DEPRECATED** Use `tabindex` instead
+
+Overrides the browser's default tab order and follows the one specified instead.}
+
+\item{tabindex}{Character | numeric. Overrides the browser's default tab order and follows the one specified instead.}
 
 \item{title}{Character. Text to be displayed in a tooltip when hovering over the element.}
 
 \item{valid}{Logical. Apply valid style to the Textarea for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=True to display.}
+any FormFeedback in the enclosing div with valid=True to display.}
 
 \item{value}{Character. The value of the textarea}
 

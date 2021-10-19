@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcCollapse <- function(children=NULL, id=NULL, className=NULL, is_open=NULL, key=NULL, loading_state=NULL, navbar=NULL, style=NULL, tag=NULL) {
+dbcCollapse <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, is_open=NULL, key=NULL, loading_state=NULL, navbar=NULL, style=NULL) {
     
-    props <- list(children=children, id=id, className=className, is_open=is_open, key=key, loading_state=loading_state, navbar=navbar, style=style, tag=tag)
+    props <- list(children=children, id=id, className=className, class_name=class_name, is_open=is_open, key=key, loading_state=loading_state, navbar=navbar, style=style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcCollapse <- function(children=NULL, id=NULL, className=NULL, is_open=NULL, ke
         props = props,
         type = 'Collapse',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'className', 'is_open', 'key', 'loading_state', 'navbar', 'style', 'tag'),
+        propNames = c('children', 'id', 'className', 'class_name', 'is_open', 'key', 'loading_state', 'navbar', 'style'),
         package = 'dashBootstrapComponents'
         )
 

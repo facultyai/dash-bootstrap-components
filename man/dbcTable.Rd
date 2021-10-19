@@ -11,9 +11,9 @@ A component for applying Bootstrap styles to HTML tables. Use this as a drop-in 
 
 \usage{
 dbcTable(children=NULL, id=NULL, bordered=NULL, borderless=NULL,
-className=NULL, dark=NULL, hover=NULL, key=NULL,
-loading_state=NULL, responsive=NULL, size=NULL,
-striped=NULL, style=NULL, tag=NULL)
+className=NULL, class_name=NULL, color=NULL, dark=NULL,
+hover=NULL, key=NULL, loading_state=NULL, responsive=NULL,
+size=NULL, striped=NULL, style=NULL)
 }
 
 \arguments{
@@ -29,9 +29,18 @@ table and cells.}
 \item{borderless}{Logical. Apply the `table-borderless` class which removes all borders from the
 table and cells.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{dark}{Logical. Apply the `table-dark` class for dark cell backgrounds and light text.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
+
+\item{color}{Character. Table color, options: primary, secondary, success, info, warning, danger,
+dark, light. Default: secondary.}
+
+\item{dark}{Logical. **DEPRECATED** - Use color="dark" instead.
+
+Apply the `table-dark` class for dark cell backgrounds and light text.}
 
 \item{hover}{Logical. Apply the `table-hover` class which enables a hover state on table rows
 within the table body.}
@@ -55,8 +64,6 @@ scroll horizontally at lower breakpoints.}
 the table body.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
-
-\item{tag}{Character. HTML tag to use for the table, default: table}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

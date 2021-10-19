@@ -11,8 +11,8 @@ Component for creating Bootstrap cards. Use in conjunction with CardBody, CardIm
 
 \usage{
 dbcCard(children=NULL, id=NULL, body=NULL, className=NULL,
-color=NULL, inverse=NULL, key=NULL, loading_state=NULL,
-outline=NULL, style=NULL)
+class_name=NULL, color=NULL, inverse=NULL, key=NULL,
+loading_state=NULL, outline=NULL, style=NULL)
 }
 
 \arguments{
@@ -25,7 +25,11 @@ components in an app.}
 \item{body}{Logical. Apply the `card-body` class to the card, so that there is no need to also
 include a CardBody component in the children of this Card. Default: False}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Card color, options: primary, secondary, success, info, warning, danger,
 light, dark or any valid CSS color of

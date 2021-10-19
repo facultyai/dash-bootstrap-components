@@ -11,7 +11,7 @@ The Form component can be used to organise collections of input components and a
 
 \usage{
 dbcForm(children=NULL, id=NULL, action=NULL, className=NULL,
-inline=NULL, key=NULL, loading_state=NULL, method=NULL,
+class_name=NULL, key=NULL, loading_state=NULL, method=NULL,
 n_submit=NULL, n_submit_timestamp=NULL,
 prevent_default_on_submit=NULL, style=NULL)
 }
@@ -25,11 +25,11 @@ components in an app.}
 
 \item{action}{Character. The URI of a program that processes the information submitted via the form.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{inline}{Logical. Use inline=True to apply the `form-inline` class, allowing you to display
-a series of labels, form controls, and buttons on a single horizontal row.
-Form controls within inline forms vary slightly from their default states.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -41,7 +41,7 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
-\item{method}{A value equal to: "get", "post". Defines which HTTP method to use when submitting the form. Can be GET
+\item{method}{A value equal to: 'get', 'post'. Defines which HTTP method to use when submitting the form. Can be GET
 (default) or POST.}
 
 \item{n_submit}{Numeric. Number of times the `Enter` key was pressed while the input had focus.}

@@ -10,12 +10,15 @@ Create a toggleable dialog using the Modal component. Toggle the visibility with
 }
 
 \usage{
-dbcModal(children=NULL, id=NULL, autoFocus=NULL, backdrop=NULL,
-backdropClassName=NULL, centered=NULL, className=NULL,
-contentClassName=NULL, fade=NULL, is_open=NULL,
-keyboard=NULL, labelledBy=NULL, modalClassName=NULL,
+dbcModal(children=NULL, id=NULL, autoFocus=NULL, autofocus=NULL,
+backdrop=NULL, backdropClassName=NULL,
+backdrop_class_name=NULL, centered=NULL, className=NULL,
+class_name=NULL, contentClassName=NULL,
+content_class_name=NULL, fade=NULL, fullscreen=NULL,
+is_open=NULL, keyboard=NULL, labelledBy=NULL,
+labelledby=NULL, modalClassName=NULL, modal_class_name=NULL,
 role=NULL, scrollable=NULL, size=NULL, style=NULL, tag=NULL,
-zIndex=NULL)
+zIndex=NULL, zindex=NULL)
 }
 
 \arguments{
@@ -25,28 +28,55 @@ zIndex=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{autoFocus}{Logical. Puts the focus on the modal when initialized.}
+\item{autoFocus}{Logical. **DEPRECATED** Use `autofocus` instead
+
+	Puts the focus on the modal when initialized.}
+
+\item{autofocus}{Logical. Puts the focus on the modal when initialized.}
 
 \item{backdrop}{Logical | a value equal to: 'static'. Includes a modal-backdrop element. Alternatively, specify 'static' for a
 backdrop which doesn't close the modal on click.}
 
-\item{backdropClassName}{Character. CSS class to apply to the backdrop.}
+\item{backdropClassName}{Character. **DEPRECATED** Use `backdrop_class_name` instead
+
+CSS class to apply to the backdrop.}
+
+\item{backdrop_class_name}{Character. CSS class to apply to the backdrop.}
 
 \item{centered}{Logical. If true, vertically center modal on page.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{contentClassName}{Character. CSS class to apply to the modal content.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
+
+\item{contentClassName}{Character. **DEPRECATED** Use `content_class_name` instead
+
+CSS class to apply to the modal content.}
+
+\item{content_class_name}{Character. CSS class to apply to the modal content.}
 
 \item{fade}{Logical. Set to false for a modal that simply appears rather than fades into view.}
+
+\item{fullscreen}{A value equal to: proptypes.bool, proptypes.oneof(['sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down']). Renders a fullscreen modal. Specifying a breakpoint will render the modal
+as fullscreen below the breakpoint size.}
 
 \item{is_open}{Logical. Whether modal is currently open.}
 
 \item{keyboard}{Logical. Close the modal when escape key is pressed.}
 
-\item{labelledBy}{Character. The ARIA labelledby attribute}
+\item{labelledBy}{Character. **DEPRECATED** Use `labelledby` instead
 
-\item{modalClassName}{Character. CSS class to apply to the modal.}
+The ARIA labelledby attribute}
+
+\item{labelledby}{Character. The ARIA labelledby attribute}
+
+\item{modalClassName}{Character. **DEPRECATED** Use `modal_class_name` instead
+
+CSS class to apply to the modal.}
+
+\item{modal_class_name}{Character. CSS class to apply to the modal.}
 
 \item{role}{Character. The ARIA role attribute.}
 
@@ -60,7 +90,11 @@ large sized modals, or leave undefined for default size.}
 
 \item{tag}{Character. HTML tag to use for the Modal, default: div}
 
-\item{zIndex}{Numeric | character. Set the z-index of the modal. Default 1050.}
+\item{zIndex}{Numeric | character. **DEPRECATED** Use `zindex` instead
+
+Set the z-index of the modal. Default 1050.}
+
+\item{zindex}{Numeric | character. Set the z-index of the modal. Default 1050.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

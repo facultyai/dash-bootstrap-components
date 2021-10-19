@@ -11,10 +11,10 @@ Use DropdownMenuItem to build up the content of a DropdownMenu.
 
 \usage{
 dbcDropdownMenuItem(children=NULL, id=NULL, active=NULL, className=NULL,
-disabled=NULL, divider=NULL, external_link=NULL,
-header=NULL, href=NULL, key=NULL, loading_state=NULL,
-n_clicks=NULL, n_clicks_timestamp=NULL, style=NULL,
-target=NULL, toggle=NULL)
+class_name=NULL, disabled=NULL, divider=NULL,
+external_link=NULL, header=NULL, href=NULL, key=NULL,
+loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL,
+style=NULL, target=NULL, toggle=NULL)
 }
 
 \arguments{
@@ -26,7 +26,11 @@ components in an app.}
 
 \item{active}{Logical. Style this item as 'active'.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{disabled}{Logical. Style this item as 'disabled'.}
 

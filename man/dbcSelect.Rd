@@ -10,11 +10,11 @@ Create a HTML select element with Bootstrap styles. Specify options as a list of
 }
 
 \usage{
-dbcSelect(id=NULL, bs_size=NULL, className=NULL, disabled=NULL,
-invalid=NULL, key=NULL, name=NULL, options=NULL,
-persisted_props=NULL, persistence=NULL,
+dbcSelect(id=NULL, className=NULL, class_name=NULL, disabled=NULL,
+html_size=NULL, invalid=NULL, key=NULL, name=NULL,
+options=NULL, persisted_props=NULL, persistence=NULL,
 persistence_type=NULL, placeholder=NULL, required=NULL,
-style=NULL, valid=NULL, value=NULL)
+size=NULL, style=NULL, valid=NULL, value=NULL)
 }
 
 \arguments{
@@ -22,15 +22,20 @@ style=NULL, valid=NULL, value=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{bs_size}{Character. Set the size of the Input. Options: 'sm' (small), 'md' (medium)
-or 'lg' (large). Default is 'md'.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{disabled}{Logical. Set to True to disable the Select.}
 
+\item{html_size}{Character. This represents the number of rows in the select that should be visible at
+one time. It will result in the Select being rendered as a scrolling list
+box rather than a dropdown.}
+
 \item{invalid}{Logical. Apply invalid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=False to display.}
+any FormFeedback in the enclosing div with valid=False to display.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -74,10 +79,13 @@ required is an HTML boolean attribute - it is enabled by a boolean or
 'required'. Alternative capitalizations `REQUIRED`
 are also acccepted.}
 
+\item{size}{Character. Set the size of the Input. Options: 'sm' (small), 'md' (medium)
+or 'lg' (large). Default is 'md'.}
+
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
 \item{valid}{Logical. Apply valid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=True to display.}
+any FormFeedback in the enclosing div with valid=True to display.}
 
 \item{value}{Character | numeric. The value of the currently selected option.}
 }

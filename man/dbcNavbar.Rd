@@ -10,10 +10,10 @@ The Navbar component can be used to make fully customisable navbars.
 }
 
 \usage{
-dbcNavbar(children=NULL, id=NULL, className=NULL, color=NULL,
-dark=NULL, expand=NULL, fixed=NULL, key=NULL, light=NULL,
-loading_state=NULL, role=NULL, sticky=NULL, style=NULL,
-tag=NULL)
+dbcNavbar(children=NULL, id=NULL, className=NULL, class_name=NULL,
+color=NULL, dark=NULL, expand=NULL, fixed=NULL, key=NULL,
+light=NULL, loading_state=NULL, role=NULL, sticky=NULL,
+style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -23,7 +23,11 @@ tag=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Sets the color of the Navbar. Main options are primary, light and dark, default light.
 
@@ -53,11 +57,13 @@ those elements have the following types:
 
 \item{role}{Character. The ARIA role attribute.}
 
-\item{sticky}{Character. Stick the navbar to the top or the bottom of the viewport, options: top, bottom
+\item{sticky}{A value equal to: 'top'. Position the navbar at the top of the viewport, but only after scrolling past it.
+A convenience prop for the sticky-top positioning class. Not supported in <= IE11
+and other older browsers
 
 With `sticky`, the navbar remains in the viewport when you scroll. By
 contrast, with `fixed`, the navbar will remain at the top or bottom of
-the page.}
+the page.  sticky='top'}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 

@@ -10,10 +10,15 @@ RadioItems is a component that encapsulates several radio item inputs. The value
 }
 
 \usage{
-dbcRadioItems(id=NULL, className=NULL, custom=NULL, inline=NULL,
-inputClassName=NULL, inputStyle=NULL, key=NULL,
+dbcRadioItems(id=NULL, className=NULL, class_name=NULL, inline=NULL,
+inputCheckedClassName=NULL, inputCheckedStyle=NULL,
+inputClassName=NULL, inputStyle=NULL,
+input_checked_class_name=NULL, input_checked_style=NULL,
+input_class_name=NULL, input_style=NULL, key=NULL,
 labelCheckedClassName=NULL, labelCheckedStyle=NULL,
-labelClassName=NULL, labelStyle=NULL, loading_state=NULL,
+labelClassName=NULL, labelStyle=NULL,
+label_checked_class_name=NULL, label_checked_style=NULL,
+label_class_name=NULL, label_style=NULL, loading_state=NULL,
 name=NULL, options=NULL, persisted_props=NULL,
 persistence=NULL, persistence_type=NULL, style=NULL,
 switch=NULL, value=NULL)
@@ -23,30 +28,73 @@ switch=NULL, value=NULL)
 \item{id}{Character. The ID of this component, used to identify dash components in callbacks.
 The ID needs to be unique across all of the components in an app.}
 
-\item{className}{Character. The class of the container (div)}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{custom}{Logical. RadioItems uses custom radio buttons by default. To use native radios set
-custom to False.}
+The class of the container (div)}
+
+\item{class_name}{Character. The class of the container (div)}
 
 \item{inline}{Logical. Arrange RadioItems inline}
 
-\item{inputClassName}{Character. The class of the <input> radio element}
+\item{inputCheckedClassName}{Character. **DEPRECATED** Use `input_checked_class_name` instead.
 
-\item{inputStyle}{Named list. The style of the <input> radio element}
+Additional CSS classes to apply to the <input> element when the
+corresponding radio is checked.}
+
+\item{inputCheckedStyle}{Named list. **DEPRECATED** Use `input_checked_style` instead.
+
+Additional inline style arguments to apply to <input> elements on checked
+items.}
+
+\item{inputClassName}{Character. **DEPRECATED** Use `input_class_name` instead.
+
+The class of the <input> radio element}
+
+\item{inputStyle}{Named list. **DEPRECATED** Use `input_style` instead.
+
+The style of the <input> radio element}
+
+\item{input_checked_class_name}{Character. Additional CSS classes to apply to the <input> element when the
+corresponding radio is checked.}
+
+\item{input_checked_style}{Named list. Additional inline style arguments to apply to <input> elements on checked
+items.}
+
+\item{input_class_name}{Character. The class of the <input> radio element}
+
+\item{input_style}{Named list. The style of the <input> radio element}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
 
-\item{labelCheckedClassName}{Character. Additional CSS classes to apply to the <label> element when the
+\item{labelCheckedClassName}{Character. **DEPRECATED** Use `label_checked_class_name` instead.
+
+Additional CSS classes to apply to the <label> element when the
 corresponding radio is checked.}
 
-\item{labelCheckedStyle}{Named list. Additional inline style arguments to apply to <label> elements on checked
+\item{labelCheckedStyle}{Named list. **DEPRECATED** Use `label_checked_style` instead.
+
+Additional inline style arguments to apply to <label> elements on checked
 items.}
 
-\item{labelClassName}{Character. CSS classes to apply to the <label> element for each item.}
+\item{labelClassName}{Character. **DEPRECATED** Use `label_class_name` instead.
 
-\item{labelStyle}{Named list. Inline style arguments to apply to the <label> element for each item.}
+CSS classes to apply to the <label> element for each item.}
+
+\item{labelStyle}{Named list. **DEPRECATED** Use `label_style` instead.
+
+Inline style arguments to apply to the <label> element for each item.}
+
+\item{label_checked_class_name}{Character. Additional CSS classes to apply to the <label> element when the
+corresponding radio is checked.}
+
+\item{label_checked_style}{Named list. Additional inline style arguments to apply to <label> elements on checked
+items.}
+
+\item{label_class_name}{Character. CSS classes to apply to the <label> element for each item.}
+
+\item{label_style}{Named list. Inline style arguments to apply to the <label> element for each item.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
@@ -85,8 +133,7 @@ session: window.sessionStorage, data is cleared once the browser quit.}
 
 \item{style}{Named list. The style of the container (div)}
 
-\item{switch}{Logical. Set to True to render toggle-like switches instead of radios. Ignored if
-custom=False}
+\item{switch}{Logical. Set to True to render toggle-like switches instead of radios.}
 
 \item{value}{Character | numeric. The currently selected value}
 }

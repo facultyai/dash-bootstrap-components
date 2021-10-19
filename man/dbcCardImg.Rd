@@ -11,8 +11,9 @@ Use CardImg to add images to your cards.
 
 \usage{
 dbcCardImg(children=NULL, id=NULL, alt=NULL, bottom=NULL,
-className=NULL, key=NULL, loading_state=NULL, src=NULL,
-style=NULL, tag=NULL, title=NULL, top=NULL)
+className=NULL, class_name=NULL, key=NULL,
+loading_state=NULL, src=NULL, style=NULL, tag=NULL,
+title=NULL, top=NULL)
 }
 
 \arguments{
@@ -28,7 +29,11 @@ components in an app.}
 card-img-bottom class which rounds the bottom corners to match the corners
 of the card.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

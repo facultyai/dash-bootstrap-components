@@ -10,10 +10,11 @@ Popover creates a toggleable overlay that can be used to provide additional info
 }
 
 \usage{
-dbcPopover(children=NULL, id=NULL, className=NULL, container=NULL,
+dbcPopover(children=NULL, id=NULL, className=NULL, class_name=NULL,
 delay=NULL, flip=NULL, hide_arrow=NULL, innerClassName=NULL,
-is_open=NULL, key=NULL, loading_state=NULL, offset=NULL,
-placement=NULL, style=NULL, target=NULL, trigger=NULL)
+inner_class_name=NULL, is_open=NULL, key=NULL,
+loading_state=NULL, offset=NULL, placement=NULL, style=NULL,
+target=NULL, trigger=NULL)
 }
 
 \arguments{
@@ -23,21 +24,27 @@ placement=NULL, style=NULL, target=NULL, trigger=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{container}{Character. Where to inject the popper DOM node, default body.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{delay}{Lists containing elements 'show', 'hide'.
 those elements have the following types:
   - show (numeric; optional)
-  - hide (numeric; optional) | numeric. Optionally override show/hide delays - default {show: 0, hide: 250}}
+  - hide (numeric; optional) | numeric. Optionally override show/hide delays}
 
 \item{flip}{Logical. Whether to flip the direction of the popover if too close to the container
 edge, default True.}
 
 \item{hide_arrow}{Logical. Hide popover arrow.}
 
-\item{innerClassName}{Character. CSS class to apply to the popover.}
+\item{innerClassName}{Character. **DEPRECATED** Use `inner_class_name` instead
+
+CSS class to apply to the popover.}
+
+\item{inner_class_name}{Character. CSS class to apply to the popover.}
 
 \item{is_open}{Logical. Whether the Popover is open or not.}
 
@@ -51,13 +58,13 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
-\item{offset}{Character | numeric. Popover offset.}
+\item{offset}{Character | numeric. Offset of the popover relative to its target}
 
 \item{placement}{A value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'. Specify popover placement.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
-\item{target}{Character. ID of the component to attach the popover to.}
+\item{target}{Character | named list. ID of the component to attach the popover to.}
 
 \item{trigger}{Character. Space separated list of triggers (e.g. "click hover focus legacy"). These
 specify ways in which the target component can toggle the popover. If not

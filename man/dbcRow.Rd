@@ -11,8 +11,8 @@ Row is one of the core layout components in Bootstrap. Build up your layout as a
 
 \usage{
 dbcRow(children=NULL, id=NULL, align=NULL, className=NULL,
-form=NULL, justify=NULL, key=NULL, loading_state=NULL,
-no_gutters=NULL, style=NULL)
+class_name=NULL, justify=NULL, key=NULL, loading_state=NULL,
+style=NULL)
 }
 
 \arguments{
@@ -25,10 +25,11 @@ components in an app.}
 \item{align}{A value equal to: 'start', 'center', 'end', 'stretch', 'baseline'. Set vertical alignment of columns in this row. Options are 'start',
 'center', 'end', 'stretch' and 'baseline'.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{form}{Logical. For use in forms. When set to True the `form-row` class is applied, which
-overrides the default column gutters for a tighter, more compact layout.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{justify}{A value equal to: 'start', 'center', 'end', 'around', 'between'. Set horizontal spacing and alignment of columns in this row. Options are
 'start', 'center', 'end', 'around' and 'between'.}
@@ -42,9 +43,6 @@ those elements have the following types:
   - is_loading (logical; optional): determines if the component is loading or not
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
-
-\item{no_gutters}{Logical. Remove the "gutters" between columns in this row.
-see https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 }

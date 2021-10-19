@@ -11,8 +11,9 @@ Component for creating Bootstrap columns to control the layout of your page.  Us
 
 \usage{
 dbcCol(children=NULL, id=NULL, align=NULL, className=NULL,
-key=NULL, lg=NULL, loading_state=NULL, md=NULL, sm=NULL,
-style=NULL, width=NULL, xl=NULL, xs=NULL)
+class_name=NULL, key=NULL, lg=NULL, loading_state=NULL,
+md=NULL, sm=NULL, style=NULL, width=NULL, xl=NULL, xs=NULL,
+xxl=NULL)
 }
 
 \arguments{
@@ -25,7 +26,11 @@ components in an app.}
 \item{align}{A value equal to: 'start', 'center', 'end', 'stretch', 'baseline'. Set vertical alignment of this column's content in the parent row. Options
 are 'start', 'center', 'end', 'stretch', 'baseline'.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -71,6 +76,12 @@ dictionary with keys 'offset', 'order', 'size'. See the documentation for
 more details.}
 
 \item{xs}{Specify column behaviour on an extra small screen.
+
+Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+dictionary with keys 'offset', 'order', 'size'. See the documentation for
+more details.}
+
+\item{xxl}{Specify column behaviour on an extra extra large screen.
 
 Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
 dictionary with keys 'offset', 'order', 'size'. See the documentation for

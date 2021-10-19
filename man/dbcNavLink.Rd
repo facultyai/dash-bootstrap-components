@@ -11,9 +11,9 @@ Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav` directly.
 
 \usage{
 dbcNavLink(children=NULL, id=NULL, active=NULL, className=NULL,
-disabled=NULL, external_link=NULL, href=NULL, key=NULL,
-loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL,
-style=NULL, target=NULL)
+class_name=NULL, disabled=NULL, external_link=NULL,
+href=NULL, key=NULL, loading_state=NULL, n_clicks=NULL,
+n_clicks_timestamp=NULL, style=NULL, target=NULL)
 }
 
 \arguments{
@@ -35,7 +35,11 @@ For example
 - dbc.NavLink(..., href="/my-page", active="partial") will be active on
   "/my-page" and "/my-page/other" but not "/random"}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{disabled}{Logical. Disable the link}
 

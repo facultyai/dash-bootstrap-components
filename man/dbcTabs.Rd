@@ -10,8 +10,8 @@ Create Bootstrap styled tabs. Use the `active_tab` property to set, or get get t
 }
 
 \usage{
-dbcTabs(children=NULL, id=NULL, active_tab=NULL, card=NULL,
-className=NULL, key=NULL, loading_state=NULL,
+dbcTabs(children=NULL, id=NULL, active_tab=NULL, className=NULL,
+class_name=NULL, key=NULL, loading_state=NULL,
 persisted_props=NULL, persistence=NULL,
 persistence_type=NULL, style=NULL)
 }
@@ -27,9 +27,11 @@ components in an app.}
 for the active tab, this will default to tab-i, where i is the index
 (starting from 0) of the tab.}
 
-\item{card}{Logical. Set to True if using tabs inside a CardHeader.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

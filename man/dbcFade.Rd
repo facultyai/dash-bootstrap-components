@@ -10,10 +10,10 @@ Hide or show content with a fading animation. Visibility of the children is cont
 }
 
 \usage{
-dbcFade(children=NULL, id=NULL, appear=NULL, base_class=NULL,
-base_class_active=NULL, className=NULL, enter=NULL,
-exit=NULL, is_in=NULL, key=NULL, loading_state=NULL,
-style=NULL, tag=NULL, timeout=NULL)
+dbcFade(children=NULL, id=NULL, appear=NULL, className=NULL,
+class_name=NULL, enter=NULL, exit=NULL, is_in=NULL,
+key=NULL, loading_state=NULL, style=NULL, tag=NULL,
+timeout=NULL)
 }
 
 \arguments{
@@ -25,12 +25,11 @@ components in an app.}
 
 \item{appear}{Logical. Show fade-in animation on initial page load. Default: True.}
 
-\item{base_class}{Character. CSS base class. Note that this class is always used, whether the
-components are showing or hidden. Default: 'fade'}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{base_class_active}{Character. CSS class used when the fade contents are displayed. Default: 'show'.}
+Often used with CSS to style elements with common properties.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{enter}{Logical. Enable or disable enter transitions. Default: True.}
 

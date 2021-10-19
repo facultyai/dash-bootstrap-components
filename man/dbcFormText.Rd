@@ -10,8 +10,8 @@ Add explanatory text below your input components.
 }
 
 \usage{
-dbcFormText(children=NULL, id=NULL, className=NULL, color=NULL,
-key=NULL, loading_state=NULL, style=NULL)
+dbcFormText(children=NULL, id=NULL, className=NULL, class_name=NULL,
+color=NULL, key=NULL, loading_state=NULL, style=NULL)
 }
 
 \arguments{
@@ -21,7 +21,11 @@ key=NULL, loading_state=NULL, style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Text color, options: primary, secondary, success, warning, danger, info,
 muted, light, dark, body, white, black-50, white-50 or any valid CSS color of

@@ -10,7 +10,7 @@ Create a single item in a `Nav`.
 }
 
 \usage{
-dbcNavItem(children=NULL, id=NULL, active=NULL, className=NULL,
+dbcNavItem(children=NULL, id=NULL, className=NULL, class_name=NULL,
 key=NULL, loading_state=NULL, style=NULL)
 }
 
@@ -21,9 +21,11 @@ key=NULL, loading_state=NULL, style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{active}{Logical. Apply active style to item.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

@@ -6,14 +6,19 @@
 \title{Checklist component}
 
 \description{
-Checklist is a component that encapsulates several checkboxes. The values and labels of the checklist is specified in the `options` property and the checked items are specified with the `value` property. Each checkbox is rendered as an input / label pair.  If `Checklist` is given an `id` (which is necessary for use in callbacks) it will use Bootstrap's custom checkbox style, which hides the native browser checkbox and renders a custom CSS alternative. See the Bootstrap docs for details.  https://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios-1
+Checklist is a component that encapsulates several checkboxes. The values and labels of the checklist is specified in the `options` property and the checked items are specified with the `value` property. Each checkbox is rendered as an input / label pair. `Checklist` must be given an `id` to work properly.
 }
 
 \usage{
-dbcChecklist(id=NULL, className=NULL, custom=NULL, inline=NULL,
-inputClassName=NULL, inputStyle=NULL, key=NULL,
+dbcChecklist(id=NULL, className=NULL, class_name=NULL, inline=NULL,
+inputCheckedClassName=NULL, inputCheckedStyle=NULL,
+inputClassName=NULL, inputStyle=NULL,
+input_checked_class_name=NULL, input_checked_style=NULL,
+input_class_name=NULL, input_style=NULL, key=NULL,
 labelCheckedClassName=NULL, labelCheckedStyle=NULL,
-labelClassName=NULL, labelStyle=NULL, loading_state=NULL,
+labelClassName=NULL, labelStyle=NULL,
+label_checked_class_name=NULL, label_checked_style=NULL,
+label_class_name=NULL, label_style=NULL, loading_state=NULL,
 name=NULL, options=NULL, persisted_props=NULL,
 persistence=NULL, persistence_type=NULL, style=NULL,
 switch=NULL, value=NULL)
@@ -23,30 +28,73 @@ switch=NULL, value=NULL)
 \item{id}{Character. The ID of this component, used to identify dash components in callbacks.
 The ID needs to be unique across all of the components in an app.}
 
-\item{className}{Character. The class of the container (div)}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{custom}{Logical. RadioItems uses custom radio buttons by default. To use native radios set
-custom to False.}
+The class of the container (div)}
+
+\item{class_name}{Character. The class of the container (div)}
 
 \item{inline}{Logical. Arrange Checklist inline}
 
-\item{inputClassName}{Character. The class of the <input> checkbox element}
+\item{inputCheckedClassName}{Character. **DEPRECATED** Use `input_checked_class_name` instead.
 
-\item{inputStyle}{Named list. The style of the <input> checkbox element. Only used if custom=False}
+Additional CSS classes to apply to the <input> element when the
+corresponding checkbox is checked.}
+
+\item{inputCheckedStyle}{Named list. **DEPRECATED** Use `input_checked_style` instead.
+
+Additional inline style arguments to apply to <input> elements on checked
+items.}
+
+\item{inputClassName}{Character. **DEPRECATED** Use `input_class_name` instead.
+
+The class of the <input> checkbox element}
+
+\item{inputStyle}{Named list. **DEPRECATED** Use `input_style` instead.
+
+The style of the <input> checkbox element.}
+
+\item{input_checked_class_name}{Character. Additional CSS classes to apply to the <input> element when the
+corresponding checkbox is checked.}
+
+\item{input_checked_style}{Named list. Additional inline style arguments to apply to <input> elements on checked
+items.}
+
+\item{input_class_name}{Character. The class of the <input> checkbox element}
+
+\item{input_style}{Named list. The style of the <input> checkbox element.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
 
-\item{labelCheckedClassName}{Character. Additional CSS classes to apply to the <label> element when the
+\item{labelCheckedClassName}{Character. **DEPRECATED** Use `label_checked_class_name` instead.
+
+Additional CSS classes to apply to the <label> element when the
 corresponding checkbox is checked.}
 
-\item{labelCheckedStyle}{Named list. Additional inline style arguments to apply to <label> elements on checked
+\item{labelCheckedStyle}{Named list. **DEPRECATED** Use `label_checked_style` instead.
+
+Additional inline style arguments to apply to <label> elements on checked
 items.}
 
-\item{labelClassName}{Character. CSS classes to apply to the <label> element for each item.}
+\item{labelClassName}{Character. **DEPRECATED** Use `label_class_name` instead.
 
-\item{labelStyle}{Named list. Inline style arguments to apply to the <label> element for each item.}
+CSS classes to apply to the <label> element for each item.}
+
+\item{labelStyle}{Named list. **DEPRECATED** Use `label_style` instead.
+
+Inline style arguments to apply to the <label> element for each item.}
+
+\item{label_checked_class_name}{Character. Additional CSS classes to apply to the <label> element when the
+corresponding checkbox is checked.}
+
+\item{label_checked_style}{Named list. Additional inline style arguments to apply to <label> elements on checked
+items.}
+
+\item{label_class_name}{Character. CSS classes to apply to the <label> element for each item.}
+
+\item{label_style}{Named list. Inline style arguments to apply to the <label> element for each item.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
@@ -85,8 +133,7 @@ session: window.sessionStorage, data is cleared once the browser quit.}
 
 \item{style}{Named list. The style of the container (div)}
 
-\item{switch}{Logical. Set to True to render toggle-like switches instead of checkboxes. Ignored
-if custom=False}
+\item{switch}{Logical. Set to True to render toggle-like switches instead of checkboxes.}
 
 \item{value}{List of character | numerics. The currently selected value}
 }

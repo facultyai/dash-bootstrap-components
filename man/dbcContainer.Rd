@@ -10,8 +10,9 @@ Containers provide a means to center and horizontally pad your site’s contents
 }
 
 \usage{
-dbcContainer(children=NULL, id=NULL, className=NULL, fluid=NULL,
-key=NULL, loading_state=NULL, style=NULL, tag=NULL)
+dbcContainer(children=NULL, id=NULL, className=NULL, class_name=NULL,
+fluid=NULL, key=NULL, loading_state=NULL, style=NULL,
+tag=NULL)
 }
 
 \arguments{
@@ -21,11 +22,20 @@ key=NULL, loading_state=NULL, style=NULL, tag=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{fluid}{Logical. If True the container-fluid class will be applied, and the Container will
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
+
+\item{fluid}{Logical | character. If True the container-fluid class will be applied, and the Container will
 expand to fill available space. A non-fluid container resizes responsively
-to a fixed width at the different breakpoints.}
+to a fixed width at the different breakpoints.
+
+You can also set the fluid property to one of the Bootstrap breakpoints:
+"sm", "md", "lg", "xl" or "xxl", so that the container fluidly expands to
+fill the screen until the specified breakpoint, then resize responsively
+at higher breakpoints.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

@@ -10,9 +10,9 @@ Use this component to create a navbar toggle to show navlinks when the navbar co
 }
 
 \usage{
-dbcNavbarToggler(children=NULL, id=NULL, className=NULL, key=NULL,
-loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL,
-style=NULL, type=NULL)
+dbcNavbarToggler(children=NULL, id=NULL, className=NULL, class_name=NULL,
+key=NULL, loading_state=NULL, n_clicks=NULL,
+n_clicks_timestamp=NULL, style=NULL, type=NULL)
 }
 
 \arguments{
@@ -22,7 +22,11 @@ style=NULL, type=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

@@ -6,12 +6,13 @@
 \title{FormFeedback component}
 
 \description{
-The FormFeedback component can be used to provide feedback on input values in a form. Add the form feedback to a `FormGroup` and set the `valid` or `invalid` props of the associated input to toggle visibility.
+The FormFeedback component can be used to provide feedback on input values in a form. Add the form feedback to your layout and set the `valid` or `invalid` props of the associated input to toggle visibility.
 }
 
 \usage{
-dbcFormFeedback(children=NULL, id=NULL, className=NULL, key=NULL,
-loading_state=NULL, style=NULL, tooltip=NULL, valid=NULL)
+dbcFormFeedback(children=NULL, id=NULL, className=NULL, class_name=NULL,
+key=NULL, loading_state=NULL, style=NULL, tooltip=NULL,
+type=NULL)
 }
 
 \arguments{
@@ -21,7 +22,11 @@ loading_state=NULL, style=NULL, tooltip=NULL, valid=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -37,8 +42,7 @@ those elements have the following types:
 
 \item{tooltip}{Logical. Use styled tooltips to display validation feedback.}
 
-\item{valid}{Logical. If True apply the valid styling to the feedback, else apply invalid
-styling.}
+\item{type}{Character. Either 'valid' or 'invalid'.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

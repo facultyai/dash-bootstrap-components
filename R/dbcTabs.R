@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcTabs <- function(children=NULL, id=NULL, active_tab=NULL, card=NULL, className=NULL, key=NULL, loading_state=NULL, persisted_props=NULL, persistence=NULL, persistence_type=NULL, style=NULL) {
+dbcTabs <- function(children=NULL, id=NULL, active_tab=NULL, className=NULL, class_name=NULL, key=NULL, loading_state=NULL, persisted_props=NULL, persistence=NULL, persistence_type=NULL, style=NULL) {
     
-    props <- list(children=children, id=id, active_tab=active_tab, card=card, className=className, key=key, loading_state=loading_state, persisted_props=persisted_props, persistence=persistence, persistence_type=persistence_type, style=style)
+    props <- list(children=children, id=id, active_tab=active_tab, className=className, class_name=class_name, key=key, loading_state=loading_state, persisted_props=persisted_props, persistence=persistence, persistence_type=persistence_type, style=style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcTabs <- function(children=NULL, id=NULL, active_tab=NULL, card=NULL, classNam
         props = props,
         type = 'Tabs',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'active_tab', 'card', 'className', 'key', 'loading_state', 'persisted_props', 'persistence', 'persistence_type', 'style'),
+        propNames = c('children', 'id', 'active_tab', 'className', 'class_name', 'key', 'loading_state', 'persisted_props', 'persistence', 'persistence_type', 'style'),
         package = 'dashBootstrapComponents'
         )
 

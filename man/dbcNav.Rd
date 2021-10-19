@@ -11,9 +11,9 @@ Nav can be used to group together a collection of navigation links.
 
 \usage{
 dbcNav(children=NULL, id=NULL, card=NULL, className=NULL,
-fill=NULL, horizontal=NULL, justified=NULL, key=NULL,
-loading_state=NULL, navbar=NULL, pills=NULL, style=NULL,
-vertical=NULL)
+class_name=NULL, fill=NULL, horizontal=NULL, justified=NULL,
+key=NULL, loading_state=NULL, navbar=NULL,
+navbar_scroll=NULL, pills=NULL, style=NULL, vertical=NULL)
 }
 
 \arguments{
@@ -25,7 +25,11 @@ components in an app.}
 
 \item{card}{Logical. Set to True when using Nav with pills styling inside a CardHeader.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{fill}{Logical. Expand the nav items to fill available horizontal space.}
 
@@ -48,6 +52,8 @@ those elements have the following types:
 \item{navbar}{Logical. Set to True if using Nav in Navbar component. This applies the `navbar-nav`
 class to the Nav which uses more lightweight styles to match the parent
 Navbar better.}
+
+\item{navbar_scroll}{Logical. Enable vertical scrolling within the toggleable contents of a collapsed Navbar.}
 
 \item{pills}{Logical. Apply pill styling to nav items. Active items will be indicated by a pill.}
 

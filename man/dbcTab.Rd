@@ -11,10 +11,12 @@ Create a single tab. Should be used as a component of Tabs.
 
 \usage{
 dbcTab(children=NULL, id=NULL, activeLabelClassName=NULL,
-activeTabClassName=NULL, active_label_style=NULL,
-active_tab_style=NULL, className=NULL, disabled=NULL,
-key=NULL, label=NULL, labelClassName=NULL, label_style=NULL,
-loading_state=NULL, style=NULL, tabClassName=NULL,
+activeTabClassName=NULL, active_label_class_name=NULL,
+active_label_style=NULL, active_tab_class_name=NULL,
+active_tab_style=NULL, className=NULL, class_name=NULL,
+disabled=NULL, key=NULL, label=NULL, labelClassName=NULL,
+label_class_name=NULL, label_style=NULL, loading_state=NULL,
+style=NULL, tabClassName=NULL, tab_class_name=NULL,
 tab_id=NULL, tab_style=NULL)
 }
 
@@ -25,21 +27,37 @@ tab_id=NULL, tab_style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{activeLabelClassName}{Character. Often used with CSS to style elements with common properties. The classes
+\item{activeLabelClassName}{Character. **DEPRECATED** Use `active_label_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavLink in the tab when
 it is active.}
 
-\item{activeTabClassName}{Character. Often used with CSS to style elements with common properties. The classes
+\item{activeTabClassName}{Character. **DEPRECATED** Use `active_tab_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavItem in the tab when it
 is active.}
+
+\item{active_label_class_name}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavLink in the tab when
+it is active.}
 
 \item{active_label_style}{Named list. Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavLink in the tab when it is active}
 
+\item{active_tab_class_name}{Character. Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavItem in the tab when it
+is active.}
+
 \item{active_tab_style}{Named list. Defines CSS styles which will override styles previously set. The styles
 set here apply to the NavItem in the tab when it is active.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{disabled}{Logical. Determines if tab is disabled or not - defaults to false}
 
@@ -49,7 +67,12 @@ See https://reactjs.org/docs/lists-and-keys.html for more info}
 
 \item{label}{Character. The tab's label, displayed in the tab itself.}
 
-\item{labelClassName}{Character. Often used with CSS to style elements with common properties. The classes
+\item{labelClassName}{Character. **DEPRECATED** Use `label_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavLink in the tab.}
+
+\item{label_class_name}{Character. Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavLink in the tab.}
 
 \item{label_style}{Named list. Defines CSS styles which will override styles previously set. The styles
@@ -64,7 +87,12 @@ those elements have the following types:
 \item{style}{Named list. Defines CSS styles which will override styles previously set. The styles
 set here apply to the content of the Tab}
 
-\item{tabClassName}{Character. Often used with CSS to style elements with common properties. The classes
+\item{tabClassName}{Character. **DEPRECATED** Use `tab_class_name` instead
+
+Often used with CSS to style elements with common properties. The classes
+specified with this prop will be applied to the NavItem in the tab.}
+
+\item{tab_class_name}{Character. Often used with CSS to style elements with common properties. The classes
 specified with this prop will be applied to the NavItem in the tab.}
 
 \item{tab_id}{Character. Optional identifier for tab used for determining which tab is visible

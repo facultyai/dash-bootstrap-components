@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dbcInputGroupText <- function(children=NULL, id=NULL, className=NULL, key=NULL, loading_state=NULL, style=NULL) {
+dbcInputGroupText <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, key=NULL, loading_state=NULL, style=NULL) {
     
-    props <- list(children=children, id=id, className=className, key=key, loading_state=loading_state, style=style)
+    props <- list(children=children, id=id, className=className, class_name=class_name, key=key, loading_state=loading_state, style=style)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dbcInputGroupText <- function(children=NULL, id=NULL, className=NULL, key=NULL, 
         props = props,
         type = 'InputGroupText',
         namespace = 'dash_bootstrap_components',
-        propNames = c('children', 'id', 'className', 'key', 'loading_state', 'style'),
+        propNames = c('children', 'id', 'className', 'class_name', 'key', 'loading_state', 'style'),
         package = 'dashBootstrapComponents'
         )
 

@@ -10,8 +10,8 @@ Use CardImgOverlay to turn an image into the background of your card and add tex
 }
 
 \usage{
-dbcCardImgOverlay(children=NULL, id=NULL, className=NULL, key=NULL,
-loading_state=NULL, style=NULL, tag=NULL)
+dbcCardImgOverlay(children=NULL, id=NULL, className=NULL, class_name=NULL,
+key=NULL, loading_state=NULL, style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -21,7 +21,11 @@ loading_state=NULL, style=NULL, tag=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components

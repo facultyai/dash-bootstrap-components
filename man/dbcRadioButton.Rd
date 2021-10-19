@@ -6,29 +6,58 @@
 \title{RadioButton component}
 
 \description{
-Creates a single radio button. Use the `checked` prop in your callbacks.
+Checklist is a component that encapsulates several checkboxes. The values and labels of the checklist is specified in the `options` property and the checked items are specified with the `value` property. Each checkbox is rendered as an input / label pair. `Checklist` must be given an `id` to work properly.
 }
 
 \usage{
-dbcRadioButton(id=NULL, checked=NULL, className=NULL, disabled=NULL,
-key=NULL, loading_state=NULL, name=NULL,
+dbcRadioButton(id=NULL, className=NULL, class_name=NULL, disabled=NULL,
+inputClassName=NULL, inputStyle=NULL, input_class_name=NULL,
+input_style=NULL, label=NULL, labelClassName=NULL,
+labelStyle=NULL, label_class_name=NULL, label_id=NULL,
+label_style=NULL, loading_state=NULL, name=NULL,
 persisted_props=NULL, persistence=NULL,
-persistence_type=NULL, style=NULL)
+persistence_type=NULL, style=NULL, value=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID of this component, used to identify dash components in callbacks.
 The ID needs to be unique across all of the components in an app.}
 
-\item{checked}{Logical. Whether RadioButton has been checked or not}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{className}{Character. The class of the container (div)}
+The class of the container (div)}
+
+\item{class_name}{Character. The class of the container (div)}
 
 \item{disabled}{Logical. Disable the RadioButton.}
 
-\item{key}{Character. A unique identifier for the component, used to improve
-performance by React.js while rendering components
-See https://reactjs.org/docs/lists-and-keys.html for more info}
+\item{inputClassName}{Character. **DEPRECATED** Use `input_class_name` instead.
+
+The class of the <input> checkbox element}
+
+\item{inputStyle}{Named list. **DEPRECATED** Use `input_style` instead.
+
+The style of the <input> checkbox element.}
+
+\item{input_class_name}{Character. The class of the <input> checkbox element}
+
+\item{input_style}{Named list. The style of the <input> checkbox element.}
+
+\item{label}{Character. The label of the <input> element}
+
+\item{labelClassName}{Character. **DEPRECATED** Use `label_class_name` instead.
+
+CSS classes to apply to the <label> element for each item.}
+
+\item{labelStyle}{Named list. **DEPRECATED** Use `label_style` instead.
+
+Inline style arguments to apply to the <label> element for each item.}
+
+\item{label_class_name}{Character. CSS classes to apply to the <label> element for each item.}
+
+\item{label_id}{Character. The id of the label}
+
+\item{label_style}{Named list. Inline style arguments to apply to the <label> element for each item.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:
@@ -38,7 +67,7 @@ those elements have the following types:
 
 \item{name}{Character. The name of the control, which is submitted with the form data.}
 
-\item{persisted_props}{List of a value equal to: 'checked's. Properties whose user interactions will persist after refreshing the
+\item{persisted_props}{List of a value equal to: 'value's. Properties whose user interactions will persist after refreshing the
 component or the page. Since only `value` is allowed this prop can
 normally be ignored.}
 
@@ -55,6 +84,8 @@ local: window.localStorage, data is kept after the browser quit.
 session: window.sessionStorage, data is cleared once the browser quit.}
 
 \item{style}{Named list. The style of the container (div)}
+
+\item{value}{Logical. The value of the input.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

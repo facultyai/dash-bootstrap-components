@@ -12,8 +12,8 @@ A self-contained navbar ready for use. If you need more customisability try `Nav
 \usage{
 dbcNavbarSimple(children=NULL, id=NULL, brand=NULL,
 brand_external_link=NULL, brand_href=NULL, brand_style=NULL,
-className=NULL, color=NULL, dark=NULL, expand=NULL,
-fixed=NULL, fluid=NULL, key=NULL, light=NULL,
+className=NULL, class_name=NULL, color=NULL, dark=NULL,
+expand=NULL, fixed=NULL, fluid=NULL, key=NULL, light=NULL,
 links_left=NULL, loading_state=NULL, sticky=NULL, style=NULL)
 }
 
@@ -37,7 +37,11 @@ otherwise.}
 
 \item{brand_style}{Named list. CSS style options for brand.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Sets the color of the NavbarSimple. Main options are primary, light and dark, default light.
 

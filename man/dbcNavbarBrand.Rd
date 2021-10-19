@@ -10,8 +10,9 @@ Call out attention to a brand name or site title within a navbar.
 }
 
 \usage{
-dbcNavbarBrand(children=NULL, id=NULL, className=NULL, external_link=NULL,
-href=NULL, key=NULL, loading_state=NULL, style=NULL)
+dbcNavbarBrand(children=NULL, id=NULL, className=NULL, class_name=NULL,
+external_link=NULL, href=NULL, key=NULL, loading_state=NULL,
+style=NULL)
 }
 
 \arguments{
@@ -21,7 +22,11 @@ href=NULL, key=NULL, loading_state=NULL, style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{external_link}{Logical. If true, the browser will treat this as an external link,
 forcing a page refresh at the new location. If false,

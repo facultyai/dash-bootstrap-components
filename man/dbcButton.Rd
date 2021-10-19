@@ -10,8 +10,8 @@ A component for creating Bootstrap buttons with different style options. The But
 }
 
 \usage{
-dbcButton(children=NULL, id=NULL, active=NULL, block=NULL,
-className=NULL, color=NULL, disabled=NULL, download=NULL,
+dbcButton(children=NULL, id=NULL, active=NULL, className=NULL,
+class_name=NULL, color=NULL, disabled=NULL, download=NULL,
 external_link=NULL, href=NULL, key=NULL, loading_state=NULL,
 n_clicks=NULL, n_clicks_timestamp=NULL, name=NULL,
 outline=NULL, size=NULL, style=NULL, target=NULL,
@@ -27,10 +27,11 @@ components in an app.}
 
 \item{active}{Logical. Whether button is in active state. Default: False.}
 
-\item{block}{Logical. Create block level button, one that spans the full width of its parent.
-Default: False}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Button color, options: primary, secondary, success, info, warning, danger,
 link. Default: secondary.}

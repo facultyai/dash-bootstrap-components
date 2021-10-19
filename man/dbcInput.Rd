@@ -10,16 +10,20 @@ A basic HTML input control for entering text, numbers, or passwords, with Bootst
 }
 
 \usage{
-dbcInput(id=NULL, autoComplete=NULL, autoFocus=NULL, bs_size=NULL,
-className=NULL, debounce=NULL, disabled=NULL,
-inputMode=NULL, invalid=NULL, key=NULL, list=NULL,
-loading_state=NULL, max=NULL, maxLength=NULL, min=NULL,
-minLength=NULL, n_blur=NULL, n_blur_timestamp=NULL,
-n_submit=NULL, n_submit_timestamp=NULL, name=NULL,
-pattern=NULL, persisted_props=NULL, persistence=NULL,
+dbcInput(id=NULL, autoComplete=NULL, autoFocus=NULL,
+autocomplete=NULL, autofocus=NULL, className=NULL,
+class_name=NULL, debounce=NULL, disabled=NULL,
+html_size=NULL, inputMode=NULL, inputmode=NULL,
+invalid=NULL, key=NULL, list=NULL, loading_state=NULL,
+max=NULL, maxLength=NULL, maxlength=NULL, min=NULL,
+minLength=NULL, minlength=NULL, n_blur=NULL,
+n_blur_timestamp=NULL, n_submit=NULL,
+n_submit_timestamp=NULL, name=NULL, pattern=NULL,
+persisted_props=NULL, persistence=NULL,
 persistence_type=NULL, placeholder=NULL, plaintext=NULL,
 required=NULL, size=NULL, step=NULL, style=NULL,
-tabIndex=NULL, type=NULL, valid=NULL, value=NULL)
+tabIndex=NULL, tabindex=NULL, type=NULL, valid=NULL,
+value=NULL)
 }
 
 \arguments{
@@ -27,18 +31,31 @@ tabIndex=NULL, type=NULL, valid=NULL, value=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{autoComplete}{Character. This attribute indicates whether the value of the control can be
+\item{autoComplete}{Character. **DEPRECATED** Use `autocomplete` instead.
+
+This attribute indicates whether the value of the control can be
 automatically completed by the browser.}
 
-\item{autoFocus}{A value equal to: 'autofocus', 'autofocus', 'autofocus' | logical. The element should be automatically focused after the page loaded.
+\item{autoFocus}{A value equal to: 'autofocus', 'autofocus', 'autofocus' | logical. **DEPRECATED** Use `autofocus` instead.
+
+The element should be automatically focused after the page loaded.
 autoFocus is an HTML boolean attribute - it is enabled by a boolean or
 'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
 are also acccepted.}
 
-\item{bs_size}{Character. Set the size of the Input. Options: 'sm' (small), 'md' (medium)
-or 'lg' (large). Default is 'md'.}
+\item{autocomplete}{Character. This attribute indicates whether the value of the control can be
+automatically completed by the browser.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{autofocus}{A value equal to: 'autofocus', 'autofocus', 'autofocus' | logical. The element should be automatically focused after the page loaded.
+autoFocus is an HTML boolean attribute - it is enabled by a boolean or
+'autoFocus'. Alternative capitalizations `autofocus` & `AUTOFOCUS`
+are also acccepted.}
+
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{debounce}{Logical. If true, changes to input will be sent back to the Dash server
 only when the enter key is pressed or when the component loses
@@ -47,11 +64,23 @@ change.}
 
 \item{disabled}{Logical. Set to True to disable the Input.}
 
-\item{inputMode}{A value equal to: "verbatim", "latin", "latin-name", "latin-prose", "full-width-latin", "kana", "katakana", "numeric", "tel", "email", "url". Provides a hint to the browser as to the type of data that might be
+\item{html_size}{Character. The initial size of the control. This value is in pixels unless the value
+of the type attribute is text or password, in which case it is an integer
+number of characters. This attribute applies only when the type attribute
+is set to text, search, tel, url, email, or password, otherwise it is
+ignored. In addition, the size must be greater than zero. If you do not
+specify a size, a default value of 20 is used.}
+
+\item{inputMode}{A value equal to: "verbatim", "latin", "latin-name", "latin-prose", "full-width-latin", "kana", "katakana", "numeric", "tel", "email", "url". **DEPRECATED** Use `inputmode` instead.
+
+Provides a hint to the browser as to the type of data that might be
+entered by the user while editing the element or its contents.}
+
+\item{inputmode}{A value equal to: "verbatim", "latin", "latin-name", "latin-prose", "full-width-latin", "kana", "katakana", "numeric", "tel", "email", "url". Provides a hint to the browser as to the type of data that might be
 entered by the user while editing the element or its contents.}
 
 \item{invalid}{Logical. Apply invalid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=False to display.}
+any FormFeedback in the enclosing div with valid=False to display.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -73,7 +102,18 @@ those elements have the following types:
 \item{max}{Character | numeric. The maximum (numeric or date-time) value for this item, which must not be
 less than its minimum (min attribute) value.}
 
-\item{maxLength}{Character | numeric. If the value of the type attribute is text, email, search, password, tel,
+\item{maxLength}{Character | numeric. **DEPRECATED** Use `maxlength` instead.
+
+If the value of the type attribute is text, email, search, password, tel,
+or url, this attribute specifies the maximum number of characters
+(in UTF-16 code units) that the user can enter. For other control types,
+it is ignored. It can exceed the value of the size attribute. If it is not
+specified, the user can enter an unlimited number of characters.
+Specifying a negative number results in the default behavior (i.e. the
+user can enter an unlimited number of characters). The constraint is
+evaluated only when the value of the attribute has been changed.}
+
+\item{maxlength}{Character | numeric. If the value of the type attribute is text, email, search, password, tel,
 or url, this attribute specifies the maximum number of characters
 (in UTF-16 code units) that the user can enter. For other control types,
 it is ignored. It can exceed the value of the size attribute. If it is not
@@ -85,7 +125,14 @@ evaluated only when the value of the attribute has been changed.}
 \item{min}{Character | numeric. The minimum (numeric or date-time) value for this item, which must not be
 greater than its maximum (max attribute) value.}
 
-\item{minLength}{Character | numeric. If the value of the type attribute is text, email, search, password, tel,
+\item{minLength}{Character | numeric. **DEPRECATED** Use `minlength` instead.
+
+If the value of the type attribute is text, email, search, password, tel,
+or url, this attribute specifies the minimum number of characters (in
+Unicode code points) that the user can enter. For other control types, it
+is ignored.}
+
+\item{minlength}{Character | numeric. If the value of the type attribute is text, email, search, password, tel,
 or url, this attribute specifies the minimum number of characters (in
 Unicode code points) that the user can enter. For other control types, it
 is ignored.}
@@ -145,12 +192,8 @@ required is an HTML boolean attribute - it is enabled by a boolean or
 'required'. Alternative capitalizations `REQUIRED`
 are also acccepted.}
 
-\item{size}{Character. The initial size of the control. This value is in pixels unless the value
-of the type attribute is text or password, in which case it is an integer
-number of characters. This attribute applies only when the type attribute
-is set to text, search, tel, url, email, or password, otherwise it is
-ignored. In addition, the size must be greater than zero. If you do not
-specify a size, a default value of 20 is used.}
+\item{size}{Character. Set the size of the Input. Options: 'sm' (small), 'md' (medium)
+or 'lg' (large). Default is 'md'.}
 
 \item{step}{Character | numeric. Works with the min and max attributes to limit the increments at which a
 numeric or date-time value can be set. It can be the string any or a
@@ -160,12 +203,16 @@ the minimum.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
-\item{tabIndex}{Character. Overrides the browser's default tab order and follows the one specified instead.}
+\item{tabIndex}{Character. **DEPRECATED** Use `tabindex` instead.
+
+Overrides the browser's default tab order and follows the one specified instead.}
+
+\item{tabindex}{Character. Overrides the browser's default tab order and follows the one specified instead.}
 
 \item{type}{A value equal to: "text", 'number', 'password', 'email', 'range', 'search', 'tel', 'url', 'hidden'. The type of control to render}
 
 \item{valid}{Logical. Apply valid style to the Input for feedback purposes. This will cause
-any FormFeedback in the enclosing FormGroup with valid=True to display.}
+any FormFeedback in the enclosing div with valid=True to display.}
 
 \item{value}{Character | numeric. The value of the Input}
 }

@@ -10,7 +10,8 @@ Use this component to add consistent padding to the body (main content) of your 
 }
 
 \usage{
-dbcModalBody(children=NULL, id=NULL, className=NULL, style=NULL, tag=NULL)
+dbcModalBody(children=NULL, id=NULL, className=NULL, class_name=NULL,
+loading_state=NULL, style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -20,7 +21,17 @@ dbcModalBody(children=NULL, id=NULL, className=NULL, style=NULL, tag=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
+
+\item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
+those elements have the following types:
+  - is_loading (logical; optional): determines if the component is loading or not
+  - prop_name (character; optional): holds which property is loading
+  - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 

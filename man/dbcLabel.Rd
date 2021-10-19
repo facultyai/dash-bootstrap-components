@@ -10,10 +10,11 @@ A component for adding labels to inputs in forms with added sizing controls.
 }
 
 \usage{
-dbcLabel(children=NULL, id=NULL, align=NULL, className=NULL,
-color=NULL, hidden=NULL, html_for=NULL, key=NULL, lg=NULL,
-loading_state=NULL, md=NULL, size=NULL, sm=NULL, style=NULL,
-width=NULL, xl=NULL, xs=NULL)
+dbcLabel(children=NULL, id=NULL, align=NULL, check=NULL,
+className=NULL, class_name=NULL, color=NULL, hidden=NULL,
+html_for=NULL, key=NULL, lg=NULL, loading_state=NULL,
+md=NULL, size=NULL, sm=NULL, style=NULL, width=NULL,
+xl=NULL, xs=NULL)
 }
 
 \arguments{
@@ -26,7 +27,13 @@ components in an app.}
 \item{align}{A value equal to: 'start', 'center', 'end'. Set vertical alignment of the label, options: 'start', 'center', 'end',
 default: 'center'}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{check}{Logical. Set to True when using to label a Checkbox or RadioButton.}
+
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Text color, options: primary, secondary, success, warning, danger, info,
 muted, light, dark, body, white, black-50, white-50 or any valid CSS color of

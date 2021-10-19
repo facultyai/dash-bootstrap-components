@@ -10,9 +10,9 @@ Bootstrap list groups are a flexible way to display a series of content. Use in 
 }
 
 \usage{
-dbcListGroup(children=NULL, id=NULL, className=NULL, flush=NULL,
-horizontal=NULL, key=NULL, loading_state=NULL, style=NULL,
-tag=NULL)
+dbcListGroup(children=NULL, id=NULL, className=NULL, class_name=NULL,
+flush=NULL, horizontal=NULL, key=NULL, loading_state=NULL,
+style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -22,7 +22,11 @@ tag=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{flush}{Logical. When True the `list-group-flush` class is applied which removes some borders
 and rounded corners from the list group in order that they can be rendered

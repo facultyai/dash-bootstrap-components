@@ -10,10 +10,11 @@ Render Bootstrap style loading spinners using only CSS.  This component can be u
 }
 
 \usage{
-dbcSpinner(children=NULL, id=NULL, color=NULL, debounce=NULL,
-fullscreen=NULL, fullscreenClassName=NULL,
-fullscreen_style=NULL, show_initially=NULL, size=NULL,
-spinnerClassName=NULL, spinner_style=NULL, type=NULL)
+dbcSpinner(children=NULL, id=NULL, color=NULL, delay_hide=NULL,
+delay_show=NULL, fullscreen=NULL, fullscreenClassName=NULL,
+fullscreen_class_name=NULL, fullscreen_style=NULL,
+show_initially=NULL, size=NULL, spinnerClassName=NULL,
+spinner_class_name=NULL, spinner_style=NULL, type=NULL)
 }
 
 \arguments{
@@ -30,13 +31,20 @@ of your choice (e.g. a hex code, a decimal code or a CSS color name)
 
 If not specified will default to text colour.}
 
-\item{debounce}{Numeric. When using the spinner as a loading spinner, add a time delay (in ms) to
+\item{delay_hide}{Numeric. When using the spinner as a loading spinner, add a time delay (in ms) to
 the spinner being removed to prevent flickering.}
+
+\item{delay_show}{Numeric. When using the spinner as a loading spinner, add a time delay (in ms) to
+the spinner being shown after the loading_state is set to true.}
 
 \item{fullscreen}{Logical. Boolean that determines if the loading spinner will be displayed
 full-screen or not.}
 
-\item{fullscreenClassName}{Character. Often used with CSS to style elements with common properties.}
+\item{fullscreenClassName}{Character. **DEPRECATED** - use `fullscreen_class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{fullscreen_class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{fullscreen_style}{Named list. Defines CSS styles for the container when fullscreen=True.}
 
@@ -45,7 +53,11 @@ has been determined. Default True.}
 
 \item{size}{Character. The spinner size. Options are 'sm', and 'md'.}
 
-\item{spinnerClassName}{Character. CSS class names to apply to the spinner.}
+\item{spinnerClassName}{Character. **DEPRECATED** - use `spinner_class_name` instead.
+
+CSS class names to apply to the spinner.}
+
+\item{spinner_class_name}{Character. CSS class names to apply to the spinner.}
 
 \item{spinner_style}{Named list. Inline CSS styles to apply to the spinner.}
 

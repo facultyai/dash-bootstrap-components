@@ -10,10 +10,11 @@ Badges can be used to add counts or labels to other components.
 }
 
 \usage{
-dbcBadge(children=NULL, id=NULL, className=NULL, color=NULL,
-external_link=NULL, href=NULL, key=NULL, loading_state=NULL,
-n_clicks=NULL, n_clicks_timestamp=NULL, pill=NULL,
-style=NULL, tag=NULL, target=NULL, title=NULL)
+dbcBadge(children=NULL, id=NULL, className=NULL, class_name=NULL,
+color=NULL, external_link=NULL, href=NULL, key=NULL,
+loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL,
+pill=NULL, style=NULL, tag=NULL, target=NULL,
+text_color=NULL, title=NULL)
 }
 
 \arguments{
@@ -23,7 +24,11 @@ style=NULL, tag=NULL, target=NULL, title=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Badge color, options: primary, secondary, success, info, warning, danger,
 link or any valid CSS color of
@@ -63,6 +68,11 @@ which button was changed most recently.}
 \item{tag}{Character. HTML tag to use for the Badge. Default: span.}
 
 \item{target}{Character. Target attribute to pass on to the link. Only applies to external links.}
+
+\item{text_color}{Character. Badge color, options: primary, secondary, success, info, warning, danger,
+link or any valid CSS color of
+your choice (e.g. a hex code, a decimal code or a CSS color name)
+Default: secondary.}
 
 \item{title}{Character. Sets the title attribute of the underlying HTML button.}
 }

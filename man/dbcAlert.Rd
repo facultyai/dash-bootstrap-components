@@ -10,9 +10,9 @@ Alert allows you to create contextual feedback messages on user actions.  Contro
 }
 
 \usage{
-dbcAlert(children=NULL, id=NULL, className=NULL, color=NULL,
-dismissable=NULL, duration=NULL, fade=NULL, is_open=NULL,
-key=NULL, loading_state=NULL, style=NULL)
+dbcAlert(children=NULL, id=NULL, className=NULL, class_name=NULL,
+color=NULL, dismissable=NULL, duration=NULL, fade=NULL,
+is_open=NULL, key=NULL, loading_state=NULL, style=NULL)
 }
 
 \arguments{
@@ -22,7 +22,11 @@ key=NULL, loading_state=NULL, style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{className}{Character. Often used with CSS to style elements with common properties.}
+\item{className}{Character. **DEPRECATED** Use `class_name` instead.
+
+Often used with CSS to style elements with common properties.}
+
+\item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Alert color, options: primary, secondary, success, info, warning, danger,
 link or any valid CSS color of
