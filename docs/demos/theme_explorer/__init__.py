@@ -2,17 +2,25 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State
 
+from .accordion import accordion
 from .alert import alerts
 from .badge import badges
+from .breadcrumb import breadcrumb
 from .button import buttons
 from .card import cards
+from .carousel import carousel
 from .collapse import collapse
+from .dropdown_menu import dropdown_menu
 from .fade import fade
 from .form import form
 from .input import checklist_items, input_, input_group, radio_items
+from .layout import layout
 from .list_group import list_group
 from .modal import modal
+from .offcanvas import offcanvas
+from .nav import nav
 from .navbar import navbar
+from .pagination import pagination
 from .popover import popover
 from .progress import progress
 from .spinner import spinner
@@ -27,11 +35,15 @@ app = dash.Dash(
 
 app.layout = dbc.Container(
     [
+        accordion,
         alerts,
         badges,
+        breadcrumb,
         buttons,
         cards,
+        carousel,
         collapse,
+        dropdown_menu,
         fade,
         dbc.Row(
             [
@@ -45,9 +57,13 @@ app.layout = dbc.Container(
                 dbc.Col([radio_items], xs=12, md=6),
             ]
         ),
+        layout,
         list_group,
         modal,
+        offcanvas,
+        nav,
         navbar,
+        pagination,
         popover,
         progress,
         spinner,
@@ -96,10 +112,21 @@ def toggle_popover(n, is_open):
 
 @app.callback(
     Output("modal", "is_open"),
-    [Input("button", "n_clicks")],
+    [Input("modal-button", "n_clicks")],
     [State("modal", "is_open")],
 )
 def toggle_modal(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
+
+@app.callback(
+    Output("offcanvas", "is_open"),
+    [Input("offcanvas-button", "n_clicks")],
+    [State("offcanvas", "is_open")],
+)
+def toggle_offcanvas(n, is_open):
     if n:
         return not is_open
     return is_open
