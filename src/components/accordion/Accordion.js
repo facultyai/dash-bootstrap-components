@@ -37,6 +37,8 @@ const Accordion = props => {
     if (setProps) {
       if (active_item !== item) {
         setProps({active_item: item});
+      } else {
+        setProps({active_item: null});
       }
     }
   };
