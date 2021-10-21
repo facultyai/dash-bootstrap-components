@@ -9,6 +9,8 @@ Example snippets for the different components will look something like this, wit
 
 {{example:components/badge/simple.py:badge}}
 
+When code snippets are included in the description to explain a particular behaviour, this will only include the python version for brevity. So for example, it may talk about including `is_open=True` which is valid in python, but would need translating to `is_open=TRUE` in R or `is_open=true` in Julia. If you are using R or Julia, we strongly suggest looking at the given examples if you are unsure how to translate the code provided in the description.
+
 ## Adding the snippets to your app
 
 Note that the contents of each snippet **do not by themselves constitute a working app**. We generally omit boilerplate code such as standard imports and instantiation of the app. In the above example you would additionally need to:
