@@ -8,13 +8,11 @@ from .badge import badges
 from .breadcrumb import breadcrumb
 from .button import buttons
 from .card import cards
-from .carousel import carousel
 from .collapse import collapse
 from .dropdown_menu import dropdown_menu
 from .fade import fade
 from .form import form
 from .input import checklist_items, input_, input_group, radio_items
-from .layout import layout
 from .list_group import list_group
 from .modal import modal
 from .nav import nav
@@ -41,7 +39,6 @@ app.layout = dbc.Container(
         breadcrumb,
         buttons,
         cards,
-        carousel,
         collapse,
         dropdown_menu,
         fade,
@@ -57,7 +54,6 @@ app.layout = dbc.Container(
                 dbc.Col([radio_items], xs=12, md=6),
             ]
         ),
-        layout,
         list_group,
         modal,
         offcanvas,
