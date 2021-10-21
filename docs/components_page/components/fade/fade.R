@@ -17,7 +17,7 @@ fade <- htmlDiv(
         )
       ),
       id = "fade",
-      is_in = TRUE,
+      is_in = FALSE,
       appear = FALSE,
     )
   )
@@ -34,6 +34,6 @@ app$callback(
     if (n > 0) {
       return(!is_in)
     }
-    return(TRUE)
+    return(FALSE)
   }
 )

@@ -15,7 +15,7 @@ fade = html.Div(
                 )
             ),
             id="fade",
-            is_in=True,
+            is_in=False,
             appear=False,
         ),
     ]
@@ -30,5 +30,5 @@ fade = html.Div(
 def toggle_fade(n, is_in):
     if not n:
         # Button has never been clicked
-        return True
+        return False
     return not is_in

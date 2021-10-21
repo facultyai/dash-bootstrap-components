@@ -7,7 +7,7 @@ fade = html_div([
             dbc_cardbody(html_p("This content fades in and out", className = "card-text")),
         ),
         id = "fade",
-        is_in = true,
+        is_in = false,
         appear = false,
     ),
 ]);
@@ -18,5 +18,5 @@ callback!(
     Input("fade-button", "n_clicks"),
     State("fade", "is_in"),
 ) do n, is_in
-    return n > 0 ? is_in == 0 : true
+    return n > 0 ? is_in == 0 : false
 end;
