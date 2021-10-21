@@ -139,7 +139,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dbc.Container(
     dbc.Alert("Hello Bootstrap!", color="success"),
-    class_name="p-5",
+    className="p-5",
 )
 
 if __name__ == "__main__":
@@ -156,7 +156,7 @@ library(dashBootstrapComponents)
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
 app$layout(dbcContainer(dbcAlert("Hello Bootstrap!", color = "success"),
-                        class_name = "p-5"))
+                        className = "p-5"))
 
 app$run_server(showcase = TRUE)
 ```
@@ -171,7 +171,7 @@ app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
 
 app.layout = dbc_container(
     dbc_alert("Hello Bootstrap!", color="success"),
-    class_name="p-5",
+    className="p-5",
 )
 
 run_server(app, "0.0.0.0", 8080)
