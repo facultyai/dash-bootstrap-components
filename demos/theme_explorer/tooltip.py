@@ -10,7 +10,9 @@ tooltip = html.Div(
             [
                 "I wonder what ",
                 html.Span(
-                    "floccinaucinihilipilification", id="tooltip-target"
+                    "floccinaucinihilipilification",
+                    id="tooltip-target",
+                    style={"textDecoration": "underline", "cursor": "pointer"},
                 ),
                 " means?",
             ]
