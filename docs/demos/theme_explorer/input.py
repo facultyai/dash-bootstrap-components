@@ -20,6 +20,29 @@ input_ = html.Div(
                 dbc.FormFeedback("That's an invalid input...", type="invalid"),
             ]
         ),
+        html.Div(
+            [
+                dbc.Label("What's the best language?"),
+                dbc.Select(
+                    id="select",
+                    options=[
+                        {"label": "Python", "value": "python"},
+                        {"label": "R", "value": "r"},
+                        {"label": "Julia", "value": "r"},
+                        {
+                            "label": "Matlab",
+                            "value": "matlab",
+                            "disabled": True,
+                        },
+                        {
+                            "label": "F#",
+                            "value": "f#",
+                            "disabled": True,
+                        },
+                    ],
+                ),
+            ]
+        ),
     ]
 )
 
@@ -115,6 +138,19 @@ input_group = html.Div(
                 dbc.Input(type="text", placeholder="Enter username"),
             ],
             className="mb-3",
+        ),
+        dbc.InputGroup(
+            [dbc.InputGroupText("Large"), dbc.Input()],
+            size="lg",
+            className="my-3",
+        ),
+        dbc.InputGroup(
+            [dbc.InputGroupText("Default"), dbc.Input()], className="my-3"
+        ),
+        dbc.InputGroup(
+            [dbc.InputGroupText("Small"), dbc.Input()],
+            size="sm",
+            className="my-3",
         ),
     ],
     className="mb-4",
