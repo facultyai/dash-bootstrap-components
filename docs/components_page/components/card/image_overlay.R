@@ -3,7 +3,11 @@ library(dashHtmlComponents)
 
 card <- dbcCard(
   list(
-    dbcCardImg(src = "/static/images/placeholder286x180.png", top = TRUE),
+    dbcCardImg(
+      src = "/static/images/placeholder286x180.png", 
+      top = TRUE, 
+      style = list("opacity" = 0.3)
+    ),
     dbcCardImgOverlay(
       dbcCardBody(
         list(
