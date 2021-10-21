@@ -128,5 +128,26 @@ describe('Accordion', () => {
     expect(
       accordionItems.children[1].querySelector('div.accordion-collapse')
     ).toHaveClass('show');
+
+    // clicking on an open item closes it
+    userEvent.click(
+      accordionItems.children[1].querySelector('h2.accordion-header > button')
+    );
+    expect(mockSetProps.mock.calls).toHaveLength(2);
+
+    rerender(
+      <Accordion setProps={mockSetProps} {...mockSetProps.mock.calls[1][0]}>
+        <AccordionItem title="item-title-1">item-content-1</AccordionItem>
+        <AccordionItem title="item-title-2">item-content-2</AccordionItem>
+      </Accordion>
+    );
+    jest.runAllTimers();
+
+    expect(
+      accordionItems.children[0].querySelector('div.accordion-collapse')
+    ).not.toHaveClass('show');
+    expect(
+      accordionItems.children[1].querySelector('div.accordion-collapse')
+    ).not.toHaveClass('show');
   });
 });
