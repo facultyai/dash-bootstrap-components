@@ -9,7 +9,7 @@ modal = html.Div(
         make_subheading("Modal", "modal"),
         html.P(
             [
-                dbc.Button("Show the cookie monster", id="button"),
+                dbc.Button("Show the cookie monster", id="modal-button"),
                 dbc.Modal(
                     [
                         dbc.ModalHeader("Cookies!"),
