@@ -16,6 +16,7 @@ toast <- htmlDiv(
       header = "This is the header",
       icon = "primary",
       duration = 4000,
+      is_open = FALSE
     )
   )
 )
@@ -25,6 +26,9 @@ app$callback(
   output("auto-toast", "is_open"),
   list(input("auto-toast-toggle", "n_clicks")),
   function(n) {
-    return(TRUE)
+    if (n > 0) {
+      return(TRUE)
+    }
+    return(dashNoUpdate())
   }
 )

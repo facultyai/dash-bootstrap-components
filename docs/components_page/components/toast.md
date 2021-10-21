@@ -3,9 +3,9 @@ title: Toasts
 lead: Push notifications to your users with a toast, a lightweight and easily customisable alert message.
 ---
 
-Toasts are lightweight notifications designed to mimic the push notifications popularized by mobile and desktop operating systems.
-
 ## Examples
+
+Toasts are lightweight notifications designed to mimic the push notifications popularized by mobile and desktop operating systems.
 
 The `Toast` component automatically creates a header and body, the children of the component populate the body, while the `header` property can be used to set the header text.
 

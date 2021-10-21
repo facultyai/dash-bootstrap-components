@@ -15,7 +15,8 @@ toast <- htmlDiv(
       id = "simple-toast",
       header = "This is the header",
       icon = "primary",
-      dismissable = TRUE
+      dismissable = TRUE,
+      is_open = FALSE
     )
   )
 )
