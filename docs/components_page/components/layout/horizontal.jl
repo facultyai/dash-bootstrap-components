@@ -36,4 +36,11 @@ row = html_div([
         ],
         justify = "around",
     ),
+    dbc_row(
+        [
+            dbc_col(html_div("One of two columns"), width = 4),
+            dbc_col(html_div("One of two columns"), width = 4),
+        ],
+        justify = "evenly",
+    ),
 ]);

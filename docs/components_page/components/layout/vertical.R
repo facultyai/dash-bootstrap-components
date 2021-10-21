@@ -34,5 +34,6 @@ row <- htmlDiv(
         dbcCol(htmlDiv("One of three columns"), align = "end")
       )
     )
-  )
+  ),
+  className="pad-row"
 )

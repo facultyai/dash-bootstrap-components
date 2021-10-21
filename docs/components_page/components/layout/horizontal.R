@@ -37,6 +37,13 @@ row <- htmlDiv(
         dbcCol(htmlDiv("One of two columns"), width = 4)
       ),
       justify = "around"
+    ),
+    dbcRow(
+      list(
+        dbcCol(htmlDiv("One of two columns"), width = 4),
+        dbcCol(htmlDiv("One of two columns"), width = 4)
+      ),
+      justify = "evenly"
     )
   )
 )

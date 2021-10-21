@@ -38,5 +38,12 @@ row = html.Div(
             ],
             justify="around",
         ),
+        dbc.Row(
+            [
+                dbc.Col(html.Div("One of two columns"), width=4),
+                dbc.Col(html.Div("One of two columns"), width=4),
+            ],
+            justify="evenly",
+        ),
     ]
 )

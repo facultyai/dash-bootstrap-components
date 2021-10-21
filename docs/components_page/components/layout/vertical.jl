@@ -30,4 +30,5 @@ row = html_div([
         dbc_col(html_div("One of three columns"), align = "center"),
         dbc_col(html_div("One of three columns"), align = "end"),
     ]),
+    className="pad-row",
 ]);
