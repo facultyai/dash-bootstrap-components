@@ -1,20 +1,14 @@
 library(dashBootstrapComponents)
 library(dashHtmlComponents)
 
-nav1 <- dbcNav(
-  list(
-    dbcNavItem(dbcNavLink("A link", href = "#")),
-    dbcNavItem(dbcNavLink("Another link with a longer label", href = "#"))
-  ),
-  fill = TRUE
+nav_contents <- list(
+    dbcNavItem(dbcNavLink("Active", href="#", active=TRUE)),
+    dbcNavItem(dbcNavLink("A much longer link label", href="#")),
+    dbcNavItem(dbcNavLink("Link", href="#")),
 )
 
-nav2 <- dbcNav(
-  list(
-    dbcNavItem(dbcNavLink("A link", href = "#")),
-    dbcNavItem(dbcNavLink("Another link with a longer label", href = "#"))
-  ),
-  justified = TRUE
-)
+nav1 <- dbcNav(nav_contents, pills=TRUE, fill = TRUE)
+
+nav2 <- dbcNav(nav_contents, pills=TRUE, justified = TRUE)
 
 navs <- htmlDiv(list(nav1, htmlHr(), nav2))
