@@ -64,6 +64,11 @@ const DropdownMenu = props => {
             ? 'end'
             : direction
         }
+        onToggle={(show, event) => {
+          if (!event || event.source !== 'select') {
+            setDropdownOpen(show);
+          }
+        }}
         align={align_end ? 'end' : right ? 'end' : 'start'}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={
