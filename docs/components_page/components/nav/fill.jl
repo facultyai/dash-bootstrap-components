@@ -1,9 +1,9 @@
 using DashBootstrapComponents, DashHtmlComponents
 
 nav_contents = [
-    dbc_navitem(dbc_navlink("Active", href="#", active=true)),
-    dbc_navitem(dbc_navlink("A much longer link label", href="#")),
-    dbc_navitem(dbc_navlink("Link", href="#")),
+    dbc_navitem(dbc_navlink("Active", href = "#", active = true)),
+    dbc_navitem(dbc_navlink("A much longer link label", href = "#")),
+    dbc_navitem(dbc_navlink("Link", href = "#")),
 ]
 
 nav1 = dbc_nav(nav_contents, pills = true, fill = true);

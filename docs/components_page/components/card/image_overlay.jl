@@ -3,7 +3,7 @@ using DashBootstrapComponents, DashHtmlComponents
 card = dbc_card(
     [
         dbc_cardimg(
-            src = "/static/images/placeholder286x180.png", 
+            src = "/static/images/placeholder286x180.png",
             top = true,
             style = Dict("opacity" => 0.3),
         ),

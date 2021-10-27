@@ -35,5 +35,5 @@ row <- htmlDiv(
       )
     )
   ),
-  className="pad-row"
+  className = "pad-row"
 )
