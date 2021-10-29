@@ -14,6 +14,12 @@ To use `Popover`, add it to your layout, and set the `target` argument to the `i
 
 {{example:components/popover/popover.py:popovers}}
 
+## Popover components
+
+You can build a styled `Popover` by making use of the `PopoverHeader` and `PopoverBody`.
+
+{{example:components/popover/popover_components.py:popovers}}
+
 ## Toggling the Popover with callbacks
 
 Alternatively, you can manually control the appearance of the popover using callbacks by setting the `is_open` property of the `Popover`. This can be useful for example when you want to make the popover appear after the user interacts with something other than the target component as demonstrated in the below example.
@@ -25,6 +31,13 @@ Alternatively, you can manually control the appearance of the popover using call
 Use the `placement` argument to control the placement of the `Popover`. The basic options are `'top'`, `'left'`, `'right'`, `'bottom'` and `'auto'`. You can additionally add `-start` or `-end` to any of these options, e.g. `'top-start'`.
 
 {{example:components/popover/direction.py:popovers}}
+
+## Styling
+
+You can use `hide_arrow` to remove the arrow, and the `offset` property to offset the popover in relation to the target.
+
+{{example:components/popover/styling.py:popovers}}
+
 
 {{apidoc:src/components/popover/Popover.js}}
 
