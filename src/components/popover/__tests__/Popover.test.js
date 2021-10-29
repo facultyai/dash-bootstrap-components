@@ -98,5 +98,4 @@ describe('Popover', () => {
 
     expect(document.body.querySelector('.popover-body')).not.toBe(null);
   });
-
 });
