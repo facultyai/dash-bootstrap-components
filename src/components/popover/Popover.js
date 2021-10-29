@@ -206,7 +206,7 @@ Popover.propTypes = {
    * When body is `True`, the Popover will render all children in a
    * `PopoverBody` automatically.
    */
-   body: PropTypes.bool,
+  body: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

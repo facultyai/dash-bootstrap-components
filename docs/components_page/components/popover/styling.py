@@ -13,7 +13,7 @@ popovers = html.Div(
             "I am a popover without an arrow!",
             target="hide-arrow-target",
             trigger="legacy",
-            hide_arrow=True
+            hide_arrow=True,
         ),
         dbc.Button(
             "Offset Popover",
