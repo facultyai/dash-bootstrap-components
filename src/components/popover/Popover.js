@@ -24,6 +24,7 @@ const Popover = props => {
     id,
     hide_arrow,
     offset,
+    body,
     ...otherProps
   } = props;
 
@@ -60,8 +61,7 @@ const Popover = props => {
         id={id}
         className={class_name || className}
         hideArrow={hide_arrow}
-        // Allows user to pass in text, and it will be rendered in a PopoverBody
-        body={typeof children === 'string' ? true : null}
+        body={body}
       >
         {children}
       </PopoverTemplate>
@@ -201,6 +201,12 @@ Popover.propTypes = {
    * edge, default True.
    */
   flip: PropTypes.bool,
+
+  /**
+   * When body is `True`, the Popover will render all children in a
+   * `PopoverBody` automatically.
+   */
+   body: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

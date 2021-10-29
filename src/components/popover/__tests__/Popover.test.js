@@ -86,10 +86,10 @@ describe('Popover', () => {
     expect(document.body.querySelector('.popover-arrow')).toBe(null);
   });
 
-  test('popover-body automatically added with text', () => {
+  test('popover-body automatically added with body', () => {
     render(
-      <Popover target="test-target" is_open>
-        Test Text/
+      <Popover target="test-target" is_open body>
+        Test Text
       </Popover>,
       {
         container: document.body.appendChild(div)
@@ -97,5 +97,18 @@ describe('Popover', () => {
     );
 
     expect(document.body.querySelector('.popover-body')).not.toBe(null);
+  });
+
+  test('popover-body not added with body=false', () => {
+    render(
+      <Popover target="test-target" is_open>
+        Test Text
+      </Popover>,
+      {
+        container: document.body.appendChild(div)
+      }
+    );
+
+    expect(document.body.querySelector('.popover-body')).toBe(null);
   });
 });
