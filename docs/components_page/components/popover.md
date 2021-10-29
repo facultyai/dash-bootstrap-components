@@ -5,7 +5,13 @@ lead: Use the Popover component to add Bootstrap popovers to any component in yo
 
 ## Examples
 
-To use `Popover`, add it to your layout, and set the `target` argument to the `id` of the component you would like to attach the popover to. The easiest way to trigger the popover is to specify the `trigger` property. This should be a string containing any of the following 4 values (space separated)
+To use `Popover`, add it to your layout, and set the `target` argument to the `id` of the component you would like to attach the popover to. You can add content to the popover quickly by specifying `body=True`, or make use of the `PopoverBody` (see below for more details).
+
+{{example:components/popover/simple.py:popovers}}
+
+## Trigger Types
+
+The easiest way to trigger the popover is to specify the `trigger` property. This should be a string containing any of the following 4 values (space separated)
 
 *  `"click"`: toggles the popover when the target is clicked.
 *  `"focus"`: toggles the popover when the target receives focus

@@ -15,6 +15,7 @@ popovers = html.Div(
         dbc.Popover(
             popover_children,
             target="click-target",
+            body=True,
             trigger="click",
         ),
         dbc.Button(
@@ -27,6 +28,7 @@ popovers = html.Div(
         dbc.Popover(
             popover_children,
             target="focus-target",
+            body=True,
             trigger="focus",
         ),
         dbc.Button(
@@ -39,12 +41,14 @@ popovers = html.Div(
         dbc.Popover(
             popover_children,
             target="hover-target",
+            body=True,
             trigger="hover",
         ),
         dbc.Button("Legacy", id="legacy-target", color="danger", n_clicks=0),
         dbc.Popover(
             popover_children,
             target="legacy-target",
+            body=True,
             trigger="legacy",
         ),
     ]
