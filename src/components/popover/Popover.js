@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RBPopover from 'react-bootstrap/Popover';
 
+import PopoverTemplate from '../../private/PopoverTemplate';
 import Overlay from '../../private/Overlay';
 
 /**
@@ -22,6 +22,7 @@ const Popover = props => {
     class_name,
     style,
     id,
+    hide_arrow,
     ...otherProps
   } = props;
 
@@ -33,16 +34,18 @@ const Popover = props => {
       defaultShow={is_open}
       {...otherProps}
     >
-      <RBPopover
-        // hideArrow={hide_arrow}
+      <PopoverTemplate
         // to ensure proper backwards compatibility, the toggle function is only
         // passed to the popover if `trigger` is not specified
         style={style}
         id={id}
         className={class_name || className}
+        hideArrow={hide_arrow}
+        // Allows user to pass in text, and it will be rendered in a PopoverBody
+        body={typeof(children) === "string" ? true : null}
       >
         {children}
-      </RBPopover>
+      </PopoverTemplate>
     </Overlay>
   );
 };

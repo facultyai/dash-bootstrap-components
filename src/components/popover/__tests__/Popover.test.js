@@ -47,6 +47,14 @@ describe('Popover', () => {
     expect(document.body.querySelector('.popover')).toBe(null);
   });
 
+  test('renders straight away if is_open=true', () => {
+    render(<Popover target="test-target" is_open={true} />, {
+      container: document.body.appendChild(div)
+    });
+
+    expect(document.body.querySelector('.popover')).not.toBe(null);
+  });
+
   test('renders its content', () => {
     render(
       <Popover target="test-target" is_open={true}>
@@ -58,5 +66,21 @@ describe('Popover', () => {
     expect(document.body.querySelector('.popover')).toHaveTextContent(
       'Popover content'
     );
+  });
+
+  test('shows arrow when hide_arrow is not specified', () => {
+    render(<Popover target="test-target" is_open/>, {
+      container: document.body.appendChild(div)
+    });
+
+    expect(document.body.querySelector('.popover-arrow')).not.toBe(null);
+  });
+
+  test('hides arrow when hide_arrow is true', () => {
+    render(<Popover target="test-target" is_open hide_arrow/>, {
+      container: document.body.appendChild(div)
+    });
+
+    expect(document.body.querySelector('.popover-arrow')).toBe(null);
   });
 });
