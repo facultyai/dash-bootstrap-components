@@ -6,6 +6,8 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import Popover from '../Popover';
 
+// TODO - Add test for offset
+
 describe('Popover', () => {
   // this is just a little hack to silence a warning that we'll get until we
   // upgrade to 16.9. See also: https://github.com/facebook/react/pull/14853
@@ -36,7 +38,7 @@ describe('Popover', () => {
       container: document.body.appendChild(div)
     });
 
-    expect(document.body.querySelector('.popover')).not.toBe(null);
+    expect(document.body.querySelector('.popover.show')).not.toBe(null);
   });
 
   test('renders nothing if is_open=false', () => {
@@ -44,7 +46,7 @@ describe('Popover', () => {
       container: document.body.appendChild(div)
     });
 
-    expect(document.body.querySelector('.popover')).toBe(null);
+    expect(document.body.querySelector('.popover.show')).toBe(null);
   });
 
   test('renders straight away if is_open=true', () => {
@@ -52,7 +54,7 @@ describe('Popover', () => {
       container: document.body.appendChild(div)
     });
 
-    expect(document.body.querySelector('.popover')).not.toBe(null);
+    expect(document.body.querySelector('.popover.show')).not.toBe(null);
   });
 
   test('renders its content', () => {
@@ -69,7 +71,7 @@ describe('Popover', () => {
   });
 
   test('shows arrow when hide_arrow is not specified', () => {
-    render(<Popover target="test-target" is_open/>, {
+    render(<Popover target="test-target" is_open />, {
       container: document.body.appendChild(div)
     });
 
@@ -77,10 +79,24 @@ describe('Popover', () => {
   });
 
   test('hides arrow when hide_arrow is true', () => {
-    render(<Popover target="test-target" is_open hide_arrow/>, {
+    render(<Popover target="test-target" is_open hide_arrow />, {
       container: document.body.appendChild(div)
     });
 
     expect(document.body.querySelector('.popover-arrow')).toBe(null);
   });
+
+  test('popover-body automatically added with text', () => {
+    render(
+      <Popover target="test-target" is_open>
+        Test Text/
+      </Popover>,
+      {
+        container: document.body.appendChild(div)
+      }
+    );
+
+    expect(document.body.querySelector('.popover-body')).not.toBe(null);
+  });
+
 });
