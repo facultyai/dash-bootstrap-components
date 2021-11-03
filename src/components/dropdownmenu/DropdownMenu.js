@@ -204,7 +204,7 @@ DropdownMenu.propTypes = {
    * Set the color of the DropdownMenu toggle. Available options are: 'primary',
    * 'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
    * color of your choice (e.g. a hex code, a decimal code or a CSS color name)
-   * Default: 'secondary'
+   * Default: 'primary'
    */
   color: PropTypes.string,
 
