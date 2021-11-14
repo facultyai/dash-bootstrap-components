@@ -145,7 +145,7 @@ Button.propTypes = {
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,
-   * link. Default: secondary.
+   * link. Default: primary.
    */
   color: PropTypes.string,
 

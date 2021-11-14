@@ -48,12 +48,12 @@ class _V1DeprecationWarningWrapper:
 
     def __getattr__(self, name):
         if name in self.deprecated:
-            # TODO: update URL before release
             raise AttributeError(
                 f"{name} was deprecated in dash-bootstrap-components version "
                 f"1.0.0. You are using {__version__}. For more details please "
                 "see the migration guide: "
-                "https://dbc-v1.herokuapp.com/migration-guide/"
+                "https://dash-bootstrap-components.opensource.faculty.ai/"
+                "migration-guide/"
             )
         return getattr(self.wrapped, name)
 
