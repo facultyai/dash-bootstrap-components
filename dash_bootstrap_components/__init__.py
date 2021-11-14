@@ -53,7 +53,6 @@ class _V1DeprecationWarningWrapper:
                 f"1.0.0. You are using {__version__}. For more details please "
                 "see the migration guide: "
                 "https://dash-bootstrap-components.opensource.faculty.ai/migration-guide/"
-
             )
         return getattr(self.wrapped, name)
 
