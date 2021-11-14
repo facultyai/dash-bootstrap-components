@@ -93,6 +93,12 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - Added `dark` property for dark text, controls, and indicators. This is great for lighter backgrounds.
 - Replaced chevron icons for carousel controls with new SVGs from Bootstrap Icons.
 
+### Checkbox
+- <span class="badge bg-danger">Breaking</span> Renamed `checked` property to `value`.
+
+### Checklist
+- <span class="badge bg-danger">Breaking</span> Dropped `custom` property. As of Bootstrap 5 all radio buttons and checkboxes receive custom styling.
+
 ### Col
 - <span class="badge bg-danger">Breaking</span> When specifying the `order` of the columns, it accepts the integers 1, ..., 5,  only rather than integers 1, ..., 12.
 - Added `xxl` prop corresponding to the new `xxl` breakpoint in Bootstrap 5. Allows you to control the layout on extra large screens.
@@ -154,6 +160,12 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - <span class="badge bg-danger">Breaking</span> Dropped `tag` property.
 - Added a `label` property that should be used instead of `children` to render text on the progress bar.
 - Added a `hide_label` property to hide the label.
+
+### RadioButton
+- <span class="badge bg-danger">Breaking</span> Renamed `checked` property to `value`.
+
+### RadioItems
+- <span class="badge bg-danger">Breaking</span> Dropped `custom` property. As of Bootstrap 5 all radio buttons and checkboxes receive custom styling.
 
 ### Row
 - <span class="badge bg-danger">Breaking</span> Dropped `no_gutters` prop.  Use gutter modifier classes instead. See the [docs](/docs/components/layout/) for examples.
