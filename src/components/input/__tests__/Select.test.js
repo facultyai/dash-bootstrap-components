@@ -43,6 +43,14 @@ describe('Select', () => {
     expect(select).not.toHaveValue();
   });
 
+  test('sets validity using "valid" and "invalid" props', () => {
+    const validSelect = render(<Select valid />);
+    const invalidSelect = render(<Select invalid />);
+
+    expect(validSelect.container.firstChild).toHaveClass('is-valid');
+    expect(invalidSelect.container.firstChild).toHaveClass('is-invalid');
+  });
+
   test('dispatches value when selection is made and setProps is set', () => {
     const mockSetProps = jest.fn();
     const {
