@@ -16,14 +16,14 @@ alert <- div(
       "Hello! I am an alert",
       id = "alert-fade",
       dismissable = TRUE,
-      is_open = TRUE,
+      is_open = TRUE
     ),
     dbcAlert(
       "Hello! I am an alert that doesn't fade in or out",
       id = "alert-no-fade",
       dismissable = TRUE,
       fade = FALSE,
-      is_open = TRUE,
+      is_open = TRUE
     )
   )
 )

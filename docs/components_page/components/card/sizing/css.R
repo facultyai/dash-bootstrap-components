@@ -12,5 +12,5 @@ cards <- dbcCard(
       )
     )
   ),
-  style = list(width = "18rem"),
+  style = list(width = "18rem")
 )

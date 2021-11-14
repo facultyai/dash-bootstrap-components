@@ -8,10 +8,10 @@ form <- dbcRow(
         dbcInput(
           type = "email",
           id = "example-email-grid",
-          placeholder = "Enter email",
+          placeholder = "Enter email"
         )
       ),
-      width = 6,
+      width = 6
     ),
     dbcCol(
       list(
@@ -19,11 +19,11 @@ form <- dbcRow(
         dbcInput(
           type = "password",
           id = "example-password-grid",
-          placeholder = "Enter password",
+          placeholder = "Enter password"
         )
       ),
-      width = 6,
+      width = 6
     )
   ),
-  className = "g-3",
+  className = "g-3"
 )

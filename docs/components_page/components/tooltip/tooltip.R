@@ -8,7 +8,7 @@ tooltip <- div(
         span(
           "floccinaucinihilipilification",
           id = "tooltip-target",
-          style = list(textDecoration = "underline", cursor = "pointer"),
+          style = list(textDecoration = "underline", cursor = "pointer")
         ),
         " means?"
       )
@@ -18,7 +18,7 @@ tooltip <- div(
         "Noun: rare,",
         "the action or habit of estimating something as worthless."
       ),
-      target = "tooltip-target",
+      target = "tooltip-target"
     )
   )
 )

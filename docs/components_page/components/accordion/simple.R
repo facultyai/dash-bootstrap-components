@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
 
 accordion <- div(
   dbcAccordion(

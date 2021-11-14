@@ -6,7 +6,7 @@ email_input_simple <- div(
     dbcInput(type = "email", id = "example-email", placeholder = "Enter email"),
     dbcFormText(
       "Are you on email? You simply have to be these days",
-      color = "secondary",
+      color = "secondary"
     )
   ),
   className = "mb-3"
@@ -18,7 +18,7 @@ password_input_simple <- div(
     dbcInput(
       type = "password",
       id = "example-password",
-      placeholder = "Enter password",
+      placeholder = "Enter password"
     ),
     dbcFormText(
       "A password stops mean people taking your stuff",

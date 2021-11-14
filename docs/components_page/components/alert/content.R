@@ -13,7 +13,7 @@ alert <- dbcAlert(
     html$hr(),
     p(
       "Let's put some more text down here, but remove the bottom margin",
-      className = "mb-0",
+      className = "mb-0"
     )
   )
 )

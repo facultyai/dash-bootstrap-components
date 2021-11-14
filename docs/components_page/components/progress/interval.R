@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
 
 progress <- div(
   list(

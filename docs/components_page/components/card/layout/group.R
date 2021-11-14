@@ -11,7 +11,7 @@ cards <- dbcCardGroup(
               "This card has some text content, which is a little",
               "bit longer than the second card."
             ),
-            className = "card-text",
+            className = "card-text"
           ),
           dbcButton(
             "Click here",
@@ -26,7 +26,7 @@ cards <- dbcCardGroup(
           html$h5("Card 2", className = "card-title"),
           p(
             "This card has some text content.",
-            className = "card-text",
+            className = "card-text"
           ),
           dbcButton(
             "Click here",
@@ -46,7 +46,7 @@ cards <- dbcCardGroup(
               "demonstrate the equal height property of cards in a",
               "card group."
             ),
-            className = "card-text",
+            className = "card-text"
           ),
           dbcButton(
             "Click here",

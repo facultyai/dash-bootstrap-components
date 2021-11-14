@@ -17,7 +17,7 @@ button_group <- div(
     ),
     div(id = "output")
   ),
-  className = "radio-group",
+  className = "radio-group"
 )
 
 

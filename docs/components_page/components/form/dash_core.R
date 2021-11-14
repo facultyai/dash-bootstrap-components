@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
 
 dropdown <- div(
   list(
@@ -12,7 +11,7 @@ dropdown <- div(
       )
     )
   ),
-  className = "mb-3",
+  className = "mb-3"
 )
 
 slider <- div(
