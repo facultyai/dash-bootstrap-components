@@ -86,7 +86,7 @@ Progress.propTypes = {
   bar: PropTypes.bool,
 
   /**
-   * Upper limit for value, default: 100
+   * Lower limit for value, default: 0
    */
   min: PropTypes.number,
 
