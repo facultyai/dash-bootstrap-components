@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-tabs <- htmlDiv(
+tabs <- div(
   list(
     dbcTabs(
       list(
@@ -9,7 +8,7 @@ tabs <- htmlDiv(
         dbcTab(label = "tab 2", active_label_style = list(color = "#FB79B3"))
       )
     ),
-    htmlBr(),
+    br(),
     dbcTabs(
       list(
         dbcTab(label = "Tab 1", activeTabClassName = "fw-bold fst-italic"),

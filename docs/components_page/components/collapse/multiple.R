@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-collapses <- htmlDiv(
+collapses <- div(
   list(
     dbcButton("Toggle left",
       color = "primary", id = "left",

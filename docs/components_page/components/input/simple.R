@@ -1,11 +1,10 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-text_input <- htmlDiv(
+text_input <- div(
   list(
     dbcInput(id = "input", placeholder = "Type something...", type = "text"),
-    htmlBr(),
-    htmlP(id = "output")
+    br(),
+    p(id = "output")
   )
 )
 

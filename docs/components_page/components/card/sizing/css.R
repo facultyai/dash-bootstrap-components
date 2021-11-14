@@ -1,11 +1,10 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 cards <- dbcCard(
   dbcCardBody(
     list(
-      htmlH5("Custom CSS", className = "card-title"),
-      htmlP(
+      html$h5("Custom CSS", className = "card-title"),
+      p(
         paste(
           "This card has inline styles applied controlling the width.",
           "You could also apply the same styles with a custom CSS class."

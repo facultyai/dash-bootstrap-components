@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-toast <- htmlDiv(
+toast <- div(
   list(
     dbcButton(
       "Open toast",
@@ -11,7 +10,7 @@ toast <- htmlDiv(
       className = "mb-3",
     ),
     dbcToast(
-      list(htmlP("This is the content of the toast", className = "mb-0")),
+      list(p("This is the content of the toast", className = "mb-0")),
       id = "auto-toast",
       header = "This is the header",
       icon = "primary",

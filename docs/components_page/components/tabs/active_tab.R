@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-tabs <- htmlDiv(
+tabs <- div(
   list(
     dbcTabs(
       list(
@@ -11,7 +10,7 @@ tabs <- htmlDiv(
       id = "tabs",
       active_tab = "tab-1"
     ),
-    htmlDiv(id = "content")
+    div(id = "content")
   )
 )
 
@@ -25,6 +24,6 @@ app$callback(
     } else if (at == "tab-2") {
       return(tab2_content)
     }
-    return(htmlP("This should not ever be displayed"))
+    return(p("This should not ever be displayed"))
   }
 )

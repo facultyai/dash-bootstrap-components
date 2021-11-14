@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 card <- dbcCard(
   list(
@@ -15,8 +14,8 @@ card <- dbcCard(
         dbcCol(
           dbcCardBody(
             list(
-              htmlH4("Card title", className = "card-title"),
-              htmlP(
+              h4("Card title", className = "card-title"),
+              p(
                 paste(
                   "This is a wider card with supporting text",
                   "below as a natural lead-in to additional",
@@ -24,7 +23,7 @@ card <- dbcCard(
                 ),
                 className = "card-text"
               ),
-              htmlSmall(
+              html$small(
                 "Last updated 3 mins ago",
                 className = "card-text text-muted"
               )

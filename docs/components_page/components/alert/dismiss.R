@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-alert <- htmlDiv(
+alert <- div(
   list(
     dbcButton(
       "Toggle alert with fade",
@@ -12,7 +11,7 @@ alert <- htmlDiv(
       id = "alert-toggle-no-fade",
       n_clicks = 0
     ),
-    htmlHr(),
+    html$hr(),
     dbcAlert(
       "Hello! I am an alert",
       id = "alert-fade",

@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 modal_1 <- dbcModal(
   list(
@@ -36,7 +35,7 @@ modal_2 <- dbcModal(
 )
 
 
-modal <- htmlDiv(
+modal <- div(
   list(
     dbcButton("Open modal", id = "open-toggle-modal", n_clicks = 0),
     modal_1,

@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 make_popover <- function(placement) {
   return(
@@ -29,7 +28,7 @@ make_button <- function(placement) {
 }
 
 
-popovers <- htmlDiv(
+popovers <- div(
   list(
     make_button("top"), make_button("left"),
     make_button("right"), make_button("bottom"),

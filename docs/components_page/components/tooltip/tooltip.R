@@ -1,12 +1,11 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-tooltip <- htmlDiv(
+tooltip <- div(
   list(
-    htmlP(
+    p(
       list(
         "I wonder what ",
-        htmlSpan(
+        span(
           "floccinaucinihilipilification",
           id = "tooltip-target",
           style = list(textDecoration = "underline", cursor = "pointer"),

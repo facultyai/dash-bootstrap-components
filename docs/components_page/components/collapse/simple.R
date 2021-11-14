@@ -1,8 +1,7 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 
-collapse <- htmlDiv(
+collapse <- div(
   list(
     dbcButton(
       "Open collapse",

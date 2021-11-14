@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-modal <- htmlDiv(
+modal <- div(
   list(
     dbcButton("Open modal", id = "open-dismiss"),
     dbcModal(

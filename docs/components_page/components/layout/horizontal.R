@@ -1,12 +1,11 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 row_content <- list(
-  dbcCol(htmlDiv("One of two columns"), width = 4),
-  dbcCol(htmlDiv("One of two columns"), width = 4)
+  dbcCol(div("One of two columns"), width = 4),
+  dbcCol(div("One of two columns"), width = 4)
 )
 
-row <- htmlDiv(
+row <- div(
   list(
     dbcRow(
       row_content,

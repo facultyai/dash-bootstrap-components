@@ -1,6 +1,6 @@
 library(dashBootstrapComponents)
 
-email_input_simple <- htmlDiv(
+email_input_simple <- div(
   list(
     dbcLabel("Email", html_for = "example-email"),
     dbcInput(type = "email", id = "example-email", placeholder = "Enter email"),
@@ -12,7 +12,7 @@ email_input_simple <- htmlDiv(
   className = "mb-3"
 )
 
-password_input_simple <- htmlDiv(
+password_input_simple <- div(
   list(
     dbcLabel("Password", html_for = "example-password"),
     dbcInput(

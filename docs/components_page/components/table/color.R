@@ -1,9 +1,8 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-color_selector <- htmlDiv(
+color_selector <- div(
   list(
-    htmlDiv("Select a colour theme:"),
+    div("Select a colour theme:"),
     dbcSelect(
       id = "change-table-color",
       options = list(
@@ -22,7 +21,7 @@ color_selector <- htmlDiv(
   className = "p-3 m-2 border"
 )
 
-table <- htmlDiv(
+table <- div(
   list(
     color_selector,
     dbcTable(

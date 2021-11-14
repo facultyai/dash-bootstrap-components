@@ -1,12 +1,11 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 card <- dbcCard(
   dbcCardBody(
     list(
-      htmlH4("Title", className = "card-title"),
-      htmlH6("Card subtitle", className = "card-subtitle"),
-      htmlP(
+      h4("Title", className = "card-title"),
+      html$h6("Card subtitle", className = "card-subtitle"),
+      p(
         paste(
           "Some quick example text to build on the card title and",
           "make up the bulk of the card's content."
