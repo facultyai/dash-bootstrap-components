@@ -8,7 +8,14 @@ import RBFormSelect from 'react-bootstrap/FormSelect';
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const {className, class_name, html_size, ...otherProps} = props;
+  const {
+    className,
+    class_name,
+    html_size,
+    valid,
+    invalid,
+    ...otherProps
+  } = props;
 
   const handleChange = e => {
     if (props.setProps) {
@@ -29,6 +36,8 @@ const Select = props => {
         ],
         otherProps
       )}
+      isInvalid={invalid}
+      isValid={valid}
       onChange={handleChange}
       className={class_name || className}
       htmlSize={html_size}
