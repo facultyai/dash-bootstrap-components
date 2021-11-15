@@ -1,13 +1,12 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-button <- htmlDiv(
+button <- div(
   list(
     dbcButton("Click me",
       id = "example-button", n_clicks = 0,
       className = "me-2"
     ),
-    htmlSpan(id = "example-output", style = list(verticalAlign = "middle"))
+    span(id = "example-output", style = list(verticalAlign = "middle"))
   )
 )
 

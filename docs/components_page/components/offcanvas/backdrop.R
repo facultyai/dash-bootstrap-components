@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-backdrop_selector <- htmlDiv(
+backdrop_selector <- div(
   list(
     dbcLabel("Backdrop:"),
     dbcRadioItems(
@@ -19,7 +18,7 @@ backdrop_selector <- htmlDiv(
 )
 
 
-offcanvas <- htmlDiv(
+offcanvas <- div(
   list(
     backdrop_selector,
     dbcButton(
@@ -27,7 +26,7 @@ offcanvas <- htmlDiv(
       id = "open-offcanvas-backdrop", n_clicks = 0
     ),
     dbcOffcanvas(
-      htmlP("Here is some content..."),
+      p("Here is some content..."),
       id = "offcanvas-backdrop",
       title = "Offcanvas with/without backdrop",
       is_open = FALSE

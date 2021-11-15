@@ -2,7 +2,11 @@ using DashBootstrapComponents, DashHtmlComponents
 
 card = dbc_card(
     [
-        dbc_cardimg(src = "/static/images/placeholder286x180.png", top = true),
+        dbc_cardimg(
+            src = "/static/images/placeholder286x180.png",
+            top = true,
+            style = Dict("opacity" => 0.3),
+        ),
         dbc_cardimgoverlay(
             dbc_cardbody([
                 html_h4("Card title", className = "card-title"),

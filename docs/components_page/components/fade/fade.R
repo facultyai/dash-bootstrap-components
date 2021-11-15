@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-fade <- htmlDiv(
+fade <- div(
   list(
     dbcButton("Toggle fade",
       id = "fade-button", n_clicks = 0,
@@ -10,14 +9,14 @@ fade <- htmlDiv(
     dbcFade(
       dbcCard(
         dbcCardBody(
-          htmlP(
+          p(
             "This content fades in and out",
             className = "card-text"
           )
         )
       ),
       id = "fade",
-      is_in = TRUE,
+      is_in = FALSE,
       appear = FALSE,
     )
   )
@@ -34,6 +33,6 @@ app$callback(
     if (n > 0) {
       return(!is_in)
     }
-    return(TRUE)
+    return(FALSE)
   }
 )

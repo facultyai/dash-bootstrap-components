@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-buttons <- htmlDiv(
+buttons <- div(
   list(
     dbcButton("Primary", outline = TRUE, color = "primary", className = "me-1"),
     dbcButton(

@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-radioitems <- htmlDiv(
+radioitems <- div(
   list(
     dbcLabel("Choose one"),
     dbcRadioItems(
@@ -17,7 +16,7 @@ radioitems <- htmlDiv(
 )
 
 
-checklist <- htmlDiv(
+checklist <- div(
   list(
     dbcLabel("Choose a bunch"),
     dbcChecklist(
@@ -32,7 +31,7 @@ checklist <- htmlDiv(
   )
 )
 
-switches <- htmlDiv(
+switches <- div(
   list(
     dbcLabel("Toggle a bunch"),
     dbcChecklist(
@@ -43,15 +42,15 @@ switches <- htmlDiv(
       ),
       value = list(1),
       id = "switches-input",
-      switch = TRUE,
+      switch = TRUE
     )
   )
 )
 
-inputs <- htmlDiv(
+inputs <- div(
   list(
     dbcForm(list(radioitems, checklist, switches)),
-    htmlP(id = "radioitems-checklist-output")
+    p(id = "radioitems-checklist-output")
   )
 )
 

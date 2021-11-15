@@ -1,12 +1,11 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 popover_children <- list(
   dbcPopoverHeader("Popover header"),
   dbcPopoverBody("And here's some amazing content. Cool!")
 )
 
-popovers <- htmlDiv(
+popovers <- div(
   list(
     dbcButton(
       "Click",

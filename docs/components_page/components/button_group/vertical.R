@@ -10,7 +10,7 @@ button_group <- dbcButtonGroup(
         dbcDropdownMenuItem("Item 2")
       ),
       label = "Dropdown",
-      group = TRUE,
+      group = TRUE
     )
   ),
   vertical = TRUE

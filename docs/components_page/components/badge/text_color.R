@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-badges <- htmlSpan(
+badges <- span(
   list(
     dbcBadge("Primary", color = "white", text_color = "primary", className = "border me-1"),
     dbcBadge("Secondary", color = "white", text_color = "secondary", className = "border me-1"),

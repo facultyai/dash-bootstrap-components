@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-nav <- htmlDiv(
+nav <- div(
   list(
     dbcNav(
       list(
@@ -15,8 +14,8 @@ nav <- htmlDiv(
         dbcNavLink("Button", id = "button-link", n_clicks = 0)
       )
     ),
-    htmlBr(),
-    htmlP(id = "button-clicks")
+    br(),
+    p(id = "button-clicks")
   )
 )
 

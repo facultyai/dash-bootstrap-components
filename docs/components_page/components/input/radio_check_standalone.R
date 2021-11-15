@@ -1,9 +1,8 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-standalone_radio_check <- htmlDiv(
+standalone_radio_check <- div(
   list(
-    htmlDiv(
+    div(
       list(
         dbcCheckbox(
           id = "standalone-checkbox",
@@ -22,7 +21,7 @@ standalone_radio_check <- htmlDiv(
         )
       )
     ),
-    htmlP(id = "standalone-radio-check-output")
+    p(id = "standalone-radio-check-output")
   )
 )
 

@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 items_style <- list(
   dbcDropdownMenuItem("Item 1"),
@@ -7,7 +6,7 @@ items_style <- list(
   dbcDropdownMenuItem("Item 3")
 )
 
-dropdowns <- htmlDiv(
+dropdowns <- div(
   list(
     dbcDropdownMenu(
       items_style,

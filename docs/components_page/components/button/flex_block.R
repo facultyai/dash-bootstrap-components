@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-button <- htmlDiv(
+button <- div(
   list(
     dbcButton("Button 1", className = "me-md-2"),
     dbcButton("Button 2", className = "me-md-2"),

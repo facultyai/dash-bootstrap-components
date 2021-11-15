@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-offcanvas <- htmlDiv(
+offcanvas <- div(
   list(
     dbcButton(
       "Open scrollable offcanvas",
@@ -9,7 +8,7 @@ offcanvas <- htmlDiv(
       n_clicks = 0,
     ),
     dbcOffcanvas(
-      htmlP("The contents on the main page are now scrollable."),
+      p("The contents on the main page are now scrollable."),
       id = "offcanvas-scrollable",
       scrollable = TRUE,
       title = "Scrollable Offcanvas",

@@ -3,9 +3,9 @@ title: Forms
 lead: Use Bootstrap's form components to control the layout and style of your input components.
 ---
 
-When building Dash apps we rarely make use of HTML forms, instead attaching callbacks to input components. However, Bootstrap's form components can still be a powerful way to control the layout of a collection of input components. We demonstrate a number of layout options below.
-
 ## Examples
+
+When building Dash apps we rarely make use of HTML forms, instead attaching callbacks to input components. However, Bootstrap's form components can still be a powerful way to control the layout of a collection of input components. We demonstrate a number of layout options below.
 
 Bootstrap's form components can be used to group labels, controls, optional help text, and form validation messaging. See this simple example.
 

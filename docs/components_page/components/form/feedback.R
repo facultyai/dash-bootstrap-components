@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-email_input <- htmlDiv(
+email_input <- div(
   list(
     dbcLabel("Email"),
     dbcInput(id = "email-input", type = "email", value = ""),

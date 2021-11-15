@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-progress <- htmlDiv(
+progress <- div(
   list(
     dbcProgress(value = 25, color = "success", className = "mb-3"),
     dbcProgress(value = 50, color = "warning", className = "mb-3"),

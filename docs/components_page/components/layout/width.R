@@ -1,19 +1,18 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-row <- htmlDiv(
+row <- div(
   list(
     dbcRow(
-      dbcCol(htmlDiv("A single, half-width column"), width = 6)
+      dbcCol(div("A single, half-width column"), width = 6)
     ),
     dbcRow(
-      dbcCol(htmlDiv("An automatically sized column"), width = "auto")
+      dbcCol(div("An automatically sized column"), width = "auto")
     ),
     dbcRow(
       list(
-        dbcCol(htmlDiv("One of three columns"), width = 3),
-        dbcCol(htmlDiv("One of three columns")),
-        dbcCol(htmlDiv("One of three columns"), width = 3)
+        dbcCol(div("One of three columns"), width = 3),
+        dbcCol(div("One of three columns")),
+        dbcCol(div("One of three columns"), width = 3)
       )
     )
   )

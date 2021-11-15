@@ -42,7 +42,7 @@ active_tab_content_r = """
 tab1_content <- dbcCard(
     dbcCardBody(
         list(
-            htmlP("This is tab 1!", className = "card-text"),
+            p("This is tab 1!", className = "card-text"),
             dbcButton("Click here", color = "success")
         )
     ),
@@ -52,7 +52,7 @@ tab1_content <- dbcCard(
 tab2_content <- dbcCard(
     dbcCardBody(
         list(
-            htmlP("This is tab 2!", className = "card-text"),
+            p("This is tab 2!", className = "card-text"),
             dbcButton("Don't click here", color = "danger")
         )
     ),

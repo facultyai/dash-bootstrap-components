@@ -1,14 +1,17 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 card <- dbcCard(
   list(
-    dbcCardImg(src = "/static/images/placeholder286x180.png", top = TRUE),
+    dbcCardImg(
+      src = "/static/images/placeholder286x180.png",
+      top = TRUE,
+      style = list("opacity" = 0.3)
+    ),
     dbcCardImgOverlay(
       dbcCardBody(
         list(
-          htmlH4("Card title", className = "card-title"),
-          htmlP(
+          h4("Card title", className = "card-title"),
+          p(
             paste(
               "An example of using an image in the background of",
               "a card."

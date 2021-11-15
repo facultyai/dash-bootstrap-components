@@ -1,8 +1,7 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 
-button_groups <- htmlDiv(
+button_groups <- div(
   list(
     dbcButtonGroup(
       list(

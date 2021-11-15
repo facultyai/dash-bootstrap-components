@@ -34,5 +34,6 @@ row = html.Div(
                 dbc.Col(html.Div("One of three columns"), align="end"),
             ]
         ),
-    ]
+    ],
+    className="pad-row",
 )

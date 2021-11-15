@@ -68,4 +68,12 @@ Alternatively, you can write the following custom CSS to apply the styles to all
 
 See the [Dash docs](https://dash.plotly.com/external-resources) for details on linking custom stylesheets.
 
+### Why aren't my icons appearing?
+
+The CDN links for icons we include are for [Bootstrap Icons v1.5.0](https://icons.getbootstrap.com/) and [Font Awesome v5.15.4](https://fontawesome.com/). With either library, if you are trying to use an icon, and it simply isn't appearing, then please check which icon documentation version you are using. Both libraries add new icons regularly, and it may be that the icon you want has been renamed or isn't included in the versions we include listed above.
+
+### How do I create a multi-select?
+
+`Select` can only be used to select individual items and doesn't have a multi-select feature. This is due to a limitation with how html renders selects. If you wish to be able to use multi-select, instead use `dash_core_components.Dropdown` with `multi=True` and apply css to style it in-line with Bootstrap styles. You can see an example of how to do this [here](https://github.com/tcbegley/dash-bootstrap-css).
+
 [issue]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md

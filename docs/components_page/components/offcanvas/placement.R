@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-placement_selector <- htmlDiv(
+placement_selector <- div(
   list(
     dbcLabel("Placement:"),
     dbcRadioItems(
@@ -19,12 +18,12 @@ placement_selector <- htmlDiv(
   className = "mb-2"
 )
 
-offcanvas <- htmlDiv(
+offcanvas <- div(
   list(
     placement_selector,
     dbcButton("Open Offcanvas", id = "open-offcanvas-placement", n_clicks = 0),
     dbcOffcanvas(
-      htmlP("Some offcanvas content..."),
+      p("Some offcanvas content..."),
       id = "offcanvas-placement",
       title = "Placement",
       is_open = FALSE
