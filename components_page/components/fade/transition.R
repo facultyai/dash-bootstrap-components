@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-fade <- htmlDiv(
+fade <- div(
   list(
     dbcButton("Toggle fade",
       id = "fade-transition-button", n_clicks = 0,
@@ -10,7 +9,7 @@ fade <- htmlDiv(
     dbcFade(
       dbcCard(
         dbcCardBody(
-          htmlP(
+          p(
             "This content fades in and out",
             className = "card-text"
           )

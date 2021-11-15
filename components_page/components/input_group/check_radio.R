@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-input_groups <- htmlDiv(
+input_groups <- div(
   list(
     dbcInputGroup(
       list(

@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 LOREM <- paste(
   readLines(
@@ -8,7 +7,7 @@ LOREM <- paste(
   collapse = "\n"
 )
 
-modal <- htmlDiv(
+modal <- div(
   list(
     dbcButton(
       "Scrolling modal",

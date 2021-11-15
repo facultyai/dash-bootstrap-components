@@ -1,12 +1,11 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 left_jumbotron <- dbcCol(
-  htmlDiv(
+  div(
     list(
-      htmlH2("Change the background", className = "display-3"),
-      htmlHr(className = "my-2"),
-      htmlP(
+      h2("Change the background", className = "display-3"),
+      html$hr(className = "my-2"),
+      p(
         paste(
           "Swap the background-color utility and add a `.text-*` color",
           "utility to mix up the look."
@@ -20,11 +19,11 @@ left_jumbotron <- dbcCol(
 )
 
 right_jumbotron <- dbcCol(
-  htmlDiv(
+  div(
     list(
-      htmlH2("Add borders", className = "display-3"),
-      htmlHr(className = "my-2"),
-      htmlP(
+      h2("Add borders", className = "display-3"),
+      html$hr(className = "my-2"),
+      p(
         paste(
           "Or, keep it light and add a border for some added definition",
           "to the boundaries of your content."

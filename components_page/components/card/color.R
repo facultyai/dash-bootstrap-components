@@ -1,12 +1,11 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 card_content <- list(
   dbcCardHeader("Card header"),
   dbcCardBody(
     list(
-      htmlH5("Card title", className = "card-title"),
-      htmlP(
+      html$h5("Card title", className = "card-title"),
+      p(
         "This is some card content that we'll reuse",
         className = "card-text"
       )
@@ -14,7 +13,7 @@ card_content <- list(
   )
 )
 
-cards <- htmlDiv(
+cards <- div(
   list(
     dbcRow(
       list(

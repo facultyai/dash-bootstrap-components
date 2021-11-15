@@ -1,20 +1,18 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
-library(dashHtmlComponents)
 
-accordion <- htmlDiv(
+accordion <- div(
   dbcAccordion(
     list(
       dbcAccordionItem(
         list(
-          htmlP("This is the content of the first section"),
+          p("This is the content of the first section"),
           dbcButton("Click here")
         ),
         title = "Item 1"
       ),
       dbcAccordionItem(
         list(
-          htmlP("This is the content of the second section"),
+          p("This is the content of the second section"),
           dbcButton("Don't click me!", color = "danger")
         ),
         title = "Item 2"

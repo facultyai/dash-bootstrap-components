@@ -1,16 +1,14 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
-library(dashHtmlComponents)
 
 
-pagination <- htmlDiv(
+pagination <- div(
   list(
-    htmlDiv("Select a page", id = "pagination-contents"),
+    div("Select a page", id = "pagination-contents"),
     dbcPagination(
       id = "pagination",
       max_value = 10,
     ),
-    htmlDiv("Or set the page dynamically using the slider below"),
+    div("Or set the page dynamically using the slider below"),
     dccSlider(
       id = "page-change",
       min = 1,

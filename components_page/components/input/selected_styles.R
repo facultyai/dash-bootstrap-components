@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-checklist <- htmlDiv(
+checklist <- div(
   list(
     dbcChecklist(
       id = "checklist-selected-style",
@@ -16,7 +15,7 @@ checklist <- htmlDiv(
         "borderColor" = "#ea6258"
       )
     ),
-    htmlHr(),
+    html$hr(),
     dbcRadioItems(
       id = "radio-selected-style",
       options = list(

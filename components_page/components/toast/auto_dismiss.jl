@@ -14,10 +14,14 @@ toast = html_div([
         header = "This is the header",
         icon = "primary",
         duration = 4000,
+        is_open = false,
     ),
 ]);
 
 
 callback!(app, Output("auto-toast", "is_open"), Input("auto-toast-toggle", "n_clicks")) do n
-    return true
+    if n > 0
+        return true
+    end
+    return no_update()
 end;

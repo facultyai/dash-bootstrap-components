@@ -1,15 +1,14 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-tooltip <- htmlDiv(
+tooltip <- div(
   list(
-    htmlP(
+    p(
       list(
         "I wonder what ",
-        htmlSpan(
+        span(
           "floccinaucinihilipilification",
           id = "tooltip-target",
-          style = list(textDecoration = "underline", cursor = "pointer"),
+          style = list(textDecoration = "underline", cursor = "pointer")
         ),
         " means?"
       )
@@ -19,7 +18,7 @@ tooltip <- htmlDiv(
         "Noun: rare,",
         "the action or habit of estimating something as worthless."
       ),
-      target = "tooltip-target",
+      target = "tooltip-target"
     )
   )
 )

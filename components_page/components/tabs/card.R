@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 card <- dbcCard(
   list(
@@ -13,7 +12,7 @@ card <- dbcCard(
         active_tab = "tab-1"
       )
     ),
-    dbcCardBody(htmlP(id = "card-content", className = "card-text"))
+    dbcCardBody(p(id = "card-content", className = "card-text"))
   )
 )
 

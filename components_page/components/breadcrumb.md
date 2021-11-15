@@ -5,7 +5,10 @@ lead: Indicate the current page’s location within a navigational hierarchy tha
 
 ## Examples
 
-You can create breadcrumbs using the `Breadcrumb` component. Items are specified with the `items` prop. You must specify a `label` for each item, and can optionally specify `href` to add a link, `external_link` to determine whether the link should be treated as a Dash style link or whether it should reload the page, and finally `active` to determine whether the item has the "active" style applied to indicate that it corresponds to the current location.
+You can create breadcrumbs using the `Breadcrumb` component. Items are specified with the `items` prop. You must specify a `label` for each item, and can optionally specify:
+- `href` to add a link;
+- `external_link` to determine whether the link should be treated as a Dash style link or whether it should reload the page; and,
+- `active` to determine whether the item has the "active" style applied to indicate that it corresponds to the current location.
 
 {{example:components/breadcrumb/simple.py:breadcrumb}}
 

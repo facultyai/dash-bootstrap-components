@@ -1,42 +1,35 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-row <- htmlDiv(
+row_content <- list(
+  dbcCol(div("One of two columns"), width = 4),
+  dbcCol(div("One of two columns"), width = 4)
+)
+
+row <- div(
   list(
     dbcRow(
-      list(
-        dbcCol(htmlDiv("One of two columns"), width = 4),
-        dbcCol(htmlDiv("One of two columns"), width = 4)
-      ),
+      row_content,
       justify = "start"
     ),
     dbcRow(
-      list(
-        dbcCol(htmlDiv("One of two columns"), width = 4),
-        dbcCol(htmlDiv("One of two columns"), width = 4)
-      ),
+      row_content,
       justify = "center"
     ),
     dbcRow(
-      list(
-        dbcCol(htmlDiv("One of two columns"), width = 4),
-        dbcCol(htmlDiv("One of two columns"), width = 4)
-      ),
+      row_content,
       justify = "end"
     ),
     dbcRow(
-      list(
-        dbcCol(htmlDiv("One of two columns"), width = 4),
-        dbcCol(htmlDiv("One of two columns"), width = 4)
-      ),
+      row_content,
       justify = "between"
     ),
     dbcRow(
-      list(
-        dbcCol(htmlDiv("One of two columns"), width = 4),
-        dbcCol(htmlDiv("One of two columns"), width = 4)
-      ),
+      row_content,
       justify = "around"
+    ),
+    dbcRow(
+      row_content,
+      justify = "evenly"
     )
   )
 )

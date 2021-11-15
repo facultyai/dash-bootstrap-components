@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-dropdown <- htmlDiv(
+dropdown <- div(
   list(
     dbcDropdownMenu(
       list(
@@ -22,7 +21,7 @@ dropdown <- htmlDiv(
       ),
       label = "Menu"
     ),
-    htmlP(id = "item-clicks", className = "mt-3")
+    p(id = "item-clicks", className = "mt-3")
   )
 )
 

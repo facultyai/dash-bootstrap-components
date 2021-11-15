@@ -1,10 +1,9 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-spinners <- htmlDiv(
+spinners <- div(
   list(
     dbcSpinner(size = "sm"),
-    htmlHr(),
+    html$hr(),
     dbcSpinner(spinner_style = list(width = "3rem", height = "3rem"))
   )
 )

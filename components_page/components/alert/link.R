@@ -1,19 +1,18 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-alerts <- htmlDiv(
+alerts <- div(
   list(
     dbcAlert(
       list(
         "This is a primary alert with an ",
-        htmlA("example link", href = "#", className = "alert-link")
+        a("example link", href = "#", className = "alert-link")
       ),
       color = "primary"
     ),
     dbcAlert(
       list(
         "This is a danger alert with an ",
-        htmlA("example link", href = "#", className = "alert-link")
+        a("example link", href = "#", className = "alert-link")
       ),
       color = "danger"
     )

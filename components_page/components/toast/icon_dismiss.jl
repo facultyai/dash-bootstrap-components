@@ -14,6 +14,7 @@ toast = html_div([
         header = "This is the header",
         icon = "primary",
         dismissable = true,
+        is_open = false,
     ),
 ]);
 

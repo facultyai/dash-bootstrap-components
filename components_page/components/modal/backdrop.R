@@ -1,9 +1,8 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-modal <- htmlDiv(
+modal <- div(
   list(
-    htmlDiv(
+    div(
       list(
         dbcLabel("Backdrop:"),
         dbcRadioItems(

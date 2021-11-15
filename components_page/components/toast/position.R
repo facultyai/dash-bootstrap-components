@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-toast <- htmlDiv(
+toast <- div(
   list(
     dbcButton(
       "Open toast",

@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
 
-dropdown <- htmlDiv(
+dropdown <- div(
   list(
     dbcLabel("Dropdown", html_for = "dropdown"),
     dccDropdown(
@@ -12,10 +11,10 @@ dropdown <- htmlDiv(
       )
     )
   ),
-  className = "mb-3",
+  className = "mb-3"
 )
 
-slider <- htmlDiv(
+slider <- div(
   list(
     dbcLabel("Slider", html_for = "slider"),
     dccSlider(id = "slider", min = 0, max = 10, step = 0.5, value = 3)
@@ -23,7 +22,7 @@ slider <- htmlDiv(
   className = "mb-3"
 )
 
-range_slider <- htmlDiv(
+range_slider <- div(
   list(
     dbcLabel("RangeSlider", html_for = "range-slider"),
     dccRangeSlider(id = "range-slider", min = 0, max = 10, value = list(3, 7))
