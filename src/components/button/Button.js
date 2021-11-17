@@ -29,6 +29,7 @@ const Button = props => {
     class_name,
     color,
     outline,
+    onClick,
     ...otherProps
   } = props;
 
@@ -41,7 +42,7 @@ const Button = props => {
     }
   };
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
 
   return (
     <RBButton
