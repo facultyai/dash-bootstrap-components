@@ -118,6 +118,9 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - <span class="badge bg-danger">Breaking</span> Dropped `base_class` property.
 - <span class="badge bg-danger">Breaking</span> Dropped `base_class_active` property.
 
+### Form
+- <span class="badge bg-danger">Breaking</span> Dropped `inline` property. Use the grid utilities instead. See [the documentation](/docs/components/form) for examples.
+
 ### FormGroup
 - <span class="badge bg-danger">Breaking</span> Dropped `FormGroup`. It is no longer necessary to use `FormGroup` to align components in a form.  Use `Row` `Col` and gutter modifier classes and spacing utilities instead. See [the documentation](/docs/components/form) for examples
 
