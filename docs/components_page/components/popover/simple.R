@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-popovers <- htmlDiv(
+popovers <- div(
   list(
     # First example - using dbcPopoverBody
     dbcButton(
