@@ -144,6 +144,8 @@ const Overlay = ({
   useEffect(() => {
     if (triggers.indexOf('legacy') > -1) {
       setRootClose(true);
+    } else {
+      setRootClose(false);
     }
   }, [triggers]);
 
