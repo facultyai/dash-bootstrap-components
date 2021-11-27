@@ -67,6 +67,7 @@ class Link extends Component {
       external_link,
       preOnClick,
       target,
+      linkTarget,
       href,
       download,
       ...otherProps
@@ -80,8 +81,8 @@ class Link extends Component {
     return (
       <a
         href={href}
-        target={linkIsExternal ? target : null}
-        download={download && linkIsExternal ? download : null}
+        target={linkIsExternal ? target || linkTarget : undefined}
+        download={download && linkIsExternal ? download : undefined}
         {...otherProps}
         onClick={e => this.updateLocation(e)}
       >
