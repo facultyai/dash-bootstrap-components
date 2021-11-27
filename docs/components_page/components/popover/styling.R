@@ -7,7 +7,7 @@ popovers <- htmlDiv(
       "Hidden Arrow",
       id = "hide-arrow-target",
       className = "me-1",
-      n_clicks = 0,
+      n_clicks = 0
     ),
     dbcPopover(
       "I am a popover without an arrow!",
@@ -18,7 +18,7 @@ popovers <- htmlDiv(
     dbcButton(
       "Offset Popover",
       id = "offset-target",
-      n_clicks = 0,
+      n_clicks = 0
     ),
     dbcPopover(
       "I am a popover that's been offset!",
