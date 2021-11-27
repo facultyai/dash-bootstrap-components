@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 alert = dbc_alert([
     html_h4("Well done!", className = "alert-heading"),

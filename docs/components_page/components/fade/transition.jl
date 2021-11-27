@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 fade = html_div([
     dbc_button(

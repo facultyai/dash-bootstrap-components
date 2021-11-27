@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 first_card = dbc_card(
     dbc_cardbody([

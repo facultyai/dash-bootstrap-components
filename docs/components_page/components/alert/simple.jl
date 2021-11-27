@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 alerts = html_div([
     dbc_alert("This is a primary alert", color = "primary"),

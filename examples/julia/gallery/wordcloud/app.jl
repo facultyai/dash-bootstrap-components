@@ -7,7 +7,7 @@ Note: some functionality has been changed from the original
 example.
 =#
 
-using Dash, DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using Dash, DashBootstrapComponents
 using HTTP, WordCloud, Memoize, LRUCache, Base64
 
 BASE_URL = "https://cdn.opensource.faculty.ai/wordcloud"

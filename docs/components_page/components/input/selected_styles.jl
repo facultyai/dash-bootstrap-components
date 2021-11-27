@@ -1,5 +1,4 @@
 using DashBootstrapComponents
-using DashHtmlComponents
 
 checklist = html_div([
     dbc_checklist(

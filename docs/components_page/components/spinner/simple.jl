@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 spinners = html_div([
     dbc_spinner(color = "primary"),

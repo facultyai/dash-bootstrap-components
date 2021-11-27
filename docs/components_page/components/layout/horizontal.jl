@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 row_content = [
     dbc_col(html_div("One of two columns"), width = 4),

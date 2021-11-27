@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 popovers = html_div([
     dbc_button("Hidden Arrow", id = "hide-arrow-target", className = "me-1", n_clicks = 0),

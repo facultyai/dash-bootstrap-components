@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 modal = html_div([
     dbc_button("Open modal", id = "open-dismiss"),
