@@ -305,7 +305,7 @@ def build_jl(ctx):
 
 
 @task
-def install_built_packages(_):
+def install_built_packages(ctx):
     info("Installing Python package")
     run("pip install -e .")
 
@@ -317,6 +317,11 @@ def install_built_packages(_):
 
     if shutil.which("julia") is not None:
         info("Installing Julia package")
+
+        # TODO: modification of Project.toml only necessary until Dash>=2.0.1
+        # is released
+        edit_julia_dependencies(ctx)
+
         current_branch = run("git rev-parse --abbrev-ref HEAD")
         run("git checkout -b inv-julia-install")
         run(
@@ -325,15 +330,29 @@ def install_built_packages(_):
         )
         run("git commit -m julia")
         julia_command = (
-            'using Pkg; Pkg.add(["Dash", "DashCoreComponents", '
-            '"DashHtmlComponents", "HTTP"]); Pkg.add(path=".", '
-            'rev="inv-julia-install");'
+            "using Pkg; "
+            'Pkg.add([PackageSpec(name="Dash", version="1.0"), '
+            'PackageSpec("HTTP")]); '
+            'Pkg.add(path=".", rev="inv-julia-install");'
         )
         run(f"julia -e '{julia_command}'")
         run(f"git checkout {current_branch}")
         run("git branch -D inv-julia-install")
     else:
         info("Julia installation not found, skipping Julia package")
+
+
+@task
+def edit_julia_dependencies(_):
+    with open("Project.toml") as f:
+        project_contents = f.read()
+
+    project_contents = project_contents.replace(
+        'Dash = "0.1.3"', 'Dash = "0.1.3, 1.0"'
+    )
+
+    with open("Project.toml", "w") as f:
+        f.write(project_contents)
 
 
 @task
