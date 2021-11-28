@@ -31,7 +31,7 @@ Often used with CSS to style elements with common properties.}
 
 \item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
-\item{justify}{A value equal to: 'start', 'center', 'end', 'around', 'between'. Set horizontal spacing and alignment of columns in this row. Options are
+\item{justify}{A value equal to: 'start', 'center', 'end', 'around', 'between', 'evenly'. Set horizontal spacing and alignment of columns in this row. Options are
 'start', 'center', 'end', 'around' and 'between'.}
 
 \item{key}{Character. A unique identifier for the component, used to improve

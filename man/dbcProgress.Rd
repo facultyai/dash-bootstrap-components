@@ -54,7 +54,7 @@ those elements have the following types:
 
 \item{max}{Numeric. Upper limit for value, default: 100}
 
-\item{min}{Numeric. Upper limit for value, default: 100}
+\item{min}{Numeric. Lower limit for value, default: 0}
 
 \item{striped}{Logical. Use striped progress bar}
 

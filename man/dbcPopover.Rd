@@ -10,11 +10,11 @@ Popover creates a toggleable overlay that can be used to provide additional info
 }
 
 \usage{
-dbcPopover(children=NULL, id=NULL, className=NULL, class_name=NULL,
-delay=NULL, flip=NULL, hide_arrow=NULL, innerClassName=NULL,
-inner_class_name=NULL, is_open=NULL, key=NULL,
-loading_state=NULL, offset=NULL, placement=NULL, style=NULL,
-target=NULL, trigger=NULL)
+dbcPopover(children=NULL, id=NULL, body=NULL, className=NULL,
+class_name=NULL, delay=NULL, flip=NULL, hide_arrow=NULL,
+innerClassName=NULL, inner_class_name=NULL, is_open=NULL,
+key=NULL, loading_state=NULL, offset=NULL, placement=NULL,
+style=NULL, target=NULL, trigger=NULL)
 }
 
 \arguments{
@@ -23,6 +23,9 @@ target=NULL, trigger=NULL)
 \item{id}{Character. The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
+
+\item{body}{Logical. When body is `True`, the Popover will render all children in a
+`PopoverBody` automatically.}
 
 \item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
@@ -40,7 +43,7 @@ edge, default True.}
 
 \item{hide_arrow}{Logical. Hide popover arrow.}
 
-\item{innerClassName}{Character. **DEPRECATED** Use `inner_class_name` instead
+\item{innerClassName}{Character. **DEPRECATED** Use `inner_class_name` instead.
 
 CSS class to apply to the popover.}
 
@@ -58,7 +61,17 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
-\item{offset}{Character | numeric. Offset of the popover relative to its target}
+\item{offset}{Character | numeric. Offset of the popover relative to its target. The offset can be passed as
+a comma separated pair of values e.g. "0,8", where the first number,
+skidding, displaces the popover along the reference element. The second
+number, distance, displaces the popover away from, or toward, the
+reference element in the direction of its placement. A positive number
+displaces it further away, while a negative number lets it overlap the
+reference. See https://popper.js.org/docs/v2/modifiers/offset/ for more
+info.
+
+Alternatively, you can provide just a single 'distance' number e.g. 8 to
+displace it horizontally.}
 
 \item{placement}{A value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'. Specify popover placement.}
 

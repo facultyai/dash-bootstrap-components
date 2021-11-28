@@ -34,7 +34,7 @@ Often used with CSS to style elements with common properties.}
 \item{class_name}{Character. Often used with CSS to style elements with common properties.}
 
 \item{color}{Character. Button color, options: primary, secondary, success, info, warning, danger,
-link. Default: secondary.}
+link. Default: primary.}
 
 \item{disabled}{Logical. Disable button (make unclickable). Default: False.}
 
