@@ -13,18 +13,17 @@ app.layout = html.Div([{components}])
 R_WRAPPER = """
 library(dash)
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
 {snippet}
 
-app$layout(htmlDiv(list({components})))
+app$layout(div(list({components})))
 app$run_server(port = {port})
 """
 
 JL_WRAPPER = """
-using Dash, DashBootstrapComponents, DashHtmlComponents
+using Dash, DashBootstrapComponents
 
 app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP]);
 

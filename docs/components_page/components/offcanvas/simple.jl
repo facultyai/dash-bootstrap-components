@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 offcanvas = html_div([
     dbc_button("Open Offcanvas", id = "open-offcanvas", n_clicks = 0),

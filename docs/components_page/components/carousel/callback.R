@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-carousel <- htmlDiv(
+carousel <- div(
   list(
     dbcCarousel(
       id = "carousel",

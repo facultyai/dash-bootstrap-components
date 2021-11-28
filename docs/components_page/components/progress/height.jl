@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 progress = html_div([
     dbc_progress(value = 50, style = Dict("height" => "1px"), className = "mb-3"),

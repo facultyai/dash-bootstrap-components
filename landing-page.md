@@ -48,15 +48,15 @@ conda install -c conda-forge dash-bootstrap-components
 
 To use _dash-bootstrap-components_ you must do two things:
 
-- Link a Bootstrap v4 compatible stylesheet
+- Link a Bootstrap v5 compatible stylesheet
 - Incorporate _dash-bootstrap-components_ into your layout
 
 ### Linking a stylesheet
 
 _dash-bootstrap-components_ doesn't come with CSS included. This is to give you
-the freedom to use any Bootstrap v4 stylesheet of your choice. This means however
-that in order for the components to be styled properly, you must link to a
-stylesheet yourself.
+the freedom to use any Bootstrap v5 stylesheet of your choice. This means
+however that in order for the components to be styled properly, you must link
+to a stylesheet yourself.
 
 For convenience, links to [BootstrapCDN][bootstrapcdn] for each theme are
 available through the `themes` module, which can be used as follows:

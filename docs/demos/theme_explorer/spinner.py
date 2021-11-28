@@ -32,6 +32,21 @@ spinner = html.Div(
             ],
             className="mb-2",
         ),
+        html.Div(
+            [
+                dbc.Button(
+                    dbc.Spinner(size="sm"),
+                    color="primary",
+                    disabled=True,
+                    className="me-1",
+                ),
+                dbc.Button(
+                    [dbc.Spinner(size="sm"), " Loading..."],
+                    color="primary",
+                    disabled=True,
+                ),
+            ]
+        ),
     ],
     className="mb-4",
 )

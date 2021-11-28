@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashCoreComponents
+using DashBootstrapComponents
 
 dropdown = html_div(
     [

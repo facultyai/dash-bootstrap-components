@@ -1,8 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
-library(dashCoreComponents)
 
-progress <- htmlDiv(
+progress <- div(
   list(
     dccInterval(id = "progress-interval", n_intervals = 0, interval = 500),
     dbcProgress(id = "progress")

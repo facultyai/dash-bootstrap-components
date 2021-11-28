@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 pagination = html_div([
     html_div("Collapse long pagination objects using ellipsis"),

@@ -1,11 +1,11 @@
 ---
 title: Input components
-lead: Documentation and examples for input components in _dash-bootstrap-components_.
+lead: Create Bootstrap styled input components to capture data.
 ---
 
-_dash-bootstrap-components_ has its own versions of some of the input components available in _dash-core-components_. They have been designed to share the same interface as the corresponding components in _dash-core-components_ for familiarity, but have a few additional Bootstrap specific features.
-
 ## Examples
+
+_dash-bootstrap-components_ has its own versions of some of the input components available in _dash-core-components_. They have been designed to share the same interface as the corresponding components in _dash-core-components_ for familiarity, but have a few additional Bootstrap specific features.
 
 The input component allows for text or numeric input, its basic usage is the same as `dcc.Input`, but Bootstrap styles will be applied for you.
 
@@ -57,6 +57,8 @@ The `Textarea` component works like the _dash-core-components_ analogue, but acc
 
 The `Select` component can be used to render a Bootstrap themed select input. The options are specified with a list of dictionaries much like the `Dropdown` component in _dash-core-components_, i.e. with keys `'label'`, `'value'` and optional key `'disabled'`. Like `Input` it also accepts keyword arguments such as `size`, `valid`, `invalid`, all of which can be targeted with callbacks.
 
+`Select` can only be used to select individual items and doesn't have a multi-select feature. If you wish to be able to support multi-select, instead use `dash_core_components.Dropdown` with `multi=True` and apply css to style it in-line with Bootstrap styles. You can see an example of how to do this [here](https://github.com/tcbegley/dash-bootstrap-css).
+
 {{example:components/input/select.py:select}}
 
 ## RadioItems and Checklist
@@ -64,6 +66,8 @@ The `Select` component can be used to render a Bootstrap themed select input. Th
 `RadioItems` and `Checklist` components also work like _dash-core-components_. Provided you specify an `id`, _dash-bootstrap-components_ will render custom themed radio buttons or checkboxes rather than using the native browser buttons. When using `Checklist` you can also specify `switch=True` to render toggle-like switches rather than checkboxes. If you prefer to use the native buttons and checkboxes, set `custom=False`. Note that there is no native browser switch, so if you set `custom=False` then `switch` will be ignored.
 
 {{example:components/input/radio_check.py:inputs}}
+
+## Inline RadioItems and Checklist
 
 Set `inline=True` to make the radio items or checklists fit next to each other on a line.
 

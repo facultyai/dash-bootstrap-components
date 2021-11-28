@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 items = [
     dbc_dropdownmenuitem("Item 1"),

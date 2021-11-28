@@ -23,8 +23,28 @@ def test_jl_fade(dashjl):
 
 
 def check_fade_callbacks(runner):
+    # Check the fade element is present
     assert runner.find_element("#fade") != []
+
+    # Make sure it starts hidden
+    wait.until(
+        lambda: runner.find_element("#fade").get_attribute("style")
+        == "visibility: hidden;",
+        timeout=4,
+    )
+
+    # Click the button and it should show
     runner.find_element("#fade-button").click()
+
+    wait.until(
+        lambda: runner.find_element("#fade").get_attribute("style")
+        != "visibility: hidden;",
+        timeout=4,
+    )
+
+    # Click the button and it should hide
+    runner.find_element("#fade-button").click()
+
     wait.until(
         lambda: runner.find_element("#fade").get_attribute("style")
         == "visibility: hidden;",

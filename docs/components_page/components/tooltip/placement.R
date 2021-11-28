@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 make_button <- function(placement) {
   return(
@@ -24,7 +23,7 @@ make_tooltip <- function(placement) {
 }
 
 
-tooltips <- htmlDiv(
+tooltips <- div(
   list(
     make_button("top"), make_button("left"),
     make_button("right"), make_button("bottom"),

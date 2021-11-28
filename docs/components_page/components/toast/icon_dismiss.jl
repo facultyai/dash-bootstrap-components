@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 toast = html_div([
     dbc_button(
@@ -14,6 +14,7 @@ toast = html_div([
         header = "This is the header",
         icon = "primary",
         dismissable = true,
+        is_open = false,
     ),
 ]);
 

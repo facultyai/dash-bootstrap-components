@@ -29,6 +29,7 @@ const Button = props => {
     class_name,
     color,
     outline,
+    onClick,
     ...otherProps
   } = props;
 
@@ -41,19 +42,24 @@ const Button = props => {
     }
   };
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
+
+  if (useLink) {
+    // react-bootstrap strips out target prop if tag isn't an anchor element,
+    // so we pass it through under a different name
+    otherProps['linkTarget'] = target;
+  }
 
   return (
     <RBButton
       as={useLink ? Link : 'button'}
       variant={outline ? `outline-${color}` : color}
-      type={useLink ? null : type}
-      target={useLink ? target : null}
-      href={disabled ? null : href}
+      type={useLink ? undefined : type}
+      href={disabled ? undefined : href}
       disabled={disabled}
-      download={useLink ? download : null}
-      name={useLink ? null : name}
-      value={useLink ? null : value}
+      download={useLink ? download : undefined}
+      name={useLink ? undefined : name}
+      value={useLink ? undefined : value}
       className={class_name || className}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
@@ -145,7 +151,7 @@ Button.propTypes = {
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,
-   * link. Default: secondary.
+   * link. Default: primary.
    */
   color: PropTypes.string,
 

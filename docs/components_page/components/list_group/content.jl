@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 list_group = dbc_listgroup([
     dbc_listgroupitem([

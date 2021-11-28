@@ -1,11 +1,10 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-offcanvas <- htmlDiv(
+offcanvas <- div(
   list(
     dbcButton("Open Offcanvas", id = "open-offcanvas", n_clicks = 0),
     dbcOffcanvas(
-      htmlP(
+      p(
         paste(
           "This is the content of the Offcanvas.",
           "Close it by clicking on the close button, or",

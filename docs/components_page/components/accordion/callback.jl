@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 accordion = html_div([
     dbc_accordion(

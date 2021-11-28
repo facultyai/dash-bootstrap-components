@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 badges = html_div([
     html_h1(["Example heading", dbc_badge("New", className = "ms-1")]),

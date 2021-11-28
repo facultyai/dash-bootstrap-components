@@ -1,11 +1,10 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-alerts <- htmlDiv(
+alerts <- div(
   list(
     dbcAlert(
       list(
-        htmlI(className = "bi bi-info-circle-fill me-2"),
+        html$i(className = "bi bi-info-circle-fill me-2"),
         "An example info alert with an icon"
       ),
       color = "info",
@@ -13,7 +12,7 @@ alerts <- htmlDiv(
     ),
     dbcAlert(
       list(
-        htmlI(className = "bi bi-check-circle-fill me-2"),
+        html$i(className = "bi bi-check-circle-fill me-2"),
         "An example success alert with an icon"
       ),
       color = "success",
@@ -21,7 +20,7 @@ alerts <- htmlDiv(
     ),
     dbcAlert(
       list(
-        htmlI(className = "bi bi-exclamation-triangle-fill me-2"),
+        html$i(className = "bi bi-exclamation-triangle-fill me-2"),
         "An example warning alert with an icon"
       ),
       color = "warning",
@@ -29,7 +28,7 @@ alerts <- htmlDiv(
     ),
     dbcAlert(
       list(
-        htmlI(className = "bi bi-x-octagon-fill me-2"),
+        html$i(className = "bi bi-x-octagon-fill me-2"),
         "An example danger alert with an icon"
       ),
       color = "danger",

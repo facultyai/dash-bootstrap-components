@@ -7,7 +7,7 @@ card = dbc.Card(
             [
                 dbc.Col(
                     dbc.CardImg(
-                        src="/static/images/placeholder286x180.png",
+                        src="/static/images/portrait-placeholder.png",
                         className="img-fluid rounded-start",
                     ),
                     className="col-md-4",

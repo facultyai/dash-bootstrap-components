@@ -1,10 +1,9 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-loading_spinner <- htmlDiv(
+loading_spinner <- div(
   list(
     dbcButton("Load", id = "loading-button", n_clicks = 0),
-    dbcSpinner(htmlDiv(id = "loading-output"))
+    dbcSpinner(div(id = "loading-output"))
   )
 )
 

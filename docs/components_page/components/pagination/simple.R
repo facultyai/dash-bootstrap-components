@@ -1,8 +1,7 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 
-pagination <- htmlDiv(
+pagination <- div(
   dbcPagination(
     max_value = 10
   )

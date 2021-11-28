@@ -1,10 +1,9 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-number_input <- htmlDiv(
+number_input <- div(
   list(
-    htmlP("Type a number outside the range 0-10"),
+    p("Type a number outside the range 0-10"),
     dbcInput(type = "number", min = 0, max = 10, step = 1)
   ),
-  id = "styled-numeric-input",
+  id = "styled-numeric-input"
 )
