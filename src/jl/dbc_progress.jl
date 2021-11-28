@@ -37,7 +37,7 @@ Those elements have the following types:
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `max` (Real; optional): Upper limit for value, default: 100
-- `min` (Real; optional): Upper limit for value, default: 100
+- `min` (Real; optional): Lower limit for value, default: 0
 - `striped` (Bool; optional): Use striped progress bar
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `value` (String | Real; optional): Specify progress, value from min to max inclusive.

@@ -26,7 +26,7 @@ Often used with CSS to style elements with common properties.
 - `color` (String; optional): Set the color of the DropdownMenu toggle. Available options are: 'primary',
 'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
 color of your choice (e.g. a hex code, a decimal code or a CSS color name)
-Default: 'secondary'
+Default: 'primary'
 - `direction` (a value equal to: 'down', 'start', 'end', 'up', 'left', 'right', 'end'; optional): Direction in which to expand the DropdownMenu. Default: 'down'. `left`
 and `right` have been deprecated, and `start` and `end` should be used
 instead.

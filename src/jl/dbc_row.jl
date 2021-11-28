@@ -24,7 +24,7 @@ components in an app.
 
 Often used with CSS to style elements with common properties.
 - `class_name` (String; optional): Often used with CSS to style elements with common properties.
-- `justify` (a value equal to: 'start', 'center', 'end', 'around', 'between'; optional): Set horizontal spacing and alignment of columns in this row. Options are
+- `justify` (a value equal to: 'start', 'center', 'end', 'around', 'between', 'evenly'; optional): Set horizontal spacing and alignment of columns in this row. Options are
 'start', 'center', 'end', 'around' and 'between'.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components

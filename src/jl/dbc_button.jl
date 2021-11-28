@@ -26,7 +26,7 @@ components in an app.
 Often used with CSS to style elements with common properties.
 - `class_name` (String; optional): Often used with CSS to style elements with common properties.
 - `color` (String; optional): Button color, options: primary, secondary, success, info, warning, danger,
-link. Default: secondary.
+link. Default: primary.
 - `disabled` (Bool; optional): Disable button (make unclickable). Default: False.
 - `download` (String; optional): Indicates that the hyperlink is to be used for downloading a resource.
 - `external_link` (Bool; optional): If true, the browser will treat this as an external link,
