@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 tab1_content = dbc_card(
     dbc_cardbody([

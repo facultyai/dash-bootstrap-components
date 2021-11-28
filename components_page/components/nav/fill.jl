@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 nav_contents = [
     dbc_navitem(dbc_navlink("Active", href = "#", active = true)),

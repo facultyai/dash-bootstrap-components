@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 loading_spinner = html_div([
     dbc_button("Load", id = "loading-button", n_clicks = 0),

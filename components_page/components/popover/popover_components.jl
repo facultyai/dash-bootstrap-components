@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 popovers = html_div([
     dbc_button("Click Me", id = "component-target", n_clicks = 0),

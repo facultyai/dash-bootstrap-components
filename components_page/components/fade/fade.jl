@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 fade = html_div([
     dbc_button("Toggle fade", id = "fade-button", className = "mb-3", n_clicks = 0),

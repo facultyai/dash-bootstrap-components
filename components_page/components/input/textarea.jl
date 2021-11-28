@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 textareas = html_div([
     dbc_textarea(className = "mb-3", placeholder = "A Textarea"),

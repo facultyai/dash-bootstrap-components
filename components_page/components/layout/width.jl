@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 row = html_div([
     dbc_row(dbc_col(html_div("A single, half-width column"), width = 6)),
