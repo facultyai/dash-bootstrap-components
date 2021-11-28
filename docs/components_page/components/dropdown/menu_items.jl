@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 dropdown = html_div([
     dbc_dropdownmenu(

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RBPopover from 'react-bootstrap/Popover';
 
+import PopoverTemplate from '../../private/PopoverTemplate';
 import Overlay from '../../private/Overlay';
 
 /**
@@ -22,8 +22,28 @@ const Popover = props => {
     class_name,
     style,
     id,
+    hide_arrow,
+    offset,
+    body,
     ...otherProps
   } = props;
+
+  // Calcualte the offset to pass to the popperconfig
+  const popperConfig = offset
+    ? {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset:
+                typeof offset === 'string'
+                  ? offset.split(',').map(o => parseInt(o))
+                  : [0, offset]
+            }
+          }
+        ]
+      }
+    : {};
 
   return (
     <Overlay
@@ -31,18 +51,20 @@ const Popover = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
       defaultShow={is_open}
+      popperConfig={popperConfig}
       {...otherProps}
     >
-      <RBPopover
-        // hideArrow={hide_arrow}
+      <PopoverTemplate
         // to ensure proper backwards compatibility, the toggle function is only
         // passed to the popover if `trigger` is not specified
         style={style}
         id={id}
         className={class_name || className}
+        hideArrow={hide_arrow}
+        body={body}
       >
         {children}
-      </RBPopover>
+      </PopoverTemplate>
     </Overlay>
   );
 };
@@ -145,7 +167,7 @@ Popover.propTypes = {
   inner_class_name: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `inner_class_name` instead
+   * **DEPRECATED** Use `inner_class_name` instead.
    *
    * CSS class to apply to the popover.
    */
@@ -160,7 +182,17 @@ Popover.propTypes = {
   ]),
 
   /**
-   * Offset of the popover relative to its target
+   * Offset of the popover relative to its target. The offset can be passed as
+   * a comma separated pair of values e.g. "0,8", where the first number,
+   * skidding, displaces the popover along the reference element. The second
+   * number, distance, displaces the popover away from, or toward, the
+   * reference element in the direction of its placement. A positive number
+   * displaces it further away, while a negative number lets it overlap the
+   * reference. See https://popper.js.org/docs/v2/modifiers/offset/ for more
+   * info.
+   *
+   * Alternatively, you can provide just a single 'distance' number e.g. 8 to
+   * displace it horizontally.
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
@@ -169,6 +201,12 @@ Popover.propTypes = {
    * edge, default True.
    */
   flip: PropTypes.bool,
+
+  /**
+   * When body is `True`, the Popover will render all children in a
+   * `PopoverBody` automatically.
+   */
+  body: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

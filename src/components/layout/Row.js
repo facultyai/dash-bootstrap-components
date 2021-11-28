@@ -17,7 +17,8 @@ const justifyMap = {
   center: 'justify-content-center',
   end: 'justify-content-end',
   around: 'justify-content-around',
-  between: 'justify-content-between'
+  between: 'justify-content-between',
+  evenly: 'justify-content-evenly'
 };
 
 /**
@@ -101,7 +102,14 @@ Row.propTypes = {
    * Set horizontal spacing and alignment of columns in this row. Options are
    * 'start', 'center', 'end', 'around' and 'between'.
    */
-  justify: PropTypes.oneOf(['start', 'center', 'end', 'around', 'between']),
+  justify: PropTypes.oneOf([
+    'start',
+    'center',
+    'end',
+    'around',
+    'between',
+    'evenly'
+  ]),
 
   /**
    * Object that holds the loading state object coming from dash-renderer

@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-progress <- htmlDiv(
+progress <- div(
   list(
     dbcProgress(
       value = 80, id = "animated-progress", striped = TRUE, animated = FALSE

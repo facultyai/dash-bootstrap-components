@@ -11,7 +11,7 @@ _dash-bootstrap-components_ v1 contains loads of new features, but also some bre
 
 This guide introduces the new features, and also covers the changes you must make to run your apps with _dash-bootstrap-components_ 1.0.0 rather than 0.13.x (the final v0 releases). If you find any issues not covered here, or bugs in v1 please [raise an issue](https://github.com/facultyai/dash-bootstrap-components/issues/new/choose) on our GitHub repository.
 
-If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers.
+If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers. You can still see documentation for version 0 [here](https://dbc-v0.herokuapp.com).
 
 ~~~bootstrap-tabs
 Python
@@ -93,6 +93,12 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - Added `dark` property for dark text, controls, and indicators. This is great for lighter backgrounds.
 - Replaced chevron icons for carousel controls with new SVGs from Bootstrap Icons.
 
+### Checkbox
+- <span class="badge bg-danger">Breaking</span> Renamed `checked` property to `value`.
+
+### Checklist
+- <span class="badge bg-danger">Breaking</span> Dropped `custom` property. As of Bootstrap 5 all radio buttons and checkboxes receive custom styling.
+
 ### Col
 - <span class="badge bg-danger">Breaking</span> When specifying the `order` of the columns, it accepts the integers 1, ..., 5,  only rather than integers 1, ..., 12.
 - Added `xxl` prop corresponding to the new `xxl` breakpoint in Bootstrap 5. Allows you to control the layout on extra large screens.
@@ -111,6 +117,9 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 ### Fade
 - <span class="badge bg-danger">Breaking</span> Dropped `base_class` property.
 - <span class="badge bg-danger">Breaking</span> Dropped `base_class_active` property.
+
+### Form
+- <span class="badge bg-danger">Breaking</span> Dropped `inline` property. Use the grid utilities instead. See [the documentation](/docs/components/form) for examples.
 
 ### FormGroup
 - <span class="badge bg-danger">Breaking</span> Dropped `FormGroup`. It is no longer necessary to use `FormGroup` to align components in a form.  Use `Row` `Col` and gutter modifier classes and spacing utilities instead. See [the documentation](/docs/components/form) for examples
@@ -154,6 +163,12 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - <span class="badge bg-danger">Breaking</span> Dropped `tag` property.
 - Added a `label` property that should be used instead of `children` to render text on the progress bar.
 - Added a `hide_label` property to hide the label.
+
+### RadioButton
+- <span class="badge bg-danger">Breaking</span> Renamed `checked` property to `value`.
+
+### RadioItems
+- <span class="badge bg-danger">Breaking</span> Dropped `custom` property. As of Bootstrap 5 all radio buttons and checkboxes receive custom styling.
 
 ### Row
 - <span class="badge bg-danger">Breaking</span> Dropped `no_gutters` prop.  Use gutter modifier classes instead. See the [docs](/docs/components/layout/) for examples.

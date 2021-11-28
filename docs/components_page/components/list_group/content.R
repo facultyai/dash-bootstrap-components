@@ -4,31 +4,31 @@ list_group <- dbcListGroup(
   list(
     dbcListGroupItem(
       list(
-        htmlDiv(
+        div(
           list(
-            htmlH5("This item has a heading", className = "mb-1"),
-            htmlSmall("Yay!", className = "text-success")
+            html$h5("This item has a heading", className = "mb-1"),
+            html$small("Yay!", className = "text-success")
           ),
           className = "d-flex w-100 justify-content-between"
         ),
-        htmlP("And some text underneath", className = "mb-1"),
-        htmlSmall("Plus some small print.", className = "text-muted")
+        p("And some text underneath", className = "mb-1"),
+        html$small("Plus some small print.", className = "text-muted")
       )
     ),
     dbcListGroupItem(
       list(
-        htmlDiv(
+        div(
           list(
-            htmlH5(
+            html$h5(
               "This item also has a heading",
               className = "mb-1"
             ),
-            htmlSmall("Ok!", className = "text-warning")
+            html$small("Ok!", className = "text-warning")
           ),
           className = "d-flex w-100 justify-content-between"
         ),
-        htmlP("And some more text underneath too", className = "mb-1"),
-        htmlSmall(
+        p("And some more text underneath too", className = "mb-1"),
+        html$small(
           "Plus even more small print.",
           className = "text-muted"
         )

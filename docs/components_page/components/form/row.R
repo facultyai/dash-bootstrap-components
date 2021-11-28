@@ -10,7 +10,7 @@ email_input <- dbcRow(
       width = 10
     )
   ),
-  className = "mb-3",
+  className = "mb-3"
 )
 
 password_input <- dbcRow(
@@ -20,12 +20,12 @@ password_input <- dbcRow(
       dbcInput(
         type = "password",
         id = "example-password-row",
-        placeholder = "Enter password",
+        placeholder = "Enter password"
       ),
       width = 10
     )
   ),
-  className = "mb-3",
+  className = "mb-3"
 )
 
 radios_input <- dbcRow(
@@ -47,7 +47,7 @@ radios_input <- dbcRow(
       width = 10
     )
   ),
-  className = "mb-3",
+  className = "mb-3"
 )
 
 form <- dbcForm(list(email_input, password_input, radios_input))

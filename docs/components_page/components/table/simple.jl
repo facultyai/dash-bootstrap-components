@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 table_header = [html_thead(html_tr([html_th("First Name"), html_th("Last Name")]))];
 

@@ -104,20 +104,70 @@ buttons2 = dbc.Col(
         html.Div(
             dbc.ButtonGroup(
                 [
-                    dbc.Button("First"),
-                    dbc.Button("Second"),
-                    dbc.DropdownMenu(
-                        [
-                            dbc.DropdownMenuItem("Item 1"),
-                            dbc.DropdownMenuItem("Item 2"),
-                        ],
-                        label="Dropdown",
-                        group=True,
-                    ),
-                ],
-                vertical=True,
+                    dbc.Button("Left", outline=True, color="primary"),
+                    dbc.Button("Middle", outline=True, color="primary"),
+                    dbc.Button("Right", outline=True, color="primary"),
+                ]
             ),
             className="mb-2",
+        ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Div(
+                        dbc.ButtonGroup(
+                            [
+                                dbc.Button("First"),
+                                dbc.Button("Second"),
+                                dbc.DropdownMenu(
+                                    [
+                                        dbc.DropdownMenuItem("Item 1"),
+                                        dbc.DropdownMenuItem("Item 2"),
+                                    ],
+                                    label="Dropdown",
+                                    group=True,
+                                ),
+                            ],
+                            vertical=True,
+                        ),
+                        className="mb-2",
+                    ),
+                ),
+                dbc.Col(
+                    html.Div(
+                        [
+                            dbc.ButtonGroup(
+                                [
+                                    dbc.Button("Left"),
+                                    dbc.Button("Large"),
+                                    dbc.Button("Right"),
+                                ],
+                                size="lg",
+                                className="m-1",
+                            ),
+                            dbc.ButtonGroup(
+                                [
+                                    dbc.Button("Left"),
+                                    dbc.Button("Regular"),
+                                    dbc.Button("Right"),
+                                ],
+                                size="md",
+                                className="m-1",
+                            ),
+                            dbc.ButtonGroup(
+                                [
+                                    dbc.Button("Left"),
+                                    dbc.Button("Small"),
+                                    dbc.Button("Right"),
+                                ],
+                                size="sm",
+                                className="m-1",
+                            ),
+                        ],
+                        className="mb-2",
+                    ),
+                ),
+            ]
         ),
     ],
     lg=6,

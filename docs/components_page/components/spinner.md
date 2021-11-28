@@ -3,9 +3,9 @@ title: Spinner
 lead: Indicate the loading state of a component or page with the `Spinner` component.
 ---
 
-The `Spinner` component can be used either to create a standalone spinner, or used in the same way as [dcc.Loading](https://dash.plot.ly/dash-core-components/loading) by passing children.
-
 ## Examples
+
+The `Spinner` component can be used either to create a standalone spinner, or used in the same way as [dcc.Loading](https://dash.plot.ly/dash-core-components/loading) by passing children.
 
 To create a simple spinner, just add `dbc.Spinner()` to your layout. By default, `Spinner` uses the current text color for its border color. Override the color of the `Spinner` using the `color` argument and one of the eight supported contextual color names.
 

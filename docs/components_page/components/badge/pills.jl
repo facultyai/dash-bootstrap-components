@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 badges = html_span([
     dbc_badge("Primary", pill = true, color = "primary", className = "me-1"),

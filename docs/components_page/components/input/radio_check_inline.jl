@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 inline_radioitems = html_div([
     dbc_label("Choose one"),

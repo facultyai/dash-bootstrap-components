@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 card = dbc_card(
     [
@@ -6,7 +6,7 @@ card = dbc_card(
             [
                 dbc_col(
                     dbc_cardimg(
-                        src = "/static/images/placeholder286x180.png",
+                        src = "/static/images/portrait-placeholder.png",
                         className = "img-fluid rounded-start",
                     ),
                     className = "col-md-4",

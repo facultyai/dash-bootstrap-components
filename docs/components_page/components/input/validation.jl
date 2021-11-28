@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 inputs = html_div([
     dbc_input(placeholder = "Valid input...", valid = true, className = "mb-3"),

@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 offcanvas = html_div([
     dbc_button("Open scrollable offcanvas", id = "open-offcanvas-scrollable", n_clicks = 0),

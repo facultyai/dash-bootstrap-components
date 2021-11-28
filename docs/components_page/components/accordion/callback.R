@@ -1,8 +1,6 @@
 library(dashBootstrapComponents)
-library(dashCoreComponents)
-library(dashHtmlComponents)
 
-accordion <- htmlDiv(
+accordion <- div(
   list(
     dbcAccordion(
       list(
@@ -25,7 +23,7 @@ accordion <- htmlDiv(
       id = "accordion",
       active_item = "item-1"
     ),
-    htmlDiv(id = "accordion-contents", className = "mt-3")
+    div(id = "accordion-contents", className = "mt-3")
   )
 )
 

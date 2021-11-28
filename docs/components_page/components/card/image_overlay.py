@@ -3,7 +3,11 @@ from dash import html
 
 card = dbc.Card(
     [
-        dbc.CardImg(src="/static/images/placeholder286x180.png", top=True),
+        dbc.CardImg(
+            src="/static/images/placeholder286x180.png",
+            top=True,
+            style={"opacity": 0.3},
+        ),
         dbc.CardImgOverlay(
             dbc.CardBody(
                 [

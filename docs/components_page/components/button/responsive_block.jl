@@ -1,5 +1,4 @@
 using DashBootstrapComponents
-using DashHtmlComponents
 
 button = html_div(
     [

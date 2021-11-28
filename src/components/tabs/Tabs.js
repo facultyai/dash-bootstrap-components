@@ -52,6 +52,7 @@ const Tabs = props => {
       const active = active_tab === tabId;
       return (
         <RBNav.Item
+          id={childProps.id}
           key={tabId}
           style={
             active
@@ -100,6 +101,7 @@ const Tabs = props => {
       const {
         children,
         tab_id,
+        id,
         label,
         tab_style,
         active_tab_style,

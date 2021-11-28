@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 text_input = html_div([
     dbc_input(id = "input", placeholder = "Type something...", type = "text"),

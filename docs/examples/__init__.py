@@ -19,7 +19,7 @@ TEMPLATES = HERE.parent / "templates"
 
 GITHUB_EXAMPLES = (
     "https://github.com/"
-    "facultyai/dash-bootstrap-components/blob/main/examples/"
+    "facultyai/dash-bootstrap-components/blob/main/examples/python"
 )
 
 INDEX_STRING_TEMPLATE = """{% extends "example.html" %}

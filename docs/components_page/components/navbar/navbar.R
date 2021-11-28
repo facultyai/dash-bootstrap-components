@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 PLOTLY_LOGO <- "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
@@ -21,11 +20,11 @@ search_bar <- dbcRow(
 navbar <- dbcNavbar(
   dbcContainer(
     list(
-      htmlA(
+      a(
         # Use row and col to control vertical alignment of logo / brand
         dbcRow(
           list(
-            dbcCol(htmlImg(src = PLOTLY_LOGO, height = "30px")),
+            dbcCol(img(src = PLOTLY_LOGO, height = "30px")),
             dbcCol(dbcNavbarBrand("Navbar", className = "ms-2"))
           ),
           align = "center",

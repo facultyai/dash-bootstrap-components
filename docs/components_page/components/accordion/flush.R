@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-accordion <- htmlDiv(
+accordion <- div(
   dbcAccordion(
     list(
       dbcAccordionItem(

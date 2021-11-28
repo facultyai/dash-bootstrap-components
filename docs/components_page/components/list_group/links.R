@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-list_group <- htmlDiv(
+list_group <- div(
   list(
     dbcListGroup(
       list(
@@ -20,7 +19,7 @@ list_group <- htmlDiv(
         )
       )
     ),
-    htmlP(id = "counter")
+    p(id = "counter")
   )
 )
 

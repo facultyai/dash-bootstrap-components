@@ -1,25 +1,24 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-jumbotron <- htmlDiv(
+jumbotron <- div(
   dbcContainer(
     list(
-      htmlH1("Jumbotron", className = "display-3"),
-      htmlP(
+      h1("Jumbotron", className = "display-3"),
+      p(
         paste(
           "Use Containers to create a jumbotron to call attention to",
           "featured content or information."
         ),
         className = "lead"
       ),
-      htmlHr(className = "my-2"),
-      htmlP(
+      html$hr(className = "my-2"),
+      p(
         paste(
           "Use utility classes for typography and spacing to suit the",
           "larger container."
         )
       ),
-      htmlP(
+      p(
         dbcButton("Learn more", color = "primary"),
         className = "lead"
       )

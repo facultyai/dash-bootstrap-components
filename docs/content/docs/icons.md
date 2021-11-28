@@ -12,11 +12,13 @@ There are a number of different icon libraries available, which you can link to 
 
 ## Packaged CDN links
 
-_dash-bootstrap-components_ contains CDN links for [Bootstrap Icons](https://icons.getbootstrap.com/) and [Font Awesome](https://fontawesome.com/), two libraries of icons you can use in your apps. You can use either of them by adding them to `external_stylesheets` when instantiating your app.
+_dash-bootstrap-components_ contains CDN links for [Bootstrap Icons v1.5.0](https://icons.getbootstrap.com/) and [Font Awesome v5.15.4](https://fontawesome.com/), two libraries of icons you can use in your apps. You can use either of them by adding them to `external_stylesheets` when instantiating your app.
 
 Bootstrap Icons was developed by the Bootstrap team specifically for use with Bootstrap. There is excellent documentation on how to use them on the [Bootstrap website](https://icons.getbootstrap.com/#usage), and a small example below.
 
 Font Awesome is perhaps the most widely used icon library and is very commonly used with Bootstrap. Usage is similar to Bootstrap Icons, check [their documentation](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use) for more details.
+
+With either library, if you are trying to use an icon, and it simply isn't appearing, then please check which icon documentation version you are using. Both libraries add new icons regularly, and it may be that the icon you want has been renamed or isn't included in the versions we include listed above.
 
 ~~~bootstrap-tabs
 Python
@@ -109,35 +111,35 @@ alerts = html.Div(
     [
         dbc.Alert(
             [
-                html.I(class_name="bi bi-info-circle-fill me-2"),
+                html.I(className="bi bi-info-circle-fill me-2"),
                 "An example info alert with an icon",
             ],
             color="info",
-            class_name="d-flex align-items-center",
+            className="d-flex align-items-center",
         ),
         dbc.Alert(
             [
-                html.I(class_name="bi bi-check-circle-fill me-2"),
+                html.I(className="bi bi-check-circle-fill me-2"),
                 "An example success alert with an icon",
             ],
             color="success",
-            class_name="d-flex align-items-center",
+            className="d-flex align-items-center",
         ),
         dbc.Alert(
             [
-                html.I(class_name="bi bi-exclamation-triangle-fill me-2"),
+                html.I(className="bi bi-exclamation-triangle-fill me-2"),
                 "An example warning alert with an icon",
             ],
             color="warning",
-            class_name="d-flex align-items-center",
+            className="d-flex align-items-center",
         ),
         dbc.Alert(
             [
-                html.I(class_name="bi bi-x-octagon-fill me-2"),
+                html.I(className="bi bi-x-octagon-fill me-2"),
                 "An example danger alert with an icon",
             ],
             color="danger",
-            class_name="d-flex align-items-center",
+            className="d-flex align-items-center",
         ),
     ]
 )
@@ -147,41 +149,40 @@ R
 
 ```r
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-alerts <- htmlDiv(
+alerts <- div(
   list(
     dbcAlert(
       list(
-        htmlI(class_name = "bi bi-info-circle-fill me-2"),
+        html$i(className = "bi bi-info-circle-fill me-2"),
         "An example info alert with an icon"
       ),
       color = "info",
-      class_name = "d-flex align-items-center"
+      className = "d-flex align-items-center"
     ),
     dbcAlert(
       list(
-        htmlI(class_name = "bi bi-check-circle-fill me-2"),
+        html$i(className = "bi bi-check-circle-fill me-2"),
         "An example success alert with an icon"
       ),
       color = "success",
-      class_name = "d-flex align-items-center"
+      className = "d-flex align-items-center"
     ),
     dbcAlert(
       list(
-        htmlI(class_name = "bi bi-exclamation-triangle-fill me-2"),
+        html$i(className = "bi bi-exclamation-triangle-fill me-2"),
         "An example warning alert with an icon"
       ),
       color = "warning",
-      class_name = "d-flex align-items-center"
+      className = "d-flex align-items-center"
     ),
     dbcAlert(
       list(
-        htmlI(class_name = "bi bi-x-octagon-fill me-2"),
+        html$i(className = "bi bi-x-octagon-fill me-2"),
         "An example danger alert with an icon"
       ),
       color = "danger",
-      class_name = "d-flex align-items-center"
+      className = "d-flex align-items-center"
     )
   )
 )
@@ -191,40 +192,40 @@ alerts <- htmlDiv(
 Julia
 
 ```julia
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 alerts = html_div([
     dbc_alert(
         [
-            html_i(class_name = "bi bi-info-circle-fill me-2"),
+            html_i(className = "bi bi-info-circle-fill me-2"),
             "An example info alert with an icon",
         ],
         color = "info",
-        class_name = "d-flex align-items-center",
+        className = "d-flex align-items-center",
     ),
     dbc_alert(
         [
-            html_i(class_name = "bi bi-check-circle-fill me-2"),
+            html_i(className = "bi bi-check-circle-fill me-2"),
             "An example success alert with an icon",
         ],
         color = "success",
-        class_name = "d-flex align-items-center",
+        className = "d-flex align-items-center",
     ),
     dbc_alert(
         [
-            html_i(class_name = "bi bi-exclamation-triangle-fill me-2"),
+            html_i(className = "bi bi-exclamation-triangle-fill me-2"),
             "An example warning alert with an icon",
         ],
         color = "warning",
-        class_name = "d-flex align-items-center",
+        className = "d-flex align-items-center",
     ),
     dbc_alert(
         [
-            html_i(class_name = "bi bi-x-octagon-fill me-2"),
+            html_i(className = "bi bi-x-octagon-fill me-2"),
             "An example danger alert with an icon",
         ],
         color = "danger",
-        class_name = "d-flex align-items-center",
+        className = "d-flex align-items-center",
     ),
 ])
 ```

@@ -57,13 +57,13 @@ As mentioned previously, cards assume no specific width, so they will expand to 
 
 ### Using grid components
 
-Wrap cards in `Row` and `Col` components to control their width and layout. In this example we use the `width` argument of `Col` to make the first card take up a third of the available width, and the second card two thirds. See the [layout documentation](/l/components/layout) for more details on `Row` and `Col`.
+Wrap cards in `Row` and `Col` components to control their width and layout. In this example we use the `width` argument of `Col` to make the first card take up a third of the available width, and the second card two thirds. See the [layout documentation](/docs/components/layout) for more details on `Row` and `Col`.
 
 {{example:components/card/sizing/grid.py:cards}}
 
 ### Using Bootstrap utility classes
 
-Bootstrap comes with several CSS utility classes built in, including some for sizing. For example, the class `w-50` sets `width:50%`. We can can apply these classes to quickly set the desired width of the cards. See the [Bootstrap documentation](https://getbootstrap.com/docs/4.3/utilities/sizing/) for more details.
+Bootstrap comes with several CSS utility classes built in, including some for sizing. For example, the class `w-50` sets `width:50%`. We can can apply these classes to quickly set the desired width of the cards. See the [Bootstrap documentation](https://getbootstrap.com/docs/5.0/utilities/sizing/) for more details.
 
 {{example:components/card/sizing/utility.py:cards}}
 

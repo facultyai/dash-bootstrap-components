@@ -6,60 +6,20 @@ from .util import make_subheading
 cards = html.Div(
     [
         make_subheading("Card", "card"),
-        dbc.CardGroup(
+        dbc.Card(
             [
-                dbc.Card(
+                dbc.CardHeader("This is the header"),
+                dbc.CardBody(
                     [
-                        dbc.CardHeader("Header"),
-                        dbc.CardBody(
-                            [
-                                html.H5(
-                                    "This card has a title",
-                                    className="card-title",
-                                ),
-                                html.P("And some text", className="card-text"),
-                            ]
+                        html.H4("Card title", className="card-title"),
+                        html.P(
+                            "This is some card text", className="card-text"
                         ),
                     ]
                 ),
-                dbc.Card(
-                    [
-                        dbc.CardBody(
-                            [
-                                html.H5(
-                                    "This card has a title",
-                                    className="card-title",
-                                ),
-                                html.P(
-                                    "and some text, but no header",
-                                    className="card-text",
-                                ),
-                            ]
-                        )
-                    ],
-                    outline=True,
-                    color="primary",
-                ),
-                dbc.Card(
-                    [
-                        dbc.CardBody(
-                            [
-                                html.H5(
-                                    "This card has a title",
-                                    className="card-title",
-                                ),
-                                html.P(
-                                    "and some text, and a footer!",
-                                    className="card-text",
-                                ),
-                            ]
-                        ),
-                        dbc.CardFooter("Footer"),
-                    ],
-                    outline=True,
-                    color="dark",
-                ),
-            ]
+                dbc.CardFooter("This is the footer"),
+            ],
+            style={"width": "18rem"},
         ),
     ],
     className="mb-4",

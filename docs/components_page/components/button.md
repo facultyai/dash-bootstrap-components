@@ -5,7 +5,7 @@ lead: Documentation and examples for Bootstrap's button styles with _dash-bootst
 
 ## Examples
 
-Bootstrap includes several predefined button styles based on the predefined contextual colors. Chooose between them using the `color` argument.
+Bootstrap includes several predefined button styles based on the predefined contextual colors. Choose between them using the `color` argument.
 
 {{example:components/button/simple.py:buttons}}
 
@@ -29,7 +29,7 @@ Modify the size of the button by setting `size` to either `"sm"` or `"lg"` for a
 
 ## Block button
 
-Create a Bootstrap 4 style block level button (one which spans the full width
+Create a legacy Bootstrap 4 style block level button (one which spans the full width
 of the parent) by using Bootstrap's [spacing utility classes](https://getbootstrap.com/docs/5.0/utilities/spacing/).
 
 {{example:components/button/block.py:button}}

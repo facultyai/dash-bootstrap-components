@@ -1,9 +1,9 @@
-#= 
+#=
 Dash port of Shiny iris k-means example:
 
 https://shiny.rstudio.com/gallery/kmeans-example.html =#
 
-using Dash, DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using Dash, DashBootstrapComponents
 using RDatasets, DataFrames, Clustering
 
 iris = dataset("datasets", "iris");
@@ -98,7 +98,7 @@ end;
 
 # make sure that x and y values can't be the same variable
 function filter_options(v)
-    #= 
+    #=
     Disable option v =#
     return [
         Dict("label" => col, "value" => col, "disabled" => col == v) for col in names(iris)

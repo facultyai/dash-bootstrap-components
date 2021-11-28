@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-popover <- htmlDiv(
+popover <- div(
   list(
     dbcButton("Toggle",
       id = "toggle", n_clicks = 0,

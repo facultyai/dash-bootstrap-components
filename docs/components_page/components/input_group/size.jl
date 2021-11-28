@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 input_group = html_div([
     dbc_inputgroup([dbc_inputgrouptext("Large"), dbc_input()], size = "lg"),

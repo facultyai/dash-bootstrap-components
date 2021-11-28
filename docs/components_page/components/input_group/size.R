@@ -1,7 +1,6 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-input_group <- htmlDiv(
+input_group <- div(
   list(
     dbcInputGroup(
       list(
@@ -9,13 +8,13 @@ input_group <- htmlDiv(
       ),
       size = "lg"
     ),
-    htmlBr(),
+    br(),
     dbcInputGroup(
       list(
         dbcInputGroupText("Default"), dbcInput()
       )
     ),
-    htmlBr(),
+    br(),
     dbcInputGroup(
       list(
         dbcInputGroupText("Small"), dbcInput()

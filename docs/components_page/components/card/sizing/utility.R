@@ -1,16 +1,15 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
-cards <- htmlDiv(
+cards <- div(
   list(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("75% width card", className = "card-title"),
-          htmlP(
+          html$h5("75% width card", className = "card-title"),
+          p(
             list(
               "This card uses the ",
-              htmlCode("w-75"),
+              html$code("w-75"),
               " class to set the width to 75%"
             ),
             className = "card-text"
@@ -22,11 +21,11 @@ cards <- htmlDiv(
     dbcCard(
       dbcCardBody(
         list(
-          htmlH5("50% width card", className = "card-title"),
-          htmlP(
+          html$h5("50% width card", className = "card-title"),
+          p(
             list(
               "This card uses the ",
-              htmlCode("w-50"),
+              html$code("w-50"),
               " class to set the width to 50%"
             ),
             className = "card-text"

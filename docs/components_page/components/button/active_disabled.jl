@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 buttons = html_div([
     dbc_button("Regular", color = "primary", className = "me-1"),

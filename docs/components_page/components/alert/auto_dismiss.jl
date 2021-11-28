@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 alert = html_div([
     dbc_button("Toggle", id = "alert-toggle-auto", className = "me-1", n_clicks = 0),

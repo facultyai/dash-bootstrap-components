@@ -6,6 +6,20 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.0.1 - 2021/11/28
+
+This release adds no new features but fixes a number of bugs. Please continue to report bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
+
+### Fixed
+
+- Open `AccordionItem`s will close when clicked on ([PR 744](https://github.com/facultyai/dash-bootstrap-components/pull/744))
+- Fixed regressions in `DropdownMenu` dismissal. The menu will dismiss if the user clicks outside the menu or if the escape key is pressed. ([PR 751](https://github.com/facultyai/dash-bootstrap-components/pull/751))
+- Fixed bug in `Select` that prevented `valid` and `invalid` props from having an effect ([PR 755](https://github.com/facultyai/dash-bootstrap-components/pull/755))
+- Set `id` property on tabs so that they can be targeted with tooltips. ([PR 756](https://github.com/facultyai/dash-bootstrap-components/pull/756))
+- A number of fixes to `Popover`: ensure the correct behaviour of the `legacy` trigger, and fix bug that prevented `offset` and `hide_arrow` props from having an effect. ([PR 757](https://github.com/facultyai/dash-bootstrap-components/pull/757))
+- Make `Button` compatible with `dash_core_components.ConfirmDialogProvider` ([PR 773](https://github.com/facultyai/dash-bootstrap-components/pull/773))
+- Fixed bug in `Button` that prevented `target` prop from having an effect ([PR 781](https://github.com/facultyai/dash-bootstrap-components/pull/781))
+
 ## 1.0.0 - 2021/10/19
 
 v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully, and refer to the [migration guide](/migration-guide/) for full details of the changes.

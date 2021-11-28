@@ -1,5 +1,4 @@
 library(dashBootstrapComponents)
-library(dashHtmlComponents)
 
 dropdown <- dbcDropdownMenu(
   list(
@@ -10,7 +9,7 @@ dropdown <- dbcDropdownMenu(
     dbcDropdownMenuItem("Active item", active = TRUE),
     dbcDropdownMenuItem("Disabled item", disabled = TRUE),
     dbcDropdownMenuItem(divider = TRUE),
-    htmlP(
+    p(
       "You can have other content here like text if you like.",
       className = "text-muted px-4 mt-4"
     )
