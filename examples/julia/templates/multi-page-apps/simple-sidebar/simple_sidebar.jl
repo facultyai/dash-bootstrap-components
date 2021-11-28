@@ -11,7 +11,7 @@ For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plot.ly/urls
 =#
 
-using Dash, DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using Dash, DashBootstrapComponents
 
 app = dash(external_stylesheets = [dbc_themes.BOOTSTRAP])
 

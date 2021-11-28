@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 buttons = html_div([
     dbc_button("Large button", size = "lg", className = "me-1"),

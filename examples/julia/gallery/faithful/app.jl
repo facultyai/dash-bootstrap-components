@@ -8,7 +8,7 @@ does not exist for plotly.jl. This is a heavily simplified
 version of the original R shiny implementation.
 """
 
-using Dash, DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using Dash, DashBootstrapComponents
 using CSV, DataFrames, HTTP
 
 # import plotly.figure_factory as ff

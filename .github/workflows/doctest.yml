@@ -49,10 +49,11 @@ jobs:
           version: '1.6.1'
       - name: Add Julia artifacts to repo for local install
         run: |
+          inv edit-julia-dependencies
           git add -f deps/_components/dash_bootstrap_components.min.js src/*.jl src/jl/*.jl Project.toml
           git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "Add Julia build artifacts"
       - name: Install Julia dependencies
-        run: julia -e 'using Pkg; Pkg.add(["Dash", "DashCoreComponents", "DashHtmlComponents", "HTTP"]); Pkg.add(path=".");'
+        run: julia -e 'using Pkg; Pkg.add([PackageSpec(name="Dash", version="1.0"), PackageSpec("HTTP")]); Pkg.add(path=".");'
       - name: Test Julia installation
         run: julia -e 'using Dash, DashBootstrapComponents, HTTP;'
       - name: Install nox

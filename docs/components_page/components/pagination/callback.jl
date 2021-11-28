@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 
 pagination = html_div([

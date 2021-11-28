@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 button = html_div([
     dbc_button("Click me", id = "example-button", className = "me-2", n_clicks = 0),

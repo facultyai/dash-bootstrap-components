@@ -4,7 +4,7 @@ Dash port of Shiny telephones by region example:
 https://shiny.rstudio.com/gallery/telephones-by-region.html
 =#
 
-using Dash, DashBootstrapComponents, DashCoreComponents, DashHtmlComponents
+using Dash, DashBootstrapComponents
 using CSV, DataFrames, HTTP
 
 data_path = "https://cdn.opensource.faculty.ai/world-phones/data.csv";

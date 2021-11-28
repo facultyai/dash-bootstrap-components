@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 popovers = html_div([
     # First example - using dbc_popoverbody

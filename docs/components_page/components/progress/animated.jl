@@ -1,4 +1,4 @@
-using DashBootstrapComponents, DashHtmlComponents
+using DashBootstrapComponents
 
 progress = html_div([
     dbc_progress(value = 80, id = "animated-progress", animated = false, striped = true),
