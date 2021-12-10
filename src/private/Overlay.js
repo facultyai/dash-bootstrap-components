@@ -212,7 +212,14 @@ const Overlay = ({
       <RBOverlay
         show={isOpen}
         rootClose={rootClose} // Close when clicking outside the icon
-        onHide={() => setIsOpen(false)} // Must be defined when using rootClose
+        // Must be defined when using rootClose
+        // need to make sure that props stay in sync
+        onHide={() => {
+          setIsOpen(false);
+          if (setProps) {
+            setProps({is_open: false});
+          }
+        }}
         target={targetRef.current}
         {...otherProps}
       >
