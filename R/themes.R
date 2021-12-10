@@ -1,12 +1,12 @@
 .prependBootswatch <- function(suffix) {
-  BOOTSWATCH_BASE <- "https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/"
+  BOOTSWATCH_BASE <- "https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/"
   return(paste(BOOTSWATCH_BASE, suffix, sep=""))
 }
 
 #' @export'
 dbcThemes <- list(
-  BOOTSTRAP = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css",
-  GRID = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap-grid.min.css",
+  BOOTSTRAP = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
+  GRID = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.min.css",
   CERULEAN = .prependBootswatch("cerulean/bootstrap.min.css"),
   COSMO = .prependBootswatch("cosmo/bootstrap.min.css"),
   CYBORG = .prependBootswatch("cyborg/bootstrap.min.css"),
