@@ -212,7 +212,7 @@ Popover.propTypes = {
   /**
    * Optionally hide tooltip when hovering over tooltip content - default True.
    */
-   autohide: PropTypes.bool,
+  autohide: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
