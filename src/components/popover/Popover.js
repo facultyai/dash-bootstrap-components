@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PopoverTemplate from '../../private/PopoverTemplate';
+import {PopoverTemplate} from '../../private/OverlayTemplates';
 import Overlay from '../../private/Overlay';
 
 /**
@@ -72,7 +72,8 @@ const Popover = props => {
 Popover.defaultProps = {
   delay: {show: 0, hide: 50},
   placement: 'right',
-  flip: true
+  flip: true,
+  autohide: false
 };
 
 Popover.propTypes = {
@@ -207,6 +208,11 @@ Popover.propTypes = {
    * `PopoverBody` automatically.
    */
   body: PropTypes.bool,
+
+  /**
+   * Optionally hide popover when hovering over content - default False.
+   */
+  autohide: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
