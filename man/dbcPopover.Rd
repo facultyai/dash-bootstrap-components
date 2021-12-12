@@ -10,11 +10,11 @@ Popover creates a toggleable overlay that can be used to provide additional info
 }
 
 \usage{
-dbcPopover(children=NULL, id=NULL, body=NULL, className=NULL,
-class_name=NULL, delay=NULL, flip=NULL, hide_arrow=NULL,
-innerClassName=NULL, inner_class_name=NULL, is_open=NULL,
-key=NULL, loading_state=NULL, offset=NULL, placement=NULL,
-style=NULL, target=NULL, trigger=NULL)
+dbcPopover(children=NULL, id=NULL, autohide=NULL, body=NULL,
+className=NULL, class_name=NULL, delay=NULL, flip=NULL,
+hide_arrow=NULL, innerClassName=NULL, inner_class_name=NULL,
+is_open=NULL, key=NULL, loading_state=NULL, offset=NULL,
+placement=NULL, style=NULL, target=NULL, trigger=NULL)
 }
 
 \arguments{
@@ -23,6 +23,8 @@ style=NULL, target=NULL, trigger=NULL)
 \item{id}{Character. The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
+
+\item{autohide}{Logical. Optionally hide popover when hovering over content - default False.}
 
 \item{body}{Logical. When body is `True`, the Popover will render all children in a
 `PopoverBody` automatically.}

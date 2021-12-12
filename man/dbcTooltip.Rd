@@ -10,9 +10,9 @@ A component for adding tooltips to any element, no callbacks required!  Simply a
 }
 
 \usage{
-dbcTooltip(children=NULL, id=NULL, className=NULL, class_name=NULL,
-delay=NULL, flip=NULL, key=NULL, loading_state=NULL,
-placement=NULL, style=NULL, target=NULL)
+dbcTooltip(children=NULL, id=NULL, autohide=NULL, className=NULL,
+class_name=NULL, delay=NULL, flip=NULL, key=NULL,
+loading_state=NULL, placement=NULL, style=NULL, target=NULL)
 }
 
 \arguments{
@@ -21,6 +21,8 @@ placement=NULL, style=NULL, target=NULL)
 \item{id}{Character. The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
+
+\item{autohide}{Logical. Optionally hide tooltip when hovering over tooltip content - default True.}
 
 \item{className}{Character. **DEPRECATED** Use `class_name` instead.
 
