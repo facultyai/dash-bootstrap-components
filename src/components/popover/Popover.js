@@ -210,7 +210,7 @@ Popover.propTypes = {
   body: PropTypes.bool,
 
   /**
-   * Optionally hide tooltip when hovering over tooltip content - default True.
+   * Optionally hide popover when hovering over content - default False.
    */
   autohide: PropTypes.bool,
 
