@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import RBTooltip from 'react-bootstrap/Tooltip';
 
+import {TooltipTemplate} from '../../private/OverlayTemplates';
 import Overlay from '../../private/Overlay';
 
 /**
@@ -31,9 +31,13 @@ const Tooltip = props => {
       {...omit(['setProps'], otherProps)}
       trigger="hover focus"
     >
-      <RBTooltip style={style} className={class_name || className}>
+      <TooltipTemplate
+        id={id}
+        style={style}
+        className={class_name || className}
+      >
         {children}
-      </RBTooltip>
+      </TooltipTemplate>
     </Overlay>
   );
 };
@@ -41,7 +45,8 @@ const Tooltip = props => {
 Tooltip.defaultProps = {
   delay: {show: 0, hide: 50},
   placement: 'auto',
-  flip: true
+  flip: true,
+  autohide: true
 };
 
 Tooltip.propTypes = {
@@ -117,6 +122,11 @@ Tooltip.propTypes = {
    * Control the delay of hide and show events.
    */
   delay: PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
+
+  /**
+   * Optionally hide tooltip when hovering over tooltip content - default True.
+   */
+  autohide: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

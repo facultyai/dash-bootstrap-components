@@ -1,5 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {createContext, useEffect, useRef, useState} from 'react';
 import RBOverlay from 'react-bootstrap/Overlay';
+
+const OverlayContext = createContext({});
 
 function isInDOMSubtree(element, subtreeRoot) {
   return (
@@ -37,6 +39,7 @@ const Overlay = ({
   trigger,
   defaultShow,
   setProps,
+  autohide,
   ...otherProps
 }) => {
   // isOpen should be false initially, even if defaultShow is true
@@ -67,7 +70,10 @@ const Overlay = ({
   };
   // Function to create the delay for hiding if currently open
   const hideWithDelay = () => {
-    if (isOpenRef.current) {
+    if (!isOpenRef.current && showTimeout.current) {
+      showTimeout.current = clearTimeout(showTimeout.current);
+      hide();
+    } else if (isOpenRef.current) {
       clearTimeout(hideTimeout.current);
       hideTimeout.current = setTimeout(hide, delay.hide);
     }
@@ -85,7 +91,10 @@ const Overlay = ({
   };
   // Function to create the delay for showing, if currently closed
   const showWithDelay = () => {
-    if (!isOpenRef.current) {
+    if (isOpenRef.current && hideTimeout.current) {
+      hideTimeout.current = clearTimeout(hideTimeout.current);
+      show();
+    } else if (!isOpenRef.current) {
       clearTimeout(showTimeout.current);
       showTimeout.current = setTimeout(show, delay.show);
     }
@@ -107,6 +116,25 @@ const Overlay = ({
       } else {
         hideWithDelay();
       }
+    }
+  };
+
+  const handleMouseOverTooltipContent = e => {
+    if (triggers.indexOf('hover') > -1 && !autohide) {
+      if (hideTimeout.current) {
+        hideTimeout.current = clearTimeout(hideTimeout.current);
+      }
+      show();
+    }
+  };
+
+  const handleMouseLeaveTooltipContent = e => {
+    if (triggers.indexOf('hover') > -1 && !autohide) {
+      if (showTimeout.current) {
+        showTimeout.current = clearTimeout(showTimeout.current);
+      }
+      e.persist();
+      hideWithDelay();
     }
   };
 
@@ -178,16 +206,28 @@ const Overlay = ({
   }, [targetStr]);
 
   return (
-    <RBOverlay
-      show={isOpen}
-      rootClose={rootClose} // Close when clicking outside the icon
-      onHide={() => setIsOpen(false)} // Must be defined when using rootClose
-      target={targetRef.current}
-      {...otherProps}
+    <OverlayContext.Provider
+      value={{handleMouseOverTooltipContent, handleMouseLeaveTooltipContent}}
     >
-      {children}
-    </RBOverlay>
+      <RBOverlay
+        show={isOpen}
+        rootClose={rootClose} // Close when clicking outside the icon
+        // Must be defined when using rootClose
+        // need to make sure that props stay in sync
+        onHide={() => {
+          setIsOpen(false);
+          if (setProps) {
+            setProps({is_open: false});
+          }
+        }}
+        target={targetRef.current}
+        {...otherProps}
+      >
+        {children}
+      </RBOverlay>
+    </OverlayContext.Provider>
   );
 };
 
 export default Overlay;
+export {OverlayContext};
