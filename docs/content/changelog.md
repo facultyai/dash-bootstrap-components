@@ -6,6 +6,23 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.0.2 - 2021/12/12
+
+This release updates CDN links to use Bootstrap 5.1.3 and fixes a few bugs. Please continue to report bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
+
+### Changed
+
+- Links in the `themes` module now use Bootstrap 5.1.3 ([PR 789](https://github.com/facultyai/dash-bootstrap-components/pull/789))
+
+### Added
+
+- Added `autohide` prop to `Tooltip` and `Popover` when using the `hover` trigger. When set to `True`, the `Popover` / `Tooltip` will hide if the mouse is moved over the content ([PR 788](https://github.com/facultyai/dash-bootstrap-components/pull/788))
+
+### Fixed
+
+- `Popover` with trigger `hover` will not dismiss if mouse is moved over the content ([PR 788](https://github.com/facultyai/dash-bootstrap-components/pull/788))
+- Resolved bug where `Tooltip` could get stuck open when moused over quickly ([PR 788](https://github.com/facultyai/dash-bootstrap-components/pull/788))
+
 ## 1.0.1 - 2021/11/28
 
 This release adds no new features but fixes a number of bugs. Please continue to report bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
