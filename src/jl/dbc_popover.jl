@@ -20,6 +20,7 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
+- `autohide` (Bool; optional): Optionally hide popover when hovering over content - default False.
 - `body` (Bool; optional): When body is `True`, the Popover will render all children in a
 `PopoverBody` automatically.
 - `className` (String; optional): **DEPRECATED** Use `class_name` instead.
@@ -72,7 +73,7 @@ cursor.
 dismiss the popover when the user clicks outside of the popover.
 """
 function dbc_popover(; kwargs...)
-        available_props = Symbol[:children, :id, :body, :className, :class_name, :delay, :flip, :hide_arrow, :innerClassName, :inner_class_name, :is_open, :key, :loading_state, :offset, :placement, :style, :target, :trigger]
+        available_props = Symbol[:children, :id, :autohide, :body, :className, :class_name, :delay, :flip, :hide_arrow, :innerClassName, :inner_class_name, :is_open, :key, :loading_state, :offset, :placement, :style, :target, :trigger]
         wild_props = Symbol[]
         return Component("dbc_popover", "Popover", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
