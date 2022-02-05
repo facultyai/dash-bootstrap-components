@@ -34,8 +34,9 @@ module.exports = {
     bundle: [path.join(directories.ROOT, 'demo/index.js')]
   },
   devServer: {
-    public: publicHost,
-    contentBase: 'demo'
+    static: 'demo',
+    compress: true,
+    port: 9000
   },
   output: {
     library: LIBRARY_NAME,
