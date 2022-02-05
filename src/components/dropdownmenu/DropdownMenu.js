@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import RBDropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import {bootstrapColors} from '../../private/BootstrapColors';
+import DropdownToggle from '../../private/DropdownToggle';
 
 /**
  * DropdownMenu creates an overlay useful for grouping together links and other
@@ -75,7 +78,8 @@ const DropdownMenu = props => {
           (loading_state && loading_state.is_loading) || undefined
         }
       >
-        <RBDropdown.Toggle
+        <DropdownToggle
+          caret={caret}
           as={nav ? Nav.Link : undefined}
           onClick={toggle}
           disabled={disabled}
@@ -89,7 +93,7 @@ const DropdownMenu = props => {
           className={toggle_class_name || toggleClassName}
         >
           {label}
-        </RBDropdown.Toggle>
+        </DropdownToggle>
         <RBDropdown.Menu
           renderOnMount
           variant={menu_variant === 'dark' ? 'dark' : undefined}

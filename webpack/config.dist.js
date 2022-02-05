@@ -23,12 +23,13 @@ module.exports = {
   mode: NODE_ENV,
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM',
+    'react-dom': 'ReactDOM'
   },
   module: moduleDefinition,
-  plugins: [new OccurrenceOrderPlugin(true)],
   optimization: {
-    minimize: true
+    minimize: true,
+    chunkIds: 'total-size',
+    moduleIds: 'size'
   },
   entry: {
     main: './index.js'
