@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcLabel <- function(children=NULL, id=NULL, align=NULL, check=NULL, className=NULL, class_name=NULL, color=NULL, hidden=NULL, html_for=NULL, key=NULL, lg=NULL, loading_state=NULL, md=NULL, size=NULL, sm=NULL, style=NULL, width=NULL, xl=NULL, xs=NULL) {
     
     props <- list(children=children, id=id, align=align, check=check, className=className, class_name=class_name, color=color, hidden=hidden, html_for=html_for, key=key, lg=lg, loading_state=loading_state, md=md, size=size, sm=sm, style=style, width=width, xl=xl, xs=xs)

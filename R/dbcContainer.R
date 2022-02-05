@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcContainer <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, fluid=NULL, key=NULL, loading_state=NULL, style=NULL, tag=NULL) {
     
     props <- list(children=children, id=id, className=className, class_name=class_name, fluid=fluid, key=key, loading_state=loading_state, style=style, tag=tag)

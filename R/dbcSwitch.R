@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcSwitch <- function(id=NULL, className=NULL, class_name=NULL, disabled=NULL, inputClassName=NULL, inputStyle=NULL, input_class_name=NULL, input_style=NULL, label=NULL, labelClassName=NULL, labelStyle=NULL, label_class_name=NULL, label_id=NULL, label_style=NULL, loading_state=NULL, name=NULL, persisted_props=NULL, persistence=NULL, persistence_type=NULL, style=NULL, value=NULL) {
     
     props <- list(id=id, className=className, class_name=class_name, disabled=disabled, inputClassName=inputClassName, inputStyle=inputStyle, input_class_name=input_class_name, input_style=input_style, label=label, labelClassName=labelClassName, labelStyle=labelStyle, label_class_name=label_class_name, label_id=label_id, label_style=label_style, loading_state=loading_state, name=name, persisted_props=persisted_props, persistence=persistence, persistence_type=persistence_type, style=style, value=value)

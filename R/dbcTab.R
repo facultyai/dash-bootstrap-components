@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcTab <- function(children=NULL, id=NULL, activeLabelClassName=NULL, activeTabClassName=NULL, active_label_class_name=NULL, active_label_style=NULL, active_tab_class_name=NULL, active_tab_style=NULL, className=NULL, class_name=NULL, disabled=NULL, key=NULL, label=NULL, labelClassName=NULL, label_class_name=NULL, label_style=NULL, loading_state=NULL, style=NULL, tabClassName=NULL, tab_class_name=NULL, tab_id=NULL, tab_style=NULL) {
     
     props <- list(children=children, id=id, activeLabelClassName=activeLabelClassName, activeTabClassName=activeTabClassName, active_label_class_name=active_label_class_name, active_label_style=active_label_style, active_tab_class_name=active_tab_class_name, active_tab_style=active_tab_style, className=className, class_name=class_name, disabled=disabled, key=key, label=label, labelClassName=labelClassName, label_class_name=label_class_name, label_style=label_style, loading_state=loading_state, style=style, tabClassName=tabClassName, tab_class_name=tab_class_name, tab_id=tab_id, tab_style=tab_style)

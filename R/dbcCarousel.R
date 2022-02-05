@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcCarousel <- function(id=NULL, active_index=NULL, className=NULL, class_name=NULL, controls=NULL, indicators=NULL, interval=NULL, items=NULL, loading_state=NULL, ride=NULL, slide=NULL, style=NULL, variant=NULL) {
     
     props <- list(id=id, active_index=active_index, className=className, class_name=class_name, controls=controls, indicators=indicators, interval=interval, items=items, loading_state=loading_state, ride=ride, slide=slide, style=style, variant=variant)

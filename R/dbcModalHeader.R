@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcModalHeader <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, close_button=NULL, loading_state=NULL, style=NULL, tag=NULL) {
     
     props <- list(children=children, id=id, className=className, class_name=class_name, close_button=close_button, loading_state=loading_state, style=style, tag=tag)

@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcFade <- function(children=NULL, id=NULL, appear=NULL, className=NULL, class_name=NULL, enter=NULL, exit=NULL, is_in=NULL, key=NULL, loading_state=NULL, style=NULL, tag=NULL, timeout=NULL) {
     
     props <- list(children=children, id=id, appear=appear, className=className, class_name=class_name, enter=enter, exit=exit, is_in=is_in, key=key, loading_state=loading_state, style=style, tag=tag, timeout=timeout)

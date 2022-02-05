@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcOffcanvas <- function(children=NULL, id=NULL, autoFocus=NULL, autofocus=NULL, backdrop=NULL, backdropClassName=NULL, backdrop_class_name=NULL, className=NULL, class_name=NULL, close_button=NULL, is_open=NULL, keyboard=NULL, labelledBy=NULL, labelledby=NULL, loading_state=NULL, placement=NULL, scrollable=NULL, style=NULL, title=NULL) {
     
     props <- list(children=children, id=id, autoFocus=autoFocus, autofocus=autofocus, backdrop=backdrop, backdropClassName=backdropClassName, backdrop_class_name=backdrop_class_name, className=className, class_name=class_name, close_button=close_button, is_open=is_open, keyboard=keyboard, labelledBy=labelledBy, labelledby=labelledby, loading_state=loading_state, placement=placement, scrollable=scrollable, style=style, title=title)

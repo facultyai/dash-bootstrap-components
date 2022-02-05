@@ -1,6 +1,6 @@
 Package: dashBootstrapComponents
 Title: Bootstrap components for Plotly Dash
-Version: 1.0.2
+Version: 1.0.3
 Description: Bootstrap components for Plotly Dash
 Depends: R (>= 3.0.2)
 Imports: 

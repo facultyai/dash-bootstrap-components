@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcCardImg <- function(children=NULL, id=NULL, alt=NULL, bottom=NULL, className=NULL, class_name=NULL, key=NULL, loading_state=NULL, src=NULL, style=NULL, tag=NULL, title=NULL, top=NULL) {
     
     props <- list(children=children, id=id, alt=alt, bottom=bottom, className=className, class_name=class_name, key=key, loading_state=loading_state, src=src, style=style, tag=tag, title=title, top=top)

@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcBadge <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, color=NULL, external_link=NULL, href=NULL, key=NULL, loading_state=NULL, n_clicks=NULL, n_clicks_timestamp=NULL, pill=NULL, style=NULL, tag=NULL, target=NULL, text_color=NULL, title=NULL) {
     
     props <- list(children=children, id=id, className=className, class_name=class_name, color=color, external_link=external_link, href=href, key=key, loading_state=loading_state, n_clicks=n_clicks, n_clicks_timestamp=n_clicks_timestamp, pill=pill, style=style, tag=tag, target=target, text_color=text_color, title=title)

@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcCard <- function(children=NULL, id=NULL, body=NULL, className=NULL, class_name=NULL, color=NULL, inverse=NULL, key=NULL, loading_state=NULL, outline=NULL, style=NULL) {
     
     props <- list(children=children, id=id, body=body, className=className, class_name=class_name, color=color, inverse=inverse, key=key, loading_state=loading_state, outline=outline, style=style)

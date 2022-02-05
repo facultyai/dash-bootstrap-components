@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcForm <- function(children=NULL, id=NULL, action=NULL, className=NULL, class_name=NULL, key=NULL, loading_state=NULL, method=NULL, n_submit=NULL, n_submit_timestamp=NULL, prevent_default_on_submit=NULL, style=NULL) {
     
     props <- list(children=children, id=id, action=action, className=className, class_name=class_name, key=key, loading_state=loading_state, method=method, n_submit=n_submit, n_submit_timestamp=n_submit_timestamp, prevent_default_on_submit=prevent_default_on_submit, style=style)

@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcAccordionItem <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, item_id=NULL, loading_state=NULL, style=NULL, title=NULL) {
     
     props <- list(children=children, id=id, className=className, class_name=class_name, item_id=item_id, loading_state=loading_state, style=style, title=title)

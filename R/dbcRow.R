@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcRow <- function(children=NULL, id=NULL, align=NULL, className=NULL, class_name=NULL, justify=NULL, key=NULL, loading_state=NULL, style=NULL) {
     
     props <- list(children=children, id=id, align=align, className=className, class_name=class_name, justify=justify, key=key, loading_state=loading_state, style=style)

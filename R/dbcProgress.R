@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcProgress <- function(children=NULL, id=NULL, animated=NULL, bar=NULL, className=NULL, class_name=NULL, color=NULL, hide_label=NULL, key=NULL, label=NULL, loading_state=NULL, max=NULL, min=NULL, striped=NULL, style=NULL, value=NULL) {
     
     props <- list(children=children, id=id, animated=animated, bar=bar, className=className, class_name=class_name, color=color, hide_label=hide_label, key=key, label=label, loading_state=loading_state, max=max, min=min, striped=striped, style=style, value=value)

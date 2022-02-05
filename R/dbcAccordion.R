@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcAccordion <- function(children=NULL, id=NULL, active_item=NULL, className=NULL, class_name=NULL, flush=NULL, key=NULL, loading_state=NULL, persisted_props=NULL, persistence=NULL, persistence_type=NULL, start_collapsed=NULL, style=NULL) {
     
     props <- list(children=children, id=id, active_item=active_item, className=className, class_name=class_name, flush=flush, key=key, loading_state=loading_state, persisted_props=persisted_props, persistence=persistence, persistence_type=persistence_type, start_collapsed=start_collapsed, style=style)

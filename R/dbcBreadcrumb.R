@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcBreadcrumb <- function(id=NULL, className=NULL, class_name=NULL, itemClassName=NULL, item_class_name=NULL, item_style=NULL, items=NULL, key=NULL, loading_state=NULL, style=NULL, tag=NULL) {
     
     props <- list(id=id, className=className, class_name=class_name, itemClassName=itemClassName, item_class_name=item_class_name, item_style=item_style, items=items, key=key, loading_state=loading_state, style=style, tag=tag)

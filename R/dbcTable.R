@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcTable <- function(children=NULL, id=NULL, bordered=NULL, borderless=NULL, className=NULL, class_name=NULL, color=NULL, dark=NULL, hover=NULL, key=NULL, loading_state=NULL, responsive=NULL, size=NULL, striped=NULL, style=NULL) {
     
     props <- list(children=children, id=id, bordered=bordered, borderless=borderless, className=className, class_name=class_name, color=color, dark=dark, hover=hover, key=key, loading_state=loading_state, responsive=responsive, size=size, striped=striped, style=style)

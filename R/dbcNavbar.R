@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcNavbar <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, color=NULL, dark=NULL, expand=NULL, fixed=NULL, key=NULL, light=NULL, loading_state=NULL, role=NULL, sticky=NULL, style=NULL, tag=NULL) {
     
     props <- list(children=children, id=id, className=className, class_name=class_name, color=color, dark=dark, expand=expand, fixed=fixed, key=key, light=light, loading_state=loading_state, role=role, sticky=sticky, style=style, tag=tag)

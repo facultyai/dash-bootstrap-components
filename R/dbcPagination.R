@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcPagination <- function(id=NULL, active_page=NULL, className=NULL, class_name=NULL, first_last=NULL, fully_expanded=NULL, loading_state=NULL, max_value=NULL, min_value=NULL, previous_next=NULL, size=NULL, step=NULL, style=NULL) {
     
     props <- list(id=id, active_page=active_page, className=className, class_name=class_name, first_last=first_last, fully_expanded=fully_expanded, loading_state=loading_state, max_value=max_value, min_value=min_value, previous_next=previous_next, size=size, step=step, style=style)

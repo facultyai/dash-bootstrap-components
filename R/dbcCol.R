@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcCol <- function(children=NULL, id=NULL, align=NULL, className=NULL, class_name=NULL, key=NULL, lg=NULL, loading_state=NULL, md=NULL, sm=NULL, style=NULL, width=NULL, xl=NULL, xs=NULL, xxl=NULL) {
     
     props <- list(children=children, id=id, align=align, className=className, class_name=class_name, key=key, lg=lg, loading_state=loading_state, md=md, sm=sm, style=style, width=width, xl=xl, xs=xs, xxl=xxl)

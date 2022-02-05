@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcTooltip <- function(children=NULL, id=NULL, autohide=NULL, className=NULL, class_name=NULL, delay=NULL, flip=NULL, key=NULL, loading_state=NULL, placement=NULL, style=NULL, target=NULL) {
     
     props <- list(children=children, id=id, autohide=autohide, className=className, class_name=class_name, delay=delay, flip=flip, key=key, loading_state=loading_state, placement=placement, style=style, target=target)

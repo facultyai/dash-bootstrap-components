@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 dbcAlert <- function(children=NULL, id=NULL, className=NULL, class_name=NULL, color=NULL, dismissable=NULL, duration=NULL, fade=NULL, is_open=NULL, key=NULL, loading_state=NULL, style=NULL) {
     
     props <- list(children=children, id=id, className=className, class_name=class_name, color=color, dismissable=dismissable, duration=duration, fade=fade, is_open=is_open, key=key, loading_state=loading_state, style=style)
