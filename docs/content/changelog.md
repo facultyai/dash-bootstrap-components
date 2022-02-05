@@ -6,6 +6,15 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.0.3 - 2022/2/5
+
+This is a patch release that fixes a few bugs. Please continue to report any bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
+
+### Fixed
+
+- Set `cursor: pointer` on tabs that aren't disabled ([PR 801](https://github.com/facultyai/dash-bootstrap-components/pull/801))
+- Ensure no caret is rendered when `caret=False` in `DropdownMenu` ([PR 804](https://github.com/facultyai/dash-bootstrap-components/pull/804))
+
 ## 1.0.2 - 2021/12/12
 
 This release updates CDN links to use Bootstrap 5.1.3 and fixes a few bugs. Please continue to report bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
