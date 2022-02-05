@@ -13,12 +13,12 @@
     "build:r": "inv build-r",
     "build:jl": "inv build-jl",
     "clean": "inv clean",
-    "demo": "webpack-dev-server --hot --inline --port=8888 --config=webpack/config.demo.js",
+    "demo": "webpack serve --hot --port=8888 --config=webpack/config.demo.js",
     "format": "prettier 'src/**/*.js' --write",
     "lint": "prettier 'src/**/*.js' --list-different",
     "prepublishOnly": "NODE_ENV=production npm run build && NODE_ENV=production npm run build:lib",
     "test": "jest",
-    "test:demo": "webpack --content-base=demo --config=webpack/config.demo.js",
+    "test:demo": "webpack --config=webpack/config.demo.js",
     "test:watch": "jest --watch"
   },
   "files": [

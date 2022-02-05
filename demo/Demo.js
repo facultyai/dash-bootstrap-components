@@ -6,7 +6,6 @@ import {
   ButtonGroup,
   Card,
   CardBody,
-  CardDeck,
   CardFooter,
   CardHeader,
   CardImg,
@@ -20,14 +19,10 @@ import {
   Fade,
   Form,
   FormFeedback,
-  FormGroup,
   Input,
-  Jumbotron,
   Label,
   ListGroup,
   ListGroupItem,
-  ListGroupItemHeading,
-  ListGroupItemText,
   NavbarSimple,
   NavItem,
   NavLink,
@@ -60,12 +55,12 @@ const CollapseComponent = ({children}) => {
 };
 
 const FadeComponent = ({children}) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isIn, setIsIn] = useState(false);
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(!isOpen)}>Toggle fade</Button>
-      <Fade is_open={isOpen}>{children}</Fade>
+      <Button onClick={() => setIsOpen(!isIn)}>Toggle fade</Button>
+      <Fade is_in={isIn}>{children}</Fade>
     </div>
   );
 };
@@ -180,12 +175,6 @@ const Demo = () => (
         </Button>
       </div>
 
-      <h4>Block button</h4>
-      <div>
-        <Button block={true} color="primary">
-          primary block
-        </Button>{' '}
-      </div>
       <h4>Button Group</h4>
       <div>
         <ButtonGroup size="sm">
@@ -243,37 +232,6 @@ const Demo = () => (
         </Col>
       </Row>
 
-      <h4>Card deck</h4>
-      <CardDeck>
-        <Card>
-          <CardBody>
-            <h5 className="card-title">The first card</h5>
-            <p className="card-text">
-              This is a card with some text on it, it's the first one in the
-              deck.
-            </p>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <h5 className="card-title">The second card</h5>
-            <p className="card-text">
-              This is a card with some text on it, it's the second one in the
-              deck. It has a bit more text in it so that we can see how the
-              vertical spacing will work.
-            </p>
-          </CardBody>
-        </Card>
-        <Card outline={true} color="primary">
-          <CardBody>
-            <h5 className="card-title">The third card</h5>
-            <h6 className="card-subtitle">...and the last :(</h6>
-            <p className="card-text">This card doesn't have much text...</p>
-            <Button color="danger">Click me</Button>
-          </CardBody>
-        </Card>
-      </CardDeck>
-
       <h2>Collapse</h2>
       <CollapseComponent>
         <Card>
@@ -283,41 +241,6 @@ const Demo = () => (
 
       <h2>Columns</h2>
       <Row>
-        <Col md={3}>
-          <div
-            style={{
-              borderStyle: 'solid',
-              padding: '10px'
-            }}
-          >
-            <h4>A quarter width column</h4>
-          </div>
-        </Col>
-        <Col md={6}>
-          <div
-            style={{
-              borderStyle: 'solid',
-              padding: '10px'
-            }}
-          >
-            <h4>A half width column</h4>
-            <p>With some text below</p>
-          </div>
-        </Col>
-        <Col md={3}>
-          <div
-            style={{
-              borderStyle: 'solid',
-              padding: '10px'
-            }}
-          >
-            <h4>A quarter width column</h4>
-          </div>
-        </Col>
-      </Row>
-
-      <h4>Row with no gutters</h4>
-      <Row no_gutters={true}>
         <Col md={3}>
           <div
             style={{
@@ -372,41 +295,34 @@ const Demo = () => (
 
       <h2>Form</h2>
       <Form>
-        <FormGroup>
-          <Label for="exampleEmail">Email</Label>
+        <div>
+          <Label html_for="exampleEmail">Email</Label>
           <Input
             type="email"
             name="email"
             id="exampleEmail"
             placeholder="with a placeholder"
-            valid
+            valid={true}
           />
-          <FormFeedback valid>That email is valid!</FormFeedback>
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Password</Label>
+          <FormFeedback type="valid">That email is valid!</FormFeedback>
+        </div>
+        <div>
+          <Label html_for="examplePassword">Password</Label>
           <Input
             type="password"
             name="password"
             id="examplePassword"
             placeholder="password placeholder"
-            invalid
+            invalid={true}
           />
           <FormFeedback>That password is invalid... :(</FormFeedback>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleText">Text Area</Label>
+        </div>
+        <div>
+          <Label html_for="exampleText">Text Area</Label>
           <Textarea id="exampleText" />
-        </FormGroup>
+        </div>
         <Button>Submit</Button>
       </Form>
-
-      <h2>Jumbotron</h2>
-      <Jumbotron>
-        <h2>This is a jumbotron</h2>
-        <p>Pretty big huh?</p>
-        <Button color="danger">Click here</Button>
-      </Jumbotron>
 
       <h2>ListGroup</h2>
 
@@ -417,8 +333,8 @@ const Demo = () => (
         <ListGroupItem disabled={true}>Item 2</ListGroupItem>
         <ListGroupItem>Item 3</ListGroupItem>
         <ListGroupItem>
-          <ListGroupItemHeading>Item 4 heading</ListGroupItemHeading>
-          <ListGroupItemText>Item 4 text</ListGroupItemText>
+          <h3>Item 4 heading</h3>
+          <p>Item 4 text</p>
         </ListGroupItem>
       </ListGroup>
 
