@@ -149,7 +149,7 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - Added `navbar_scroll` property. This enables vertical scrolling within the toggleable contents of the nav when used inside a collapsed `Navbar`.
 
 ### Navbar
-- <span class="badge bg-danger">Breaking</span> Bootstrap navbars now must be constructed with a container. If you're using `NavbarSimple` you don't need to make any changes! If you are using `Navbar` with a custom layout you probably will need to make changes. See the [docs](/docs/components/list_group/) for updated examples.
+- <span class="badge bg-danger">Breaking</span> Bootstrap navbars now must be constructed with a container. If you're using `NavbarSimple` you don't need to make any changes! If you are using `Navbar` with a custom layout you probably will need to make changes. See the [docs](/docs/components/navbar/) for updated examples.
 
 ### Offcanvas <span class="badge bg-success">New</span>
 - Added the new offcanvas component. See the [docs](/docs/components/offcanvas) for more information.
