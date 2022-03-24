@@ -527,8 +527,9 @@ Input.propTypes = {
   ]),
 
   /**
-   * Set to true for a readonly input styled as plain text with the default
-   * form field styling removed and the correct margins and padding preserved.
+   * Set to true for an input styled as plain text with the default form field
+   * styling removed and the correct margins and padding preserved. Typically
+   * you will want to use this in conjunction with readonly=True.
    */
   plaintext: PropTypes.bool,
 
