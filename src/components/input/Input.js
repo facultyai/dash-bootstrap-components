@@ -43,6 +43,7 @@ const Input = props => {
     maxlength,
     minLength,
     minlength,
+    readonly,
     tabIndex,
     tabindex,
     ...otherProps
@@ -163,6 +164,7 @@ const Input = props => {
       inputMode={inputmode || inputMode}
       maxLength={maxlength || maxLength}
       minLength={minlength || minLength}
+      readOnly={readonly}
       tabIndex={tabindex || tabIndex}
       size={html_size}
     />
@@ -525,10 +527,19 @@ Input.propTypes = {
   ]),
 
   /**
-   * Set to true for a readonly input styled as plain text with the default
-   * form field styling removed and the correct margins and padding preserved.
+   * Set to true for an input styled as plain text with the default form field
+   * styling removed and the correct margins and padding preserved. Typically
+   * you will want to use this in conjunction with readonly=True.
    */
   plaintext: PropTypes.bool,
+
+  /**
+   * Indicates whether the element can be edited.
+   */
+  readonly: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['readOnly', 'readonly', 'READONLY'])
+  ]),
 
   /**
    * A hint to the user of what can be entered in the control . The placeholder
