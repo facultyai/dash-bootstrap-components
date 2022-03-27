@@ -13,6 +13,7 @@ const Accordion = props => {
   let {
     children,
     active_item,
+    always_open,
     start_collapsed,
     loading_state,
     key,
@@ -23,22 +24,49 @@ const Accordion = props => {
   } = props;
   children = parseChildrenToArray(children);
 
-  // if active_item not set initially, choose first item
   useEffect(() => {
-    if (setProps && active_item === undefined && !start_collapsed) {
-      setProps({
-        active_item:
-          children && (resolveChildProps(children[0]).item_id || 'item-0')
-      });
+    if (setProps && !start_collapsed) {
+      // if active_item not set initially, choose first item
+      if (active_item === undefined) {
+        let firstItem =
+          children && (resolveChildProps(children[0]).item_id || 'item-0');
+        setProps({
+          active_item: always_open ? [firstItem] : firstItem
+        });
+      } else {
+        // Make sure that active_item is an array if always_open
+        if (
+          always_open &&
+          (typeof active_item === 'string' || active_item instanceof String)
+        ) {
+          setProps({active_item: [active_item]});
+        }
+      }
     }
   }, []);
 
   const toggle = item => {
     if (setProps) {
-      if (active_item !== item) {
-        setProps({active_item: item});
+      // If always_open is set, then active_item is an array
+      if (always_open) {
+        if (active_item === undefined) {
+          setProps({active_item: [item]});
+        } else if (!active_item.includes(item)) {
+          setProps({active_item: [item, ...active_item]});
+        } else {
+          setProps({
+            active_item: active_item.filter(a => a !== item)
+          });
+        }
+        // If it's not set then active_item should be a string
       } else {
-        setProps({active_item: null});
+        if (active_item !== item) {
+          setProps({active_item: item});
+        } else {
+          setProps({
+            active_item: null
+          });
+        }
       }
     }
   };
@@ -84,6 +112,7 @@ const Accordion = props => {
         </RBAccordion.Item>
       );
     });
+
   return (
     <RBAccordion
       key={key}
@@ -92,6 +121,7 @@ const Accordion = props => {
       }
       activeKey={active_item}
       defaultActiveKey={start_collapsed ? null : active_item}
+      alwaysOpen={always_open}
       className={class_name || className}
       {...omit(
         ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
@@ -106,7 +136,8 @@ const Accordion = props => {
 Accordion.defaultProps = {
   persisted_props: ['active_item'],
   persistence_type: 'local',
-  start_collapsed: false
+  start_collapsed: false,
+  always_open: false
 };
 
 Accordion.propTypes = {
@@ -155,8 +186,19 @@ Accordion.propTypes = {
    * The item_id of the currently active item. If item_id has not been specified
    * for the active item, this will default to item-i, where i is the index
    * (starting from 0) of the item.
+   *
+   * If `always_open=True`, this needs to be a list of string IDs.
    */
-  active_item: PropTypes.string,
+  active_item: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
+
+  /**
+   * You can make accordion items stay open when another item is opened by
+   * using the always_open prop.
+   */
+  always_open: PropTypes.bool,
 
   /**
    * Set to True for all items to be collapsed initially.
