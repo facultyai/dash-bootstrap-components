@@ -42,6 +42,7 @@ const Modal = props => {
       dialogAs={tag}
       dialogClassName={class_name || className}
       className={modal_class_name || modalClassName}
+      contentClassName={content_class_name || contentClassName}
       backdropClassName={backdrop_class_name || backdropClassName}
       autoFocus={autofocus || autoFocus}
       aria-labelledby={labelledby || labelledBy}
