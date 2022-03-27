@@ -68,6 +68,30 @@ describe('Modal', () => {
     expect(document.body.querySelector('.modal-dialog')).toHaveClass(
       'modal-xl'
     );
+
+    // Content class name
+    rerender(<Modal is_open content_class_name="custom-modal-content" />);
+    expect(document.body.querySelector('.modal-content')).toHaveClass(
+      'custom-modal-content'
+    );
+
+    // Backdrop class name
+    rerender(<Modal is_open backdrop_class_name="custom-modal-backdrop" />);
+    expect(document.body.querySelector('.modal-backdrop')).toHaveClass(
+      'custom-modal-backdrop'
+    );
+
+    // Dialog class name
+    rerender(<Modal is_open class_name="custom-modal-dialog" />);
+    expect(document.body.querySelector('.modal-dialog')).toHaveClass(
+      'custom-modal-dialog'
+    );
+
+    // Modal class name
+    rerender(<Modal is_open modal_class_name="custom-modal-class" />);
+    expect(document.body.querySelector('.modal')).toHaveClass(
+      'custom-modal-class'
+    );
   });
 
   describe('backdrop', () => {
