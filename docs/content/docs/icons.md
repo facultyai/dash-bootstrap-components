@@ -12,7 +12,7 @@ There are a number of different icon libraries available, which you can link to 
 
 ## Packaged CDN links
 
-_dash-bootstrap-components_ contains CDN links for [Bootstrap Icons v1.5.0](https://icons.getbootstrap.com/) and [Font Awesome v6.1.1](https://fontawesome.com/), two libraries of icons you can use in your apps. You can use either of them by adding them to `external_stylesheets` when instantiating your app.
+_dash-bootstrap-components_ contains CDN links for [Bootstrap Icons v1.8.1](https://icons.getbootstrap.com/) and [Font Awesome v6.1.1](https://fontawesome.com/), two libraries of icons you can use in your apps. You can use either of them by adding them to `external_stylesheets` when instantiating your app.
 
 Bootstrap Icons was developed by the Bootstrap team specifically for use with Bootstrap. There is excellent documentation on how to use them on the [Bootstrap website](https://icons.getbootstrap.com/#usage), and a small example below.
 
