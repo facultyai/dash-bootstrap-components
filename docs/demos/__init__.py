@@ -6,7 +6,6 @@ import dash_bootstrap_components as dbc
 from .theme_explorer import app as theme_explorer
 
 SERVE_LOCALLY = os.getenv("DBC_DOCS_MODE", "production") == "dev"
-FA = "https://use.fontawesome.com/releases/v5.15.3/css/all.css"
 
 SHEETS = [
     ("bootstrap", dbc.themes.BOOTSTRAP),
@@ -43,7 +42,11 @@ def register_apps():
 
     for name, sheet in SHEETS:
         new_theme_explorer = dash.Dash(
-            external_stylesheets=[FA, sheet, "/static/loading.css"],
+            external_stylesheets=[
+                dbc.icons.FONT_AWESOME,
+                sheet,
+                "/static/loading.css",
+            ],
             requests_pathname_prefix=f"/docs/themes/explorer/{name}/",
             suppress_callback_exceptions=True,
             serve_locally=SERVE_LOCALLY,
