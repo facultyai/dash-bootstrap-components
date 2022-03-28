@@ -5,25 +5,31 @@ accordion <- div(
     dbcAccordion(
       list(
         dbcAccordionItem(
-          "This is the content of the first section. It has a "
-          "default ID of item-0.",
-          title="Item 1: item-0"
+          paste(
+            "This is the content of the first section. It has a ",
+            "default ID of item-0."
+          ),
+          title = "Item 1: item-0"
         ),
         dbcAccordionItem(
-          "This is the content of the second section. It has a "
-          "default ID of item-1.",
-          title="Item 2: item-1"
+          paste(
+            "This is the content of the second section. It has a ",
+            "default ID of item-1."
+          ),
+          title = "Item 2: item-1"
         ),
         dbcAccordionItem(
-          "This is the content of the third section. It has a "
-          "default ID of item-2.",
-          title="Item 3: item-2"
-        ),
+          paste(
+            "This is the content of the third section. It has a ",
+            "default ID of item-2."
+          ),
+          title = "Item 3: item-2"
+        )
       ),
-    id="accordion-open-ids",
-    always_open=TRUE
+      id = "accordion-open-ids",
+      always_open = TRUE
     ),
-    div(id="accordion-contents-open-ids", className="mt-3")
+    div(id = "accordion-contents-open-ids", className = "mt-3")
   )
 )
 

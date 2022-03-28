@@ -14,6 +14,13 @@ def test_r_callback(dashr):
     r_app = load_r_app((HERE.parent / "accordion" / "callback.R"), "accordion")
     dashr.start_server(r_app)
     check_callback_callbacks(dashr)
+
+
+def test_r_always_open_callback(dashr):
+    r_app = load_r_app(
+        (HERE.parent / "accordion" / "always_open_callback.R"), "accordion"
+    )
+    dashr.start_server(r_app)
     check_always_open_callback_callbacks(dashr)
 
 
@@ -23,6 +30,13 @@ def test_jl_callback(dashjl):
     )
     dashjl.start_server(jl_app)
     check_callback_callbacks(dashjl)
+
+
+def test_jl_always_open_callback(dashjl):
+    jl_app = load_jl_app(
+        (HERE.parent / "accordion" / "always_open_callback.jl"), "accordion"
+    )
+    dashjl.start_server(jl_app)
     check_always_open_callback_callbacks(dashjl)
 
 
