@@ -29,13 +29,13 @@ Each item in the accordion can be assiged a specific `item_id` which is used in 
 
 ## Always Open
 
-Add `always_open=True` to ensure that items remain open when another item is opened.
+Add `always_open=True` to ensure that items remain open when another item is opened. *Please note, this feature is not supported by R.*
 
 {{example:components/accordion/always_open.py:accordion}}
 
 ## Always Open `active_item`
 
-When `always_open=True`, the `active_item` will need to be a list of the specified item IDs.
+When `always_open=True`, the `active_item` will need to be a list of the specified item IDs. *Please note, this feature is not supported by R.*
 
 {{example:components/accordion/always_open_callback.py:accordion}}
 

@@ -196,7 +196,7 @@ Accordion.propTypes = {
 
   /**
    * You can make accordion items stay open when another item is opened by
-   * using the always_open prop.
+   * using the always_open prop. This is not supported by R.
    */
   always_open: PropTypes.bool,
 
