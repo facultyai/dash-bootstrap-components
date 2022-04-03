@@ -19,7 +19,7 @@ accordion = html_div([
                 title = "Item 3: item-2",
             ),
         ],
-        id = "accordion-open-ids",
+        id = "accordion-always-open",
         always_open = true,
     ),
     html_div(id = "accordion-contents-open-ids", className = "mt-3"),

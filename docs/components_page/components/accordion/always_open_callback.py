@@ -21,7 +21,7 @@ accordion = html.Div(
                     title="Item 3: item-2",
                 ),
             ],
-            id="accordion-open-ids",
+            id="accordion-always-open",
             always_open=True,
         ),
         html.Div(id="accordion-contents-open-ids", className="mt-3"),
