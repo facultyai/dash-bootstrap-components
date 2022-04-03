@@ -24,6 +24,14 @@ def test_jl_callback(dashjl):
     check_callback_callbacks(dashjl)
 
 
+def test_jl_always_open_callback(dashjl):
+    jl_app = load_jl_app(
+        (HERE.parent / "accordion" / "always_open_callback.jl"), "accordion"
+    )
+    dashjl.start_server(jl_app)
+    check_always_open_callback_callbacks(dashjl)
+
+
 def check_callback_callbacks(runner):
     # Find the accordion object
     accordion_comp = runner.find_element("#accordion")
@@ -31,10 +39,7 @@ def check_callback_callbacks(runner):
 
     # Check it has 3 accordion-items in it
     items = accordion_comp.find_elements_by_class_name("accordion-item")
-    wait.until(
-        lambda: len(items) == 3,
-        timeout=4,
-    )
+    wait.until(lambda: len(items) == 3, timeout=4)
 
     # Click the third section
     items[2].find_element_by_class_name("accordion-button").click()
@@ -49,5 +54,35 @@ def check_callback_callbacks(runner):
     item = accordion_comp.find_element_by_class_name("show")
     wait.until(
         lambda: item.text == "This is the content of the third section",
+        timeout=4,
+    )
+
+
+def check_always_open_callback_callbacks(runner):
+    # Find the accordion object
+    accordion_comp = runner.find_element("#accordion-always-open")
+
+    # Check it has 3 accordion-items in it
+    wait.until(
+        lambda: len(
+            accordion_comp.find_elements_by_class_name("accordion-item")
+        )
+        == 3,
+        timeout=4,
+    )
+    items = accordion_comp.find_elements_by_class_name("accordion-item")
+
+    # Check the text contains details that the first section is open
+    wait.until(
+        lambda: len(accordion_comp.find_elements_by_class_name("show")) == 1,
+        timeout=4,
+    )
+
+    # Click the third section
+    items[2].find_element_by_class_name("accordion-button").click()
+
+    # Check the text in contents changes to "Item selected: item-3"
+    wait.until(
+        lambda: len(accordion_comp.find_elements_by_class_name("show")) == 2,
         timeout=4,
     )

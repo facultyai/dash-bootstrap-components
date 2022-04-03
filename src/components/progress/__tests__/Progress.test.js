@@ -53,6 +53,14 @@ describe('Progress', () => {
     expect(progressDark.firstChild).toHaveClass('bg-dark');
   });
 
+  test('applies custom colors with "color" prop', () => {
+    const {
+      container: {firstChild: progressCustom}
+    } = render(<Progress color="#fff000" />);
+
+    expect(progressCustom.firstChild).toHaveStyle({backgroundColor: '#fff000'});
+  });
+
   test('nested bars', () => {
     const {
       container: {firstChild: progress}
@@ -61,6 +69,7 @@ describe('Progress', () => {
         <Progress value={25} color="success" bar />
         <Progress value={25} color="warning" bar />
         <Progress value={25} color="danger" bar />
+        <Progress value={25} color="#fff000" bar />
       </Progress>
     );
 
@@ -70,6 +79,10 @@ describe('Progress', () => {
     expect(progress.children[1]).toHaveStyle({width: '25%'});
     expect(progress.children[2]).toHaveClass('progress-bar bg-danger');
     expect(progress.children[2]).toHaveStyle({width: '25%'});
+    expect(progress.children[3]).toHaveStyle({
+      width: '25%',
+      backgroundColor: '#fff000'
+    });
   });
 
   test('applies additional CSS classes when props are set', () => {

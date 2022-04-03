@@ -16,10 +16,11 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
 
-FA = "https://use.fontawesome.com/releases/v5.15.1/css/all.css"
 PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, FA])
+app = dash.Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME]
+)
 
 sidebar = html.Div(
     [
