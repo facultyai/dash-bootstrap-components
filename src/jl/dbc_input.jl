@@ -137,8 +137,10 @@ different. The <label> attribute describes the role of the form element
 placeholder attribute is a hint about the format that the content should
 take. There are cases in which the placeholder attribute is never
 displayed to the user, so the form must be understandable without it.
-- `plaintext` (Bool; optional): Set to true for a readonly input styled as plain text with the default
-form field styling removed and the correct margins and padding preserved.
+- `plaintext` (Bool; optional): Set to true for an input styled as plain text with the default form field
+styling removed and the correct margins and padding preserved. Typically
+you will want to use this in conjunction with readonly=True.
+- `readonly` (Bool | a value equal to: 'readOnly', 'readonly', 'READONLY'; optional): Indicates whether the element can be edited.
 - `required` (a value equal to: 'required', 'REQUIRED' | Bool; optional): This attribute specifies that the user must fill in a value before
 submitting a form. It cannot be used when the type attribute is hidden,
 image, or a button type (submit, reset, or button). The :optional and
@@ -164,7 +166,7 @@ any FormFeedback in the enclosing div with valid=True to display.
 - `value` (String | Real; optional): The value of the Input
 """
 function dbc_input(; kwargs...)
-        available_props = Symbol[:id, :autoComplete, :autoFocus, :autocomplete, :autofocus, :className, :class_name, :debounce, :disabled, :html_size, :inputMode, :inputmode, :invalid, :key, :list, :loading_state, :max, :maxLength, :maxlength, :min, :minLength, :minlength, :n_blur, :n_blur_timestamp, :n_submit, :n_submit_timestamp, :name, :pattern, :persisted_props, :persistence, :persistence_type, :placeholder, :plaintext, :required, :size, :step, :style, :tabIndex, :tabindex, :type, :valid, :value]
+        available_props = Symbol[:id, :autoComplete, :autoFocus, :autocomplete, :autofocus, :className, :class_name, :debounce, :disabled, :html_size, :inputMode, :inputmode, :invalid, :key, :list, :loading_state, :max, :maxLength, :maxlength, :min, :minLength, :minlength, :n_blur, :n_blur_timestamp, :n_submit, :n_submit_timestamp, :name, :pattern, :persisted_props, :persistence, :persistence_type, :placeholder, :plaintext, :readonly, :required, :size, :step, :style, :tabIndex, :tabindex, :type, :valid, :value]
         wild_props = Symbol[]
         return Component("dbc_input", "Input", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

@@ -9,8 +9,7 @@ export dbc_progress
 
 
 A Progress component.
-A component for creating progress bars just with CSS. Control the current
-progress with a callback and the `value` prop.
+
 Keyword arguments:
 - `children` (a list of or a singular dash component, string or number; optional): The children of this component. Use this to nest progress bars.
 - `id` (String; optional): The ID of this component, used to identify dash components

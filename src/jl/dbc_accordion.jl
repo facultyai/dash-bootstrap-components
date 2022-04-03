@@ -16,9 +16,13 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `active_item` (String; optional): The item_id of the currently active item. If item_id has not been specified
+- `active_item` (String | Array of Strings; optional): The item_id of the currently active item. If item_id has not been specified
 for the active item, this will default to item-i, where i is the index
 (starting from 0) of the item.
+
+If `always_open=True`, this needs to be a list of string IDs.
+- `always_open` (Bool; optional): You can make accordion items stay open when another item is opened by
+using the always_open prop.
 - `className` (String; optional): **DEPRECATED** Use `class_name` instead.
 
 Often used with CSS to style elements with common properties.
@@ -49,7 +53,7 @@ session: window.sessionStorage, data is cleared once the browser quit.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
 function dbc_accordion(; kwargs...)
-        available_props = Symbol[:children, :id, :active_item, :className, :class_name, :flush, :key, :loading_state, :persisted_props, :persistence, :persistence_type, :start_collapsed, :style]
+        available_props = Symbol[:children, :id, :active_item, :always_open, :className, :class_name, :flush, :key, :loading_state, :persisted_props, :persistence, :persistence_type, :start_collapsed, :style]
         wild_props = Symbol[]
         return Component("dbc_accordion", "Accordion", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
