@@ -25,49 +25,32 @@ const Accordion = props => {
   children = parseChildrenToArray(children);
 
   useEffect(() => {
-    if (setProps && !start_collapsed) {
+    if (setProps && active_item === undefined && !start_collapsed) {
       // if active_item not set initially, choose first item
-      if (active_item === undefined) {
-        let firstItem =
-          children && (resolveChildProps(children[0]).item_id || 'item-0');
-        setProps({
-          active_item: always_open ? [firstItem] : firstItem
-        });
-      } else {
-        // Make sure that active_item is an array if always_open
-        if (
-          always_open &&
-          (typeof active_item === 'string' || active_item instanceof String)
-        ) {
-          setProps({active_item: [active_item]});
-        }
-      }
+      let firstItem =
+        children && (resolveChildProps(children[0]).item_id || 'item-0');
+      setProps({
+        active_item: always_open ? [firstItem] : firstItem
+      });
     }
   }, []);
 
   const toggle = item => {
     if (setProps) {
-      // If always_open is set, then active_item is an array
+      let newActiveItem;
       if (always_open) {
-        if (active_item === undefined) {
-          setProps({active_item: [item]});
+        // If always_open is set, then active_item should be an array
+        if (!Array.isArray(active_item)) {
+          newActiveItem = [item];
         } else if (!active_item.includes(item)) {
-          setProps({active_item: [item, ...active_item]});
+          newActiveItem = [item, ...active_item];
         } else {
-          setProps({
-            active_item: active_item.filter(a => a !== item)
-          });
+          newActiveItem = active_item.filter(a => a !== item);
         }
-        // If it's not set then active_item should be a string
       } else {
-        if (active_item !== item) {
-          setProps({active_item: item});
-        } else {
-          setProps({
-            active_item: null
-          });
-        }
+        newActiveItem = active_item !== item ? item : null;
       }
+      setProps({active_item: newActiveItem});
     }
   };
 
@@ -196,7 +179,7 @@ Accordion.propTypes = {
 
   /**
    * You can make accordion items stay open when another item is opened by
-   * using the always_open prop. This is not supported by R.
+   * using the always_open prop.
    */
   always_open: PropTypes.bool,
 
