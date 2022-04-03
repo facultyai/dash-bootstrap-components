@@ -6,7 +6,7 @@
 \title{Progress component}
 
 \description{
-A component for creating progress bars just with CSS. Control the current progress with a callback and the `value` prop.
+
 }
 
 \usage{

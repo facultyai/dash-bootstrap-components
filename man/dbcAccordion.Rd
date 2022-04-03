@@ -10,9 +10,9 @@ A self contained Accordion component. Build up the children using the AccordionI
 }
 
 \usage{
-dbcAccordion(children=NULL, id=NULL, active_item=NULL, className=NULL,
-class_name=NULL, flush=NULL, key=NULL, loading_state=NULL,
-persisted_props=NULL, persistence=NULL,
+dbcAccordion(children=NULL, id=NULL, active_item=NULL, always_open=NULL,
+className=NULL, class_name=NULL, flush=NULL, key=NULL,
+loading_state=NULL, persisted_props=NULL, persistence=NULL,
 persistence_type=NULL, start_collapsed=NULL, style=NULL)
 }
 
@@ -23,9 +23,14 @@ persistence_type=NULL, start_collapsed=NULL, style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{active_item}{Character. The item_id of the currently active item. If item_id has not been specified
+\item{active_item}{Character | list of characters. The item_id of the currently active item. If item_id has not been specified
 for the active item, this will default to item-i, where i is the index
-(starting from 0) of the item.}
+(starting from 0) of the item.
+
+If `always_open=True`, this needs to be a list of string IDs.}
+
+\item{always_open}{Logical. You can make accordion items stay open when another item is opened by
+using the always_open prop.}
 
 \item{className}{Character. **DEPRECATED** Use `class_name` instead.
 

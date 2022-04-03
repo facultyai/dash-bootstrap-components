@@ -21,9 +21,9 @@ n_blur_timestamp=NULL, n_submit=NULL,
 n_submit_timestamp=NULL, name=NULL, pattern=NULL,
 persisted_props=NULL, persistence=NULL,
 persistence_type=NULL, placeholder=NULL, plaintext=NULL,
-required=NULL, size=NULL, step=NULL, style=NULL,
-tabIndex=NULL, tabindex=NULL, type=NULL, valid=NULL,
-value=NULL)
+readonly=NULL, required=NULL, size=NULL, step=NULL,
+style=NULL, tabIndex=NULL, tabindex=NULL, type=NULL,
+valid=NULL, value=NULL)
 }
 
 \arguments{
@@ -181,8 +181,11 @@ placeholder attribute is a hint about the format that the content should
 take. There are cases in which the placeholder attribute is never
 displayed to the user, so the form must be understandable without it.}
 
-\item{plaintext}{Logical. Set to true for a readonly input styled as plain text with the default
-form field styling removed and the correct margins and padding preserved.}
+\item{plaintext}{Logical. Set to true for an input styled as plain text with the default form field
+styling removed and the correct margins and padding preserved. Typically
+you will want to use this in conjunction with readonly=True.}
+
+\item{readonly}{Logical | a value equal to: 'readonly', 'readonly', 'readonly'. Indicates whether the element can be edited.}
 
 \item{required}{A value equal to: 'required', 'required' | logical. This attribute specifies that the user must fill in a value before
 submitting a form. It cannot be used when the type attribute is hidden,
