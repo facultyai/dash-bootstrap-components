@@ -6,6 +6,25 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.1.0 - 2022/4/3
+
+Version 1.1.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- Add `readonly` prop to `Input` component ([PR 833](https://github.com/facultyai/dash-bootstrap-components/pull/833))
+- Add `always_open` prop to `Accordion`. When set to `True`, opening one section of the accordion does not close any currently open sections ([PR 840](https://github.com/facultyai/dash-bootstrap-components/pull/840))
+- dash-bootstrap-components now explicitly supports Python 3.10 ([PR 841](https://github.com/facultyai/dash-bootstrap-components/pull/841))
+
+### Fixed
+
+- Allow arbitrary colors to be passed to `color` prop of `Progress` ([PR 835](https://github.com/facultyai/dash-bootstrap-components/pull/835))
+- `contentClassName` in `Modal` has been fixed, previously it was not passing the class names on to the relevant elements ([PR 839](https://github.com/facultyai/dash-bootstrap-components/pull/839))
+- `Select` can now be cleared by returning `None` from a callback  ([PR 842](https://github.com/facultyai/dash-bootstrap-components/pull/842))
+
+### Changed
+- Updated CDN links for FontAwesome and Bootstrap Icons in the `icons` submodule. FontAwesome now uses version 6.1.1, Bootstrap Icons uses version 1.8.1 ([PR 837](https://github.com/facultyai/dash-bootstrap-components/pull/837))
+
 ## 1.0.3 - 2022/2/5
 
 This is a patch release that fixes a few bugs. Please continue to report any bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
