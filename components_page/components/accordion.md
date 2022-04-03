@@ -27,5 +27,17 @@ Each item in the accordion can be assiged a specific `item_id` which is used in 
 
 {{example:components/accordion/callback.py:accordion}}
 
+## Always Open
+
+Add `always_open=True` to ensure that items remain open when another item is opened.
+
+{{example:components/accordion/always_open.py:accordion}}
+
+## Always Open `active_item`
+
+When `always_open=True`, the `active_item` will need to be a list of the specified item IDs.
+
+{{example:components/accordion/always_open_callback.py:accordion}}
+
 {{apidoc:src/components/accordion/Accordion.js}}
 {{apidoc:src/components/accordion/AccordionItem.js}}
