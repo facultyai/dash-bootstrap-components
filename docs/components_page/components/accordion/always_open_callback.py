@@ -31,7 +31,7 @@ accordion = html.Div(
 
 @app.callback(
     Output("accordion-contents-open-ids", "children"),
-    [Input("accordion-open-ids", "active_item")],
+    [Input("accordion-always-open", "active_item")],
 )
 def change_item(item):
     return f"Item(s) selected: {item}"

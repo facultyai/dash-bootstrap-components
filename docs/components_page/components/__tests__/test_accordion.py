@@ -28,8 +28,6 @@ def test_jl_always_open_callback(dashjl):
     jl_app = load_jl_app(
         (HERE.parent / "accordion" / "always_open_callback.jl"), "accordion"
     )
-    with open("app.jl", "w") as f:
-        f.write(jl_app)
     dashjl.start_server(jl_app)
     check_always_open_callback_callbacks(dashjl)
 
