@@ -9,7 +9,7 @@ GITHUB_URL = "https://github.com/facultyai/dash-bootstrap-components/"
 
 
 def _get_version():
-    """ Get version by parsing _version programmatically """
+    """Get version by parsing _version programmatically"""
     version_ns = {}
     with open(
         os.path.join(HERE, "dash_bootstrap_components", "_version.py")
@@ -48,6 +48,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
     ],
     extras_require={"pandas": ["numpy", "pandas"]},
     python_requires=">=3.6, <4",

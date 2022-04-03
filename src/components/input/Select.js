@@ -14,6 +14,7 @@ const Select = props => {
     html_size,
     valid,
     invalid,
+    value,
     ...otherProps
   } = props;
 
@@ -41,6 +42,7 @@ const Select = props => {
       onChange={handleChange}
       className={class_name || className}
       htmlSize={html_size}
+      value={value || ''}
     >
       <option value="" disabled hidden>
         {props.placeholder}
