@@ -20,7 +20,7 @@ PARAMS = [
         path,
         [match.split(":") for match in PATTERN.findall(path.read_text())],
     )
-    for path in HERE.parent.glob("accordion.md")
+    for path in HERE.parent.glob("*.md")
 ]
 
 SKIP = [
