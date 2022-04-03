@@ -15,9 +15,9 @@ import dash_bootstrap_components as dbc
 from dash import Input, Output, State, dcc, html
 
 # link fontawesome to get the chevron icons
-FA = "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, FA])
+app = dash.Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME]
+)
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {

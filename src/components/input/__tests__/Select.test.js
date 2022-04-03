@@ -43,6 +43,23 @@ describe('Select', () => {
     expect(select).not.toHaveValue();
   });
 
+  test('null will clear value', () => {
+    const {
+      container: {firstChild: select}
+    } = render(
+      <Select
+        id="test-select"
+        options={[
+          {label: 'Item 1', value: '1'},
+          {label: 'Item 2', value: '2'}
+        ]}
+        value={null}
+      />
+    );
+
+    expect(select).not.toHaveValue();
+  });
+
   test('sets validity using "valid" and "invalid" props', () => {
     const validSelect = render(<Select valid />);
     const invalidSelect = render(<Select invalid />);

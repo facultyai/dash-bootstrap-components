@@ -49,6 +49,7 @@ describe('Input', () => {
         pattern="test-pattern"
         placeholder="test-placeholder"
         html_size="42"
+        readonly
         step={2}
         tabindex="3"
         type="text"
@@ -66,6 +67,7 @@ describe('Input', () => {
     expect(input).toHaveAttribute('name', 'test-name');
     expect(input).toHaveAttribute('pattern', 'test-pattern');
     expect(input).toHaveAttribute('placeholder', 'test-placeholder');
+    expect(input).toHaveAttribute('readonly');
     expect(input).toHaveAttribute('size', '42');
     expect(input).toHaveAttribute('step', '2');
     expect(input).toHaveAttribute('tabindex', '3');

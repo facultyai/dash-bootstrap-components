@@ -1,13 +1,119 @@
-import React from 'react';
+import React, {cloneElement} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import {map} from 'react-bootstrap/ElementChildren';
 import {omit} from 'ramda';
-import RBProgressBar from 'react-bootstrap/ProgressBar';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
 
-/**
- * A component for creating progress bars just with CSS. Control the current
- * progress with a callback and the `value` prop.
+/*
+ * Bulk of this file is vendored from react-bootstrap/src/ProgressBar, but we
+ * add the ability to style the bar which is needed for setting colors more
+ * freely.
  */
+const ROUND_PRECISION = 1000;
+
+function getPercentage(now, min, max) {
+  const percentage = ((now - min) / (max - min)) * 100;
+  return Math.round(percentage * ROUND_PRECISION) / ROUND_PRECISION;
+}
+
+function renderProgressBar(
+  {
+    min,
+    now,
+    max,
+    label,
+    visuallyHidden,
+    striped,
+    animated,
+    className,
+    style,
+    variant,
+    barStyle,
+    ...props
+  },
+  ref
+) {
+  return (
+    <div
+      ref={ref}
+      {...props}
+      role="progressbar"
+      className={classNames(className, `progress-bar`, {
+        [`bg-${variant}`]: variant,
+        [`progress-bar-animated`]: animated,
+        [`progress-bar-striped`]: animated || striped
+      })}
+      style={{width: `${getPercentage(now, min, max)}%`, ...style, ...barStyle}}
+      aria-valuenow={now}
+      aria-valuemin={min}
+      aria-valuemax={max}
+    >
+      {visuallyHidden ? (
+        <span className="visually-hidden">{label}</span>
+      ) : (
+        label
+      )}
+    </div>
+  );
+}
+
+const ProgressBar = React.forwardRef(({isChild, ...props}, ref) => {
+  if (isChild) {
+    return renderProgressBar(props, ref);
+  }
+
+  const {
+    min,
+    now,
+    max,
+    label,
+    visuallyHidden,
+    striped,
+    animated,
+    variant,
+    className,
+    children,
+    barStyle,
+    ...wrapperProps
+  } = props;
+
+  return (
+    <div
+      ref={ref}
+      {...wrapperProps}
+      className={classNames(className, 'progress')}
+    >
+      {children
+        ? map(children, child => cloneElement(child, {isChild: true}))
+        : renderProgressBar(
+            {
+              min,
+              now,
+              max,
+              label,
+              visuallyHidden,
+              striped,
+              animated,
+              variant,
+              barStyle
+            },
+            ref
+          )}
+    </div>
+  );
+});
+
+ProgressBar.defaultProps = {
+  min: 0,
+  max: 100,
+  animated: false,
+  isChild: false,
+  visuallyHidden: false,
+  striped: false
+};
+
 const Progress = props => {
   const {
     children,
@@ -22,7 +128,7 @@ const Progress = props => {
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
   return (
-    <RBProgressBar
+    <ProgressBar
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
@@ -32,9 +138,10 @@ const Progress = props => {
       isChild={bar}
       variant={isBootstrapColor ? color : null}
       visuallyHidden={hide_label}
+      barStyle={isBootstrapColor ? {} : {backgroundColor: color}}
     >
       {children}
-    </RBProgressBar>
+    </ProgressBar>
   );
 };
 
