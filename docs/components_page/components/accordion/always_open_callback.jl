@@ -28,7 +28,7 @@ accordion = html_div([
 callback!(
     app,
     Output("accordion-contents-open-ids", "children"),
-    Input("accordion-open-ids", "active_item"),
+    Input("accordion-always-open", "active_item"),
 ) do item
     return "Item(s) selected: $item"
 end;
