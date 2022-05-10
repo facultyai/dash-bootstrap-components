@@ -62,3 +62,4 @@ export {default as Table} from './components/table/Table';
 export {default as Textarea} from './components/input/Textarea';
 export {default as Toast} from './components/toast/Toast';
 export {default as Tooltip} from './components/tooltip/Tooltip';
+export {default as Lazyload} from './components/lazyload/Lazyload';
