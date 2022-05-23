@@ -20,6 +20,7 @@ const Tooltip = props => {
     className,
     class_name,
     style,
+    fade,
     ...otherProps
   } = props;
 
@@ -30,6 +31,7 @@ const Tooltip = props => {
       }
       {...omit(['setProps'], otherProps)}
       trigger="hover focus"
+      transition={fade}
     >
       <TooltipTemplate
         id={id}
@@ -46,7 +48,8 @@ Tooltip.defaultProps = {
   delay: {show: 0, hide: 50},
   placement: 'auto',
   flip: true,
-  autohide: true
+  autohide: true,
+  fade: true
 };
 
 Tooltip.propTypes = {
@@ -127,6 +130,12 @@ Tooltip.propTypes = {
    * Optionally hide tooltip when hovering over tooltip content - default True.
    */
   autohide: PropTypes.bool,
+
+  /**
+   * If True, a fade animation will be applied when `is_open` is toggled. If
+   * False the Alert will simply appear and disappear.
+   */
+  fade: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
