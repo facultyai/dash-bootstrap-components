@@ -27,6 +27,9 @@ const Modal = props => {
     tag,
     loading_state,
     fade,
+    style,
+    zindex,
+    zIndex,
     ...otherProps
   } = props;
 
@@ -48,6 +51,7 @@ const Modal = props => {
       aria-labelledby={labelledby || labelledBy}
       show={is_open}
       onHide={onHide}
+      style={zindex || zIndex ? {...style, zIndex: zindex || zIndex} : style}
       {...omit(
         ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
