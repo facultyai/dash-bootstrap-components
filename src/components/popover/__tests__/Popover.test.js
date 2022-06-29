@@ -6,6 +6,8 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import Popover from '../Popover';
 
+jest.useFakeTimers();
+
 // TODO - Add test for offset
 
 describe('Popover', () => {
@@ -38,6 +40,8 @@ describe('Popover', () => {
       container: document.body.appendChild(div)
     });
 
+    jest.runAllTimers();
+
     expect(document.body.querySelector('.popover.show')).not.toBe(null);
   });
 
@@ -46,6 +50,8 @@ describe('Popover', () => {
       container: document.body.appendChild(div)
     });
 
+    jest.runAllTimers();
+
     expect(document.body.querySelector('.popover.show')).toBe(null);
   });
 
@@ -53,6 +59,8 @@ describe('Popover', () => {
     render(<Popover target="test-target" is_open={true} />, {
       container: document.body.appendChild(div)
     });
+
+    jest.runAllTimers();
 
     expect(document.body.querySelector('.popover.show')).not.toBe(null);
   });
@@ -65,6 +73,8 @@ describe('Popover', () => {
       {container: document.body.appendChild(div)}
     );
 
+    jest.runAllTimers();
+
     expect(document.body.querySelector('.popover')).toHaveTextContent(
       'Popover content'
     );
@@ -75,6 +85,8 @@ describe('Popover', () => {
       container: document.body.appendChild(div)
     });
 
+    jest.runAllTimers();
+
     expect(document.body.querySelector('.popover-arrow')).not.toBe(null);
   });
 
@@ -82,6 +94,8 @@ describe('Popover', () => {
     render(<Popover target="test-target" is_open hide_arrow />, {
       container: document.body.appendChild(div)
     });
+
+    jest.runAllTimers();
 
     expect(document.body.querySelector('.popover-arrow')).toBe(null);
   });
@@ -96,6 +110,8 @@ describe('Popover', () => {
       }
     );
 
+    jest.runAllTimers();
+
     expect(document.body.querySelector('.popover-body')).not.toBe(null);
   });
 
@@ -108,6 +124,8 @@ describe('Popover', () => {
         container: document.body.appendChild(div)
       }
     );
+
+    jest.runAllTimers();
 
     expect(document.body.querySelector('.popover-body')).toBe(null);
   });
