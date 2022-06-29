@@ -44,7 +44,7 @@ those elements have the following types:
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 
 \item{persisted_props}{List of a value equal to: 'active_tab's. Properties whose user interactions will persist after refreshing the
-component or the page. Since only `value` is allowed this prop can
+component or the page. Since only `active_tab` is allowed this prop can
 normally be ignored.}
 
 \item{persistence}{Logical | character | numeric. Used to allow user interactions in this component to be persisted when

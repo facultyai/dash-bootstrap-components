@@ -241,7 +241,7 @@ Tabs.propTypes = {
 
   /**
    * Properties whose user interactions will persist after refreshing the
-   * component or the page. Since only `value` is allowed this prop can
+   * component or the page. Since only `active_tab` is allowed this prop can
    * normally be ignored.
    */
   persisted_props: PropTypes.arrayOf(PropTypes.oneOf(['active_tab'])),

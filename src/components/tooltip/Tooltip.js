@@ -16,10 +16,12 @@ const Tooltip = props => {
   const {
     id,
     children,
+    is_open,
     loading_state,
     className,
     class_name,
     style,
+    fade,
     ...otherProps
   } = props;
 
@@ -28,8 +30,9 @@ const Tooltip = props => {
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
-      {...omit(['setProps'], otherProps)}
-      trigger="hover focus"
+      defaultShow={is_open}
+      {...otherProps}
+      transition={fade}
     >
       <TooltipTemplate
         id={id}
@@ -46,7 +49,9 @@ Tooltip.defaultProps = {
   delay: {show: 0, hide: 50},
   placement: 'auto',
   flip: true,
-  autohide: true
+  autohide: true,
+  fade: true,
+  trigger: 'hover focus'
 };
 
 Tooltip.propTypes = {
@@ -127,6 +132,33 @@ Tooltip.propTypes = {
    * Optionally hide tooltip when hovering over tooltip content - default True.
    */
   autohide: PropTypes.bool,
+
+  /**
+   * If True, a fade animation will be applied when `is_open` is toggled. If
+   * False the Alert will simply appear and disappear.
+   */
+  fade: PropTypes.bool,
+
+  /**
+   * Space separated list of triggers (e.g. "click hover focus legacy"). These
+   * specify ways in which the target component can toggle the tooltip. If
+   * omitted you must toggle the tooltip yourself using callbacks. Options
+   * are:
+   * - "click": toggles the popover when the target is clicked.
+   * - "hover": toggles the popover when the target is hovered over with the
+   * cursor.
+   * - "focus": toggles the popover when the target receives focus
+   * - "legacy": toggles the popover when the target is clicked, but will also
+   * dismiss the popover when the user clicks outside of the popover.
+   *
+   * Default is "hover focus"
+   */
+  trigger: PropTypes.string,
+
+  /**
+   * Whether the Tooltip is open or not.
+   */
+  is_open: PropTypes.bool,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

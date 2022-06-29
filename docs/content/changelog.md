@@ -6,6 +6,23 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.2.0 - 2022/6/29
+
+Version 1.2.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- `Tooltip` can now be shown and hidden from callbacks via the new `is_open` prop ([PR 861](https://github.com/facultyai/dash-bootstrap-components/pull/861))
+- Added `trigger` prop to `Tooltip` which behaves like `trigger` prop of `Popover`, allowing users to control what causes the tooltip to show ([PR 861](https://github.com/facultyai/dash-bootstrap-components/pull/861))
+- Added `fade` prop to `Tooltip`, which behaves like `fade` prop of `Alert`, allowing users to control whether the tooltip shows and hides with a fade animation or not (([PR 861](https://github.com/facultyai/dash-bootstrap-components/pull/861))
+- Add `persistence` prop to `Alert`, `Carousel`, `Popover`, `Toast` (([PR 872](https://github.com/facultyai/dash-bootstrap-components/pull/872))
+
+### Fixed
+
+- Fixed bug in `Textarea`. Now `setProps` is called with the correct value when `debounce=True` on blur and submit event ([PR 858](https://github.com/facultyai/dash-bootstrap-components/pull/858))
+- `zindex` / `zIndex` argument in `Modal` is now applied correctly ([PR 869](https://github.com/facultyai/dash-bootstrap-components/pull/869))
+- `Popover` displays on start-up when default value of `is_open` is `True` (([PR 872](https://github.com/facultyai/dash-bootstrap-components/pull/872))
+
 ## 1.1.0 - 2022/4/3
 
 Version 1.1.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).

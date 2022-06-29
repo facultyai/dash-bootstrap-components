@@ -164,7 +164,7 @@ const Overlay = ({
 
   // Update the isOpen state, when defaultShow changes
   useEffect(() => {
-    setIsOpen(defaultShow);
+    setTimeout(() => setIsOpen(defaultShow), 50);
   }, [defaultShow]);
 
   // If legacy is a trigger, then need to set root close to true to allow

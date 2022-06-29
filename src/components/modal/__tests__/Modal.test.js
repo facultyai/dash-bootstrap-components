@@ -94,6 +94,28 @@ describe('Modal', () => {
     );
   });
 
+  test('sets z-index with zindex and zIndex', () => {
+    // scrollable content
+    const {rerender} = render(<Modal is_open zindex={1234} />);
+
+    expect(document.body.querySelector('.modal')).toHaveStyle({zIndex: 1234});
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      zIndex: 1234
+    });
+
+    rerender(<Modal is_open zIndex={1111} />);
+    expect(document.body.querySelector('.modal')).toHaveStyle({zIndex: 1111});
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      zIndex: 1111
+    });
+
+    rerender(<Modal is_open zIndex={1221} zindex={1331} />);
+    expect(document.body.querySelector('.modal')).toHaveStyle({zIndex: 1331});
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      zIndex: 1331
+    });
+  });
+
   describe('backdrop', () => {
     test('when backdrop is True, clicking will dismiss modal', () => {
       const mockSetProps = jest.fn();

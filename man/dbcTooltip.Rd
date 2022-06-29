@@ -11,8 +11,9 @@ A component for adding tooltips to any element, no callbacks required!  Simply a
 
 \usage{
 dbcTooltip(children=NULL, id=NULL, autohide=NULL, className=NULL,
-class_name=NULL, delay=NULL, flip=NULL, key=NULL,
-loading_state=NULL, placement=NULL, style=NULL, target=NULL)
+class_name=NULL, delay=NULL, fade=NULL, flip=NULL,
+is_open=NULL, key=NULL, loading_state=NULL, placement=NULL,
+style=NULL, target=NULL, trigger=NULL)
 }
 
 \arguments{
@@ -35,8 +36,13 @@ those elements have the following types:
   - show (numeric; optional)
   - hide (numeric; optional). Control the delay of hide and show events.}
 
+\item{fade}{Logical. If True, a fade animation will be applied when `is_open` is toggled. If
+False the Alert will simply appear and disappear.}
+
 \item{flip}{Logical. Whether to flip the direction of the popover if too close to the container
 edge, default True.}
+
+\item{is_open}{Logical. Whether the Tooltip is open or not.}
 
 \item{key}{Character. A unique identifier for the component, used to improve
 performance by React.js while rendering components
@@ -53,6 +59,19 @@ those elements have the following types:
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
 \item{target}{Character | named list. The id of the element to attach the tooltip to}
+
+\item{trigger}{Character. Space separated list of triggers (e.g. "click hover focus legacy"). These
+specify ways in which the target component can toggle the tooltip. If
+omitted you must toggle the tooltip yourself using callbacks. Options
+are:
+- "click": toggles the popover when the target is clicked.
+- "hover": toggles the popover when the target is hovered over with the
+cursor.
+- "focus": toggles the popover when the target receives focus
+- "legacy": toggles the popover when the target is clicked, but will also
+dismiss the popover when the user clicks outside of the popover.
+
+Default is "hover focus"}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}
