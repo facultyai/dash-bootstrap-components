@@ -58,6 +58,19 @@ info.
 
 Alternatively, you can provide just a single 'distance' number e.g. 8 to
 displace it horizontally.
+- `persisted_props` (Array of a value equal to: 'is_open's; optional): Properties whose user interactions will persist after refreshing the
+component or the page. Since only `value` is allowed this prop can
+normally be ignored.
+- `persistence` (Bool | String | Real; optional): Used to allow user interactions in this component to be persisted when
+the component - or the page - is refreshed. If `persisted` is truthy and
+hasn't changed from its previous value, a `value` that the user has
+changed while using the app will keep that change, as long as
+the new `value` also matches what was given originally.
+Used in conjunction with `persistence_type`.
+- `persistence_type` (a value equal to: 'local', 'session', 'memory'; optional): Where persisted user changes will be stored:
+memory: only kept in memory, reset on page refresh.
+local: window.localStorage, data is kept after the browser quit.
+session: window.sessionStorage, data is cleared once the browser quit.
 - `placement` (a value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'; optional): Specify popover placement.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `target` (String | Dict; optional): ID of the component to attach the popover to.
@@ -73,7 +86,7 @@ cursor.
 dismiss the popover when the user clicks outside of the popover.
 """
 function dbc_popover(; kwargs...)
-        available_props = Symbol[:children, :id, :autohide, :body, :className, :class_name, :delay, :flip, :hide_arrow, :innerClassName, :inner_class_name, :is_open, :key, :loading_state, :offset, :placement, :style, :target, :trigger]
+        available_props = Symbol[:children, :id, :autohide, :body, :className, :class_name, :delay, :flip, :hide_arrow, :innerClassName, :inner_class_name, :is_open, :key, :loading_state, :offset, :persisted_props, :persistence, :persistence_type, :placement, :style, :target, :trigger]
         wild_props = Symbol[]
         return Component("dbc_popover", "Popover", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

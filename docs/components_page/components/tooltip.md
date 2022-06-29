@@ -17,4 +17,10 @@ Use the `placement` argument to control the placement of the tooltip. The basic 
 
 {{example:components/tooltip/placement.py:tooltips}}
 
+## Controlling the Tooltip with callbacks
+
+The tooltip's visibility can be controlled with callbacks much like a `Popover` component. Simply set the desired value of `is_open` in a callback. If you are manually controlling the value of `is_open`, you may wish to also set `trigger=None`. By default the `Tooltip` will show when the target element is hovered or focused.
+
+{{example:components/tooltip/tooltip_callback.py:tooltip}}
+
 {{apidoc:src/components/Tooltip.js}}

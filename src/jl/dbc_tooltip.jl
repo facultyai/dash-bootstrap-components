@@ -27,8 +27,11 @@ Often used with CSS to style elements with common properties.
 Those elements have the following types:
   - `show` (Real; optional)
   - `hide` (Real; optional)
+- `fade` (Bool; optional): If True, a fade animation will be applied when `is_open` is toggled. If
+False the Alert will simply appear and disappear.
 - `flip` (Bool; optional): Whether to flip the direction of the popover if too close to the container
 edge, default True.
+- `is_open` (Bool; optional): Whether the Tooltip is open or not.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -40,9 +43,21 @@ Those elements have the following types:
 - `placement` (a value equal to: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'; optional): How to place the tooltip.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `target` (String | Dict; optional): The id of the element to attach the tooltip to
+- `trigger` (String; optional): Space separated list of triggers (e.g. "click hover focus legacy"). These
+specify ways in which the target component can toggle the tooltip. If
+omitted you must toggle the tooltip yourself using callbacks. Options
+are:
+- "click": toggles the popover when the target is clicked.
+- "hover": toggles the popover when the target is hovered over with the
+cursor.
+- "focus": toggles the popover when the target receives focus
+- "legacy": toggles the popover when the target is clicked, but will also
+dismiss the popover when the user clicks outside of the popover.
+
+Default is "hover focus"
 """
 function dbc_tooltip(; kwargs...)
-        available_props = Symbol[:children, :id, :autohide, :className, :class_name, :delay, :flip, :key, :loading_state, :placement, :style, :target]
+        available_props = Symbol[:children, :id, :autohide, :className, :class_name, :delay, :fade, :flip, :is_open, :key, :loading_state, :placement, :style, :target, :trigger]
         wild_props = Symbol[]
         return Component("dbc_tooltip", "Tooltip", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

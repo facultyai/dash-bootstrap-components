@@ -62,11 +62,24 @@ See "How do I determine which Input has changed?" in the Dash FAQs https://dash.
 
 An integer that represents the time (in ms since 1970) at which n_dismiss
 changed. This can be used to tell which button was changed most recently.
+- `persisted_props` (Array of a value equal to: 'is_open's; optional): Properties whose user interactions will persist after refreshing the
+component or the page. Since only `value` is allowed this prop can
+normally be ignored.
+- `persistence` (Bool | String | Real; optional): Used to allow user interactions in this component to be persisted when
+the component - or the page - is refreshed. If `persisted` is truthy and
+hasn't changed from its previous value, a `value` that the user has
+changed while using the app will keep that change, as long as
+the new `value` also matches what was given originally.
+Used in conjunction with `persistence_type`.
+- `persistence_type` (a value equal to: 'local', 'session', 'memory'; optional): Where persisted user changes will be stored:
+memory: only kept in memory, reset on page refresh.
+local: window.localStorage, data is kept after the browser quit.
+session: window.sessionStorage, data is cleared once the browser quit.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `tag` (String; optional): HTML tag to use for the Toast, default: div
 """
 function dbc_toast(; kwargs...)
-        available_props = Symbol[:children, :id, :bodyClassName, :body_class_name, :body_style, :className, :class_name, :color, :dismissable, :duration, :header, :headerClassName, :header_class_name, :header_style, :icon, :is_open, :key, :loading_state, :n_dismiss, :n_dismiss_timestamp, :style, :tag]
+        available_props = Symbol[:children, :id, :bodyClassName, :body_class_name, :body_style, :className, :class_name, :color, :dismissable, :duration, :header, :headerClassName, :header_class_name, :header_style, :icon, :is_open, :key, :loading_state, :n_dismiss, :n_dismiss_timestamp, :persisted_props, :persistence, :persistence_type, :style, :tag]
         wild_props = Symbol[]
         return Component("dbc_toast", "Toast", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
