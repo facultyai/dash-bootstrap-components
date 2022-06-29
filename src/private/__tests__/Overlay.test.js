@@ -59,6 +59,8 @@ describe('Overlay with dict id', () => {
       }
     );
 
+    jest.runAllTimers();
+
     expect(document.body.querySelector('#content')).not.toBe(null);
   });
 });
