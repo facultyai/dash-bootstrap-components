@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import RBModal from 'react-bootstrap/Modal';
+
+import RBModal from '../../private/Modal';
 
 /**
  * Create a toggleable dialog using the Modal component. Toggle the visibility
@@ -27,6 +28,9 @@ const Modal = props => {
     tag,
     loading_state,
     fade,
+    style,
+    zindex,
+    zIndex,
     ...otherProps
   } = props;
 
@@ -48,6 +52,8 @@ const Modal = props => {
       aria-labelledby={labelledby || labelledBy}
       show={is_open}
       onHide={onHide}
+      style={zindex || zIndex ? {...style, zIndex: zindex || zIndex} : style}
+      zIndex={zindex || zIndex}
       {...omit(
         ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
@@ -73,6 +79,7 @@ Modal.propTypes = {
    * The children of this component
    */
   children: PropTypes.node,
+
   /**
    * Defines CSS styles which will override styles previously set.
    */
