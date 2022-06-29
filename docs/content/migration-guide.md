@@ -161,7 +161,7 @@ the [Bootstrap grid docs](https://getbootstrap.com/docs/5.0/layout/grid/#row-col
 - <span class="badge bg-danger">Breaking</span> Dropped `barClassName` property.  Use `className`
 - <span class="badge bg-danger">Breaking</span> Dropped `bar_style` property. Use `style`
 - <span class="badge bg-danger">Breaking</span> Dropped `tag` property.
-- Added a `label` property that should be used instead of `children` to render text on the progress bar.
+- <span class="badge bg-danger">Breaking</span> Added a `label` property that should be used instead of `children` to render text on the progress bar. Must be used in callbacks
 - Added a `hide_label` property to hide the label.
 
 ### RadioButton
