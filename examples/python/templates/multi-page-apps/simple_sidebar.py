@@ -69,12 +69,13 @@ def render_page_content(pathname):
     elif pathname == "/page-2":
         return html.P("Oh cool, this is page 2!")
     # If the user tries to reach a different page, return a 404 message
-    return dbc.Jumbotron(
+    return html.Div(
         [
             html.H1("404: Not found", className="text-danger"),
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
-        ]
+        ],
+        className="p-3 bg-light rounded-3",
     )
 
 
