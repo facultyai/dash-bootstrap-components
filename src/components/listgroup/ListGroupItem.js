@@ -12,6 +12,7 @@ const ListGroupItem = props => {
   let {
     children,
     disabled,
+    href,
     loading_state,
     target,
     n_clicks,
@@ -32,13 +33,14 @@ const ListGroupItem = props => {
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
-  const useLink = props.href && !disabled;
+  const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
     <RBListGroupItem
       as={useLink ? Link : 'li'}
-      target={useLink && target}
+      href={href}
+      target={useLink ? target : undefined}
       disabled={disabled}
       variant={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
