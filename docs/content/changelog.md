@@ -6,6 +6,16 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.2.1 - 2022/7/31
+
+Version 1.2.1 of dash-bootstrap-components is a patch release containing bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Fixed
+
+- Suppress console errors originating from `DropdownMenu` ([PR 878](https://github.com/facultyai/dash-bootstrap-components/pull/878))
+- Allow `DropdownMenu` toggle to be rendered as a link ([PR 884](https://github.com/facultyai/dash-bootstrap-components/pull/884))
+
+
 ## 1.2.0 - 2022/6/29
 
 Version 1.2.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
