@@ -52,11 +52,9 @@ const DropdownMenuItem = props => {
   return (
     <RBDropdown.Item
       as={useLink ? Link : 'button'}
-      // don't pass href if disabled otherwise reactstrap renders item
-      // as link and the cursor becomes a pointer on hover
-      href={disabled ? null : href}
+      href={useLink ? href : undefined}
       disabled={disabled}
-      target={useLink && target}
+      target={useLink ? target : undefined}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
