@@ -40,7 +40,7 @@ const DropdownMenu = props => {
   } = props;
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const isBootstrapColor = bootstrapColors.has(color);
+  const isBootstrapColor = bootstrapColors.has(color) || color === 'link';
   const toggle = () => {
     if (!disabled) {
       setDropdownOpen(!dropdownOpen);
