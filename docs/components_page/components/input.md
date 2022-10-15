@@ -57,6 +57,8 @@ The `Textarea` component works like the _dash-core-components_ analogue, but acc
 
 The `Select` component can be used to render a Bootstrap themed select input. The options are specified with a list of dictionaries much like the `Dropdown` component in _dash-core-components_, i.e. with keys `'label'`, `'value'` and optional key `'disabled'`. Like `Input` it also accepts keyword arguments such as `size`, `valid`, `invalid`, all of which can be targeted with callbacks.
 
+`options` and `value` are positional arguments, so can be provided without the keywords if required.
+
 `Select` can only be used to select individual items and doesn't have a multi-select feature. If you wish to be able to support multi-select, instead use `dash_core_components.Dropdown` with `multi=True` and apply css to style it in-line with Bootstrap styles. You can see an example of how to do this [here](https://github.com/tcbegley/dash-bootstrap-css).
 
 {{example:components/input/select.py:select}}
@@ -65,6 +67,8 @@ The `Select` component can be used to render a Bootstrap themed select input. Th
 
 `RadioItems` and `Checklist` components also work like _dash-core-components_. Provided you specify an `id`, _dash-bootstrap-components_ will render custom themed radio buttons or checkboxes rather than using the native browser buttons. When using `Checklist` you can also specify `switch=True` to render toggle-like switches rather than checkboxes. If you prefer to use the native buttons and checkboxes, set `custom=False`. Note that there is no native browser switch, so if you set `custom=False` then `switch` will be ignored.
 
+`options` and `value` are positional arguments, so can be provided without the keywords if required.
+
 {{example:components/input/radio_check.py:inputs}}
 
 ## Inline RadioItems and Checklist
@@ -72,6 +76,28 @@ The `Select` component can be used to render a Bootstrap themed select input. Th
 Set `inline=True` to make the radio items or checklists fit next to each other on a line.
 
 {{example:components/input/radio_check_inline.py:inline_inputs}}
+
+## Shorthand options for Select, RadioItems and Checklist
+As well as the `options` (and `value`) parameter being positional, `Select`, `RadioItems` and `Checklist` components have short-hand `options` values available. The standard structure for the options parameter takes the form of an array of dictionaries with defined keys:
+
+```python
+  options=[
+    {
+      "label": "Label 1",
+      "value": "value_1",
+      ...
+    },
+    {
+      "label": "Label 2",
+      "value": "value_2",
+      ...
+    },
+  ]
+```
+
+This structure is required if you wish to use any of the additional `options` properties such as `disabled`. However, if you want to create a simple component, you can make use of the shorthand options. When using the shorthand options, all values will be treated as strings.
+
+{{example:components/input/short_hand.py:short_hand}}
 
 ## Checked item styles
 

@@ -127,7 +127,34 @@ const RadioItems = props => {
 RadioItems.propTypes = {
   /**
    * The options to display as items in the component. This can be an array
-   * or a dictionary.
+   * or a dictionary as follows:
+   *
+   * \n1. Array of options where the label and the value are the same thing -
+   * [string|number]
+   *
+   * \n2. An array of options
+   * ```
+   * {
+   *   "label": [string|number],
+   *   "value": [string|number],
+   *   "disabled": [bool] (Optional),
+   *   "input_id": [string] (Optional),
+   *   "label_id": [string] (Optional)
+   * }
+   * ```
+   *
+   * \n3. Simpler `options` representation in dictionary format. The order is not
+   * guaranteed. All values and labels will be treated as strings.
+   * ```
+   * {"value1": "label1", "value2": "label2", ... }
+   * ```
+   * which is equal to
+   * ```
+   * [
+   *   {"label": "label1", "value": "value1"},
+   *   {"label": "label2", "value": "value2"}, ...
+   * ]
+   * ```
    */
   options: PropTypes.oneOfType([
     /**
@@ -139,7 +166,7 @@ RadioItems.propTypes = {
     ),
     /**
      * Simpler `options` representation in dictionary format. The order is not
-     * guaranteed.
+     * guaranteed. All values and labels will be treated as strings.
      * {`value1`: `label1`, `value2`: `label2`, ... }
      * which is equal to
      * [
