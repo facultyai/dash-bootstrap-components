@@ -47,7 +47,7 @@ radioitems <- div(
 short_hand <- div(
     list(
         dbcForm(list(checklist, select, radioitems)),
-        htmlDiv(id="shorthand-output")
+        p(id="shorthand-output")
     )
 )
 
@@ -63,11 +63,13 @@ app$callback(
 
         checklist <- paste(checklist_value, sep=", ")
 
-        output <- list(
-            p(sprintf("Checklist: [%s]", checklist)),
-            p(sprintf("Selected: %s", select_value)),
-            p(sprintf("Radio: %s", radio_items_value))
+        output <- sprintf(
+            "Checklist: [%s], Selected: %s, Radio: %s", 
+            checklist,
+            select_value,
+            radio_items_value
         )
+        
         return(output)
     }
 )

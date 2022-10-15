@@ -48,7 +48,7 @@ radioitems = html.Div(
 short_hand = html.Div(
     [
         dbc.Form([checklist, select, radioitems]),
-        html.Div(id="shorthand-output"),
+        html.P(id="shorthand-output"),
     ]
 )
 
@@ -65,9 +65,9 @@ def on_form_change(checklist_value, select_value, radio_items_value):
 
     checklist = ", ".join([str(c) for c in checklist_value])
 
-    output = [
-        html.P(f"Checklist: [{checklist}]"),
-        html.P(f"Selected: {select_value}"),
-        html.P(f"Radio: {radio_items_value}"),
-    ]
+    output = (
+        f"Checklist: [{checklist}], Selected: {select_value}, ",
+        f"Radio: {radio_items_value}",
+    )
+
     return output

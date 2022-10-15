@@ -47,7 +47,7 @@ radioitems = html_div(
 short_hand = html_div(
     [
         dbc_form([checklist, select, radioitems]),
-        html_div(id = "shorthand-output"),
+        html_p(id = "shorthand-output"),
     ]
 );
 
@@ -62,11 +62,10 @@ callback!(
 
     checklist = join([c::str for c=checklist_value], ", ")
 
-    output = [
-        html_p("""Checklist: [$checklist]"""),
-        html_p("""Selected: $select_value"""),
-        html_p("""Radio: $radio_items_value"""),
-    ]
+    output = 
+        """Checklist: [$checklist], Selected: $select_value, """ *
+        """Radio: $radio_items_value"""
+    
     return output
 
 end;
