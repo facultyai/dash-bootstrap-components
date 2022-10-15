@@ -124,19 +124,6 @@ const RadioItems = props => {
 
 RadioItems.propTypes = {
   /**
-   * The ID of this component, used to identify dash components in callbacks.
-   * The ID needs to be unique across all of the components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
    * An array of options
    */
   options: PropTypes.arrayOf(
@@ -177,6 +164,19 @@ RadioItems.propTypes = {
    * The currently selected value
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * The ID of this component, used to identify dash components in callbacks.
+   * The ID needs to be unique across all of the components in an app.
+   */
+  id: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve
+   * performance by React.js while rendering components
+   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   */
+  key: PropTypes.string,
 
   /**
    * The style of the container (div)

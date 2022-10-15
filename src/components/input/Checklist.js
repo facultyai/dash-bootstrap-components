@@ -132,12 +132,6 @@ const Checklist = props => {
 
 Checklist.propTypes = {
   /**
-   * The ID of this component, used to identify dash components in callbacks.
-   * The ID needs to be unique across all of the components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
    * An array of options
    */
   options: PropTypes.arrayOf(
@@ -180,6 +174,12 @@ Checklist.propTypes = {
   value: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ),
+
+  /**
+   * The ID of this component, used to identify dash components in callbacks.
+   * The ID needs to be unique across all of the components in an app.
+   */
+  id: PropTypes.string,
 
   /**
    * The class of the container (div)

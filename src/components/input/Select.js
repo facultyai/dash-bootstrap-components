@@ -71,6 +71,42 @@ Select.defaultProps = {
 
 Select.propTypes = {
   /**
+   * An array of options for the select
+   */
+  options: PropTypes.arrayOf(
+    PropTypes.exact({
+      /**
+       * The options's label
+       */
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+
+      /**
+       * The value of the option. This value corresponds to the items
+       * specified in the `value` property.
+       */
+      value: PropTypes.string.isRequired,
+
+      /**
+       * If true, this checkbox is disabled and can't be clicked on.
+       */
+      disabled: PropTypes.bool,
+
+      /**
+       * The HTML 'title' attribute for the option. Allows for information on
+       * hover. For more information on this attribute, see
+       * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+       */
+      title: PropTypes.string
+    })
+  ),
+
+  /**
+   * The value of the currently selected option.
+   */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
    * components in an app.
@@ -105,42 +141,6 @@ Select.propTypes = {
    * Placeholder text to display before a selection is made.
    */
   placeholder: PropTypes.string,
-
-  /**
-   * The value of the currently selected option.
-   */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * An array of options for the select
-   */
-  options: PropTypes.arrayOf(
-    PropTypes.exact({
-      /**
-       * The options's label
-       */
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-
-      /**
-       * The value of the option. This value corresponds to the items
-       * specified in the `value` property.
-       */
-      value: PropTypes.string.isRequired,
-
-      /**
-       * If true, this checkbox is disabled and can't be clicked on.
-       */
-      disabled: PropTypes.bool,
-
-      /**
-       * The HTML 'title' attribute for the option. Allows for information on
-       * hover. For more information on this attribute, see
-       * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
-       */
-      title: PropTypes.string
-    })
-  ),
 
   /**
    * Set to True to disable the Select.
