@@ -67,7 +67,7 @@ The `Select` component can be used to render a Bootstrap themed select input. Th
 
 `RadioItems` and `Checklist` components also work like _dash-core-components_. Provided you specify an `id`, _dash-bootstrap-components_ will render custom themed radio buttons or checkboxes rather than using the native browser buttons. When using `Checklist` you can also specify `switch=True` to render toggle-like switches rather than checkboxes. If you prefer to use the native buttons and checkboxes, set `custom=False`. Note that there is no native browser switch, so if you set `custom=False` then `switch` will be ignored.
 
-`options` and `value` are positional arguments, so can be provided without the keywords if required.
+In Python, `options` and `value` are positional arguments, so can be provided without the keywords if required.
 
 {{example:components/input/radio_check.py:inputs}}
 
@@ -78,7 +78,7 @@ Set `inline=True` to make the radio items or checklists fit next to each other o
 {{example:components/input/radio_check_inline.py:inline_inputs}}
 
 ## Shorthand options for Select, RadioItems and Checklist
-As well as the `options` (and `value`) parameter being positional, `Select`, `RadioItems` and `Checklist` components have short-hand `options` values available. The standard structure for the options parameter takes the form of an array of dictionaries with defined keys:
+In Python, as well as the `options` (and `value`) parameter being positional, `Select`, `RadioItems` and `Checklist` components have short-hand `options` values available. The standard structure for the options parameter takes the form of an array of dictionaries with defined keys:
 
 ```python
   options=[
@@ -95,7 +95,7 @@ As well as the `options` (and `value`) parameter being positional, `Select`, `Ra
   ]
 ```
 
-This structure is required if you wish to use any of the additional `options` properties such as `disabled`. However, if you want to create a simple component, you can make use of the shorthand options. When using the shorthand options, all values will be treated as strings.
+This structure is required if you wish to use any of the additional `options` properties such as `disabled`. However, if you want to create a simple component, you can make use of the shorthand options. When using the shorthand options, all values will be treated as strings. *Note*: Due to `dash` no longer being maintained in Julia and R, this functionality will only work when using Python.
 
 {{example:components/input/short_hand.py:short_hand}}
 
