@@ -34,7 +34,8 @@ const ListGroup = props => {
 };
 
 ListGroup.defaultProps = {
-  tag: 'ul'
+  tag: 'ul',
+  numbered: false
 };
 
 ListGroup.propTypes = {
@@ -111,7 +112,12 @@ ListGroup.propTypes = {
    * Note that horizontal ListGroups cannot be combined with flush ListGroups,
    * so if flush is True then horizontal has no effect.
    */
-  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
+  /**
+   * Generate numbered list items.
+   */
+  numbered: PropTypes.bool
 };
 
 export default ListGroup;
