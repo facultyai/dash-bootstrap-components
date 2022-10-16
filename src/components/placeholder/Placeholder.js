@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import RBPlaceholder from 'react-bootstrap/Placeholder';
 import {omit} from 'ramda';
 
+import classNames from 'classnames';
+
 /**
  * Use loading Placeholders for your components or pages to indicate
  * something may still be loading.
@@ -19,6 +21,7 @@ const Placeholder = props => {
     delay_hide,
     delay_show,
     show_initially,
+    animation,
     ...otherProps
   } = props;
 
@@ -60,13 +63,22 @@ const Placeholder = props => {
     }
   }, [delay_hide, delay_show, loading_state]);
 
+  // If the placeholder is to be animated, need to add the placeholder class
+  // (as this isn't added for some reason)
+  const classes = classNames(
+    class_name || className,
+    animation && `placeholder`
+  );
+
+  // Create the placeholder
   const PlaceholderDiv = ({finalStyle}) => {
     if (button) {
       return (
         <RBPlaceholder.Button
           variant={color}
-          className={class_name || className}
+          className={classes}
           style={finalStyle}
+          animation={animation}
           {...omit(['setProps'], otherProps)}
         />
       );
@@ -75,12 +87,16 @@ const Placeholder = props => {
     return (
       <RBPlaceholder
         bg={color}
-        className={class_name || className}
+        className={classes}
         style={finalStyle}
+        animation={animation}
         {...omit(['setProps'], otherProps)}
       />
     );
   };
+
+  // Identify if the Placeholder needs an animation - if so it must be placed
+  // inside another Placeholder
 
   // Defaulted styles above to the situation where placeholder has no children
   // now include properties if placeholder has children
@@ -107,8 +123,6 @@ const Placeholder = props => {
       margin: '1rem auto',
       ...style
     };
-
-    console.log(placeholderStyle);
 
     return (
       <div style={showPlaceholder ? hiddenStyle : {}}>
@@ -201,7 +215,7 @@ Placeholder.propTypes = {
   color: PropTypes.string,
 
   /**
-   * Component size variations.
+   * Component size variations. Only valid when `button=false`.
    */
   size: PropTypes.oneOf(['xs', 'sm', 'lg']),
 
@@ -227,7 +241,55 @@ Placeholder.propTypes = {
    * Whether the Placeholder should show on app start-up before the loading
    * state has been determined. Default True.
    */
-  show_initially: PropTypes.bool
+  show_initially: PropTypes.bool,
+
+  /**
+   * Specify placeholder behaviour on an extra small screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive.
+   * See the documentation for more details.
+   */
+  xs: PropTypes.number,
+
+  /**
+   * Specify placeholder behaviour on a small screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive.
+   * See the documentation for more details.
+   */
+  sm: PropTypes.number,
+
+  /**
+   * Specify placeholder behaviour on a medium screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive.
+   * See the documentation for more details.
+   */
+  md: PropTypes.number,
+
+  /**
+   * Specify placeholder behaviour on a large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive.
+   * See the documentation for more details.
+   */
+  lg: PropTypes.number,
+
+  /**
+   * Specify placeholder behaviour on an extra large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive.
+   * See the documentation for more details.
+   */
+  xl: PropTypes.number,
+
+  /**
+   * Specify placeholder behaviour on an extra extra large screen.
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive.
+   * See the documentation for more details.
+   */
+  xxl: PropTypes.number
 };
 
 export default Placeholder;

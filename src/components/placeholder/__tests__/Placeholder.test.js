@@ -70,12 +70,14 @@ describe('Placeholder', () => {
     } = render(<Placeholder animation="glow" />);
 
     expect(placeholderGlow).toHaveClass('placeholder-glow');
+    expect(placeholderGlow).toHaveClass('placeholder');
 
     const {
       container: {firstChild: placeholderWave}
     } = render(<Placeholder animation="wave" />);
 
     expect(placeholderWave).toHaveClass('placeholder-wave');
+    expect(placeholderWave).toHaveClass('placeholder');
 
     // placeholder sizes
     const {
@@ -105,6 +107,7 @@ describe('Placeholder', () => {
     );
 
     expect(placeholderGlow.firstChild).toHaveClass('placeholder-glow');
+    expect(placeholderGlow.firstChild).toHaveClass('placeholder');
 
     // placeholder sizes
     const {
