@@ -1,19 +1,18 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export dbc_collapse
+export dbc_stack
 
 """
-    dbc_collapse(;kwargs...)
-    dbc_collapse(children::Any;kwargs...)
-    dbc_collapse(children_maker::Function;kwargs...)
+    dbc_stack(;kwargs...)
+    dbc_stack(children::Any;kwargs...)
+    dbc_stack(children_maker::Function;kwargs...)
 
 
-A Collapse component.
-Hide or show content with a vertical collapsing animation. Visibility of the
-children is controlled by the `is_open` prop which can be targetted by
-callbacks.
+A Stack component.
+Stacks are shorthand helpers that build on top of existing flexbox
+utilities to make component layout faster and easier than ever.
 Keyword arguments:
-- `children` (a list of or a singular dash component, string or number; optional): The children of this component.
+- `children` (a list of or a singular dash component, string or number; optional): The children of this component
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
@@ -21,9 +20,8 @@ components in an app.
 
 Often used with CSS to style elements with common properties.
 - `class_name` (String; optional): Often used with CSS to style elements with common properties.
-- `dimension` (a value equal to: 'height', 'width'; optional): The dimension used when collapsing e.g. height will collapse vertically,
-whilst width will collapse horizontally
-- `is_open` (Bool; optional): Whether collapse is currently open.
+- `direction` (a value equal to: 'vertical', 'horizontal'; optional): Which direction to stack the objects in
+- `gap` (Real; optional): Set the spacing between each item (0 - 5)
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
@@ -32,15 +30,14 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
-- `navbar` (Bool; optional): Set to True when using a collapse inside a navbar.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 """
-function dbc_collapse(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :class_name, :dimension, :is_open, :key, :loading_state, :navbar, :style]
+function dbc_stack(; kwargs...)
+        available_props = Symbol[:children, :id, :className, :class_name, :direction, :gap, :key, :loading_state, :style]
         wild_props = Symbol[]
-        return Component("dbc_collapse", "Collapse", "dash_bootstrap_components", available_props, wild_props; kwargs...)
+        return Component("dbc_stack", "Stack", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end
 
-dbc_collapse(children::Any; kwargs...) = dbc_collapse(;kwargs..., children = children)
-dbc_collapse(children_maker::Function; kwargs...) = dbc_collapse(children_maker(); kwargs...)
+dbc_stack(children::Any; kwargs...) = dbc_stack(;kwargs..., children = children)
+dbc_stack(children_maker::Function; kwargs...) = dbc_stack(children_maker(); kwargs...)
 

@@ -56,6 +56,7 @@ which button was changed most recently.
 of the form data.
 - `outline` (Bool; optional): Set outline button style, which removes background images and colors for a
 lightweight style.
+- `rel` (String; optional): Set the rel attribute when Button is being used as a Link.
 - `size` (String; optional): Button size, options: 'lg', 'md', 'sm'.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `target` (String; optional): Target attribute to pass on to link if using Button as an external link.
@@ -69,7 +70,7 @@ with the form data. This value is passed to the server in params when the
 form is submitted.
 """
 function dbc_button(; kwargs...)
-        available_props = Symbol[:children, :id, :active, :className, :class_name, :color, :disabled, :download, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :name, :outline, :size, :style, :target, :title, :type, :value]
+        available_props = Symbol[:children, :id, :active, :className, :class_name, :color, :disabled, :download, :external_link, :href, :key, :loading_state, :n_clicks, :n_clicks_timestamp, :name, :outline, :rel, :size, :style, :target, :title, :type, :value]
         wild_props = Symbol[]
         return Component("dbc_button", "Button", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

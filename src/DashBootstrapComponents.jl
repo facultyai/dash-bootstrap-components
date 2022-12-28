@@ -3,7 +3,7 @@ module DashBootstrapComponents
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "1.2.1"
+const version = "1.3.0"
 
 include("jl/dbc_accordion.jl")
 include("jl/dbc_accordionitem.jl")
@@ -43,6 +43,7 @@ include("jl/dbc_textarea.jl")
 include("jl/dbc_col.jl")
 include("jl/dbc_container.jl")
 include("jl/dbc_row.jl")
+include("jl/dbc_stack.jl")
 include("jl/dbc_listgroup.jl")
 include("jl/dbc_listgroupitem.jl")
 include("jl/dbc_modal.jl")
@@ -59,6 +60,7 @@ include("jl/dbc_navbarsimple.jl")
 include("jl/dbc_navbartoggler.jl")
 include("jl/dbc_offcanvas.jl")
 include("jl/dbc_pagination.jl")
+include("jl/dbc_placeholder.jl")
 include("jl/dbc_popover.jl")
 include("jl/dbc_popoverbody.jl")
 include("jl/dbc_popoverheader.jl")
@@ -81,7 +83,7 @@ function __init__()
             [
                 DashBase.Resource(
     relative_package_path = "_components/dash_bootstrap_components.min.js",
-    external_url = "https://unpkg.com/dash-bootstrap-components@1.2.1/dist/dash_bootstrap_components.min.js",
+    external_url = "https://unpkg.com/dash-bootstrap-components@1.3.0/dist/dash_bootstrap_components.min.js",
     dynamic = nothing,
     async = nothing,
     type = :js

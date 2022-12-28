@@ -16,7 +16,7 @@ Keyword arguments:
 - `id` (String; optional): The ID of this component, used to identify dash components
 in callbacks. The ID needs to be unique across all of the
 components in an app.
-- `brand` (String; optional): Brand text, to go top left of the navbar.
+- `brand` (a list of or a singular dash component, string or number; optional): Brand text, to go top left of the navbar.
 - `brand_external_link` (Bool; optional): If true, the browser will treat the brand link as external,
 forcing a page refresh at the new location. If false,
 this just changes the location without triggering a page

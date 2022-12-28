@@ -36,7 +36,7 @@ instead.
 - `key` (String; optional): A unique identifier for the component, used to improve
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
-- `label` (String; optional): Label for the DropdownMenu toggle.
+- `label` (a list of or a singular dash component, string or number; optional): Label for the DropdownMenu toggle.
 - `loading_state` (optional): Object that holds the loading state object coming from dash-renderer. loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not

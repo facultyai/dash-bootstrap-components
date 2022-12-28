@@ -37,11 +37,12 @@ Those elements have the following types:
   - `is_loading` (Bool; optional): Determines if the component is loading or not
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
+- `numbered` (Bool; optional): Generate numbered list items.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `tag` (String; optional): HTML tag to use for the list, default: ul
 """
 function dbc_listgroup(; kwargs...)
-        available_props = Symbol[:children, :id, :className, :class_name, :flush, :horizontal, :key, :loading_state, :style, :tag]
+        available_props = Symbol[:children, :id, :className, :class_name, :flush, :horizontal, :key, :loading_state, :numbered, :style, :tag]
         wild_props = Symbol[]
         return Component("dbc_listgroup", "ListGroup", "dash_bootstrap_components", available_props, wild_props; kwargs...)
 end

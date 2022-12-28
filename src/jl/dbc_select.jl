@@ -26,7 +26,34 @@ any FormFeedback in the enclosing div with valid=False to display.
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info
 - `name` (String; optional): The name of the control, which is submitted with the form data.
-- `options` (optional): An array of options for the select. options has the following type: Array of lists containing elements 'label', 'value', 'disabled', 'title'.
+- `options` (optional): The options to display as items in the component. This can be an array
+or a dictionary as follows:
+
+\n1. Array of options where the label and the value are the same thing -
+[string|number]
+
+\n2. An array of options
+```
+{
+  "label": [string|number],
+  "value": [string|number],
+  "disabled": [bool] (Optional),
+  "title": [string] (Optional)
+}
+```
+
+\n3. Simpler `options` representation in dictionary format. The order is not
+guaranteed. All values and labels will be treated as strings.
+```
+{"value1": "label1", "value2": "label2", ... }
+```
+which is equal to
+```
+[
+  {"label": "label1", "value": "value1"},
+  {"label": "label2", "value": "value2"}, ...
+]
+```. options has the following type: Array of String | Reals | Dict | Array of lists containing elements 'label', 'value', 'disabled', 'title'.
 Those elements have the following types:
   - `label` (String | Real; required): The options's label
   - `value` (String; required): The value of the option. This value corresponds to the items

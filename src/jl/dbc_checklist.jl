@@ -68,7 +68,35 @@ Those elements have the following types:
   - `prop_name` (String; optional): Holds which property is loading
   - `component_name` (String; optional): Holds the name of the component that is loading
 - `name` (String; optional): The name of the control, which is submitted with the form data.
-- `options` (optional): An array of options. options has the following type: Array of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
+- `options` (optional): The options to display as items in the component. This can be an array
+or a dictionary as follows:
+
+\n1. Array of options where the label and the value are the same thing -
+[string|number]
+
+\n2. An array of options
+```
+{
+  "label": [string|number],
+  "value": [string|number],
+  "disabled": [bool] (Optional),
+  "input_id": [string] (Optional),
+  "label_id": [string] (Optional)
+}
+```
+
+\n3. Simpler `options` representation in dictionary format. The order is not
+guaranteed. All values and labels will be treated as strings.
+```
+{"value1": "label1", "value2": "label2", ... }
+```
+which is equal to
+```
+[
+  {"label": "label1", "value": "value1"},
+  {"label": "label2", "value": "value2"}, ...
+]
+```. options has the following type: Array of String | Reals | Dict | Array of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
 Those elements have the following types:
   - `label` (String | Real; required): The checkbox's label
   - `value` (String | Real; required): The value of the checkbox. This value corresponds to the items

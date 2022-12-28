@@ -34,7 +34,7 @@ light, dark. Default: secondary.
 - `dismissable` (Bool; optional): Set to True to add a dismiss button to the header which will close the
 toast on click
 - `duration` (Real; optional): Duration in milliseconds after which the Alert dismisses itself.
-- `header` (String; optional): Text to populate the header with
+- `header` (a list of or a singular dash component, string or number; optional): Text to populate the header with
 - `headerClassName` (String; optional): **DEPRECATED** - use `header_class_name` instead
 
 Often used with CSS to style elements with common properties. The classes
