@@ -84,21 +84,21 @@ Each theme such as is simply a BootstrapCDN URL stored as a string, so using the
 Python
 
 ```python
-BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 app = dash.Dash(external_stylesheets=[BS])
 ```
 -----
 R
 
 ```r
-BS <- "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+BS <- "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 app <- Dash$new(external_stylesheets = BS)
 ```
 -----
 Julia
 
 ```julia
-BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 app = dash(external_stylesheets=[BS])
 ```
 ~~~
