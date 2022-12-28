@@ -19,6 +19,7 @@ from .nav import nav
 from .navbar import navbar
 from .offcanvas import offcanvas
 from .pagination import pagination
+from .placeholder import placeholder
 from .popover import popover
 from .progress import progress
 from .spinner import spinner
@@ -60,6 +61,7 @@ app.layout = dbc.Container(
         nav,
         navbar,
         pagination,
+        placeholder,
         popover,
         progress,
         spinner,

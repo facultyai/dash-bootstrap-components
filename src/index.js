@@ -46,6 +46,7 @@ export {default as NavItem} from './components/nav/NavItem';
 export {default as NavLink} from './components/nav/NavLink';
 export {default as Offcanvas} from './components/offcanvas/Offcanvas';
 export {default as Pagination} from './components/pagination/Pagination';
+export {default as Placeholder} from './components/placeholder/Placeholder';
 export {default as Popover} from './components/popover/Popover';
 export {default as PopoverBody} from './components/popover/PopoverBody';
 export {default as PopoverHeader} from './components/popover/PopoverHeader';
