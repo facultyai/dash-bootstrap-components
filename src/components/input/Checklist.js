@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {append, includes, without} from 'ramda';
 import classNames from 'classnames';
 
+import {sanitizeOptions} from '../../private/util';
+
 /**
  * Checklist is a component that encapsulates several checkboxes.
  * The values and labels of the checklist is specified in the `options`
@@ -113,7 +115,8 @@ const Checklist = props => {
       </div>
     );
   };
-  const items = options.map(option => listItem(option));
+
+  const items = sanitizeOptions(options).map(option => listItem(option));
 
   return (
     <div
@@ -132,47 +135,90 @@ const Checklist = props => {
 
 Checklist.propTypes = {
   /**
-   * The ID of this component, used to identify dash components in callbacks.
-   * The ID needs to be unique across all of the components in an app.
+   * The options to display as items in the component. This can be an array
+   * or a dictionary as follows:
+   *
+   * \n1. Array of options where the label and the value are the same thing -
+   * [string|number]
+   *
+   * \n2. An array of options
+   * ```
+   * {
+   *   "label": [string|number],
+   *   "value": [string|number],
+   *   "disabled": [bool] (Optional),
+   *   "input_id": [string] (Optional),
+   *   "label_id": [string] (Optional)
+   * }
+   * ```
+   *
+   * \n3. Simpler `options` representation in dictionary format. The order is not
+   * guaranteed. All values and labels will be treated as strings.
+   * ```
+   * {"value1": "label1", "value2": "label2", ... }
+   * ```
+   * which is equal to
+   * ```
+   * [
+   *   {"label": "label1", "value": "value1"},
+   *   {"label": "label2", "value": "value2"}, ...
+   * ]
+   * ```
    */
-  id: PropTypes.string,
+  options: PropTypes.oneOfType([
+    /**
+     * Array of options where the label and the value are the same thing -
+     * [string|number]
+     */
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
+    /**
+     * Simpler `options` representation in dictionary format. The order is not
+     * guaranteed. All values and labels will be treated as strings.
+     * {`value1`: `label1`, `value2`: `label2`, ... }
+     * which is equal to
+     * [{label: `label1`, value: `value1`}, {label: `label2`, value: `value2`}, ...]
+     */
+    PropTypes.object,
+    /**
+     * An array of options {label: [string|number], value: [string|number]},
+     * an optional disabled field can be used for each option
+     */
+    PropTypes.arrayOf(
+      PropTypes.exact({
+        /**
+         * The checkbox's label
+         */
+        label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
 
-  /**
-   * An array of options
-   */
-  options: PropTypes.arrayOf(
-    PropTypes.exact({
-      /**
-       * The checkbox's label
-       */
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
+        /**
+         * The value of the checkbox. This value corresponds to the items
+         * specified in the `value` property.
+         */
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
 
-      /**
-       * The value of the checkbox. This value corresponds to the items
-       * specified in the `value` property.
-       */
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
+        /**
+         * If true, this checkbox is disabled and can't be clicked on.
+         */
+        disabled: PropTypes.bool,
 
-      /**
-       * If true, this checkbox is disabled and can't be clicked on.
-       */
-      disabled: PropTypes.bool,
+        /**
+         * id for this option's input, can be used to attach tooltips or apply
+         * CSS styles
+         */
+        input_id: PropTypes.string,
 
-      /**
-       * id for this option's input, can be used to attach tooltips or apply
-       * CSS styles
-       */
-      input_id: PropTypes.string,
-
-      /**
-       * id for this option's label, can be used to attach tooltips or apply
-       * CSS styles
-       */
-      label_id: PropTypes.string
-    })
-  ),
+        /**
+         * id for this option's label, can be used to attach tooltips or apply
+         * CSS styles
+         */
+        label_id: PropTypes.string
+      })
+    )
+  ]),
 
   /**
    * The currently selected value
@@ -180,6 +226,12 @@ Checklist.propTypes = {
   value: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ),
+
+  /**
+   * The ID of this component, used to identify dash components in callbacks.
+   * The ID needs to be unique across all of the components in an app.
+   */
+  id: PropTypes.string,
 
   /**
    * The class of the container (div)

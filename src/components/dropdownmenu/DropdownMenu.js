@@ -151,7 +151,7 @@ DropdownMenu.propTypes = {
   /**
    * Label for the DropdownMenu toggle.
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
 
   /**
    * Direction in which to expand the DropdownMenu. Default: 'down'. `left`
