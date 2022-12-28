@@ -53,6 +53,7 @@ const Toast = props => {
         timeout.current = null;
       }
     }
+    return () => clearTimeout(timeout.current);
   }, [is_open]);
 
   return (
