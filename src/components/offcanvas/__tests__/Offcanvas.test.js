@@ -7,7 +7,6 @@ import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Offcanvas from '../Offcanvas';
 
-
 // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
