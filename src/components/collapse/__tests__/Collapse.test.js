@@ -50,4 +50,28 @@ describe('Collapse', () => {
       null
     );
   });
+
+  test('default dimension is height', () => {
+    const {
+      container: {firstChild: collapse}
+    } = render(
+      <Collapse>
+        <div>Some collapse content</div>
+      </Collapse>
+    );
+
+    expect(collapse).not.toHaveClass('collapse-horizontal');
+  });
+
+  test('dimension changes the way the collapse is animated', () => {
+    const {
+      container: {firstChild: collapse}
+    } = render(
+      <Collapse dimension="width">
+        <div>Some collapse content</div>
+      </Collapse>
+    );
+
+    expect(collapse).toHaveClass('collapse-horizontal');
+  });
 });

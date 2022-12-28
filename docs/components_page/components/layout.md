@@ -88,8 +88,24 @@ Sometimes you may wish to use Bootstrap's grid system for specifying the layout 
 
 Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/5.1/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plotly.com/external-resources) for details.
 
+## `Stack`ing objects
+
+You can make use of the `Stack` component to neatly arrange objects inside a vertical (default) stack. You can set the `gap` property between 0-5 to create an even gap between the objects.
+
+{{example:components/layout/simple_stack.py:stack}}
+
+You can also use `direction="horizontal"` for horizontal layouts.
+
+{{example:components/layout/horizontal_stack.py:stack}}
+
+You can combine these with the in-built [Bootstrap spacing](https://getbootstrap.com/docs/5.0/utilities/spacing/) options to improve your layouts even further.
+
+{{example:components/layout/stack_spacers.py:stack}}
+
 {{apidoc:src/components/layout/Container.js}}
 
 {{apidoc:src/components/layout/Row.js}}
 
 {{apidoc:src/components/layout/Col.js}}
+
+{{apidoc:src/components/layout/Stack.js}}
