@@ -6,6 +6,30 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.3.0 - 2022/12/28
+
+Version 1.3.0 of dash-bootstrap-components. This version contains a number of new features, updates, and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- Add shorthand syntax for specifying options in `Checklist`, `RadioItems`, `Select` to mimic dash-core-components (([PR 894](https://github.com/facultyai/dash-bootstrap-components/pull/894))
+- Add `numbered` prop to `ListGroup` for numbered list group support (([PR 895](https://github.com/facultyai/dash-bootstrap-components/pull/895))
+- Add support for horizontal collapses with `horizontal` prop in `Collapse` component (([PR 896](https://github.com/facultyai/dash-bootstrap-components/pull/896))
+- Add new `Stack` component for vertical layouts (([PR 897](https://github.com/facultyai/dash-bootstrap-components/pull/897))
+- Add new `Placeholder` component which can be used as a loading component also (([PR 899](https://github.com/facultyai/dash-bootstrap-components/pull/899))
+- Accept Dash components as arguments to `DropdownMenu.label`, `NavbarSimple.brand` and `Toast.header` (([PR 917](https://github.com/facultyai/dash-bootstrap-components/pull/917))
+- Expose `rel` prop in `Button` when used as a link (([PR 921](https://github.com/facultyai/dash-bootstrap-components/pull/921))
+
+### Fixed
+
+- Fixed a recursion error that could arise when pickling dash-bootstrap-components ([PR 918](https://github.com/facultyai/dash-bootstrap-components/pull/918))
+- Fixed navigation bug when using auto-dismissing `Toast` (([PR 920](https://github.com/facultyai/dash-bootstrap-components/pull/920))
+
+### Changed
+
+- Update to Bootstrap 5.2.3 (([PR 916](https://github.com/facultyai/dash-bootstrap-components/pull/916))
+- Drop support for Python 3.6 (([PR 913](https://github.com/facultyai/dash-bootstrap-components/pull/913))
+
 ## 1.2.1 - 2022/7/31
 
 Version 1.2.1 of dash-bootstrap-components is a patch release containing bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).

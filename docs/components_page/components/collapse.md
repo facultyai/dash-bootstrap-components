@@ -9,6 +9,12 @@ The `Collapse` component can be used to show and hide content in your apps. Simp
 
 {{example:components/collapse/simple.py:collapse}}
 
+## Horizontal collapse
+
+To change the animation to appear horizontally instead of vertically, set `dimension='width'` instead. When using this animation, you should use dimensions on the objects inside the `Collapse` as below.
+
+{{example:components/collapse/horizontal.py:collapse}}
+
 ## Multiple targets
 
 You can write arbitrarily complex callbacks to control the behaviour of your `Collapse` components. This example has a single button controlling multiple `Collapse` components, as well as multiple buttons sharing control of a single `Collapse` component.

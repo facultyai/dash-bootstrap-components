@@ -73,6 +73,29 @@ Set `inline=True` to make the radio items or checklists fit next to each other o
 
 {{example:components/input/radio_check_inline.py:inline_inputs}}
 
+## Shorthand options for Select, RadioItems and Checklist
+
+In Python, the options in `Select`, `RadioItems` and `Checklist` components can be specified using more compact syntax. The standard structure is an array of dictionaries with defined keys:
+
+```python
+  options=[
+    {
+      "label": "Label 1",
+      "value": "value_1",
+      ...
+    },
+    {
+      "label": "Label 2",
+      "value": "value_2",
+      ...
+    },
+  ]
+```
+
+This structure is required if you wish to use any of the additional `options` properties such as `disabled`. However, if you want to create a simple component, you can make use of the shorthand options below.
+
+{{example:components/input/short_hand.py:short_hand}}
+
 ## Checked item styles
 
 Use the `input_checked_style`, `inputCheckedClassName`, `label_checked_style` and `labelCheckedClassName` arguments to apply different styles to the labels of checked items.

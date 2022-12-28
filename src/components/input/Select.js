@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormSelect from 'react-bootstrap/FormSelect';
 
+import {sanitizeOptions} from '../../private/util';
+
 /**
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
@@ -48,7 +50,7 @@ const Select = props => {
         {props.placeholder}
       </option>
       {props.options &&
-        props.options.map(option => (
+        sanitizeOptions(props.options).map(option => (
           <option
             key={option.value}
             value={option.value}
@@ -70,6 +72,93 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
+  /**
+   * The options to display as items in the component. This can be an array
+   * or a dictionary as follows:
+   *
+   * \n1. Array of options where the label and the value are the same thing -
+   * [string|number]
+   *
+   * \n2. An array of options
+   * ```
+   * {
+   *   "label": [string|number],
+   *   "value": [string|number],
+   *   "disabled": [bool] (Optional),
+   *   "title": [string] (Optional)
+   * }
+   * ```
+   *
+   * \n3. Simpler `options` representation in dictionary format. The order is not
+   * guaranteed. All values and labels will be treated as strings.
+   * ```
+   * {"value1": "label1", "value2": "label2", ... }
+   * ```
+   * which is equal to
+   * ```
+   * [
+   *   {"label": "label1", "value": "value1"},
+   *   {"label": "label2", "value": "value2"}, ...
+   * ]
+   * ```
+   */
+  options: PropTypes.oneOfType([
+    /**
+     * Array of options where the label and the value are the same thing -
+     * [string|number]
+     */
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
+    /**
+     * Simpler `options` representation in dictionary format. The order is not
+     * guaranteed. All values and labels will be treated as strings.
+     * {`value1`: `label1`, `value2`: `label2`, ... }
+     * which is equal to
+     * [
+     *   {label: `label1`, value: `value1`},
+     *   {label: `label2`, value: `value2`}, ...
+     * ]
+     */
+    PropTypes.object,
+    /**
+     * An array of options {label: [string|number], value: [string|number]},
+     * an optional disabled field can be used for each option
+     */
+    PropTypes.arrayOf(
+      PropTypes.exact({
+        /**
+         * The options's label
+         */
+        label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
+
+        /**
+         * The value of the option. This value corresponds to the items
+         * specified in the `value` property.
+         */
+        value: PropTypes.string.isRequired,
+
+        /**
+         * If true, this checkbox is disabled and can't be clicked on.
+         */
+        disabled: PropTypes.bool,
+
+        /**
+         * The HTML 'title' attribute for the option. Allows for information on
+         * hover. For more information on this attribute, see
+         * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+         */
+        title: PropTypes.string
+      })
+    )
+  ]),
+
+  /**
+   * The value of the currently selected option.
+   */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -105,42 +194,6 @@ Select.propTypes = {
    * Placeholder text to display before a selection is made.
    */
   placeholder: PropTypes.string,
-
-  /**
-   * The value of the currently selected option.
-   */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * An array of options for the select
-   */
-  options: PropTypes.arrayOf(
-    PropTypes.exact({
-      /**
-       * The options's label
-       */
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-
-      /**
-       * The value of the option. This value corresponds to the items
-       * specified in the `value` property.
-       */
-      value: PropTypes.string.isRequired,
-
-      /**
-       * If true, this checkbox is disabled and can't be clicked on.
-       */
-      disabled: PropTypes.bool,
-
-      /**
-       * The HTML 'title' attribute for the option. Allows for information on
-       * hover. For more information on this attribute, see
-       * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
-       */
-      title: PropTypes.string
-    })
-  ),
 
   /**
    * Set to True to disable the Select.

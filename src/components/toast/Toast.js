@@ -53,6 +53,7 @@ const Toast = props => {
         timeout.current = null;
       }
     }
+    return () => clearTimeout(timeout.current);
   }, [is_open]);
 
   return (
@@ -206,7 +207,7 @@ Toast.propTypes = {
   /**
    * Text to populate the header with
    */
-  header: PropTypes.string,
+  header: PropTypes.node,
 
   /**
    * Set to True to add a dismiss button to the header which will close the

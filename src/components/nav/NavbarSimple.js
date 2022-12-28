@@ -116,7 +116,7 @@ NavbarSimple.propTypes = {
   /**
    * Brand text, to go top left of the navbar.
    */
-  brand: PropTypes.string,
+  brand: PropTypes.node,
 
   /**
    * Link to attach to brand.

@@ -30,6 +30,7 @@ const Button = props => {
     color,
     outline,
     onClick,
+    rel,
     ...otherProps
   } = props;
 
@@ -61,6 +62,7 @@ const Button = props => {
       name={useLink ? undefined : name}
       value={useLink ? undefined : value}
       className={class_name || className}
+      rel={useLink ? rel : undefined}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -223,7 +225,12 @@ Button.propTypes = {
    * with the form data. This value is passed to the server in params when the
    * form is submitted.
    */
-  value: PropTypes.string
+  value: PropTypes.string,
+
+  /**
+   * Set the rel attribute when Button is being used as a Link.
+   */
+  rel: PropTypes.string
 };
 
 export default Button;
