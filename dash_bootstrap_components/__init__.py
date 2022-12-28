@@ -57,6 +57,12 @@ class _V1DeprecationWarningWrapper:
             )
         return getattr(self.wrapped, name)
 
+    def __setstate__(self, state):
+        # ensure deprecated & wrapped fields are set to avoid recursive stack
+        # explosion in __getattr__
+        self.deprecated = state.get("deprecated", None)
+        self.wrapped = state.get("wrapped", None)
+
     def __dir__(self):
         # required for autocomplete. filter out os, and sys imports
         return [
