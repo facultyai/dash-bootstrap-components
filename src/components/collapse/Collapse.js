@@ -37,6 +37,8 @@ const Collapse = React.forwardRef((props, ref) => {
   );
 });
 
+Collapse.defaultProps = {dimension: 'height'};
+
 Collapse.propTypes = {
   /**
    * The ID of this component, used to identify dash components
@@ -100,7 +102,13 @@ Collapse.propTypes = {
      * Holds the name of the component that is loading
      */
     component_name: PropTypes.string
-  })
+  }),
+
+  /**
+   * The dimension used when collapsing e.g. height will collapse vertically,
+   * whilst width will collapse horizontally
+   */
+  dimension: PropTypes.oneOf(['height', 'width'])
 };
 
 export default Collapse;

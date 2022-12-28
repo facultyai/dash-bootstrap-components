@@ -252,4 +252,51 @@ describe('Checklist', () => {
     expect(label3).not.toHaveClass('a-checked-label');
     expect(label3).not.toHaveStyle('color:green;');
   });
+
+  test('different options types work as expected (list)', () => {
+    // Check that when provided with a list of options, these are converted to
+    // the expected format
+
+    const options = [
+      {label: 'Option1', value: 'Option1'},
+      {label: 'Option2', value: 'Option2'},
+      {label: 'Option3', value: 'Option3'}
+    ];
+
+    const expectedOptionsChecklist = render(<Checklist options={options} />);
+
+    const listOptions = ['Option1', 'Option2', 'Option3'];
+    const listOptionsChecklist = render(<Checklist options={listOptions} />);
+
+    expect(listOptionsChecklist.container.innerHTML).toEqual(
+      expectedOptionsChecklist.container.innerHTML
+    );
+  });
+
+  test('different options types work as expected (shorthand)', () => {
+    // Check that when provided with a {label: value} array of options, these
+    // are converted to the expected format
+
+    const expectedOptions = [
+      {label: 'Option A', value: 'Option1'},
+      {label: 'Option B', value: 'Option2'},
+      {label: 'Option C', value: 'Option3'}
+    ];
+    const expectedOptionsChecklist = render(
+      <Checklist options={expectedOptions} />
+    );
+
+    const shortHandOptions = {
+      Option1: 'Option A',
+      Option2: 'Option B',
+      Option3: 'Option C'
+    };
+    const shortHandOptionsChecklist = render(
+      <Checklist options={shortHandOptions} />
+    );
+
+    expect(shortHandOptionsChecklist.container.innerHTML).toEqual(
+      expectedOptionsChecklist.container.innerHTML
+    );
+  });
 });
