@@ -5,7 +5,9 @@ lead: Easily create responsive navigation headers using the `NavbarSimple` and `
 
 ## Examples
 
-There are two navbar components in *dash-bootstrap-components*, `NavbarSimple` and `Navbar`. The `NavbarSimple` component is simpler but less flexible, whereas the `Navbar` component is fully customisable, but requires more boilerplate to get working.
+There are two navbar components in *dash-bootstrap-components*, `NavbarSimple` and `Navbar`. The `NavbarSimple` component is simpler but less flexible, whereas the `Navbar` component is fully customisable, but requires more boilerplate to get working. If you want a navbar with some branding information and a collection of links, `NavbarSimple` will probably be enough. If you want to do something more specialised, `Navbar` might be necessary.
+
+`Navbar` is not to be confused with the related `Nav` component. A `Nav` groups links together to be displayed horizontally or vertically. A `Navbar` represents the app's navbar, usually at the top of the page, and often will consist of a `Nav` plus other information like the name of the app.
 
 ## NavbarSimple
 
