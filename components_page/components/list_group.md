@@ -33,6 +33,12 @@ Add flush to change some of the styling, including removing borders, and roundin
 
 {{example:components/list_group/flush.py:list_group}}
 
+## Numbered
+
+Add `numbered=True` to create an automatically numbered list group.
+
+{{example:components/list_group/numbered.py:list_group}}
+
 ## Custom content
 
 You can pass any Dash components to the children of `ListGroupItem`.
