@@ -33,7 +33,7 @@ def check_input_simple_callbacks(runner):
 # --------------------------------
 
 
-def test_r_input_radio_ckeck(dashr):
+def test_r_input_radio_check(dashr):
     r_app = load_r_app((HERE.parent / "input" / "radio_check.R"), "inputs")
     dashr.start_server(r_app)
     check_input_radio_check_callbacks(dashr)
