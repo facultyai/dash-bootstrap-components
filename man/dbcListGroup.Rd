@@ -12,7 +12,7 @@ Bootstrap list groups are a flexible way to display a series of content. Use in 
 \usage{
 dbcListGroup(children=NULL, id=NULL, className=NULL, class_name=NULL,
 flush=NULL, horizontal=NULL, key=NULL, loading_state=NULL,
-style=NULL, tag=NULL)
+numbered=NULL, style=NULL, tag=NULL)
 }
 
 \arguments{
@@ -47,6 +47,8 @@ those elements have the following types:
   - is_loading (logical; optional): determines if the component is loading or not
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
+
+\item{numbered}{Logical. Generate numbered list items.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 

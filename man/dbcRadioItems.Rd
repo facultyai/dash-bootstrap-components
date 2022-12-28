@@ -104,7 +104,7 @@ those elements have the following types:
 
 \item{name}{Character. The name of the control, which is submitted with the form data.}
 
-\item{options}{List of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
+\item{options}{List of character | numerics | named list | list of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
 those elements have the following types:
   - label (character | numeric; required): the radio item's label
   - value (character | numeric; required): the value of the radio item. this value corresponds to the items
@@ -113,7 +113,35 @@ specified in the `value` property.
   - input_id (character; optional): id for this option's input, can be used to attach tooltips or apply
 css styles
   - label_id (character; optional): id for this option's label, can be used to attach tooltips or apply
-css styless. An array of options}
+css styless. The options to display as items in the component. This can be an array
+or a dictionary as follows:
+
+\n1. Array of options where the label and the value are the same thing -
+[string|number]
+
+\n2. An array of options
+```
+{
+  "label": [string|number],
+  "value": [string|number],
+  "disabled": [bool] (Optional),
+  "input_id": [string] (Optional),
+  "label_id": [string] (Optional)
+}
+```
+
+\n3. Simpler `options` representation in dictionary format. The order is not
+guaranteed. All values and labels will be treated as strings.
+```
+{"value1": "label1", "value2": "label2", ... }
+```
+which is equal to
+```
+[
+  {"label": "label1", "value": "value1"},
+  {"label": "label2", "value": "value2"}, ...
+]
+```}
 
 \item{persisted_props}{List of a value equal to: 'value's. Properties whose user interactions will persist after refreshing the
 component or the page. Since only `value` is allowed this prop can

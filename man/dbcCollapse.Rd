@@ -11,8 +11,8 @@ Hide or show content with a vertical collapsing animation. Visibility of the chi
 
 \usage{
 dbcCollapse(children=NULL, id=NULL, className=NULL, class_name=NULL,
-is_open=NULL, key=NULL, loading_state=NULL, navbar=NULL,
-style=NULL)
+dimension=NULL, is_open=NULL, key=NULL, loading_state=NULL,
+navbar=NULL, style=NULL)
 }
 
 \arguments{
@@ -27,6 +27,9 @@ components in an app.}
 Often used with CSS to style elements with common properties.}
 
 \item{class_name}{Character. Often used with CSS to style elements with common properties.}
+
+\item{dimension}{A value equal to: 'height', 'width'. The dimension used when collapsing e.g. height will collapse vertically,
+whilst width will collapse horizontally}
 
 \item{is_open}{Logical. Whether collapse is currently open.}
 

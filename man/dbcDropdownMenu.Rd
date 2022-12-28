@@ -57,7 +57,7 @@ instead.}
 performance by React.js while rendering components
 See https://reactjs.org/docs/lists-and-keys.html for more info}
 
-\item{label}{Character. Label for the DropdownMenu toggle.}
+\item{label}{A list of or a singular dash component, string or number. Label for the DropdownMenu toggle.}
 
 \item{loading_state}{Lists containing elements 'is_loading', 'prop_name', 'component_name'.
 those elements have the following types:

@@ -24,7 +24,7 @@ links_left=NULL, loading_state=NULL, sticky=NULL, style=NULL)
 in callbacks. The ID needs to be unique across all of the
 components in an app.}
 
-\item{brand}{Character. Brand text, to go top left of the navbar.}
+\item{brand}{A list of or a singular dash component, string or number. Brand text, to go top left of the navbar.}
 
 \item{brand_external_link}{Logical. If true, the browser will treat the brand link as external,
 forcing a page refresh at the new location. If false,

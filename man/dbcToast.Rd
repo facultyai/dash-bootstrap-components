@@ -53,7 +53,7 @@ toast on click}
 
 \item{duration}{Numeric. Duration in milliseconds after which the Alert dismisses itself.}
 
-\item{header}{Character. Text to populate the header with}
+\item{header}{A list of or a singular dash component, string or number. Text to populate the header with}
 
 \item{headerClassName}{Character. **DEPRECATED** - use `header_class_name` instead
 
