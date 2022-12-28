@@ -18,10 +18,10 @@ jobs:
       - id: get-version
         run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|release/||')"
 
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - name: Use Node 16
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16
 
       - name: Install dependencies
         run: npm ci
@@ -92,10 +92,10 @@ jobs:
       - id: get-version
         run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|prerelease/||')"
 
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - name: Use Node 16
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16
 
       - name: Install dependencies
         run: npm ci

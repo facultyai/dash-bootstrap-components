@@ -22,10 +22,10 @@ jobs:
           HUB_PORT: 4444
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - name: Use Node 16
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16
       - name: Install dependencies
         run: npm ci
       - name: Set up Python 3.10
