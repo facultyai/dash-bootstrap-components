@@ -132,4 +132,6 @@ This is a great use-case for a [Dash clientside callback](https://dash.plotly.co
 
 {{apidoc:src/components/input/Checkbox.js}}
 
+{{apidoc:src/components/input/Switch.js}}
+
 {{apidoc:src/components/input/RadioButton.js}}
