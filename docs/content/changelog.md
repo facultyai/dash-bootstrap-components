@@ -6,6 +6,188 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.3.0 - 2022/12/28
+
+Version 1.3.0 of dash-bootstrap-components. This version contains a number of new features, updates, and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- Add shorthand syntax for specifying options in `Checklist`, `RadioItems`, `Select` to mimic dash-core-components (([PR 894](https://github.com/facultyai/dash-bootstrap-components/pull/894))
+- Add `numbered` prop to `ListGroup` for numbered list group support (([PR 895](https://github.com/facultyai/dash-bootstrap-components/pull/895))
+- Add support for horizontal collapses with `horizontal` prop in `Collapse` component (([PR 896](https://github.com/facultyai/dash-bootstrap-components/pull/896))
+- Add new `Stack` component for vertical layouts (([PR 897](https://github.com/facultyai/dash-bootstrap-components/pull/897))
+- Add new `Placeholder` component which can be used as a loading component also (([PR 899](https://github.com/facultyai/dash-bootstrap-components/pull/899))
+- Accept Dash components as arguments to `DropdownMenu.label`, `NavbarSimple.brand` and `Toast.header` (([PR 917](https://github.com/facultyai/dash-bootstrap-components/pull/917))
+- Expose `rel` prop in `Button` when used as a link (([PR 921](https://github.com/facultyai/dash-bootstrap-components/pull/921))
+
+### Fixed
+
+- Fixed a recursion error that could arise when pickling dash-bootstrap-components ([PR 918](https://github.com/facultyai/dash-bootstrap-components/pull/918))
+- Fixed navigation bug when using auto-dismissing `Toast` (([PR 920](https://github.com/facultyai/dash-bootstrap-components/pull/920))
+
+### Changed
+
+- Update to Bootstrap 5.2.3 (([PR 916](https://github.com/facultyai/dash-bootstrap-components/pull/916))
+- Drop support for Python 3.6 (([PR 913](https://github.com/facultyai/dash-bootstrap-components/pull/913))
+
+## 1.2.1 - 2022/7/31
+
+Version 1.2.1 of dash-bootstrap-components is a patch release containing bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Fixed
+
+- Suppress console errors originating from `DropdownMenu` ([PR 878](https://github.com/facultyai/dash-bootstrap-components/pull/878))
+- Allow `DropdownMenu` toggle to be rendered as a link ([PR 884](https://github.com/facultyai/dash-bootstrap-components/pull/884))
+
+
+## 1.2.0 - 2022/6/29
+
+Version 1.2.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- `Tooltip` can now be shown and hidden from callbacks via the new `is_open` prop ([PR 861](https://github.com/facultyai/dash-bootstrap-components/pull/861))
+- Added `trigger` prop to `Tooltip` which behaves like `trigger` prop of `Popover`, allowing users to control what causes the tooltip to show ([PR 861](https://github.com/facultyai/dash-bootstrap-components/pull/861))
+- Added `fade` prop to `Tooltip`, which behaves like `fade` prop of `Alert`, allowing users to control whether the tooltip shows and hides with a fade animation or not (([PR 861](https://github.com/facultyai/dash-bootstrap-components/pull/861))
+- Add `persistence` prop to `Alert`, `Carousel`, `Popover`, `Toast` (([PR 872](https://github.com/facultyai/dash-bootstrap-components/pull/872))
+
+### Fixed
+
+- Fixed bug in `Textarea`. Now `setProps` is called with the correct value when `debounce=True` on blur and submit event ([PR 858](https://github.com/facultyai/dash-bootstrap-components/pull/858))
+- `zindex` / `zIndex` argument in `Modal` is now applied correctly ([PR 869](https://github.com/facultyai/dash-bootstrap-components/pull/869))
+- `Popover` displays on start-up when default value of `is_open` is `True` (([PR 872](https://github.com/facultyai/dash-bootstrap-components/pull/872))
+
+## 1.1.0 - 2022/4/3
+
+Version 1.1.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- Add `readonly` prop to `Input` component ([PR 833](https://github.com/facultyai/dash-bootstrap-components/pull/833))
+- Add `always_open` prop to `Accordion`. When set to `True`, opening one section of the accordion does not close any currently open sections ([PR 840](https://github.com/facultyai/dash-bootstrap-components/pull/840))
+- dash-bootstrap-components now explicitly supports Python 3.10 ([PR 841](https://github.com/facultyai/dash-bootstrap-components/pull/841))
+
+### Fixed
+
+- Allow arbitrary colors to be passed to `color` prop of `Progress` ([PR 835](https://github.com/facultyai/dash-bootstrap-components/pull/835))
+- `contentClassName` in `Modal` has been fixed, previously it was not passing the class names on to the relevant elements ([PR 839](https://github.com/facultyai/dash-bootstrap-components/pull/839))
+- `Select` can now be cleared by returning `None` from a callback  ([PR 842](https://github.com/facultyai/dash-bootstrap-components/pull/842))
+
+### Changed
+- Updated CDN links for FontAwesome and Bootstrap Icons in the `icons` submodule. FontAwesome now uses version 6.1.1, Bootstrap Icons uses version 1.8.1 ([PR 837](https://github.com/facultyai/dash-bootstrap-components/pull/837))
+
+## 1.0.3 - 2022/2/5
+
+This is a patch release that fixes a few bugs. Please continue to report any bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
+
+### Fixed
+
+- Set `cursor: pointer` on tabs that aren't disabled ([PR 801](https://github.com/facultyai/dash-bootstrap-components/pull/801))
+- Ensure no caret is rendered when `caret=False` in `DropdownMenu` ([PR 804](https://github.com/facultyai/dash-bootstrap-components/pull/804))
+
+## 1.0.2 - 2021/12/12
+
+This release updates CDN links to use Bootstrap 5.1.3 and fixes a few bugs. Please continue to report bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
+
+### Changed
+
+- Links in the `themes` module now use Bootstrap 5.1.3 ([PR 789](https://github.com/facultyai/dash-bootstrap-components/pull/789))
+
+### Added
+
+- Added `autohide` prop to `Tooltip` and `Popover` when using the `hover` trigger. When set to `True`, the `Popover` / `Tooltip` will hide if the mouse is moved over the content ([PR 788](https://github.com/facultyai/dash-bootstrap-components/pull/788))
+
+### Fixed
+
+- `Popover` with trigger `hover` will not dismiss if mouse is moved over the content ([PR 788](https://github.com/facultyai/dash-bootstrap-components/pull/788))
+- Resolved bug where `Tooltip` could get stuck open when moused over quickly ([PR 788](https://github.com/facultyai/dash-bootstrap-components/pull/788))
+
+## 1.0.1 - 2021/11/28
+
+This release adds no new features but fixes a number of bugs. Please continue to report bugs on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues)!
+
+### Fixed
+
+- Open `AccordionItem`s will close when clicked on ([PR 744](https://github.com/facultyai/dash-bootstrap-components/pull/744))
+- Fixed regressions in `DropdownMenu` dismissal. The menu will dismiss if the user clicks outside the menu or if the escape key is pressed. ([PR 751](https://github.com/facultyai/dash-bootstrap-components/pull/751))
+- Fixed bug in `Select` that prevented `valid` and `invalid` props from having an effect ([PR 755](https://github.com/facultyai/dash-bootstrap-components/pull/755))
+- Set `id` property on tabs so that they can be targeted with tooltips. ([PR 756](https://github.com/facultyai/dash-bootstrap-components/pull/756))
+- A number of fixes to `Popover`: ensure the correct behaviour of the `legacy` trigger, and fix bug that prevented `offset` and `hide_arrow` props from having an effect. ([PR 757](https://github.com/facultyai/dash-bootstrap-components/pull/757))
+- Make `Button` compatible with `dash_core_components.ConfirmDialogProvider` ([PR 773](https://github.com/facultyai/dash-bootstrap-components/pull/773))
+- Fixed bug in `Button` that prevented `target` prop from having an effect ([PR 781](https://github.com/facultyai/dash-bootstrap-components/pull/781))
+
+## 1.0.0 - 2021/10/19
+
+v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully, and refer to the [migration guide](/migration-guide/) for full details of the changes.
+
+### Added
+- Seven new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form),  [ModalTitle](/docs/components/modal), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
+- New CDN links for icons from Bootstrap Icons and Font Awesome ([PR 661](https://github.com/facultyai/dash-bootstrap-components/pull/661))
+- CDN Links for four new Bootswatch themes: `QUARTZ`, `MORPH`, `VAPOR` and `ZEPHYR`.
+- All components now accept `class_name` as an alternative to `className`. If both are specified then `class_name` will take precedence. `class_name` should be preferred from now on. ([PR 642](https://github.com/facultyai/dash-bootstrap-components/pull/642))
+
+### Fixed
+- The `loading_state` is no longer passed to underlying DOM nodes in any components ([PR 666](https://github.com/facultyai/dash-bootstrap-components/pull/666))
+- `Popover` doesn't error if `is_open` defaults to true. ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646))
+
+### Changed
+- Components are all now built for Bootstrap 5. CDN links have all been updated. There are multiple breaking changes in the component props. Please see the [migration-guide](/migration-guide) for full details on the changes ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)).
+
+## 0.13.1 - 2021/9/22
+
+### Fixed
+
+- Fix cursor jump issue in `Input` component. ([PR 707](https://github.com/facultyai/dash-bootstrap-components/pull/707))
+
+## 0.13.0 - 2021/7/31
+
+### Added
+
+- Adds a new `Carousel` component to display images in an animated slideshow. Thanks @AnnMarieW for the contribution! ([PR 587](https://github.com/facultyai/dash-bootstrap-components/pull/587))
+- Exposes `title` prop on `Button` and `Badge` ([PR 617](https://github.com/facultyai/dash-bootstrap-components/pull/617))
+- Added `links_left` prop to `NavbarSimple` to allow links to be left-aligned ([PR 618](https://github.com/facultyai/dash-bootstrap-components/pull/618))
+
+### Fixed
+
+- Fixed bug in `Spinner` component that meant `spinner_style` prop was not correctly applied to the spinner. ([PR 578](https://github.com/facultyai/dash-bootstrap-components/pull/578))
+
+### Changed
+
+- Updated behaviour of `Input` with `type="number"` to match behaviour in dash-core-components. If an invalid input is entered (i.e. one outside the range of `min` / `max` or with an invalid `step`) the component passes the value `None` to callbacks for the first invalid input, then doesn't fire again until a valid input is entered. [PR 626](https://github.com/facultyai/dash-bootstrap-components/pull/626))
+
+## 0.12.2 - 2021/5/4
+
+### Fixed
+
+- Fix issue with nested `Progress` bars([PR 573](https://github.com/facultyai/dash-bootstrap-components/pull/573))
+
+## 0.12.1 - 2021/5/4
+
+### Added
+
+- Adds `required` property to `Input` and `Select` ([PR 552](https://github.com/facultyai/dash-bootstrap-components/pull/552))
+- Added `debounce` and `show_initially` props to `Spinner`. `debounce` can be used to add a time delay to prevent the spinner from dismissing immediately when its children have finished loading. This can help reduce flickering. `show_initially` can be used to ensure that the spinner is initially showing when the app starts up to prevent flickering when initial callbacks fire. ([PR 561](https://github.com/facultyai/dash-bootstrap-components/pull/561))
+- Added `name` and `value` props to `Button`, can be used to send additional data with form submissions. ([PR 565](https://github.com/facultyai/dash-bootstrap-components/pull/565))
+
+### Fixed
+
+- Fix `toggle` property of `DropdownMenuItem` which can be used to prevent the parent `DropdownMenu` from dismissing when that item is clicked on ([PR 554](https://github.com/facultyai/dash-bootstrap-components/pull/554))
+
+## 0.12.0 - 2021/3/21
+
+### Added
+
+- Adds a new `trigger` property to `Popover`, allowing it to be used without writing callbacks if desired ([PR 531](https://github.com/facultyai/dash-bootstrap-components/pull/531))
+- Exposes `download` prop on `Button` ([PR 528](https://github.com/facultyai/dash-bootstrap-components/pull/528))
+
+### Fixed
+
+- Restore default colours in `Alert` and `Badge` components ([PR 542](https://github.com/facultyai/dash-bootstrap-components/pull/542))
+
+### Changed
+
+- Adds `visibility:hidden` to `Fade` when content is faded so that tooltips do not appear on faded content ([PR 535](https://github.com/facultyai/dash-bootstrap-components/pull/535), [PR 537](https://github.com/facultyai/dash-bootstrap-components/pull/537))
+
 ## 0.11.3 - 2021/2/13
 
 This version marks the first release of dash-bootstrap-components for Julia. There are no changes in functionality.
@@ -118,7 +300,7 @@ This version marks the first release of dash-bootstrap-components for Julia. The
 
 ### Changed
 
-- Removed `style` and `className` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
+- Removed `style` and `class_name` arguments from `Spinner`, replaced with `spinner_style` and `spinnerClassName`. Also added `fullscreen_style` and `fullscreenClassName` for controlling the style of fullscreen spinners. ([PR 344](https://github.com/facultyai/dash-bootstrap-components/pull/366))
 
 ## 0.9.2 - 2020/4/5
 

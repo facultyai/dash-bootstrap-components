@@ -1,31 +1,55 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import html
 
-popover = html.Div(
+popover_children = "I am a popover!"
+
+popovers = html.Div(
     [
         dbc.Button(
-            "Click to toggle popover", id="popover-target", color="danger"
+            "Click",
+            id="click-target",
+            color="danger",
+            className="me-1",
+            n_clicks=0,
         ),
         dbc.Popover(
-            [
-                dbc.PopoverHeader("Popover header"),
-                dbc.PopoverBody("And here's some amazing content. Cool!"),
-            ],
-            id="popover",
-            is_open=False,
-            target="popover-target",
+            popover_children,
+            target="click-target",
+            body=True,
+            trigger="click",
+        ),
+        dbc.Button(
+            "Focus",
+            id="focus-target",
+            color="danger",
+            className="me-1",
+            n_clicks=0,
+        ),
+        dbc.Popover(
+            popover_children,
+            target="focus-target",
+            body=True,
+            trigger="focus",
+        ),
+        dbc.Button(
+            "Hover",
+            id="hover-target",
+            color="danger",
+            className="me-1",
+            n_clicks=0,
+        ),
+        dbc.Popover(
+            popover_children,
+            target="hover-target",
+            body=True,
+            trigger="hover",
+        ),
+        dbc.Button("Legacy", id="legacy-target", color="danger", n_clicks=0),
+        dbc.Popover(
+            popover_children,
+            target="legacy-target",
+            body=True,
+            trigger="legacy",
         ),
     ]
 )
-
-
-@app.callback(
-    Output("popover", "is_open"),
-    [Input("popover-target", "n_clicks")],
-    [State("popover", "is_open")],
-)
-def toggle_popover(n, is_open):
-    if n:
-        return not is_open
-    return is_open

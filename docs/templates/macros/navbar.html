@@ -1,7 +1,7 @@
 {% macro navbar(active="home") -%}
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <span class="mr-2 bg-white" style="padding:2px;border-radius:4px">
+    <span class="me-2 bg-white" style="padding:2px;border-radius:4px">
       <img
         src="/static/images/dbciconblack128.png"
         width="36"
@@ -10,12 +10,12 @@
       />
     </span>
 
-    <a href="/" class="d-lg-none navbar-brand mr-0">dbc</a>
+    <a href="/" class="d-lg-none navbar-brand me-0">dbc</a>
     <button
       class="navbar-toggler"
       type="button"
-      data-toggle="collapse"
-      data-target="#dbcdNavbar"
+      data-bs-toggle="collapse"
+      data-bs-target="#dbcdNavbar"
       aria-controls="dbcdNavbar"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -24,7 +24,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="dbcdNavbar">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item{{' active' if active == 'home' else ''}}">
           <a class="nav-link" href="/">Home</a>
         </li>
@@ -40,13 +40,16 @@
             href="#"
             id="navbarDropdown"
             role="button"
-            data-toggle="dropdown"
+            data-bs-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
             More
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/migration-guide"
+              >Migration guide for v1</a
+            >
             <a class="dropdown-item" href="/changelog">Changelog</a>
             <a
               class="dropdown-item"

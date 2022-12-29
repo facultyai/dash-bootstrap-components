@@ -1,7 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, dcc, html
 
 progress = html.Div(
     [
@@ -12,7 +10,7 @@ progress = html.Div(
 
 
 @app.callback(
-    [Output("progress", "value"), Output("progress", "children")],
+    [Output("progress", "value"), Output("progress", "label")],
     [Input("progress-interval", "n_intervals")],
 )
 def update_progress(n):

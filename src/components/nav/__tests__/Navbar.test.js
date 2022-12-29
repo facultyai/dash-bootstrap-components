@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import Navbar from '../Navbar';
@@ -32,12 +36,8 @@ describe('Navbar', () => {
     const {
       container: {firstChild: navbarStickyTop}
     } = render(<Navbar sticky="top" />);
-    const {
-      container: {firstChild: navbarStickyBottom}
-    } = render(<Navbar sticky="bottom" />);
 
     expect(navbarStickyTop).toHaveClass('sticky-top');
-    expect(navbarStickyBottom).toHaveClass('sticky-bottom');
 
     // fixed navbars
     const {

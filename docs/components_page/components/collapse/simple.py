@@ -1,6 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 collapse = html.Div(
     [
@@ -9,10 +8,12 @@ collapse = html.Div(
             id="collapse-button",
             className="mb-3",
             color="primary",
+            n_clicks=0,
         ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
             id="collapse",
+            is_open=False,
         ),
     ]
 )

@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 top_card = dbc.Card(
     [
@@ -20,5 +20,8 @@ bottom_card = dbc.Card(
 )
 
 cards = dbc.Row(
-    [dbc.Col(top_card, width="auto"), dbc.Col(bottom_card, width="auto")]
+    [
+        dbc.Col(top_card, width="auto"),
+        dbc.Col(bottom_card, width="auto"),
+    ]
 )

@@ -1,21 +1,22 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, html
 
 dropdown = html.Div(
     [
         dbc.DropdownMenu(
             [
-                dbc.DropdownMenuItem("A button", id="dropdown-button"),
                 dbc.DropdownMenuItem(
-                    "Internal link", href="/l/components/dropdown_menu"
+                    "A button", id="dropdown-button", n_clicks=0
+                ),
+                dbc.DropdownMenuItem(
+                    "Internal link", href="/docs/components/dropdown_menu"
                 ),
                 dbc.DropdownMenuItem(
                     "External Link", href="https://github.com"
                 ),
                 dbc.DropdownMenuItem(
                     "External relative",
-                    href="/l/components/dropdown_menu",
+                    href="/docs/components/dropdown_menu",
                     external_link=True,
                 ),
             ],

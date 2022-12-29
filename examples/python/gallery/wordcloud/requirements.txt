@@ -1,0 +1,6 @@
+dash>=2.0.0
+dash-bootstrap-components
+dash-core-components
+dash-html-components
+matplotlib
+wordcloud

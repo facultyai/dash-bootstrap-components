@@ -17,11 +17,11 @@ the preferred channel for [bug reports](#bug-reports), [feature requests](#featu
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests.  Stack
+- Please **do not** use the issue tracker for personal support requests. Stack
   Overflow ([`plotly-dash`](https://stackoverflow.com/questions/tagged/plotly-dash) tag),
   or the [Plotly Community Forum](https://community.plot.ly) are better places to get help.
 
-* Please **do not** derail or troll issues. Keep the discussion on topic and
+- Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
 
 ## Bug reports
@@ -52,7 +52,7 @@ miss out any of these details when filing a [new bug report][new-bug-report].
 ## Feature requests
 
 Feature requests are welcome. But take a moment to find out whether your idea
-fits with the scope and aims of the project. It's up to *you* to make a strong
+fits with the scope and aims of the project. It's up to _you_ to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible. We have a feature request
 template you can use when filing a [new feature request][new-feature-request].
@@ -120,7 +120,7 @@ included in the project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `main` branch.
+   with a clear title and description against the `main` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [Apache 2.0 License](../LICENSE).
@@ -129,14 +129,33 @@ license your work under the terms of the [Apache 2.0 License](../LICENSE).
 
 ### Python
 
-Please use [black](https://github.com/python/black) with `--line-length 79` to
-format any Python code. To do so, simply run the following from the root of
-the repository
+We use [`nox`](https://nox.thea.codes/en/stable/) to test and lint Python code.
 
 ```sh
-pip install black
-black --line-length 79 .
+pip install nox
 ```
+
+Code is linted using `black`, `flake8`, and `isort`. Run the linters with
+
+```sh
+nox -s lint
+```
+
+Many formatting issues can be fixed automatically by `black` and `isort`. Run
+them with
+
+```sh
+nox -s format
+```
+
+Finally you can run the Python tests locally for a particular version of Python
+with
+
+```sh
+nox -s test-3.8
+```
+
+and similarly for other versions.
 
 ### JS
 
@@ -155,8 +174,28 @@ npm run format
 
 ### Run tests
 
-Run `npm run test` before committing to ensure your changes follow our coding
-standards and pass our tests..
+Run `npm run test` before committing to ensure your changes pass our tests.
+
+## Building dash-bootstrap-components locally
+
+To build _dash-bootstrap-components_ locally, first install the Python
+development dependencies
+
+```sh
+python -m pip install -r requirements-dev.txt
+```
+
+Then install JavaScript dependencies
+
+```sh
+npm install
+```
+
+You can now build Python, R and Julia packages with
+
+```sh
+npm run build
+```
 
 ## License
 

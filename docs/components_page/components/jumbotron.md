@@ -1,16 +1,16 @@
 ---
 title: Jumbotron
-lead: Lightweight component for showcasing key content and messages.
+lead: Lightweight styling for showcasing key content and messages.
 ---
 
-## Simple example
+## Examples
+
+The Jumbotron component was removed in Bootstrap 5, so there is no longer a dedicated `Jumbotron` component in _dash-bootstrap-components_ either. However, thanks to Bootstrap's flexible utility classes, it is easy to recreate a jumbotron-like layout yourself. Here's a simple example
 
 {{example:components/jumbotron/simple.py:jumbotron}}
 
-## Fluid jumbotron
+### Styling the "Jumbotron"
 
-To make the jumbotron full width, and without rounded corners, set `fluid=True`.
+There are [many utility classes](https://getbootstrap.com/docs/5.0/utilities/spacing/) available in Bootstrap. By combining them you can easily customise the look and feel of your app.
 
-{{example:components/jumbotron/fluid.py:jumbotron}}
-
-{{apidoc:src/components/Jumbotron.js}}
+{{example:components/jumbotron/custom.py:jumbotron}}

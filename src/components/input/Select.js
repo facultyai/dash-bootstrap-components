@@ -1,53 +1,56 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {CustomInput} from 'reactstrap';
+import RBFormSelect from 'react-bootstrap/FormSelect';
+
+import {sanitizeOptions} from '../../private/util';
 
 /**
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
  */
 const Select = props => {
-  const [value, setValue] = useState(props.value || '');
+  const {
+    className,
+    class_name,
+    html_size,
+    valid,
+    invalid,
+    value,
+    ...otherProps
+  } = props;
 
   const handleChange = e => {
-    setValue(e.target.value);
     if (props.setProps) {
       props.setProps({value: e.target.value});
     }
   };
 
-  useEffect(() => {
-    if (props.value !== value) {
-      setValue(props.value || '');
-    }
-  }, [props.value]);
-
   return (
-    <CustomInput
+    <RBFormSelect
       {...omit(
         [
-          'value',
           'setProps',
-          'bs_size',
           'options',
           'persistence',
           'persistence_type',
           'persisted_props',
           'loading_state'
         ],
-        props
+        otherProps
       )}
-      type="select"
+      isInvalid={invalid}
+      isValid={valid}
       onChange={handleChange}
-      value={value}
-      bsSize={props.bs_size}
+      className={class_name || className}
+      htmlSize={html_size}
+      value={value || ''}
     >
       <option value="" disabled hidden>
         {props.placeholder}
       </option>
       {props.options &&
-        props.options.map(option => (
+        sanitizeOptions(props.options).map(option => (
           <option
             key={option.value}
             value={option.value}
@@ -57,7 +60,7 @@ const Select = props => {
             {option.label}
           </option>
         ))}
-    </CustomInput>
+    </RBFormSelect>
   );
 };
 
@@ -69,6 +72,93 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
+  /**
+   * The options to display as items in the component. This can be an array
+   * or a dictionary as follows:
+   *
+   * \n1. Array of options where the label and the value are the same thing -
+   * [string|number]
+   *
+   * \n2. An array of options
+   * ```
+   * {
+   *   "label": [string|number],
+   *   "value": [string|number],
+   *   "disabled": [bool] (Optional),
+   *   "title": [string] (Optional)
+   * }
+   * ```
+   *
+   * \n3. Simpler `options` representation in dictionary format. The order is not
+   * guaranteed. All values and labels will be treated as strings.
+   * ```
+   * {"value1": "label1", "value2": "label2", ... }
+   * ```
+   * which is equal to
+   * ```
+   * [
+   *   {"label": "label1", "value": "value1"},
+   *   {"label": "label2", "value": "value2"}, ...
+   * ]
+   * ```
+   */
+  options: PropTypes.oneOfType([
+    /**
+     * Array of options where the label and the value are the same thing -
+     * [string|number]
+     */
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
+    /**
+     * Simpler `options` representation in dictionary format. The order is not
+     * guaranteed. All values and labels will be treated as strings.
+     * {`value1`: `label1`, `value2`: `label2`, ... }
+     * which is equal to
+     * [
+     *   {label: `label1`, value: `value1`},
+     *   {label: `label2`, value: `value2`}, ...
+     * ]
+     */
+    PropTypes.object,
+    /**
+     * An array of options {label: [string|number], value: [string|number]},
+     * an optional disabled field can be used for each option
+     */
+    PropTypes.arrayOf(
+      PropTypes.exact({
+        /**
+         * The options's label
+         */
+        label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
+
+        /**
+         * The value of the option. This value corresponds to the items
+         * specified in the `value` property.
+         */
+        value: PropTypes.string.isRequired,
+
+        /**
+         * If true, this checkbox is disabled and can't be clicked on.
+         */
+        disabled: PropTypes.bool,
+
+        /**
+         * The HTML 'title' attribute for the option. Allows for information on
+         * hover. For more information on this attribute, see
+         * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+         */
+        title: PropTypes.string
+      })
+    )
+  ]),
+
+  /**
+   * The value of the currently selected option.
+   */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
   /**
    * The ID of this component, used to identify dash components
    * in callbacks. The ID needs to be unique across all of the
@@ -82,6 +172,13 @@ Select.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -99,55 +196,33 @@ Select.propTypes = {
   placeholder: PropTypes.string,
 
   /**
-   * The value of the currently selected option.
-   */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * An array of options for the select
-   */
-  options: PropTypes.arrayOf(
-    PropTypes.exact({
-      /**
-       * The options's label
-       */
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-
-      /**
-       * The value of the option. This value corresponds to the items
-       * specified in the `value` property.
-       */
-      value: PropTypes.string.isRequired,
-
-      /**
-       * If true, this checkbox is disabled and can't be clicked on.
-       */
-      disabled: PropTypes.bool,
-
-      /**
-       * The HTML 'title' attribute for the option. Allows for information on
-       * hover. For more information on this attribute, see
-       * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
-       */
-      title: PropTypes.string
-    })
-  ),
-
-  /**
    * Set to True to disable the Select.
    */
   disabled: PropTypes.bool,
 
   /**
+   * This attribute specifies that the user must fill in a value before
+   * submitting a form. It cannot be used when the type attribute is hidden,
+   * image, or a button type (submit, reset, or button). The :optional and
+   * :required CSS pseudo-classes will be applied to the field as appropriate.
+   * required is an HTML boolean attribute - it is enabled by a boolean or
+   * 'required'. Alternative capitalizations `REQUIRED`
+   * are also acccepted.
+   */
+  required: PropTypes.oneOfType([
+    PropTypes.oneOf(['required', 'REQUIRED']),
+    PropTypes.bool
+  ]),
+
+  /**
    * Apply valid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=True to display.
+   * any FormFeedback in the enclosing div with valid=True to display.
    */
   valid: PropTypes.bool,
 
   /**
    * Apply invalid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing FormGroup with valid=False to display.
+   * any FormFeedback in the enclosing div with valid=False to display.
    */
   invalid: PropTypes.bool,
 
@@ -155,7 +230,14 @@ Select.propTypes = {
    * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
    * or 'lg' (large). Default is 'md'.
    */
-  bs_size: PropTypes.string,
+  size: PropTypes.string,
+
+  /**
+   * This represents the number of rows in the select that should be visible at
+   * one time. It will result in the Select being rendered as a scrolling list
+   * box rather than a dropdown.
+   */
+  html_size: PropTypes.string,
 
   /**
    * Used to allow user interactions in this component to be persisted when

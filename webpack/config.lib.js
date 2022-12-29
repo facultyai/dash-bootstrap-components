@@ -3,7 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var moduleDefinition = require('./moduleDefinition');
-var directories = require('./directories')
+var directories = require('./directories');
 
 var OccurrenceOrderPlugin = require('webpack').optimize.OccurrenceOrderPlugin;
 
@@ -39,9 +39,10 @@ module.exports = {
     }
   ],
   module: moduleDefinition,
-  plugins: [new OccurrenceOrderPlugin(true)],
   optimization: {
-    minimize: true
+    minimize: true,
+    chunkIds: 'total-size',
+    moduleIds: 'size'
   },
   entry: {
     main: './index.js'

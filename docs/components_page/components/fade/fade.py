@@ -1,10 +1,11 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 fade = html.Div(
     [
-        dbc.Button("Toggle fade", id="fade-button", className="mb-3"),
+        dbc.Button(
+            "Toggle fade", id="fade-button", className="mb-3", n_clicks=0
+        ),
         dbc.Fade(
             dbc.Card(
                 dbc.CardBody(
@@ -14,7 +15,7 @@ fade = html.Div(
                 )
             ),
             id="fade",
-            is_in=True,
+            is_in=False,
             appear=False,
         ),
     ]
@@ -29,5 +30,5 @@ fade = html.Div(
 def toggle_fade(n, is_in):
     if not n:
         # Button has never been clicked
-        return True
+        return False
     return not is_in

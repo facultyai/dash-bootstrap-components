@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
+from dash import dcc, html
 
-dropdown = dbc.FormGroup(
+dropdown = html.Div(
     [
         dbc.Label("Dropdown", html_for="dropdown"),
         dcc.Dropdown(
@@ -11,21 +11,24 @@ dropdown = dbc.FormGroup(
                 {"label": "Option 2", "value": 2},
             ],
         ),
-    ]
+    ],
+    className="mb-3",
 )
 
-slider = dbc.FormGroup(
+slider = html.Div(
     [
         dbc.Label("Slider", html_for="slider"),
         dcc.Slider(id="slider", min=0, max=10, step=0.5, value=3),
-    ]
+    ],
+    className="mb-3",
 )
 
-range_slider = dbc.FormGroup(
+range_slider = html.Div(
     [
         dbc.Label("RangeSlider", html_for="range-slider"),
         dcc.RangeSlider(id="range-slider", min=0, max=10, value=[3, 7]),
-    ]
+    ],
+    className="mb-3",
 )
 
 form = dbc.Form([dropdown, slider, range_slider])

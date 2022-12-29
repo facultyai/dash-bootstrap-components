@@ -1,6 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
+from dash import Input, Output
 
 dropdown_menu_items = [
     dbc.DropdownMenuItem("Deep thought", id="dropdown-menu-item-1"),
@@ -9,12 +9,10 @@ dropdown_menu_items = [
     dbc.DropdownMenuItem("Clear", id="dropdown-menu-item-clear"),
 ]
 
-
+# TODO: check this renders properly once DropdownMenu is updated
 input_group = dbc.InputGroup(
     [
-        dbc.DropdownMenu(
-            dropdown_menu_items, label="Generate", addon_type="prepend"
-        ),
+        dbc.DropdownMenu(dropdown_menu_items, label="Generate"),
         dbc.Input(id="input-group-dropdown-input", placeholder="name"),
     ]
 )

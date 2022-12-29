@@ -1,33 +1,46 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 modal = html.Div(
     [
-        dbc.Button("Scrolling modal", id="open-scroll", className="mr-1"),
-        dbc.Button("Modal with scrollable body", id="open-body-scroll"),
-        dbc.Modal(
-            [
-                dbc.ModalHeader("Header"),
-                dbc.ModalBody(LOREM),
-                dbc.ModalFooter(
-                    dbc.Button("Close", id="close-scroll", className="ml-auto")
-                ),
-            ],
-            id="modal-scroll",
+        dbc.Button(
+            "Scrolling modal", id="open-scroll", className="me-1", n_clicks=0
+        ),
+        dbc.Button(
+            "Modal with scrollable body", id="open-body-scroll", n_clicks=0
         ),
         dbc.Modal(
             [
-                dbc.ModalHeader("Header"),
+                dbc.ModalHeader(dbc.ModalTitle("Scrolling modal")),
                 dbc.ModalBody(LOREM),
                 dbc.ModalFooter(
                     dbc.Button(
-                        "Close", id="close-body-scroll", className="ml-auto"
+                        "Close",
+                        id="close-scroll",
+                        className="ms-auto",
+                        n_clicks=0,
+                    )
+                ),
+            ],
+            id="modal-scroll",
+            is_open=False,
+        ),
+        dbc.Modal(
+            [
+                dbc.ModalHeader(dbc.ModalTitle("Modal with scrollable body")),
+                dbc.ModalBody(LOREM),
+                dbc.ModalFooter(
+                    dbc.Button(
+                        "Close",
+                        id="close-body-scroll",
+                        className="ms-auto",
+                        n_clicks=0,
                     )
                 ),
             ],
             id="modal-body-scroll",
             scrollable=True,
+            is_open=False,
         ),
     ]
 )

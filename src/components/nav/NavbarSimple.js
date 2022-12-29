@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {Collapse, Container, Navbar as RSNavbar} from 'reactstrap';
+import RBNavbar from 'react-bootstrap/Navbar';
+import RBContainer from 'react-bootstrap/Container';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
 import Nav from './Nav';
@@ -19,11 +20,15 @@ const NavbarSimple = props => {
     brand_href,
     brand_style,
     brand_external_link,
-    linksLeft,
+    links_left,
     fluid,
     color,
+    dark,
+    light,
     style,
     loading_state,
+    className,
+    class_name,
     ...otherProps
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
@@ -33,15 +38,18 @@ const NavbarSimple = props => {
   const toggle = () => setNavbarOpen(!navbarOpen);
 
   return (
-    <RSNavbar
+    <RBNavbar
+      variant={dark ? 'dark' : 'light'}
+      bg={isBootstrapColor ? color : null}
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <Container fluid={fluid}>
+      <RBContainer fluid={fluid}>
         {brand && (
           <NavbarBrand
             href={brand_href}
@@ -52,13 +60,11 @@ const NavbarSimple = props => {
           </NavbarBrand>
         )}
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={navbarOpen} navbar>
-          <Nav className={linksLeft ? 'mr-auto' : 'ml-auto'} navbar>
-            {children}
-          </Nav>
-        </Collapse>
-      </Container>
-    </RSNavbar>
+        <RBNavbar.Collapse in={navbarOpen}>
+          <Nav className={links_left ? 'me-auto' : 'ms-auto'}>{children}</Nav>
+        </RBNavbar.Collapse>
+      </RBContainer>
+    </RBNavbar>
   );
 };
 
@@ -66,7 +72,8 @@ NavbarSimple.defaultProps = {
   fluid: false,
   color: 'light',
   light: true,
-  expand: 'md'
+  expand: 'md',
+  links_left: false
 };
 
 NavbarSimple.propTypes = {
@@ -90,6 +97,13 @@ NavbarSimple.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -102,7 +116,7 @@ NavbarSimple.propTypes = {
   /**
    * Brand text, to go top left of the navbar.
    */
-  brand: PropTypes.string,
+  brand: PropTypes.node,
 
   /**
    * Link to attach to brand.
@@ -130,6 +144,11 @@ NavbarSimple.propTypes = {
    * navbar fill the available horizontal space.
    */
   fluid: PropTypes.bool,
+
+  /**
+   * Align the navlinks in the navbar to the left. Default: False.
+   */
+  links_left: PropTypes.bool,
 
   /**
    * Applies the `navbar-light` class to the NavbarSimple, causing text in the

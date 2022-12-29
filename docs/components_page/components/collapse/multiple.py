@@ -1,28 +1,37 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 collapses = html.Div(
     [
         dbc.Button(
-            "Toggle left", color="primary", id="left", className="mr-1"
+            "Toggle left",
+            color="primary",
+            id="left",
+            className="me-1",
+            n_clicks=0,
         ),
         dbc.Button(
-            "Toggle right", color="primary", id="right", className="mr-1"
+            "Toggle right",
+            color="primary",
+            id="right",
+            className="me-1",
+            n_clicks=0,
         ),
-        dbc.Button("Toggle both", color="primary", id="both"),
+        dbc.Button("Toggle both", color="primary", id="both", n_clicks=0),
         dbc.Row(
             [
                 dbc.Col(
                     dbc.Collapse(
-                        dbc.Card("This is the left card.", body=True),
+                        dbc.Card("This is the left card!", body=True),
                         id="left-collapse",
+                        is_open=True,
                     )
                 ),
                 dbc.Col(
                     dbc.Collapse(
                         dbc.Card("This is the right card!", body=True),
                         id="right-collapse",
+                        is_open=True,
                     )
                 ),
             ],

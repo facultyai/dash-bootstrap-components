@@ -1,6 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 
 def make_popover(placement):
@@ -12,6 +11,7 @@ def make_popover(placement):
         id=f"popover-{placement}",
         target=f"popover-{placement}-target",
         placement=placement,
+        is_open=False,
     )
 
 
@@ -20,6 +20,7 @@ def make_button(placement):
         f"Popover on {placement}",
         id=f"popover-{placement}-target",
         className="mx-2",
+        n_clicks=0,
     )
 
 

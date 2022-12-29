@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Container as RSContainer} from 'reactstrap';
+import RBContainer from 'react-bootstrap/Container';
 import {omit} from 'ramda';
 
 /**
@@ -8,16 +8,25 @@ import {omit} from 'ramda';
  * contents.
  */
 const Container = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    tag,
+    ...otherProps
+  } = props;
   return (
-    <RSContainer
+    <RBContainer
+      as={tag}
+      className={class_name || className}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSContainer>
+    </RBContainer>
   );
 };
 
@@ -42,6 +51,13 @@ Container.propTypes = {
   /**
    * Often used with CSS to style elements with common properties.
    */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Often used with CSS to style elements with common properties.
+   */
   className: PropTypes.string,
 
   /**
@@ -55,8 +71,13 @@ Container.propTypes = {
    * If True the container-fluid class will be applied, and the Container will
    * expand to fill available space. A non-fluid container resizes responsively
    * to a fixed width at the different breakpoints.
+   *
+   * You can also set the fluid property to one of the Bootstrap breakpoints:
+   * "sm", "md", "lg", "xl" or "xxl", so that the container fluidly expands to
+   * fill the screen until the specified breakpoint, then resize responsively
+   * at higher breakpoints.
    */
-  fluid: PropTypes.bool,
+  fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
    * HTML tag to apply the container class to, default: div

@@ -4,9 +4,29 @@ from jinja2 import TemplateNotFound
 DOCS_SIDENAV_ITEMS = [
     {"name": "quickstart", "href": "/docs/quickstart", "label": "Quickstart"},
     {"name": "themes", "href": "/docs/themes", "label": "Themes"},
+    {"name": "icons", "href": "/docs/icons", "label": "Icons"},
     {"name": "faq", "href": "/docs/faq", "label": "FAQ"},
     {"name": "components", "href": "/docs/components", "label": "Components"},
 ]
+
+THEMES_SIDENAV_ITEMS = DOCS_SIDENAV_ITEMS[:]
+THEMES_SIDENAV_ITEMS[1] = {
+    "name": "themes",
+    "href": "/docs/themes",
+    "label": "Themes",
+    "children": [
+        {
+            "name": "overview",
+            "href": "/docs/themes/",
+            "label": "Overview",
+        },
+        {
+            "name": "explorer",
+            "href": "/docs/themes/explorer",
+            "label": "Theme explorer",
+        },
+    ],
+}
 
 
 def create_server():
@@ -36,8 +56,27 @@ def create_server():
         try:
             return render_template(
                 "generated/docs/themes.html",
-                sidenav_items=DOCS_SIDENAV_ITEMS,
+                sidenav_items=THEMES_SIDENAV_ITEMS,
                 sidenav_active="themes",
+                active_child="overview",
+            )
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/docs/themes/explorer/")
+    def theme_explorer():
+        try:
+            return render_template("theme-explorer.html")
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/docs/icons/")
+    def icons():
+        try:
+            return render_template(
+                "generated/docs/icons.html",
+                sidenav_items=DOCS_SIDENAV_ITEMS,
+                sidenav_active="icons",
             )
         except TemplateNotFound:
             abort(404)
@@ -53,15 +92,7 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/docs/dashr/")
-    def dashr():
-        return redirect("/docs/quickstart", 302)
-
-    @server.route("/docs/components/")
-    def components_index():
-        return redirect("/docs/components/alert", 302)
-
-    @server.route("/l/components/", defaults={"slug": "alert"})
+    @server.route("/l/components/", defaults={"slug": "main"})
     @server.route("/l/components/<slug>/")
     def components_redirect(slug):
         return redirect(f"/docs/components/{slug}", 302)
@@ -77,6 +108,13 @@ def create_server():
     def changelog():
         try:
             return render_template("generated/changelog.html")
+        except TemplateNotFound:
+            abort(404)
+
+    @server.route("/migration-guide/")
+    def migration_guide():
+        try:
+            return render_template("generated/migration-guide.html")
         except TemplateNotFound:
             abort(404)
 

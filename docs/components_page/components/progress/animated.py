@@ -1,12 +1,16 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Input, Output, State, html
 
 progress = html.Div(
     [
-        dbc.Progress(value=80, id="animated-progress", striped=True),
+        dbc.Progress(
+            value=80, id="animated-progress", animated=False, striped=True
+        ),
         dbc.Button(
-            "Toggle animation", id="animation-toggle", className="mt-3"
+            "Toggle animation",
+            id="animation-toggle",
+            className="mt-3",
+            n_clicks=0,
         ),
     ]
 )

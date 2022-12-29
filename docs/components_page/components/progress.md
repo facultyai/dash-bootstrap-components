@@ -3,7 +3,7 @@ title: Progress
 lead: Add Bootstrap style progress bars to your app with the `Progress` component, featuring support for stacked bars, animated backgrounds, and text labels.
 ---
 
-## Basic example
+## Examples
 
 Use the `value` argument of `Progress` to set progress.
 
@@ -11,7 +11,7 @@ Use the `value` argument of `Progress` to set progress.
 
 ## Labels
 
-To add a text label to the progress bar, simply add it as a child.
+To add a text label to the progress bar, use the `label` prop.
 
 {{example:components/progress/labels.py:progress}}
 
@@ -29,7 +29,7 @@ Use the `color` argument along with one of Bootstrap's contextual color names to
 
 ## Multiple bars
 
-You can nest `Progress` components to make a progress bar with multiple bars. Set `multi=True` on the parent `Progress` component, and `bar=True` on each child.
+You can nest `Progress` components to make a progress bar with multiple bars. Make sure you set `bar=True` on each of the children.
 
 {{example:components/progress/multiple.py:progress}}
 

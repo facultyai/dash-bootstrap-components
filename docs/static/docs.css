@@ -27,11 +27,6 @@ code.hljs {
   border-radius: 6px;
 }
 
-.example-source-container code.hljs {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 span.hljs-meta {
   color: #66d9ef;
 }
@@ -85,18 +80,16 @@ span.hljs-meta {
 }
 
 .example-container {
-  padding: 1rem;
   border: 1px solid #d8d8d8;
   margin: 2rem 0 0;
-  border-radius: 6px 6px 0px 0px;
-  border-bottom: 0px;
+  border-radius: 6px;
 }
 
-.example-source-container {
-  margin-bottom: 2rem;
+.example {
+  margin: 1rem;
 }
 
-.example-source-container pre.hljs {
+.example-source pre.hljs {
   border-radius: 0px 0px 6px 6px;
 }
 
@@ -113,14 +106,14 @@ span.hljs-meta {
   background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0) calc(100% - 15px),
-      #fff calc(100% - 15px)
+      rgba(0, 0, 0, 0) calc(100% - 0.75rem),
+      #fff calc(100% - 0.75rem)
     ),
-    linear-gradient(to right, #fff, #fff 15px, rgba(0, 0, 0, 0) 15px),
+    linear-gradient(to right, #fff, #fff 0.75rem, rgba(0, 0, 0, 0) 0.75rem),
     linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
-.layout-demo .row.no-gutters {
+.layout-demo .row.g-0 {
   background: linear-gradient(to right, #eeeeee, #eeeeee);
 }
 
@@ -139,24 +132,42 @@ span.hljs-meta {
   display: none;
 }
 
-/* Custom checkbox example CSS */
-#checklist-selected-style
-  .custom-control-input:checked
-  ~ .custom-control-label::before {
-  background-color: #fa7268;
-  border-color: #ea6258;
-}
-
 /* invalid input styling */
 #styled-numeric-input input:invalid {
   border-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: center right calc(0.375em + 0.1875rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   outline: none;
 }
+
+/* radio button group example */
+.button-group-demo .radio-group .form-check {
+  padding-left: 0;
+}
+
+.button-group-demo
+  .radio-group
+  .btn-group
+  > .form-check:not(:last-child)
+  > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.button-group-demo
+  .radio-group
+  .btn-group
+  > .form-check:not(:first-child)
+  > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+/* example ends */
 
 .dbcd-title {
   margin-top: 1rem;
@@ -203,6 +214,7 @@ span.hljs-meta {
   font-weight: 500;
   font-size: 1.25rem;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .dbcd-nav-link:hover {
@@ -221,6 +233,7 @@ span.hljs-meta {
 .dbcd-nav-links ul > li > a {
   padding: 0.25rem 0rem;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .dbcd-nav-links ul > li.active > a {
@@ -300,10 +313,6 @@ span.hljs-meta {
   line-height: 1.5;
   color: #ebebeb;
   background-color: #2b3e50;
-}
-
-.superhero-demo .navbar {
-  padding: 0.25rem 1rem;
 }
 
 .superhero-demo .navbar-dark .navbar-nav .nav-link {

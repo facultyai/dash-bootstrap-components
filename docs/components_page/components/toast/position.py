@@ -1,11 +1,13 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, html
 
 toast = html.Div(
     [
         dbc.Button(
-            "Open toast", id="positioned-toast-toggle", color="primary"
+            "Open toast",
+            id="positioned-toast-toggle",
+            color="primary",
+            n_clicks=0,
         ),
         dbc.Toast(
             "This toast is placed in the top right",

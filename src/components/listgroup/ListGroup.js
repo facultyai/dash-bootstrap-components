@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ListGroup as RSListGroup} from 'reactstrap';
+import RBListGroup from 'react-bootstrap/ListGroup';
 
 /**
  * Bootstrap list groups are a flexible way to display a series of content. Use
@@ -9,17 +9,33 @@ import {ListGroup as RSListGroup} from 'reactstrap';
  * `ListGroupItemText`.
  */
 const ListGroup = props => {
-  const {children, loading_state, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    flush,
+    tag,
+    ...otherProps
+  } = props;
   return (
-    <RSListGroup
+    <RBListGroup
+      className={class_name || className}
+      variant={flush ? 'flush' : null}
+      as={tag}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSListGroup>
+    </RBListGroup>
   );
+};
+
+ListGroup.defaultProps = {
+  tag: 'ul',
+  numbered: false
 };
 
 ListGroup.propTypes = {
@@ -41,6 +57,13 @@ ListGroup.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,
@@ -89,7 +112,12 @@ ListGroup.propTypes = {
    * Note that horizontal ListGroups cannot be combined with flush ListGroups,
    * so if flush is True then horizontal has no effect.
    */
-  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  horizontal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
+  /**
+   * Generate numbered list items.
+   */
+  numbered: PropTypes.bool
 };
 
 export default ListGroup;

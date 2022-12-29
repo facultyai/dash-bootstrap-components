@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -64,6 +68,52 @@ describe('Modal', () => {
     expect(document.body.querySelector('.modal-dialog')).toHaveClass(
       'modal-xl'
     );
+
+    // Content class name
+    rerender(<Modal is_open content_class_name="custom-modal-content" />);
+    expect(document.body.querySelector('.modal-content')).toHaveClass(
+      'custom-modal-content'
+    );
+
+    // Backdrop class name
+    rerender(<Modal is_open backdrop_class_name="custom-modal-backdrop" />);
+    expect(document.body.querySelector('.modal-backdrop')).toHaveClass(
+      'custom-modal-backdrop'
+    );
+
+    // Dialog class name
+    rerender(<Modal is_open class_name="custom-modal-dialog" />);
+    expect(document.body.querySelector('.modal-dialog')).toHaveClass(
+      'custom-modal-dialog'
+    );
+
+    // Modal class name
+    rerender(<Modal is_open modal_class_name="custom-modal-class" />);
+    expect(document.body.querySelector('.modal')).toHaveClass(
+      'custom-modal-class'
+    );
+  });
+
+  test('sets z-index with zindex and zIndex', () => {
+    // scrollable content
+    const {rerender} = render(<Modal is_open zindex={1234} />);
+
+    expect(document.body.querySelector('.modal')).toHaveStyle({zIndex: 1234});
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      zIndex: 1234
+    });
+
+    rerender(<Modal is_open zIndex={1111} />);
+    expect(document.body.querySelector('.modal')).toHaveStyle({zIndex: 1111});
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      zIndex: 1111
+    });
+
+    rerender(<Modal is_open zIndex={1221} zindex={1331} />);
+    expect(document.body.querySelector('.modal')).toHaveStyle({zIndex: 1331});
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      zIndex: 1331
+    });
   });
 
   describe('backdrop', () => {

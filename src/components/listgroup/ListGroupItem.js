@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {ListGroupItem as RSListGroupItem} from 'reactstrap';
+import RBListGroupItem from 'react-bootstrap/ListGroupItem';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -12,12 +12,15 @@ const ListGroupItem = props => {
   let {
     children,
     disabled,
+    href,
     loading_state,
     target,
     n_clicks,
     setProps,
     color,
     style,
+    className,
+    class_name,
     ...otherProps
   } = props;
 
@@ -30,23 +33,25 @@ const ListGroupItem = props => {
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
-  const useLink = props.href && !disabled;
+  const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
-    <RSListGroupItem
-      tag={useLink ? Link : 'li'}
-      target={useLink && target}
+    <RBListGroupItem
+      as={useLink ? Link : 'li'}
+      href={href}
+      target={useLink ? target : undefined}
       disabled={disabled}
-      color={isBootstrapColor ? color : null}
+      variant={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
+      className={class_name || className}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
     >
       {children}
-    </RSListGroupItem>
+    </RBListGroupItem>
   );
 };
 
@@ -74,6 +79,13 @@ ListGroupItem.propTypes = {
   style: PropTypes.object,
 
   /**
+   * Often used with CSS to style elements with common properties.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
    * Often used with CSS to style elements with common properties.
    */
   className: PropTypes.string,

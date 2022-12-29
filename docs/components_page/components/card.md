@@ -3,7 +3,7 @@ title: Cards
 lead: Bootstrap's cards provide a flexible content container with multiple variants and options.
 ---
 
-## Simple example
+## Examples
 
 Below is an example of a basic card with mixed content and a fixed width, set using the `style` argument. By default, `Card` has no fixed width, so it'll naturally fill the full width of its parent element. This is easily customized with Bootstraps various sizing options detailed below.
 
@@ -33,6 +33,12 @@ Use `CardImg` when adding images to cards. The `top` argument can be used when t
 
 {{example:components/card/image.py:cards}}
 
+### Image Overlays
+
+Use `CardImgOverlay` to display the card content over the top of the card image. Depending on the image, you may or may not need additional styles or utilities.
+
+{{example:components/card/image_overlay.py:card}}
+
 ### List groups
 
 Create lists of content in a card with a `ListGroup` component by setting `flush=True`.
@@ -51,13 +57,13 @@ As mentioned previously, cards assume no specific width, so they will expand to 
 
 ### Using grid components
 
-Wrap cards in `Row` and `Col` components to control their width and layout. In this example we use the `width` argument of `Col` to make the first card take up a third of the available width, and the second card two thirds. See the [layout documentation](/l/components/layout) for more details on `Row` and `Col`.
+Wrap cards in `Row` and `Col` components to control their width and layout. In this example we use the `width` argument of `Col` to make the first card take up a third of the available width, and the second card two thirds. See the [layout documentation](/docs/components/layout) for more details on `Row` and `Col`.
 
 {{example:components/card/sizing/grid.py:cards}}
 
 ### Using Bootstrap utility classes
 
-Bootstrap comes with several CSS utility classes built in, including some for sizing. For example, the class `w-50` sets `width:50%`. We can can apply these classes to quickly set the desired width of the cards. See the [Bootstrap documentation](https://getbootstrap.com/docs/4.3/utilities/sizing/) for more details.
+Bootstrap comes with several CSS utility classes built in, including some for sizing. For example, the class `w-50` sets `width:50%`. We can can apply these classes to quickly set the desired width of the cards. See the [Bootstrap documentation](https://getbootstrap.com/docs/5.0/utilities/sizing/) for more details.
 
 {{example:components/card/sizing/utility.py:cards}}
 
@@ -65,9 +71,15 @@ Bootstrap comes with several CSS utility classes built in, including some for si
 
 Finally, you can use custom CSS to control the size of your cards. In this example we use the `style` argument of `Card` to set inline style arguments. You can also write your own CSS classes that specify `width`, `max-width` etc. and apply them to the card.
 
-{{example:components/card/sizing/css.py:card}}
+{{example:components/card/sizing/css.py:cards}}
 
 ## Card style
+
+### Horizontal
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+{{example:components/card/sizing/horizontal.py:card}}
 
 ### Background and color
 
@@ -91,23 +103,7 @@ Use the `CardGroup` component to render cards as a single attached element with 
 
 {{example:components/card/layout/group.py:cards}}
 
-### Card deck
-
-The `CardDeck` component will lay cards out with equal width and height, without attaching them to one another like the `CardGroup` component.
-
-{{example:components/card/layout/deck.py:cards}}
-
-### Card columns
-
-Cards can be organised into [Masonry](https://masonry.desandro.com/)-like columns using the `CardColumns` component. Cards are ordered top to bottom and left to right.
-
-{{example:components/card/layout/columns.py:cards}}
-
-{{apidoc:src/components/card/CardDeck.js}}
-
 {{apidoc:src/components/card/CardGroup.js}}
-
-{{apidoc:src/components/card/CardColumns.js}}
 
 {{apidoc:src/components/card/Card.js}}
 

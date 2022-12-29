@@ -3,17 +3,26 @@ title: Layout
 lead: Components for laying out your Dash app, including wrapping containers, and a powerful, responsive grid system.
 ---
 
-Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and five responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
+## Examples
 
-There are three main layout components in *dash-bootstrap-components*: `Container`, `Row`, and `Col`.
+**Note:** the rows and columns in the examples below have had additional styles applied to them with CSS to make sure that the effects of different arguments are clear. If you copy the snippets your rows and columns will not have these extra styles applied. Specifically the contents will not have a border and background colour, the rows will not have a background colour or bottom margin.
 
-The `Container` component can be used to center and horizontally pad your app's content. The docs you are currently reading are themselves a Dash app built with *dash-bootstrap-components*. The content on this page has been centered by wrapping it in a `Container` component. By default the container has a responsive pixel width. Use the keyword argument `fluid=True` if you want your `Container` to fill available horizontal space and resize fluidly.
+Layout in Bootstrap is controlled using the grid system. The Bootstrap grid has twelve columns, and six responsive tiers (allowing you to specify different behaviours on different screen sizes, see below). The width of your columns can be specified in terms of how many of the twelve grid columns it should span, or you can allow the columns to expand or shrink to fit either their content or the available space in the row.
+
+There are three main layout components in _dash-bootstrap-components_: `Container`, `Row`, and `Col`.
+
+The `Container` component can be used to center and horizontally pad your app's content. The docs you are currently reading are themselves a Dash app built with _dash-bootstrap-components_. The content on this page has been centered by wrapping it in a `Container` component. By default the container has a responsive pixel width. Use the keyword argument `fluid=True` if you want your `Container` to fill available horizontal space and resize fluidly.
 
 The `Row` component is a wrapper for columns. The layout of your app should be built as a series of rows of columns.
 
-When using the grid layout, content should be placed in columns, and only `Col` components should be immediate children of `Row`.
+The `Col` component should always be used as an immediate child of `Row` and is a wrapper for your content that ensures it takes up the correct amount of horizontal space.
 
-For much more detail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/4.2/layout/grid/).
+For best results, make sure you adhere to the following two rules when constructing your layouts:
+
+1. Only use `Row` and `Col` inside a `Container`. A single `Container` wrapping your entire app's content is fine. Set `fluid=True` if you don't want the margins that `Container` adds by default. Since the content of this page is wrapped with a `Container`, the snippets below don't explicitly include them.
+2. The immediate children of any `Row` component should always be `Col` components. Your content should go inside the `Col` components.
+
+For much more detail on the Bootstrap grid system, see the [Bootstrap documentation](https://getbootstrap.com/docs/5.1/layout/grid/).
 
 ## Row with columns
 
@@ -35,7 +44,7 @@ In addition to the simple width arguments outlined above, you can pass a diction
 
 `size` takes any of the simple arguments that `width` understands, i.e. `True`, "auto", or an integer `1`,...,`12`, and specifies the size / width of the column.
 
-`order` can be used to reorder the columns. It accepts the integers `1`,...,`12`, or the strings `"first"` and `"last"`. Columns will then be ordered numerically, with columns specified as `"first"` or `"last"` being placed first and last respectively. If two columns have the same order, they will keep the order they are specified in the source.
+`order` can be used to reorder the columns. It accepts the integers `1`,...,`5`, or the strings `"first"` and `"last"`. Columns will then be ordered numerically, with columns specified as `"first"` or `"last"` being placed first and last respectively. If two columns have the same order, they will keep the order they are specified in the source.
 
 Finally `offset` accepts the integers `1`, ..., `12` and increases the left margin of the column by that number of grid columns.
 
@@ -43,7 +52,7 @@ Finally `offset` accepts the integers `1`, ..., `12` and increases the left marg
 
 ## Specify width for different screen sizes
 
-Bootstrap’s grid includes five responsive tiers for building complex responsive layouts. Customize the size, order and offset of your columns on extra small, small, medium, large, or extra large devices using the `xs`, `sm`, `md`, `lg`, and `xl` keyword arguments. Each takes the same arguments as `width` and specifies the column behaviour for that size of screen or larger. `width` secretly just sets `xs`. If you specify both, `xs` will override `width`.
+Bootstrap’s grid includes six responsive tiers for building complex responsive layouts. Customize the size, order and offset of your columns on devices ranging in size from extra small to extra extra large using the `xs`, `sm`, `md`, `lg`, `xl` and `xxl` keyword arguments. Each takes the same arguments as `width` and specifies the column behaviour for that size of screen or larger. `width` secretly just sets `xs`. If you specify both, `xs` will override `width`.
 
 The first of the following two examples has three columns, we set `md=4` indicating that on a 'medium' sized or larger screen each column should take up a third of the width. Since we don't specify behaviour on smaller size screens Bootstrap will allow the rows to wrap so as not to squash the content. You will see this happening if you resize the window you are reading this in.
 
@@ -55,7 +64,7 @@ By setting different sizes, orders and offsets for the different responsive tier
 
 ## Row without 'gutters'
 
-By default, horizontal spacing is added between the columns. Use `no_gutters=True` to disable this.
+By default, horizontal spacing is added between the columns. Use Bootstrap's [gutter modifier classes](https://getbootstrap.com/docs/5.1/layout/gutters/) to adjust this.
 
 {{example:components/layout/no_gutters.py:row}}
 
@@ -75,12 +84,28 @@ You can also control horizontal alignment of columns using the `justify` keyword
 
 Sometimes you may wish to use Bootstrap's grid system for specifying the layout of your app, but you don't want the changes Bootstrap makes to the typography, or to load all the additional CSS classes that Bootstrap specifies. In such a situation, you can link only the CSS required for the grid system using the `themes` module.
 
-{{code-example:components/layout/grid_only.py:python}}
+{{code-example:components/layout/grid_only.py}}
 
-Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/4.2/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plot.ly/external-resources) for details.
+Alternatively download `bootstrap-grid.css` from the [Bootstrap website](https://getbootstrap.com/docs/5.1/getting-started/download/) and place it in your app's `assets/` directory. See the [Plotly Dash documentation](https://dash.plotly.com/external-resources) for details.
+
+## `Stack`ing objects
+
+You can make use of the `Stack` component to neatly arrange objects inside a vertical (default) stack. You can set the `gap` property between 0-5 to create an even gap between the objects.
+
+{{example:components/layout/simple_stack.py:stack}}
+
+You can also use `direction="horizontal"` for horizontal layouts.
+
+{{example:components/layout/horizontal_stack.py:stack}}
+
+You can combine these with the in-built [Bootstrap spacing](https://getbootstrap.com/docs/5.0/utilities/spacing/) options to improve your layouts even further.
+
+{{example:components/layout/stack_spacers.py:stack}}
 
 {{apidoc:src/components/layout/Container.js}}
 
 {{apidoc:src/components/layout/Row.js}}
 
 {{apidoc:src/components/layout/Col.js}}
+
+{{apidoc:src/components/layout/Stack.js}}

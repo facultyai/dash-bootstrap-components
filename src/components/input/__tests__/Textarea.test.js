@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -37,22 +41,22 @@ describe('Textarea', () => {
       container: {firstChild: textarea}
     } = render(
       <Textarea
-        accessKey="k"
+        accesskey="k"
         cols="33"
         dir="ltr"
         disabled
         draggable
         form="form-id"
         lang="en-GB"
-        maxLength="20"
-        minLength="2"
+        maxlength="20"
+        minlength="2"
         name="test-name"
         placeholder="test-placeholder"
-        readOnly
+        readonly
         required
         rows="6"
-        spellCheck
-        tabIndex="3"
+        spellcheck
+        tabindex="3"
         title="test-title"
         wrap="hard"
       />
@@ -94,23 +98,20 @@ describe('Textarea', () => {
     });
 
     test('tracks changes with "value" prop', () => {
-      fireEvent.change(textarea, {
-        target: {value: 'some-textarea-value'}
-      });
-      expect(mockSetProps.mock.calls).toHaveLength(1);
-      expect(mockSetProps.mock.calls[0][0]).toEqual({
-        value: 'some-textarea-value'
-      });
-      expect(textarea).toHaveValue('some-textarea-value');
+      userEvent.type(textarea, 'some text');
+      // one setProps call for click, and then 9 characters
+      expect(mockSetProps.mock.calls).toHaveLength(10);
+      expect(mockSetProps.mock.calls[9][0]).toEqual({value: 'some text'});
+      expect(textarea).toHaveValue('some text');
     });
 
     test('dispatches update for each typed character', () => {
       userEvent.type(textarea, 'abc');
 
       expect(textarea).toHaveValue('abc');
-      expect(mockSetProps.mock.calls).toHaveLength(3);
+      expect(mockSetProps.mock.calls).toHaveLength(4);
 
-      const [call1, call2, call3] = mockSetProps.mock.calls;
+      const [call0, call1, call2, call3] = mockSetProps.mock.calls;
       expect(call1).toEqual([{value: 'a'}]);
       expect(call2).toEqual([{value: 'ab'}]);
       expect(call3).toEqual([{value: 'abc'}]);
@@ -156,55 +157,48 @@ describe('Textarea', () => {
       beforeEach(() => {
         mockSetProps = jest.fn();
         const {container} = render(
-          <Textarea
-            setProps={mockSetProps}
-            value="some-textarea-value"
-            debounce
-          />
+          <Textarea setProps={mockSetProps} value="" debounce />
         );
         textarea = container.firstChild;
       });
 
       test("don't call setProps on change if debounce is true", () => {
-        fireEvent.change(textarea, {
-          target: {value: 'some-textarea-value'}
-        });
-        expect(mockSetProps.mock.calls).toHaveLength(0);
-        expect(textarea).toHaveValue('some-textarea-value');
+        userEvent.type(textarea, 'some text');
+        // one call to setProps for clicking on the textarea
+        expect(mockSetProps.mock.calls).toHaveLength(1);
+        expect(textarea).toHaveValue('some text');
       });
 
       test('dispatch value on blur if debounce is true', () => {
+        userEvent.type(textarea, 'some text');
         const before = Date.now();
         fireEvent.blur(textarea);
         const after = Date.now();
 
-        expect(mockSetProps.mock.calls).toHaveLength(1);
+        expect(mockSetProps.mock.calls).toHaveLength(2);
 
-        const [[{n_blur, n_blur_timestamp, value}]] = mockSetProps.mock.calls;
+        const [{n_blur, n_blur_timestamp, value}] = mockSetProps.mock.calls[1];
         expect(n_blur).toEqual(1);
         expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
         expect(n_blur_timestamp).toBeLessThanOrEqual(after);
-        expect(value).toEqual('some-textarea-value');
+        expect(value).toEqual('some text');
       });
 
       test('dispatch value on submit if debounce is true', () => {
         const before = Date.now();
-        fireEvent.keyPress(textarea, {
-          key: 'Enter',
-          code: 13,
-          charCode: 13
-        });
+        userEvent.type(textarea, 'some text{enter}');
         const after = Date.now();
 
-        expect(mockSetProps.mock.calls).toHaveLength(1);
+        // one click and one submit
+        expect(mockSetProps.mock.calls).toHaveLength(2);
 
         const [
-          [{n_submit, n_submit_timestamp, value}]
-        ] = mockSetProps.mock.calls;
+          {n_submit, n_submit_timestamp, value}
+        ] = mockSetProps.mock.calls[1];
         expect(n_submit).toEqual(1);
         expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
         expect(n_submit_timestamp).toBeLessThanOrEqual(after);
-        expect(value).toEqual('some-textarea-value');
+        expect(value).toEqual('some text');
       });
     });
   });

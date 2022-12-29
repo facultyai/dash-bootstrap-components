@@ -1,13 +1,15 @@
 ---
 title: Navs
-lead: Documentation and examples for how to use Bootstrap's navigation components with _dash-bootstrap-components_.
+lead: Use Bootstrap's navigation components with _dash-bootstrap-components_.
 ---
 
-## Base nav
+## Examples
 
 Navigation is built up using `Nav`, `NavItem`, `NavLink` and `DropdownMenu`. Use `nav=True` when using `DropdownMenu` inside a `Nav` for consistent styling with `NavItem` and `NavLink`.
 
 {{example:components/nav/simple.py:nav}}
+
+## Using `NavLinks` as children
 
 It is only necessary to wrap `NavLink` with `NavItem` if you wish to use the `fill` or `justified` keyword arguments detailed below. If you're not using those features you can simplify your layout by just passing `NavLink` directly as children of `Nav`.
 
@@ -33,13 +35,13 @@ Use the `vertical` argument to stack navigation items. You can pass either a Boo
 
 ## Pills
 
-Use the `pills` argument to indicate active state with pill styled nav items. The `active` property can be set to `True` or `False` to manually control whether the link is active, or to `"exact"` to automatically set the `active` property when the current pathname matches the `href`, or to `"partial"` to automatically set the `active` property when the current pathname starts with `href`.
+Use the `pills` argument to indicate active state with pill styled nav links. The `active` property of `NavLink` can be set to `True` or `False` to manually control whether the link is active, to `"exact"` to automatically set the `active` property when the current pathname matches the `href`, or to `"partial"` to automatically set the `active` property when the current pathname starts with `href`.
 
 {{example:components/nav/pill.py:nav}}
 
 ## Tabs
 
-Bootstrap also lets you apply tab styling to navs, check out our self-contained `Tabs` component [here](/l/components/tabs).
+Bootstrap also lets you apply tab styling to navs. We have separated this functionality out into a self-contained `Tabs` component [here](/docs/components/tabs).
 
 {{apidoc:src/components/nav/Nav.js}}
 

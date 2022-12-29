@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 row = html.Div(
     [
@@ -34,5 +34,6 @@ row = html.Div(
                 dbc.Col(html.Div("One of three columns"), align="end"),
             ]
         ),
-    ]
+    ],
+    className="pad-row",
 )

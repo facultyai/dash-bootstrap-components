@@ -1,25 +1,30 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DropdownMenu from '../DropdownMenu';
 import DropdownMenuItem from '../DropdownMenuItem';
 
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
-
-  return class {
-    static placements = PopperJS.placements;
-
-    constructor() {
-      return {
-        destroy: () => {},
-        scheduleUpdate: () => {}
-      };
-    }
-  };
-});
-
 describe('DropdownMenuItem', () => {
+  // this is just a little hack to silence a warning that we'll get until we
+  // upgrade to 16.9. See also: https://github.com/facebook/react/pull/14853
+  const originalError = console.error;
+  beforeAll(() => {
+    console.error = (...args) => {
+      if (/Warning.*not wrapped in act/.test(args[0])) {
+        return;
+      }
+      originalError.call(console, ...args);
+    };
+  });
+
+  afterAll(() => {
+    console.error = originalError;
+  });
+
   test('renders a button with class "dropdown-menu-item"', () => {
     const dropdownMenuItem = render(<DropdownMenuItem />);
 
@@ -119,5 +124,23 @@ describe('DropdownMenuItem', () => {
     expect(
       dropdownMenu.container.querySelector('.dropdown-menu')
     ).not.toHaveClass('show');
+  });
+
+  test("doesn't dismiss parent DropdownMenu when clicked if toggle=false", () => {
+    const dropdownMenu = render(
+      <DropdownMenu label="toggle">
+        <DropdownMenuItem toggle={false}>Clickable</DropdownMenuItem>
+      </DropdownMenu>
+    );
+
+    userEvent.click(dropdownMenu.getByText('toggle'));
+    expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
+      'show'
+    );
+
+    userEvent.click(dropdownMenu.getByText('Clickable'));
+    expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
+      'show'
+    );
   });
 });

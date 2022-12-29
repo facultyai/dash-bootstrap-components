@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 
 
 def make_button(placement):
@@ -7,6 +7,7 @@ def make_button(placement):
         f"Tooltip on {placement}",
         id=f"tooltip-target-{placement}",
         className="mx-2",
+        n_clicks=0,
     )
 
 

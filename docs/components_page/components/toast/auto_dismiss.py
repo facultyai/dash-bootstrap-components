@@ -1,6 +1,5 @@
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Input, Output, html, no_update
 
 toast = html.Div(
     [
@@ -9,6 +8,7 @@ toast = html.Div(
             id="auto-toast-toggle",
             color="primary",
             className="mb-3",
+            n_clicks=0,
         ),
         dbc.Toast(
             [html.P("This is the content of the toast", className="mb-0")],
@@ -16,6 +16,7 @@ toast = html.Div(
             header="This is the header",
             icon="primary",
             duration=4000,
+            is_open=False,
         ),
     ]
 )
@@ -25,4 +26,6 @@ toast = html.Div(
     Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")]
 )
 def open_toast(n):
+    if n == 0:
+        return no_update
     return True

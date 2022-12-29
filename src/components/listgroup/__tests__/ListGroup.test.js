@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render} from '@testing-library/react';
 import ListGroupItem from '../ListGroupItem';
@@ -36,5 +40,13 @@ describe('ListGroup', () => {
     } = render(<ListGroup flush />);
 
     expect(listGroup).toHaveClass('list-group-flush');
+  });
+
+  test('applies numbered styles with "numbered" prop', () => {
+    const {
+      container: {firstChild: listGroup}
+    } = render(<ListGroup numbered />);
+
+    expect(listGroup).toHaveClass('list-group-numbered');
   });
 });

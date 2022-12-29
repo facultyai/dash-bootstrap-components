@@ -84,15 +84,15 @@ Check out [the docs for more details](https://dash-bootstrap-components.opensour
 
 To use _dash-bootstrap-components_ you must do two things:
 
-- Link a Bootstrap v4 compatible stylesheet
+- Link a Bootstrap v5 compatible stylesheet
 - Incorporate _dash-bootstrap-components_ into your layout
 
 ### Linking a stylesheet
 
 _dash-bootstrap-components_ doesn't come with CSS included. This is to give you
-the freedom to use any Bootstrap v4 stylesheet of your choice. This means however
-that in order for the components to be styled properly, you must link to a
-stylesheet yourself.
+the freedom to use any Bootstrap v5 stylesheet of your choice. This means
+however that in order for the components to be styled properly, you must link
+to a stylesheet yourself.
 
 For convenience, links to [BootstrapCDN][bootstrapcdn] for each theme are
 available through the `themes` module, which can be used as follows:
@@ -154,16 +154,19 @@ available components, which include:
 We welcome contributions to _dash-bootstrap-components_. If you find a bug or
 something is unclear please [submit a bug report][bug-report], if you have ideas
 for new features please feel free to make a [feature request][feature-request].
+
 If you would like to submit a pull request, please read our
-[contributing guide][contribution-guide].
+[contributing guide][contribution-guide], which contains instructions on how to
+build and install _dash-bootstrap-components_ locally, how to check your code
+will pass our linting checks, and how to submit the pull request itself.
 
 ## Copyright and license
 
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
-2018-2021, and released under the [Apache 2.0 license](./LICENSE.txt)
+2018-2022, and released under the [Apache 2.0 license](./LICENSE)
 
-[dash-homepage]: https://dash.plot.ly/
-[dash-docs-external]: https:/dash.plot.ly/external-resources
+[dash-homepage]: https://dash.plotly.com/
+[dash-docs-external]: https://dash.plotly.com/external-resources
 [bootstrap-homepage]: https://getbootstrap.com/
 [dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
 [reactstrap-homepage]: https://reactstrap.github.io/

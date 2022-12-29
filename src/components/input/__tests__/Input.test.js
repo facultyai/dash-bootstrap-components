@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -29,22 +33,25 @@ describe('Input', () => {
   });
 
   test('passes HTML attributes on to underlying input', () => {
-    const {container: {firstChild: input}} = render(
+    const {
+      container: {firstChild: input}
+    } = render(
       <Input
-        autoComplete="username"
+        autocomplete="username"
         disabled
-        inputMode="verbatim"
+        inputmode="verbatim"
         list="datalist-id"
         max={10}
-        maxLength="20"
+        maxlength="20"
         min={1}
-        minLength="2"
+        minlength="2"
         name="test-name"
         pattern="test-pattern"
         placeholder="test-placeholder"
-        size="42"
+        html_size="42"
+        readonly
         step={2}
-        tabIndex="3"
+        tabindex="3"
         type="text"
       />
     );
@@ -60,6 +67,7 @@ describe('Input', () => {
     expect(input).toHaveAttribute('name', 'test-name');
     expect(input).toHaveAttribute('pattern', 'test-pattern');
     expect(input).toHaveAttribute('placeholder', 'test-placeholder');
+    expect(input).toHaveAttribute('readonly');
     expect(input).toHaveAttribute('size', '42');
     expect(input).toHaveAttribute('step', '2');
     expect(input).toHaveAttribute('tabindex', '3');
@@ -91,13 +99,11 @@ describe('Input', () => {
       expect(mockSetProps.mock.calls[0][0]).toEqual({
         value: 'some-input-value'
       });
-      expect(inputElement).toHaveValue('some-input-value');
     });
 
     test('dispatches update for each typed character', () => {
       userEvent.type(inputElement, 'abc');
 
-      expect(inputElement).toHaveValue('abc');
       expect(mockSetProps.mock.calls).toHaveLength(3);
 
       const [call1, call2, call3] = mockSetProps.mock.calls;
@@ -194,7 +200,9 @@ describe('Input', () => {
 
     beforeEach(() => {
       mockSetProps = jest.fn();
-      const {container} = render(<Input setProps={mockSetProps} type="number" />);
+      const {container} = render(
+        <Input setProps={mockSetProps} type="number" />
+      );
       inputElement = container.firstChild;
     });
 
@@ -232,11 +240,10 @@ describe('Input', () => {
       userEvent.type(inputElement, '-1e4');
 
       expect(inputElement).toHaveValue(-10000);
-      expect(mockSetProps.mock.calls).toHaveLength(3);
+      expect(mockSetProps.mock.calls).toHaveLength(2);
 
-      const [call1, call2, call3] = mockSetProps.mock.calls;
+      const [call1, call3] = mockSetProps.mock.calls;
       expect(call1).toEqual([{value: -1}]);
-      expect(call2).toEqual([{value: null}]);
       expect(call3).toEqual([{value: -10000}]);
     });
 
@@ -245,6 +252,31 @@ describe('Input', () => {
 
       expect(inputElement).not.toHaveValue();
       expect(mockSetProps.mock.calls).toHaveLength(0);
+    });
+
+    test('passes value on to the underlying HTML input', () => {
+      const {
+        container: {firstChild: input},
+        rerender
+      } = render(<Input type="number" value={10} />);
+
+      expect(input).toHaveValue(10);
+
+      rerender(<Input type="number" value={12} />);
+      expect(input).toHaveValue(12);
+    });
+
+    test('returns NaN once for invalid number', () => {
+      const {
+        container: {firstChild: input}
+      } = render(
+        <Input type="number" min={0} value={0} setProps={mockSetProps} />
+      );
+
+      userEvent.type(input, '-100');
+
+      expect(mockSetProps.mock.calls).toHaveLength(1);
+      expect(mockSetProps.mock.calls[0][0]).toEqual({value: NaN});
     });
   });
 });

@@ -1,6 +1,7 @@
 # js artifacts
 node_modules
 lib
+demo-lib
 
 # testing
 .nox
@@ -29,12 +30,16 @@ docs/examples/vendor
 # R build artifacts
 inst
 man
-R
+R/*
 DESCRIPTION
 NAMESPACE
+!R/icons.R
 !R/themes.R
 
 # Julia build artifacts
 deps/
 src/*.jl
+src/jl
 Project.toml
+examples/**/Manifest.toml
+!examples/**/Project.toml
