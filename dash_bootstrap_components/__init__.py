@@ -1,6 +1,5 @@
 """Bootstrap themed components for use in Plotly Dash"""
 import os
-import sys
 
 from dash_bootstrap_components import _components, icons, themes
 from dash_bootstrap_components._components import *  # noqa
@@ -38,42 +37,8 @@ for _component_name in _components.__all__:
 Table.from_dataframe = classmethod(_generate_table_from_df)
 
 
-# TODO: when Python 3.6 support is dropped we can simplify this with PEP 562
-# https://www.python.org/dev/peps/pep-0562/
-class _V1DeprecationWarningWrapper:
-    def __init__(self, wrapped, deprecated):
-        self.wrapped = wrapped
-        self.deprecated = deprecated
-
-    def __getattr__(self, name):
-        if name in self.deprecated:
-            raise AttributeError(
-                f"{name} was deprecated in dash-bootstrap-components version "
-                f"1.0.0. You are using {__version__}. For more details please "
-                "see the migration guide: "
-                "https://dash-bootstrap-components.opensource.faculty.ai/"
-                "migration-guide/"
-            )
-        return getattr(self.wrapped, name)
-
-    def __setstate__(self, state):
-        # ensure deprecated & wrapped fields are set to avoid recursive stack
-        # explosion in __getattr__
-        self.deprecated = state.get("deprecated", None)
-        self.wrapped = state.get("wrapped", None)
-
-    def __dir__(self):
-        # required for autocomplete. filter out os, and sys imports
-        return [
-            item
-            for item in self.wrapped.__dir__()
-            if item not in {"os", "sys"}
-        ]
-
-
-sys.modules[__name__] = _V1DeprecationWarningWrapper(
-    sys.modules[__name__],
-    [
+def __getattr__(name):
+    if name in [
         "CardColumns",
         "CardDeck",
         "FormGroup",
@@ -81,5 +46,16 @@ sys.modules[__name__] = _V1DeprecationWarningWrapper(
         "Jumbotron",
         "ListGroupItemHeading",
         "ListGroupItemText",
-    ],
-)
+    ]:
+        raise AttributeError(
+            f"{name} was deprecated in dash-bootstrap-components version "
+            f"1.0.0. You are using {__version__}. For more details please "
+            "see the migration guide: "
+            "https://dash-bootstrap-components.opensource.faculty.ai/"
+            "migration-guide/"
+        )
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+def __dir__():
+    return __all__
