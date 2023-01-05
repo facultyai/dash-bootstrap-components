@@ -4,6 +4,7 @@ import sys
 
 from dash_bootstrap_components import _components, icons, themes
 from dash_bootstrap_components._components import *  # noqa
+from dash_bootstrap_components._components import Table
 from dash_bootstrap_components._table import _generate_table_from_df
 from dash_bootstrap_components._version import __version__
 
@@ -34,9 +35,7 @@ for _component_name in _components.__all__:
     _component._css_dist = _css_dist
 
 
-sys.modules[__name__].Table.from_dataframe = classmethod(
-    _generate_table_from_df
-)
+Table.from_dataframe = classmethod(_generate_table_from_df)
 
 
 # TODO: when Python 3.6 support is dropped we can simplify this with PEP 562
