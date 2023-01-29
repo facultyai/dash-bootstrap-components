@@ -6,6 +6,15 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.3.1 - 2023/01/29
+
+Version 1.3.1 of dash-bootstrap-components. This version contains bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Fixed
+
+- Fixed an issue where `pylint` would fail to recognise `dbc.Table.from_dataframe` ([PR 926](https://github.com/facultyai/dash-bootstrap-components/pull/926))
+- Simpler implementation of deprecation warnings made possible by Python 3.6 deprecation ([PR 928](https://github.com/facultyai/dash-bootstrap-components/pull/928/files))
+
 ## 1.3.0 - 2022/12/28
 
 Version 1.3.0 of dash-bootstrap-components. This version contains a number of new features, updates, and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
@@ -39,7 +48,6 @@ Version 1.2.1 of dash-bootstrap-components is a patch release containing bug fix
 - Suppress console errors originating from `DropdownMenu` ([PR 878](https://github.com/facultyai/dash-bootstrap-components/pull/878))
 - Allow `DropdownMenu` toggle to be rendered as a link ([PR 884](https://github.com/facultyai/dash-bootstrap-components/pull/884))
 
-
 ## 1.2.0 - 2022/6/29
 
 Version 1.2.0 of dash-bootstrap-components contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
@@ -71,9 +79,10 @@ Version 1.1.0 of dash-bootstrap-components contains some new features and bug fi
 
 - Allow arbitrary colors to be passed to `color` prop of `Progress` ([PR 835](https://github.com/facultyai/dash-bootstrap-components/pull/835))
 - `contentClassName` in `Modal` has been fixed, previously it was not passing the class names on to the relevant elements ([PR 839](https://github.com/facultyai/dash-bootstrap-components/pull/839))
-- `Select` can now be cleared by returning `None` from a callback  ([PR 842](https://github.com/facultyai/dash-bootstrap-components/pull/842))
+- `Select` can now be cleared by returning `None` from a callback ([PR 842](https://github.com/facultyai/dash-bootstrap-components/pull/842))
 
 ### Changed
+
 - Updated CDN links for FontAwesome and Bootstrap Icons in the `icons` submodule. FontAwesome now uses version 6.1.1, Bootstrap Icons uses version 1.8.1 ([PR 837](https://github.com/facultyai/dash-bootstrap-components/pull/837))
 
 ## 1.0.3 - 2022/2/5
@@ -121,16 +130,19 @@ This release adds no new features but fixes a number of bugs. Please continue to
 v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully, and refer to the [migration guide](/migration-guide/) for full details of the changes.
 
 ### Added
-- Seven new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form),  [ModalTitle](/docs/components/modal), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
+
+- Seven new components! [Accordion](/docs/components/accordion), [Breadcrumb](/docs/components/breadcrumb), [FormFloating](/docs/components/form), [ModalTitle](/docs/components/modal), [Offcanvas](/docs/components/offcanvas), [Pagination](/docs/components/pagination), and [Switch](/docs/components/input) ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)) ([PR 689](https://github.com/facultyai/dash-bootstrap-components/pull/689))
 - New CDN links for icons from Bootstrap Icons and Font Awesome ([PR 661](https://github.com/facultyai/dash-bootstrap-components/pull/661))
 - CDN Links for four new Bootswatch themes: `QUARTZ`, `MORPH`, `VAPOR` and `ZEPHYR`.
 - All components now accept `class_name` as an alternative to `className`. If both are specified then `class_name` will take precedence. `class_name` should be preferred from now on. ([PR 642](https://github.com/facultyai/dash-bootstrap-components/pull/642))
 
 ### Fixed
+
 - The `loading_state` is no longer passed to underlying DOM nodes in any components ([PR 666](https://github.com/facultyai/dash-bootstrap-components/pull/666))
 - `Popover` doesn't error if `is_open` defaults to true. ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646))
 
 ### Changed
+
 - Components are all now built for Bootstrap 5. CDN links have all been updated. There are multiple breaking changes in the component props. Please see the [migration-guide](/migration-guide) for full details on the changes ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)).
 
 ## 0.13.1 - 2021/9/22
