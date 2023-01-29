@@ -40,4 +40,4 @@ As with the Spinner component, you can also use the Placeholder as a loading com
 {{example:components/placeholder/loading.py:placeholder}}
 
 
-{{apidoc:src/components/popover/Popover.js}}
+{{apidoc:src/components/placeholder/Placeholder.js}}
