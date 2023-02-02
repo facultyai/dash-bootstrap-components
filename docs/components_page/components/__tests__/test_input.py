@@ -46,7 +46,6 @@ def test_jl_input_radio_check(dashjl):
 
 
 def check_input_radio_check_callbacks(runner):
-
     wait.until(
         lambda: runner.find_element("#radioitems-checklist-output").text
         == "Radio button 1, 1 checklist item and 1 switch selected.",
@@ -92,7 +91,6 @@ def test_jl_input_radio_check_standalone(dashjl):
 
 
 def check_input_radio_check_standalone_callbacks(runner):
-
     outcome = (
         "Selections: Checkbox: {0}, Toggle Switch: {0}, Radio Button: {0}"
     )

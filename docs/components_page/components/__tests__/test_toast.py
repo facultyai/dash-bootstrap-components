@@ -51,7 +51,6 @@ def test_jl_toast_icon(dashjl):
 
 
 def check_toast_icon_callbacks(runner):
-
     # Click the button to show the toast
     runner.find_element("#simple-toast-toggle").click()
 
