@@ -115,7 +115,9 @@ def register_apps():
         sidebar_app,
         "simple-sidebar",
         sidebar_source,
-        os.path.join(GITHUB_EXAMPLES, "multi-page-apps/simple_sidebar.py"),
+        os.path.join(
+            GITHUB_EXAMPLES, "templates/multi-page-apps/simple_sidebar.py"
+        ),
         show_warning=True,
     )
 
