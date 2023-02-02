@@ -23,7 +23,6 @@ def test_jl_navbar(dashjl):
 
 
 def check_navbar_callbacks(runner):
-
     runner.driver.set_window_size(375, 667)
 
     wait.until(

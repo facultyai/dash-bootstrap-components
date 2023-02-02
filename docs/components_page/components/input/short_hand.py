@@ -62,7 +62,6 @@ short_hand = html.Div(
     ],
 )
 def on_form_change(checklist_value, select_value, radio_items_value):
-
     checklist = ", ".join([str(c) for c in checklist_value])
 
     output = (

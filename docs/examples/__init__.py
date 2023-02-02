@@ -87,7 +87,6 @@ def build_app_from_example(app, name, code, code_link, show_warning=False):
 
 
 def register_apps():
-
     iris_app_ = build_app_from_example(
         iris_app,
         "iris",
