@@ -165,7 +165,7 @@ Offcanvas.propTypes = {
   /**
    * The header title
    */
-  title: PropTypes.string,
+  title: PropTypes.node,
 
   /**
    * Specify whether the Component should contain a close button
