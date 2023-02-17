@@ -5,7 +5,11 @@ import classnames from 'classnames';
 import RBNav from 'react-bootstrap/Nav';
 import RBTab from 'react-bootstrap/Tab';
 
-import {parseChildrenToArray, resolveChildProps} from '../../private/util';
+import {
+  parseChildrenToArray,
+  resolveChildProps,
+  stringifyId
+} from '../../private/util';
 
 /**
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
@@ -52,7 +56,7 @@ const Tabs = props => {
       const active = active_tab === tabId;
       return (
         <RBNav.Item
-          id={childProps.id}
+          id={stringifyId(childProps.id)}
           key={tabId}
           style={
             active
