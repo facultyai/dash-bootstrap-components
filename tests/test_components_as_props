@@ -22,7 +22,7 @@ def test_mdcap001_components_as_props(dash_dcc):
                 id="radio-items",
             ),
             dbc.Checkbox(label= html.H4("h4"), value= "h4", id="checkbox"),
-            dbc.RadioButton(label=html.H6("h6"), value="h6", id="radiobutton),
+            dbc.RadioButton(label=html.H6("h6"), value="h6", id="radiobutton"),
             dbc.Switch(label=html.H5("h5"), value="h5", id="switch")
         ]
     )
