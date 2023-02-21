@@ -1,8 +1,8 @@
-from dash import Dash, dcc, html
+from dash import Dash,  html
 import dash_bootstrap_components as dbc
 
 
-def test_mdcap001_components_as_props(dash_dcc):
+def test_mdcap001_components_as_props(dash_duo):
     app = Dash(__name__)
 
     app.layout = html.Div(
@@ -27,14 +27,14 @@ def test_mdcap001_components_as_props(dash_dcc):
         ]
     )
 
-    dash_dcc.start_server(app)
+    dash_duo.start_server(app)
 
-    dash_dcc.wait_for_text_to_equal("#checklist h2", "H2 label")
-    dash_dcc.wait_for_text_to_equal("#checklist a", "Link in checklist")
+    dash_duo.wait_for_text_to_equal("#checklist h2", "H2 label")
+    dash_duo.wait_for_text_to_equal("#checklist a", "Link in checklist")
 
-    dash_dcc.wait_for_text_to_equal("#radio-items h3", "on")
-    dash_dcc.wait_for_text_to_equal("#radio-items p", "off")
+    dash_duo.wait_for_text_to_equal("#radio-items h3", "on")
+    dash_duo.wait_for_text_to_equal("#radio-items p", "off")
 
-    dash_dcc.wait_for_text_to_equal("#checkbox+label", "h4")
-    dash_dcc.wait_for_text_to_equal("#radiobutton+label", "h6")
-    dash_dcc.wait_for_text_to_equal("#switch+label", "h5")
+    dash_duo.wait_for_text_to_equal("#checkbox+label", "h4")
+    dash_duo.wait_for_text_to_equal("#radiobutton+label", "h6")
+    dash_duo.wait_for_text_to_equal("#switch+label", "h5")

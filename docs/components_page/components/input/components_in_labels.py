@@ -1,9 +1,10 @@
 from dash import Dash, html
 import dash_bootstrap_components as dbc
 
-flights = html.Div([html.Div(className="fa fa-plane pe-1"), "Flights"])
-car = html.Div([html.Div(className="fa fa-car pe-1"), "Rental Car"])
-hotel = html.Div([html.Div(className="fa fa-hotel pe-1"), "Hotel"])
+
+flights = html.Div([html.I(className="bi bi-airplane pe-1"), "Flights"])
+car = html.Div([html.I(className="bi bi-car-front pe-1"), "Rental Car"])
+hotel = html.Div([html.I(className="bi bi-house pe-1"), "Hotel"])
 
 radioitems = html.Div(
     [
