@@ -1,5 +1,5 @@
 from dash import Dash, dcc, html
-from dash_bootstrap_components import Checklist, Checkbox, RadioButton, RadioItems, Switch
+import dash_bootstrap_components as dbc
 
 
 def test_mdcap001_components_as_props(dash_dcc):
