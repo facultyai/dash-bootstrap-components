@@ -37,4 +37,4 @@ def test_mdcap001_components_as_props(dash_dcc):
 
     dash_dcc.wait_for_text_to_equal("#checkbox h4", "h4")
     dash_dcc.wait_for_text_to_equal("#radiobutton h6", "h6")
-    dash_dcc.wait_for_text_to_equal(#switch h5", "h5")
+    dash_dcc.wait_for_text_to_equal("#switch+label", "h5")
