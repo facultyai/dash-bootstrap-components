@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-from dash import Dash, html
+from dash import html
 
 flights = html.Div([html.I(className="bi bi-airplane pe-1"), "Flights"])
 car = html.Div([html.I(className="bi bi-car-front pe-1"), "Rental Car"])
