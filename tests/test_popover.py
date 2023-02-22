@@ -1,3 +1,4 @@
+import dash.testing.wait as wait
 from dash import Dash, html
 from dash_bootstrap_components import (
     Popover,
@@ -5,7 +6,6 @@ from dash_bootstrap_components import (
     PopoverHeader,
     themes,
 )
-import dash.testing.wait as wait
 from selenium.webdriver.common.action_chains import ActionChains
 
 

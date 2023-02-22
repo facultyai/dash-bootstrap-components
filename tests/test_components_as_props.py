@@ -1,5 +1,5 @@
-from dash import Dash,  html
 import dash_bootstrap_components as dbc
+from dash import Dash, html
 
 
 def test_mdcap001_components_as_props(dash_duo):
@@ -10,7 +10,10 @@ def test_mdcap001_components_as_props(dash_duo):
             dbc.Checklist(
                 [
                     {"label": html.H2("H2 label"), "value": "h2"},
-                    {"label": html.A("Link in checklist", href="#"), "value": "a"},
+                    {
+                        "label": html.A("Link in checklist", href="#"),
+                        "value": "a",
+                    },
                 ],
                 id="checklist",
             ),
@@ -21,9 +24,9 @@ def test_mdcap001_components_as_props(dash_duo):
                 ],
                 id="radio-items",
             ),
-            dbc.Checkbox(label= html.H4("h4"), value= "h4", id="checkbox"),
+            dbc.Checkbox(label=html.H4("h4"), value="h4", id="checkbox"),
             dbc.RadioButton(label=html.H6("h6"), value="h6", id="radiobutton"),
-            dbc.Switch(label=html.H5("h5"), value="h5", id="switch")
+            dbc.Switch(label=html.H5("h5"), value="h5", id="switch"),
         ]
     )
 
