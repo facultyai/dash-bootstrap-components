@@ -184,8 +184,7 @@ RadioItems.propTypes = {
         /**
          * The radio item's label
          */
-        label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-          .isRequired,
+        label: PropTypes.node.isRequired,
 
         /**
          * The value of the radio item. This value corresponds to the items

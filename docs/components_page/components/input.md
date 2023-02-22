@@ -108,6 +108,13 @@ If you need more granular control over checkboxes and radio buttons, you can als
 
 {{example:components/input/radio_check_standalone.py:standalone_radio_check}}
 
+## Components in labels
+
+You can include components in labels for `Checklist`, `RadioItems`, `Checkbox`, `RadioButton`, and  `Switch`.
+
+{{example:components/input/components_in_labels.py:components_in_labels}}
+
+
 ## Color picker
 
 When using `Input` with `type="color"`, the user may specify a color, either by using a visual color picker or by entering the color in a text field in #rrggbb format.
