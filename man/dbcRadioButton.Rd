@@ -43,7 +43,7 @@ The style of the <input> checkbox element.}
 
 \item{input_style}{Named list. The style of the <input> checkbox element.}
 
-\item{label}{Character. The label of the <input> element}
+\item{label}{A list of or a singular dash component, string or number. The label of the <input> element}
 
 \item{labelClassName}{Character. **DEPRECATED** Use `label_class_name` instead.
 

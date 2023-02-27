@@ -106,7 +106,7 @@ those elements have the following types:
 
 \item{options}{List of character | numerics | named list | list of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
 those elements have the following types:
-  - label (character | numeric; required): the checkbox's label
+  - label (a list of or a singular dash component, string or number; required): the checkbox's label
   - value (character | numeric; required): the value of the checkbox. this value corresponds to the items
 specified in the `value` property.
   - disabled (logical; optional): if true, this checkbox is disabled and can't be clicked on.

@@ -71,7 +71,7 @@ those elements have the following types:
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
-\item{title}{Character. The header title}
+\item{title}{A list of or a singular dash component, string or number. The header title}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}
