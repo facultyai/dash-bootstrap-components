@@ -126,7 +126,7 @@ RadioButton.propTypes = {
   /**
    * The label of the <input> element
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
 
   /**
    * The id of the label

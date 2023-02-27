@@ -27,7 +27,6 @@ def test_jl_button_group(dashjl):
 
 
 def check_button_group_callbacks(runner):
-
     runner.find_element(
         "label[for='_dbcprivate_radioitems_radios_input_2']"
     ).click()

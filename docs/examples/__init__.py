@@ -87,7 +87,6 @@ def build_app_from_example(app, name, code, code_link, show_warning=False):
 
 
 def register_apps():
-
     iris_app_ = build_app_from_example(
         iris_app,
         "iris",
@@ -116,7 +115,9 @@ def register_apps():
         sidebar_app,
         "simple-sidebar",
         sidebar_source,
-        os.path.join(GITHUB_EXAMPLES, "multi-page-apps/simple_sidebar.py"),
+        os.path.join(
+            GITHUB_EXAMPLES, "templates/multi-page-apps/simple_sidebar.py"
+        ),
         show_warning=True,
     )
 

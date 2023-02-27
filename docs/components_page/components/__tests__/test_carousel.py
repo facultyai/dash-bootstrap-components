@@ -28,7 +28,6 @@ def test_jl_carousel(dashjl):
 
 
 def check_carousel_callbacks(runner):
-
     item = "label[for='_dbcprivate_radioitems_slide-number_input_1']"
 
     runner.find_element(item).click()

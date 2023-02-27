@@ -27,7 +27,6 @@ def test_jl_pagination_callback(dashjl):
 
 
 def check_pagination_callback_callbacks(runner):
-
     # Check it has 10 page-items objects in it
     pages = runner.find_elements("#pagination .page-item")
     wait.until(
