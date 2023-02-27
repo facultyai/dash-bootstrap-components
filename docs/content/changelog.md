@@ -6,6 +6,19 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.4.0 - 2023/02/27
+
+Version 1.4.0 of dash-bootstrap-components. This version contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+
+- It is now possible to pass props as labels to `Checklist`, `RadioItems`, `RadioButton`, `Checkbox`, and `Switch` components. ([PR 940](https://github.com/facultyai/dash-bootstrap-components/pull/940))
+
+### Fixed
+
+- Ensure ids in `dbc.Tab` and `dbc.AccordionItem` are stringified before components are rendered ([PR 937](https://github.com/facultyai/dash-bootstrap-components/pull/937))
+- Allow `Offcanvas.title` to be an arbitrary dash component ([PR 938](https://github.com/facultyai/dash-bootstrap-components/pull/938/files))
+
 ## 1.3.1 - 2023/01/29
 
 Version 1.3.1 of dash-bootstrap-components. This version contains bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
