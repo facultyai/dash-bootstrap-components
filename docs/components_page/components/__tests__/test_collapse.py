@@ -50,7 +50,6 @@ def test_jl_collapse_multiple(dashjl):
 
 
 def check_collapse_multiple_callbacks(runner):
-
     runner.find_element("#left").click()
     wait.until(
         lambda: runner.find_element("#left-collapse").get_attribute("class")

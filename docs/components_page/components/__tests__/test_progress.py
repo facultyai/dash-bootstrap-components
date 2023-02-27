@@ -25,7 +25,6 @@ def test_jl_progress(dashjl):
 
 
 def check_progress_callbacks(runner):
-
     wait.until(
         lambda: runner.find_element(
             "div[class^='progress-bar']"

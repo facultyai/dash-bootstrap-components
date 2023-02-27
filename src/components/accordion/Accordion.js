@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAccordion from 'react-bootstrap/Accordion';
 
-import {parseChildrenToArray, resolveChildProps} from '../../private/util';
+import {
+  parseChildrenToArray,
+  resolveChildProps,
+  stringifyId
+} from '../../private/util';
 
 /**
  * A self contained Accordion component. Build up the children using the
@@ -59,17 +63,18 @@ const Accordion = props => {
     children.map((child, idx) => {
       const childProps = resolveChildProps(child);
       const {
-        children,
         title,
         item_id,
         loading_state,
         class_name,
         className,
+        id,
         ...otherProps
       } = childProps;
       const itemID = item_id || 'item-' + idx;
       return (
         <RBAccordion.Item
+          id={stringifyId(id)}
           key={itemID}
           eventKey={itemID}
           className={class_name || className}

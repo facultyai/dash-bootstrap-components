@@ -6,6 +6,7 @@ SOURCES = [
     "dash_bootstrap_components",
     "docs",
     "examples",
+    "tests",
     "noxfile.py",
     "tasks.py",
 ]

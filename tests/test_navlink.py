@@ -1,9 +1,8 @@
-from dash import Dash
+from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from dash_bootstrap_components import NavLink
-from dash import dcc, html
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 def test_dbnl001_auto_active(dash_duo):
