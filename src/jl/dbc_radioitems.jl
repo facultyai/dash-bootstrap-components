@@ -98,7 +98,7 @@ which is equal to
 ]
 ```. options has the following type: Array of String | Reals | Dict | Array of lists containing elements 'label', 'value', 'disabled', 'input_id', 'label_id'.
 Those elements have the following types:
-  - `label` (String | Real; required): The radio item's label
+  - `label` (a list of or a singular dash component, string or number; required): The radio item's label
   - `value` (String | Real; required): The value of the radio item. This value corresponds to the items
 specified in the `value` property.
   - `disabled` (Bool; optional): If true, this radio item is disabled and can't be clicked on.

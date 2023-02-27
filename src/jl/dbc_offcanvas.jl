@@ -46,7 +46,7 @@ Those elements have the following types:
 - `placement` (a value equal to: 'start', 'end', 'top', 'bottom'; optional): Which side of the viewport the offcanvas will appear from.
 - `scrollable` (Bool; optional): Allow body scrolling while offcanvas is open.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
-- `title` (String; optional): The header title
+- `title` (a list of or a singular dash component, string or number; optional): The header title
 """
 function dbc_offcanvas(; kwargs...)
         available_props = Symbol[:children, :id, :autoFocus, :autofocus, :backdrop, :backdropClassName, :backdrop_class_name, :className, :class_name, :close_button, :is_open, :keyboard, :labelledBy, :labelledby, :loading_state, :placement, :scrollable, :style, :title]

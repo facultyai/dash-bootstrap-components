@@ -27,7 +27,7 @@ The class of the <input> checkbox element
 The style of the <input> checkbox element.
 - `input_class_name` (String; optional): The class of the <input> checkbox element
 - `input_style` (Dict; optional): The style of the <input> checkbox element.
-- `label` (String; optional): The label of the <input> element
+- `label` (a list of or a singular dash component, string or number; optional): The label of the <input> element
 - `labelClassName` (String; optional): **DEPRECATED** Use `label_class_name` instead.
 
 CSS classes to apply to the <label> element for each item.
