@@ -79,9 +79,9 @@ const Tabs = props => {
               {active}
             )}
             style={{
-              ...(active && childProps.active_label_style),
               ...(!childProps.disabled && {cursor: 'pointer'}),
-              ...childProps.label_style
+              ...childProps.label_style,
+              ...(active && childProps.active_label_style)
             }}
             disabled={childProps.disabled}
             onClick={() => {
