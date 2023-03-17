@@ -15,13 +15,13 @@ radioitems = html.Div(
                 {"label": hotel, "value": 3},
             ],
             value=1,
-            id="radioitems-input",
+            id="radioitems-with-icons",
         ),
     ]
 )
 
 checkbox = dbc.Checkbox(
-    id="standalone-checkbox",
+    id="checkbox-with-link",
     label=html.Div(
         ["I agree to the ", html.A("Terms and Conditions", href="#")]
     ),
