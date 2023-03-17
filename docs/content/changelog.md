@@ -6,6 +6,15 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.4.1 - 2023/03/17
+
+Version 1.4.1 of dash-bootstrap-components. This version contains bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Fixed
+
+- Fixed issue with `active_label_style` in `dbc.Tab` not overwriting `label_style` ([PR 946](https://github.com/facultyai/dash-bootstrap-components/pull/946))
+- Updated CDN links for icons in R and Julia packages  ([PR 950](https://github.com/facultyai/dash-bootstrap-components/pull/950))
+
 ## 1.4.0 - 2023/02/27
 
 Version 1.4.0 of dash-bootstrap-components. This version contains some new features and bug fixes. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
