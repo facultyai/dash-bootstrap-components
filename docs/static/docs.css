@@ -89,8 +89,8 @@ span.hljs-meta {
   margin: 1rem;
 }
 
-.example-source pre.hljs {
-  border-radius: 0px 0px 6px 6px;
+.example-source-container pre {
+  margin-bottom: 0
 }
 
 .source-container pre.hljs {
