@@ -33,17 +33,3 @@ def test(session):
     session.install("dash[testing]>=2.0.0")
     session.install(".")
     session.run("pytest", "--headless", "tests")
-
-
-@nox.session()
-def doctest(session):
-    session.install("pytest")
-    session.install("dash[testing]")
-    session.install("-r", "docs/requirements.txt")
-    session.install(".")
-    session.run(
-        "pytest",
-        "--headless",
-        "-v",
-        "docs/components_page/components/__tests__",
-    )
