@@ -85,12 +85,17 @@ span.hljs-meta {
   border-radius: 6px;
 }
 
+.example-container code {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .example {
   margin: 1rem;
 }
 
-.example-source pre.hljs {
-  border-radius: 0px 0px 6px 6px;
+.example-source-container pre {
+  margin-bottom: 0;
 }
 
 .source-container pre.hljs {

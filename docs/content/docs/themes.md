@@ -14,9 +14,6 @@ You can link to a stylesheet served over a CDN, or serve CSS locally depending o
 
 _dash-bootstrap-components_ contains links to Bootstrap and Bootswatch stylesheets hosted on [JSDelivr][jsdelivr] so you can conveniently link to one of them in your app. The easiest way to do so is to use the `external_stylesheets` argument when instantiating your app.
 
-~~~bootstrap-tabs
-Python
-
 Links are available in the `dash_bootstrap_components.themes` submodule.
 
 ```python
@@ -34,45 +31,6 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(external_stylesheets=[dbc.themes.CYBORG])
 ```
------
-R
-
-Links are available in the `dbcThemes` list which is added to your namespace when you import `dashBootstrapComponents`.
-
-```r
-library(dash)
-library(dashBootstrapComponents)
-
-app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
-```
-
-This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg](https://bootswatch.com/cyborg/) you would just change this to
-
-```r
-library(dash)
-library(dashBootstrapComponents)
-
-app <- Dash$new(external_stylesheets = dbcThemes$CYBORG)
-```
------
-Julia
-
-Links are available as part of the `dbc_themes` named tuple available in `DashBootstrapComponents`.
-
-```julia
-using Dash, DashBootstrapComponents
-
-app = dash(external_stylesheets=[dbc_themes.BOOTSTRAP])
-```
-
-This will link the standard Bootstrap stylesheet. To link one of the Bootswatch styles, such as [Cyborg](https://bootswatch.com/cyborg/) you would just change this to
-
-```julia
-using Dash, DashBootstrapComponents
-
-app = dash(external_stylesheets=[dbc_themes.CYBORG])
-```
-~~~
 
 See the [available themes](#available-themes) for more.
 
@@ -80,28 +38,10 @@ See the [available themes](#available-themes) for more.
 
 Each theme such as is simply a BootstrapCDN URL stored as a string, so using the themes module is really equivalent to doing something like the following.
 
-~~~bootstrap-tabs
-Python
-
 ```python
 BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 app = dash.Dash(external_stylesheets=[BS])
 ```
------
-R
-
-```r
-BS <- "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-app <- Dash$new(external_stylesheets = BS)
-```
------
-Julia
-
-```julia
-BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-app = dash(external_stylesheets=[BS])
-```
-~~~
 
 You can change this URL to anything you like, for example if you prefer to use a mirror or a different CDN to supply the stylesheet.
 

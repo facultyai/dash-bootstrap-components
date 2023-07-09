@@ -28,7 +28,7 @@ input_ = html.Div(
                     options=[
                         {"label": "Python", "value": "python"},
                         {"label": "R", "value": "r"},
-                        {"label": "Julia", "value": "r"},
+                        {"label": "Julia", "value": "julia"},
                         {
                             "label": "Matlab",
                             "value": "matlab",

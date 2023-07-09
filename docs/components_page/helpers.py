@@ -1,31 +1,18 @@
-import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 
-def HighlightedSource(py_source, r_source, jl_source, className="px-3"):
-    return dbc.Tabs(
-        [
-            dbc.Tab(
-                dcc.Markdown(f"```{lang}\n{source}\n```", className="m-3"),
-                label=lang.capitalize(),
-                className="example-source",
-            )
-            for lang, source in [
-                ("python", py_source),
-                ("r", r_source),
-                ("julia", jl_source),
-            ]
-            if source is not None
-        ],
-        className=className,
+def HighlightedSource(source):
+    return html.Div(
+        dcc.Markdown(f"```python\n{source}\n```"),
+        className="example-source-container",
     )
 
 
-def ExampleContainer(component, py_source, r_source, jl_source):
+def ExampleContainer(component, source):
     return html.Div(
         [
             html.Div(component, className="example"),
-            HighlightedSource(py_source, r_source, jl_source),
+            HighlightedSource(source),
         ],
         className="example-container",
     )
