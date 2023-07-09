@@ -87,7 +87,7 @@ def _parse_code_example(filename):
 
     return html.Div(
         HighlightedSource(source),
-        className="border source-container rounded",
+        className="border source-container rounded mb-3",
     )
 
 

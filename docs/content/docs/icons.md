@@ -40,31 +40,30 @@ app = dash.Dash(
 ## Example
 
 This simple example adds Bootstrap Icons to some alerts.
-
-<div class="example">
-    <div>
-        <div class="alert alert-info d-flex align-items-center">
-        <i class="bi bi-info-circle-fill me-2"></i>
-        An example info alert with an icon
-        </div>
-        <div class="alert alert-success d-flex align-items-center">
-        <i class="bi bi-check-circle-fill me-2"></i>
-        An example success alert with an icon
-        </div>
-        <div class="alert alert-warning d-flex align-items-center">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>
-        An example warning alert with an icon
-        </div>
-        <div class="alert alert-danger d-flex align-items-center">
-        <i class="bi bi-x-octagon-fill me-2"></i>
-        An example danger alert with an icon
+<div class="example-container">
+    <div class="example">
+        <div>
+            <div class="alert alert-info d-flex align-items-center">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            An example info alert with an icon
+            </div>
+            <div class="alert alert-success d-flex align-items-center">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            An example success alert with an icon
+            </div>
+            <div class="alert alert-warning d-flex align-items-center">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            An example warning alert with an icon
+            </div>
+            <div class="alert alert-danger d-flex align-items-center">
+            <i class="bi bi-x-octagon-fill me-2"></i>
+            An example danger alert with an icon
+            </div>
         </div>
     </div>
-</div>
-
-
-```python
-import dash_bootstrap_components as dbc
+    <div class="example-source-container">
+        <div>
+            <pre><code class="language-python hljs">import dash_bootstrap_components as dbc
 import dash_html_components as html
 
 alerts = html.Div(
@@ -102,5 +101,7 @@ alerts = html.Div(
             className="d-flex align-items-center",
         ),
     ]
-)
-```
+)</code></pre>
+        </div>
+    </div>
+</div>

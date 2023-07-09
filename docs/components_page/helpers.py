@@ -4,7 +4,7 @@ from dash import dcc, html
 def HighlightedSource(source):
     return html.Div(
         dcc.Markdown(f"```python\n{source}\n```"),
-        className="example-source-container p-3",
+        className="example-source-container",
     )
 
 
