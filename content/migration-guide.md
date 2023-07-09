@@ -11,41 +11,17 @@ _dash-bootstrap-components_ v1 contains loads of new features, but also some bre
 
 This guide introduces the new features, and also covers the changes you must make to run your apps with _dash-bootstrap-components_ 1.0.0 rather than 0.13.x (the final v0 releases). If you find any issues not covered here, or bugs in v1 please [raise an issue](https://github.com/facultyai/dash-bootstrap-components/issues/new/choose) on our GitHub repository.
 
-If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers. You can still see documentation for version 0 [here](https://dbc-v0.herokuapp.com).
-
-~~~bootstrap-tabs
-Python
-### PyPI
-
-To install the last v0 release of _dash-bootstrap-components_ from PyPI use
+If you're not ready to upgrade yet, you can continue to use earlier versions of dash-bootstrap-components, just be sure to pin the version numbers.
 
 ```sh
 pip install "dash-bootstrap-components<1"
 ```
 
-### Anaconda
-
-If you installed _dash-bootstrap-components_ with `conda` you can use
+Or if you installed _dash-bootstrap-components_ with `conda` you can use
 
 ```sh
 conda install -c conda-forge "dash-bootstrap-components<1"
 ```
------
-R
-You can install earlier versions of _dash-bootstrap-components_ from our GitHub repository by specifying the relevant tag
-
-```r
-library(devtools)
-install_github('facultyai/dash-bootstrap-components@r0.13.0')
-```
------
-Julia
-You can install earlier versions of `DashBootstrapComponents` by adding the version number to the install command.
-
-```julia-repl
-pkg> add DashBootstrapComponents@0.13.0
-```
-~~~
 
 ## Dependencies
 
