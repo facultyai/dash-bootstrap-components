@@ -6,6 +6,17 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.4.2 - 2023/07/15
+
+Version 1.4.2 of dash-bootstrap-components. This version contains updates and bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Fixed
+
+- Fixed navigation bug when using auto-dismissing `Alert` ([PR 962](https://github.com/facultyai/dash-bootstrap-components/pull/962))
+
+### Changed
+- Updated CDN links for Bootstrap and Bootswatch stylesheets ([PR 963](https://github.com/facultyai/dash-bootstrap-components/pull/963))
+
 ## 1.4.1 - 2023/03/17
 
 Version 1.4.1 of dash-bootstrap-components. This version contains bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
