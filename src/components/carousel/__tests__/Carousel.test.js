@@ -48,7 +48,7 @@ describe('Carousel', () => {
 
   test('tracks most recently clicked slide with "active_index" prop', () => {
     const mockSetProps = jest.fn();
-    const {container, getByText, rerender} = render(
+    const {container} = render(
       <Carousel items={slides} setProps={mockSetProps} active_index={0} />
     );
 
@@ -62,5 +62,19 @@ describe('Carousel', () => {
     userEvent.click(nextButton);
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].active_index).toBe(1);
+  });
+
+  test('carousel item accepts href', () => {
+    const linkedSlides = [
+      {key: '0', src: '', alt: 'z', href: '/test'},
+      ...slides
+    ];
+
+    const carousel = render(<Carousel items={linkedSlides} />);
+    const {firstChild: carouselItem} = carousel.container.querySelector(
+      '.carousel-inner'
+    );
+    expect(carouselItem).toHaveAttribute('href', '/test');
+    expect(carouselItem.tagName.toLowerCase()).toEqual('a');
   });
 });

@@ -28,8 +28,14 @@ const Carousel = props => {
         ? item.imgClassName
         : 'd-block w-100';
 
+    const additionalProps = item.href ? {href: item.href} : {};
+
     return (
-      <RBCarousel.Item key={item.key}>
+      <RBCarousel.Item
+        key={item.key}
+        as={item.href ? 'a' : 'div'}
+        {...additionalProps}
+      >
         <img
           src={item.src}
           className={item.img_class_name || item.imgClassName}
@@ -148,7 +154,11 @@ Carousel.propTypes = {
        *
        * The class name for the header and caption container
        */
-      captionClassName: PropTypes.string
+      captionClassName: PropTypes.string,
+      /**
+       * Optional hyperlink to add to the item.
+       */
+      href: PropTypes.string
     })
   ).isRequired,
 
