@@ -77,4 +77,45 @@ describe('Carousel', () => {
     expect(carouselItem).toHaveAttribute('href', '/test');
     expect(carouselItem.tagName.toLowerCase()).toEqual('a');
   });
+
+  test('carousel item external target', () => {
+    const linkedSlides = [
+      {
+        key: '0',
+        src: '',
+        alt: 'z',
+        href: 'http://www.example.com',
+        target: '_blank'
+      },
+      {
+        key: '1',
+        src: '',
+        alt: 'z',
+        href: '/test',
+        target: '_self',
+        external_link: true
+      },
+      {
+        key: '2',
+        src: '',
+        alt: 'z',
+        href: 'http://www.example.com'
+      },
+      ...slides
+    ];
+
+    const carousel = render(<Carousel items={linkedSlides} />);
+    const carouselItems = carousel.container.querySelectorAll('.carousel-item');
+    const blankTargetItem = carouselItems[0];
+    expect(blankTargetItem).toHaveAttribute('target', '_blank');
+    expect(blankTargetItem.tagName.toLowerCase()).toEqual('a');
+
+    const selfTargetItem = carouselItems[1];
+    expect(selfTargetItem).toHaveAttribute('target', '_self');
+    expect(selfTargetItem.tagName.toLowerCase()).toEqual('a');
+
+    const defaultTargetItem = carouselItems[2];
+    expect(defaultTargetItem).toHaveAttribute('target', '_self');
+    expect(defaultTargetItem.tagName.toLowerCase()).toEqual('a');
+  });
 });
