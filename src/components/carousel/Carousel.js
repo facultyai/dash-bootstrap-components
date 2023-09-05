@@ -32,7 +32,11 @@ const Carousel = props => {
 
     const useLink = item.href && true;
     const additionalProps = useLink
-      ? {href: item.href, external_link: item.external_link}
+      ? {
+          href: item.href,
+          external_link: item.external_link,
+          target: item.target || '_self'
+        }
       : {};
 
     return (
@@ -167,6 +171,10 @@ Carousel.propTypes = {
        * with the external_link argument.
        */
       href: PropTypes.string,
+      /**
+       * Optional target attribute for the link. Only applies if `href` is set, default `_self`.
+       */
+      target: PropTypes.string,
       /**
        * If true, the browser will treat this as an external link,
        * forcing a page refresh at the new location. If false,
