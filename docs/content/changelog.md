@@ -6,6 +6,17 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.5.0 - 2023/09/07
+
+Version 1.5.0 of dash-bootstrap-components. This version makes some improvements to `Carousel` and `Textarea` as well as updating CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Changed
+- Textarea will no longer increment `n_submit` if the user types "shift + enter" to create a new-line ([PR 968](https://github.com/facultyai/dash-bootstrap-components/pull/968))
+- CDN links have been updated to use Bootstrap version 5.3.1 ([PR 977](https://github.com/facultyai/dash-bootstrap-components/pull/977))
+
+### Added
+- You can now pass a `href` attribute to a Carousel item to render that item as a link. Thanks @mapix for the contribution! ([PR 971](https://github.com/facultyai/dash-bootstrap-components/pull/971), [PR 973](https://github.com/facultyai/dash-bootstrap-components/pull/973), [PR 975](https://github.com/facultyai/dash-bootstrap-components/pull/975))
+
 ## 1.4.2 - 2023/07/15
 
 Version 1.4.2 of dash-bootstrap-components. This version contains updates and bug fixes but no new features. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
