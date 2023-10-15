@@ -4,6 +4,8 @@ import {omit} from 'ramda';
 
 import RBCarousel from 'react-bootstrap/Carousel';
 
+import Link from '../../private/Link';
+
 /**
  * Component for creating Bootstrap carousel.  This component is a slideshow
  * for cycling through a series of content.
@@ -28,8 +30,21 @@ const Carousel = props => {
         ? item.imgClassName
         : 'd-block w-100';
 
+    const useLink = item.href && true;
+    const additionalProps = useLink
+      ? {
+          href: item.href,
+          external_link: item.external_link,
+          target: item.target || '_self'
+        }
+      : {};
+
     return (
-      <RBCarousel.Item key={item.key}>
+      <RBCarousel.Item
+        key={item.key}
+        as={item.href ? Link : 'div'}
+        {...additionalProps}
+      >
         <img
           src={item.src}
           className={item.img_class_name || item.imgClassName}
@@ -148,7 +163,27 @@ Carousel.propTypes = {
        *
        * The class name for the header and caption container
        */
-      captionClassName: PropTypes.string
+      captionClassName: PropTypes.string,
+      /**
+       * Optional hyperlink to add to the item. Item will be rendered as a
+       * HTML <a> or as a Dash-style link depending on whether the link is
+       * deemed to be internal or external. Override this automatic detection
+       * with the external_link argument.
+       */
+      href: PropTypes.string,
+      /**
+       * Optional target attribute for the link. Only applies if `href` is set, default `_self`.
+       */
+      target: PropTypes.string,
+      /**
+       * If true, the browser will treat this as an external link,
+       * forcing a page refresh at the new location. If false,
+       * this just changes the location without triggering a page
+       * refresh. Use this if you are observing dcc.Location, for
+       * instance. Defaults to true for absolute URLs and false
+       * otherwise.
+       */
+      external_link: PropTypes.bool
     })
   ).isRequired,
 

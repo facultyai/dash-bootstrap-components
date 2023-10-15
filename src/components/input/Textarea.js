@@ -71,7 +71,8 @@ const Textarea = props => {
   };
 
   const onKeyPress = e => {
-    if (setProps && e.key === 'Enter') {
+    if (setProps && e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault(); // don't create newline if submitting
       const payload = {
         n_submit: n_submit + 1,
         n_submit_timestamp: Date.now()

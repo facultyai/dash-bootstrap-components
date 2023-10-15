@@ -200,6 +200,15 @@ describe('Textarea', () => {
         expect(n_submit_timestamp).toBeLessThanOrEqual(after);
         expect(value).toEqual('some text');
       });
+
+      test('submit not dispatched if shift+enter pressed', () => {
+        userEvent.type(
+          textarea,
+          'some text{shift>}{enter}{/shift}some more text'
+        );
+        // one click, no submits
+        expect(mockSetProps.mock.calls).toHaveLength(1);
+      });
     });
   });
 });

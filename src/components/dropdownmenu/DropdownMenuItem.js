@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBDropdown from 'react-bootstrap/Dropdown';
 
-import Link, {isExternalLink} from '../../private/Link';
+import Link from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 
 /**

@@ -48,7 +48,7 @@ describe('Carousel', () => {
 
   test('tracks most recently clicked slide with "active_index" prop', () => {
     const mockSetProps = jest.fn();
-    const {container, getByText, rerender} = render(
+    const {container} = render(
       <Carousel items={slides} setProps={mockSetProps} active_index={0} />
     );
 
@@ -62,5 +62,60 @@ describe('Carousel', () => {
     userEvent.click(nextButton);
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].active_index).toBe(1);
+  });
+
+  test('carousel item accepts href', () => {
+    const linkedSlides = [
+      {key: '0', src: '', alt: 'z', href: '/test'},
+      ...slides
+    ];
+
+    const carousel = render(<Carousel items={linkedSlides} />);
+    const {firstChild: carouselItem} = carousel.container.querySelector(
+      '.carousel-inner'
+    );
+    expect(carouselItem).toHaveAttribute('href', '/test');
+    expect(carouselItem.tagName.toLowerCase()).toEqual('a');
+  });
+
+  test('carousel item external target', () => {
+    const linkedSlides = [
+      {
+        key: '0',
+        src: '',
+        alt: 'z',
+        href: 'http://www.example.com',
+        target: '_blank'
+      },
+      {
+        key: '1',
+        src: '',
+        alt: 'z',
+        href: '/test',
+        target: '_self',
+        external_link: true
+      },
+      {
+        key: '2',
+        src: '',
+        alt: 'z',
+        href: 'http://www.example.com'
+      },
+      ...slides
+    ];
+
+    const carousel = render(<Carousel items={linkedSlides} />);
+    const carouselItems = carousel.container.querySelectorAll('.carousel-item');
+    const blankTargetItem = carouselItems[0];
+    expect(blankTargetItem).toHaveAttribute('target', '_blank');
+    expect(blankTargetItem.tagName.toLowerCase()).toEqual('a');
+
+    const selfTargetItem = carouselItems[1];
+    expect(selfTargetItem).toHaveAttribute('target', '_self');
+    expect(selfTargetItem.tagName.toLowerCase()).toEqual('a');
+
+    const defaultTargetItem = carouselItems[2];
+    expect(defaultTargetItem).toHaveAttribute('target', '_self');
+    expect(defaultTargetItem.tagName.toLowerCase()).toEqual('a');
   });
 });

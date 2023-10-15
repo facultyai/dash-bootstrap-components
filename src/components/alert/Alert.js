@@ -37,6 +37,7 @@ const Alert = props => {
         timeout.current = null;
       }
     }
+    return () => clearTimeout(timeout.current);
   }, [is_open]);
 
   const dismiss = () => {

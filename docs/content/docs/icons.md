@@ -20,9 +20,6 @@ Font Awesome is perhaps the most widely used icon library and is very commonly u
 
 With either library, if you are trying to use an icon, and it simply isn't appearing, then please check which icon documentation version you are using. Both libraries add new icons regularly, and it may be that the icon you want has been renamed or isn't included in the versions we include listed above.
 
-~~~bootstrap-tabs
-Python
-
 Links are available in the `dash_bootstrap_components.icons` submodule.
 
 ```python
@@ -39,72 +36,34 @@ app = dash.Dash(
 )
 
 ```
------
-R
-
-Links are available in the `dbcIcons` list which is added to your namespace when you import `dashBootstrapComponents`.
-
-```r
-library(dash)
-library(dashBootstrapComponents)
-
-# For Bootstrap Icons...
-app <- Dash$new(
-    external_stylesheets = list(dbcThemes$BOOTSTRAP, dbcIcons$BOOTSTRAP)
-)
-# Or for Font Awesome Icons...
-app <- Dash$new(
-    external_stylesheets = list(dbcThemes$BOOTSTRAP, dbcIcons$FONT_AWESOME)
-)
-```
-
------
-Julia
-
-Links are available as part of the `dbc_icons` named tuple available in `DashBootstrapComponents`.
-
-```julia
-using Dash, DashBootstrapComponents
-
-# For Bootstrap Icons...
-app = dash(
-    external_stylesheets=[dbc_themes.BOOTSTRAP, dbc_icons.BOOTSTRAP]
-)
-# Or for Font Awesome Icons...
-app = dash(
-    external_stylesheets=[dbc_themes.BOOTSTRAP, dbc_icons.FONT_AWESOME]
-)
-```
-~~~
 
 ## Example
 
 This simple example adds Bootstrap Icons to some alerts.
-
-~~~bootstrap-example-tabs
-<div>
-    <div class="alert alert-info d-flex align-items-center">
-    <i class="bi bi-info-circle-fill me-2"></i>
-    An example info alert with an icon
+<div class="example-container">
+    <div class="example">
+        <div>
+            <div class="alert alert-info d-flex align-items-center">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            An example info alert with an icon
+            </div>
+            <div class="alert alert-success d-flex align-items-center">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            An example success alert with an icon
+            </div>
+            <div class="alert alert-warning d-flex align-items-center">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            An example warning alert with an icon
+            </div>
+            <div class="alert alert-danger d-flex align-items-center">
+            <i class="bi bi-x-octagon-fill me-2"></i>
+            An example danger alert with an icon
+            </div>
+        </div>
     </div>
-    <div class="alert alert-success d-flex align-items-center">
-    <i class="bi bi-check-circle-fill me-2"></i>
-    An example success alert with an icon
-    </div>
-    <div class="alert alert-warning d-flex align-items-center">
-    <i class="bi bi-exclamation-triangle-fill me-2"></i>
-    An example warning alert with an icon
-    </div>
-    <div class="alert alert-danger d-flex align-items-center">
-    <i class="bi bi-x-octagon-fill me-2"></i>
-    An example danger alert with an icon
-    </div>
-</div>
------
-Python
-
-```python
-import dash_bootstrap_components as dbc
+    <div class="example-source-container">
+        <div>
+            <pre><code class="language-python hljs">import dash_bootstrap_components as dbc
 import dash_html_components as html
 
 alerts = html.Div(
@@ -142,91 +101,7 @@ alerts = html.Div(
             className="d-flex align-items-center",
         ),
     ]
-)
-```
------
-R
-
-```r
-library(dashBootstrapComponents)
-
-alerts <- div(
-  list(
-    dbcAlert(
-      list(
-        html$i(className = "bi bi-info-circle-fill me-2"),
-        "An example info alert with an icon"
-      ),
-      color = "info",
-      className = "d-flex align-items-center"
-    ),
-    dbcAlert(
-      list(
-        html$i(className = "bi bi-check-circle-fill me-2"),
-        "An example success alert with an icon"
-      ),
-      color = "success",
-      className = "d-flex align-items-center"
-    ),
-    dbcAlert(
-      list(
-        html$i(className = "bi bi-exclamation-triangle-fill me-2"),
-        "An example warning alert with an icon"
-      ),
-      color = "warning",
-      className = "d-flex align-items-center"
-    ),
-    dbcAlert(
-      list(
-        html$i(className = "bi bi-x-octagon-fill me-2"),
-        "An example danger alert with an icon"
-      ),
-      color = "danger",
-      className = "d-flex align-items-center"
-    )
-  )
-)
-```
-
------
-Julia
-
-```julia
-using DashBootstrapComponents
-
-alerts = html_div([
-    dbc_alert(
-        [
-            html_i(className = "bi bi-info-circle-fill me-2"),
-            "An example info alert with an icon",
-        ],
-        color = "info",
-        className = "d-flex align-items-center",
-    ),
-    dbc_alert(
-        [
-            html_i(className = "bi bi-check-circle-fill me-2"),
-            "An example success alert with an icon",
-        ],
-        color = "success",
-        className = "d-flex align-items-center",
-    ),
-    dbc_alert(
-        [
-            html_i(className = "bi bi-exclamation-triangle-fill me-2"),
-            "An example warning alert with an icon",
-        ],
-        color = "warning",
-        className = "d-flex align-items-center",
-    ),
-    dbc_alert(
-        [
-            html_i(className = "bi bi-x-octagon-fill me-2"),
-            "An example danger alert with an icon",
-        ],
-        color = "danger",
-        className = "d-flex align-items-center",
-    ),
-])
-```
-~~~
+)</code></pre>
+        </div>
+    </div>
+</div>
