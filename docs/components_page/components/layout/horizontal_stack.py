@@ -5,20 +5,20 @@ stack = html.Div(
     [
         dbc.Stack(
             [
-                html.Div("Horizontal", className="bg-light border"),
-                html.Div("Stack", className="bg-light border"),
-                html.Div("Without", className="bg-light border"),
-                html.Div("Gaps", className="bg-light border"),
+                html.Div("Horizontal", className="text-bg-light border"),
+                html.Div("Stack", className="text-bg-light border"),
+                html.Div("Without", className="text-bg-light border"),
+                html.Div("Gaps", className="text-bg-light border"),
             ],
             direction="horizontal",
         ),
         html.Hr(),
         dbc.Stack(
             [
-                html.Div("Horizontal", className="bg-light border"),
-                html.Div("Stack", className="bg-light border"),
-                html.Div("With", className="bg-light border"),
-                html.Div("Gaps", className="bg-light border"),
+                html.Div("Horizontal", className="text-bg-light border"),
+                html.Div("Stack", className="text-bg-light border"),
+                html.Div("With", className="text-bg-light border"),
+                html.Div("Gaps", className="text-bg-light border"),
             ],
             direction="horizontal",
             gap=3,
