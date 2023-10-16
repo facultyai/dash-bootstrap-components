@@ -15,7 +15,9 @@ stack = html.Div(
         html.Hr(),
         dbc.Stack(
             [
-                html.Div("This stack has gaps", className="text-bg-light border"),
+                html.Div(
+                    "This stack has gaps", className="text-bg-light border"
+                ),
                 html.Div("Next item", className="text-bg-light border"),
                 html.Div("Last item", className="text-bg-light border"),
             ],
