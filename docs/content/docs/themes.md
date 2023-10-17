@@ -59,6 +59,45 @@ To start with, we recommend experimenting with some of the Bootswatch themes ava
 
 Check out the [theme explorer](/docs/themes/explorer/) for a live demo of dash-bootstrap-components using all of the different available themes. You may also like to check out the [dash-bootstrap-css](https://github.com/tcbegley/dash-bootstrap-css) project which contains Bootstrap stylesheets that apply consistent styling to various components from dash-core-components.
 
+## Light and Dark Color Modes
+
+_Available in dash-bootstrap-components>=1.5.0_
+
+To toggle between a light and dark mode in your app, create a component to switch the theme.  For example, add a component like this to the layout:
+
+```python
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
+
+color_mode_switch =  html.Span(
+    [
+        dbc.Label(className="fa fa-moon", html_for="switch"),
+        dbc.Switch( id="switch", value=True, className="d-inline-block ms-1", persistence=True),
+        dbc.Label(className="fa fa-sun", html_for="switch"),
+    ]
+)
+```
+
+Here's a callback to change the theme:
+
+```python
+clientside_callback(
+    " " " 
+    (switchOn) => {
+       switchOn
+         ? document.documentElement.setAttribute('data-bs-theme', 'light')
+         : document.documentElement.setAttribute('data-bs-theme', 'dark')
+       return window.dash_clientside.no_update
+    }
+    " " ",
+    Output("switch", "id"),
+    Input("switch", "value"),
+)
+```
+
+See this example live in the [Dash Bootstrap Theme Explorer](https://hellodash.pythonanywhere.com/adding-themes/color-modes)
+See more information in the [Bootstrap Docs](https://getbootstrap.com/docs/5.3/customize/color-modes/)
+
+
 [dash-docs-external]: https://dash.plotly.com/external-resources/
 [bootstrap]:https://getbootstrap.com/
 [bootstrap-download]: https://getbootstrap.com/docs/5.0/getting-started/download/
