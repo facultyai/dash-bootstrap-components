@@ -1,10 +1,12 @@
-import React, {cloneElement} from 'react';
+import React, {cloneElement, useContext} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {map} from 'react-bootstrap/ElementChildren';
 import {omit} from 'ramda';
 
 import {bootstrapColors} from '../../private/BootstrapColors';
+
+export const ProgressContext = React.createContext({});
 
 /*
  * Bulk of this file is vendored from react-bootstrap/src/ProgressBar, but we
@@ -59,15 +61,17 @@ function renderProgressBar(
   );
 }
 
-const ProgressBar = React.forwardRef(({isChild, ...props}, ref) => {
+const ProgressBar = React.forwardRef(({isChild, min, max, ...props}, ref) => {
   if (isChild) {
-    return renderProgressBar(props, ref);
+    const context = useContext(ProgressContext);
+    return renderProgressBar(
+      {...props, max: max || context.max, min: min || context.min},
+      ref
+    );
   }
 
   const {
-    min,
     now,
-    max,
     label,
     visuallyHidden,
     striped,
@@ -79,35 +83,38 @@ const ProgressBar = React.forwardRef(({isChild, ...props}, ref) => {
     ...wrapperProps
   } = props;
 
+  min = min === undefined ? 0 : min;
+  max = max === undefined ? 100 : max;
+
   return (
     <div
       ref={ref}
       {...wrapperProps}
       className={classNames(className, 'progress')}
     >
-      {children
-        ? map(children, child => cloneElement(child, {isChild: true}))
-        : renderProgressBar(
-            {
-              min,
-              now,
-              max,
-              label,
-              visuallyHidden,
-              striped,
-              animated,
-              variant,
-              barStyle
-            },
-            ref
-          )}
+      <ProgressContext.Provider value={{min, max}}>
+        {children
+          ? map(children, child => cloneElement(child, {isChild: true}))
+          : renderProgressBar(
+              {
+                min,
+                now,
+                max,
+                label,
+                visuallyHidden,
+                striped,
+                animated,
+                variant,
+                barStyle
+              },
+              ref
+            )}
+      </ProgressContext.Provider>
     </div>
   );
 });
 
 ProgressBar.defaultProps = {
-  min: 0,
-  max: 100,
   animated: false,
   isChild: false,
   visuallyHidden: false,
