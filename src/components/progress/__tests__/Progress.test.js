@@ -85,6 +85,40 @@ describe('Progress', () => {
     });
   });
 
+  test('nested bars parent width', () => {
+    const {
+      container: {firstChild: progress}
+    } = render(
+      <Progress min={10} max={50}>
+        <Progress value={30} bar />
+        <Progress value={20} bar />
+      </Progress>
+    );
+
+    // bar has width 50 - 10 = 40
+    // subbars have width 30 - 10 = 20, and 20 - 10 = 10 respectively
+    // so expected widths are 50% and 25%
+
+    expect(progress.children[0]).toHaveStyle({width: '50%'});
+    expect(progress.children[1]).toHaveStyle({width: '25%'});
+
+    const {
+      container: {firstChild: progress2}
+    } = render(
+      <Progress min={10} max={50}>
+        <Progress value={30} bar />
+        <Progress value={20} min={15} max={25} bar />
+      </Progress>
+    );
+
+    // this bar we check that props on the child override those of the parent
+    // second subbar has width 25 - 15 = 10 and value 20 - 15
+    // so expected width is 50%
+
+    expect(progress2.children[0]).toHaveStyle({width: '50%'});
+    expect(progress2.children[1]).toHaveStyle({width: '50%'});
+  });
+
   test('applies additional CSS classes when props are set', () => {
     // striped progress
     const {
