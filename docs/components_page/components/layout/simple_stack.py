@@ -7,9 +7,7 @@ stack = html.Div(
     [
         dbc.Stack(
             [
-                html.Div(
-                    "This stack has no gaps", className=demo_div
-                ),
+                html.Div("This stack has no gaps", className=demo_div),
                 html.Div("Next item", className=demo_div),
                 html.Div("Last item", className=demo_div),
             ]
@@ -17,9 +15,7 @@ stack = html.Div(
         html.Hr(),
         dbc.Stack(
             [
-                html.Div(
-                    "This stack has gaps", className=demo_div
-                ),
+                html.Div("This stack has gaps", className=demo_div),
                 html.Div("Next item", className=demo_div),
                 html.Div("Last item", className=demo_div),
             ],

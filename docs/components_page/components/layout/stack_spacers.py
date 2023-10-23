@@ -1,7 +1,6 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
-
 demo_div = "bg-primary-subtle border border-primary-subtle p-2"
 
 stack = html.Div(
