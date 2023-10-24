@@ -23,7 +23,12 @@ const setInitialIcon = () => {
   getStoredTheme() == 'dark' ? setIcon("dark") : setIcon("light")
 }
 window.onload = (event) => {
+  // example pages should always be light theme
+  if (window.location.pathname.includes("/examples") ) {
+    return document.documentElement.setAttribute('data-bs-theme', "light")
+  }
   setInitialIcon()
+
 };
 
 
