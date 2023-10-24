@@ -7,12 +7,12 @@ stack = html.Div(
     [
         dbc.Stack(
             [
-                html.Div("Start", className=demo_div),
+                html.Div("Start"),
                 html.Div(
                     "Middle (ms-auto)",
-                    className="ms-auto " + demo_div,
+                    className="ms-auto",
                 ),
-                html.Div("End", className=demo_div),
+                html.Div("End"),
             ],
             direction="horizontal",
             gap=3,
@@ -20,12 +20,9 @@ stack = html.Div(
         html.Hr(),
         dbc.Stack(
             [
-                html.Div("Start", className=demo_div),
-                html.Div(
-                    "Middle (mx-auto)",
-                    className="mx-auto " + demo_div,
-                ),
-                html.Div("End", className=demo_div),
+                html.Div("Start"),
+                html.Div("Middle (mx-auto)", className="mx-auto"),
+                html.Div("End"),
             ],
             direction="horizontal",
             gap=3,

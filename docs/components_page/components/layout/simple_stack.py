@@ -1,23 +1,21 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
-demo_div = "bg-primary-subtle border border-primary-subtle p-2"
-
 stack = html.Div(
     [
         dbc.Stack(
             [
-                html.Div("This stack has no gaps", className=demo_div),
-                html.Div("Next item", className=demo_div),
-                html.Div("Last item", className=demo_div),
+                html.Div("This stack has no gaps"),
+                html.Div("Next item"),
+                html.Div("Last item"),
             ]
         ),
         html.Hr(),
         dbc.Stack(
             [
-                html.Div("This stack has gaps", className=demo_div),
-                html.Div("Next item", className=demo_div),
-                html.Div("Last item", className=demo_div),
+                html.Div("This stack has gaps"),
+                html.Div("Next item"),
+                html.Div("Last item"),
             ],
             gap=3,
         ),
