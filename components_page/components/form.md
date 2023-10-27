@@ -49,6 +49,8 @@ The `FormFeedback` component should be added to a `html.Div` containing the `Inp
 
 `Form` and other components can also be used with _dash-core-components_.
 
+Note that Bootstrap themes are not automatically applied to components such as _dash-core-components_, _dash-ag-grid_, or _DataTable_. For more information on styling other Dash components with a Bootstrap theme see the [Dash Bootstrap Theme Explorer](https://hellodash.pythonanywhere.com/) site.
+
 {{example:components/form/dash_core.py:form}}
 
 {{apidoc:src/components/form/Form.js}}

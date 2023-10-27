@@ -12,7 +12,7 @@ left_jumbotron = dbc.Col(
             ),
             dbc.Button("Example Button", color="light", outline=True),
         ],
-        className="h-100 p-5 text-white bg-dark rounded-3",
+        className="h-100 p-5 text-white bg-primary rounded-3",
     ),
     md=6,
 )
@@ -28,7 +28,7 @@ right_jumbotron = dbc.Col(
             ),
             dbc.Button("Example Button", color="secondary", outline=True),
         ],
-        className="h-100 p-5 bg-light border rounded-3",
+        className="h-100 p-5 bg-light text-dark border rounded-3",
     ),
     md=6,
 )
