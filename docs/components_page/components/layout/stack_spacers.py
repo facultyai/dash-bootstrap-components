@@ -1,15 +1,18 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
+demo_div = "bg-primary-subtle border border-primary-subtle p-2"
+
 stack = html.Div(
     [
         dbc.Stack(
             [
-                html.Div("Start", className="bg-light border"),
+                html.Div("Start"),
                 html.Div(
-                    "Middle (ms-auto)", className="ms-auto bg-light border"
+                    "Middle (ms-auto)",
+                    className="ms-auto",
                 ),
-                html.Div("End", className="bg-light border"),
+                html.Div("End"),
             ],
             direction="horizontal",
             gap=3,
@@ -17,11 +20,9 @@ stack = html.Div(
         html.Hr(),
         dbc.Stack(
             [
-                html.Div("Start", className="bg-light border"),
-                html.Div(
-                    "Middle (mx-auto)", className="mx-auto bg-light border"
-                ),
-                html.Div("End", className="bg-light border"),
+                html.Div("Start"),
+                html.Div("Middle (mx-auto)", className="mx-auto"),
+                html.Div("End"),
             ],
             direction="horizontal",
             gap=3,

@@ -31,6 +31,11 @@ span.hljs-meta {
   color: #66d9ef;
 }
 
+.highlight {
+  border: var(--bs-border-color) var(--bs-border-style) var(--bs-border-width);
+  border-radius: 6px;
+}
+
 .demo-layout-container {
   height: 600px;
   margin-right: 0rem;
@@ -60,18 +65,17 @@ span.hljs-meta {
 }
 
 .docs-sidebar .nav-link {
-  color: #888;
+  color:  var(--bs-body-color)
   padding: 0.3rem 0.5rem 0.3rem 1rem;
   border-left: 2px solid transparent;
 }
 
 .docs-sidebar .nav-link:hover {
-  color: #777;
   border-left: 2px solid #aaa;
 }
 
 .docs-sidebar .nav-link.active {
-  color: #666;
+  color:  var(--bs-emphasis-color);
   border-left: 2px solid #d9534f;
 }
 
@@ -80,7 +84,7 @@ span.hljs-meta {
 }
 
 .example-container {
-  border: 1px solid #d8d8d8;
+  border: 1px solid var(--bs-border-color);
   margin: 2rem 0 0;
   border-radius: 6px;
 }
@@ -96,6 +100,7 @@ span.hljs-meta {
 
 .example-source-container pre {
   margin-bottom: 0;
+  border: 1px solid var(--bs-border-color);
 }
 
 .source-container pre.hljs {
@@ -108,14 +113,7 @@ span.hljs-meta {
 
 .layout-demo .row {
   margin-bottom: 10px;
-  background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0) calc(100% - 0.75rem),
-      #fff calc(100% - 0.75rem)
-    ),
-    linear-gradient(to right, #fff, #fff 0.75rem, rgba(0, 0, 0, 0) 0.75rem),
-    linear-gradient(to right, #eeeeee, #eeeeee);
+  background: var(--bs-secondary-bg-subtle)
 }
 
 .layout-demo .row.g-0 {
@@ -127,10 +125,12 @@ span.hljs-meta {
 }
 
 .layout-demo .col > div,
-.layout-demo [class*='col-'] > div {
+.layout-demo [class*='col-'] > div,
+.layout-demo .vstack  > div,
+.layout-demo .hstack  > div {
   padding: 0.75rem;
-  background-color: rgba(86, 61, 124, 0.15);
-  border: 1px solid rgba(86, 61, 124, 0.2);
+  background-color: var(--bs-primary-bg-subtle);
+  border: 1px solid var(--bs-primary-border-subtle);
 }
 
 ._dash-undo-redo {
@@ -218,17 +218,18 @@ span.hljs-meta {
   padding: 0.25rem 0rem;
   font-weight: 500;
   font-size: 1.25rem;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--bs-body-color);
   text-decoration: none;
 }
 
 .dbcd-nav-link:hover {
-  color: rgba(0, 0, 0, 0.75);
   text-decoration: none;
+  font-weight: bold;
 }
 
 .dbcd-nav-item.active > .dbcd-nav-link {
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--bs-emphasis-color);
+  font-weight: bold;
 }
 
 .dbcd-nav-links ul > li {
@@ -237,16 +238,17 @@ span.hljs-meta {
 
 .dbcd-nav-links ul > li > a {
   padding: 0.25rem 0rem;
-  color: rgba(0, 0, 0, 0.65);
+  color: var(--bs-body-color);
   text-decoration: none;
 }
 
 .dbcd-nav-links ul > li.active > a {
-  color: rgba(0, 0, 0, 0.85);
+   color: var(--bs-emphasis-color);
+   font-weight: bold;
 }
 
 .dbcd-nav-links ul > li > a:hover {
-  color: rgba(0, 0, 0, 0.75);
+  font-weight: bold;
   text-decoration: none;
 }
 
