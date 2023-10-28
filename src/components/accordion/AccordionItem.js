@@ -1,11 +1,50 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'ramda';
+import RBAccordion from 'react-bootstrap/Accordion';
+
+import {stringifyId} from '../../private/util';
+import {AccordionContext} from '../../private/AccordionContext';
 
 /**
  * A component to build up the children of the accordion.
  */
-const AccordionItem = props => {
-  return <>{props.children}</>;
+const AccordionItem = ({
+  title,
+  item_id,
+  loading_state,
+  class_name,
+  className,
+  id,
+  children,
+  ...otherProps
+}) => {
+  const {toggle, idx} = useContext(AccordionContext);
+  const itemID = item_id || `item-${idx}`;
+  return (
+    <RBAccordion.Item
+      id={stringifyId(id)}
+      key={itemID}
+      eventKey={itemID}
+      className={class_name || className}
+      {...omit(
+        ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
+        otherProps
+      )}
+      data-dash-is-loading={
+        (loading_state && loading_state.is_loading) || undefined
+      }
+    >
+      <RBAccordion.Header
+        onClick={() => {
+          toggle(itemID);
+        }}
+      >
+        {title}
+      </RBAccordion.Header>
+      <RBAccordion.Body>{children}</RBAccordion.Body>
+    </RBAccordion.Item>
+  );
 };
 
 AccordionItem.propTypes = {
@@ -41,7 +80,7 @@ AccordionItem.propTypes = {
   /**
    * The title on display in the collapsed accordion item.
    */
-  title: PropTypes.string,
+  title: PropTypes.node,
 
   /**
    * Optional identifier for item used for determining which item is visible
