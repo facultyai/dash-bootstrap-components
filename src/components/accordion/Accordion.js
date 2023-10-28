@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAccordion from 'react-bootstrap/Accordion';
 
-import {
-  parseChildrenToArray,
-  resolveChildProps,
-  stringifyId
-} from '../../private/util';
+import {parseChildrenToArray, resolveChildProps} from '../../private/util';
+import {AccordionContext} from '../../private/AccordionContext';
 
 /**
  * A self contained Accordion component. Build up the children using the
@@ -62,42 +59,11 @@ const Accordion = props => {
     children &&
     children.map((child, idx) => {
       const childProps = resolveChildProps(child);
-      const {
-        title,
-        item_id,
-        loading_state,
-        class_name,
-        className,
-        id,
-        ...otherProps
-      } = childProps;
-      const itemID = item_id || 'item-' + idx;
+      const itemID = childProps.item_id || `item-${idx}`;
       return (
-        <RBAccordion.Item
-          id={stringifyId(id)}
-          key={itemID}
-          eventKey={itemID}
-          className={class_name || className}
-          {...omit(
-            ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
-            otherProps
-          )}
-          data-dash-is-loading={
-            (loading_state && loading_state.is_loading) || undefined
-          }
-        >
-          <RBAccordion.Header
-            onClick={() => {
-              toggle(itemID);
-            }}
-            // .dbcd-main h2 has margins defined on it - we need to make
-            // sure to overwrite them
-            style={{marginTop: '0rem', marginBottom: '0rem'}}
-          >
-            {title}
-          </RBAccordion.Header>
-          <RBAccordion.Body>{child}</RBAccordion.Body>
-        </RBAccordion.Item>
+        <AccordionContext.Provider key={itemID} value={{toggle, idx}}>
+          {child}
+        </AccordionContext.Provider>
       );
     });
 

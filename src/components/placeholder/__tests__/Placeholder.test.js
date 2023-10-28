@@ -136,8 +136,6 @@ describe('Placeholder', () => {
       </Placeholder>
     );
 
-    console.log(placeholderStyle.firstChild.style);
-
     expect(placeholderStyle.firstChild).toHaveStyle({
       width: '5rem',
       height: '5rem'
