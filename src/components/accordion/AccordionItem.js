@@ -39,9 +39,6 @@ const AccordionItem = ({
         onClick={() => {
           toggle(itemID);
         }}
-        // .dbcd-main h2 has margins defined on it - we need to make
-        // sure to overwrite them
-        style={{marginTop: '0rem', marginBottom: '0rem'}}
       >
         {title}
       </RBAccordion.Header>

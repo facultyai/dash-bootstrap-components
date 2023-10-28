@@ -266,6 +266,11 @@ span.hljs-meta {
   font-size: 2rem;
 }
 
+.dbcd-main h2.accordion-header {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .dbcd-main h3 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
