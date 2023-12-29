@@ -45,17 +45,9 @@ const Carousel = props => {
         as={item.href ? Link : 'div'}
         {...additionalProps}
       >
-        <img
-          src={item.src}
-          className={item.img_class_name || item.imgClassName}
-          style={item.img_style}
-          alt={item.alt}
-        />
-        <RBCarousel.Caption
-          className={item.caption_class_name || item.captionClassName}
-        >
-          {item.header && <h5>{item.header}</h5>}
-          {item.caption && <p>{item.caption}</p>}
+        {item.children}
+        <RBCarousel.Caption>
+          {item.caption}
         </RBCarousel.Caption>
       </RBCarousel.Item>
     );
@@ -125,45 +117,15 @@ Carousel.propTypes = {
        */
       key: PropTypes.string,
       /**
-       * The URL of the image
+       * The slide content
        */
-      src: PropTypes.string,
+      children: PropTypes.node,
+
       /**
-       * The alternate text for an image, if the image cannot be displayed
+       * The slide caption
        */
-      alt: PropTypes.string,
-      /**
-       * The className for the image.  The default is 'd-block w-100'
-       */
-      img_class_name: PropTypes.string,
-      /**
-       * **DEPRECATED** Use `img_class_name` instead.
-       *
-       * The className for the image.  The default is 'd-block w-100'
-       */
-      imgClassName: PropTypes.string,
-      /**
-       * The style for the image
-       */
-      img_style: PropTypes.object,
-      /**
-       * The header of the text on the slide. It is displayed in a <h5> element
-       */
-      header: PropTypes.string,
-      /**
-       * The caption of the item.  The text is displayed in a <p> element
-       */
-      caption: PropTypes.string,
-      /**
-       * The class name for the header and caption container
-       */
-      caption_class_name: PropTypes.string,
-      /**
-       * **DEPRECATED** Use `caption_class_name` instead.
-       *
-       * The class name for the header and caption container
-       */
-      captionClassName: PropTypes.string,
+      caption: PropTypes.node,
+
       /**
        * Optional hyperlink to add to the item. Item will be rendered as a
        * HTML <a> or as a Dash-style link depending on whether the link is
