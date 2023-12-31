@@ -18,6 +18,7 @@ slide4 = html.Div(
     className="border",
     style={"height": 800, "padding": 100},
 )
+slide5= dbc.NavLink(html.Img(src=slide1, width="100%"), href="/home")
 
 carousel = dbc.Carousel(
     items = [
@@ -33,6 +34,7 @@ carousel = dbc.Carousel(
             "caption": html.H1("Hi Again", className="text-primary"),
         },
         {"key": "4", "children": slide4, "caption": "Slide 4 caption"},
+        {"key": "5", "children": slide5, "caption": "Slide with link"},
     ],
     interval=2000,
     ride="carousel",
