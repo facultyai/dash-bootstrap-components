@@ -51,8 +51,9 @@ def __getattr__(name):
             f"{name} was deprecated in dash-bootstrap-components version "
             f"1.0.0. You are using {__version__}. For more details please "
             "see the migration guide: "
-            "https://dash-bootstrap-components.opensource.faculty.ai/"
-            "migration-guide/"
+            "https://github.com/facultyai/dash-bootstrap-components/blob/"
+            "6da4a97f940483deb3dc9c815ef4c7e450ff0be7/docs/content/"
+            "migration-guide.md"
         )
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
