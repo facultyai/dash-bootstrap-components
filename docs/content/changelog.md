@@ -171,7 +171,7 @@ This release adds no new features but fixes a number of bugs. Please continue to
 
 ## 1.0.0 - 2021/10/19
 
-v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully, and refer to the [migration guide](/migration-guide/) for full details of the changes.
+v1 of _dash-bootstrap-components_! This release contains loads of new features, but also breaking changes. Please read the changelog carefully, and refer to the [migration guide][migration-guide] for full details of the changes.
 
 ### Added
 
@@ -187,7 +187,7 @@ v1 of _dash-bootstrap-components_! This release contains loads of new features, 
 
 ### Changed
 
-- Components are all now built for Bootstrap 5. CDN links have all been updated. There are multiple breaking changes in the component props. Please see the [migration-guide](/migration-guide) for full details on the changes ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)).
+- Components are all now built for Bootstrap 5. CDN links have all been updated. There are multiple breaking changes in the component props. Please see the [migration-guide][migration-guide] for full details on the changes ([PR 646](https://github.com/facultyai/dash-bootstrap-components/pull/646)).
 
 ## 0.13.1 - 2021/9/22
 
@@ -509,3 +509,5 @@ This version marks the first release of dash-bootstrap-components for Julia. The
 ## Older versions
 
 Older versions continue to exist on [PyPI](https://pypi.org/project/dash-bootstrap-components), but we strongly recommend using more recent versions. If you need to know what changed in old versions of dash-bootstrap-components you can check the [releases page](https://github.com/facultyai/dash-bootstrap-components/releases) on GitHub.
+
+[migration-guide]: https://github.com/facultyai/dash-bootstrap-components/blob/6da4a97f940483deb3dc9c815ef4c7e450ff0be7/docs/content/migration-guide.md

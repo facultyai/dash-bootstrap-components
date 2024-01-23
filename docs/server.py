@@ -111,11 +111,4 @@ def create_server():
         except TemplateNotFound:
             abort(404)
 
-    @server.route("/migration-guide/")
-    def migration_guide():
-        try:
-            return render_template("generated/migration-guide.html")
-        except TemplateNotFound:
-            abort(404)
-
     return server
