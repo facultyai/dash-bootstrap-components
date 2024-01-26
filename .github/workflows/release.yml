@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
 
       - id: get-version
-        run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|release/||')"
+        run: echo "version=$(echo ${{ github.head_ref }} | sed 's|release/||')" >> "$GITHUB_OUTPUT"
 
       - name: Use Node 16
         uses: actions/setup-node@v3
@@ -90,7 +90,7 @@ jobs:
           token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
 
       - id: get-version
-        run: echo "::set-output name=version::$(echo ${{ github.head_ref }} | sed 's|prerelease/||')"
+        run: echo "version=$(echo ${{ github.head_ref }} | sed 's|prerelease/||')" >> "$GITHUB_OUTPUT"
 
       - name: Use Node 16
         uses: actions/setup-node@v3
