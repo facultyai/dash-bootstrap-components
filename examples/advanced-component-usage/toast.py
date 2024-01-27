@@ -14,6 +14,7 @@ add or remove a message from the Store accordingly. Using this same pattern you
 can add or remove messages from the message store in response to all kinds of
 different events.
 """
+
 import json
 from random import randint
 from uuid import uuid4

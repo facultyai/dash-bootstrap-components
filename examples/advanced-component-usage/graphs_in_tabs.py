@@ -4,6 +4,7 @@ dcc.Graph components to ensure graphs get sized correctly. We also show how
 dcc.Store can be used to cache the results of an expensive graph generation
 process so that switching tabs is fast.
 """
+
 import time
 
 import dash

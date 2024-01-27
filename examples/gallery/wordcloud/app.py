@@ -3,6 +3,7 @@ Dash port of Shiny wordcloud example:
 
 https://shiny.rstudio.com/gallery/word-cloud.html
 """
+
 import base64
 import io
 from functools import lru_cache

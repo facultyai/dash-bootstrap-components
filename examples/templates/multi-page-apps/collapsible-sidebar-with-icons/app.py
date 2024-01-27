@@ -12,6 +12,7 @@ feature you must install dash-bootstrap-components >= 0.11.0.
 For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plot.ly/urls
 """
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html

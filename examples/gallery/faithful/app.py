@@ -7,6 +7,7 @@ Note: the shiny version includes a slider for adjusting the bandwidth of the
 density approximation curve, which is not easily adjusted when using
 plotly.figure_factory.create_distplot, so it doesn't feature in this example.
 """
+
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd

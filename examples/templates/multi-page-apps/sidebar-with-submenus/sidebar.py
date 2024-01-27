@@ -10,6 +10,7 @@ collapse component and the CSS that rotates the chevron icon respectively.
 For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plot.ly/urls
 """
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, dcc, html

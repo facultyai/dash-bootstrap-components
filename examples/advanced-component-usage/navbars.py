@@ -5,6 +5,7 @@ NavbarBrand, and NavbarToggler components.
 
 Requires dash-bootstrap-components 0.3.0 or later
 """
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html
