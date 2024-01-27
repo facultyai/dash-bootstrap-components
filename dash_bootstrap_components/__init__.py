@@ -1,4 +1,5 @@
 """Bootstrap themed components for use in Plotly Dash"""
+
 import os
 
 from dash_bootstrap_components import _components, icons, themes
