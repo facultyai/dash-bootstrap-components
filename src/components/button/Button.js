@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import RBButton from 'react-bootstrap/Button';
 import Link from '../../private/Link';
 
@@ -34,6 +35,12 @@ const Button = props => {
     ...otherProps
   } = props;
 
+
+  const sanitizedUrl = useMemo(() => {
+      return href ? sanitizeUrl(href) : undefined;
+  }, [href]);
+
+
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({
@@ -42,7 +49,7 @@ const Button = props => {
       });
     }
   };
-  const useLink = href && !disabled;
+  const useLink = sanitizedUrl && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
 
   if (useLink) {
@@ -51,12 +58,21 @@ const Button = props => {
     otherProps['linkTarget'] = target;
   }
 
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${href}`),
+          });
+      }
+  }, [href, sanitizedUrl]);
+
+
   return (
     <RBButton
       as={useLink ? Link : 'button'}
       variant={outline ? `outline-${color}` : color}
       type={useLink ? undefined : type}
-      href={disabled ? undefined : href}
+      href={disabled ? undefined : sanitizedUrl}
       disabled={disabled}
       download={useLink ? download : undefined}
       name={useLink ? undefined : name}

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import RBBadge from 'react-bootstrap/Badge';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
@@ -22,6 +23,11 @@ const Badge = props => {
     ...otherProps
   } = props;
 
+
+const sanitizedUrl = useMemo(() => {
+      return href ? sanitizeUrl(href) : undefined;
+    }, [href]);
+
   const incrementClicks = () => {
     if (setProps) {
       setProps({
@@ -34,10 +40,18 @@ const Badge = props => {
 
   otherProps[href ? 'preOnClick' : 'onClick'] = incrementClicks;
 
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${href}`),
+          });
+      }
+  }, [href, sanitizedUrl]);
+
   return (
     <RBBadge
       as={href && Link}
-      href={href}
+      href={sanitizedUrl}
       bg={isBootstrapColor ? color : null}
       text={text_color}
       className={class_name || className}

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import RBListGroupItem from 'react-bootstrap/ListGroupItem';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
@@ -24,6 +25,18 @@ const ListGroupItem = props => {
     ...otherProps
   } = props;
 
+  const sanitizedUrl = useMemo(() => {
+      return href ? sanitizeUrl(href) : undefined;
+    }, [href]);
+
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${href}`),
+          });
+      }
+  }, [href, sanitizedUrl]);
+
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({
@@ -33,13 +46,13 @@ const ListGroupItem = props => {
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
-  const useLink = href && !disabled;
+  const useLink = sanitizedUrl && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
     <RBListGroupItem
       as={useLink ? Link : 'li'}
-      href={href}
+      href={sanitizedUrl}
       target={useLink ? target : undefined}
       disabled={disabled}
       variant={isBootstrapColor ? color : null}

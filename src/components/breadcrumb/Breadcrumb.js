@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import RBBreadcrumb from 'react-bootstrap/Breadcrumb';
 
 import Link from '../../private/Link';
@@ -7,6 +8,36 @@ import Link from '../../private/Link';
 /**
  * Use breadcrumbs to create a navigation breadcrumb in your app.
  */
+
+const BreadcrumbItem = ({ item, idx, item_class_name, itemClassName, setProps }) => {
+
+  const sanitizedUrl = useMemo(() => {
+      return item.href ? sanitizeUrl(item.href) : undefined;
+  }, [item.href]);
+
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== item.href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${item.href}`),
+          });
+      }
+  }, [item.href, sanitizedUrl]);
+
+  return (
+    <RBBreadcrumb.Item
+      key={`${item.value}${idx}`}
+      active={item.active}
+      linkAs={sanitizedUrl && Link}
+      className={item_class_name || itemClassName}
+      href={sanitizedUrl}
+      linkProps={sanitizedUrl && {external_link: item.external_link}}
+    >
+      {item.label}
+    </RBBreadcrumb.Item>
+  );
+};
+
+
 const Breadcrumb = ({
   items,
   tag,
@@ -16,6 +47,7 @@ const Breadcrumb = ({
   item_class_name,
   itemClassName,
   item_style,
+  setProps,
   ...otherProps
 }) => (
   <RBBreadcrumb
@@ -27,16 +59,14 @@ const Breadcrumb = ({
     {...otherProps}
   >
     {(items || []).map((item, idx) => (
-      <RBBreadcrumb.Item
+      <BreadcrumbItem
         key={`${item.value}${idx}`}
-        active={item.active}
-        linkAs={item.href && Link}
-        className={item_class_name || itemClassName}
-        href={item.href}
-        linkProps={item.href && {external_link: item.external_link}}
-      >
-        {item.label}
-      </RBBreadcrumb.Item>
+        idx={idx}
+        item={item}
+        item_class_name={item_class_name}
+        itemClassName={itemClassName}
+        setProps={setProps}
+      />
     ))}
   </RBBreadcrumb>
 );

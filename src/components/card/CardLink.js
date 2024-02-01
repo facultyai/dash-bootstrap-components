@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import RBCard from 'react-bootstrap/Card';
 import Link from '../../private/Link';
 
@@ -15,8 +16,15 @@ const CardLink = props => {
     disabled,
     className,
     class_name,
+    href,
+    setProps,
     ...otherProps
   } = props;
+
+
+  const sanitizedUrl = useMemo(() => {
+      return href ? sanitizeUrl(href) : undefined;
+    }, [href]);
 
   const incrementClicks = () => {
     if (!disabled && props.setProps) {
@@ -27,6 +35,14 @@ const CardLink = props => {
     }
   };
 
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${href}`),
+          });
+      }
+  }, [href, sanitizedUrl]);
+
   return (
     <RBCard.Link
       data-dash-is-loading={
@@ -35,6 +51,7 @@ const CardLink = props => {
       as={Link}
       preOnClick={incrementClicks}
       disabled={disabled}
+      href={sanitizedUrl}
       className={class_name || className}
       {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >

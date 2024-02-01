@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbar from 'react-bootstrap/Navbar';
 import RBContainer from 'react-bootstrap/Container';
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
@@ -29,13 +30,28 @@ const NavbarSimple = props => {
     loading_state,
     className,
     class_name,
+    setProps,
     ...otherProps
   } = props;
+
+  const sanitizedUrl = useMemo(() => {
+      return brand_href ? sanitizeUrl(brand_href) : undefined;
+    }, [brand_href]);
+
+
   const isBootstrapColor = bootstrapColors.has(color);
 
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const toggle = () => setNavbarOpen(!navbarOpen);
+
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== brand_href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${brand_href}`),
+          });
+      }
+  }, [brand_href, sanitizedUrl]);
 
   return (
     <RBNavbar
@@ -52,7 +68,7 @@ const NavbarSimple = props => {
       <RBContainer fluid={fluid}>
         {brand && (
           <NavbarBrand
-            href={brand_href}
+            href={sanitizedUrl}
             style={brand_style}
             external_link={brand_external_link}
           >

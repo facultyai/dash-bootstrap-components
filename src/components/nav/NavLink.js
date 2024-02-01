@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classNames from 'classnames';
 import {History} from '@plotly/dash-component-plugins';
 import Link from '../../private/Link';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 
 /**
  * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
@@ -24,11 +25,16 @@ const NavLink = props => {
     ...otherProps
   } = props;
 
+  const sanitizedUrl = useMemo(() => {
+      return href ? sanitizeUrl(href) : undefined;
+    }, [href]);
+
+
   const pathnameToActive = pathname => {
     setLinkActive(
       active === true ||
-        (active === 'exact' && pathname === href) ||
-        (active === 'partial' && pathname.startsWith(href))
+        (active === 'exact' && pathname === sanitizedUrl) ||
+        (active === 'partial' && pathname.startsWith(sanitizedUrl))
     );
   };
 
@@ -56,12 +62,20 @@ const NavLink = props => {
     disabled
   });
 
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${href}`),
+          });
+      }
+  }, [href, sanitizedUrl]);
+
   return (
     <Link
       className={classes}
       disabled={disabled}
       preOnClick={incrementClicks}
-      href={href}
+      href={sanitizedUrl}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

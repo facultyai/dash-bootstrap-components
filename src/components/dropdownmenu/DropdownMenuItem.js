@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import {sanitizeUrl} from '@braintree/sanitize-url';
 import RBDropdown from 'react-bootstrap/Dropdown';
 
 import Link from '../../private/Link';
@@ -26,6 +27,18 @@ const DropdownMenuItem = props => {
     ...otherProps
   } = props;
 
+  const sanitizedUrl = useMemo(() => {
+      return href ? sanitizeUrl(href) : undefined;
+    }, [href]);
+
+  useEffect(() => {
+      if (sanitizedUrl && sanitizedUrl !== href) {
+          setProps({
+              _dash_error: new Error(`Dangerous link detected:: ${href}`),
+          });
+      }
+  }, [href, sanitizedUrl]);
+
   const context = useContext(DropdownMenuContext);
 
   const handleClick = e => {
@@ -40,7 +53,7 @@ const DropdownMenuItem = props => {
     }
   };
 
-  const useLink = href && !disabled;
+  const useLink = sanitizedUrl && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
 
   if (header) {
@@ -52,7 +65,7 @@ const DropdownMenuItem = props => {
   return (
     <RBDropdown.Item
       as={useLink ? Link : 'button'}
-      href={useLink ? href : undefined}
+      href={useLink ? sanitizedUrl : undefined}
       disabled={disabled}
       target={useLink ? target : undefined}
       className={class_name || className}
