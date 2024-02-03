@@ -64,7 +64,8 @@
     "ramda": "^0.27.1",
     "react": "^16.14.0",
     "react-bootstrap": "^2.2.2",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "@braintree/sanitize-url": "^7.0.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
