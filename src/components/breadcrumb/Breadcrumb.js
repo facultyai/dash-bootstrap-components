@@ -3,10 +3,35 @@ import PropTypes from 'prop-types';
 import RBBreadcrumb from 'react-bootstrap/Breadcrumb';
 
 import Link from '../../private/Link';
+import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Use breadcrumbs to create a navigation breadcrumb in your app.
  */
+
+const BreadcrumbItem = ({
+  item,
+  idx,
+  item_class_name,
+  itemClassName,
+  setProps
+}) => {
+  const sanitizedUrl = sanitizeAndCheckUrl(item.href, setProps);
+
+  return (
+    <RBBreadcrumb.Item
+      key={`${item.value}${idx}`}
+      active={item.active}
+      linkAs={sanitizedUrl && Link}
+      className={item_class_name || itemClassName}
+      href={sanitizedUrl}
+      linkProps={sanitizedUrl && {external_link: item.external_link}}
+    >
+      {item.label}
+    </RBBreadcrumb.Item>
+  );
+};
+
 const Breadcrumb = ({
   items,
   tag,
@@ -16,6 +41,7 @@ const Breadcrumb = ({
   item_class_name,
   itemClassName,
   item_style,
+  setProps,
   ...otherProps
 }) => (
   <RBBreadcrumb
@@ -27,16 +53,14 @@ const Breadcrumb = ({
     {...otherProps}
   >
     {(items || []).map((item, idx) => (
-      <RBBreadcrumb.Item
+      <BreadcrumbItem
         key={`${item.value}${idx}`}
-        active={item.active}
-        linkAs={item.href && Link}
-        className={item_class_name || itemClassName}
-        href={item.href}
-        linkProps={item.href && {external_link: item.external_link}}
-      >
-        {item.label}
-      </RBBreadcrumb.Item>
+        idx={idx}
+        item={item}
+        item_class_name={item_class_name}
+        itemClassName={itemClassName}
+        setProps={setProps}
+      />
     ))}
   </RBBreadcrumb>
 );

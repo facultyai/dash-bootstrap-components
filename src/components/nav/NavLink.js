@@ -1,11 +1,10 @@
-import React, {useEffect, useState, useMemo} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classNames from 'classnames';
 import {History} from '@plotly/dash-component-plugins';
 import Link from '../../private/Link';
 import {sanitizeAndCheckUrl} from '../../private/util';
-
 
 /**
  * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
@@ -26,7 +25,7 @@ const NavLink = props => {
     ...otherProps
   } = props;
 
-  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps)
+  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
 
   const pathnameToActive = pathname => {
     setLinkActive(
