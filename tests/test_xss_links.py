@@ -23,11 +23,6 @@ def test_xss001_banned_protocols(dash_duo):
                 "href": "javascript:alert('Breadcrumb1')",
                 "external_link": True,
             },
-            {
-                "label": "Components",
-                "href": "javascript:alert('Breadcrumb2')",
-                "external_link": True,
-            },
             {"label": "Breadcrumb", "active": True},
         ],
         id="breadcrumb",
@@ -38,8 +33,11 @@ def test_xss001_banned_protocols(dash_duo):
     )
 
     CardLink = dbc.Card(
-        dbc.CardLink("cardlink", href="javascript:alert('Card')"),
-        id="cardlink",
+        dbc.CardLink(
+            "cardlink",
+            href="javascript:alert('Card')",
+            id="cardlink",
+        ),
     )
 
     ListGroupItem = dbc.ListGroup(
@@ -85,19 +83,27 @@ def test_xss001_banned_protocols(dash_duo):
 
     dash_duo.start_server(app)
 
-    for element_id, prop in (
-        ("#navlink", "href"),
-        #   ("#navbarsimple", "brand_href"),
-        ("#badge", "href"),
-        #   ("#breadcrumb", "href"),
-        ("#button", "href"),
-        #  ("#cardlink", "href"),
-        ("#listgroupitem", "href"),
-        ("#navbarbrand", "href"),
-        ("#dropdownmenuitem", "href"),
-    ):
+    for element_id in [
+        "#navlink",
+        "#badge",
+        "#button",
+        "#cardlink",
+        "#listgroupitem",
+        "#navbarbrand",
+        "#dropdownmenuitem",
+    ]:
 
         element = dash_duo.find_element(element_id)
         assert (
-            element.get_attribute(prop) == "about:blank"
-        ), f"Failed prop: {element_id}.{prop}"
+            element.get_attribute("href") == "about:blank"
+        ), f"Failed prop: {element_id}.href"
+
+    element = dash_duo.find_element("#breadcrumb a")
+    assert (
+        element.get_attribute("href") == "about:blank"
+    ), "Failed prop: breadcrumb.href"
+
+    element = dash_duo.find_element(".navbar-brand")
+    assert (
+        element.get_attribute("href") == "about:blank"
+    ), "Failed prop: navbarsimple.href"
