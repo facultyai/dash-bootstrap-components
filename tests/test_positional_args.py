@@ -1,5 +1,6 @@
 from dash import Dash, html
 from dash_bootstrap_components import Checklist, RadioItems, Select
+from selenium.webdriver.common.by import By
 
 
 def test_dbpa001_checklist(dash_duo):
@@ -31,27 +32,27 @@ def test_dbpa001_checklist(dash_duo):
     # Check values
     assert [
         a.get_attribute("value")
-        for a in dash_duo.wait_for_element(
-            "#with-keywords"
-        ).find_elements_by_tag_name("input")
+        for a in dash_duo.wait_for_element("#with-keywords").find_elements(
+            by=By.TAG_NAME, value="input"
+        )
     ] == [
         a.get_attribute("value")
-        for a in dash_duo.wait_for_element(
-            "#without-keywords"
-        ).find_elements_by_tag_name("input")
+        for a in dash_duo.wait_for_element("#without-keywords").find_elements(
+            by=By.TAG_NAME, value="input"
+        )
     ]
 
     # Check labels
     assert [
         a.text
-        for a in dash_duo.wait_for_element(
-            "#with-keywords"
-        ).find_elements_by_tag_name("label")
+        for a in dash_duo.wait_for_element("#with-keywords").find_elements(
+            by=By.TAG_NAME, value="label"
+        )
     ] == [
         a.text
-        for a in dash_duo.wait_for_element(
-            "#without-keywords"
-        ).find_elements_by_tag_name("label")
+        for a in dash_duo.wait_for_element("#without-keywords").find_elements(
+            by=By.TAG_NAME, value="label"
+        )
     ]
 
 
@@ -84,27 +85,27 @@ def test_dbpa002_radio_items(dash_duo):
     # Check values
     assert [
         a.get_attribute("value")
-        for a in dash_duo.wait_for_element(
-            "#with-keywords"
-        ).find_elements_by_tag_name("input")
+        for a in dash_duo.wait_for_element("#with-keywords").find_elements(
+            by=By.TAG_NAME, value="input"
+        )
     ] == [
         a.get_attribute("value")
-        for a in dash_duo.wait_for_element(
-            "#without-keywords"
-        ).find_elements_by_tag_name("input")
+        for a in dash_duo.wait_for_element("#without-keywords").find_elements(
+            by=By.TAG_NAME, value="input"
+        )
     ]
 
     # Check labels
     assert [
         a.text
-        for a in dash_duo.wait_for_element(
-            "#with-keywords"
-        ).find_elements_by_tag_name("label")
+        for a in dash_duo.wait_for_element("#with-keywords").find_elements(
+            by=By.TAG_NAME, value="label"
+        )
     ] == [
         a.text
-        for a in dash_duo.wait_for_element(
-            "#without-keywords"
-        ).find_elements_by_tag_name("label")
+        for a in dash_duo.wait_for_element("#without-keywords").find_elements(
+            by=By.TAG_NAME, value="label"
+        )
     ]
 
 
@@ -137,25 +138,25 @@ def test_dbpa003_select(dash_duo):
     # Check values
     assert [
         a.get_attribute("value")
-        for a in dash_duo.wait_for_element(
-            "#with-keywords"
-        ).find_elements_by_tag_name("option")
+        for a in dash_duo.wait_for_element("#with-keywords").find_elements(
+            by=By.TAG_NAME, value="option"
+        )
     ] == [
         a.get_attribute("value")
-        for a in dash_duo.wait_for_element(
-            "#without-keywords"
-        ).find_elements_by_tag_name("option")
+        for a in dash_duo.wait_for_element("#without-keywords").find_elements(
+            by=By.TAG_NAME, value="option"
+        )
     ]
 
     # Check labels
     assert [
         a.text
-        for a in dash_duo.wait_for_element(
-            "#with-keywords"
-        ).find_elements_by_tag_name("option")
+        for a in dash_duo.wait_for_element("#with-keywords").find_elements(
+            by=By.TAG_NAME, value="option"
+        )
     ] == [
         a.text
-        for a in dash_duo.wait_for_element(
-            "#without-keywords"
-        ).find_elements_by_tag_name("option")
+        for a in dash_duo.wait_for_element("#without-keywords").find_elements(
+            by=By.TAG_NAME, value="option"
+        )
     ]
