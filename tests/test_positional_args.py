@@ -99,7 +99,7 @@ def test_dbpa002_radio_items(dash_duo):
         a.text
         for a in dash_duo.wait_for_element(
             "#with-keywords"
-        ).find_elements_by_tag_name("label")
+        ).find_elements_by_tag_n("label")
     ] == [
         a.text
         for a in dash_duo.wait_for_element(

@@ -1,5 +1,5 @@
-from dash import Dash, html
 import dash_bootstrap_components as dbc
+from dash import Dash, html
 
 
 def test_xss001_banned_protocols(dash_duo):
