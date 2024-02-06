@@ -17,6 +17,7 @@ const Modal = props => {
     class_name,
     autoFocus,
     autofocus,
+    enforceFocus,
     labelledBy,
     labelledby,
     modalClassName,
@@ -49,6 +50,7 @@ const Modal = props => {
       contentClassName={content_class_name || contentClassName}
       backdropClassName={backdrop_class_name || backdropClassName}
       autoFocus={autofocus || autoFocus}
+      enforceFocus={enforceFocus}
       aria-labelledby={labelledby || labelledBy}
       show={is_open}
       onHide={onHide}
@@ -130,6 +132,10 @@ Modal.propTypes = {
    */
   autoFocus: PropTypes.bool,
 
+  /**
+   * 	When true The modal will prevent focus from leaving the Modal while open.
+   */  
+  enforceFocus: PropTypes.bool,
   /**
    * Set the size of the modal. Options sm, lg, xl for small, large or extra
    * large sized modals, or leave undefined for default size.
