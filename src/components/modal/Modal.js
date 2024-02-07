@@ -134,8 +134,9 @@ Modal.propTypes = {
 
   /**
    * 	When true The modal will prevent focus from leaving the Modal while open.
-   */  
+   */
   enforceFocus: PropTypes.bool,
+
   /**
    * Set the size of the modal. Options sm, lg, xl for small, large or extra
    * large sized modals, or leave undefined for default size.
