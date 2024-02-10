@@ -1,109 +1,58 @@
 import dash_bootstrap_components as dbc
-from dash import Dash, html
+import pytest
+from dash import Dash
 
-
-def test_xss001_banned_protocols(dash_duo):
-    app = Dash()
-
-    NavLink = dbc.NavLink(
-        "dbc link", href="javascript:alert('NavLink')", id="navlink"
+components = [
+    component(id="link", href="javascript:alert('xss')")
+    for component in (
+        dbc.Badge,
+        dbc.Button,
+        dbc.DropdownMenuItem,
+        dbc.CardLink,
+        dbc.ListGroupItem,
+        dbc.NavLink,
+        dbc.NavbarBrand,
     )
+]
 
-    NavbarSimple = dbc.NavbarSimple(
+
+@pytest.mark.parametrize("component", components)
+def test_xss001_banned_protocols(dash_duo, component):
+    app = Dash()
+    app.layout = component
+    dash_duo.start_server(app)
+
+    element = dash_duo.find_element("#link")
+    assert element.get_attribute("href") == "about:blank"
+
+
+def test_xss002_navbar_brand_href(dash_duo):
+    app = Dash()
+    app.layout = dbc.NavbarSimple(
         brand="NavbarSimple",
-        brand_href="javascript:alert('NavbarSimple')",
+        brand_href="javascript:alert('xss')",
         id="navbarsimple",
     )
-    Badge = dbc.Badge("badge", href="javascript:alert('Badge')", id="badge")
+    dash_duo.start_server(app)
 
-    Breadcrumb = dbc.Breadcrumb(
+    element = dash_duo.find_element(".navbar-brand")
+    assert element.get_attribute("href") == "about:blank"
+
+
+@pytest.mark.parametrize("external_link", [True, False])
+def test_xss003_breadcrumb_link(dash_duo, external_link):
+    app = Dash()
+    app.layout = dbc.Breadcrumb(
         items=[
             {
                 "label": "Docs",
-                "href": "javascript:alert('Breadcrumb1')",
-                "external_link": True,
-            },
-            {"label": "Breadcrumb", "active": True},
+                "href": "javascript:alert('xss')",
+                "external_link": external_link,
+            }
         ],
         id="breadcrumb",
     )
-
-    Button = dbc.Button(
-        "button", href="javascript:alert('Button')", id="button"
-    )
-
-    CardLink = dbc.Card(
-        dbc.CardLink(
-            "cardlink",
-            href="javascript:alert('Card')",
-            id="cardlink",
-        ),
-    )
-
-    ListGroupItem = dbc.ListGroup(
-        [
-            dbc.ListGroupItem("Active item", active=True),
-            dbc.ListGroupItem(
-                "Item 2",
-                href="javascript:alert('ListGroupItem')",
-                id="listgroupitem",
-            ),
-        ]
-    )
-
-    NavbarBrand = dbc.Navbar(
-        dbc.NavbarBrand(
-            "Navbar Brand",
-            href="javascript:alert('NavbarBrand')",
-            id="navbarbrand",
-        )
-    )
-
-    DropdownMenuItem = dbc.DropdownMenu(
-        dbc.DropdownMenuItem(
-            "DropdownMenuItem",
-            href="javascript:alert('DropdownMenuItem')",
-            id="dropdownmenuitem",
-        )
-    )
-
-    app.layout = html.Div(
-        [
-            NavLink,
-            NavbarSimple,
-            Badge,
-            Breadcrumb,
-            Button,
-            CardLink,
-            ListGroupItem,
-            NavbarBrand,
-            DropdownMenuItem,
-        ]
-    )
-
     dash_duo.start_server(app)
 
-    for element_id in [
-        "#navlink",
-        "#badge",
-        "#button",
-        "#cardlink",
-        "#listgroupitem",
-        "#navbarbrand",
-        "#dropdownmenuitem",
-    ]:
-
-        element = dash_duo.find_element(element_id)
-        assert (
-            element.get_attribute("href") == "about:blank"
-        ), f"Failed prop: {element_id}.href"
-
     element = dash_duo.find_element("#breadcrumb a")
-    assert (
-        element.get_attribute("href") == "about:blank"
-    ), "Failed prop: breadcrumb.href"
-
-    element = dash_duo.find_element(".navbar-brand")
-    assert (
-        element.get_attribute("href") == "about:blank"
-    ), "Failed prop: navbarsimple.href"
+    assert element.get_attribute("href") == "about:blank"
