@@ -4,6 +4,7 @@ import {omit} from 'ramda';
 import classNames from 'classnames';
 import {History} from '@plotly/dash-component-plugins';
 import Link from '../../private/Link';
+import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
@@ -24,11 +25,13 @@ const NavLink = props => {
     ...otherProps
   } = props;
 
+  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
+
   const pathnameToActive = pathname => {
     setLinkActive(
       active === true ||
-        (active === 'exact' && pathname === href) ||
-        (active === 'partial' && pathname.startsWith(href))
+        (active === 'exact' && pathname === sanitizedUrl) ||
+        (active === 'partial' && pathname.startsWith(sanitizedUrl))
     );
   };
 
@@ -61,7 +64,7 @@ const NavLink = props => {
       className={classes}
       disabled={disabled}
       preOnClick={incrementClicks}
-      href={href}
+      href={sanitizedUrl}
       {...omit(['n_clicks_timestamp'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined

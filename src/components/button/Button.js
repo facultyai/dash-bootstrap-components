@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBButton from 'react-bootstrap/Button';
 import Link from '../../private/Link';
+import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * A component for creating Bootstrap buttons with different style options. The
@@ -34,6 +35,8 @@ const Button = props => {
     ...otherProps
   } = props;
 
+  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
+
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({
@@ -42,7 +45,7 @@ const Button = props => {
       });
     }
   };
-  const useLink = href && !disabled;
+  const useLink = sanitizedUrl && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
 
   if (useLink) {
@@ -56,7 +59,7 @@ const Button = props => {
       as={useLink ? Link : 'button'}
       variant={outline ? `outline-${color}` : color}
       type={useLink ? undefined : type}
-      href={disabled ? undefined : href}
+      href={disabled ? undefined : sanitizedUrl}
       disabled={disabled}
       download={useLink ? download : undefined}
       name={useLink ? undefined : name}

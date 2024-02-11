@@ -3,17 +3,28 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbarBrand from 'react-bootstrap/NavbarBrand';
 import Link from '../../private/Link';
+import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Call out attention to a brand name or site title within a navbar.
  */
 const NavbarBrand = props => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+  const {
+    children,
+    loading_state,
+    className,
+    class_name,
+    href,
+    setProps,
+    ...otherProps
+  } = props;
+  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
   return (
     <RBNavbarBrand
       className={class_name || className}
-      {...omit(['setProps'], otherProps)}
-      as={props.href ? Link : 'span'}
+      {...otherProps}
+      as={sanitizedUrl ? Link : 'span'}
+      href={sanitizedUrl}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }

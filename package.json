@@ -39,6 +39,7 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.1",
     "@testing-library/user-event": "^13.2.1",
@@ -56,6 +57,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@braintree/sanitize-url": "^7.0.0",
     "@plotly/dash-component-plugins": "^1.2.0",
     "classnames": "^2.2.6",
     "fast-isnumeric": "^1.1.3",
