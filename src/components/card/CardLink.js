@@ -42,7 +42,7 @@ const CardLink = props => {
       disabled={disabled}
       href={sanitizedUrl}
       className={class_name || className}
-      {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
+      {...omit(['n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
     </RBCard.Link>

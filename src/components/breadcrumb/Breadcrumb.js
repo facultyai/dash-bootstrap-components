@@ -10,24 +10,22 @@ import {sanitizeAndCheckUrl} from '../../private/util';
  */
 
 const BreadcrumbItem = ({
-  item,
-  idx,
-  item_class_name,
-  itemClassName,
-  setProps
+  href,
+  setProps,
+  external_link,
+  label,
+  ...otherProps
 }) => {
-  const sanitizedUrl = sanitizeAndCheckUrl(item.href, setProps);
+  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
 
   return (
     <RBBreadcrumb.Item
-      key={`${item.value}${idx}`}
-      active={item.active}
       linkAs={sanitizedUrl && Link}
-      className={item_class_name || itemClassName}
       href={sanitizedUrl}
-      linkProps={sanitizedUrl && {external_link: item.external_link}}
+      linkProps={sanitizedUrl && {external_link}}
+      {...otherProps}
     >
-      {item.label}
+      {label}
     </RBBreadcrumb.Item>
   );
 };
@@ -55,11 +53,9 @@ const Breadcrumb = ({
     {(items || []).map((item, idx) => (
       <BreadcrumbItem
         key={`${item.value}${idx}`}
-        idx={idx}
-        item={item}
-        item_class_name={item_class_name}
-        itemClassName={itemClassName}
+        className={item_class_name || itemClassName}
         setProps={setProps}
+        {...item}
       />
     ))}
   </RBBreadcrumb>
