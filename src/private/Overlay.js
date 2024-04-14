@@ -50,6 +50,16 @@ const Overlay = ({
   const targetRef = useRef(null);
   const hideTimeout = useRef(null);
   const showTimeout = useRef(null);
+  const isMountedRef = useRef(false);
+  // TODO: we use this as a guard to make sure we don't call setProps if the component
+  // has unmounted. cancelling the timeouts directly would be neater but I haven't been
+  // able to make it work.
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  });
 
   // Triggers can be passed using space separated values
   const triggers = typeof trigger === 'string' ? trigger.split(' ') : [];
@@ -63,7 +73,7 @@ const Overlay = ({
     if (isOpenRef.current) {
       hideTimeout.current = clearTimeout(hideTimeout.current);
       setIsOpen(false);
-      if (setProps) {
+      if (setProps && isMountedRef.current) {
         setProps({is_open: false});
       }
     }
@@ -84,7 +94,7 @@ const Overlay = ({
     if (!isOpenRef.current) {
       showTimeout.current = clearTimeout(showTimeout.current);
       setIsOpen(true);
-      if (setProps) {
+      if (setProps && isMountedRef) {
         setProps({is_open: true});
       }
     }
@@ -148,8 +158,8 @@ const Overlay = ({
       }
       // Focus event trigger
       if (triggers.indexOf('focus') > -1) {
-        t.addEventListener('focusin', show, true);
-        t.addEventListener('focusout', hide, true);
+        t.addEventListener('focusin', showWithDelay, true);
+        t.addEventListener('focusout', hideWithDelay, true);
       }
       // Click or Legacy event trigger
       if (triggers.indexOf('click') > -1 || triggers.indexOf('legacy') > -1) {
@@ -216,7 +226,7 @@ const Overlay = ({
         // need to make sure that props stay in sync
         onHide={() => {
           setIsOpen(false);
-          if (setProps) {
+          if (setProps && isMountedRef.current) {
             setProps({is_open: false});
           }
         }}
