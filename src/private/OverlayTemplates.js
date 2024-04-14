@@ -72,14 +72,26 @@ const TooltipTemplate = React.forwardRef(
       style,
       children,
       arrowProps,
-      popper: _,
-      show: _2,
+      popper,
+      show,
+      hasDoneInitialMeasure,
       ...props
     },
     ref
   ) => {
     const [primaryPlacement] = placement?.split('-') || [];
     const bsDirection = getOverlayDirection(primaryPlacement);
+
+    const computedStyle = style;
+    if (show && !hasDoneInitialMeasure)
+      computedStyle = {
+        ...style,
+        position: popper?.strategy,
+        top: '0',
+        left: '0',
+        opacity: '0',
+        pointerEvents: 'none'
+      };
 
     const {
       handleMouseOverTooltipContent,
@@ -89,7 +101,7 @@ const TooltipTemplate = React.forwardRef(
     return (
       <div
         ref={ref}
-        style={style}
+        style={computedStyle}
         role="tooltip"
         x-placement={primaryPlacement}
         className={classNames(
