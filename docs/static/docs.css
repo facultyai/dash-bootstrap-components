@@ -107,6 +107,10 @@ span.hljs-meta {
   border-radius: 6px;
 }
 
+.highlight pre {
+  margin-bottom: 0;
+}
+
 .api-documentation {
   margin-bottom: 4rem;
 }

@@ -1,5 +1,6 @@
 {% macro example_navbar() -%}
 <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
     <span class="me-2 bg-white" style="padding:2px;border-radius:4px">
       <img
         src="/static/images/dbciconblack128.png"
@@ -14,5 +15,6 @@
       </li>
       <li class="nav-item"><a href="#sourceCode" class="nav-link">Jump to source</a></li>
     </ul>
+  </div>
 </nav>
 {%- endmacro %}

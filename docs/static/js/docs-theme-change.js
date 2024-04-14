@@ -1,35 +1,95 @@
-const getStoredTheme = () => localStorage.getItem('theme')
-const lightIcon = "bi bi-sun-fill"
-const darkIcon = "bi bi-moon-fill"
+/*!
+ * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2011-2024 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ */
 
+(() => {
+  'use strict';
 
-const setIcon = theme => {
-  icon = theme == "light" ? lightIcon : darkIcon
-  document.getElementById('theme-icon').className = icon
-}
+  const getStoredTheme = () => localStorage.getItem('theme');
+  const setStoredTheme = theme => localStorage.setItem('theme', theme);
 
-const handleThemeChange = () => {
-  getStoredTheme() == 'dark' ? setTheme("light") : setTheme("dark")
-}
+  const getPreferredTheme = () => {
+    const storedTheme = getStoredTheme();
+    if (storedTheme) {
+      return storedTheme;
+    }
 
-const setTheme = theme => {
-  document.documentElement.setAttribute('data-bs-theme', theme)
-  localStorage.setItem('theme', theme)
-  setIcon(theme)
-}
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  };
 
-// icon needs to be set after page is loaded
-const setInitialIcon = () => {
-  getStoredTheme() == 'dark' ? setIcon("dark") : setIcon("light")
-}
-window.onload = (event) => {
-  // example pages should always be light theme
-  if (window.location.pathname.includes("/examples") ) {
-    return document.documentElement.setAttribute('data-bs-theme', "light")
-  }
-  setInitialIcon()
+  const setTheme = theme => {
+    if (window.location.pathname.startsWith('/examples')) {
+      // examples page currently can't handle dark mode well...
+      document.documentElement.setAttribute('data-bs-theme', 'light');
+    } else if (theme === 'auto') {
+      document.documentElement.setAttribute(
+        'data-bs-theme',
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+      );
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', theme);
+    }
+  };
 
-};
+  setTheme(getPreferredTheme());
 
+  const showActiveTheme = (theme, focus = false) => {
+    const themeSwitcher = document.querySelector('#bd-theme');
 
+    if (!themeSwitcher) {
+      return;
+    }
 
+    const themeSwitcherText = document.getElementById('bd-theme-text');
+    const activeThemeIcon = document.getElementById('theme-icon-active');
+    const btnToActive = document.querySelector(
+      `[data-bs-theme-value="${theme}"]`
+    );
+    const classOfActiveBtn = btnToActive
+      .querySelector('i')
+      .getAttribute('class');
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+      element.classList.remove('active');
+      element.setAttribute('aria-pressed', 'false');
+    });
+
+    btnToActive.classList.add('active');
+    btnToActive.setAttribute('aria-pressed', 'true');
+    activeThemeIcon.setAttribute('class', classOfActiveBtn);
+    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`;
+    themeSwitcher.setAttribute('aria-label', themeSwitcherLabel);
+
+    if (focus) {
+      themeSwitcher.focus();
+    }
+  };
+
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', () => {
+      const storedTheme = getStoredTheme();
+      if (storedTheme !== 'light' && storedTheme !== 'dark') {
+        setTheme(getPreferredTheme());
+      }
+    });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    showActiveTheme(getPreferredTheme());
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const theme = toggle.getAttribute('data-bs-theme-value');
+        setStoredTheme(theme);
+        setTheme(theme);
+        showActiveTheme(theme, true);
+      });
+    });
+  });
+})();
