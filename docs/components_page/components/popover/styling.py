@@ -14,6 +14,7 @@ popovers = html.Div(
             target="hide-arrow-target",
             trigger="legacy",
             hide_arrow=True,
+            body=True,
         ),
         dbc.Button(
             "Offset Popover",
@@ -26,6 +27,7 @@ popovers = html.Div(
             trigger="legacy",
             hide_arrow=True,
             offset="50,20",
+            body=True,
         ),
     ]
 )
