@@ -1,6 +1,4 @@
 import {type} from 'ramda';
-import React, {useEffect, useMemo} from 'react';
-import {sanitizeUrl} from '@braintree/sanitize-url';
 
 const parseChildrenToArray = children => {
   if (children && !Array.isArray(children)) {
@@ -75,26 +73,4 @@ const stringifyId = id => {
   return '{' + parts.join(',') + '}';
 };
 
-const sanitizeAndCheckUrl = (href, setProps) => {
-  const sanitizedUrl = useMemo(() => {
-    return href ? sanitizeUrl(href) : undefined;
-  }, [href]);
-
-  useEffect(() => {
-    if (sanitizedUrl && sanitizedUrl !== href) {
-      setProps({
-        _dash_error: new Error(`Dangerous link detected:: ${href}`)
-      });
-    }
-  }, [href, sanitizedUrl]);
-
-  return sanitizedUrl;
-};
-
-export {
-  parseChildrenToArray,
-  resolveChildProps,
-  sanitizeOptions,
-  stringifyId,
-  sanitizeAndCheckUrl
-};
+export {parseChildrenToArray, resolveChildProps, sanitizeOptions, stringifyId};

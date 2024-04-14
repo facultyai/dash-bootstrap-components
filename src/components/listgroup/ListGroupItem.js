@@ -4,7 +4,6 @@ import {omit} from 'ramda';
 import RBListGroupItem from 'react-bootstrap/ListGroupItem';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
-import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Create a single item in a `ListGroup`.
@@ -25,8 +24,6 @@ const ListGroupItem = props => {
     ...otherProps
   } = props;
 
-  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
-
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({
@@ -36,13 +33,13 @@ const ListGroupItem = props => {
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
-  const useLink = sanitizedUrl && !disabled;
+  const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   return (
     <RBListGroupItem
       as={useLink ? Link : 'li'}
-      href={sanitizedUrl}
+      href={href}
       target={useLink ? target : undefined}
       disabled={disabled}
       variant={isBootstrapColor ? color : null}

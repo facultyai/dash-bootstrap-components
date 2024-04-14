@@ -5,7 +5,6 @@ import RBDropdown from 'react-bootstrap/Dropdown';
 
 import Link from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
-import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
@@ -27,8 +26,6 @@ const DropdownMenuItem = props => {
     ...otherProps
   } = props;
 
-  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
-
   const context = useContext(DropdownMenuContext);
 
   const handleClick = e => {
@@ -43,7 +40,7 @@ const DropdownMenuItem = props => {
     }
   };
 
-  const useLink = sanitizedUrl && !disabled;
+  const useLink = href && !disabled;
   otherProps[useLink ? 'preOnClick' : 'onClick'] = e => handleClick(e);
 
   if (header) {
@@ -55,7 +52,7 @@ const DropdownMenuItem = props => {
   return (
     <RBDropdown.Item
       as={useLink ? Link : 'button'}
-      href={useLink ? sanitizedUrl : undefined}
+      href={useLink ? href : undefined}
       disabled={disabled}
       target={useLink ? target : undefined}
       className={class_name || className}

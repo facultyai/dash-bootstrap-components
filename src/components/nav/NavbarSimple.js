@@ -4,7 +4,6 @@ import {omit} from 'ramda';
 import RBNavbar from 'react-bootstrap/Navbar';
 import RBContainer from 'react-bootstrap/Container';
 import {bootstrapColors} from '../../private/BootstrapColors';
-import {sanitizeAndCheckUrl} from '../../private/util';
 
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
@@ -30,12 +29,8 @@ const NavbarSimple = props => {
     loading_state,
     className,
     class_name,
-    setProps,
     ...otherProps
   } = props;
-
-  const sanitizedUrl = sanitizeAndCheckUrl(brand_href, setProps);
-
   const isBootstrapColor = bootstrapColors.has(color);
 
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -57,7 +52,7 @@ const NavbarSimple = props => {
       <RBContainer fluid={fluid}>
         {brand && (
           <NavbarBrand
-            href={sanitizedUrl}
+            href={brand_href}
             style={brand_style}
             external_link={brand_external_link}
           >
