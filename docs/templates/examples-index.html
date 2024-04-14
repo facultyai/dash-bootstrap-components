@@ -1,50 +1,69 @@
-{% from 'macros/sidenav.html' import sidenav %}
-{% from 'macros/navbar.html' import navbar %}
-{% extends 'base.html' %}
-{% block title %}
-  <title>Examples - dbc docs</title>
-{% endblock %}
-{% block header %}
-  {{ navbar('examples', False) }}
-{% endblock %}
+{% from "macros/sidenav.html" import sidenav %}
+{% from "macros/navbar.html" import navbar %}
+{% extends "base.html" %}
+{% block title %}<title>Examples - dbc docs</title>{% endblock %}
+{% block header %}{{ navbar("examples", False) }}{% endblock %}
 {% block body %}
-  <div class="container">
-    <main class="dbcd-main mb-5">
-      <h1>Examples</h1>
-      <p class="lead">
-        This page contains example apps built with dash-bootstrap-components. Check out our
-        <a href="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples">GitHub page</a>
-        for more.
-      </p>
-      <div class="row">
-        <div class="col-12 col-md-4">
-          <h2>Iris</h2>
-          <div class="card">
-            <a href="/examples/iris"><img src="/static/images/examples/iris.png" alt="Iris example screenshot" class="card-img-top card-img-bottom" /></a>
-          </div>
-          <p>
-            Interactively cluster the Iris dataset. Based on
-            <a href="https://shiny.rstudio.com/gallery/kmeans-example.html">this RShiny example</a>.
-          </p>
+<div class="container">
+  <main class="dbcd-main mb-5">
+    <h1>Examples</h1>
+    <p class="lead">
+      This page contains example apps built with dash-bootstrap-components.
+      Check out our
+      <a
+        href="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples"
+        >GitHub page</a
+      >
+      for more.
+    </p>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <h2>Iris</h2>
+        <div class="card">
+          <a href="/examples/iris">
+            <img
+              src="/static/images/examples/iris.png"
+              alt="Iris example screenshot"
+              class="card-img-top card-img-bottom"
+          /></a>
         </div>
-        <div class="col-12 col-md-4">
-          <h2>Graphs in <code>Tabs</code></h2>
-          <div class="card">
-            <a href="/examples/graphs-in-tabs"><img src="/static/images/examples/git.png" alt="Graphs in tabs example screehshot" class="card-img-top card-img-bottom" /></a>
-          </div>
-          <p>
-            An example app showing how to ensure <code>dash_core_components.Graph</code>
-            components are sized correctly when used with <code>dbc.Tabs</code>.
-          </p>
-        </div>
-        <div class="col-12 col-md-4">
-          <h2>Simple sidebar</h2>
-          <div class="card">
-            <a href="/examples/simple-sidebar"><img src="/static/images/examples/ss.png" alt="Simple sidebar example screenshot" class="card-img-top card-img-bottom" /></a>
-          </div>
-          <p>An example multipage app with sidebar and active navigation links.</p>
-        </div>
+        <p>
+          Interactively cluster the Iris dataset. Based on
+          <a href="https://shiny.rstudio.com/gallery/kmeans-example.html"
+            >this RShiny example</a
+          >.
+        </p>
       </div>
-    </main>
-  </div>
+      <div class="col-12 col-md-4">
+        <h2>Graphs in <code>Tabs</code></h2>
+        <div class="card">
+          <a href="/examples/graphs-in-tabs"
+            ><img
+              src="/static/images/examples/git.png"
+              alt="Graphs in tabs example screehshot"
+              class="card-img-top card-img-bottom"
+          /></a>
+        </div>
+        <p>
+          An example app showing how to ensure <code>dash_core_components.Graph</code>
+          components are sized correctly when used with <code>dbc.Tabs</code>.
+        </p>
+      </div>
+      <div class="col-12 col-md-4">
+        <h2>Simple sidebar</h2>
+        <div class="card">
+          <a href="/examples/simple-sidebar"
+            ><img
+              src="/static/images/examples/ss.png"
+              alt="Simple sidebar example screenshot"
+              class="card-img-top card-img-bottom"
+          /></a>
+        </div>
+        <p>
+          An example multipage app with sidebar and active navigation links.
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
 {% endblock %}
