@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCard from 'react-bootstrap/Card';
 import Link from '../../private/Link';
-import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Use card link to add consistently styled links to your cards. Links can be
@@ -16,16 +15,12 @@ const CardLink = props => {
     disabled,
     className,
     class_name,
-    href,
-    setProps,
     ...otherProps
   } = props;
 
-  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
-
   const incrementClicks = () => {
-    if (!disabled && setProps) {
-      setProps({
+    if (!disabled && props.setProps) {
+      props.setProps({
         n_clicks: props.n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
@@ -40,9 +35,8 @@ const CardLink = props => {
       as={Link}
       preOnClick={incrementClicks}
       disabled={disabled}
-      href={sanitizedUrl}
       className={class_name || className}
-      {...omit(['n_clicks', 'n_clicks_timestamp'], otherProps)}
+      {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
     >
       {children}
     </RBCard.Link>

@@ -4,7 +4,6 @@ import {omit} from 'ramda';
 import RBBadge from 'react-bootstrap/Badge';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
-import {sanitizeAndCheckUrl} from '../../private/util';
 
 /**
  * Badges can be used to add counts or labels to other components.
@@ -23,8 +22,6 @@ const Badge = props => {
     ...otherProps
   } = props;
 
-  const sanitizedUrl = sanitizeAndCheckUrl(href, setProps);
-
   const incrementClicks = () => {
     if (setProps) {
       setProps({
@@ -39,8 +36,8 @@ const Badge = props => {
 
   return (
     <RBBadge
-      as={sanitizedUrl && Link}
-      href={sanitizedUrl}
+      as={href && Link}
+      href={href}
       bg={isBootstrapColor ? color : null}
       text={text_color}
       className={class_name || className}
