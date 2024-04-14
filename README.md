@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://dash-bootstrap-components.opensource.faculty.ai/">
-    <img src="https://cdn.opensource.faculty.ai/dbc/assets/logo.svg" alt="dash-bootstrap-components logo" width="200" height="200">
+    <img src="./readme-images/logo.png" alt="dash-bootstrap-components logo" width="200" height="200">
   </a>
 </p>
 
@@ -83,44 +83,12 @@ For more information on how to link local or external CSS, check out the
 ### Build the layout
 
 With CSS linked, you can start building your app's layout with our Bootstrap
-components. See our [_documentation_][docs-components] for a full list of
-available components, which include:
-
-#### Standard row and column-based layouts
+components. These include layout components for organising the content of your app on the page, as well as UI components like navbars, cards, alerts and many more.
 
 ![layout](./readme-images/layout.png)
 
----
-
-#### Cards
-
-![cards](./readme-images/cards.png)
-
----
-
-#### Tabs
-
-![tabs](./readme-images/tabs.png)
-
----
-
-#### Forms
-
-![forms](./readme-images/forms.png)
-
----
-
-#### Dropdown menus
-
-<img src="./readme-images/dropdown.png" width="200"/>
-
----
-
-#### Tooltips
-
-<img src="./readme-images/tooltips.png" width="400"/>
-
-... and many more.
+See our [_documentation_][docs-components] for a full list of available
+components.
 
 ## Contributing
 
@@ -136,7 +104,7 @@ will pass our linting checks, and how to submit the pull request itself.
 ## Copyright and license
 
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
-2018-2022, and released under the [Apache 2.0 license](./LICENSE)
+2018-2024, and released under the [Apache 2.0 license](./LICENSE)
 
 [dash-homepage]: https://dash.plotly.com/
 [dash-docs-external]: https://dash.plotly.com/external-resources
