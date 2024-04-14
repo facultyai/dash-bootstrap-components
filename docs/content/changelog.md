@@ -6,6 +6,24 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.6.0 - 2024/04/14
+
+Version 1.6.0 of dash-bootstrap-components. This version makes some improvements to `Accordion`, `Modal` and `Progress` as well as updating CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+- The `title` property of `AccordionItem` can now be an arbitrary Dash component ([PR 988](https://github.com/facultyai/dash-bootstrap-components/pull/988))
+- You can now set `enforceFocus=False` on a `Modal` to allow components in the background to receive focus while the `Modal` is open ([PR 1001](https://github.com/facultyai/dash-bootstrap-components/pull/1001))
+- The documentation now has a dark mode ([PR 984](https://github.com/facultyai/dash-bootstrap-components/pull/984))
+
+### Fixed
+- The `min` and `max` properties of a `Progress` bar are propagated to its children ([PR 986](https://github.com/facultyai/dash-bootstrap-components/pull/986))
+- Fixed console errors originating from `Tooltip` component ([PR 1008](https://github.com/facultyai/dash-bootstrap-components/pull/1008))
+- Fix error caused by `Tooltip` closing as component unmounts ([PR 1008](https://github.com/facultyai/dash-bootstrap-components/pull/1008))
+
+### Changed
+- Drop support for Python 3.7 as it is EOL ([PR 995](https://github.com/facultyai/dash-bootstrap-components/pull/995))
+- The `themes` module now links to Bootstrap 5.3.3 ([PR 1013](https://github.com/facultyai/dash-bootstrap-components/pull/1013))
+
 ## 1.5.0 - 2023/09/07
 
 Version 1.5.0 of dash-bootstrap-components. This version makes some improvements to `Carousel` and `Textarea` as well as updating CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
