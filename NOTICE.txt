@@ -1,5 +1,5 @@
 dash-bootstrap-components
-Copyright 2018-2022 Faculty Science Limited
+Copyright 2018-2024 Faculty Science Limited
 
 This product includes software developed at Faculty Science Limited (https://faculty.ai/).
 
