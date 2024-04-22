@@ -83,9 +83,7 @@ Here's a callback to change the theme:
 clientside_callback(
     " " "
     (switchOn) => {
-       switchOn
-         ? document.documentElement.setAttribute('data-bs-theme', 'light')
-         : document.documentElement.setAttribute('data-bs-theme', 'dark')
+       document.documentElement.setAttribute("data-bs-theme", switchOn ? "light" : "dark"); 
        return window.dash_clientside.no_update
     }
     " " ",
