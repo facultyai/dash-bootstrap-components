@@ -209,12 +209,12 @@ span.hljs-meta {
 }
 
 .dbcd-nav-toggle {
-  color: rgb(33, 37, 41);
+  color: var(--bs-secondary-color);
   padding: 0.25rem 0.75rem;
 }
 
 .dbcd-nav-toggle:hover {
-  color: rgb(30, 30, 35);
+  color: var(--bs-body-color);
 }
 
 .dbcd-nav-link {
