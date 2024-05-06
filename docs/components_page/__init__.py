@@ -3,7 +3,7 @@ from pathlib import Path
 
 import dash
 import dash_bootstrap_components as dbc
-from dash import html
+from dash import ClientsideFunction, Input, Output, html
 from jinja2 import Environment, FileSystemLoader
 
 from .components.table.simple import table_body, table_header  # noqa
@@ -149,6 +149,7 @@ def register_apps():
         )
         app = dash.Dash(
             external_stylesheets=["/static/loading.css"],
+            external_scripts=["/static/js/clientside.js"],
             requests_pathname_prefix=requests_pathname_prefix,
             suppress_callback_exceptions=True,
             serve_locally=SERVE_LOCALLY,
@@ -171,6 +172,17 @@ def register_apps():
             )
         else:
             app.layout = parse(app, **kwargs)
+
+        app.clientside_callback(
+            ClientsideFunction(
+                namespace="clientside", function_name="scrollAfterLoad"
+            ),
+            # id won't actually be updated, we just want the callback to run
+            # once Dash has initialised and hydrated the page
+            Output("url", "id"),
+            Input("url", "hash"),
+        )
+
         if slug == "index":
             routes["/docs/components"] = app
         else:

@@ -27,6 +27,10 @@ PROP_TYPE_PATTERN = re.compile(r"""(\s*- \w+?\s*\()([^;]*);""")
 PROP_NAME_PATTERN = re.compile(r"""(\n- )(\w+?) \(""")
 NESTED_PROP_NAME_PATTERN = re.compile(r"""(\n\s+- )(\w+?) \(""")
 
+HEADING_TEMPLATE = """<h{level} id="{id_}" style="scroll-margin-top:60px">
+    {heading}<a href="#{id_}" class="anchor-link">#</a>
+</h{level}>"""
+
 
 def parse(app, markdown_path, extra_env_vars=None):
     extra_env_vars = extra_env_vars or {}
@@ -46,7 +50,8 @@ def parse(app, markdown_path, extra_env_vars=None):
 
     markdown_blocks = SPLIT_PATTERN.split(raw)
     markdown_blocks = [
-        dcc.Markdown(block.strip()) for block in markdown_blocks
+        dcc.Markdown(_preprocess_markdown(block), dangerously_allow_html=True)
+        for block in markdown_blocks
     ]
 
     examples_docs = EXAMPLE_DOC_PATTERN.findall(raw)
@@ -55,7 +60,24 @@ def parse(app, markdown_path, extra_env_vars=None):
     ]
 
     content.extend(_interleave(markdown_blocks, examples_docs))
-    return html.Div(content, key=str(markdown_path))
+    return html.Div([dcc.Location(id="url")] + content, key=str(markdown_path))
+
+
+def _preprocess_markdown(text):
+    text = text.strip()
+    lines = text.split("\n")
+    new_lines = []
+    for line in lines:
+        if line.startswith("#"):
+            level, heading = line.split(" ", 1)
+            level = level.count("#")
+            id_ = heading.replace(" ", "-").lower()
+            new_lines.append(
+                HEADING_TEMPLATE.format(level=level, id_=id_, heading=heading)
+            )
+        else:
+            new_lines.append(line)
+    return "\n".join(new_lines)
 
 
 def _parse_block(block, app, extra_env_vars):
