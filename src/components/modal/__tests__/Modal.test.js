@@ -75,6 +75,12 @@ describe('Modal', () => {
       'custom-modal-content'
     );
 
+    // Content style
+    rerender(<Modal is_open content_style={{backgroundColor: 'red'}} />);
+    expect(document.body.querySelector('.modal-content')).toHaveStyle({
+      backgroundColor: 'red'
+    });
+
     // Backdrop class name
     rerender(<Modal is_open backdrop_class_name="custom-modal-backdrop" />);
     expect(document.body.querySelector('.modal-backdrop')).toHaveClass(
@@ -86,6 +92,19 @@ describe('Modal', () => {
     expect(document.body.querySelector('.modal-dialog')).toHaveClass(
       'custom-modal-dialog'
     );
+
+    // Dialog style
+    rerender(
+      <Modal
+        is_open
+        dialog_style={{position: 'absolute', top: '10px', left: '10px'}}
+      />
+    );
+    expect(document.body.querySelector('.modal-dialog')).toHaveStyle({
+      position: 'absolute',
+      top: '10px',
+      left: '10px'
+    });
 
     // Modal class name
     rerender(<Modal is_open modal_class_name="custom-modal-class" />);
