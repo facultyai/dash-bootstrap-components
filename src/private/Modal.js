@@ -1,5 +1,5 @@
 // vendored from React-Bootstrap to allow us to set z-index of Modal backdrop
-// https://github.com/react-bootstrap/react-bootstrap/blob/93a8a0ef29409293dd69fad5873ad791634b3ed1/src/Modal.tsx
+// https://github.com/react-bootstrap/react-bootstrap/blob/be23c304fa40ddb209919b0faac1e5dd8cef53ad/src/Modal.tsx
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 
 import classNames from 'classnames';
@@ -52,6 +52,7 @@ const Modal = React.forwardRef(
       contentClassName,
       children,
       dialogAs: Dialog,
+      'data-bs-theme': dataBsTheme,
       'aria-labelledby': ariaLabelledby,
       'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
@@ -139,7 +140,7 @@ const Modal = React.forwardRef(
     });
 
     // We prevent the modal from closing during a drag by detecting where the
-    // the click originates from. If it starts in the modal and then ends outside
+    // click originates from. If it starts in the modal and then ends outside
     // don't close.
     const handleDialogMouseDown = () => {
       waitingForMouseUpRef.current = true;
@@ -185,13 +186,16 @@ const Modal = React.forwardRef(
     };
 
     const handleEscapeKeyDown = e => {
-      if (!keyboard && backdrop === 'static') {
-        // Call preventDefault to stop modal from closing in restart ui,
-        // then play our animation.
+      if (keyboard) {
+        onEscapeKeyDown?.(e);
+      } else {
+        // Call preventDefault to stop modal from closing in @restart/ui.
         e.preventDefault();
-        handleStaticModalAnimation();
-      } else if (keyboard && onEscapeKeyDown) {
-        onEscapeKeyDown(e);
+
+        if (backdrop === 'static') {
+          // Play static modal animation.
+          handleStaticModalAnimation();
+        }
       }
     };
 
@@ -224,19 +228,17 @@ const Modal = React.forwardRef(
     };
 
     const renderBackdrop = useCallback(
-      backdropProps => {
-        return (
-          <div
-            {...backdropProps}
-            className={classNames(
-              `${bsPrefix}-backdrop`,
-              backdropClassName,
-              !animation && 'show'
-            )}
-            style={{zIndex}}
-          />
-        );
-      },
+      backdropProps => (
+        <div
+          {...backdropProps}
+          className={classNames(
+            `${bsPrefix}-backdrop`,
+            backdropClassName,
+            !animation && 'show'
+          )}
+          style={{zIndex}}
+        />
+      ),
       [animation, backdropClassName, bsPrefix, zIndex]
     );
 
@@ -254,16 +256,16 @@ const Modal = React.forwardRef(
         className={classNames(
           className,
           bsPrefix,
-          animateStaticModal && `${bsPrefix}-static`
+          animateStaticModal && `${bsPrefix}-static`,
+          !animation && 'show'
         )}
         onClick={backdrop ? handleClick : undefined}
         onMouseUp={handleMouseUp}
+        data-bs-theme={dataBsTheme}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
         aria-describedby={ariaDescribedby}
       >
-        {/*
-        // @ts-ignore */}
         <Dialog
           {...props}
           onMouseDown={handleDialogMouseDown}
