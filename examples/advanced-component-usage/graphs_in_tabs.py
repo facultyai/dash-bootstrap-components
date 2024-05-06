@@ -1,11 +1,11 @@
 """
-When rendering Plotly graphs as the children of tabs, sometimes the graph will not be
-sized correctly if it wasn't initially visible. The solution to this problem is to
-render the tab content dynamically using a callback.
+When rendering Plotly graphs as the children of tabs, sometimes the graph will
+not be sized correctly if it wasn't initially visible. The solution to this
+problem is to render the tab content dynamically using a callback.
 
-This example shows how to do that, and also shows how to use a dcc.Store component to
-cache the graph data so that if the generating process is slow, the graph still renders
-quickly when the user switches tabs.
+This example shows how to do that, and also shows how to use a dcc.Store
+component to cache the graph data so that if the generating process is slow,
+the graph still renders quickly when the user switches tabs.
 """
 
 import time
@@ -16,10 +16,10 @@ import numpy as np
 import plotly.graph_objs as go
 from dash import Input, Output, dcc, html
 
-EXPLAINER = """This example shows how to use callbacks to render graphs inside tab
-content to ensure that they are sized correctly when switching tabs. It also
-demonstrates use of a `dcc.Store` component to cache graph data so that if the data
-generating process is expensive, switching tabs is still quick."""
+EXPLAINER = """This example shows how to use callbacks to render graphs inside
+tab content to ensure that they are sized correctly when switching tabs. It
+also demonstrates use of a `dcc.Store` component to cache graph data so that
+if the data generating process is expensive, switching tabs is still quick."""
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
