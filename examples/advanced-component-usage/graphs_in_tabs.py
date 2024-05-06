@@ -1,8 +1,11 @@
 """
-A simple app demonstrating how to dynamically render tab content containing
-dcc.Graph components to ensure graphs get sized correctly. We also show how
-dcc.Store can be used to cache the results of an expensive graph generation
-process so that switching tabs is fast.
+When rendering Plotly graphs as the children of tabs, sometimes the graph will
+not be sized correctly if it wasn't initially visible. The solution to this
+problem is to render the tab content dynamically using a callback.
+
+This example shows how to do that, and also shows how to use a dcc.Store
+component to cache the graph data so that if the generating process is slow,
+the graph still renders quickly when the user switches tabs.
 """
 
 import time
@@ -13,13 +16,17 @@ import numpy as np
 import plotly.graph_objs as go
 from dash import Input, Output, dcc, html
 
+EXPLAINER = """This example shows how to use callbacks to render graphs inside
+tab content to ensure that they are sized correctly when switching tabs. It
+also demonstrates use of a `dcc.Store` component to cache graph data so that
+if the data generating process is expensive, switching tabs is still quick."""
+
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dbc.Container(
     [
-        dcc.Store(id="store"),
         html.H1("Dynamically rendered tab content"),
-        html.Hr(),
+        dcc.Markdown(EXPLAINER),
         dbc.Button(
             "Regenerate graphs",
             color="primary",
@@ -34,7 +41,16 @@ app.layout = dbc.Container(
             id="tabs",
             active_tab="scatter",
         ),
-        html.Div(id="tab-content", className="p-4"),
+        # we wrap the store and tab content with a spinner so that when the
+        # data is being regenerated the spinner shows. delay_show means we
+        # don't see the spinner flicker when switching tabs
+        dbc.Spinner(
+            [
+                dcc.Store(id="store"),
+                html.Div(id="tab-content", className="p-4"),
+            ],
+            delay_show=100,
+        ),
     ]
 )
 
