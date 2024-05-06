@@ -18,8 +18,9 @@ import BaseModal from '@restart/ui/Modal';
 import {getSharedManager} from 'react-bootstrap/BootstrapModalManager';
 import Fade from 'react-bootstrap/Fade';
 import ModalContext from 'react-bootstrap/ModalContext';
-import ModalDialog from 'react-bootstrap/ModalDialog';
 import {useBootstrapPrefix, useIsRTL} from 'react-bootstrap/ThemeProvider';
+
+import ModalDialog from './ModalDialog';
 
 const defaultProps = {
   show: false,
@@ -51,6 +52,8 @@ const Modal = React.forwardRef(
       dialogClassName,
       contentClassName,
       children,
+      dialogStyle,
+      contentStyle,
       dialogAs: Dialog,
       'data-bs-theme': dataBsTheme,
       'aria-labelledby': ariaLabelledby,
@@ -271,6 +274,8 @@ const Modal = React.forwardRef(
           onMouseDown={handleDialogMouseDown}
           className={dialogClassName}
           contentClassName={contentClassName}
+          style={dialogStyle}
+          contentStyle={contentStyle}
         >
           {children}
         </Dialog>

@@ -32,6 +32,10 @@ const Modal = props => {
     style,
     zindex,
     zIndex,
+    dialogStyle,
+    dialog_style,
+    contentStyle,
+    content_style,
     ...otherProps
   } = props;
 
@@ -45,6 +49,8 @@ const Modal = props => {
     <RBModal
       animation={fade}
       dialogAs={tag}
+      dialogStyle={dialog_style || dialogStyle}
+      contentStyle={content_style || contentStyle}
       dialogClassName={class_name || className}
       className={modal_class_name || modalClassName}
       contentClassName={content_class_name || contentClassName}
@@ -86,6 +92,26 @@ Modal.propTypes = {
    * Defines CSS styles which will override styles previously set.
    */
   style: PropTypes.object,
+
+  /**
+   * Inline CSS styles to apply to the dialog
+   */
+  dialog_style: PropTypes.object,
+
+  /**
+   * Inline CSS styles to apply to the dialog
+   */
+  dialogStyle: PropTypes.object,
+
+  /**
+   * Inline CSS styles to apply to the content
+   */
+  content_style: PropTypes.object,
+
+  /**
+   * Inline CSS styles to apply to the content
+   */
+  contentStyle: PropTypes.object,
 
   /**
    * Often used with CSS to style elements with common properties.
