@@ -152,6 +152,15 @@ describe('Textarea', () => {
       expect(mockSetProps.mock.calls).toHaveLength(0);
     });
 
+    test("don't increment n_submit if submit_on_enter is false", () => {
+      mockSetProps = jest.fn();
+      const {
+        container: {firstChild: ta}
+      } = render(<Textarea submit_on_enter={false} setProps={mockSetProps} />);
+      fireEvent.keyPress(ta, {key: 'Enter', code: 13, charCode: 13});
+      expect(mockSetProps.mock.calls).toHaveLength(0);
+    });
+
     describe('debounce', () => {
       let textarea, mockSetProps;
       beforeEach(() => {
