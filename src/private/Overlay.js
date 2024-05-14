@@ -94,7 +94,7 @@ const Overlay = ({
     if (!isOpenRef.current) {
       showTimeout.current = clearTimeout(showTimeout.current);
       setIsOpen(true);
-      if (setProps && isMountedRef) {
+      if (setProps && isMountedRef.current) {
         setProps({is_open: true});
       }
     }
