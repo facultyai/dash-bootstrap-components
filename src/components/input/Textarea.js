@@ -39,6 +39,7 @@ const Textarea = props => {
     spellcheck,
     tabIndex,
     tabindex,
+    submit_on_enter,
     ...otherProps
   } = props;
   const [valueState, setValueState] = useState(value || '');
@@ -71,7 +72,7 @@ const Textarea = props => {
   };
 
   const onKeyPress = e => {
-    if (setProps && e.key === 'Enter' && !e.shiftKey) {
+    if (submit_on_enter && setProps && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault(); // don't create newline if submitting
       const payload = {
         n_submit: n_submit + 1,
@@ -404,14 +405,21 @@ Textarea.propTypes = {
   n_blur_timestamp: PropTypes.number,
 
   /**
-   * Number of times the `Enter` key was pressed while the textarea had focus.
+   * Number of times the `Enter` key was pressed while the textarea had focus. Only
+   * updates if submit_on_enter is True.
    */
   n_submit: PropTypes.number,
 
   /**
-   * Last time that `Enter` was pressed.
+   * Last time that `Enter` was pressed. Only updates if submit_on_enter is True.
    */
   n_submit_timestamp: PropTypes.number,
+
+  /**
+   * Whether or not the form should increment the n_submit and n_submit_timestamp props
+   * when enter key is pressed. If True, use shift + enter to create a newline. Default: True
+   */
+  submit_on_enter: PropTypes.bool,
 
   /**
    * An integer that represents the number of times
@@ -490,7 +498,8 @@ Textarea.defaultProps = {
   debounce: false,
   persisted_props: ['value'],
   persistence_type: 'local',
-  value: ''
+  value: '',
+  submit_on_enter: true
 };
 
 export default Textarea;
