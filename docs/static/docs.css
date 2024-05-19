@@ -479,3 +479,16 @@ span.hljs-meta {
 .superhero-demo .dropdown-divider {
   border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
+
+.anchor-link {
+  color: var(--bs-secondary);
+  opacity: 0.5;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.anchor-link:hover, :hover>.anchor-link {
+  color: var(--bs-primary);
+  opacity: 1;
+}
