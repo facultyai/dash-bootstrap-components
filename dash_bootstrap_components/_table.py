@@ -14,7 +14,7 @@ def _generate_table_from_df(
     index=False,
     index_label=None,
     date_format=None,
-    **table_kwargs
+    **table_kwargs,
 ):
     """
     Generate a Table component from a dataframe.
@@ -78,8 +78,7 @@ def _generate_table_from_df(
         # Get the actual headers
         n_levels = df.columns.nlevels
         header_values = [
-            list(df.columns.get_level_values(level))
-            for level in range(n_levels)
+            list(df.columns.get_level_values(level)) for level in range(n_levels)
         ]
 
         # The sizes of consecutive header groups at each level
@@ -134,9 +133,7 @@ def _generate_table_from_df(
     table.append(
         html.Tbody(
             [
-                html.Tr(
-                    [html.Td(df.iloc[i, j]) for j in range(len(df.columns))]
-                )
+                html.Tr([html.Td(df.iloc[i, j]) for j in range(len(df.columns))])
                 for i in range(len(df))
             ]
         )

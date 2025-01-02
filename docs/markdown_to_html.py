@@ -151,9 +151,7 @@ def convert_all_markdown_files():
             f.write(template)
 
     for path in CONTENT.glob("*.md"):
-        template = template_from_markdown(
-            path, template=CHANGELOG_HTML_TEMPLATE
-        )
+        template = template_from_markdown(path, template=CHANGELOG_HTML_TEMPLATE)
         with open(DEST / path.name.replace(".md", ".html"), "w") as f:
             f.write(template)
 

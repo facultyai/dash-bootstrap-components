@@ -35,8 +35,6 @@ table = html.Div(
 )
 
 
-@app.callback(
-    Output("table-color", "color"), Input("change-table-color", "value")
-)
+@app.callback(Output("table-color", "color"), Input("change-table-color", "value"))
 def change_table_colour(color):
     return color

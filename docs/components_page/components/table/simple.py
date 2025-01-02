@@ -1,9 +1,7 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
-table_header = [
-    html.Thead(html.Tr([html.Th("First Name"), html.Th("Last Name")]))
-]
+table_header = [html.Thead(html.Tr([html.Th("First Name"), html.Th("Last Name")]))]
 
 row1 = html.Tr([html.Td("Arthur"), html.Td("Dent")])
 row2 = html.Tr([html.Td("Ford"), html.Td("Prefect")])

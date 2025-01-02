@@ -22,9 +22,7 @@ placement_selector = html.Div(
 offcanvas = html.Div(
     [
         placement_selector,
-        dbc.Button(
-            "Open Offcanvas", id="open-offcanvas-placement", n_clicks=0
-        ),
+        dbc.Button("Open Offcanvas", id="open-offcanvas-placement", n_clicks=0),
         dbc.Offcanvas(
             html.P("Some offcanvas content..."),
             id="offcanvas-placement",

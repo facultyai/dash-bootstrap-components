@@ -9,9 +9,7 @@ alert = html.Div(
             className="me-1",
             n_clicks=0,
         ),
-        dbc.Button(
-            "Toggle alert without fade", id="alert-toggle-no-fade", n_clicks=0
-        ),
+        dbc.Button("Toggle alert without fade", id="alert-toggle-no-fade", n_clicks=0),
         html.Hr(),
         dbc.Alert(
             "Hello! I am an alert",

@@ -55,9 +55,7 @@ app.layout = dbc.Container(
 )
 
 
-@app.callback(
-    Output("phones-graph", "figure"), [Input("region-selector", "value")]
-)
+@app.callback(Output("phones-graph", "figure"), [Input("region-selector", "value")])
 def make_graph(region):
     fig_data = [go.Bar(y=data[region])]
     fig_layout = {

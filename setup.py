@@ -11,9 +11,7 @@ GITHUB_URL = "https://github.com/facultyai/dash-bootstrap-components/"
 def _get_version():
     """Get version by parsing _version programmatically"""
     version_ns = {}
-    with open(
-        os.path.join(HERE, "dash_bootstrap_components", "_version.py")
-    ) as f:
+    with open(os.path.join(HERE, "dash_bootstrap_components", "_version.py")) as f:
         exec(f.read(), {}, version_ns)
     version = version_ns["__version__"]
     return version

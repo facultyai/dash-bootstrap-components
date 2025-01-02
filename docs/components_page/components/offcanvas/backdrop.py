@@ -21,9 +21,7 @@ backdrop_selector = html.Div(
 offcanvas = html.Div(
     [
         backdrop_selector,
-        dbc.Button(
-            "Open backdrop offcanvas", id="open-offcanvas-backdrop", n_clicks=0
-        ),
+        dbc.Button("Open backdrop offcanvas", id="open-offcanvas-backdrop", n_clicks=0),
         dbc.Offcanvas(
             html.P("Here is some content..."),
             id="offcanvas-backdrop",

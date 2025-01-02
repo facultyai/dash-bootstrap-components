@@ -9,9 +9,7 @@ buttons1 = dbc.Col(
         html.Div(
             [
                 dbc.Button("Primary", color="primary", className="me-1 mt-1"),
-                dbc.Button(
-                    "Secondary", color="secondary", className="me-1 mt-1"
-                ),
+                dbc.Button("Secondary", color="secondary", className="me-1 mt-1"),
                 dbc.Button("Success", color="success", className="me-1 mt-1"),
                 dbc.Button("Warning", color="warning", className="me-1 mt-1"),
                 dbc.Button("Danger", color="danger", className="me-1 mt-1"),
@@ -51,9 +49,7 @@ buttons1 = dbc.Col(
                     color="danger",
                     className="me-1 mt-1",
                 ),
-                dbc.Button(
-                    "Info", outline=True, color="info", className="me-1 mt-1"
-                ),
+                dbc.Button("Info", outline=True, color="info", className="me-1 mt-1"),
             ],
             className="mb-2",
         ),

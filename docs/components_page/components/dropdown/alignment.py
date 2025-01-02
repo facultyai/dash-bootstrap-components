@@ -18,9 +18,7 @@ dropdown = dbc.Row(
             )
         ),
         dbc.Col(
-            dbc.DropdownMenu(
-                label="Right-aligned menu", children=items, align_end=True
-            )
+            dbc.DropdownMenu(label="Right-aligned menu", children=items, align_end=True)
         ),
     ]
 )

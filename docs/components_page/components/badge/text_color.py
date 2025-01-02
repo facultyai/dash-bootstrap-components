@@ -33,12 +33,8 @@ badges = html.Span(
             text_color="danger",
             className="border me-1",
         ),
-        dbc.Badge(
-            "Info", color="white", text_color="info", className="border me-1"
-        ),
-        dbc.Badge(
-            "Dark", color="white", text_color="dark", className="border me-1"
-        ),
+        dbc.Badge("Info", color="white", text_color="info", className="border me-1"),
+        dbc.Badge("Dark", color="white", text_color="dark", className="border me-1"),
         dbc.Badge(
             "Black",
             color="white",
@@ -57,8 +53,6 @@ badges = html.Span(
             text_color="light",
             className="border me-1",
         ),
-        dbc.Badge(
-            "White", color="secondary", text_color="white", className="border"
-        ),
+        dbc.Badge("White", color="secondary", text_color="white", className="border"),
     ]
 )

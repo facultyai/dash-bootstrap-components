@@ -8,9 +8,7 @@ tabs = html.Div(
         make_subheading("Tabs", "tabs"),
         dbc.Tabs(
             [
-                dbc.Tab(
-                    html.P("This is tab 1", className="py-3"), label="Tab 1"
-                ),
+                dbc.Tab(html.P("This is tab 1", className="py-3"), label="Tab 1"),
                 dbc.Tab(
                     dbc.Card(
                         [

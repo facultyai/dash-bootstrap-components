@@ -50,9 +50,7 @@ custom_default = dbc.Navbar(
             dbc.NavbarBrand("Custom default", href="#"),
             dbc.NavbarToggler(id="navbar-toggler1"),
             dbc.Collapse(
-                dbc.Nav(
-                    [nav_item, dropdown], className="ms-auto", navbar=True
-                ),
+                dbc.Nav([nav_item, dropdown], className="ms-auto", navbar=True),
                 id="navbar-collapse1",
                 navbar=True,
             ),
@@ -105,13 +103,9 @@ search_navbar = dbc.Navbar(
             dbc.Collapse(
                 dbc.Row(
                     [
+                        dbc.Col(dbc.Input(type="search", placeholder="Search")),
                         dbc.Col(
-                            dbc.Input(type="search", placeholder="Search")
-                        ),
-                        dbc.Col(
-                            dbc.Button(
-                                "Search", color="primary", className="ms-2"
-                            ),
+                            dbc.Button("Search", color="primary", className="ms-2"),
                             # set width of button column to auto to allow
                             # search box to take up remaining space.
                             width="auto",
@@ -152,9 +146,7 @@ dashboard = dbc.Navbar(
     dark=True,
 )
 
-app.layout = html.Div(
-    [default, custom_default, logo, search_navbar, dashboard]
-)
+app.layout = html.Div([default, custom_default, logo, search_navbar, dashboard])
 
 
 # we use a callback to toggle the collapse on small screens

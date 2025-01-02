@@ -15,9 +15,7 @@ jumbotron = html.Div(
                 "Use utility classes for typography and spacing to suit the "
                 "larger container."
             ),
-            html.P(
-                dbc.Button("Learn more", color="primary"), className="lead"
-            ),
+            html.P(dbc.Button("Learn more", color="primary"), className="lead"),
         ],
         fluid=True,
         className="py-3",

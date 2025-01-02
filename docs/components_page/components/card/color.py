@@ -19,9 +19,7 @@ cards = html.Div(
         dbc.Row(
             [
                 dbc.Col(dbc.Card(card_content, color="primary", inverse=True)),
-                dbc.Col(
-                    dbc.Card(card_content, color="secondary", inverse=True)
-                ),
+                dbc.Col(dbc.Card(card_content, color="secondary", inverse=True)),
                 dbc.Col(dbc.Card(card_content, color="info", inverse=True)),
             ],
             className="mb-4",

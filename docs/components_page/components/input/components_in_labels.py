@@ -22,9 +22,7 @@ radioitems = html.Div(
 
 checkbox = dbc.Checkbox(
     id="checkbox-with-link",
-    label=html.Div(
-        ["I agree to the ", html.A("Terms and Conditions", href="#")]
-    ),
+    label=html.Div(["I agree to the ", html.A("Terms and Conditions", href="#")]),
     value=False,
 )
 

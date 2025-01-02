@@ -46,8 +46,6 @@ badges = html.Span(
             text_color="dark",
             className="me-1 text-decoration-none",
         ),
-        dbc.Badge(
-            "Dark", href="#", color="dark", className="text-decoration-none"
-        ),
+        dbc.Badge("Dark", href="#", color="dark", className="text-decoration-none"),
     ]
 )

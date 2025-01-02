@@ -3,7 +3,9 @@ from dash import html
 
 from .util import make_subheading
 
-COOKIE = "https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png"  # noqa
+COOKIE = (
+    "https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png"  # noqa
+)
 offcanvas = html.Div(
     [
         make_subheading("Offcanvas", "offcanvas"),

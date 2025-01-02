@@ -22,9 +22,7 @@ toast = html.Div(
 )
 
 
-@app.callback(
-    Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")]
-)
+@app.callback(Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")])
 def open_toast(n):
     if n == 0:
         return no_update

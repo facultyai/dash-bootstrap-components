@@ -12,9 +12,7 @@ cards = dbc.CardGroup(
                         "bit longer than the second card.",
                         className="card-text",
                     ),
-                    dbc.Button(
-                        "Click here", color="success", className="mt-auto"
-                    ),
+                    dbc.Button("Click here", color="success", className="mt-auto"),
                 ]
             )
         ),
@@ -26,9 +24,7 @@ cards = dbc.CardGroup(
                         "This card has some text content.",
                         className="card-text",
                     ),
-                    dbc.Button(
-                        "Click here", color="warning", className="mt-auto"
-                    ),
+                    dbc.Button("Click here", color="warning", className="mt-auto"),
                 ]
             )
         ),
@@ -43,9 +39,7 @@ cards = dbc.CardGroup(
                         "card group.",
                         className="card-text",
                     ),
-                    dbc.Button(
-                        "Click here", color="danger", className="mt-auto"
-                    ),
+                    dbc.Button("Click here", color="danger", className="mt-auto"),
                 ]
             )
         ),

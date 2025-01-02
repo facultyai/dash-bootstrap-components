@@ -24,9 +24,7 @@ controls = dbc.Card(
                 dbc.Label("X variable"),
                 dcc.Dropdown(
                     id="x-variable",
-                    options=[
-                        {"label": col, "value": col} for col in iris.columns
-                    ],
+                    options=[{"label": col, "value": col} for col in iris.columns],
                     value="sepal length (cm)",
                 ),
             ]
@@ -36,9 +34,7 @@ controls = dbc.Card(
                 dbc.Label("Y variable"),
                 dcc.Dropdown(
                     id="y-variable",
-                    options=[
-                        {"label": col, "value": col} for col in iris.columns
-                    ],
+                    options=[{"label": col, "value": col} for col in iris.columns],
                     value="sepal width (cm)",
                 ),
             ]
@@ -115,10 +111,7 @@ def make_graph(x, y, n_clusters):
 # make sure that x and y values can't be the same variable
 def filter_options(v):
     """Disable option v"""
-    return [
-        {"label": col, "value": col, "disabled": col == v}
-        for col in iris.columns
-    ]
+    return [{"label": col, "value": col, "disabled": col == v} for col in iris.columns]
 
 
 # functionality is the same for both dropdowns, so we reuse filter_options
