@@ -1,10 +1,47 @@
 [build-system]
-build-backend = "setuptools.build_meta"
-requires = ["setuptools>=42", "wheel"]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.black]
-exclude = "dash_bootstrap_components/_components|node_modules"
-line-length = 79
+[project]
+name = "dash-bootstrap-components"
+version = "1.6.1-dev"
+description = "Bootstrap themed components for use in Plotly Dash"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Faculty Science Ltd" },
+    { name = "Pascal Bugnion" },
+    { name = "Tom Begley", email = "tomcbegley@gmail.com" },
+]
+maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
+requires-python = ">=3.9, <4"
+dependencies = ["dash>=2.0.0"]
+
+[project.urls]
+Homepage = "https://dash-bootstrap-components.opensource.faculty.ai/"
+Source = "https://github.com/facultyai/dash-bootstrap-components/"
+"Bug Reports" = "https://github.com/facultyai/dash-bootstrap-components/issues"
+
+[project.optional-dependencies]
+pandas = ["numpy>=2.0.2", "pandas>=2.2.3"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    # pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I001",
+]
+
+[tool.uv]
+dev-dependencies = ["dash[dev]>=2.0.0", "pytest>=8.3.4", "ruff>=0.8.4"]
