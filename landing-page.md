@@ -88,7 +88,7 @@ If you would like to submit a pull request, please read our
 ## Copyright and license
 
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
-2018-2024, and released under the [Apache 2.0 license](./LICENSE.txt)
+2018-2025, and released under the [Apache 2.0 license](./LICENSE.txt)
 
 [dash-homepage]: https://dash.plot.ly/
 [dash-docs-external]: https:/dash.plot.ly/external-resources

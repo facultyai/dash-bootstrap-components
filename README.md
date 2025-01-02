@@ -104,7 +104,7 @@ will pass our linting checks, and how to submit the pull request itself.
 ## Copyright and license
 
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
-2018-2024, and released under the [Apache 2.0 license](./LICENSE)
+2018-2025, and released under the [Apache 2.0 license](./LICENSE)
 
 [dash-homepage]: https://dash.plotly.com/
 [dash-docs-external]: https://dash.plotly.com/external-resources
