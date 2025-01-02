@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Set up Python 3.12
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install Dash
@@ -40,7 +40,7 @@ jobs:
       - name: Build dash-bootstrap-components
         run: npm run build
       - name: Upload generated files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: dash-bootstrap-components
           path: dash_bootstrap_components/_components
@@ -51,7 +51,7 @@ jobs:
     strategy:
       max-parallel: 6
       matrix:
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
     services:
       hub:
         image: selenium/hub:3.141.59-gold
@@ -63,12 +63,12 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python 3.12
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Set up Python ${{ matrix.python-version }}
         if: matrix.python-version != '3.12'
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install nox
@@ -76,7 +76,7 @@ jobs:
       - name: Lint Python source
         if: matrix.python-version == '3.12'
         run: nox -s lint
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: dash-bootstrap-components
           path: dash_bootstrap_components/_components
