@@ -43,5 +43,35 @@ select = [
     "I001",
 ]
 
+[tool.ruff.lint.per-file-ignores]
+"docs/components_page/components/**.py" = ["F821"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "components_page",
+    "demos",
+    "examples",
+    "markdown_to_html",
+    "server",
+]
+known-third-party = [
+    "dash",
+    "dash_bootstrap_components",
+    "dash_core_components",
+    "dash_html_components",
+    "flask",
+    "invoke",
+    "jinja2",
+    "markdown",
+    "pandas",
+    "plotly",
+    "semver",
+    "setuptools",
+    "sklearn",
+    "termcolor",
+    "werkzeug",
+    "wordcloud",
+]
+
 [tool.uv]
-dev-dependencies = ["dash[dev]>=2.0.0", "pytest>=8.3.4", "ruff>=0.8.4"]
+dev-dependencies = ["dash[dev]>=2.0.0", "pytest>=8.3.4", "ruff>=0.8.5"]
