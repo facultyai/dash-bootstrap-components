@@ -40,7 +40,7 @@ jobs:
       - name: Build dash-bootstrap-components
         run: npm run build
       - name: Upload generated files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: dash-bootstrap-components
           path: dash_bootstrap_components/_components
@@ -76,7 +76,7 @@ jobs:
       - name: Lint Python source
         if: matrix.python-version == '3.12'
         run: nox -s lint
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: dash-bootstrap-components
           path: dash_bootstrap_components/_components
