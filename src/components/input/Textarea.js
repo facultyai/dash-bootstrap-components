@@ -71,7 +71,7 @@ const Textarea = props => {
     }
   };
 
-  const onKeyPress = e => {
+  const onKeyUp = e => {
     if (submit_on_enter && setProps && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault(); // don't create newline if submitting
       const payload = {
@@ -108,7 +108,7 @@ const Textarea = props => {
       className={classes}
       onChange={onChange}
       onBlur={onBlur}
-      onKeyPress={onKeyPress}
+      onKeyUp={onKeyUp}
       onClick={onClick}
       autoFocus={autofocus || autoFocus}
       maxLength={maxlength || maxLength}
