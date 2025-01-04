@@ -5,12 +5,8 @@
   "repository": "github:facultyai/dash-bootstrap-components",
   "main": "lib/dash-bootstrap-components.min.js",
   "scripts": {
-    "build": "run-s clean build:js build:py",
-    "build:install": "npm run build && inv install-built-packages",
+    "build": "NODE_ENV=production webpack --config=webpack/config.dist.js",
     "build:lib": "webpack --config=webpack/config.lib.js",
-    "build:js": "NODE_ENV=production webpack --config=webpack/config.dist.js",
-    "build:py": "inv build-py",
-    "clean": "inv clean",
     "demo": "webpack serve --hot --port=8888 --config=webpack/config.demo.js",
     "format": "prettier 'src/**/*.js' --write",
     "lint": "prettier 'src/**/*.js' --list-different",

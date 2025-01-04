@@ -4,9 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dash-bootstrap-components"
-version = "1.6.1-dev"
 description = "Bootstrap themed components for use in Plotly Dash"
-readme = "README.md"
+readme = "landing-page.md"
 license = { file = "LICENSE" }
 authors = [
     { name = "Faculty Science Ltd" },
@@ -16,6 +15,16 @@ authors = [
 maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
 requires-python = ">=3.9, <4"
 dependencies = ["dash>=2.0.0"]
+classifiers = [
+    "Framework :: Dash",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dynamic = ["version"]
 
 [project.urls]
 Homepage = "https://dash-bootstrap-components.opensource.faculty.ai/"
@@ -24,6 +33,37 @@ Source = "https://github.com/facultyai/dash-bootstrap-components/"
 
 [project.optional-dependencies]
 pandas = ["numpy>=2.0.2", "pandas>=2.2.3"]
+
+[tool.hatch.version]
+path = "dash_bootstrap_components/_version.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "dash_bootstrap_components",
+    "landing-page.md",
+    "LICENSE",
+    "NOTICE.txt",
+    "pyproject.toml",
+]
+artifacts = [
+    "dash_bootstrap_components/_components/dash_bootstrap_components.min.js",
+    "dash_bootstrap_components/_components/metadata.json",
+    "dash_bootstrap_components/_components/*.py",
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "dash_bootstrap_components",
+    "landing-page.md",
+    "LICENSE",
+    "NOTICE.txt",
+    "pyproject.toml",
+]
+artifacts = [
+    "dash_bootstrap_components/_components/dash_bootstrap_components.min.js",
+    "dash_bootstrap_components/_components/metadata.json",
+    "dash_bootstrap_components/_components/*.py",
+]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -74,4 +114,9 @@ known-third-party = [
 ]
 
 [tool.uv]
-dev-dependencies = ["dash[dev]>=2.0.0", "pytest>=8.3.4", "ruff>=0.8.5"]
+dev-dependencies = [
+    "dash[dev,testing]>=2.0.0",
+    "pytest>=8.3.4",
+    "ruff>=0.8.5",
+    "semver>=3.0.2",
+]

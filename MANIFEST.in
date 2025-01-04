@@ -1,3 +1,0 @@
-include dash_bootstrap_components/_components/dash_bootstrap_components.min.js
-include dash_bootstrap_components/_components/metadata.json
-include landing-page.md
