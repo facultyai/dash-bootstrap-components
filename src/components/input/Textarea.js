@@ -73,7 +73,7 @@ const Textarea = props => {
         n_blur: n_blur + 1,
         n_blur_timestamp: Date.now()
       };
-      if (debounce) {
+      if (debounce === true) {
         payload.value = e.target.value;
       }
       setProps(payload);
@@ -87,7 +87,7 @@ const Textarea = props => {
         n_submit: n_submit + 1,
         n_submit_timestamp: Date.now()
       };
-      if (debounce) {
+      if (debounce === true) {
         payload.value = e.target.value;
       }
       setProps(payload);
