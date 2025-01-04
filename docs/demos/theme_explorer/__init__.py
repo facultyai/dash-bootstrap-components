@@ -28,9 +28,7 @@ from .tabs import tabs
 from .toast import toast
 from .tooltip import tooltip
 
-app = dash.Dash(
-    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME]
-)
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
 
 app.layout = dbc.Container(
     [
@@ -130,9 +128,7 @@ def toggle_offcanvas(n, is_open):
     return is_open
 
 
-@app.callback(
-    Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")]
-)
+@app.callback(Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")])
 def open_toast(_):
     return True
 

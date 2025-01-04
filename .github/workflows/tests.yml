@@ -8,37 +8,37 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node 16
+      - name: Install just
+        uses: extractions/setup-just@v2
+      - name: Use Node 22
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 22
       - name: Install dependencies
         run: npm ci
       - name: Lint source
-        run: npm run lint
+        run: just lint-js
       - name: Run tests
-        run: npm run test
-      - name: Run demo test
-        run: npm run test:demo
+        run: just test-js
   build:
     name: Build package
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node 16
+      - name: Install just
+        uses: extractions/setup-just@v2
+      - name: Use Node 22
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 22
       - name: Install dependencies
         run: npm ci
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.12'
-      - name: Install Dash
-        run: python -m pip install -r requirements-dev.txt
+          version: 'latest'
       - name: Build dash-bootstrap-components
-        run: npm run build
+        run: just build
       - name: Upload generated files
         uses: actions/upload-artifact@v4
         with:
@@ -62,23 +62,18 @@ jobs:
           HUB_PORT: 4444
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.12'
-      - name: Set up Python ${{ matrix.python-version }}
-        if: matrix.python-version != '3.12'
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install nox
-        run: python3.12 -m pip install -U nox
+          version: 'latest'
+      - name: Install just
+        uses: extractions/setup-just@v2
       - name: Lint Python source
         if: matrix.python-version == '3.12'
-        run: nox -s lint
+        run: just lint-py
       - uses: actions/download-artifact@v4
         with:
           name: dash-bootstrap-components
           path: dash_bootstrap_components/_components
       - name: Test Python module
-        run: nox -s test-${{ matrix.python-version }}
+        run: just python_version=${{ matrix.python-version }} test-py

@@ -64,8 +64,8 @@ const DropdownMenu = props => {
           direction === 'left'
             ? 'start'
             : direction === 'right'
-            ? 'end'
-            : direction
+              ? 'end'
+              : direction
         }
         onToggle={(show, event) => {
           if (!event || event.source !== 'select') {

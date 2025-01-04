@@ -8,14 +8,8 @@ import RBModalBody from 'react-bootstrap/ModalBody';
  * your Modals.
  */
 const ModalBody = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    tag,
-    ...otherProps
-  } = props;
+  const {children, loading_state, className, class_name, tag, ...otherProps} =
+    props;
   return (
     <RBModalBody
       as={tag}

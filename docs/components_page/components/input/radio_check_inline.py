@@ -47,6 +47,4 @@ inline_switches = html.Div(
     ]
 )
 
-inline_inputs = dbc.Form(
-    [inline_radioitems, inline_checklist, inline_switches]
-)
+inline_inputs = dbc.Form([inline_radioitems, inline_checklist, inline_switches])

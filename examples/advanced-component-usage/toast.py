@@ -31,9 +31,7 @@ app.layout = dbc.Container(
         # this is on the client-side so it's user specific
         dcc.Store(id="message-store"),
         html.H1("Toast demo"),
-        html.P(
-            "Click on generate, you'll get a random number pop up in a toast"
-        ),
+        html.P("Click on generate, you'll get a random number pop up in a toast"),
         dbc.Button("Generate number", id="button"),
         # create a container for the toasts and position to the top right
         # depending on the layout of your app you might want to change this
@@ -107,9 +105,7 @@ def make_toast(message):
     )
 
 
-@app.callback(
-    Output("toast-container", "children"), Input("message-store", "data")
-)
+@app.callback(Output("toast-container", "children"), Input("message-store", "data"))
 def display_toasts(store):
     """
     When the store updates, update the displayed toasts.

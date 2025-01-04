@@ -24,9 +24,7 @@ app = dash.Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     # these meta_tags ensure content is scaled correctly on different devices
     # see: https://www.w3schools.com/css/css_rwd_viewport.asp for more
-    meta_tags=[
-        {"name": "viewport", "content": "width=device-width, initial-scale=1"}
-    ],
+    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )
 
 # we use the Row and Col components to construct the sidebar header
@@ -77,8 +75,7 @@ sidebar = html.Div(
             [
                 html.Hr(),
                 html.P(
-                    "A responsive sidebar layout with collapsible navigation "
-                    "links.",
+                    "A responsive sidebar layout with collapsible navigation " "links.",
                     className="lead",
                 ),
             ],

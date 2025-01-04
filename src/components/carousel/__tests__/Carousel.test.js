@@ -71,9 +71,8 @@ describe('Carousel', () => {
     ];
 
     const carousel = render(<Carousel items={linkedSlides} />);
-    const {firstChild: carouselItem} = carousel.container.querySelector(
-      '.carousel-inner'
-    );
+    const {firstChild: carouselItem} =
+      carousel.container.querySelector('.carousel-inner');
     expect(carouselItem).toHaveAttribute('href', '/test');
     expect(carouselItem.tagName.toLowerCase()).toEqual('a');
   });

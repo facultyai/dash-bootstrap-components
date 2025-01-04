@@ -40,12 +40,8 @@ dropdown_menu = html.Div(
                 dbc.DropdownMenu(
                     items, label="Danger", color="danger", className="m-1"
                 ),
-                dbc.DropdownMenu(
-                    items, label="Info", color="info", className="m-1"
-                ),
-                dbc.DropdownMenu(
-                    items, label="Link", color="link", className="m-1"
-                ),
+                dbc.DropdownMenu(items, label="Info", color="info", className="m-1"),
+                dbc.DropdownMenu(items, label="Link", color="link", className="m-1"),
                 dbc.DropdownMenu(
                     label="Dark Backdrop Menu",
                     menu_variant="dark",

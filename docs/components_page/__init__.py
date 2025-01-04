@@ -143,9 +143,7 @@ def register_apps():
 
     for slug, kwargs in component_bodies.items():
         requests_pathname_prefix = (
-            f"/docs/components/{slug}/"
-            if slug != "index"
-            else "/docs/components/"
+            f"/docs/components/{slug}/" if slug != "index" else "/docs/components/"
         )
         app = dash.Dash(
             external_stylesheets=["/static/loading.css"],
@@ -162,13 +160,9 @@ def register_apps():
         app.title = f"{_get_label(slug)} - dbc docs"
 
         if slug == "layout":
-            app.layout = html.Div(
-                parse(app, **kwargs), className="layout-demo"
-            )
+            app.layout = html.Div(parse(app, **kwargs), className="layout-demo")
         elif slug == "button_group":
-            app.layout = html.Div(
-                parse(app, **kwargs), className="button-group-demo"
-            )
+            app.layout = html.Div(parse(app, **kwargs), className="button-group-demo")
         else:
             app.layout = parse(app, **kwargs)
         if slug == "index":

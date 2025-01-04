@@ -40,9 +40,7 @@ sidebar = html.Div(
     [
         html.H2("Sidebar", className="display-4"),
         html.Hr(),
-        html.P(
-            "A simple sidebar layout with navigation links", className="lead"
-        ),
+        html.P("A simple sidebar layout with navigation links", className="lead"),
         dbc.Nav(
             [
                 dbc.NavLink("Home", href="/", active="exact"),

@@ -15,9 +15,7 @@ _METADATA_PATH = os.path.join(_current_path, "_components", "metadata.json")
 
 _js_dist = [
     {
-        "relative_package_path": (
-            "_components/dash_bootstrap_components.min.js"
-        ),
+        "relative_package_path": ("_components/dash_bootstrap_components.min.js"),
         "external_url": (
             f"https://unpkg.com/dash-bootstrap-components@{__version__}"
             "/dist/dash_bootstrap_components.min.js"

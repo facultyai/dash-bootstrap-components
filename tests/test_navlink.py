@@ -18,9 +18,7 @@ def test_dbnl001_auto_active(dash_duo):
             dcc.Location(id="url"),
             NavLink("Page 1", id="page-1-link", href="/page-1", active=True),
             NavLink("Page 2", id="page-2-link", href="/page-2", active=False),
-            NavLink(
-                "Page 3", id="page-3-link", href="/page-3", active="partial"
-            ),
+            NavLink("Page 3", id="page-3-link", href="/page-3", active="partial"),
             NavLink(
                 "Page 3 - extra",
                 id="page-3-extra-link",
@@ -33,45 +31,45 @@ def test_dbnl001_auto_active(dash_duo):
 
     dash_duo.start_server(app)
 
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-1-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-2-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-3-link"
-    ).get_attribute("class")
+    assert "active" in dash_duo.wait_for_element_by_id("page-1-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-2-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-3-link").get_attribute(
+        "class"
+    )
     assert "active" not in dash_duo.wait_for_element_by_id(
         "page-3-extra-link"
     ).get_attribute("class")
 
     dash_duo.wait_for_element_by_id("page-3-link").click()
 
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-1-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-2-link"
-    ).get_attribute("class")
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-3-link"
-    ).get_attribute("class")
+    assert "active" in dash_duo.wait_for_element_by_id("page-1-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-2-link").get_attribute(
+        "class"
+    )
+    assert "active" in dash_duo.wait_for_element_by_id("page-3-link").get_attribute(
+        "class"
+    )
     assert "active" not in dash_duo.wait_for_element_by_id(
         "page-3-extra-link"
     ).get_attribute("class")
 
     dash_duo.wait_for_element_by_id("page-3-extra-link").click()
 
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-1-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-2-link"
-    ).get_attribute("class")
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-3-link"
-    ).get_attribute("class")
+    assert "active" in dash_duo.wait_for_element_by_id("page-1-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-2-link").get_attribute(
+        "class"
+    )
+    assert "active" in dash_duo.wait_for_element_by_id("page-3-link").get_attribute(
+        "class"
+    )
     assert "active" in dash_duo.wait_for_element_by_id(
         "page-3-extra-link"
     ).get_attribute("class")
@@ -121,15 +119,15 @@ def test_dbnl_002_manual_active(dash_duo):
         in d.find_element(By.ID, "page-1-link").get_attribute("class")
     )
 
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-1-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-2-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-3-link"
-    ).get_attribute("class")
+    assert "active" in dash_duo.wait_for_element_by_id("page-1-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-2-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-3-link").get_attribute(
+        "class"
+    )
 
     dash_duo.wait_for_element_by_id("page-3-link").click()
 
@@ -139,12 +137,12 @@ def test_dbnl_002_manual_active(dash_duo):
         not in d.find_element(By.ID, "page-1-link").get_attribute("class")
     )
 
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-1-link"
-    ).get_attribute("class")
-    assert "active" not in dash_duo.wait_for_element_by_id(
-        "page-2-link"
-    ).get_attribute("class")
-    assert "active" in dash_duo.wait_for_element_by_id(
-        "page-3-link"
-    ).get_attribute("class")
+    assert "active" not in dash_duo.wait_for_element_by_id("page-1-link").get_attribute(
+        "class"
+    )
+    assert "active" not in dash_duo.wait_for_element_by_id("page-2-link").get_attribute(
+        "class"
+    )
+    assert "active" in dash_duo.wait_for_element_by_id("page-3-link").get_attribute(
+        "class"
+    )

@@ -1,10 +1,122 @@
 [build-system]
-build-backend = "setuptools.build_meta"
-requires = ["setuptools>=42", "wheel"]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.black]
-exclude = "dash_bootstrap_components/_components|node_modules"
-line-length = 79
+[project]
+name = "dash-bootstrap-components"
+description = "Bootstrap themed components for use in Plotly Dash"
+readme = "landing-page.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Faculty Science Ltd" },
+    { name = "Pascal Bugnion" },
+    { name = "Tom Begley", email = "tomcbegley@gmail.com" },
+]
+maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
+requires-python = ">=3.9, <4"
+dependencies = ["dash>=2.0.0"]
+classifiers = [
+    "Framework :: Dash",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://dash-bootstrap-components.opensource.faculty.ai/"
+Source = "https://github.com/facultyai/dash-bootstrap-components/"
+"Bug Reports" = "https://github.com/facultyai/dash-bootstrap-components/issues"
+
+[project.optional-dependencies]
+pandas = ["numpy>=2.0.2", "pandas>=2.2.3"]
+
+[tool.hatch.version]
+path = "dash_bootstrap_components/_version.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "dash_bootstrap_components",
+    "landing-page.md",
+    "LICENSE",
+    "NOTICE.txt",
+    "pyproject.toml",
+]
+artifacts = [
+    "dash_bootstrap_components/_components/dash_bootstrap_components.min.js",
+    "dash_bootstrap_components/_components/metadata.json",
+    "dash_bootstrap_components/_components/*.py",
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "dash_bootstrap_components",
+    "landing-page.md",
+    "LICENSE",
+    "NOTICE.txt",
+    "pyproject.toml",
+]
+artifacts = [
+    "dash_bootstrap_components/_components/dash_bootstrap_components.min.js",
+    "dash_bootstrap_components/_components/metadata.json",
+    "dash_bootstrap_components/_components/*.py",
+]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    # pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I001",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/components_page/components/**.py" = ["F821"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "components_page",
+    "demos",
+    "examples",
+    "markdown_to_html",
+    "server",
+]
+known-third-party = [
+    "dash",
+    "dash_bootstrap_components",
+    "dash_core_components",
+    "dash_html_components",
+    "flask",
+    "invoke",
+    "jinja2",
+    "markdown",
+    "pandas",
+    "plotly",
+    "semver",
+    "setuptools",
+    "sklearn",
+    "termcolor",
+    "werkzeug",
+    "wordcloud",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "dash[dev,testing]>=2.0.0",
+    "pytest>=8.3.4",
+    "ruff>=0.8.5",
+    "semver>=3.0.2",
+]

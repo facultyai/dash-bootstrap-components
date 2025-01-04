@@ -108,9 +108,7 @@ def make_wordcloud(book, min_freq, max_vocab):
     sorted_frequencies = sorted(
         load_word_frequencies(book).items(), key=lambda x: x[1], reverse=True
     )
-    frequencies = {
-        k: v for k, v in sorted_frequencies[:max_vocab] if v >= min_freq
-    }
+    frequencies = {k: v for k, v in sorted_frequencies[:max_vocab] if v >= min_freq}
 
     wc = WordCloud(
         width=1000,
@@ -121,14 +119,10 @@ def make_wordcloud(book, min_freq, max_vocab):
     )
 
     buffer = io.BytesIO()
-    wc.generate_from_frequencies(frequencies).to_image().save(
-        buffer, format="png"
-    )
+    wc.generate_from_frequencies(frequencies).to_image().save(buffer, format="png")
     buffer.seek(0)
 
-    return "data:image/png;base64,{}".format(
-        base64.b64encode(buffer.read()).decode()
-    )
+    return "data:image/png;base64,{}".format(base64.b64encode(buffer.read()).decode())
 
 
 if __name__ == "__main__":

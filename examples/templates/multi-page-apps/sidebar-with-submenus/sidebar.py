@@ -16,9 +16,7 @@ import dash_bootstrap_components as dbc
 from dash import Input, Output, State, dcc, html
 
 # link fontawesome to get the chevron icons
-app = dash.Dash(
-    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME]
-)
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
@@ -94,9 +92,7 @@ sidebar = html.Div(
     [
         html.H2("Sidebar", className="display-4"),
         html.Hr(),
-        html.P(
-            "A sidebar with collapsible navigation links", className="lead"
-        ),
+        html.P("A sidebar with collapsible navigation links", className="lead"),
         dbc.Nav(submenu_1 + submenu_2, vertical=True),
     ],
     style=SIDEBAR_STYLE,

@@ -36,4 +36,8 @@ standalone_radio_check = html.Div(
     ],
 )
 def on_form_change(checkbox_checked, switch_checked, radio_checked):
-    return f"Selections:  Checkbox: {checkbox_checked}, Toggle Switch: {switch_checked}, Radio Button: {radio_checked}"
+    return (
+        f"Selections:  Checkbox: {checkbox_checked}, "
+        f"Toggle Switch: {switch_checked}, "
+        f"Radio Button: {radio_checked}"
+    )

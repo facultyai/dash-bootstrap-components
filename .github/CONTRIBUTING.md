@@ -127,74 +127,60 @@ license your work under the terms of the [Apache 2.0 License](../LICENSE).
 
 ## Code guidelines
 
-### Python
+We use [`uv`](https://docs.astral.sh/uv/) to manage the Python project, and [`just`](https://github.com/casey/just) as a task runner. See their resepctive documentation for details on how to install. To manage the JavaScript package you will also need to install [NodeJS](https://nodejs.org/)
 
-We use [`nox`](https://nox.thea.codes/en/stable/) to test and lint Python code.
+Python code is linted using `ruff`, JavaScript code is linted using `prettier`. Run the linters with
 
 ```sh
-pip install nox
+just lint
 ```
 
-Code is linted using `black`, `flake8`, and `isort`. Run the linters with
+You can alternatively lint just the Python or JavaScript source with
 
 ```sh
-nox -s lint
+just lint-py
+just lint-js
 ```
 
-Many formatting issues can be fixed automatically by `black` and `isort`. Run
-them with
+Many formatting issues can be fixed automatically by `ruff` or `prettier` respectively. Run them with
 
 ```sh
-nox -s format
+just format
 ```
 
 Finally you can run the Python tests locally for a particular version of Python
 with
 
 ```sh
-nox -s test-3.8
+just python_version=3.10 test-py
 ```
 
-and similarly for other versions.
+and similarly for other versions. Run the JavaScript unit tests with
 
-### JS
-
-Prettier to format JavaScript code as configured in `.prettierrc`. You can lint
-your code with
-
-```bash
-npm run lint
+```sh
+npm test
+# or
+just test-js
 ```
 
-and format it automatically with
+Run all tests with
 
-```bash
-npm run format
+```sh
+just test
 ```
-
-### Run tests
-
-Run `npm run test` before committing to ensure your changes pass our tests.
 
 ## Building dash-bootstrap-components locally
 
-To build _dash-bootstrap-components_ locally, first install the Python
-development dependencies
-
-```sh
-python -m pip install -r requirements-dev.txt
-```
-
-Then install JavaScript dependencies
+First install JavaScript dependencies
 
 ```sh
 npm install
 ```
 
-You can now build Python, R and Julia packages with
+Then build with
 
 ```sh
-npm run build
+just build
 ```
 
 ## License

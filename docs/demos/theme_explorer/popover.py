@@ -6,9 +6,7 @@ from .util import make_subheading
 popover = html.Div(
     [
         make_subheading("Popover", "popover"),
-        dbc.Button(
-            "Click to toggle popover", id="popover-target", color="danger"
-        ),
+        dbc.Button("Click to toggle popover", id="popover-target", color="danger"),
         dbc.Popover(
             [
                 dbc.PopoverHeader("Popover header"),

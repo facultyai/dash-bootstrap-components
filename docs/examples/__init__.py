@@ -97,27 +97,21 @@ def register_apps():
         git_app,
         "graphs-in-tabs",
         (EXAMPLES / "graphs_in_tabs.py").read_text(),
-        os.path.join(
-            GITHUB_EXAMPLES, "advanced-component-usage/graphs_in_tabs.py"
-        ),
+        os.path.join(GITHUB_EXAMPLES, "advanced-component-usage/graphs_in_tabs.py"),
     )
 
     # need to do a bit of hackery to make sure the links of the multi page app
     # work correctly when the app is exposed at a particular route
     sidebar_source = (EXAMPLES / "simple_sidebar.py").read_text()
     env = {}
-    exec(
-        HREF_PATTERN.sub('href="/examples/simple-sidebar', sidebar_source), env
-    )
+    exec(HREF_PATTERN.sub('href="/examples/simple-sidebar', sidebar_source), env)
     sidebar_app = env["app"]
 
     sidebar_app = build_app_from_example(
         sidebar_app,
         "simple-sidebar",
         sidebar_source,
-        os.path.join(
-            GITHUB_EXAMPLES, "templates/multi-page-apps/simple_sidebar.py"
-        ),
+        os.path.join(GITHUB_EXAMPLES, "templates/multi-page-apps/simple_sidebar.py"),
         show_warning=True,
     )
 
