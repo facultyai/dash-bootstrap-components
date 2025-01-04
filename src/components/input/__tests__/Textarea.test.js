@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {act, render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Textarea from '../Textarea';
 
@@ -215,6 +215,31 @@ describe('Textarea', () => {
           'some text{shift>}{enter}{/shift}some more text'
         );
         // one click, no submits
+        expect(mockSetProps.mock.calls).toHaveLength(1);
+      });
+    });
+
+    describe('numeric debounce', () => {
+      let textarea, mockSetProps;
+
+      beforeEach(() => {
+        jest.useFakeTimers();
+        mockSetProps = jest.fn();
+        const {container} = render(
+          <Textarea setProps={mockSetProps} value="" debounce={2000} />
+        );
+        textarea = container.firstChild;
+      });
+
+      test('call setProps after delay if debounce is number', () => {
+        fireEvent.change(textarea, {
+          target: {value: 'some-input-value'}
+        });
+        expect(mockSetProps.mock.calls).toHaveLength(0);
+        expect(textarea).toHaveValue('some-input-value');
+        act(() => jest.advanceTimersByTime(1000));
+        expect(mockSetProps.mock.calls).toHaveLength(0);
+        act(() => jest.advanceTimersByTime(1000));
         expect(mockSetProps.mock.calls).toHaveLength(1);
       });
     });

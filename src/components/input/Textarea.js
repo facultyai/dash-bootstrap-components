@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classNames from 'classnames';
@@ -43,6 +43,7 @@ const Textarea = props => {
     ...otherProps
   } = props;
   const [valueState, setValueState] = useState(value || '');
+  const debounceRef = useRef(null);
 
   useEffect(() => {
     if (value !== valueState) {
@@ -53,7 +54,15 @@ const Textarea = props => {
   const onChange = e => {
     const newValue = e.target.value;
     setValueState(newValue);
-    if (!debounce && setProps) {
+    if (debounce) {
+      if (Number.isFinite(debounce)) {
+        clearTimeout(debounceRef.current);
+        debounceRef.current = setTimeout(
+          () => setProps({value: newValue}),
+          debounce
+        );
+      }
+    } else {
       setProps({value: newValue});
     }
   };
@@ -435,8 +444,10 @@ Textarea.propTypes = {
   n_clicks_timestamp: PropTypes.number,
 
   /**
-   * If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
-   * If it's false, it will sent the value back on every change.
+   * If true, changes to input will be sent back to the Dash server only on enter or
+   * when losing focus. If it's false, it will sent the value back on every change.
+   * If debounce is a number, the value will be sent to the server only after the user
+   * has stopped typing for that number of milliseconds
    */
   debounce: PropTypes.bool,
 

@@ -67,7 +67,7 @@ const Input = props => {
     if (debounce) {
       if (Number.isFinite(debounce)) {
         clearTimeout(debounceRef.current);
-        debounceRef.current = setTimeout(onEvent, debounce * 1000);
+        debounceRef.current = setTimeout(onEvent, debounce);
       }
     } else {
       onEvent();
@@ -604,7 +604,7 @@ Input.propTypes = {
    * focus. If it's false, it will sent the value back on every
    * change. If debounce is a number, the value will be sent to the
    * server only after the user has stopped typing for that number
-   * of seconds.
+   * of milliseconds.
    */
   debounce: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 

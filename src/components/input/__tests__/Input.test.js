@@ -195,14 +195,14 @@ describe('Input', () => {
     });
   });
 
-  describe('debounce', () => {
+  describe('numeric debounce', () => {
     let inputElement, mockSetProps;
 
     beforeEach(() => {
       jest.useFakeTimers();
       mockSetProps = jest.fn();
       const {container} = render(
-        <Input setProps={mockSetProps} value="" debounce={2} />
+        <Input setProps={mockSetProps} value="" debounce={2000} />
       );
       inputElement = container.firstChild;
     });
@@ -215,7 +215,7 @@ describe('Input', () => {
       expect(inputElement).toHaveValue('some-input-value');
       act(() => jest.advanceTimersByTime(1000));
       expect(mockSetProps.mock.calls).toHaveLength(0);
-      act(() => jest.advanceTimersByTime(4000));
+      act(() => jest.advanceTimersByTime(1000));
       expect(mockSetProps.mock.calls).toHaveLength(1);
     });
   });
