@@ -201,9 +201,8 @@ describe('Textarea', () => {
         // one click and one submit
         expect(mockSetProps.mock.calls).toHaveLength(2);
 
-        const [
-          {n_submit, n_submit_timestamp, value}
-        ] = mockSetProps.mock.calls[1];
+        const [{n_submit, n_submit_timestamp, value}] =
+          mockSetProps.mock.calls[1];
         expect(n_submit).toEqual(1);
         expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
         expect(n_submit_timestamp).toBeLessThanOrEqual(after);

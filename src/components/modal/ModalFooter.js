@@ -7,14 +7,8 @@ import RBModalFooter from 'react-bootstrap/ModalFooter';
  * Add a footer to any modal.
  */
 const ModalFooter = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    tag,
-    ...otherProps
-  } = props;
+  const {children, loading_state, className, class_name, tag, ...otherProps} =
+    props;
   return (
     <RBModalFooter
       as={tag}

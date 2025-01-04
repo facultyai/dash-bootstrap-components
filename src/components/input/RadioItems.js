@@ -12,16 +12,8 @@ import {sanitizeOptions} from '../../private/util';
  * siblings of each other.
  */
 const RadioItems = props => {
-  const {
-    id,
-    className,
-    class_name,
-    style,
-    options,
-    key,
-    loading_state,
-    name
-  } = props;
+  const {id, className, class_name, style, options, key, loading_state, name} =
+    props;
 
   const listItem = option => {
     const {

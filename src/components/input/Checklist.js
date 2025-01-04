@@ -13,16 +13,8 @@ import {sanitizeOptions} from '../../private/util';
  * given an `id` to work properly.
  */
 const Checklist = props => {
-  const {
-    className,
-    class_name,
-    id,
-    options,
-    style,
-    key,
-    loading_state,
-    name
-  } = props;
+  const {className, class_name, id, options, style, key, loading_state, name} =
+    props;
 
   const listItem = option => {
     const {

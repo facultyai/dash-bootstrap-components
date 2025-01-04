@@ -8,14 +8,8 @@ import {omit} from 'ramda';
  * contents.
  */
 const Container = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    tag,
-    ...otherProps
-  } = props;
+  const {children, loading_state, className, class_name, tag, ...otherProps} =
+    props;
   return (
     <RBContainer
       as={tag}

@@ -36,10 +36,8 @@ const PopoverTemplate = React.forwardRef(
     // Identify the direction and placement
     const [primaryPlacement] = placement?.split('-') || [];
     const bsDirection = getOverlayDirection(primaryPlacement);
-    const {
-      handleMouseOverTooltipContent,
-      handleMouseLeaveTooltipContent
-    } = useContext(OverlayContext);
+    const {handleMouseOverTooltipContent, handleMouseLeaveTooltipContent} =
+      useContext(OverlayContext);
 
     return (
       <div
@@ -93,10 +91,8 @@ const TooltipTemplate = React.forwardRef(
         pointerEvents: 'none'
       };
 
-    const {
-      handleMouseOverTooltipContent,
-      handleMouseLeaveTooltipContent
-    } = useContext(OverlayContext);
+    const {handleMouseOverTooltipContent, handleMouseLeaveTooltipContent} =
+      useContext(OverlayContext);
 
     return (
       <div

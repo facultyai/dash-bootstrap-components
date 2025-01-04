@@ -7,14 +7,8 @@ import RBModalTitle from 'react-bootstrap/ModalTitle';
  * Add a title to any modal. Should be used as a child of the ModalHeader.
  */
 const ModalTitle = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    tag,
-    ...otherProps
-  } = props;
+  const {children, loading_state, className, class_name, tag, ...otherProps} =
+    props;
   return (
     <RBModalTitle
       as={tag}
