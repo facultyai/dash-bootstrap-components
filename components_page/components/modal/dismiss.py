@@ -6,9 +6,7 @@ modal = html.Div(
         dbc.Button("Open modal", id="open-dismiss"),
         dbc.Modal(
             [
-                dbc.ModalHeader(
-                    dbc.ModalTitle("Dismissing"), close_button=False
-                ),
+                dbc.ModalHeader(dbc.ModalTitle("Dismissing"), close_button=False),
                 dbc.ModalBody(
                     "This modal has no close button and can't be dismissed by "
                     "pressing ESC. Try clicking on the backdrop or the below "

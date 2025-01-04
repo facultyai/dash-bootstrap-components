@@ -13,8 +13,7 @@ card = dbc.Card(
                 [
                     html.H4("Card title", className="card-title"),
                     html.P(
-                        "An example of using an image in the background of "
-                        "a card.",
+                        "An example of using an image in the background of " "a card.",
                         className="card-text",
                     ),
                     dbc.Button("Go somewhere", color="primary"),

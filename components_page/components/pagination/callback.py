@@ -28,8 +28,6 @@ def change_page(page):
     return "Select a page"
 
 
-@app.callback(
-    Output("pagination", "active_page"), [Input("page-change", "value")]
-)
+@app.callback(Output("pagination", "active_page"), [Input("page-change", "value")])
 def change_active_page(value):
     return value

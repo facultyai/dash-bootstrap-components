@@ -83,9 +83,7 @@ checklist_items = html.Div(
         html.H5("Inline checklist", className="mt-3"),
         dbc.Checklist(
             id="gallery_checklist3",
-            options=[
-                {"label": f"Option {i + 1}", "value": i} for i in range(5)
-            ],
+            options=[{"label": f"Option {i + 1}", "value": i} for i in range(5)],
             value=[0, 4],
             inline=True,
         ),
@@ -98,17 +96,13 @@ radio_items = html.Div(
         make_subheading("RadioItems", "input"),
         dbc.RadioItems(
             id="gallery_radio1",
-            options=[
-                {"label": f"Option {i + 1}", "value": i} for i in range(3)
-            ],
+            options=[{"label": f"Option {i + 1}", "value": i} for i in range(3)],
             value=0,
         ),
         html.H5("Inline radioitems", className="mt-3"),
         dbc.RadioItems(
             id="gallery_radio2",
-            options=[
-                {"label": f"Option {i + 1}", "value": i} for i in range(5)
-            ],
+            options=[{"label": f"Option {i + 1}", "value": i} for i in range(5)],
             value=0,
             inline=True,
         ),
@@ -144,9 +138,7 @@ input_group = html.Div(
             size="lg",
             className="my-3",
         ),
-        dbc.InputGroup(
-            [dbc.InputGroupText("Default"), dbc.Input()], className="my-3"
-        ),
+        dbc.InputGroup([dbc.InputGroupText("Default"), dbc.Input()], className="my-3"),
         dbc.InputGroup(
             [dbc.InputGroupText("Small"), dbc.Input()],
             size="sm",

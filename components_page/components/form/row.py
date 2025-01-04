@@ -4,9 +4,7 @@ email_input = dbc.Row(
     [
         dbc.Label("Email", html_for="example-email-row", width=2),
         dbc.Col(
-            dbc.Input(
-                type="email", id="example-email-row", placeholder="Enter email"
-            ),
+            dbc.Input(type="email", id="example-email-row", placeholder="Enter email"),
             width=10,
         ),
     ],

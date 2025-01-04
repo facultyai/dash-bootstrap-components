@@ -26,8 +26,6 @@ tabs = dbc.Tabs(
     [
         dbc.Tab(tab1_content, label="Tab 1"),
         dbc.Tab(tab2_content, label="Tab 2"),
-        dbc.Tab(
-            "This tab's content is never seen", label="Tab 3", disabled=True
-        ),
+        dbc.Tab("This tab's content is never seen", label="Tab 3", disabled=True),
     ]
 )

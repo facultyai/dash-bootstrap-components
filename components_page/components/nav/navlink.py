@@ -21,8 +21,6 @@ nav = html.Div(
 )
 
 
-@app.callback(
-    Output("button-clicks", "children"), [Input("button-link", "n_clicks")]
-)
+@app.callback(Output("button-clicks", "children"), [Input("button-link", "n_clicks")])
 def show_clicks(n):
     return "Button clicked {} times".format(n)

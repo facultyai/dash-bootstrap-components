@@ -3,12 +3,8 @@ from dash import Input, Output, State, html
 
 modal = html.Div(
     [
-        dbc.Button(
-            "Scrolling modal", id="open-scroll", className="me-1", n_clicks=0
-        ),
-        dbc.Button(
-            "Modal with scrollable body", id="open-body-scroll", n_clicks=0
-        ),
+        dbc.Button("Scrolling modal", id="open-scroll", className="me-1", n_clicks=0),
+        dbc.Button("Modal with scrollable body", id="open-body-scroll", n_clicks=0),
         dbc.Modal(
             [
                 dbc.ModalHeader(dbc.ModalTitle("Scrolling modal")),

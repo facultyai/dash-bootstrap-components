@@ -3,9 +3,7 @@ from dash import Input, Output, State, html
 
 alert = html.Div(
     [
-        dbc.Button(
-            "Toggle", id="alert-toggle-auto", className="me-1", n_clicks=0
-        ),
+        dbc.Button("Toggle", id="alert-toggle-auto", className="me-1", n_clicks=0),
         html.Hr(),
         dbc.Alert(
             "Hello! I am an auto-dismissing alert!",

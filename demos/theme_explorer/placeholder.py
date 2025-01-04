@@ -17,9 +17,7 @@ placeholders1 = dbc.Col(
         html.Div(
             [
                 dbc.Placeholder(color="primary", className="me-1 mt-1 w-100"),
-                dbc.Placeholder(
-                    color="secondary", className="me-1 mt-1 w-100"
-                ),
+                dbc.Placeholder(color="secondary", className="me-1 mt-1 w-100"),
                 dbc.Placeholder(color="success", className="me-1 mt-1 w-100"),
                 dbc.Placeholder(color="warning", className="me-1 mt-1 w-100"),
                 dbc.Placeholder(color="danger", className="me-1 mt-1 w-100"),
@@ -74,15 +72,11 @@ placeholders2 = dbc.Col(
                 dbc.Placeholder(
                     color="danger", button=True, className="me-1 mt-1 w-100"
                 ),
-                dbc.Placeholder(
-                    color="info", button=True, className="me-1 mt-1 w-100"
-                ),
+                dbc.Placeholder(color="info", button=True, className="me-1 mt-1 w-100"),
                 dbc.Placeholder(
                     color="light", button=True, className="me-1 mt-1 w-100"
                 ),
-                dbc.Placeholder(
-                    color="dark", button=True, className="me-1 mt-1 w-100"
-                ),
+                dbc.Placeholder(color="dark", button=True, className="me-1 mt-1 w-100"),
             ],
             className="mb-2",
         ),

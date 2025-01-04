@@ -46,9 +46,7 @@ odio dui."""
                 dbc.Col(
                     [
                         html.H2("Graph"),
-                        dcc.Graph(
-                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]}
-                        ),
+                        dcc.Graph(figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]}),
                     ]
                 ),
             ]

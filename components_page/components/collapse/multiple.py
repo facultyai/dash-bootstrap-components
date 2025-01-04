@@ -57,7 +57,7 @@ def toggle_left(n_left, n_both, is_open):
     [Input("right", "n_clicks"), Input("both", "n_clicks")],
     [State("right-collapse", "is_open")],
 )
-def toggle_left(n_right, n_both, is_open):
+def toggle_right(n_right, n_both, is_open):
     if n_right or n_both:
         return not is_open
     return is_open

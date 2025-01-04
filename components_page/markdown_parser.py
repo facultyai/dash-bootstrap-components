@@ -45,9 +45,7 @@ def parse(app, markdown_path, extra_env_vars=None):
     raw = HEADER_PATTERN.sub("", raw).strip()
 
     markdown_blocks = SPLIT_PATTERN.split(raw)
-    markdown_blocks = [
-        dcc.Markdown(block.strip()) for block in markdown_blocks
-    ]
+    markdown_blocks = [dcc.Markdown(block.strip()) for block in markdown_blocks]
 
     examples_docs = EXAMPLE_DOC_PATTERN.findall(raw)
     examples_docs = [
@@ -75,9 +73,7 @@ def _parse_example(data, app, extra_env_vars):
     source_path, obj = data.split(":")
     source = (HERE / source_path).read_text().strip()
 
-    example = load_source_with_environment(
-        source, obj, {"app": app, **extra_env_vars}
-    )
+    example = load_source_with_environment(source, obj, {"app": app, **extra_env_vars})
     return ExampleContainer(example, source)
 
 
@@ -104,9 +100,7 @@ def component_reference(component_name):
     component = getattr(dbc, component_name)
     component_doc = component.__doc__
 
-    return_div = [
-        dcc.Markdown("### Keyword arguments for {}".format(component_name))
-    ]
+    return_div = [dcc.Markdown("### Keyword arguments for {}".format(component_name))]
 
     docs = component_doc.split("Keyword arguments:")[-1]
 
