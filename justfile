@@ -13,7 +13,7 @@ lint-py:
 
 # Lint JS source with prettier
 lint-js:
-    prettier 'src/**/*.js' --list-different
+    npm run lint
 
 # Format Python source with Ruff and JS source with prettier
 format: format-py format-js
@@ -25,7 +25,7 @@ format-py:
 
 # Format JS source with prettier
 format-js:
-    prettier 'src/**/*.js' --write
+    npm run format
 
 # Run unit tests with Jest and integration tests with pytest
 test: test-py test-js
