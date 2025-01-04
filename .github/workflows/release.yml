@@ -18,33 +18,31 @@ jobs:
       - id: get-version
         run: echo "version=$(echo ${{ github.head_ref }} | sed 's|release/||')" >> "$GITHUB_OUTPUT"
 
-      - name: Use Node 16
+      - name: Use Node 22
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 22
 
-      - name: Install dependencies
-        run: npm ci
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.12'
+          version: 'latest'
 
-      - name: Install Python dependencies
-        run: python -m pip install -r requirements-dev.txt
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Install JS dependencies
+        run: npm ci
 
       - name: Update docs requirements
-        run: invoke set-documentation-version ${{ steps.get-version.outputs.version }}
+        run: just _set-docs-version ${{ steps.get-version.outputs.version }}
+
+      - name: Build dash-bootstrap-components
+        run: just build
 
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Clean dist/
-        run: rm -rf dist/dash_bootstrap_components.min.js
-
-      - name: Build dash-bootstrap-components
-        run: python -m build --sdist --wheel --outdir dist/
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.4.2
@@ -71,7 +69,7 @@ jobs:
           prerelease: false
 
       - name: Post-release cleanup
-        run: invoke postrelease ${{ steps.get-version.outputs.version }}
+        run: just postrelease ${{ steps.get-version.outputs.version }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -92,31 +90,28 @@ jobs:
       - id: get-version
         run: echo "version=$(echo ${{ github.head_ref }} | sed 's|prerelease/||')" >> "$GITHUB_OUTPUT"
 
-      - name: Use Node 16
+      - name: Use Node 22
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 22
 
-      - name: Install dependencies
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 'latest'
+
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Install JS dependencies
         run: npm ci
 
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install Python dependencies
-        run: python -m pip install -r requirements-dev.txt
+      - name: Build dash-bootstrap-components
+        run: just build
 
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Clean dist/
-        run: rm -rf dist/dash_bootstrap_components.min.js
-
-      - name: Build dash-bootstrap-components
-        run: python -m build --sdist --wheel --outdir dist/
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.4.2
@@ -143,7 +138,7 @@ jobs:
           prerelease: true
 
       - name: Post-release cleanup
-        run: invoke postrelease ${{ steps.get-version.outputs.version }}
+        run: just postrelease ${{ steps.get-version.outputs.version }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
