@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {act, render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Input from '../Input';
 
@@ -127,7 +127,7 @@ describe('Input', () => {
 
     test('tracks submit with "n_submit" and "n_submit_timestamp"', () => {
       const before = Date.now();
-      fireEvent.keyPress(inputElement, {key: 'Enter', code: 13, charCode: 13});
+      fireEvent.keyUp(inputElement, {key: 'Enter', code: 13, charCode: 13});
       const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
@@ -156,10 +156,10 @@ describe('Input', () => {
 
     test("don't call setProps on change if debounce is true", () => {
       fireEvent.change(inputElement, {
-        target: {value: 'some-input-value'}
+        target: {value: 'some-new-input-value'}
       });
       expect(mockSetProps.mock.calls).toHaveLength(0);
-      expect(inputElement).toHaveValue('some-input-value');
+      expect(inputElement).toHaveValue('some-new-input-value');
     });
 
     test('dispatch value on blur if debounce is true', () => {
@@ -178,7 +178,7 @@ describe('Input', () => {
 
     test('dispatch value on submit if debounce is true', () => {
       const before = Date.now();
-      fireEvent.keyPress(inputElement, {
+      fireEvent.keyUp(inputElement, {
         key: 'Enter',
         code: 13,
         charCode: 13
@@ -192,6 +192,31 @@ describe('Input', () => {
       expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
       expect(n_submit_timestamp).toBeLessThanOrEqual(after);
       expect(value).toEqual('some-input-value');
+    });
+  });
+
+  describe('numeric debounce', () => {
+    let inputElement, mockSetProps;
+
+    beforeEach(() => {
+      jest.useFakeTimers();
+      mockSetProps = jest.fn();
+      const {container} = render(
+        <Input setProps={mockSetProps} value="" debounce={2000} />
+      );
+      inputElement = container.firstChild;
+    });
+
+    test('call setProps after delay if debounce is number', () => {
+      fireEvent.change(inputElement, {
+        target: {value: 'some-input-value'}
+      });
+      expect(mockSetProps.mock.calls).toHaveLength(0);
+      expect(inputElement).toHaveValue('some-input-value');
+      act(() => jest.advanceTimersByTime(1000));
+      expect(mockSetProps.mock.calls).toHaveLength(0);
+      act(() => jest.advanceTimersByTime(1000));
+      expect(mockSetProps.mock.calls).toHaveLength(1);
     });
   });
 

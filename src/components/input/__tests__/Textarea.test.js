@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {act, render, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Textarea from '../Textarea';
 
@@ -132,7 +132,7 @@ describe('Textarea', () => {
 
     test('tracks submit with "n_submit" and "n_submit_timestamp"', () => {
       const before = Date.now();
-      fireEvent.keyPress(textarea, {
+      fireEvent.keyUp(textarea, {
         key: 'Enter',
         code: 13,
         charCode: 13
@@ -148,7 +148,7 @@ describe('Textarea', () => {
     });
 
     test("don't increment n_submit if key is not Enter", () => {
-      fireEvent.keyPress(textarea, {key: 'a', code: 65, charCode: 65});
+      fireEvent.keyUp(textarea, {key: 'a', code: 65, charCode: 65});
       expect(mockSetProps.mock.calls).toHaveLength(0);
     });
 
@@ -157,7 +157,7 @@ describe('Textarea', () => {
       const {
         container: {firstChild: ta}
       } = render(<Textarea submit_on_enter={false} setProps={mockSetProps} />);
-      fireEvent.keyPress(ta, {key: 'Enter', code: 13, charCode: 13});
+      fireEvent.keyUp(ta, {key: 'Enter', code: 13, charCode: 13});
       expect(mockSetProps.mock.calls).toHaveLength(0);
     });
 
@@ -206,7 +206,7 @@ describe('Textarea', () => {
         expect(n_submit).toEqual(1);
         expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
         expect(n_submit_timestamp).toBeLessThanOrEqual(after);
-        expect(value).toEqual('some text');
+        expect(value).toEqual('some text\n');
       });
 
       test('submit not dispatched if shift+enter pressed', () => {
@@ -215,6 +215,31 @@ describe('Textarea', () => {
           'some text{shift>}{enter}{/shift}some more text'
         );
         // one click, no submits
+        expect(mockSetProps.mock.calls).toHaveLength(1);
+      });
+    });
+
+    describe('numeric debounce', () => {
+      let textarea, mockSetProps;
+
+      beforeEach(() => {
+        jest.useFakeTimers();
+        mockSetProps = jest.fn();
+        const {container} = render(
+          <Textarea setProps={mockSetProps} value="" debounce={2000} />
+        );
+        textarea = container.firstChild;
+      });
+
+      test('call setProps after delay if debounce is number', () => {
+        fireEvent.change(textarea, {
+          target: {value: 'some-input-value'}
+        });
+        expect(mockSetProps.mock.calls).toHaveLength(0);
+        expect(textarea).toHaveValue('some-input-value');
+        act(() => jest.advanceTimersByTime(1000));
+        expect(mockSetProps.mock.calls).toHaveLength(0);
+        act(() => jest.advanceTimersByTime(1000));
         expect(mockSetProps.mock.calls).toHaveLength(1);
       });
     });

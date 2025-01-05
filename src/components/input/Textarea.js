@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import classNames from 'classnames';
@@ -43,6 +43,7 @@ const Textarea = props => {
     ...otherProps
   } = props;
   const [valueState, setValueState] = useState(value || '');
+  const debounceRef = useRef(null);
 
   useEffect(() => {
     if (value !== valueState) {
@@ -53,7 +54,15 @@ const Textarea = props => {
   const onChange = e => {
     const newValue = e.target.value;
     setValueState(newValue);
-    if (!debounce && setProps) {
+    if (debounce) {
+      if (Number.isFinite(debounce)) {
+        clearTimeout(debounceRef.current);
+        debounceRef.current = setTimeout(
+          () => setProps({value: newValue}),
+          debounce
+        );
+      }
+    } else {
       setProps({value: newValue});
     }
   };
@@ -64,21 +73,21 @@ const Textarea = props => {
         n_blur: n_blur + 1,
         n_blur_timestamp: Date.now()
       };
-      if (debounce) {
+      if (debounce === true) {
         payload.value = e.target.value;
       }
       setProps(payload);
     }
   };
 
-  const onKeyPress = e => {
+  const onKeyUp = e => {
     if (submit_on_enter && setProps && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault(); // don't create newline if submitting
       const payload = {
         n_submit: n_submit + 1,
         n_submit_timestamp: Date.now()
       };
-      if (debounce) {
+      if (debounce === true) {
         payload.value = e.target.value;
       }
       setProps(payload);
@@ -108,7 +117,7 @@ const Textarea = props => {
       className={classes}
       onChange={onChange}
       onBlur={onBlur}
-      onKeyPress={onKeyPress}
+      onKeyUp={onKeyUp}
       onClick={onClick}
       autoFocus={autofocus || autoFocus}
       maxLength={maxlength || maxLength}
@@ -435,8 +444,10 @@ Textarea.propTypes = {
   n_clicks_timestamp: PropTypes.number,
 
   /**
-   * If true, changes to input will be sent back to the Dash server only on enter or when losing focus.
-   * If it's false, it will sent the value back on every change.
+   * If true, changes to input will be sent back to the Dash server only on enter or
+   * when losing focus. If it's false, it will sent the value back on every change.
+   * If debounce is a number, the value will be sent to the server only after the user
+   * has stopped typing for that number of milliseconds
    */
   debounce: PropTypes.bool,
 

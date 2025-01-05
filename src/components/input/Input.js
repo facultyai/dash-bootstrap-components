@@ -49,6 +49,7 @@ const Input = props => {
     ...otherProps
   } = props;
   const inputRef = useRef(null);
+  const debounceRef = useRef(null);
 
   const formControlClass = plaintext
     ? 'form-control-plaintext'
@@ -63,7 +64,12 @@ const Input = props => {
   );
 
   const onChange = () => {
-    if (!debounce) {
+    if (debounce) {
+      if (Number.isFinite(debounce)) {
+        clearTimeout(debounceRef.current);
+        debounceRef.current = setTimeout(onEvent, debounce);
+      }
+    } else {
       onEvent();
     }
   };
@@ -114,7 +120,8 @@ const Input = props => {
         n_blur: n_blur + 1,
         n_blur_timestamp: Date.now()
       };
-      if (debounce) {
+      if (debounce === true) {
+        // numeric debounce here has no effect, we only care about boolean debounce
         onEvent(payload);
       } else {
         setProps(payload);
@@ -122,13 +129,14 @@ const Input = props => {
     }
   };
 
-  const onKeyPress = e => {
+  const onKeyUp = e => {
     if (setProps && e.key === 'Enter') {
       const payload = {
         n_submit: n_submit + 1,
         n_submit_timestamp: Date.now()
       };
-      if (debounce) {
+      if (debounce === true) {
+        // numeric debounce here has no effect, we only care about boolean debounce
         onEvent(payload);
       } else {
         setProps(payload);
@@ -143,7 +151,7 @@ const Input = props => {
       className={classes}
       onChange={onChange}
       onBlur={onBlur}
-      onKeyPress={onKeyPress}
+      onKeyUp={onKeyUp}
       {...omit(
         [
           'n_blur_timestamp',
@@ -593,10 +601,12 @@ Input.propTypes = {
   /**
    * If true, changes to input will be sent back to the Dash server
    * only when the enter key is pressed or when the component loses
-   * focus.  If it's false, it will sent the value back on every
-   * change.
+   * focus. If it's false, it will sent the value back on every
+   * change. If debounce is a number, the value will be sent to the
+   * server only after the user has stopped typing for that number
+   * of milliseconds.
    */
-  debounce: PropTypes.bool,
+  debounce: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   /**
    * Object that holds the loading state object coming from dash-renderer
