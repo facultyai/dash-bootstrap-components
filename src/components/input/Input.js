@@ -215,7 +215,7 @@ Input.propTypes = {
    * The type of control to render
    */
   type: PropTypes.oneOf([
-    // Only allowing the input types with wide browser compatability
+    // Only allowing the input types with wide browser compatibility
     'text',
     'number',
     'password',
@@ -224,7 +224,8 @@ Input.propTypes = {
     'search',
     'tel',
     'url',
-    'hidden'
+    'hidden',
+    'time'
   ]),
 
   /**
