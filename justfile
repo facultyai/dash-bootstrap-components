@@ -41,8 +41,8 @@ test-js:
 
 # Delete generated files and recreate empty directories
 clean:
-    rm -rf dist lib dash_bootstrap_components/_components
-    mkdir -p dist lib dash_bootstrap_components/_components
+    rm -rf py-dist dist lib dash_bootstrap_components/_components
+    mkdir -p py-dist dist lib dash_bootstrap_components/_components
 
 # Build dash-bootstrap-components
 build: clean && _build-py
@@ -79,7 +79,7 @@ deploy-docs: _copy-examples
 _build-py: && _move-generated-files
     uv run dash-generate-components ./src/components dash_bootstrap_components
     cp dash_bootstrap_components/_components/dash_bootstrap_components.min.js dist
-    uv build --sdist --wheel
+    uv build --sdist --wheel -o py-dist
 
 _copy-examples:
     cp examples/gallery/iris-kmeans/app.py docs/examples/vendor/iris.py

@@ -45,9 +45,10 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.4.2
+        uses: pypa/gh-action-pypi-publish@v1.12.3
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: py-dist/
 
       - name: Commit updated package-lock.json and docs requirements
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -114,9 +115,10 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.4.2
+        uses: pypa/gh-action-pypi-publish@v1.12.3
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: py-dist/
 
       - name: Commit updated package-lock.json
         uses: stefanzweifel/git-auto-commit-action@v4

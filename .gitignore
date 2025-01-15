@@ -16,6 +16,7 @@ dash_bootstrap_components/_components/
 __pycache__
 *.pyc
 dist
+py-dist
 *.egg-info
 
 # release artifacts
