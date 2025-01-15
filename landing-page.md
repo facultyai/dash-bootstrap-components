@@ -14,7 +14,7 @@
   <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md">Request a feature</a>
   <br>
   <br>
-  <img alt="GitHub Actions" src="https://github.com/facultyai/dash-bootstrap-components/workflows/Tests/badge.svg?branch=main">
+  <img alt="GitHub Actions" src="https://github.com/facultyai/dash-bootstrap-components/actions/workflows/tests.yml/badge.svg">
   <img alt="GitHub" src="https://img.shields.io/github/license/facultyai/dash-bootstrap-components">
   <img alt="PyPI" src="https://img.shields.io/pypi/v/dash-bootstrap-components">
   <img alt="Conda (channel only)" src="https://img.shields.io/conda/vn/conda-forge/dash-bootstrap-components">
