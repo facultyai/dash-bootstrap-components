@@ -87,6 +87,7 @@ _copy-examples:
     cp examples/templates/multi-page-apps/simple_sidebar.py docs/examples/vendor/simple_sidebar.py
 
 _set-source-version version: (_set-py-version version) (_set-js-version version)
+    uv lock -P dash-bootstrap-components
 
 [script]
 _set-py-version version:
