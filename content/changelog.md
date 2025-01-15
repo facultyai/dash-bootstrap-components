@@ -6,6 +6,15 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 1.7.0 - 2025/01/15
+
+Version 1.7.0 of dash-bootstrap-components. This version exposes some new props for `Modal`, and `Textarea` to allow users to customise the behaviour of those components, and extends the functionality of the `debounce` prop in `Input` and `Textarea` components. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+- Added `content_style` / `contentStyle` and `dialog_style` / `dialogStyle` props to `Modal` to complement the existing `contentClassName` and `dialogClassName` props ([PR 1029](https://github.com/facultyai/dash-bootstrap-components/pull/1029))
+- Added `submit_on_enter` prop to `Textarea` to allow users to disable default behaviour of incrementing `n_submit` when the Enter key is pressed ([PR 1036](https://github.com/facultyai/dash-bootstrap-components/pull/1036))
+- Allow numeric debounce in `Input` and `Textarea` components ([PR 1056](https://github.com/facultyai/dash-bootstrap-components/pull/1056))
+
 ## 1.6.0 - 2024/04/14
 
 Version 1.6.0 of dash-bootstrap-components. This version makes some improvements to `Accordion`, `Modal` and `Progress` as well as updating CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
