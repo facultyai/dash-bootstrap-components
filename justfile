@@ -79,6 +79,7 @@ deploy-docs: _copy-examples
 _build-py: && _move-generated-files
     uv run dash-generate-components ./src/components dash_bootstrap_components
     cp dash_bootstrap_components/_components/dash_bootstrap_components.min.js dist
+    uv build --sdist --wheel
 
 _copy-examples:
     cp examples/gallery/iris-kmeans/app.py docs/examples/vendor/iris.py
