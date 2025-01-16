@@ -76,9 +76,11 @@ deploy-docs: _copy-examples
     git checkout main
     git branch -D just-push-docs docs-deploy
 
-_build-py: && _move-generated-files
+_build-py: && _move-generated-files _build-package
     uv run dash-generate-components ./src/components dash_bootstrap_components
     cp dash_bootstrap_components/_components/dash_bootstrap_components.min.js dist
+
+_build-package:
     uv build --sdist --wheel -o py-dist
 
 _copy-examples:
