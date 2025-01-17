@@ -1,0 +1,41 @@
+name: Publish release
+
+on:
+  pull_request:
+    branches:
+      - 'release/**'
+      - 'prerelease/**'
+
+jobs:
+  test-build:
+    name: Test build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
+
+      - id: get-version
+        run: echo "version=$(echo ${{ github.head_ref }} | sed -E 's|^(release/|prerelease/)||')" >> "$GITHUB_OUTPUT"
+
+      - name: Use Node 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 'latest'
+
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Install JS dependencies
+        run: npm ci
+
+      - name: Build dash-bootstrap-components
+        run: just build
+
+      - name: Run tests
+        run: uv run --with py-dist/dash_bootstrap_components*.whl pytest --headless tests
