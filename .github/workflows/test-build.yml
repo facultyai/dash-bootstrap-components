@@ -35,4 +35,10 @@ jobs:
         run: just build
 
       - name: Run tests
-        run: uv run --with py-dist/dash_bootstrap_components*.whl pytest --headless tests
+        run: |
+          # install the wheel
+          uv pip install py-dist/dash_bootstrap_components*.whl
+          # manually invoke pytest inside the .venv
+          # we can't use uv as `uv run` syncs the source
+          source .venv/bin/activate
+          pytest --headless tests
