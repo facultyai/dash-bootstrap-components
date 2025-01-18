@@ -4,19 +4,32 @@ on:
   pull_request:
     types:
       - closed
+    branches:
+      - release/**
+      - prerelease/**
 
 jobs:
   release:
     name: Release
-    if: ${{ github.event.pull_request.merged && startsWith(github.head_ref, 'release/') }}
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
 
+      - id: get-release-type
+        run: |
+          echo "type=$(${{ startsWith(github.head_ref, 'prerelease/') }} && echo 'prerelease' || echo 'release')" >> "$GITHUB_OUTPUT"
+          echo "prefix=$(${{ startsWith(github.head_ref, 'prerelease/') }} && echo 'Prerelease' || echo 'Release')" >> "$GITHUB_OUTPUT"
+
       - id: get-version
-        run: echo "version=$(echo ${{ github.head_ref }} | sed 's|release/||')" >> "$GITHUB_OUTPUT"
+        run: |
+          if [ ${{ steps.get-release-type.outputs.type }} = 'prerelease' ]; then
+            echo "version=$(echo ${{ github.head_ref }} | sed 's|prerelease/||')" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=$(echo ${{ github.head_ref }} | sed 's|release/||')" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Use Node 22
         uses: actions/setup-node@v3
@@ -36,6 +49,7 @@ jobs:
 
       - name: Update docs requirements
         run: just _set-docs-version ${{ steps.get-version.outputs.version }}
+        if: ${{ steps.get-release-type.outputs.type == 'release' }}
 
       - name: Build dash-bootstrap-components
         run: just build
@@ -53,7 +67,7 @@ jobs:
       - name: Commit updated package-lock.json and docs requirements
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Release ${{ steps.get-version.outputs.version }}
+          commit_message: ${{ steps.get-release-type.outputs.prefix }} ${{ steps.get-version.outputs.version }}
           branch: main
           push_options: --force
           file_pattern: package-lock.json docs/requirements.txt
@@ -65,9 +79,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.get-version.outputs.version }}
-          release_name: Release ${{ steps.get-version.outputs.version }}
+          release_name: ${{ steps.get-release-type.outputs.prefix }} ${{ steps.get-version.outputs.version }}
           body: ${{ github.event.pull_request.body }}
-          prerelease: false
+          prerelease: ${{ steps.get-release-type.outputs.type == 'prerelease' }}
 
       - name: Post-release cleanup
         run: just postrelease ${{ steps.get-version.outputs.version }}
@@ -77,74 +91,4 @@ jobs:
           commit_message: Back to dev
           branch: main
           push_options: --force
-          file_pattern: package.json tests/test_version.py dash_bootstrap_components/_version.py
-
-  prerelease:
-    name: Prerelease
-    if: ${{ github.event.pull_request.merged && startsWith(github.head_ref, 'prerelease/') }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
-
-      - id: get-version
-        run: echo "version=$(echo ${{ github.head_ref }} | sed 's|prerelease/||')" >> "$GITHUB_OUTPUT"
-
-      - name: Use Node 22
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
-
-      - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v3
-        with:
-          version: 'latest'
-
-      - name: Install just
-        uses: extractions/setup-just@v2
-
-      - name: Install JS dependencies
-        run: npm ci
-
-      - name: Build dash-bootstrap-components
-        run: just build
-
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.12.3
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
-          packages-dir: py-dist/
-
-      - name: Commit updated package-lock.json
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Release ${{ steps.get-version.outputs.version }}
-          branch: main
-          push_options: --force
-          file_pattern: package-lock.json
-
-      - name: Create GitHub prerelease
-        id: create-prerelease
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.get-version.outputs.version }}
-          release_name: Prerelease ${{ steps.get-version.outputs.version }}
-          body: ${{ github.event.pull_request.body }}
-          prerelease: true
-
-      - name: Post-release cleanup
-        run: just postrelease ${{ steps.get-version.outputs.version }}
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Back to dev
-          branch: main
-          push_options: --force
-          file_pattern: package.json tests/test_version.py dash_bootstrap_components/_version.py
+          file_pattern: package.json tests/test_version.py dash_bootstrap_components/_version.py uv.lock
