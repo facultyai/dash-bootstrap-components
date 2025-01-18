@@ -1,4 +1,4 @@
-name: Publish release
+name: Test built package
 
 on:
   pull_request:
@@ -14,9 +14,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
-
-      - id: get-version
-        run: echo "version=$(echo ${{ github.head_ref }} | sed -E 's|^(release/|prerelease/)||')" >> "$GITHUB_OUTPUT"
 
       - name: Use Node 22
         uses: actions/setup-node@v3
