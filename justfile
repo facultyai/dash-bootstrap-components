@@ -51,14 +51,14 @@ build: clean && _build-py
 # Create and push a prerelease branch
 prerelease version: (_set-source-version version)
     git checkout -b prerelease/{{version}}
-    git add package.json dash_bootstrap_components/_version.py tests/test_version.py
+    git add package.json dash_bootstrap_components/_version.py tests/test_version.py uv.lock
     git commit -m "Prerelease {{version}}"
     git push origin prerelease/{{version}}
 
 # Create and push a release branch
 release version: (_set-source-version version)
     git checkout -b release/{{version}}
-    git add package.json dash_bootstrap_components/_version.py tests/test_version.py
+    git add package.json dash_bootstrap_components/_version.py tests/test_version.py uv.lock
     git commit -m "Release {{version}}"
     git push origin release/{{version}}
 
