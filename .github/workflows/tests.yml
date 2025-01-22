@@ -1,6 +1,10 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   js:
@@ -52,14 +56,6 @@ jobs:
       max-parallel: 6
       matrix:
         python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
-    services:
-      hub:
-        image: selenium/hub:3.141.59-gold
-      firefox:
-        image: selenium/node-chrome:3.141.59-gold
-        env:
-          HUB_HOST: hub
-          HUB_PORT: 4444
     steps:
       - uses: actions/checkout@v1
       - name: Install the latest version of uv

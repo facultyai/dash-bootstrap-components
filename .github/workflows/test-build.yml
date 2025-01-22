@@ -1,0 +1,44 @@
+name: Test built package
+
+on:
+  pull_request:
+    branches:
+      - 'release/**'
+      - 'prerelease/**'
+
+jobs:
+  test-build:
+    name: Test build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_ACCESS_TOKEN_TOM }}
+
+      - name: Use Node 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 'latest'
+
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Install JS dependencies
+        run: npm ci
+
+      - name: Build dash-bootstrap-components
+        run: just build
+
+      - name: Run tests
+        run: |
+          # install the wheel
+          uv pip install py-dist/dash_bootstrap_components*.whl
+          # manually invoke pytest inside the .venv
+          # we can't use uv as `uv run` syncs the source
+          source .venv/bin/activate
+          pytest --headless tests
