@@ -303,7 +303,6 @@ testing = [
 
 [[package]]
 name = "dash-bootstrap-components"
-version = "1.7.1a1"
 source = { editable = "." }
 dependencies = [
     { name = "dash" },
