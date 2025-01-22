@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     name: Release
-    if: ${{ github.event.pull_request.merged }} && (startsWith(github.head_ref, 'release/') || startsWith(github.head_ref, 'prerelease/'))
+    if: github.event.pull_request.merged && (startsWith(github.head_ref, 'release/') || startsWith(github.head_ref, 'prerelease/'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
