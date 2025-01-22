@@ -3,11 +3,11 @@ name: Test built package
 on:
   pull_request:
     branches:
-      - 'release/**'
-      - 'prerelease/**'
+      - main
 
 jobs:
   test-build:
+    if: startsWith(github.head_ref, 'release/') || startsWith(github.head_ref, 'prerelease/')
     name: Test build
     runs-on: ubuntu-latest
     steps:
