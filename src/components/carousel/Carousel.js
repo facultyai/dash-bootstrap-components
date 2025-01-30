@@ -24,38 +24,13 @@ const Carousel = props => {
   } = props;
 
   const slides = items.map(item => {
-    // note - the default 'd-block w-100' is from the examples in the Bootstrap docs.
-    item.imgClassName =
-      typeof item.imgClassName !== 'undefined'
-        ? item.imgClassName
-        : 'd-block w-100';
-
-    const useLink = item.href && true;
-    const additionalProps = useLink
-      ? {
-          href: item.href,
-          external_link: item.external_link,
-          target: item.target || '_self'
-        }
-      : {};
-
     return (
       <RBCarousel.Item
         key={item.key}
-        as={item.href ? Link : 'div'}
-        {...additionalProps}
       >
-        <img
-          src={item.src}
-          className={item.img_class_name || item.imgClassName}
-          style={item.img_style}
-          alt={item.alt}
-        />
-        <RBCarousel.Caption
-          className={item.caption_class_name || item.captionClassName}
-        >
-          {item.header && <h5>{item.header}</h5>}
-          {item.caption && <p>{item.caption}</p>}
+        {item.children}
+        <RBCarousel.Caption>
+          {item.caption}
         </RBCarousel.Caption>
       </RBCarousel.Item>
     );
@@ -125,65 +100,14 @@ Carousel.propTypes = {
        */
       key: PropTypes.string,
       /**
-       * The URL of the image
+       * The slide content
        */
-      src: PropTypes.string,
+      children: PropTypes.node,
+
       /**
-       * The alternate text for an image, if the image cannot be displayed
+       * The slide caption
        */
-      alt: PropTypes.string,
-      /**
-       * The className for the image.  The default is 'd-block w-100'
-       */
-      img_class_name: PropTypes.string,
-      /**
-       * **DEPRECATED** Use `img_class_name` instead.
-       *
-       * The className for the image.  The default is 'd-block w-100'
-       */
-      imgClassName: PropTypes.string,
-      /**
-       * The style for the image
-       */
-      img_style: PropTypes.object,
-      /**
-       * The header of the text on the slide. It is displayed in a <h5> element
-       */
-      header: PropTypes.string,
-      /**
-       * The caption of the item.  The text is displayed in a <p> element
-       */
-      caption: PropTypes.string,
-      /**
-       * The class name for the header and caption container
-       */
-      caption_class_name: PropTypes.string,
-      /**
-       * **DEPRECATED** Use `caption_class_name` instead.
-       *
-       * The class name for the header and caption container
-       */
-      captionClassName: PropTypes.string,
-      /**
-       * Optional hyperlink to add to the item. Item will be rendered as a
-       * HTML <a> or as a Dash-style link depending on whether the link is
-       * deemed to be internal or external. Override this automatic detection
-       * with the external_link argument.
-       */
-      href: PropTypes.string,
-      /**
-       * Optional target attribute for the link. Only applies if `href` is set, default `_self`.
-       */
-      target: PropTypes.string,
-      /**
-       * If true, the browser will treat this as an external link,
-       * forcing a page refresh at the new location. If false,
-       * this just changes the location without triggering a page
-       * refresh. Use this if you are observing dcc.Location, for
-       * instance. Defaults to true for absolute URLs and false
-       * otherwise.
-       */
-      external_link: PropTypes.bool
+      caption: PropTypes.node,
     })
   ).isRequired,
 
