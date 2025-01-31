@@ -20,15 +20,16 @@ const NavbarSimple = props => {
     brand_href,
     brand_style,
     brand_external_link,
-    links_left,
-    fluid,
-    color,
     dark,
-    light,
     style,
     loading_state,
     className,
     class_name,
+    fluid = false,
+    color = 'light',
+    light = true,
+    expand = 'md',
+    links_left = false,
     ...otherProps
   } = props;
   const isBootstrapColor = bootstrapColors.has(color);
@@ -44,6 +45,7 @@ const NavbarSimple = props => {
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
+      expand={expand}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -66,14 +68,6 @@ const NavbarSimple = props => {
       </RBContainer>
     </RBNavbar>
   );
-};
-
-NavbarSimple.defaultProps = {
-  fluid: false,
-  color: 'light',
-  light: true,
-  expand: 'md',
-  links_left: false
 };
 
 NavbarSimple.propTypes = {

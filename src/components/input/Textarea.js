@@ -7,41 +7,43 @@ import classNames from 'classnames';
  * A basic HTML textarea for entering multiline text based on the corresponding
  * component in dash-core-components
  */
-const Textarea = props => {
-  const {
-    value,
-    n_clicks,
-    n_blur,
-    n_submit,
-    setProps,
-    className,
-    class_name,
-    invalid,
-    valid,
-    size,
-    debounce,
-    loading_state,
-    autoFocus,
-    autofocus,
-    maxLength,
-    maxlength,
-    minLength,
-    minlength,
-    readOnly,
-    readonly,
-    accessKey,
-    accesskey,
-    contentEditable,
-    contenteditable,
-    contextMenu,
-    contextmenu,
-    spellCheck,
-    spellcheck,
-    tabIndex,
-    tabindex,
-    submit_on_enter,
-    ...otherProps
-  } = props;
+const Textarea = ({
+  setProps,
+  className,
+  class_name,
+  invalid,
+  valid,
+  size,
+  loading_state,
+  autoFocus,
+  autofocus,
+  maxLength,
+  maxlength,
+  minLength,
+  minlength,
+  readOnly,
+  readonly,
+  accessKey,
+  accesskey,
+  contentEditable,
+  contenteditable,
+  contextMenu,
+  contextmenu,
+  spellCheck,
+  spellcheck,
+  tabIndex,
+  tabindex,
+  n_blur = 0,
+  n_blur_timestamp = -1,
+  n_submit = 0,
+  n_submit_timestamp = -1,
+  n_clicks = 0,
+  n_clicks_timestamp = -1,
+  debounce = false,
+  value = '',
+  submit_on_enter = true,
+  ...otherProps
+}) => {
   const [valueState, setValueState] = useState(value || '');
   const debounceRef = useRef(null);
 
@@ -499,18 +501,9 @@ Textarea.propTypes = {
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
 };
 
-Textarea.defaultProps = {
-  n_blur: 0,
-  n_blur_timestamp: -1,
-  n_submit: 0,
-  n_submit_timestamp: -1,
-  n_clicks: 0,
-  n_clicks_timestamp: -1,
-  debounce: false,
+Textarea.dashPersistence = {
   persisted_props: ['value'],
-  persistence_type: 'local',
-  value: '',
-  submit_on_enter: true
+  persistence_type: 'local'
 };
 
 export default Textarea;

@@ -73,7 +73,7 @@ const Button = props => {
   );
 };
 
-Button.defaultProps = {
+Button.dashPersistence = {
   n_clicks: 0,
   n_clicks_timestamp: -1
 };

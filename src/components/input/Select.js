@@ -9,34 +9,28 @@ import {sanitizeOptions} from '../../private/util';
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
  */
-const Select = props => {
-  const {
-    className,
-    class_name,
-    html_size,
-    valid,
-    invalid,
-    value,
-    ...otherProps
-  } = props;
-
+const Select = ({
+  className,
+  class_name,
+  html_size,
+  valid,
+  invalid,
+  value = '',
+  placeholder = '',
+  options = [],
+  setProps,
+  ...otherProps
+}) => {
   const handleChange = e => {
-    if (props.setProps) {
-      props.setProps({value: e.target.value});
+    if (setProps) {
+      setProps({value: e.target.value});
     }
   };
 
   return (
     <RBFormSelect
       {...omit(
-        [
-          'setProps',
-          'options',
-          'persistence',
-          'persistence_type',
-          'persisted_props',
-          'loading_state'
-        ],
+        ['persistence', 'persistence_type', 'persisted_props', 'loading_state'],
         otherProps
       )}
       isInvalid={invalid}
@@ -64,11 +58,9 @@ const Select = props => {
   );
 };
 
-Select.defaultProps = {
-  value: '',
+Select.dashPersistence = {
   persisted_props: ['value'],
-  persistence_type: 'local',
-  placeholder: ''
+  persistence_type: 'local'
 };
 
 Select.propTypes = {

@@ -23,10 +23,10 @@ const Spinner = props => {
     fullscreenClassName,
     fullscreen_class_name,
     fullscreen_style,
-    delay_hide,
-    delay_show,
-    show_initially,
-    type,
+    delay_hide = 0,
+    delay_show = 0,
+    show_initially = true,
+    type = 'border',
     ...otherProps
   } = props;
 
@@ -152,13 +152,6 @@ const Spinner = props => {
 };
 
 Spinner._dashprivate_isLoadingComponent = true;
-
-Spinner.defaultProps = {
-  delay_hide: 0,
-  delay_show: 0,
-  show_initially: true,
-  type: 'border'
-};
 
 Spinner.propTypes = {
   /**

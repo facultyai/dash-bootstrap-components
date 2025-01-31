@@ -11,34 +11,37 @@ import {sanitizeOptions} from '../../private/util';
  * Each radio item is rendered as an input and associated label which are
  * siblings of each other.
  */
-const RadioItems = props => {
-  const {id, className, class_name, style, options, key, loading_state, name} =
-    props;
-
+const RadioItems = ({
+  className,
+  class_name,
+  style,
+  key,
+  loading_state,
+  name,
+  id,
+  inputClassName,
+  input_class_name,
+  inputCheckedStyle,
+  input_checked_style,
+  inputStyle,
+  input_style,
+  inputCheckedClassName,
+  input_checked_class_name,
+  labelClassName,
+  label_class_name,
+  labelCheckedClassName,
+  label_checked_class_name,
+  labelStyle,
+  label_style,
+  labelCheckedStyle,
+  label_checked_style,
+  setProps,
+  inline,
+  switch: switches,
+  options = []
+}) => {
   const listItem = option => {
-    const {
-      id,
-      inputClassName,
-      input_class_name,
-      inputCheckedStyle,
-      input_checked_style,
-      inputStyle,
-      input_style,
-      inputCheckedClassName,
-      input_checked_class_name,
-      labelClassName,
-      label_class_name,
-      labelCheckedClassName,
-      label_checked_class_name,
-      labelStyle,
-      label_style,
-      labelCheckedStyle,
-      label_checked_style,
-      setProps,
-      inline,
-      value,
-      switch: switches
-    } = props;
+    const {} = props;
 
     const checked = option.value === value;
 
@@ -412,16 +415,7 @@ RadioItems.propTypes = {
   name: PropTypes.string
 };
 
-RadioItems.defaultProps = {
-  inputStyle: {},
-  input_style: null,
-  inputClassName: '',
-  input_class_name: '',
-  labelStyle: {},
-  label_style: null,
-  labelClassName: '',
-  label_class_name: '',
-  options: [],
+RadioItems.dashPersistence = {
   persisted_props: ['value'],
   persistence_type: 'local'
 };

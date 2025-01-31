@@ -7,14 +7,20 @@ import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
  * Use this component to create a navbar toggle to show navlinks when the
  * navbar collapses on smaller screens.
  */
-const NavbarToggler = props => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+const NavbarToggler = ({
+  children,
+  loading_state,
+  className,
+  class_name,
+  n_clicks = 0,
+  ...otherProps
+}) => {
   return (
     <RBNavbarToggle
       onClick={() => {
         if (props.setProps) {
           props.setProps({
-            n_clicks: props.n_clicks + 1,
+            n_clicks: n_clicks + 1,
             n_clicks_timestamp: Date.now()
           });
         }
@@ -28,11 +34,6 @@ const NavbarToggler = props => {
       {children}
     </RBNavbarToggle>
   );
-};
-
-NavbarToggler.defaultProps = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1
 };
 
 NavbarToggler.propTypes = {

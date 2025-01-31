@@ -13,13 +13,15 @@ import Link from '../../private/Link';
 const Carousel = props => {
   const {
     items,
-    active_index,
     style,
     class_name,
     className,
     loading_state,
     setProps,
     interval,
+    active_index = 0,
+    controls = true,
+    indicators = true,
     ...otherProps
   } = props;
 
@@ -81,10 +83,7 @@ const Carousel = props => {
   );
 };
 
-Carousel.defaultProps = {
-  active_index: 0,
-  controls: true,
-  indicators: true,
+Carousel.dashPersistence = {
   persisted_props: ['active_index'],
   persistence_type: 'local'
 };

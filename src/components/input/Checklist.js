@@ -12,34 +12,38 @@ import {sanitizeOptions} from '../../private/util';
  * Each checkbox is rendered as an input / label pair. `Checklist` must be
  * given an `id` to work properly.
  */
-const Checklist = props => {
-  const {className, class_name, id, options, style, key, loading_state, name} =
-    props;
-
+const Checklist = ({
+  className,
+  class_name,
+  id,
+  style,
+  key,
+  loading_state,
+  name,
+  inputCheckedClassName,
+  input_checked_class_name,
+  inputCheckedStyle,
+  input_checked_style,
+  labelCheckedClassName,
+  label_checked_class_name,
+  labelCheckedStyle,
+  label_checked_style,
+  setProps,
+  inline,
+  switch: switches,
+  inputStyle,
+  input_style,
+  inputClassName,
+  input_class_name,
+  labelStyle,
+  label_style,
+  labelClassName,
+  label_class_name,
+  value = [],
+  options = []
+}) => {
   const listItem = option => {
-    const {
-      id,
-      inputClassName,
-      input_class_name,
-      inputCheckedClassName,
-      input_checked_class_name,
-      inputStyle,
-      input_style,
-      inputCheckedStyle,
-      input_checked_style,
-      labelClassName,
-      label_class_name,
-      labelCheckedClassName,
-      label_checked_class_name,
-      labelStyle,
-      label_style,
-      labelCheckedStyle,
-      label_checked_style,
-      setProps,
-      inline,
-      value,
-      switch: switches
-    } = props;
+    const {} = props;
 
     const checked = includes(option.value, value);
 
@@ -420,17 +424,7 @@ Checklist.propTypes = {
   name: PropTypes.string
 };
 
-Checklist.defaultProps = {
-  inputStyle: {},
-  input_style: null,
-  inputClassName: '',
-  input_class_name: '',
-  labelStyle: {},
-  label_style: null,
-  labelClassName: '',
-  label_class_name: '',
-  options: [],
-  value: [],
+Checklist.dashPersistence = {
   persisted_props: ['value'],
   persistence_type: 'local'
 };

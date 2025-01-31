@@ -17,37 +17,37 @@ const isEquivalent = (v1, v2) => v1 === v2 || (isNaN(v1) && isNaN(v2));
  * the Checklist and RadioItems component. Dates, times, and file uploads
  * are supported through separate components in other libraries.
  */
-const Input = props => {
-  const {
-    type,
-    value,
-    n_blur,
-    n_submit,
-    valid,
-    invalid,
-    plaintext,
-    size,
-    html_size,
-    setProps,
-    debounce,
-    loading_state,
-    className,
-    class_name,
-    autoComplete,
-    autocomplete,
-    autoFocus,
-    autofocus,
-    inputMode,
-    inputmode,
-    maxLength,
-    maxlength,
-    minLength,
-    minlength,
-    readonly,
-    tabIndex,
-    tabindex,
-    ...otherProps
-  } = props;
+const Input = ({
+  type,
+  value,
+  valid,
+  invalid,
+  plaintext,
+  size,
+  html_size,
+  setProps,
+  loading_state,
+  className,
+  class_name,
+  autoComplete,
+  autocomplete,
+  autoFocus,
+  autofocus,
+  inputMode,
+  inputmode,
+  maxLength,
+  maxlength,
+  minLength,
+  minlength,
+  readonly,
+  tabIndex,
+  tabindex,
+  n_blur = 0,
+  n_submit = 0,
+  debounce = false,
+  step = 'any',
+  ...otherProps
+}) => {
   const inputRef = useRef(null);
   const debounceRef = useRef(null);
 
@@ -669,15 +669,9 @@ Input.propTypes = {
   tabIndex: PropTypes.string
 };
 
-Input.defaultProps = {
-  n_blur: 0,
-  n_blur_timestamp: -1,
-  n_submit: 0,
-  n_submit_timestamp: -1,
-  debounce: false,
+Input.dashPersistence = {
   persisted_props: ['value'],
-  persistence_type: 'local',
-  step: 'any'
+  persistence_type: 'local'
 };
 
 export default Input;
