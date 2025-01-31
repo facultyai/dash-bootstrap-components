@@ -8,36 +8,39 @@ import RBCollapse from 'react-bootstrap/Collapse';
  * children is controlled by the `is_open` prop which can be targetted by
  * callbacks.
  */
-const Collapse = React.forwardRef((props, ref) => {
-  const {
-    children,
-    is_open,
-    navbar,
-    loading_state,
-    className,
-    class_name,
-    tag,
-    ...otherProps
-  } = props;
-
-  return (
-    <RBCollapse
-      in={is_open}
-      as={tag}
-      className={class_name || className}
-      {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
-    >
-      <div ref={ref} className={navbar && 'navbar-collapse'}>
-        {children}
-      </div>
-    </RBCollapse>
-  );
-});
-
-Collapse.defaultProps = {dimension: 'height'};
+const Collapse = React.forwardRef(
+  (
+    {
+      children,
+      is_open,
+      navbar,
+      loading_state,
+      className,
+      class_name,
+      tag,
+      dimension = 'height',
+      ...otherProps
+    },
+    ref
+  ) => {
+    return (
+      <RBCollapse
+        in={is_open}
+        as={tag}
+        className={class_name || className}
+        dimension={dimension}
+        {...omit(['setProps'], otherProps)}
+        data-dash-is-loading={
+          (loading_state && loading_state.is_loading) || undefined
+        }
+      >
+        <div ref={ref} className={navbar && 'navbar-collapse'}>
+          {children}
+        </div>
+      </RBCollapse>
+    );
+  }
+);
 
 Collapse.propTypes = {
   /**

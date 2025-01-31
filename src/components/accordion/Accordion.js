@@ -14,13 +14,13 @@ const Accordion = props => {
   let {
     children,
     active_item,
-    always_open,
-    start_collapsed,
     loading_state,
     key,
     setProps,
     class_name,
     className,
+    always_open = false,
+    start_collapsed = false,
     ...otherProps
   } = props;
   children = parseChildrenToArray(children);
@@ -87,11 +87,9 @@ const Accordion = props => {
   );
 };
 
-Accordion.defaultProps = {
+Accordion.dashPersistence = {
   persisted_props: ['active_item'],
-  persistence_type: 'local',
-  start_collapsed: false,
-  always_open: false
+  persistence_type: 'local'
 };
 
 Accordion.propTypes = {

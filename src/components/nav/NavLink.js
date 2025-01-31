@@ -9,20 +9,19 @@ import Link from '../../private/Link';
  * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
  * directly.
  */
-const NavLink = props => {
+const NavLink = ({
+  children,
+  className,
+  class_name,
+  loading_state,
+  setProps,
+  href,
+  active = false,
+  disabled = false,
+  n_clicks = 0,
+  ...otherProps
+}) => {
   const [linkActive, setLinkActive] = useState(false);
-  const {
-    children,
-    disabled,
-    className,
-    class_name,
-    active,
-    loading_state,
-    setProps,
-    n_clicks,
-    href,
-    ...otherProps
-  } = props;
 
   const pathnameToActive = pathname => {
     setLinkActive(
@@ -70,13 +69,6 @@ const NavLink = props => {
       {children}
     </Link>
   );
-};
-
-NavLink.defaultProps = {
-  active: false,
-  disabled: false,
-  n_clicks: 0,
-  n_clicks_timestamp: -1
 };
 
 NavLink.propTypes = {

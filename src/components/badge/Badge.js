@@ -14,18 +14,20 @@ const Badge = props => {
     href,
     loading_state,
     setProps,
-    color,
     style,
     className,
     class_name,
     text_color,
+    color = 'secondary',
+    n_clicks = 0,
+    n_clicks_timestamp = -1,
     ...otherProps
   } = props;
 
   const incrementClicks = () => {
     if (setProps) {
       setProps({
-        n_clicks: props.n_clicks + 1,
+        n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
@@ -42,7 +44,7 @@ const Badge = props => {
       text={text_color}
       className={class_name || className}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
-      {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
+      {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -50,12 +52,6 @@ const Badge = props => {
       {children}
     </RBBadge>
   );
-};
-
-Badge.defaultProps = {
-  color: 'secondary',
-  n_clicks: 0,
-  n_clicks_timestamp: -1
 };
 
 Badge.propTypes = {

@@ -33,6 +33,10 @@ function renderProgressBar(
     style,
     variant,
     barStyle,
+    animated = false,
+    isChild = false,
+    visuallyHidden = false,
+    striped = false,
     ...props
   },
   ref
@@ -41,6 +45,10 @@ function renderProgressBar(
     <div
       ref={ref}
       {...props}
+      animated={animated}
+      isChild={isChild}
+      visuallyHidden={visuallyHidden}
+      striped={striped}
       role="progressbar"
       className={classNames(className, `progress-bar`, {
         [`bg-${variant}`]: variant,
@@ -114,25 +122,17 @@ const ProgressBar = React.forwardRef(({isChild, min, max, ...props}, ref) => {
   );
 });
 
-ProgressBar.defaultProps = {
-  animated: false,
-  isChild: false,
-  visuallyHidden: false,
-  striped: false
-};
-
-const Progress = props => {
-  const {
-    children,
-    loading_state,
-    color,
-    className,
-    class_name,
-    value,
-    hide_label,
-    bar,
-    ...otherProps
-  } = props;
+const Progress = ({
+  children,
+  loading_state,
+  color,
+  className,
+  class_name,
+  value,
+  bar,
+  hide_label = false,
+  ...otherProps
+}) => {
   const isBootstrapColor = bootstrapColors.has(color);
   return (
     <ProgressBar
@@ -150,10 +150,6 @@ const Progress = props => {
       {children}
     </ProgressBar>
   );
-};
-
-Progress.defaultProps = {
-  hide_label: false
 };
 
 Progress.propTypes = {

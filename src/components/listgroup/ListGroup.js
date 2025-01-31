@@ -15,7 +15,8 @@ const ListGroup = props => {
     className,
     class_name,
     flush,
-    tag,
+    tag = 'ul',
+    numbered = false,
     ...otherProps
   } = props;
   return (
@@ -23,6 +24,7 @@ const ListGroup = props => {
       className={class_name || className}
       variant={flush ? 'flush' : null}
       as={tag}
+      numbered={numbered}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -31,11 +33,6 @@ const ListGroup = props => {
       {children}
     </RBListGroup>
   );
-};
-
-ListGroup.defaultProps = {
-  tag: 'ul',
-  numbered: false
 };
 
 ListGroup.propTypes = {
