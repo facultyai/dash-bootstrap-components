@@ -66,12 +66,12 @@ class Link extends Component {
   render() {
     const {
       children,
-      external_link,
       preOnClick,
       target,
       linkTarget,
       href,
       download,
+      external_link = false,
       ...otherProps
     } = this.props;
     const linkIsExternal = href && isExternalLink(external_link, href);
@@ -152,11 +152,6 @@ Link.propTypes = {
   target: PropTypes.string,
 
   download: PropTypes.string
-};
-
-Link.defaultProps = {
-  disabled: false,
-  external_link: null
 };
 
 export {Link as default, isExternalLink};

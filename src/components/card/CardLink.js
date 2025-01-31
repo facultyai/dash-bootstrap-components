@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import RBCard from 'react-bootstrap/Card';
 import Link from '../../private/Link';
 
@@ -8,20 +7,20 @@ import Link from '../../private/Link';
  * Use card link to add consistently styled links to your cards. Links can be
  * used like buttons, external links, or internal Dash style links.
  */
-const CardLink = props => {
-  const {
-    children,
-    loading_state,
-    disabled,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
-
+const CardLink = ({
+  children,
+  loading_state,
+  disabled,
+  className,
+  class_name,
+  n_clicks = 0,
+  setProps,
+  ...otherProps
+}) => {
   const incrementClicks = () => {
-    if (!disabled && props.setProps) {
-      props.setProps({
-        n_clicks: props.n_clicks + 1,
+    if (!disabled && setProps) {
+      setProps({
+        n_clicks: n_clicks + 1,
         n_clicks_timestamp: Date.now()
       });
     }
@@ -36,16 +35,11 @@ const CardLink = props => {
       preOnClick={incrementClicks}
       disabled={disabled}
       className={class_name || className}
-      {...omit(['setProps', 'n_clicks', 'n_clicks_timestamp'], otherProps)}
+      {...otherProps}
     >
       {children}
     </RBCard.Link>
   );
-};
-
-CardLink.defaultProps = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1
 };
 
 CardLink.propTypes = {

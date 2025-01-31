@@ -10,22 +10,20 @@ import {bootstrapColors} from '../../private/BootstrapColors';
  * Control the visibility using callbacks with the `is_open` prop, or set it to
  * auto-dismiss with the `duration` prop.
  */
-const Alert = props => {
-  const {
-    children,
-    dismissable,
-    duration,
-    is_open,
-    loading_state,
-    setProps,
-    color,
-    style,
-    class_name,
-    className,
-    fade,
-    ...otherProps
-  } = props;
-
+const Alert = ({
+  children,
+  dismissable,
+  loading_state,
+  setProps,
+  style,
+  class_name,
+  className,
+  fade,
+  color = 'success',
+  is_open = true,
+  duration = null,
+  ...otherProps
+}) => {
   const timeout = useRef(null);
 
   useEffect(() => {
@@ -69,10 +67,7 @@ const Alert = props => {
   );
 };
 
-Alert.defaultProps = {
-  color: 'success',
-  is_open: true,
-  duration: null,
+Alert.dashPersistence = {
   persisted_props: ['is_open'],
   persistence_type: 'local'
 };

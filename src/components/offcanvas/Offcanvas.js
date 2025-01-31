@@ -6,27 +6,25 @@ import RBOffcanvas from 'react-bootstrap/Offcanvas';
  * Create a toggleable hidden sidebar using the Offcanvas component.
  * Toggle the visibility with the `is_open` prop.
  */
-const Offcanvas = props => {
-  const {
-    is_open,
-    setProps,
-    children,
-    loading_state,
-    class_name,
-    className,
-    backdrop,
-    backdrop_class_name,
-    backdropClassName,
-    labelledby,
-    labelledBy,
-    scrollable,
-    autofocus,
-    autoFocus,
-    close_button,
-    title,
-    ...otherProps
-  } = props;
-
+const Offcanvas = ({
+  setProps,
+  children,
+  loading_state,
+  class_name,
+  className,
+  backdrop_class_name,
+  backdropClassName,
+  labelledby,
+  labelledBy,
+  scrollable,
+  autofocus,
+  autoFocus,
+  title,
+  close_button = true,
+  is_open = false,
+  backdrop = true,
+  ...otherProps
+}) => {
   const onHide = () => {
     if (setProps) {
       setProps({is_open: !is_open});
@@ -62,12 +60,6 @@ const Offcanvas = props => {
       <RBOffcanvas.Body>{children}</RBOffcanvas.Body>
     </RBOffcanvas>
   );
-};
-
-Offcanvas.defaultProps = {
-  close_button: true,
-  is_open: false,
-  backdrop: true
 };
 
 Offcanvas.propTypes = {

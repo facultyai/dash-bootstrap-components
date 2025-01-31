@@ -16,28 +16,26 @@ const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 /**
  * A component for adding labels to inputs in forms with added sizing controls.
  */
-const Label = props => {
-  const {
-    children,
-    html_for,
-    width,
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
-    xxl,
-    align,
-    size,
-    className,
-    class_name,
-    color,
-    style,
-    loading_state,
-    check,
-    ...otherProps
-  } = props;
-
+const Label = ({
+  children,
+  html_for,
+  width,
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+  xxl,
+  size,
+  className,
+  class_name,
+  color,
+  style,
+  loading_state,
+  check,
+  align = 'center',
+  ...otherProps
+}) => {
   const isBootstrapColor = bootstrapTextColors.has(color);
 
   // check if column width has been specified, use alignment attribute if so
@@ -231,10 +229,6 @@ Label.propTypes = {
      */
     component_name: PropTypes.string
   })
-};
-
-Label.defaultProps = {
-  align: 'center'
 };
 
 export default Label;

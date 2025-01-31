@@ -15,18 +15,17 @@ import {
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
  * get the currently active tab in a callback.
  */
-const Tabs = props => {
-  let {
-    children,
-    id,
-    className,
-    class_name,
-    style,
-    active_tab,
-    key,
-    loading_state,
-    setProps
-  } = props;
+const Tabs = ({
+  children,
+  id,
+  className,
+  class_name,
+  style,
+  active_tab,
+  key,
+  loading_state,
+  setProps
+}) => {
   children = parseChildrenToArray(children);
 
   // if active_tab not set initially, choose first tab
@@ -119,6 +118,7 @@ const Tabs = props => {
         activeLabelClassName,
         active_label_class_name,
         loading_state,
+        disabled = false,
         ...otherProps
       } = childProps;
       const tabId = tab_id || 'tab-' + idx;
@@ -127,6 +127,7 @@ const Tabs = props => {
         <RBTab.Pane
           eventKey={tabId}
           key={tabId}
+          disabled={disabled}
           {...omit(
             ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
             otherProps
@@ -162,7 +163,7 @@ const Tabs = props => {
   );
 };
 
-Tabs.defaultProps = {
+Tabs.dashPersistence = {
   persisted_props: ['active_tab'],
   persistence_type: 'local'
 };
