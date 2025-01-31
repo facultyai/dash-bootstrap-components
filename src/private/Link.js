@@ -1,24 +1,26 @@
 /* global window:true */
-
-import isAbsoluteUrl from 'is-absolute-url';
-
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 
-/* event polyfill for IE https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent */
-function CustomEvent(event, params) {
-  // eslint-disable-next-line no-param-reassign
-  params = params || {
-    bubbles: false,
-    cancelable: false,
-    // eslint-disable-next-line no-undefined
-    detail: undefined
-  };
-  const evt = document.createEvent('CustomEvent');
-  evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-  return evt;
+// absolute URL check vendored from is-absolute-url
+// Scheme: https://tools.ietf.org/html/rfc3986#section-3.1
+// Absolute URL: https://tools.ietf.org/html/rfc3986#section-4.3
+const ABSOLUTE_URL_REGEX = /^[a-zA-Z][a-zA-Z\d+\-.]*?:/;
+
+// Windows paths like `c:\`
+const WINDOWS_PATH_REGEX = /^[a-zA-Z]:\\/;
+
+function isAbsoluteUrl(url) {
+  if (typeof url !== 'string') {
+    throw new TypeError(`Expected a \`string\`, got \`${typeof url}\``);
+  }
+
+  if (WINDOWS_PATH_REGEX.test(url)) {
+    return false;
+  }
+
+  return ABSOLUTE_URL_REGEX.test(url);
 }
-CustomEvent.prototype = window.Event.prototype;
 
 function isExternalLink(external_link, href) {
   if (typeof external_link === 'undefined' || external_link === null) {

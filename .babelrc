@@ -3,7 +3,7 @@
   "plugins": ["@babel/plugin-transform-runtime"],
   "env": {
     "test": {
-      // "plugins": ["@babel/plugin-transform-class-properties"]
+      "plugins": ["@babel/plugin-transform-class-properties"]
     }
   }
 }
