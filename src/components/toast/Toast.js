@@ -21,14 +21,14 @@ const Toast = props => {
     body_style,
     bodyClassName,
     body_class_name,
-    dismissable,
     duration,
-    n_dismiss,
-    is_open,
     setProps,
     className,
     class_name,
     color,
+    is_open = true,
+    n_dismiss = 0,
+    dismissable = false,
     ...otherProps
   } = props;
 
@@ -108,11 +108,7 @@ const Toast = props => {
   );
 };
 
-Toast.defaultProps = {
-  is_open: true,
-  n_dismiss: 0,
-  n_dismiss_timestamp: -1,
-  dismissable: false,
+Toast.dashPersistence = {
   persisted_props: ['is_open'],
   persistence_type: 'local'
 };

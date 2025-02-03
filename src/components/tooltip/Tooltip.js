@@ -12,47 +12,40 @@ import Overlay from '../../private/Overlay';
  * component to which the tooltip should be attached)
  */
 
-const Tooltip = props => {
-  const {
-    id,
-    children,
-    is_open,
-    loading_state,
-    className,
-    class_name,
-    style,
-    fade,
-    ...otherProps
-  } = props;
-
-  return (
-    <Overlay
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
-      defaultShow={is_open}
-      {...otherProps}
-      transition={fade}
-    >
-      <TooltipTemplate
-        id={id}
-        style={style}
-        className={class_name || className}
-      >
-        {children}
-      </TooltipTemplate>
-    </Overlay>
-  );
-};
-
-Tooltip.defaultProps = {
-  delay: {show: 0, hide: 50},
-  placement: 'auto',
-  flip: true,
-  autohide: true,
-  fade: true,
-  trigger: 'hover focus'
-};
+const Tooltip = ({
+  id,
+  children,
+  is_open,
+  loading_state,
+  className,
+  class_name,
+  style,
+  delay = {show: 0, hide: 50},
+  placement = 'auto',
+  flip = true,
+  autohide = true,
+  fade = true,
+  trigger = 'hover focus',
+  ...otherProps
+}) => (
+  <Overlay
+    data-dash-is-loading={
+      (loading_state && loading_state.is_loading) || undefined
+    }
+    defaultShow={is_open}
+    delay={delay}
+    placement={placement}
+    flip={flip}
+    autohide={autohide}
+    trigger={trigger}
+    {...otherProps}
+    transition={fade}
+  >
+    <TooltipTemplate id={id} style={style} className={class_name || className}>
+      {children}
+    </TooltipTemplate>
+  </Overlay>
+);
 
 Tooltip.propTypes = {
   /**

@@ -8,10 +8,6 @@ const Tab = props => {
   return <div>{props.children}</div>;
 };
 
-Tab.defaultProps = {
-  disabled: false
-};
-
 Tab.propTypes = {
   /**
    * The ID of this component, used to identify dash components

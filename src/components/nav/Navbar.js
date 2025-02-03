@@ -7,21 +7,20 @@ import {bootstrapColors} from '../../private/BootstrapColors';
 /**
  * The Navbar component can be used to make fully customisable navbars.
  */
-const Navbar = props => {
-  const {
-    children,
-    color,
-    style,
-    loading_state,
-    className,
-    class_name,
-    light,
-    dark,
-    tag,
-    ...otherProps
-  } = props;
+const Navbar = ({
+  children,
+  style,
+  loading_state,
+  className,
+  class_name,
+  dark,
+  tag,
+  color = 'light',
+  light = true,
+  expand = 'md',
+  ...otherProps
+}) => {
   const isBootstrapColor = bootstrapColors.has(color);
-
   return (
     <RBNavbar
       variant={dark ? 'dark' : 'light'}
@@ -29,6 +28,7 @@ const Navbar = props => {
       bg={isBootstrapColor ? color : null}
       style={{backgroundColor: !isBootstrapColor && color, ...style}}
       className={class_name || className}
+      expand={expand}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
@@ -37,12 +37,6 @@ const Navbar = props => {
       {children}
     </RBNavbar>
   );
-};
-
-Navbar.defaultProps = {
-  color: 'light',
-  light: true,
-  expand: 'md'
 };
 
 Navbar.propTypes = {

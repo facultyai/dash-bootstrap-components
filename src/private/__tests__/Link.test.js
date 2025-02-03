@@ -20,7 +20,8 @@ describe('Link', () => {
     expect(externalLink.getAttribute('href')).toEqual('https://external.com');
   });
 
-  test('internal click behaviour', () => {
+  test('internal click behaviour', async () => {
+    const user = userEvent.setup();
     // check that default behaviour wasn't prevented by wrapping in a div
     // where we have access to the onClick method
     // https://github.com/testing-library/react-testing-library/issues/572#issuecomment-574804033
@@ -41,7 +42,7 @@ describe('Link', () => {
 
     const pushStateSpy = jest.spyOn(window.history, 'pushState');
 
-    userEvent.click(link.getByText('Clickable'));
+    await user.click(link.getByText('Clickable'));
 
     // default behaviour prevented
     expect(outerOnClick.mock.calls).toHaveLength(1);
@@ -65,7 +66,8 @@ describe('Link', () => {
     expect(pushStateSpy.mock.calls[0]).toEqual([{}, '', '/internal']);
   });
 
-  test('external click behaviour', () => {
+  test('external click behaviour', async () => {
+    const user = userEvent.setup();
     const outerOnClick = jest.fn();
     const link = render(
       <div onClick={e => outerOnClick(e.defaultPrevented)}>
@@ -73,14 +75,15 @@ describe('Link', () => {
       </div>
     );
 
-    userEvent.click(link.getByText('Clickable'));
+    await user.click(link.getByText('Clickable'));
 
     // default link behaviour not prevented
     expect(outerOnClick.mock.calls).toHaveLength(1);
     expect(outerOnClick.mock.calls[0][0]).toBe(false);
   });
 
-  test('"external_link" prop creates external link', () => {
+  test('"external_link" prop creates external link', async () => {
+    const user = userEvent.setup();
     const outerOnClick = jest.fn();
     const link = render(
       <div onClick={e => outerOnClick(e.defaultPrevented)}>
@@ -90,7 +93,7 @@ describe('Link', () => {
       </div>
     );
 
-    userEvent.click(link.getByText('Clickable'));
+    await user.click(link.getByText('Clickable'));
 
     // default link behaviour not prevented
     expect(outerOnClick.mock.calls).toHaveLength(1);
@@ -104,7 +107,8 @@ describe('Link', () => {
       outerOnClick = jest.fn();
     });
 
-    test('internal', () => {
+    test('internal', async () => {
+      const user = userEvent.setup();
       const link = render(
         <div onClick={e => outerOnClick(e.defaultPrevented)}>
           <Link href="/internal" disabled>
@@ -118,7 +122,7 @@ describe('Link', () => {
       window.dispatchEvent = mockDispatchEvent;
       window.scrollTo = mockScrollTo;
 
-      userEvent.click(link.getByText('Clickable'));
+      await user.click(link.getByText('Clickable'));
 
       expect(outerOnClick.mock.calls).toHaveLength(1);
       expect(outerOnClick.mock.calls[0][0]).toBe(true);
@@ -127,7 +131,8 @@ describe('Link', () => {
       expect(mockScrollTo.mock.calls).toHaveLength(0);
     });
 
-    test('external', () => {
+    test('external', async () => {
+      const user = userEvent.setup();
       const link = render(
         <div onClick={e => outerOnClick(e.defaultPrevented)}>
           <Link href="https://external.com" disabled>
@@ -136,7 +141,7 @@ describe('Link', () => {
         </div>
       );
 
-      userEvent.click(link.getByText('Clickable'));
+      await user.click(link.getByText('Clickable'));
 
       expect(outerOnClick.mock.calls).toHaveLength(1);
       expect(outerOnClick.mock.calls[0][0]).toBe(true);

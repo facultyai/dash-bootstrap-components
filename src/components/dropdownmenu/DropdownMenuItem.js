@@ -9,23 +9,22 @@ import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
  */
-const DropdownMenuItem = props => {
-  let {
-    children,
-    href,
-    loading_state,
-    target,
-    disabled,
-    n_clicks,
-    toggle,
-    setProps,
-    className,
-    class_name,
-    header,
-    divider,
-    ...otherProps
-  } = props;
-
+const DropdownMenuItem = ({
+  children,
+  href,
+  loading_state,
+  target,
+  disabled,
+  setProps,
+  className,
+  class_name,
+  header,
+  divider,
+  n_clicks = 0,
+  n_clicks_timestamp = -1,
+  toggle = true,
+  ...otherProps
+}) => {
   const context = useContext(DropdownMenuContext);
 
   const handleClick = e => {
@@ -180,12 +179,6 @@ DropdownMenuItem.propTypes = {
    * Target attribute to pass on to the link. Only applies to external links.
    */
   target: PropTypes.string
-};
-
-DropdownMenuItem.defaultProps = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1,
-  toggle: true
 };
 
 export default DropdownMenuItem;

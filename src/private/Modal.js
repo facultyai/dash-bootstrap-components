@@ -22,17 +22,6 @@ import {useBootstrapPrefix, useIsRTL} from 'react-bootstrap/ThemeProvider';
 
 import ModalDialog from './ModalDialog';
 
-const defaultProps = {
-  show: false,
-  backdrop: true,
-  keyboard: true,
-  autoFocus: true,
-  enforceFocus: true,
-  restoreFocus: true,
-  animation: true,
-  dialogAs: ModalDialog
-};
-
 /* eslint-disable no-use-before-define, react/no-multi-comp */
 function DialogTransition(props) {
   return <Fade {...props} timeout={null} />;
@@ -54,7 +43,6 @@ const Modal = React.forwardRef(
       children,
       dialogStyle,
       contentStyle,
-      dialogAs: Dialog,
       'data-bs-theme': dataBsTheme,
       'aria-labelledby': ariaLabelledby,
       'aria-describedby': ariaDescribedby,
@@ -62,17 +50,10 @@ const Modal = React.forwardRef(
 
       /* BaseModal props */
 
-      show,
-      animation,
-      backdrop,
-      keyboard,
       onEscapeKeyDown,
       onShow,
       onHide,
       container,
-      autoFocus,
-      enforceFocus,
-      restoreFocus,
       restoreFocusOptions,
       onEntered,
       onExit,
@@ -83,6 +64,14 @@ const Modal = React.forwardRef(
       backdropClassName,
       zIndex,
       manager: propsManager,
+      show = false,
+      backdrop = true,
+      keyboard = true,
+      autoFocus = true,
+      enforceFocus = true,
+      restoreFocus = true,
+      animation = true,
+      dialogAs: Dialog = ModalDialog,
       ...props
     },
     ref
@@ -313,7 +302,5 @@ const Modal = React.forwardRef(
     );
   }
 );
-
-Modal.defaultProps = defaultProps;
 
 export default Modal;

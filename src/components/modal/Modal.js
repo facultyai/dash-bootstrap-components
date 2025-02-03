@@ -242,7 +242,7 @@ Modal.propTypes = {
    * Renders a fullscreen modal. Specifying a breakpoint will render the modal
    * as fullscreen below the breakpoint size.
    */
-  fullscreen: PropTypes.oneOf([
+  fullscreen: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'])
   ]),

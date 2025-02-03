@@ -33,7 +33,8 @@ describe('RadioButton', () => {
     expect(input.checked).toEqual(false);
   });
 
-  test('dispatches updates to setProps if set', () => {
+  test('dispatches updates to setProps if set', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const {
       container: {firstChild: radio},
@@ -41,14 +42,14 @@ describe('RadioButton', () => {
     } = render(<RadioButton setProps={mockSetProps} />);
 
     const [input, label] = radio.children;
-    userEvent.click(input);
+    await user.click(input);
     expect(mockSetProps.mock.calls).toHaveLength(1);
 
     // props passed to setProps get passed back to the component by Dash renderer
     const arg1 = mockSetProps.mock.calls[0][0];
     rerender(<RadioButton setProps={mockSetProps} {...arg1} />);
 
-    userEvent.click(input);
+    await user.click(input);
     expect(mockSetProps.mock.calls).toHaveLength(2);
 
     const arg2 = mockSetProps.mock.calls[1][0];

@@ -10,19 +10,19 @@ import Link from '../../private/Link';
  * Component for creating Bootstrap carousel.  This component is a slideshow
  * for cycling through a series of content.
  */
-const Carousel = props => {
-  const {
-    items,
-    active_index,
-    style,
-    class_name,
-    className,
-    loading_state,
-    setProps,
-    interval,
-    ...otherProps
-  } = props;
-
+const Carousel = ({
+  items,
+  style,
+  class_name,
+  className,
+  loading_state,
+  setProps,
+  interval,
+  active_index = 0,
+  controls = true,
+  indicators = true,
+  ...otherProps
+}) => {
   const slides = items.map(item => {
     // note - the default 'd-block w-100' is from the examples in the Bootstrap docs.
     item.imgClassName =
@@ -81,10 +81,7 @@ const Carousel = props => {
   );
 };
 
-Carousel.defaultProps = {
-  active_index: 0,
-  controls: true,
-  indicators: true,
+Carousel.dashPersistence = {
   persisted_props: ['active_index'],
   persistence_type: 'local'
 };

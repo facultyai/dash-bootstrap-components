@@ -15,12 +15,12 @@ const ListGroupItem = props => {
     href,
     loading_state,
     target,
-    n_clicks,
     setProps,
     color,
     style,
     className,
     class_name,
+    n_clicks = 0,
     ...otherProps
   } = props;
 
@@ -53,11 +53,6 @@ const ListGroupItem = props => {
       {children}
     </RBListGroupItem>
   );
-};
-
-ListGroupItem.defaultProps = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1
 };
 
 ListGroupItem.propTypes = {

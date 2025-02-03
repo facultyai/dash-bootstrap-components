@@ -9,22 +9,20 @@ import classNames from 'classnames';
  * Use loading Placeholders for your components or pages to indicate
  * something may still be loading.
  */
-const Placeholder = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    color,
-    button,
-    style,
-    delay_hide,
-    delay_show,
-    show_initially,
-    animation,
-    ...otherProps
-  } = props;
-
+const Placeholder = ({
+  children,
+  loading_state,
+  className,
+  class_name,
+  color,
+  style,
+  animation,
+  delay_hide = 0,
+  delay_show = 0,
+  show_initially = true,
+  button = false,
+  ...otherProps
+}) => {
   const [showPlaceholder, setShowPlaceholder] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
@@ -140,13 +138,6 @@ const Placeholder = props => {
 };
 
 Placeholder._dashprivate_isLoadingComponent = true;
-
-Placeholder.defaultProps = {
-  delay_hide: 0,
-  delay_show: 0,
-  show_initially: true,
-  button: false
-};
 
 Placeholder.propTypes = {
   /**
