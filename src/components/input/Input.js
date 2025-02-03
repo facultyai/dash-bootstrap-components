@@ -175,6 +175,7 @@ const Input = ({
       readOnly={readonly}
       tabIndex={tabindex || tabIndex}
       size={html_size}
+      step={step}
     />
   );
 };
