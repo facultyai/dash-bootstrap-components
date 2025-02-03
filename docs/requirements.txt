@@ -1,5 +1,5 @@
-dash>=2.0.0
-dash_bootstrap_components==ci-fixes
+dash==3.0.0rc1
+dash_bootstrap_components==1.7.1-dev
 gunicorn
 markdown
 pandas
