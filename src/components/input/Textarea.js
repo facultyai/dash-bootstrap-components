@@ -451,7 +451,7 @@ Textarea.propTypes = {
    * If debounce is a number, the value will be sent to the server only after the user
    * has stopped typing for that number of milliseconds
    */
-  debounce: PropTypes.bool,
+  debounce: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   /**
    * Object that holds the loading state object coming from dash-renderer

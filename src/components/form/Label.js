@@ -11,8 +11,6 @@ const alignMap = {
   end: 'align-self-end'
 };
 
-const colWidths = ['width', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-
 /**
  * A component for adding labels to inputs in forms with added sizing controls.
  */
@@ -39,7 +37,7 @@ const Label = ({
   const isBootstrapColor = bootstrapTextColors.has(color);
 
   // check if column width has been specified, use alignment attribute if so
-  const cols = colWidths.filter(colWidth => props[colWidth]);
+  const cols = [width, xs, sm, md, lg, xl, xxl].filter(colWidth => colWidth);
 
   [width, xs, sm, md, lg, xl, xxl].forEach(breakpoint => {
     if (typeof breakpoint === 'object' && breakpoint !== null) {

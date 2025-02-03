@@ -71,7 +71,7 @@ class Link extends Component {
       linkTarget,
       href,
       download,
-      external_link = false,
+      external_link,
       ...otherProps
     } = this.props;
     const linkIsExternal = href && isExternalLink(external_link, href);
