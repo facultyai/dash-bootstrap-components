@@ -20,14 +20,15 @@ const getOverlayDirection = placement => {
 const PopoverTemplate = React.forwardRef(
   (
     {
-      placement,
+      placement = 'right',
       className,
       style,
       children,
       body,
       arrowProps,
-      popper: _,
-      show: _1,
+      hasDoneInitialMeasure,
+      popper,
+      show,
       hideArrow,
       ...props
     },
@@ -36,6 +37,21 @@ const PopoverTemplate = React.forwardRef(
     // Identify the direction and placement
     const [primaryPlacement] = placement?.split('-') || [];
     const bsDirection = getOverlayDirection(primaryPlacement);
+
+    let computedStyle = style;
+    if (show && !hasDoneInitialMeasure) {
+      computedStyle = {
+        ...style,
+        ...{
+          position: popper?.strategy,
+          top: '0',
+          left: '0',
+          opacity: '0',
+          pointerEvents: 'none'
+        }
+      };
+    }
+
     const {handleMouseOverTooltipContent, handleMouseLeaveTooltipContent} =
       useContext(OverlayContext);
 
@@ -43,7 +59,7 @@ const PopoverTemplate = React.forwardRef(
       <div
         ref={ref}
         role="tooltip"
-        style={style}
+        style={computedStyle}
         x-placement={primaryPlacement}
         className={classNames(
           className,

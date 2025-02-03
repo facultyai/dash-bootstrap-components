@@ -22,7 +22,8 @@ describe('NavbarToggler', () => {
     expect(container).toHaveTextContent('Some navbarToggler content');
   });
 
-  test('tracks clicks with n_clicks', () => {
+  test('tracks clicks with n_clicks', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const navbarToggler = render(
       <NavbarToggler setProps={mockSetProps}>Clickable</NavbarToggler>
@@ -30,7 +31,7 @@ describe('NavbarToggler', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(navbarToggler.getByText('Clickable'));
+    await user.click(navbarToggler.getByText('Clickable'));
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);

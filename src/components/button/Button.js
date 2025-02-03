@@ -12,28 +12,26 @@ import Link from '../../private/Link';
  * Use the `n_clicks` prop to trigger callbacks when the button has been
  * clicked.
  */
-const Button = props => {
-  const {
-    children,
-    disabled,
-    href,
-    loading_state,
-    setProps,
-    n_clicks,
-    target,
-    type,
-    download,
-    name,
-    value,
-    className,
-    class_name,
-    color,
-    outline,
-    onClick,
-    rel,
-    ...otherProps
-  } = props;
-
+const Button = ({
+  children,
+  disabled,
+  href,
+  loading_state,
+  setProps,
+  target,
+  type,
+  download,
+  name,
+  value,
+  className,
+  class_name,
+  color,
+  outline,
+  onClick,
+  rel,
+  n_clicks = 0,
+  ...otherProps
+}) => {
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({
@@ -71,11 +69,6 @@ const Button = props => {
       {children}
     </RBButton>
   );
-};
-
-Button.dashPersistence = {
-  n_clicks: 0,
-  n_clicks_timestamp: -1
 };
 
 Button.propTypes = {

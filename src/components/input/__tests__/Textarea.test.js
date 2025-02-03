@@ -97,16 +97,18 @@ describe('Textarea', () => {
       textarea = container.firstChild;
     });
 
-    test('tracks changes with "value" prop', () => {
-      userEvent.type(textarea, 'some text');
+    test('tracks changes with "value" prop', async () => {
+      const user = userEvent.setup();
+      await user.type(textarea, 'some text');
       // one setProps call for click, and then 9 characters
       expect(mockSetProps.mock.calls).toHaveLength(10);
       expect(mockSetProps.mock.calls[9][0]).toEqual({value: 'some text'});
       expect(textarea).toHaveValue('some text');
     });
 
-    test('dispatches update for each typed character', () => {
-      userEvent.type(textarea, 'abc');
+    test('dispatches update for each typed character', async () => {
+      const user = userEvent.setup();
+      await user.type(textarea, 'abc');
 
       expect(textarea).toHaveValue('abc');
       expect(mockSetProps.mock.calls).toHaveLength(4);
@@ -171,15 +173,17 @@ describe('Textarea', () => {
         textarea = container.firstChild;
       });
 
-      test("don't call setProps on change if debounce is true", () => {
-        userEvent.type(textarea, 'some text');
+      test("don't call setProps on change if debounce is true", async () => {
+        const user = userEvent.setup();
+        await user.type(textarea, 'some text');
         // one call to setProps for clicking on the textarea
         expect(mockSetProps.mock.calls).toHaveLength(1);
         expect(textarea).toHaveValue('some text');
       });
 
-      test('dispatch value on blur if debounce is true', () => {
-        userEvent.type(textarea, 'some text');
+      test('dispatch value on blur if debounce is true', async () => {
+        const user = userEvent.setup();
+        await user.type(textarea, 'some text');
         const before = Date.now();
         fireEvent.blur(textarea);
         const after = Date.now();
@@ -193,9 +197,11 @@ describe('Textarea', () => {
         expect(value).toEqual('some text');
       });
 
-      test('dispatch value on submit if debounce is true', () => {
+      test('dispatch value on submit if debounce is true', async () => {
+        const user = userEvent.setup();
+
         const before = Date.now();
-        userEvent.type(textarea, 'some text{enter}');
+        await user.type(textarea, 'some text{enter}');
         const after = Date.now();
 
         // one click and one submit
@@ -209,8 +215,9 @@ describe('Textarea', () => {
         expect(value).toEqual('some text\n');
       });
 
-      test('submit not dispatched if shift+enter pressed', () => {
-        userEvent.type(
+      test('submit not dispatched if shift+enter pressed', async () => {
+        const user = userEvent.setup();
+        await user.type(
           textarea,
           'some text{shift>}{enter}{/shift}some more text'
         );

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {render} from '@testing-library/react';
+import {act, fireEvent, render, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NavbarSimple from '../NavbarSimple';
 import NavItem from '../NavItem';
@@ -132,13 +132,13 @@ describe('NavbarSimple', () => {
 
     expect(collapse).not.toHaveClass('show');
 
-    userEvent.click(button);
-    jest.runAllTimers();
+    fireEvent.click(button);
+    act(() => jest.runAllTimers());
 
     expect(collapse).toHaveClass('show');
 
-    userEvent.click(button);
-    jest.runAllTimers();
+    fireEvent.click(button);
+    act(() => jest.runAllTimers());
 
     expect(collapse).not.toHaveClass('show');
   });
