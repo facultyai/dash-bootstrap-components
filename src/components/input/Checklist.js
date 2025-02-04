@@ -43,8 +43,6 @@ const Checklist = ({
   options = []
 }) => {
   const listItem = option => {
-    const {} = props;
-
     const checked = includes(option.value, value);
 
     const mergedInputStyle = checked

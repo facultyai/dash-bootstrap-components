@@ -41,10 +41,10 @@ const Select = ({
       value={value || ''}
     >
       <option value="" disabled hidden>
-        {props.placeholder}
+        {placeholder}
       </option>
-      {props.options &&
-        sanitizeOptions(props.options).map(option => (
+      {options &&
+        sanitizeOptions(options).map(option => (
           <option
             key={option.value}
             value={option.value}

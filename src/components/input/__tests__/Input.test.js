@@ -101,8 +101,9 @@ describe('Input', () => {
       });
     });
 
-    test('dispatches update for each typed character', () => {
-      userEvent.type(inputElement, 'abc');
+    test('dispatches update for each typed character', async () => {
+      const user = userEvent.setup();
+      await user.type(inputElement, 'abc');
 
       expect(mockSetProps.mock.calls).toHaveLength(3);
 
@@ -262,7 +263,10 @@ describe('Input', () => {
     });
 
     test('dispatches update for each typed character', () => {
-      userEvent.type(inputElement, '-1e4');
+      fireEvent.input(inputElement, {target: {value: '-'}});
+      fireEvent.input(inputElement, {target: {value: '-1'}});
+      fireEvent.input(inputElement, {target: {value: '-1e'}});
+      fireEvent.input(inputElement, {target: {value: '-1e4'}});
 
       expect(inputElement).toHaveValue(-10000);
       expect(mockSetProps.mock.calls).toHaveLength(2);
@@ -298,7 +302,12 @@ describe('Input', () => {
         <Input type="number" min={0} value={0} setProps={mockSetProps} />
       );
 
-      userEvent.type(input, '-100');
+      // can't use userEvent.type here because it hangs when trying to enter invalid
+      // inputs, instead we simulate typing additional invalid characters with multiple
+      // fireEvent.change calls
+      fireEvent.change(input, {target: {value: '0-'}});
+      fireEvent.change(input, {target: {value: '0-1'}});
+      fireEvent.change(input, {target: {value: '0-12'}});
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
       expect(mockSetProps.mock.calls[0][0]).toEqual({value: NaN});

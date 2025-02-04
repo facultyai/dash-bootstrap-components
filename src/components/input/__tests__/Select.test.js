@@ -68,7 +68,8 @@ describe('Select', () => {
     expect(invalidSelect.container.firstChild).toHaveClass('is-invalid');
   });
 
-  test('dispatches value when selection is made and setProps is set', () => {
+  test('dispatches value when selection is made and setProps is set', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const {
       container: {firstChild: select},
@@ -86,7 +87,7 @@ describe('Select', () => {
 
     expect(select).not.toHaveValue();
 
-    userEvent.selectOptions(select, '2');
+    await user.selectOptions(select, '2');
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     const [[{value}]] = mockSetProps.mock.calls;

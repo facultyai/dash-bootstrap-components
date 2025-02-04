@@ -37,12 +37,11 @@ const RadioItems = ({
   label_checked_style,
   setProps,
   inline,
+  value,
   switch: switches,
   options = []
 }) => {
   const listItem = option => {
-    const {} = props;
-
     const checked = option.value === value;
 
     const mergedLabelStyle = checked

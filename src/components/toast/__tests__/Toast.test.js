@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {act, render} from '@testing-library/react';
+import {act, fireEvent, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Toast from '../Toast';
 
@@ -79,7 +79,8 @@ describe('Toast', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(toast.container.querySelector('.btn-close'));
+    // userevent isn't happy clicking this for some reason...
+    fireEvent.click(toast.container.querySelector('.btn-close'));
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_dismiss).toBe(1);

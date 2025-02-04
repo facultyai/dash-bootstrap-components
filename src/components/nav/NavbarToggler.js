@@ -13,13 +13,14 @@ const NavbarToggler = ({
   className,
   class_name,
   n_clicks = 0,
+  setProps,
   ...otherProps
 }) => {
   return (
     <RBNavbarToggle
       onClick={() => {
-        if (props.setProps) {
-          props.setProps({
+        if (setProps) {
+          setProps({
             n_clicks: n_clicks + 1,
             n_clicks_timestamp: Date.now()
           });
