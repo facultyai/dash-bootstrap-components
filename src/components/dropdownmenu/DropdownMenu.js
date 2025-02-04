@@ -14,31 +14,29 @@ import DropdownToggle from '../../private/DropdownToggle';
  * DropdownMenu creates an overlay useful for grouping together links and other
  * content to organise navigation or other interactive elements.
  */
-const DropdownMenu = props => {
-  const {
-    children,
-    nav,
-    label,
-    disabled,
-    caret,
-    in_navbar,
-    addon_type,
-    size,
-    right,
-    align_end,
-    menu_variant,
-    direction,
-    loading_state,
-    color,
-    group,
-    toggle_style,
-    toggleClassName,
-    toggle_class_name,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
-
+const DropdownMenu = ({
+  children,
+  nav,
+  label,
+  in_navbar,
+  addon_type,
+  size,
+  right,
+  align_end,
+  direction,
+  loading_state,
+  color,
+  group,
+  toggle_style,
+  toggleClassName,
+  toggle_class_name,
+  className,
+  class_name,
+  caret = true,
+  disabled = false,
+  menu_variant = 'light',
+  ...otherProps
+}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const isBootstrapColor = bootstrapColors.has(color) || color === 'link';
   const toggle = () => {
@@ -103,12 +101,6 @@ const DropdownMenu = props => {
       </RBDropdown>
     </DropdownMenuContext.Provider>
   );
-};
-
-DropdownMenu.defaultProps = {
-  caret: true,
-  disabled: false,
-  menu_variant: 'light'
 };
 
 DropdownMenu.propTypes = {

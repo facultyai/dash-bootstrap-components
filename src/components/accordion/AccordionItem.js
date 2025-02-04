@@ -35,11 +35,7 @@ const AccordionItem = ({
         (loading_state && loading_state.is_loading) || undefined
       }
     >
-      <RBAccordion.Header
-        onClick={() => {
-          toggle(itemID);
-        }}
-      >
+      <RBAccordion.Header onClick={() => toggle(itemID)}>
         {title}
       </RBAccordion.Header>
       <RBAccordion.Body>{children}</RBAccordion.Body>

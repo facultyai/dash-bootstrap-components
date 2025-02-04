@@ -7,22 +7,20 @@ import RBPagination from 'react-bootstrap/Pagination';
  * Individual pages should be added as children using the `PaginationItem`
  * component.
  */
-const Pagination = props => {
-  const {
-    step,
-    active_page,
-    min_value,
-    fully_expanded,
-    previous_next,
-    first_last,
-    setProps,
-    class_name,
-    className,
-    loading_state,
-    ...otherProps
-  } = props;
-
-  let {max_value} = props;
+const Pagination = ({
+  setProps,
+  class_name,
+  className,
+  loading_state,
+  min_value = 1,
+  step = 1,
+  active_page = 1,
+  fully_expanded = true,
+  previous_next = false,
+  first_last = false,
+  max_value,
+  ...otherProps
+}) => {
   // Check max_value is correct value re. step size and if not, change it
   // i.e. min = 1, step = 2, max_value = 4 doesn't work, so need max_value = 5
   if ((max_value - min_value) % step !== 0) {
@@ -149,15 +147,6 @@ const Pagination = props => {
       {paginationItems}
     </RBPagination>
   );
-};
-
-Pagination.defaultProps = {
-  min_value: 1,
-  step: 1,
-  active_page: 1,
-  fully_expanded: true,
-  previous_next: false,
-  first_last: false
 };
 
 Pagination.propTypes = {

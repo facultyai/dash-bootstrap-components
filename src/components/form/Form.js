@@ -7,17 +7,17 @@ import RBForm from 'react-bootstrap/Form';
  * The Form component can be used to organise collections of input components
  * and apply consistent styling.
  */
-const Form = props => {
-  const {
-    children,
-    loading_state,
-    n_submit,
-    prevent_default_on_submit,
-    setProps,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
+const Form = ({
+  children,
+  loading_state,
+  setProps,
+  className,
+  class_name,
+  prevent_default_on_submit = true,
+  n_submit = 0,
+  n_submit_timestamp = -1,
+  ...otherProps
+}) => {
   return (
     <RBForm
       onSubmit={e => {
@@ -32,7 +32,7 @@ const Form = props => {
         }
       }}
       className={class_name || className}
-      {...omit(['n_submit_timestamp'], otherProps)}
+      {...otherProps}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -40,12 +40,6 @@ const Form = props => {
       {children}
     </RBForm>
   );
-};
-
-Form.defaultProps = {
-  prevent_default_on_submit: true,
-  n_submit: 0,
-  n_submit_timestamp: -1
 };
 
 Form.propTypes = {

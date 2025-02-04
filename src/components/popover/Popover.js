@@ -26,6 +26,10 @@ const Popover = props => {
     hide_arrow,
     offset,
     body,
+    delay = {show: 0, hide: 50},
+    placement = 'right',
+    flip = true,
+    autohide = false,
     ...otherProps
   } = props;
 
@@ -53,6 +57,10 @@ const Popover = props => {
       }
       defaultShow={is_open}
       popperConfig={popperConfig}
+      delay={delay}
+      placement={placement}
+      flip={flip}
+      autohide={autohide}
       {...omit(
         ['persistence', 'persisted_props', 'persistence_type'],
         otherProps
@@ -73,11 +81,7 @@ const Popover = props => {
   );
 };
 
-Popover.defaultProps = {
-  delay: {show: 0, hide: 50},
-  placement: 'right',
-  flip: true,
-  autohide: false,
+Popover.dashPersistence = {
   persisted_props: ['is_open'],
   persistence_type: 'local'
 };

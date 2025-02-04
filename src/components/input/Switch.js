@@ -10,69 +10,65 @@ import classNames from 'classnames';
  * Each checkbox is rendered as an input / label pair. `Checklist` must be
  * given an `id` to work properly.
  */
-const Switch = props => {
-  const {
-    value,
-    disabled,
-    className,
-    class_name,
-    style,
-    id,
-    input_class_name,
-    inputClassName,
-    input_style,
-    label,
-    label_id,
-    label_style,
-    label_class_name,
-    labelClassName,
-    loading_state,
-    name,
-    setProps
-  } = props;
-
-  return (
-    <div
-      className={classNames('form-check form-switch', class_name || className)}
-      style={style}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
-    >
-      <input
-        id={id}
-        name={name}
-        checked={value}
-        className={classNames(
-          'form-check-input',
-          input_class_name || inputClassName
-        )}
-        disabled={disabled}
-        style={input_style}
-        type="checkbox"
-        onChange={() => {
-          if (!disabled) {
-            if (setProps) {
-              setProps({value: !value});
-            }
+const Switch = ({
+  className,
+  class_name,
+  style,
+  id,
+  input_class_name,
+  inputClassName,
+  input_style,
+  label,
+  label_id,
+  label_style,
+  label_class_name,
+  labelClassName,
+  loading_state,
+  name,
+  value = false,
+  disabled = false,
+  setProps
+}) => (
+  <div
+    className={classNames('form-check form-switch', class_name || className)}
+    style={style}
+    data-dash-is-loading={
+      (loading_state && loading_state.is_loading) || undefined
+    }
+  >
+    <input
+      id={id}
+      name={name}
+      checked={value}
+      className={classNames(
+        'form-check-input',
+        input_class_name || inputClassName
+      )}
+      disabled={disabled}
+      style={input_style}
+      type="checkbox"
+      onChange={() => {
+        if (!disabled) {
+          if (setProps) {
+            setProps({value: !value});
           }
-        }}
-      />
-      <label
-        id={label_id}
-        style={label_style}
-        className={classNames(
-          label_class_name || labelClassName,
-          'form-check-label',
-          'form-label'
-        )}
-        htmlFor={id}
-      >
-        {label}
-      </label>
-    </div>
-  );
-};
+        }
+      }}
+    />
+    <label
+      id={label_id}
+      style={label_style}
+      className={classNames(
+        label_class_name || labelClassName,
+        'form-check-label',
+        'form-label'
+      )}
+      htmlFor={id}
+    >
+      {label}
+    </label>
+  </div>
+);
 
 Switch.propTypes = {
   /**
@@ -224,19 +220,9 @@ Switch.propTypes = {
   setProps: PropTypes.func
 };
 
-Switch.defaultProps = {
-  inputStyle: {},
-  input_style: null,
-  inputClassName: '',
-  input_class_name: '',
-  labelStyle: {},
-  label_style: null,
-  labelClassName: '',
-  label_class_name: '',
+Switch.dashPersistence = {
   persisted_props: ['value'],
-  persistence_type: 'local',
-  value: false,
-  disabled: false
+  persistence_type: 'local'
 };
 
 export default Switch;
