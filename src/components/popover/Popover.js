@@ -4,6 +4,7 @@ import {omit} from 'ramda';
 
 import {PopoverTemplate} from '../../private/OverlayTemplates';
 import Overlay from '../../private/Overlay';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Popover creates a toggleable overlay that can be used to provide additional
@@ -18,7 +19,6 @@ const Popover = props => {
   const {
     children,
     is_open,
-    loading_state,
     className,
     class_name,
     style,
@@ -52,9 +52,7 @@ const Popover = props => {
 
   return (
     <Overlay
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       defaultShow={is_open}
       popperConfig={popperConfig}
       delay={delay}
@@ -223,24 +221,6 @@ Popover.propTypes = {
    * Optionally hide popover when hovering over content - default False.
    */
   autohide: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

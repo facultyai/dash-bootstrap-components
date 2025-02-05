@@ -5,6 +5,7 @@ import RBAccordion from 'react-bootstrap/Accordion';
 
 import {parseChildrenToArray, resolveChildProps} from '../../private/util';
 import {AccordionContext} from '../../private/AccordionContext';
+import {getLoadingState} from '../../private/util';
 
 /**
  * A self contained Accordion component. Build up the children using the
@@ -14,7 +15,6 @@ const Accordion = props => {
   let {
     children,
     active_item,
-    loading_state,
     key,
     setProps,
     class_name,
@@ -70,9 +70,7 @@ const Accordion = props => {
   return (
     <RBAccordion
       key={key}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       activeKey={active_item}
       defaultActiveKey={start_collapsed ? null : active_item}
       alwaysOpen={always_open}
@@ -156,24 +154,6 @@ Accordion.propTypes = {
    * Set to True for all items to be collapsed initially.
    */
   start_collapsed: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

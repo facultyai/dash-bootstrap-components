@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RBOffcanvas from 'react-bootstrap/Offcanvas';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Create a toggleable hidden sidebar using the Offcanvas component.
@@ -9,7 +10,6 @@ import RBOffcanvas from 'react-bootstrap/Offcanvas';
 const Offcanvas = ({
   setProps,
   children,
-  loading_state,
   class_name,
   className,
   backdrop_class_name,
@@ -51,9 +51,7 @@ const Offcanvas = ({
       show={is_open}
       onHide={backdrop !== 'static' ? onHide : null}
       backdrop={backdrop || backdrop === 'static'}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       {...otherProps}
     >
       {header}
@@ -163,25 +161,7 @@ Offcanvas.propTypes = {
    * Specify whether the Component should contain a close button
    * in the header
    */
-  close_button: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  close_button: PropTypes.bool
 };
 
 export default Offcanvas;

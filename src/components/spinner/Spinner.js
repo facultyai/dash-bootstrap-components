@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBSpinner from 'react-bootstrap/Spinner';
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Render Bootstrap style loading spinners using only CSS.
@@ -15,7 +16,6 @@ const Spinner = props => {
   const {
     children,
     color,
-    loading_state,
     spinner_style,
     spinnerClassName,
     spinner_class_name,
@@ -33,40 +33,39 @@ const Spinner = props => {
   const [showSpinner, setShowSpinner] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
+  const loading = getLoadingState();
 
   useEffect(() => {
-    if (loading_state) {
-      if (loading_state.is_loading) {
-        // if component is currently loading and there's a dismiss timer active
-        // we need to clear it.
-        if (dismissTimer.current) {
-          dismissTimer.current = clearTimeout(dismissTimer.current);
-        }
-        // if component is currently loading but the spinner is not showing and
-        // there is no timer set to show, then set a timeout to show
-        if (!showSpinner && !showTimer.current) {
-          showTimer.current = setTimeout(() => {
-            setShowSpinner(true);
-            showTimer.current = null;
-          }, delay_show);
-        }
-      } else {
-        // if component is not currently loading and there's a show timer
-        // active we need to clear it
-        if (showTimer.current) {
-          showTimer.current = clearTimeout(showTimer.current);
-        }
-        // if component is not currently loading and the spinner is showing and
-        // there's no timer set to dismiss it, then set a timeout to hide it
-        if (showSpinner && !dismissTimer.current) {
-          dismissTimer.current = setTimeout(() => {
-            setShowSpinner(false);
-            dismissTimer.current = null;
-          }, delay_hide);
-        }
+    if (loading) {
+      // if component is currently loading and there's a dismiss timer active
+      // we need to clear it.
+      if (dismissTimer.current) {
+        dismissTimer.current = clearTimeout(dismissTimer.current);
+      }
+      // if component is currently loading but the spinner is not showing and
+      // there is no timer set to show, then set a timeout to show
+      if (!showSpinner && !showTimer.current) {
+        showTimer.current = setTimeout(() => {
+          setShowSpinner(true);
+          showTimer.current = null;
+        }, delay_show);
+      }
+    } else {
+      // if component is not currently loading and there's a show timer
+      // active we need to clear it
+      if (showTimer.current) {
+        showTimer.current = clearTimeout(showTimer.current);
+      }
+      // if component is not currently loading and the spinner is showing and
+      // there's no timer set to dismiss it, then set a timeout to hide it
+      if (showSpinner && !dismissTimer.current) {
+        dismissTimer.current = setTimeout(() => {
+          setShowSpinner(false);
+          dismissTimer.current = null;
+        }, delay_hide);
       }
     }
-  }, [delay_hide, delay_show, loading_state]);
+  }, [delay_hide, delay_show, loading]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -151,8 +150,6 @@ const Spinner = props => {
   return <SpinnerDiv style={spinner_style} />;
 };
 
-Spinner._dashprivate_isLoadingComponent = true;
-
 Spinner.propTypes = {
   /**
    * The ID of this component, used to identify dash components
@@ -234,7 +231,7 @@ Spinner.propTypes = {
 
   /**
    * When using the spinner as a loading spinner, add a time delay (in ms) to
-   * the spinner being shown after the loading_state is set to true.
+   * the spinner being shown after the component starts loading.
    */
   delay_show: PropTypes.number,
 

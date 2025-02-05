@@ -73,4 +73,18 @@ const stringifyId = id => {
   return '{' + parts.join(',') + '}';
 };
 
-export {parseChildrenToArray, resolveChildProps, sanitizeOptions, stringifyId};
+const getLoadingState = () => {
+  const ctx = window.dash_component_api?.useDashContext();
+  if (ctx) {
+    return ctx.useLoading();
+  }
+  return false;
+};
+
+export {
+  getLoadingState,
+  parseChildrenToArray,
+  resolveChildProps,
+  sanitizeOptions,
+  stringifyId
+};

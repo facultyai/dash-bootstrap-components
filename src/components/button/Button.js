@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RBButton from 'react-bootstrap/Button';
 import Link from '../../private/Link';
+import {getLoadingState} from '../../private/util';
 
 /**
  * A component for creating Bootstrap buttons with different style options. The
@@ -15,7 +16,6 @@ const Button = ({
   children,
   disabled,
   href,
-  loading_state,
   setProps,
   target,
   type,
@@ -58,9 +58,7 @@ const Button = ({
       className={class_name || className}
       rel={useLink ? rel : undefined}
       {...otherProps}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBButton>
@@ -156,24 +154,6 @@ Button.propTypes = {
    * lightweight style.
    */
   outline: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Target attribute to pass on to link if using Button as an external link.

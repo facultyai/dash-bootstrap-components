@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RBListGroupItem from 'react-bootstrap/ListGroupItem';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Create a single item in a `ListGroup`.
@@ -12,7 +13,6 @@ const ListGroupItem = props => {
     children,
     disabled,
     href,
-    loading_state,
     target,
     setProps,
     color,
@@ -42,9 +42,7 @@ const ListGroupItem = props => {
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
       {...otherProps}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBListGroupItem>
@@ -136,24 +134,6 @@ ListGroupItem.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.

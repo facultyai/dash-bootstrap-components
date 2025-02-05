@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
 import RBModal from '../../private/Modal';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Create a toggleable dialog using the Modal component. Toggle the visibility
@@ -27,7 +28,6 @@ const Modal = props => {
     backdropClassName,
     backdrop_class_name,
     tag,
-    loading_state,
     fade,
     style,
     zindex,
@@ -66,9 +66,7 @@ const Modal = props => {
         ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBModal>

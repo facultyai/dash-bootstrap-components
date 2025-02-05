@@ -4,6 +4,7 @@ import {omit} from 'ramda';
 import classnames from 'classnames';
 import RBNav from 'react-bootstrap/Nav';
 import RBTab from 'react-bootstrap/Tab';
+import {getLoadingState} from '../../private/util';
 
 import {
   parseChildrenToArray,
@@ -23,7 +24,6 @@ const Tabs = ({
   style,
   active_tab,
   key,
-  loading_state,
   setProps
 }) => {
   children = parseChildrenToArray(children);
@@ -117,7 +117,6 @@ const Tabs = ({
         label_class_name,
         activeLabelClassName,
         active_label_class_name,
-        loading_state,
         disabled = false,
         ...otherProps
       } = childProps;
@@ -132,9 +131,7 @@ const Tabs = ({
             ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
             otherProps
           )}
-          data-dash-is-loading={
-            (loading_state && loading_state.is_loading) || undefined
-          }
+          data-dash-is-loading={getLoadingState() || undefined}
         >
           {child}
         </RBTab.Pane>
@@ -145,9 +142,7 @@ const Tabs = ({
       key={key}
       activeKey={active_tab}
       onSelect={id => setProps({active_tab: id})}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       <RBNav
         id={id}
@@ -211,24 +206,6 @@ Tabs.propTypes = {
    * (starting from 0) of the tab.
    */
   active_tab: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

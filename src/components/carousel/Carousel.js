@@ -5,6 +5,7 @@ import {omit} from 'ramda';
 import RBCarousel from 'react-bootstrap/Carousel';
 
 import Link from '../../private/Link';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Component for creating Bootstrap carousel.  This component is a slideshow
@@ -15,7 +16,6 @@ const Carousel = ({
   style,
   class_name,
   className,
-  loading_state,
   setProps,
   interval,
   active_index = 0,
@@ -64,9 +64,7 @@ const Carousel = ({
   return (
     <div style={style} className={class_name || className}>
       <RBCarousel
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
+        data-dash-is-loading={getLoadingState() || undefined}
         activeIndex={active_index}
         onSelect={idx => setProps({active_index: idx})}
         interval={interval || null}
@@ -220,24 +218,6 @@ Carousel.propTypes = {
    * If set to None, carousel will not Autoplay (i.e. will not automatically cycle).
    */
   interval: PropTypes.number,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

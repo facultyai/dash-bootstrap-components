@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbar from 'react-bootstrap/Navbar';
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 /**
  * The Navbar component can be used to make fully customisable navbars.
@@ -10,7 +11,6 @@ import {bootstrapColors} from '../../private/BootstrapColors';
 const Navbar = ({
   children,
   style,
-  loading_state,
   className,
   class_name,
   dark,
@@ -30,9 +30,7 @@ const Navbar = ({
       className={class_name || className}
       expand={expand}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBNavbar>
@@ -126,25 +124,7 @@ Navbar.propTypes = {
   /**
    * Specify screen size at which to expand the menu bar, e.g. sm, md, lg etc.
    */
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default Navbar;

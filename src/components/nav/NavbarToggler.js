@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Use this component to create a navbar toggle to show navlinks when the
@@ -9,7 +10,6 @@ import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
  */
 const NavbarToggler = ({
   children,
-  loading_state,
   className,
   class_name,
   n_clicks = 0,
@@ -25,9 +25,7 @@ const NavbarToggler = ({
       }}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBNavbarToggle>
@@ -79,25 +77,7 @@ NavbarToggler.propTypes = {
    * An integer that represents the number of times
    * that this element has been clicked on.
    */
-  n_clicks: PropTypes.number,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  n_clicks: PropTypes.number
 };
 
 export default NavbarToggler;

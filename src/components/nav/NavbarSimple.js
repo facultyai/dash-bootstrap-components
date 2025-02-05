@@ -8,6 +8,7 @@ import {bootstrapColors} from '../../private/BootstrapColors';
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
 import NavbarToggler from './NavbarToggler';
+import {getLoadingState} from '../../private/util';
 
 /**
  * A self-contained navbar ready for use. If you need more customisability try
@@ -22,7 +23,6 @@ const NavbarSimple = props => {
     brand_external_link,
     dark,
     style,
-    loading_state,
     className,
     class_name,
     fluid = false,
@@ -47,9 +47,7 @@ const NavbarSimple = props => {
       className={class_name || className}
       expand={expand}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       <RBContainer fluid={fluid}>
         {brand && (
@@ -185,25 +183,7 @@ NavbarSimple.propTypes = {
    * 'sm', 'md', 'lg', or 'xl'. Below this breakpoint the navbar will collapse
    * and navitems will be placed in a togglable collapse element.
    */
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default NavbarSimple;

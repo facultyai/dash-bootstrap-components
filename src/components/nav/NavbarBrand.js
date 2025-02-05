@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbarBrand from 'react-bootstrap/NavbarBrand';
 import Link from '../../private/Link';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Call out attention to a brand name or site title within a navbar.
  */
 const NavbarBrand = props => {
-  const {children, loading_state, className, class_name, ...otherProps} = props;
+  const {children, className, class_name, ...otherProps} = props;
   return (
     <RBNavbarBrand
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
       as={props.href ? Link : 'span'}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBNavbarBrand>
@@ -72,25 +71,7 @@ NavbarBrand.propTypes = {
   /**
    * URL of the linked resource
    */
-  href: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  href: PropTypes.string
 };
 
 export default NavbarBrand;

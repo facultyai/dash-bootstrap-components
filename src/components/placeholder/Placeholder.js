@@ -11,7 +11,6 @@ import classNames from 'classnames';
  */
 const Placeholder = ({
   children,
-  loading_state,
   className,
   class_name,
   color,
@@ -26,40 +25,39 @@ const Placeholder = ({
   const [showPlaceholder, setShowPlaceholder] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
+  const loading = getLoadingState();
 
   useEffect(() => {
-    if (loading_state) {
-      if (loading_state.is_loading) {
-        // if component is currently loading and there's a dismiss timer active
-        // we need to clear it.
-        if (dismissTimer.current) {
-          dismissTimer.current = clearTimeout(dismissTimer.current);
-        }
-        // if component is currently loading but the placeholder is not showing and
-        // there is no timer set to show, then set a timeout to show
-        if (!showPlaceholder && !showTimer.current) {
-          showTimer.current = setTimeout(() => {
-            setShowPlaceholder(true);
-            showTimer.current = null;
-          }, delay_show);
-        }
-      } else {
-        // if component is not currently loading and there's a show timer
-        // active we need to clear it
-        if (showTimer.current) {
-          showTimer.current = clearTimeout(showTimer.current);
-        }
-        // if component is not currently loading and the placeholder is showing and
-        // there's no timer set to dismiss it, then set a timeout to hide it
-        if (showPlaceholder && !dismissTimer.current) {
-          dismissTimer.current = setTimeout(() => {
-            setShowPlaceholder(false);
-            dismissTimer.current = null;
-          }, delay_hide);
-        }
+    if (loading) {
+      // if component is currently loading and there's a dismiss timer active
+      // we need to clear it.
+      if (dismissTimer.current) {
+        dismissTimer.current = clearTimeout(dismissTimer.current);
+      }
+      // if component is currently loading but the placeholder is not showing and
+      // there is no timer set to show, then set a timeout to show
+      if (!showPlaceholder && !showTimer.current) {
+        showTimer.current = setTimeout(() => {
+          setShowPlaceholder(true);
+          showTimer.current = null;
+        }, delay_show);
+      }
+    } else {
+      // if component is not currently loading and there's a show timer
+      // active we need to clear it
+      if (showTimer.current) {
+        showTimer.current = clearTimeout(showTimer.current);
+      }
+      // if component is not currently loading and the placeholder is showing and
+      // there's no timer set to dismiss it, then set a timeout to hide it
+      if (showPlaceholder && !dismissTimer.current) {
+        dismissTimer.current = setTimeout(() => {
+          setShowPlaceholder(false);
+          dismissTimer.current = null;
+        }, delay_hide);
       }
     }
-  }, [delay_hide, delay_show, loading_state]);
+  }, [delay_hide, delay_show, loading]);
 
   // If the placeholder is to be animated, need to add the placeholder class
   // (as this isn't added for some reason)
@@ -177,24 +175,6 @@ Placeholder.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
-
-  /**
    * Changes the animation of the placeholder.
    */
   animation: PropTypes.oneOf(['glow', 'wave']),
@@ -223,8 +203,7 @@ Placeholder.propTypes = {
 
   /**
    * When using the placeholder as a loading placeholder, add a time delay
-   * (in ms) to the placeholder being shown after the loading_state is set to
-   * true.
+   * (in ms) to the placeholder being shown after the lcomponent starts loading.
    */
   delay_show: PropTypes.number,
 

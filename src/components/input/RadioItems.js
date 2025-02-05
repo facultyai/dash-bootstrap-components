@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import {sanitizeOptions} from '../../private/util';
+import {getLoadingState} from '../../private/util';
 
 /**
  * RadioItems is a component that encapsulates several radio item inputs.
@@ -16,7 +17,6 @@ const RadioItems = ({
   class_name,
   style,
   key,
-  loading_state,
   name,
   id,
   inputClassName,
@@ -109,9 +109,7 @@ const RadioItems = ({
       className={class_name || className}
       style={style}
       key={key}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {items}
     </div>
@@ -360,24 +358,6 @@ RadioItems.propTypes = {
    * Set to True to render toggle-like switches instead of radios.
    */
   switch: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when
