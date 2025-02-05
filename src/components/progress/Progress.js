@@ -42,10 +42,6 @@ function renderProgressBar(
     <div
       ref={ref}
       {...props}
-      animated={animated}
-      isChild={isChild}
-      visuallyHidden={visuallyHidden}
-      striped={striped}
       role="progressbar"
       className={classNames(className, `progress-bar`, {
         [`bg-${variant}`]: variant,
@@ -66,58 +62,60 @@ function renderProgressBar(
   );
 }
 
-const ProgressBar = React.forwardRef(({isChild, min, max, ...props}, ref) => {
-  if (isChild) {
-    const context = useContext(ProgressContext);
-    return renderProgressBar(
-      {...props, max: max || context.max, min: min || context.min},
-      ref
+const ProgressBar = React.forwardRef(
+  ({isChild = false, min, max, ...props}, ref) => {
+    if (isChild) {
+      const context = useContext(ProgressContext);
+      return renderProgressBar(
+        {...props, max: max || context.max, min: min || context.min},
+        ref
+      );
+    }
+
+    const {
+      now,
+      label,
+      visuallyHidden,
+      striped,
+      animated,
+      variant,
+      className,
+      children,
+      barStyle,
+      ...wrapperProps
+    } = props;
+
+    min = min === undefined ? 0 : min;
+    max = max === undefined ? 100 : max;
+
+    return (
+      <div
+        ref={ref}
+        {...wrapperProps}
+        className={classNames(className, 'progress')}
+      >
+        <ProgressContext.Provider value={{min, max}}>
+          {children
+            ? map(children, child => cloneElement(child, {isChild: true}))
+            : renderProgressBar(
+                {
+                  min,
+                  now,
+                  max,
+                  label,
+                  visuallyHidden,
+                  striped,
+                  animated,
+                  variant,
+                  barStyle
+                },
+                ref
+              )}
+        </ProgressContext.Provider>
+      </div>
     );
   }
-
-  const {
-    now,
-    label,
-    visuallyHidden,
-    striped,
-    animated,
-    variant,
-    className,
-    children,
-    barStyle,
-    ...wrapperProps
-  } = props;
-
-  min = min === undefined ? 0 : min;
-  max = max === undefined ? 100 : max;
-
-  return (
-    <div
-      ref={ref}
-      {...wrapperProps}
-      className={classNames(className, 'progress')}
-    >
-      <ProgressContext.Provider value={{min, max}}>
-        {children
-          ? map(children, child => cloneElement(child, {isChild: true}))
-          : renderProgressBar(
-              {
-                min,
-                now,
-                max,
-                label,
-                visuallyHidden,
-                striped,
-                animated,
-                variant,
-                barStyle
-              },
-              ref
-            )}
-      </ProgressContext.Provider>
-    </div>
-  );
-});
+);
 
 const Progress = ({
   children,
