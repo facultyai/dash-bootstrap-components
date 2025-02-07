@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBSpinner from 'react-bootstrap/Spinner';
 import {bootstrapColors} from '../../private/BootstrapColors';
-import {getLoadingState} from '../../private/util';
+import {loadingSelector} from '../../private/util';
 
 /**
  * Render Bootstrap style loading spinners using only CSS.
@@ -27,16 +27,24 @@ const Spinner = props => {
     delay_show = 0,
     show_initially = true,
     type = 'border',
+    target_components,
+    display,
     ...otherProps
   } = props;
+  const ctx = window.dash_component_api.useDashContext();
+  const loading = ctx.useSelector(
+    loadingSelector(ctx.componentPath, target_components),
+    equals
+  );
 
   const [showSpinner, setShowSpinner] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
-  const loading = getLoadingState();
 
   useEffect(() => {
-    if (loading) {
+    if (display === 'show' || display === 'hide') {
+      setShowSpinner(display === 'show');
+    } else if (loading) {
       // if component is currently loading and there's a dismiss timer active
       // we need to clear it.
       if (dismissTimer.current) {
@@ -65,7 +73,7 @@ const Spinner = props => {
         }, delay_hide);
       }
     }
-  }, [delay_hide, delay_show, loading]);
+  }, [delay_hide, delay_show, loading, showSpinner, display]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -239,7 +247,21 @@ Spinner.propTypes = {
    * Whether the Spinner should show on app start-up before the loading state
    * has been determined. Default True.
    */
-  show_initially: PropTypes.bool
+  show_initially: PropTypes.bool,
+
+  /**
+   * Specify component and prop to trigger showing the loading spinner
+   * example: `{"output-container": "children", "grid": ["rowData", "columnDefs]}`
+   *
+   */
+  target_components: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+  ),
+
+  /**
+   * Setting display to  "show" or "hide"  will override the loading state coming from dash-renderer
+   */
+  display: PropTypes.oneOf(['auto', 'show', 'hide'])
 };
 
 export default Spinner;

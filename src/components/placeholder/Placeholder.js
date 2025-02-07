@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import RBPlaceholder from 'react-bootstrap/Placeholder';
 import {omit} from 'ramda';
 
+import {loadingSelector} from '../../private/util';
+
 import classNames from 'classnames';
 
 /**
@@ -20,15 +22,24 @@ const Placeholder = ({
   delay_show = 0,
   show_initially = true,
   button = false,
+  display = 'auto',
+  target_components,
   ...otherProps
 }) => {
+  const ctx = window.dash_component_api.useDashContext();
+  const loading = ctx.useSelector(
+    loadingSelector(ctx.componentPath, target_components),
+    equals
+  );
+
   const [showPlaceholder, setShowPlaceholder] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
-  const loading = getLoadingState();
 
   useEffect(() => {
-    if (loading) {
+    if (display === 'show' || display === 'hide') {
+      setShowPlaceholder(display === 'show');
+    } else if (loading) {
       // if component is currently loading and there's a dismiss timer active
       // we need to clear it.
       if (dismissTimer.current) {
@@ -57,7 +68,7 @@ const Placeholder = ({
         }, delay_hide);
       }
     }
-  }, [delay_hide, delay_show, loading]);
+  }, [delay_hide, delay_show, loading, showPlaceholder, display]);
 
   // If the placeholder is to be animated, need to add the placeholder class
   // (as this isn't added for some reason)
@@ -134,8 +145,6 @@ const Placeholder = ({
 
   return <PlaceholderDiv finalStyle={style} />;
 };
-
-Placeholder._dashprivate_isLoadingComponent = true;
 
 Placeholder.propTypes = {
   /**
@@ -259,7 +268,21 @@ Placeholder.propTypes = {
    * Valid arguments are boolean, an integer in the range 1-12 inclusive.
    * See the documentation for more details.
    */
-  xxl: PropTypes.number
+  xxl: PropTypes.number,
+
+  /**
+   * Specify component and prop to trigger showing the placeholder
+   * example: `{"output-container": "children", "grid": ["rowData", "columnDefs]}`
+   *
+   */
+  target_components: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+  ),
+
+  /**
+   * Setting display to  "show" or "hide"  will override the loading state coming from dash-renderer
+   */
+  display: PropTypes.oneOf(['auto', 'show', 'hide'])
 };
 
 export default Placeholder;
