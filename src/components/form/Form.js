@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import RBForm from 'react-bootstrap/Form';
 
 /**
@@ -15,7 +14,6 @@ const Form = ({
   class_name,
   prevent_default_on_submit = true,
   n_submit = 0,
-  n_submit_timestamp = -1,
   ...otherProps
 }) => {
   return (
@@ -25,10 +23,7 @@ const Form = ({
           e.preventDefault();
         }
         if (setProps) {
-          setProps({
-            n_submit: n_submit + 1,
-            n_submit_timestamp: Date.now()
-          });
+          setProps({n_submit: n_submit + 1});
         }
       }}
       className={class_name || className}
@@ -94,11 +89,6 @@ Form.propTypes = {
    * Number of times the `Enter` key was pressed while the input had focus.
    */
   n_submit: PropTypes.number,
-
-  /**
-   * Last time that `Enter` was pressed.
-   */
-  n_submit_timestamp: PropTypes.number,
 
   /**
    * The form calls preventDefault on submit events. If you want form data to

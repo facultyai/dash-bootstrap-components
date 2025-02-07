@@ -20,16 +20,12 @@ const Badge = props => {
     text_color,
     color = 'secondary',
     n_clicks = 0,
-    n_clicks_timestamp = -1,
     ...otherProps
   } = props;
 
   const incrementClicks = () => {
     if (setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
@@ -155,13 +151,6 @@ Badge.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.

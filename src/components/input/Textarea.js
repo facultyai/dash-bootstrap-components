@@ -34,11 +34,8 @@ const Textarea = ({
   tabIndex,
   tabindex,
   n_blur = 0,
-  n_blur_timestamp = -1,
   n_submit = 0,
-  n_submit_timestamp = -1,
   n_clicks = 0,
-  n_clicks_timestamp = -1,
   debounce = false,
   value = '',
   submit_on_enter = true,
@@ -71,10 +68,7 @@ const Textarea = ({
 
   const onBlur = e => {
     if (setProps) {
-      const payload = {
-        n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now()
-      };
+      const payload = {n_blur: n_blur + 1};
       if (debounce === true) {
         payload.value = e.target.value;
       }
@@ -85,10 +79,7 @@ const Textarea = ({
   const onKeyUp = e => {
     if (submit_on_enter && setProps && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault(); // don't create newline if submitting
-      const payload = {
-        n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now()
-      };
+      const payload = {n_submit: n_submit + 1};
       if (debounce === true) {
         payload.value = e.target.value;
       }
@@ -98,10 +89,7 @@ const Textarea = ({
 
   const onClick = () => {
     if (setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
 
@@ -131,13 +119,7 @@ const Textarea = ({
       spellCheck={spellcheck || spellCheck}
       tabIndex={tabindex || tabIndex}
       {...omit(
-        [
-          'n_blur_timestamp',
-          'n_submit_timestamp',
-          'persistence',
-          'persistence_type',
-          'persisted_props'
-        ],
+        ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
       data-dash-is-loading={
@@ -410,10 +392,6 @@ Textarea.propTypes = {
    * Number of times the input lost focus.
    */
   n_blur: PropTypes.number,
-  /**
-   * Last time the input lost focus.
-   */
-  n_blur_timestamp: PropTypes.number,
 
   /**
    * Number of times the `Enter` key was pressed while the textarea had focus. Only
@@ -422,13 +400,8 @@ Textarea.propTypes = {
   n_submit: PropTypes.number,
 
   /**
-   * Last time that `Enter` was pressed. Only updates if submit_on_enter is True.
-   */
-  n_submit_timestamp: PropTypes.number,
-
-  /**
-   * Whether or not the form should increment the n_submit and n_submit_timestamp props
-   * when enter key is pressed. If True, use shift + enter to create a newline. Default: True
+   * Whether or not the form should increment the n_submit prop when enter key is
+   * pressed. If True, use shift + enter to create a newline. Default: True
    */
   submit_on_enter: PropTypes.bool,
 
@@ -437,13 +410,6 @@ Textarea.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * If true, changes to input will be sent back to the Dash server only on enter or

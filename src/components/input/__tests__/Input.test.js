@@ -113,30 +113,22 @@ describe('Input', () => {
       expect(call3).toEqual([{value: 'abc'}]);
     });
 
-    test('track number of blurs with "n_blur" and "n_blur_timestamp"', () => {
-      const before = Date.now();
+    test('track number of blurs with "n_blur"', () => {
       fireEvent.blur(inputElement);
-      const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_blur, n_blur_timestamp}]] = mockSetProps.mock.calls;
+      const [[{n_blur}]] = mockSetProps.mock.calls;
       expect(n_blur).toEqual(1);
-      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_blur_timestamp).toBeLessThanOrEqual(after);
     });
 
-    test('tracks submit with "n_submit" and "n_submit_timestamp"', () => {
-      const before = Date.now();
+    test('tracks submit with "n_submit"', () => {
       fireEvent.keyUp(inputElement, {key: 'Enter', code: 13, charCode: 13});
-      const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_submit, n_submit_timestamp}]] = mockSetProps.mock.calls;
+      const [[{n_submit}]] = mockSetProps.mock.calls;
       expect(n_submit).toEqual(1);
-      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_submit_timestamp).toBeLessThanOrEqual(after);
     });
 
     test("don't increment n_submit if key is not Enter", () => {
@@ -164,34 +156,22 @@ describe('Input', () => {
     });
 
     test('dispatch value on blur if debounce is true', () => {
-      const before = Date.now();
       fireEvent.blur(inputElement);
-      const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_blur, n_blur_timestamp, value}]] = mockSetProps.mock.calls;
+      const [[{n_blur, value}]] = mockSetProps.mock.calls;
       expect(n_blur).toEqual(1);
-      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_blur_timestamp).toBeLessThanOrEqual(after);
       expect(value).toEqual('some-input-value');
     });
 
     test('dispatch value on submit if debounce is true', () => {
-      const before = Date.now();
-      fireEvent.keyUp(inputElement, {
-        key: 'Enter',
-        code: 13,
-        charCode: 13
-      });
-      const after = Date.now();
+      fireEvent.keyUp(inputElement, {key: 'Enter', code: 13, charCode: 13});
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_submit, n_submit_timestamp, value}]] = mockSetProps.mock.calls;
+      const [[{n_submit, value}]] = mockSetProps.mock.calls;
       expect(n_submit).toEqual(1);
-      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_submit_timestamp).toBeLessThanOrEqual(after);
       expect(value).toEqual('some-input-value');
     });
   });

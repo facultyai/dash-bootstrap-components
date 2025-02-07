@@ -34,11 +34,7 @@ const Toast = props => {
 
   const dismiss = () => {
     if (setProps) {
-      setProps({
-        is_open: false,
-        n_dismiss: n_dismiss + 1,
-        n_dismiss_timestamp: Date.now()
-      });
+      setProps({is_open: false, n_dismiss: n_dismiss + 1});
     }
   };
 
@@ -66,13 +62,7 @@ const Toast = props => {
         (loading_state && loading_state.is_loading) || undefined
       }
       {...omit(
-        [
-          'n_dismiss_timestamp',
-          'persistence',
-          'persisted_props',
-          'persistence_type',
-          'setProps'
-        ],
+        ['persistence', 'persisted_props', 'persistence_type', 'setProps'],
         otherProps
       )}
     >
@@ -221,15 +211,6 @@ Toast.propTypes = {
    * been clicked on.
    */
   n_dismiss: PropTypes.number,
-
-  /**
-   * Use of *_timestamp props has been deprecated in Dash in favour of dash.callback_context.
-   * See "How do I determine which Input has changed?" in the Dash FAQs https://dash.plot.ly/faqs.
-   *
-   * An integer that represents the time (in ms since 1970) at which n_dismiss
-   * changed. This can be used to tell which button was changed most recently.
-   */
-  n_dismiss_timestamp: PropTypes.number,
 
   /**
    * Add a contextually coloured icon to the header of the toast. Options are:

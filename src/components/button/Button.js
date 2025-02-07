@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import RBButton from 'react-bootstrap/Button';
 import Link from '../../private/Link';
 
@@ -34,10 +33,7 @@ const Button = ({
 }) => {
   const incrementClicks = () => {
     if (!disabled && setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
   const useLink = href && !disabled;
@@ -61,7 +57,7 @@ const Button = ({
       value={useLink ? undefined : value}
       className={class_name || className}
       rel={useLink ? rel : undefined}
-      {...omit(['n_clicks_timestamp'], otherProps)}
+      {...otherProps}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -128,16 +124,6 @@ Button.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * Use of *_timestamp props has been deprecated in Dash in favour of dash.callback_context.
-   * See "How do I determine which Input has changed?" in the Dash FAQs https://dash.plot.ly/faqs.
-   *
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * Whether button is in active state. Default: False.

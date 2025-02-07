@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import classNames from 'classnames';
 import {History} from '@plotly/dash-component-plugins';
 import Link from '../../private/Link';
@@ -43,10 +42,7 @@ const NavLink = ({
 
   const incrementClicks = () => {
     if (!disabled && setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
 
@@ -61,7 +57,7 @@ const NavLink = ({
       disabled={disabled}
       preOnClick={incrementClicks}
       href={href}
-      {...omit(['n_clicks_timestamp'], otherProps)}
+      {...otherProps}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -151,13 +147,6 @@ NavLink.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * Object that holds the loading state object coming from dash-renderer
