@@ -21,7 +21,6 @@ const DropdownMenuItem = ({
   header,
   divider,
   n_clicks = 0,
-  n_clicks_timestamp = -1,
   toggle = true,
   ...otherProps
 }) => {
@@ -29,10 +28,7 @@ const DropdownMenuItem = ({
 
   const handleClick = e => {
     if (!disabled && setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
     if (toggle && context.isOpen) {
       context.toggle(e);
@@ -149,13 +145,6 @@ DropdownMenuItem.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

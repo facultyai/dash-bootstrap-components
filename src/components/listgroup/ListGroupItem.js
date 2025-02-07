@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 import RBListGroupItem from 'react-bootstrap/ListGroupItem';
 import Link from '../../private/Link';
 import {bootstrapColors} from '../../private/BootstrapColors';
@@ -26,10 +25,7 @@ const ListGroupItem = props => {
 
   const incrementClicks = () => {
     if (!disabled && setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
   const isBootstrapColor = bootstrapColors.has(color);
@@ -45,7 +41,7 @@ const ListGroupItem = props => {
       variant={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
-      {...omit(['n_clicks_timestamp'], otherProps)}
+      {...otherProps}
       data-dash-is-loading={
         (loading_state && loading_state.is_loading) || undefined
       }
@@ -140,13 +136,6 @@ ListGroupItem.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

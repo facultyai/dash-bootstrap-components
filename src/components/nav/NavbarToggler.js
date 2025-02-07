@@ -20,10 +20,7 @@ const NavbarToggler = ({
     <RBNavbarToggle
       onClick={() => {
         if (setProps) {
-          setProps({
-            n_clicks: n_clicks + 1,
-            n_clicks_timestamp: Date.now()
-          });
+          setProps({n_clicks: n_clicks + 1});
         }
       }}
       className={class_name || className}
@@ -83,13 +80,6 @@ NavbarToggler.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * Object that holds the loading state object coming from dash-renderer

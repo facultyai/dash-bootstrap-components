@@ -116,10 +116,7 @@ const Input = ({
 
   const onBlur = () => {
     if (setProps) {
-      const payload = {
-        n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now()
-      };
+      const payload = {n_blur: n_blur + 1};
       if (debounce === true) {
         // numeric debounce here has no effect, we only care about boolean debounce
         onEvent(payload);
@@ -131,10 +128,7 @@ const Input = ({
 
   const onKeyUp = e => {
     if (setProps && e.key === 'Enter') {
-      const payload = {
-        n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now()
-      };
+      const payload = {n_submit: n_submit + 1};
       if (debounce === true) {
         // numeric debounce here has no effect, we only care about boolean debounce
         onEvent(payload);
@@ -153,13 +147,7 @@ const Input = ({
       onBlur={onBlur}
       onKeyUp={onKeyUp}
       {...omit(
-        [
-          'n_blur_timestamp',
-          'n_submit_timestamp',
-          'persistence',
-          'persistence_type',
-          'persisted_props'
-        ],
+        ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
       valid={valid ? 'true' : undefined}
@@ -586,19 +574,9 @@ Input.propTypes = {
   n_submit: PropTypes.number,
 
   /**
-   * Last time that `Enter` was pressed.
-   */
-  n_submit_timestamp: PropTypes.number,
-
-  /**
    * Number of times the input lost focus.
    */
   n_blur: PropTypes.number,
-
-  /**
-   * Last time the input lost focus.
-   */
-  n_blur_timestamp: PropTypes.number,
 
   /**
    * If true, changes to input will be sent back to the Dash server
