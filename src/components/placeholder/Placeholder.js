@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import RBPlaceholder from 'react-bootstrap/Placeholder';
-import {omit} from 'ramda';
+import {equals, omit} from 'ramda';
 
 import {loadingSelector} from '../../private/util';
 
@@ -26,11 +26,13 @@ const Placeholder = ({
   target_components,
   ...otherProps
 }) => {
-  const ctx = window.dash_component_api.useDashContext();
-  const loading = ctx.useSelector(
-    loadingSelector(ctx.componentPath, target_components),
-    equals
-  );
+  const ctx = window.dash_component_api?.useDashContext();
+  const loading = ctx
+    ? ctx.useSelector(
+        loadingSelector(ctx.componentPath, target_components),
+        equals
+      )
+    : false;
 
   const [showPlaceholder, setShowPlaceholder] = useState(show_initially);
   const dismissTimer = useRef();

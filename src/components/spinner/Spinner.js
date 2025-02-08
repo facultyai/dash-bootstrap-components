@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
+import {equals, omit} from 'ramda';
 import RBSpinner from 'react-bootstrap/Spinner';
 import {bootstrapColors} from '../../private/BootstrapColors';
 import {loadingSelector} from '../../private/util';
@@ -31,11 +31,13 @@ const Spinner = props => {
     display,
     ...otherProps
   } = props;
-  const ctx = window.dash_component_api.useDashContext();
-  const loading = ctx.useSelector(
-    loadingSelector(ctx.componentPath, target_components),
-    equals
-  );
+  const ctx = window.dash_component_api?.useDashContext();
+  const loading = ctx
+    ? ctx.useSelector(
+        loadingSelector(ctx.componentPath, target_components),
+        equals
+      )
+    : false;
 
   const [showSpinner, setShowSpinner] = useState(show_initially);
   const dismissTimer = useRef();
