@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCard from 'react-bootstrap/Card';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
 import {getLoadingState} from '../../private/util';
 
@@ -11,17 +13,16 @@ import {getLoadingState} from '../../private/util';
  * conjunction with CardColumns, CardDeck, CardGroup for different layout
  * options.
  */
-const Card = props => {
-  const {
-    children,
-    color,
-    inverse,
-    outline,
-    style,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
+function Card({
+  children,
+  color,
+  inverse,
+  outline,
+  style,
+  className,
+  class_name,
+  ...otherProps
+}) {
   const isBootstrapColor = bootstrapColors.has(color);
   return (
     <RBCard
@@ -36,7 +37,7 @@ const Card = props => {
       {children}
     </RBCard>
   );
-};
+}
 
 Card.propTypes = {
   /**

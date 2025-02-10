@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {act, render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Accordion from '../Accordion';
 import AccordionItem from '../AccordionItem';
 

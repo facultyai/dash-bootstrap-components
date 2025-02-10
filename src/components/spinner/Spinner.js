@@ -1,7 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
+
 import PropTypes from 'prop-types';
 import {equals, omit} from 'ramda';
 import RBSpinner from 'react-bootstrap/Spinner';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
 import {loadingSelector} from '../../private/util';
 
@@ -12,25 +14,24 @@ import {loadingSelector} from '../../private/util';
  * be used like `dash_core_components.Loading` by giving it children. In the
  * latter case the chosen spinner will display while the children are loading.
  */
-const Spinner = props => {
-  const {
-    children,
-    color,
-    spinner_style,
-    spinnerClassName,
-    spinner_class_name,
-    fullscreen,
-    fullscreenClassName,
-    fullscreen_class_name,
-    fullscreen_style,
-    delay_hide = 0,
-    delay_show = 0,
-    show_initially = true,
-    type = 'border',
-    target_components,
-    display,
-    ...otherProps
-  } = props;
+function Spinner({
+  children,
+  color,
+  spinner_style,
+  spinnerClassName,
+  spinner_class_name,
+  fullscreen,
+  fullscreenClassName,
+  fullscreen_class_name,
+  fullscreen_style,
+  delay_hide = 0,
+  delay_show = 0,
+  show_initially = true,
+  type = 'border',
+  target_components,
+  display,
+  ...otherProps
+}) {
   const ctx = window.dash_component_api?.useDashContext();
   const loading = ctx
     ? ctx.useSelector(
@@ -94,15 +95,22 @@ const Spinner = props => {
     ...fullscreen_style
   };
 
-  const SpinnerDiv = ({style}) => (
-    <RBSpinner
-      variant={isBootstrapColor ? color : null}
-      animation={type}
-      style={{color: !isBootstrapColor && color, ...style}}
-      className={spinner_class_name || spinnerClassName}
-      {...omit(['setProps'], otherProps)}
-    />
-  );
+  function SpinnerDiv({style}) {
+    return (
+      <RBSpinner
+        variant={isBootstrapColor ? color : null}
+        animation={type}
+        style={{color: !isBootstrapColor && color, ...style}}
+        className={spinner_class_name || spinnerClassName}
+        {...omit(['setProps'], otherProps)}
+      />
+    );
+  }
+
+  SpinnerDiv.propTypes = {
+    style: PropTypes.object
+  };
+
   // Defaulted styles above to the situation where spinner has no children
   // now include properties if spinner has children
   if (children) {
@@ -158,7 +166,7 @@ const Spinner = props => {
   }
 
   return <SpinnerDiv style={spinner_style} />;
-};
+}
 
 Spinner.propTypes = {
   /**

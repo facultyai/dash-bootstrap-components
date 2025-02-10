@@ -1,8 +1,10 @@
 import React from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBRow from 'react-bootstrap/Row';
-import classNames from 'classnames';
+
 import {getLoadingState} from '../../private/util';
 
 const alignMap = {
@@ -28,10 +30,7 @@ const justifyMap = {
  * vertical and horizontal alignment of its children, as well as the spacing
  * between columns.
  */
-const Row = props => {
-  const {children, className, class_name, align, justify, ...otherProps} =
-    props;
-
+function Row({children, className, class_name, align, justify, ...otherProps}) {
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
 
@@ -45,7 +44,7 @@ const Row = props => {
       {children}
     </RBRow>
   );
-};
+}
 
 Row.propTypes = {
   /**

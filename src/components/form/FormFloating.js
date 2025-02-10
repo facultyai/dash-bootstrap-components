@@ -1,15 +1,21 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormFloating from 'react-bootstrap/FormFloating';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * A component for adding float labels to form controls in forms.
  */
-const FormFloating = props => {
-  const {children, html_for, className, class_name, ...otherProps} = props;
-
+function FormFloating({
+  children,
+  html_for,
+  className,
+  class_name,
+  ...otherProps
+}) {
   return (
     <RBFormFloating
       htmlFor={html_for}
@@ -20,7 +26,7 @@ const FormFloating = props => {
       {children}
     </RBFormFloating>
   );
-};
+}
 
 FormFloating.propTypes = {
   /**

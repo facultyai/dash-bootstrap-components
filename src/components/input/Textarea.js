@@ -1,14 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import classNames from 'classnames';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * A basic HTML textarea for entering multiline text based on the corresponding
  * component in dash-core-components
  */
-const Textarea = ({
+function Textarea({
   setProps,
   className,
   class_name,
@@ -40,7 +42,7 @@ const Textarea = ({
   value = '',
   submit_on_enter = true,
   ...otherProps
-}) => {
+}) {
   const [valueState, setValueState] = useState(value || '');
   const debounceRef = useRef(null);
 
@@ -125,7 +127,7 @@ const Textarea = ({
       data-dash-is-loading={getLoadingState() || undefined}
     />
   );
-};
+}
 
 Textarea.propTypes = {
   /**

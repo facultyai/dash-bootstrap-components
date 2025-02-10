@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, render, waitFor} from '@testing-library/react';
+
+import {act, render} from '@testing-library/react';
+
 import Popover from '../Popover';
 
 jest.useFakeTimers();

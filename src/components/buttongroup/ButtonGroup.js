@@ -1,15 +1,16 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBButtonGroup from 'react-bootstrap/ButtonGroup';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * A component for creating groups of buttons. Can be used with `Button` or
  * `DropdownMenu`.
  */
-const ButtonGroup = props => {
-  const {children, class_name, className, ...otherProps} = props;
+function ButtonGroup({children, class_name, className, ...otherProps}) {
   return (
     <RBButtonGroup
       className={class_name || className}
@@ -19,7 +20,7 @@ const ButtonGroup = props => {
       {children}
     </RBButtonGroup>
   );
-};
+}
 
 ButtonGroup.propTypes = {
   /**

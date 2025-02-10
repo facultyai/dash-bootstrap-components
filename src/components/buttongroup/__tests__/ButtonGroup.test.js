@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
+
 import Button from '../../button/Button';
 import ButtonGroup from '../ButtonGroup';
 

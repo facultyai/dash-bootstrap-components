@@ -1,15 +1,16 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
-import RBContainer from 'react-bootstrap/Container';
 import {omit} from 'ramda';
+import RBContainer from 'react-bootstrap/Container';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Containers provide a means to center and horizontally pad your site’s
  * contents.
  */
-const Container = props => {
-  const {children, className, class_name, tag, ...otherProps} = props;
+function Container({children, className, class_name, tag, ...otherProps}) {
   return (
     <RBContainer
       as={tag}
@@ -20,7 +21,7 @@ const Container = props => {
       {children}
     </RBContainer>
   );
-};
+}
 
 Container.propTypes = {
   /**

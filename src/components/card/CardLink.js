@@ -1,6 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBCard from 'react-bootstrap/Card';
+
 import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
@@ -8,7 +10,7 @@ import {getLoadingState} from '../../private/util';
  * Use card link to add consistently styled links to your cards. Links can be
  * used like buttons, external links, or internal Dash style links.
  */
-const CardLink = ({
+function CardLink({
   children,
   disabled,
   className,
@@ -16,7 +18,7 @@ const CardLink = ({
   n_clicks = 0,
   setProps,
   ...otherProps
-}) => {
+}) {
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({n_clicks: n_clicks + 1});
@@ -35,7 +37,7 @@ const CardLink = ({
       {children}
     </RBCard.Link>
   );
-};
+}
 
 CardLink.propTypes = {
   /**
@@ -98,7 +100,17 @@ CardLink.propTypes = {
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * If true, the link is disabled and can't be clicked on.
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default CardLink;

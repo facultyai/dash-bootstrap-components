@@ -1,12 +1,12 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, fireEvent, render, waitFor} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import NavbarSimple from '../NavbarSimple';
+
+import {act, fireEvent, render} from '@testing-library/react';
+
 import NavItem from '../NavItem';
+import NavbarSimple from '../NavbarSimple';
 
 jest.useFakeTimers();
 

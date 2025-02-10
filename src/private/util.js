@@ -10,7 +10,6 @@ const parseChildrenToArray = children => {
 };
 
 const resolveChildProps = child => {
-  // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
   if (child.props.componentPath) {
     // props are coming from Dash
     return window.dash_component_api.getLayout([

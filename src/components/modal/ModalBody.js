@@ -1,15 +1,16 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBModalBody from 'react-bootstrap/ModalBody';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use this component to add consistent padding to the body (main content) of
  * your Modals.
  */
-const ModalBody = props => {
-  const {children, className, class_name, tag, ...otherProps} = props;
+function ModalBody({children, className, class_name, tag, ...otherProps}) {
   return (
     <RBModalBody
       as={tag}
@@ -20,7 +21,7 @@ const ModalBody = props => {
       {children}
     </RBModalBody>
   );
-};
+}
 
 ModalBody.propTypes = {
   /**

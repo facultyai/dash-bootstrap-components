@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBPopoverBody from 'react-bootstrap/PopoverBody';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Componnet for wrapping the body (i.e. main content) of a `Popover`.
  */
-const PopoverBody = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function PopoverBody({children, className, class_name, ...otherProps}) {
   return (
     <RBPopoverBody
       className={class_name || className}
@@ -18,7 +19,7 @@ const PopoverBody = props => {
       {children}
     </RBPopoverBody>
   );
-};
+}
 
 PopoverBody.propTypes = {
   /**

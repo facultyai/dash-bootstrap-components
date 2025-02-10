@@ -1,21 +1,23 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use this component to create a navbar toggle to show navlinks when the
  * navbar collapses on smaller screens.
  */
-const NavbarToggler = ({
+function NavbarToggler({
   children,
   className,
   class_name,
   n_clicks = 0,
   setProps,
   ...otherProps
-}) => {
+}) {
   return (
     <RBNavbarToggle
       onClick={() => {
@@ -30,7 +32,7 @@ const NavbarToggler = ({
       {children}
     </RBNavbarToggle>
   );
-};
+}
 
 NavbarToggler.propTypes = {
   /**
@@ -77,7 +79,12 @@ NavbarToggler.propTypes = {
    * An integer that represents the number of times
    * that this element has been clicked on.
    */
-  n_clicks: PropTypes.number
+  n_clicks: PropTypes.number,
+
+  /**
+   * Dash-assigned callback that gets fired when the button is clicked.
+   */
+  setProps: PropTypes.func
 };
 
 export default NavbarToggler;

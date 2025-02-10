@@ -1,17 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
-import PropTypes from 'prop-types';
-import RBPlaceholder from 'react-bootstrap/Placeholder';
-import {equals, omit} from 'ramda';
-
-import {loadingSelector} from '../../private/util';
 
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import {equals, omit} from 'ramda';
+import RBPlaceholder from 'react-bootstrap/Placeholder';
+
+import {loadingSelector} from '../../private/util';
 
 /**
  * Use loading Placeholders for your components or pages to indicate
  * something may still be loading.
  */
-const Placeholder = ({
+function Placeholder({
   children,
   className,
   class_name,
@@ -25,7 +25,7 @@ const Placeholder = ({
   display = 'auto',
   target_components,
   ...otherProps
-}) => {
+}) {
   const ctx = window.dash_component_api?.useDashContext();
   const loading = ctx
     ? ctx.useSelector(
@@ -104,6 +104,10 @@ const Placeholder = ({
     );
   };
 
+  PlaceholderDiv.propTypes = {
+    finalStyle: PropTypes.object
+  };
+
   // Identify if the Placeholder needs an animation - if so it must be placed
   // inside another Placeholder
 
@@ -146,7 +150,7 @@ const Placeholder = ({
   }
 
   return <PlaceholderDiv finalStyle={style} />;
-};
+}
 
 Placeholder.propTypes = {
   /**

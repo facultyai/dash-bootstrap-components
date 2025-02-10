@@ -1,15 +1,16 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
-import RBStack from 'react-bootstrap/Stack';
 import {omit} from 'ramda';
+import RBStack from 'react-bootstrap/Stack';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Stacks are shorthand helpers that build on top of existing flexbox
  * utilities to make component layout faster and easier than ever.
  */
-const Stack = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function Stack({children, className, class_name, ...otherProps}) {
   return (
     <RBStack
       className={class_name || className}
@@ -19,7 +20,7 @@ const Stack = props => {
       {children}
     </RBStack>
   );
-};
+}
 
 Stack.defaultPropTypes = {
   direction: 'vertical'

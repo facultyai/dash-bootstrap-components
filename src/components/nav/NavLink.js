@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+
 import {History} from '@plotly/dash-component-plugins';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
@@ -149,7 +151,12 @@ NavLink.propTypes = {
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default NavLink;

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCollapse from 'react-bootstrap/Collapse';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -9,36 +11,34 @@ import {getLoadingState} from '../../private/util';
  * children is controlled by the `is_open` prop which can be targetted by
  * callbacks.
  */
-const Collapse = React.forwardRef(
-  (
-    {
-      children,
-      is_open,
-      navbar,
-      className,
-      class_name,
-      tag,
-      dimension = 'height',
-      ...otherProps
-    },
-    ref
-  ) => {
-    return (
-      <RBCollapse
-        in={is_open}
-        as={tag}
-        className={class_name || className}
-        dimension={dimension}
-        {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={getLoadingState() || undefined}
-      >
-        <div ref={ref} className={navbar && 'navbar-collapse'}>
-          {children}
-        </div>
-      </RBCollapse>
-    );
-  }
-);
+const Collapse = React.forwardRef(function Collapse(
+  {
+    children,
+    is_open,
+    navbar,
+    className,
+    class_name,
+    tag,
+    dimension = 'height',
+    ...otherProps
+  },
+  ref
+) {
+  return (
+    <RBCollapse
+      in={is_open}
+      as={tag}
+      className={class_name || className}
+      dimension={dimension}
+      {...omit(['setProps'], otherProps)}
+      data-dash-is-loading={getLoadingState() || undefined}
+    >
+      <div ref={ref} className={navbar && 'navbar-collapse'}>
+        {children}
+      </div>
+    </RBCollapse>
+  );
+});
 
 Collapse.propTypes = {
   /**
@@ -91,7 +91,12 @@ Collapse.propTypes = {
    * The dimension used when collapsing e.g. height will collapse vertically,
    * whilst width will collapse horizontally
    */
-  dimension: PropTypes.oneOf(['height', 'width'])
+  dimension: PropTypes.oneOf(['height', 'width']),
+
+  /**
+   * The HTML tag used for the collapse component.
+   */
+  tag: PropTypes.string
 };
 
 export default Collapse;

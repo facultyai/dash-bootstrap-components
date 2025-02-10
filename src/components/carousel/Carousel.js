@@ -1,7 +1,7 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-
 import RBCarousel from 'react-bootstrap/Carousel';
 
 import Link from '../../private/Link';
@@ -11,7 +11,7 @@ import {getLoadingState} from '../../private/util';
  * Component for creating Bootstrap carousel.  This component is a slideshow
  * for cycling through a series of content.
  */
-const Carousel = ({
+function Carousel({
   items,
   style,
   class_name,
@@ -22,7 +22,7 @@ const Carousel = ({
   controls = true,
   indicators = true,
   ...otherProps
-}) => {
+}) {
   const slides = items.map(item => {
     // note - the default 'd-block w-100' is from the examples in the Bootstrap docs.
     item.imgClassName =
@@ -68,6 +68,8 @@ const Carousel = ({
         activeIndex={active_index}
         onSelect={idx => setProps({active_index: idx})}
         interval={interval || null}
+        controls={controls}
+        indicators={indicators}
         {...omit(
           ['persistence', 'persisted_props', 'persistence_type', 'setProps'],
           otherProps
@@ -77,7 +79,7 @@ const Carousel = ({
       </RBCarousel>
     </div>
   );
-};
+}
 
 Carousel.dashPersistence = {
   persisted_props: ['active_index'],

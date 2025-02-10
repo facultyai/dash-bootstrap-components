@@ -1,7 +1,9 @@
 import React, {useEffect, useRef} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAlert from 'react-bootstrap/Alert';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
 import {getLoadingState} from '../../private/util';
 
@@ -11,10 +13,9 @@ import {getLoadingState} from '../../private/util';
  * Control the visibility using callbacks with the `is_open` prop, or set it to
  * auto-dismiss with the `duration` prop.
  */
-const Alert = ({
+function Alert({
   children,
   dismissable,
-  setProps,
   style,
   class_name,
   className,
@@ -22,8 +23,9 @@ const Alert = ({
   color = 'success',
   is_open = true,
   duration = null,
+  setProps,
   ...otherProps
-}) => {
+}) {
   const timeout = useRef(null);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const Alert = ({
       {children}
     </RBAlert>
   );
-};
+}
 
 Alert.dashPersistence = {
   persisted_props: ['is_open'],
@@ -163,7 +165,12 @@ Alert.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Alert;

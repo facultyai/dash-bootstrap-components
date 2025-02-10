@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBModalTitle from 'react-bootstrap/ModalTitle';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Add a title to any modal. Should be used as a child of the ModalHeader.
  */
-const ModalTitle = props => {
-  const {children, className, class_name, tag, ...otherProps} = props;
+function ModalTitle({children, className, class_name, tag, ...otherProps}) {
   return (
     <RBModalTitle
       as={tag}
@@ -19,7 +20,7 @@ const ModalTitle = props => {
       {children}
     </RBModalTitle>
   );
-};
+}
 
 ModalTitle.propTypes = {
   /**

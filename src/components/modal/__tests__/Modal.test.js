@@ -1,10 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, render, fireEvent, waitFor} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+
+import {act, fireEvent, render, waitFor} from '@testing-library/react';
+
 import Modal from '../Modal';
 
 jest.useFakeTimers();

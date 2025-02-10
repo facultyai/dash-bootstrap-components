@@ -1,21 +1,23 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBForm from 'react-bootstrap/Form';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * The Form component can be used to organise collections of input components
  * and apply consistent styling.
  */
-const Form = ({
+function Form({
   children,
-  setProps,
   className,
   class_name,
   prevent_default_on_submit = true,
   n_submit = 0,
+  setProps,
   ...otherProps
-}) => {
+}) {
   return (
     <RBForm
       onSubmit={e => {
@@ -33,7 +35,7 @@ const Form = ({
       {children}
     </RBForm>
   );
-};
+}
 
 Form.propTypes = {
   /**
@@ -93,7 +95,12 @@ Form.propTypes = {
    * be posted to the endpoint specified by `action` on submit events, set
    * prevent_default_on_submit to False. Defaults to True.
    */
-  prevent_default_on_submit: PropTypes.bool
+  prevent_default_on_submit: PropTypes.bool,
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Form;

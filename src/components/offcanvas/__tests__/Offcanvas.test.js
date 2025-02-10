@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {act, fireEvent, render, waitFor} from '@testing-library/react';
+
 import Offcanvas from '../Offcanvas';
 
 // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
@@ -102,9 +103,8 @@ describe('Offcanvas', () => {
   test('applies additional CSS classes with props', () => {
     // placement offcanvas
     const placements = ['end', 'top', 'bottom', 'start'];
-    let offcanvas = null;
     for (let i = 0; i < placements.length; i++) {
-      offcanvas = render(<Offcanvas is_open placement={placements[i]} />);
+      render(<Offcanvas is_open placement={placements[i]} />);
       expect(
         document.body.querySelector(`.offcanvas-${placements[i]}`)
       ).not.toBe(null);

@@ -1,4 +1,6 @@
 import React, {createContext, useEffect, useRef, useState} from 'react';
+
+import PropTypes from 'prop-types';
 import RBOverlay from 'react-bootstrap/Overlay';
 
 const OverlayContext = createContext({});
@@ -21,7 +23,7 @@ function useStateRef(initialValue) {
 }
 
 // stringifies object ids used in pattern matching callbacks
-const stringifyId = id => {
+function stringifyId(id) {
   if (typeof id !== 'object') {
     return id;
   }
@@ -30,9 +32,9 @@ const stringifyId = id => {
     .sort()
     .map(k => JSON.stringify(k) + ':' + stringifyVal(id[k]));
   return '{' + parts.join(',') + '}';
-};
+}
 
-const Overlay = ({
+function Overlay({
   children,
   target,
   delay,
@@ -41,7 +43,7 @@ const Overlay = ({
   setProps,
   autohide,
   ...otherProps
-}) => {
+}) {
   // isOpen should be false initially, even if defaultShow is true
   // so that we can find the target in the DOM before rendering the
   // overlay
@@ -129,7 +131,7 @@ const Overlay = ({
     }
   };
 
-  const handleMouseOverTooltipContent = e => {
+  const handleMouseOverTooltipContent = () => {
     if (triggers.indexOf('hover') > -1 && !autohide) {
       if (hideTimeout.current) {
         hideTimeout.current = clearTimeout(hideTimeout.current);
@@ -237,6 +239,19 @@ const Overlay = ({
       </RBOverlay>
     </OverlayContext.Provider>
   );
+}
+
+Overlay.propTypes = {
+  children: PropTypes.node,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  delay: PropTypes.exact({
+    show: PropTypes.number,
+    hide: PropTypes.number
+  }),
+  trigger: PropTypes.string,
+  defaultShow: PropTypes.bool,
+  setProps: PropTypes.func,
+  autohide: PropTypes.bool
 };
 
 export default Overlay;

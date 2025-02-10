@@ -1,13 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBOffcanvas from 'react-bootstrap/Offcanvas';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Create a toggleable hidden sidebar using the Offcanvas component.
  * Toggle the visibility with the `is_open` prop.
  */
-const Offcanvas = ({
+function Offcanvas({
   setProps,
   children,
   class_name,
@@ -24,7 +26,7 @@ const Offcanvas = ({
   is_open = false,
   backdrop = true,
   ...otherProps
-}) => {
+}) {
   const onHide = () => {
     if (setProps) {
       setProps({is_open: !is_open});
@@ -58,7 +60,7 @@ const Offcanvas = ({
       <RBOffcanvas.Body>{children}</RBOffcanvas.Body>
     </RBOffcanvas>
   );
-};
+}
 
 Offcanvas.propTypes = {
   /**
@@ -161,7 +163,12 @@ Offcanvas.propTypes = {
    * Specify whether the Component should contain a close button
    * in the header
    */
-  close_button: PropTypes.bool
+  close_button: PropTypes.bool,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Offcanvas;

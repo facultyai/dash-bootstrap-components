@@ -1,8 +1,10 @@
 import React from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNav from 'react-bootstrap/Nav';
-import classNames from 'classnames';
+
 import {getLoadingState} from '../../private/util';
 
 const horizontalMap = {
@@ -24,19 +26,17 @@ const verticalMap = {
 /**
  * Nav can be used to group together a collection of navigation links.
  */
-const Nav = props => {
-  const {
-    children,
-    className,
-    class_name,
-    pills,
-    justified,
-    horizontal,
-    vertical,
-    navbar_scroll,
-    ...otherProps
-  } = props;
-
+function Nav({
+  children,
+  className,
+  class_name,
+  pills,
+  justified,
+  horizontal,
+  vertical,
+  navbar_scroll,
+  ...otherProps
+}) {
   const horizontalClass = horizontal && horizontalMap[horizontal];
 
   const verticalClass =
@@ -60,7 +60,7 @@ const Nav = props => {
       {children}
     </RBNav>
   );
-};
+}
 
 Nav.propTypes = {
   /**

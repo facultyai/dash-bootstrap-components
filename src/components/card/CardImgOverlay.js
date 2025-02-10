@@ -1,15 +1,16 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCard from 'react-bootstrap/Card';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use CardImgOverlay to turn an image into the background of your card and add
  * text on top of it.
  */
-const CardImgOverlay = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function CardImgOverlay({children, className, class_name, ...otherProps}) {
   return (
     <RBCard.ImgOverlay
       data-dash-is-loading={getLoadingState() || undefined}
@@ -19,7 +20,7 @@ const CardImgOverlay = props => {
       {children}
     </RBCard.ImgOverlay>
   );
-};
+}
 
 CardImgOverlay.propTypes = {
   /**

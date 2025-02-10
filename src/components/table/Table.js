@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBTable from 'react-bootstrap/Table';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -9,7 +11,7 @@ import {getLoadingState} from '../../private/util';
  * drop-in replacement for `html.Table`, or generate a table from a Pandas
  * DataFrame using `dbc.Table.from_dataframe`.
  */
-const Table = props => {
+function Table(props) {
   const {children, className, class_name, color, dark, ...otherProps} = props;
   return (
     <RBTable
@@ -21,7 +23,7 @@ const Table = props => {
       {children}
     </RBTable>
   );
-};
+}
 
 Table.propTypes = {
   /**

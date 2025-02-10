@@ -1,28 +1,28 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBListGroupItem from 'react-bootstrap/ListGroupItem';
-import Link from '../../private/Link';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
+import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
 /**
  * Create a single item in a `ListGroup`.
  */
-const ListGroupItem = props => {
-  let {
-    children,
-    disabled,
-    href,
-    target,
-    setProps,
-    color,
-    style,
-    className,
-    class_name,
-    n_clicks = 0,
-    ...otherProps
-  } = props;
-
+function ListGroupItem({
+  children,
+  disabled,
+  href,
+  target,
+  color,
+  style,
+  className,
+  class_name,
+  n_clicks = 0,
+  setProps,
+  ...otherProps
+}) {
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({n_clicks: n_clicks + 1});
@@ -47,7 +47,7 @@ const ListGroupItem = props => {
       {children}
     </RBListGroupItem>
   );
-};
+}
 
 ListGroupItem.propTypes = {
   /**
@@ -138,7 +138,12 @@ ListGroupItem.propTypes = {
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default ListGroupItem;

@@ -1,14 +1,22 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCardImg from 'react-bootstrap/CardImg';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use CardImg to add images to your cards.
  */
-const CardImg = props => {
-  const {children, className, class_name, top, bottom, ...otherProps} = props;
+function CardImg({
+  children,
+  className,
+  class_name,
+  top,
+  bottom,
+  ...otherProps
+}) {
   return (
     <RBCardImg
       data-dash-is-loading={getLoadingState() || undefined}
@@ -19,7 +27,7 @@ const CardImg = props => {
       {children}
     </RBCardImg>
   );
-};
+}
 
 CardImg.propTypes = {
   /**

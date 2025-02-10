@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFade from 'react-bootstrap/Fade';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Hide or show content with a fading animation. Visibility of the children is
  * controlled by the `is_open` prop which can be targetted by callbacks.
  */
-const Fade = React.forwardRef((props, ref) => {
-  const {children, is_in, style, className, class_name, tag, ...otherProps} =
-    props;
-
+const Fade = React.forwardRef(function Fade(
+  {children, is_in, style, className, class_name, tag, ...otherProps},
+  ref
+) {
   // set visibility to hidden after transition has completed to hide tooltips
   const [hidden, setHidden] = useState(!is_in);
 

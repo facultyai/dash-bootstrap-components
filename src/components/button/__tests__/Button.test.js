@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Button from '../Button';
 
 describe('Button', () => {
@@ -34,14 +35,6 @@ describe('Button', () => {
     expect(buttonPrimary).toHaveClass('btn-primary');
     expect(buttonSuccess).toHaveClass('btn-success');
     expect(buttonDark).toHaveClass('btn-dark');
-  });
-
-  test('applies outline styles with "outline" prop', () => {
-    const {
-      container: {firstChild: button}
-    } = render(<Button color="primary" outline />);
-
-    expect(button).toHaveClass('btn-outline-primary');
   });
 
   test('applies outline styles with "outline" prop', () => {

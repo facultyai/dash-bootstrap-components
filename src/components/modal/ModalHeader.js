@@ -1,30 +1,34 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBModalHeader from 'react-bootstrap/ModalHeader';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Add a header to any modal.
  */
-const ModalHeader = ({
+function ModalHeader({
   children,
   className,
   class_name,
   tag,
   close_button = true,
   ...otherProps
-}) => (
-  <RBModalHeader
-    as={tag}
-    className={class_name || className}
-    closeButton={close_button}
-    data-dash-is-loading={getLoadingState() || undefined}
-    {...omit(['setProps'], otherProps)}
-  >
-    {children}
-  </RBModalHeader>
-);
+}) {
+  return (
+    <RBModalHeader
+      as={tag}
+      className={class_name || className}
+      closeButton={close_button}
+      data-dash-is-loading={getLoadingState() || undefined}
+      {...omit(['setProps'], otherProps)}
+    >
+      {children}
+    </RBModalHeader>
+  );
+}
 
 ModalHeader.propTypes = {
   /**

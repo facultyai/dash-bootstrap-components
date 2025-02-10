@@ -1,8 +1,10 @@
 import React, {useEffect, useRef} from 'react';
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBToast from 'react-bootstrap/Toast';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -10,28 +12,26 @@ import {getLoadingState} from '../../private/util';
  * visibility of the toast with the `is_open` prop, or use `duration` to set a
  * timer for auto-dismissal.
  */
-const Toast = props => {
-  const {
-    children,
-    header,
-    icon,
-    header_style,
-    headerClassName,
-    header_class_name,
-    body_style,
-    bodyClassName,
-    body_class_name,
-    duration,
-    setProps,
-    className,
-    class_name,
-    color,
-    is_open = true,
-    n_dismiss = 0,
-    dismissable = false,
-    ...otherProps
-  } = props;
-
+function Toast({
+  children,
+  header,
+  icon,
+  header_style,
+  headerClassName,
+  header_class_name,
+  body_style,
+  bodyClassName,
+  body_class_name,
+  duration,
+  setProps,
+  className,
+  class_name,
+  color,
+  is_open = true,
+  n_dismiss = 0,
+  dismissable = false,
+  ...otherProps
+}) {
   const dismiss = () => {
     if (setProps) {
       setProps({is_open: false, n_dismiss: n_dismiss + 1});
@@ -94,7 +94,7 @@ const Toast = props => {
       </RBToast.Body>
     </RBToast>
   );
-};
+}
 
 Toast.dashPersistence = {
   persisted_props: ['is_open'],
@@ -250,7 +250,12 @@ Toast.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   **/
+  setProps: PropTypes.func
 };
 
 export default Toast;

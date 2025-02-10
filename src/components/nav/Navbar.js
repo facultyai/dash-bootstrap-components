@@ -1,25 +1,26 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavbar from 'react-bootstrap/Navbar';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
 import {getLoadingState} from '../../private/util';
 
 /**
  * The Navbar component can be used to make fully customisable navbars.
  */
-const Navbar = ({
+function Navbar({
   children,
   style,
   className,
   class_name,
-  dark,
+  dark = true,
   tag,
-  color = 'light',
-  light = true,
+  color = 'primary',
   expand = 'md',
   ...otherProps
-}) => {
+}) {
   const isBootstrapColor = bootstrapColors.has(color);
   return (
     <RBNavbar
@@ -35,7 +36,7 @@ const Navbar = ({
       {children}
     </RBNavbar>
   );
-};
+}
 
 Navbar.propTypes = {
   /**
@@ -75,12 +76,6 @@ Navbar.propTypes = {
   key: PropTypes.string,
 
   /**
-   * Applies the `navbar-light` class to the Navbar, causing text in the children
-   * of the Navbar to use dark colors for contrast / visibility.
-   */
-  light: PropTypes.bool,
-
-  /**
    * Applies the `navbar-dark` class to the Navbar, causing text in the children
    * of the Navbar to use light colors for contrast / visibility.
    */
@@ -103,7 +98,7 @@ Navbar.propTypes = {
   sticky: PropTypes.oneOf(['top']),
 
   /**
-   * Sets the color of the Navbar. Main options are primary, light and dark, default light.
+   * Sets the color of the Navbar. Main options are primary, light and dark, default primary.
    *
    * You can also choose one of the other contextual classes provided by Bootstrap
    * (secondary, success, warning, danger, info, white) or any valid CSS color of

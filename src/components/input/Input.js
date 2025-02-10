@@ -1,8 +1,10 @@
 import React, {useEffect, useRef} from 'react';
+
+import classNames from 'classnames';
+import isNumeric from 'fast-isnumeric';
 import PropTypes from 'prop-types';
 import {isNil, omit} from 'ramda';
-import isNumeric from 'fast-isnumeric';
-import classNames from 'classnames';
+
 import {getLoadingState} from '../../private/util';
 
 const convert = val => (isNumeric(val) ? +val : NaN);
@@ -18,7 +20,7 @@ const isEquivalent = (v1, v2) => v1 === v2 || (isNaN(v1) && isNaN(v2));
  * the Checklist and RadioItems component. Dates, times, and file uploads
  * are supported through separate components in other libraries.
  */
-const Input = ({
+function Input({
   type,
   value,
   valid,
@@ -47,7 +49,7 @@ const Input = ({
   debounce = false,
   step = 'any',
   ...otherProps
-}) => {
+}) {
   const inputRef = useRef(null);
   const debounceRef = useRef(null);
 
@@ -150,8 +152,6 @@ const Input = ({
         ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
-      valid={valid ? 'true' : undefined}
-      invalid={invalid ? 'true' : undefined}
       data-dash-is-loading={getLoadingState() || undefined}
       autoComplete={autocomplete || autoComplete}
       autoFocus={autofocus || autoFocus}
@@ -164,7 +164,7 @@ const Input = ({
       step={step}
     />
   );
-};
+}
 
 Input.propTypes = {
   /**
@@ -625,7 +625,12 @@ Input.propTypes = {
    *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
-  tabIndex: PropTypes.string
+  tabIndex: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 Input.dashPersistence = {

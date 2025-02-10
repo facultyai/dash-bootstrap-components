@@ -1,15 +1,16 @@
 import React, {useContext} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAccordion from 'react-bootstrap/Accordion';
 
-import {getLoadingState, stringifyId} from '../../private/util';
 import {AccordionContext} from '../../private/AccordionContext';
+import {getLoadingState, stringifyId} from '../../private/util';
 
 /**
  * A component to build up the children of the accordion.
  */
-const AccordionItem = ({
+function AccordionItem({
   title,
   item_id,
   class_name,
@@ -17,7 +18,7 @@ const AccordionItem = ({
   id,
   children,
   ...otherProps
-}) => {
+}) {
   const {toggle, idx} = useContext(AccordionContext);
   const itemID = item_id || `item-${idx}`;
   return (
@@ -38,7 +39,7 @@ const AccordionItem = ({
       <RBAccordion.Body>{children}</RBAccordion.Body>
     </RBAccordion.Item>
   );
-};
+}
 
 AccordionItem.propTypes = {
   /**

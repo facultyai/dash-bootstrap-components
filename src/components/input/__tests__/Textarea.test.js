@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, render, fireEvent} from '@testing-library/react';
+
+import {act, fireEvent, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Textarea from '../Textarea';
 
 describe('Textarea', () => {
@@ -114,6 +115,9 @@ describe('Textarea', () => {
       expect(mockSetProps.mock.calls).toHaveLength(4);
 
       const [call0, call1, call2, call3] = mockSetProps.mock.calls;
+
+      // first call is for the click event
+      expect(call0).toEqual([{n_clicks: 1}]);
       expect(call1).toEqual([{value: 'a'}]);
       expect(call2).toEqual([{value: 'ab'}]);
       expect(call3).toEqual([{value: 'abc'}]);
@@ -184,9 +188,7 @@ describe('Textarea', () => {
       test('dispatch value on submit if debounce is true', async () => {
         const user = userEvent.setup();
 
-        const before = Date.now();
         await user.type(textarea, 'some text{enter}');
-        const after = Date.now();
 
         // one click and one submit
         expect(mockSetProps.mock.calls).toHaveLength(2);

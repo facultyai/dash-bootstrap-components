@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import RadioButton from '../RadioButton';
 
 describe('RadioButton', () => {
@@ -23,7 +24,7 @@ describe('RadioButton', () => {
       rerender
     } = render(<RadioButton />);
 
-    const [input, label] = radio.children;
+    const input = radio.firstChild;
     expect(input.checked).toEqual(false);
 
     rerender(<RadioButton value={true} />);
@@ -41,7 +42,7 @@ describe('RadioButton', () => {
       rerender
     } = render(<RadioButton setProps={mockSetProps} />);
 
-    const [input, label] = radio.children;
+    const input = radio.firstChild;
     await user.click(input);
     expect(mockSetProps.mock.calls).toHaveLength(1);
 

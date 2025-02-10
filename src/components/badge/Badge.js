@@ -1,28 +1,28 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBBadge from 'react-bootstrap/Badge';
-import Link from '../../private/Link';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
+import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
 /**
  * Badges can be used to add counts or labels to other components.
  */
-const Badge = props => {
-  const {
-    children,
-    href,
-    setProps,
-    style,
-    className,
-    class_name,
-    text_color,
-    color = 'secondary',
-    n_clicks = 0,
-    ...otherProps
-  } = props;
-
+function Badge({
+  children,
+  href,
+  style,
+  className,
+  class_name,
+  text_color,
+  color = 'secondary',
+  n_clicks = 0,
+  setProps,
+  ...otherProps
+}) {
   const incrementClicks = () => {
     if (setProps) {
       setProps({n_clicks: n_clicks + 1});
@@ -46,7 +46,7 @@ const Badge = props => {
       {children}
     </RBBadge>
   );
-};
+}
 
 Badge.propTypes = {
   /**
@@ -140,7 +140,12 @@ Badge.propTypes = {
   /**
    * Sets the title attribute of the underlying HTML button.
    */
-  title: PropTypes.string
+  title: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Badge;
