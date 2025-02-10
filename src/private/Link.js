@@ -29,57 +29,63 @@ function isExternalLink(external_link, href) {
   return external_link;
 }
 
-function Link({
-  children,
-  preOnClick,
-  target,
-  linkTarget,
-  href,
-  download,
-  external_link,
-  disabled,
-  ...otherProps
-}) {
-  const updateLocation = e => {
-    const hasModifiers = e.metaKey || e.shiftKey || e.altKey || e.ctrlKey;
-    if (hasModifiers) {
-      return;
-    }
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
-    if (preOnClick) {
-      preOnClick();
-    }
-    if (href && !isExternalLink(external_link, href)) {
-      // prevent anchor from updating location
-      e.preventDefault();
-      window.history.pushState({}, '', href);
-      window.dispatchEvent(new CustomEvent('_dashprivate_pushstate'));
-      // scroll back to top
-      window.scrollTo(0, 0);
-    }
-  };
+const Link = React.forwardRef(
+  (
+    {
+      children,
+      preOnClick,
+      target,
+      linkTarget,
+      href,
+      download,
+      external_link,
+      disabled,
+      ...otherProps
+    },
+    ref
+  ) => {
+    const updateLocation = e => {
+      const hasModifiers = e.metaKey || e.shiftKey || e.altKey || e.ctrlKey;
+      if (hasModifiers) {
+        return;
+      }
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+      if (preOnClick) {
+        preOnClick();
+      }
+      if (href && !isExternalLink(external_link, href)) {
+        // prevent anchor from updating location
+        e.preventDefault();
+        window.history.pushState({}, '', href);
+        window.dispatchEvent(new CustomEvent('_dashprivate_pushstate'));
+        // scroll back to top
+        window.scrollTo(0, 0);
+      }
+    };
 
-  const linkIsExternal = href && isExternalLink(external_link, href);
-  /**
-   * ideally, we would use cloneElement however
-   * that doesn't work with dash's recursive
-   * renderTree implementation for some reason
-   */
-  return (
-    <a
-      href={href}
-      target={linkIsExternal ? target || linkTarget : undefined}
-      download={download && linkIsExternal ? download : undefined}
-      {...otherProps}
-      onClick={e => updateLocation(e)}
-    >
-      {children}
-    </a>
-  );
-}
+    const linkIsExternal = href && isExternalLink(external_link, href);
+    /**
+     * ideally, we would use cloneElement however
+     * that doesn't work with dash's recursive
+     * renderTree implementation for some reason
+     */
+    return (
+      <a
+        href={href}
+        target={linkIsExternal ? target || linkTarget : undefined}
+        download={download && linkIsExternal ? download : undefined}
+        {...otherProps}
+        onClick={e => updateLocation(e)}
+        ref={ref}
+      >
+        {children}
+      </a>
+    );
+  }
+);
 
 Link.propTypes = {
   /**
