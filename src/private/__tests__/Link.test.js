@@ -70,7 +70,12 @@ describe('Link', () => {
     const user = userEvent.setup();
     const outerOnClick = jest.fn();
     const link = render(
-      <div onClick={e => outerOnClick(e.defaultPrevented)}>
+      <div
+        onClick={e => {
+          outerOnClick(e.defaultPrevented);
+          e.preventDefault();
+        }}
+      >
         <Link href="https://external.com">Clickable</Link>
       </div>
     );
@@ -86,7 +91,12 @@ describe('Link', () => {
     const user = userEvent.setup();
     const outerOnClick = jest.fn();
     const link = render(
-      <div onClick={e => outerOnClick(e.defaultPrevented)}>
+      <div
+        onClick={e => {
+          outerOnClick(e.defaultPrevented);
+          e.preventDefault();
+        }}
+      >
         <Link href="/external" external_link>
           Clickable
         </Link>
