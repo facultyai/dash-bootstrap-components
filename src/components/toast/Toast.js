@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {omit} from 'ramda';
 import RBToast from 'react-bootstrap/Toast';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Toasts can be used to push messages and notifactions to users. Control
@@ -12,7 +13,6 @@ import RBToast from 'react-bootstrap/Toast';
 const Toast = props => {
   const {
     children,
-    loading_state,
     header,
     icon,
     header_style,
@@ -58,9 +58,7 @@ const Toast = props => {
       onClose={dismissable && dismiss}
       className={class_name || className}
       bg={color}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       {...omit(
         ['persistence', 'persisted_props', 'persistence_type', 'setProps'],
         otherProps
@@ -224,24 +222,6 @@ Toast.propTypes = {
    * light, dark. Default: secondary.
    */
   color: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

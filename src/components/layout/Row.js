@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBRow from 'react-bootstrap/Row';
 import classNames from 'classnames';
+import {getLoadingState} from '../../private/util';
 
 const alignMap = {
   start: 'align-items-start',
@@ -28,15 +29,8 @@ const justifyMap = {
  * between columns.
  */
 const Row = props => {
-  const {
-    children,
-    className,
-    class_name,
-    align,
-    justify,
-    loading_state,
-    ...otherProps
-  } = props;
+  const {children, className, class_name, align, justify, ...otherProps} =
+    props;
 
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
@@ -46,9 +40,7 @@ const Row = props => {
     <RBRow
       className={classes}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBRow>
@@ -109,25 +101,7 @@ Row.propTypes = {
     'around',
     'between',
     'evenly'
-  ]),
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  ])
 };
 
 export default Row;

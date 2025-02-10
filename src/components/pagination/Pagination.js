@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RBPagination from 'react-bootstrap/Pagination';
+import {getLoadingState} from '../../private/util';
 
 /**
  * The container for presentational components for building a pagination UI.
@@ -11,7 +12,6 @@ const Pagination = ({
   setProps,
   class_name,
   className,
-  loading_state,
   min_value = 1,
   step = 1,
   active_page = 1,
@@ -139,9 +139,7 @@ const Pagination = ({
   return (
     <RBPagination
       className={class_name || className}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       {...otherProps}
     >
       {paginationItems}
@@ -217,25 +215,7 @@ Pagination.propTypes = {
    * When True, this will display a first and last icon at the beginning
    * and end of the component.
    */
-  first_last: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  first_last: PropTypes.bool
 };
 
 export default Pagination;

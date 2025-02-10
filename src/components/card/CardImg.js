@@ -2,25 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCardImg from 'react-bootstrap/CardImg';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Use CardImg to add images to your cards.
  */
 const CardImg = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    top,
-    bottom,
-    ...otherProps
-  } = props;
+  const {children, className, class_name, top, bottom, ...otherProps} = props;
   return (
     <RBCardImg
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       className={class_name || className}
       variant={top ? 'top' : bottom ? 'bottom' : null}
       {...omit(['setProps'], otherProps)}
@@ -98,25 +89,7 @@ CardImg.propTypes = {
   /**
    * Text to be displayed as a tooltip when hovering
    */
-  title: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  title: PropTypes.string
 };
 
 export default CardImg;

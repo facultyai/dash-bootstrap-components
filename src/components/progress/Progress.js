@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {map} from 'react-bootstrap/ElementChildren';
 import {omit} from 'ramda';
+import {getLoadingState} from '../../private/util';
 
 import {bootstrapColors} from '../../private/BootstrapColors';
 
@@ -119,7 +120,6 @@ const ProgressBar = React.forwardRef(
 
 const Progress = ({
   children,
-  loading_state,
   color,
   className,
   class_name,
@@ -133,9 +133,7 @@ const Progress = ({
     <ProgressBar
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       now={value}
       isChild={bar}
       variant={isBootstrapColor ? color : null}
@@ -230,25 +228,7 @@ Progress.propTypes = {
    * warning, danger, info or any valid CSS color
    * of your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
-  color: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  color: PropTypes.string
 };
 
 export default Progress;

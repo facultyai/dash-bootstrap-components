@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNav from 'react-bootstrap/Nav';
 import classNames from 'classnames';
+import {getLoadingState} from '../../private/util';
 
 const horizontalMap = {
   start: 'justify-content-start',
@@ -26,7 +27,6 @@ const verticalMap = {
 const Nav = props => {
   const {
     children,
-    loading_state,
     className,
     class_name,
     pills,
@@ -55,9 +55,7 @@ const Nav = props => {
       justify={justified}
       navbarScroll={navbar_scroll}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBNav>
@@ -146,25 +144,7 @@ Nav.propTypes = {
   /**
    * Enable vertical scrolling within the toggleable contents of a collapsed Navbar.
    */
-  navbar_scroll: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  navbar_scroll: PropTypes.bool
 };
 
 export default Nav;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RBCard from 'react-bootstrap/Card';
 import Link from '../../private/Link';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Use card link to add consistently styled links to your cards. Links can be
@@ -9,7 +10,6 @@ import Link from '../../private/Link';
  */
 const CardLink = ({
   children,
-  loading_state,
   disabled,
   className,
   class_name,
@@ -25,9 +25,7 @@ const CardLink = ({
 
   return (
     <RBCard.Link
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       as={Link}
       preOnClick={incrementClicks}
       disabled={disabled}
@@ -96,24 +94,6 @@ CardLink.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.

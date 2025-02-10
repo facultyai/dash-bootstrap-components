@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RBForm from 'react-bootstrap/Form';
+import {getLoadingState} from '../../private/util';
 
 /**
  * The Form component can be used to organise collections of input components
@@ -8,7 +9,6 @@ import RBForm from 'react-bootstrap/Form';
  */
 const Form = ({
   children,
-  loading_state,
   setProps,
   className,
   class_name,
@@ -28,9 +28,7 @@ const Form = ({
       }}
       className={class_name || className}
       {...otherProps}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBForm>
@@ -95,25 +93,7 @@ Form.propTypes = {
    * be posted to the endpoint specified by `action` on submit events, set
    * prevent_default_on_submit to False. Defaults to True.
    */
-  prevent_default_on_submit: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  prevent_default_on_submit: PropTypes.bool
 };
 
 export default Form;

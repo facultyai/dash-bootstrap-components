@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {append, includes, without} from 'ramda';
 import classNames from 'classnames';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Checklist is a component that encapsulates several checkboxes.
@@ -23,7 +23,6 @@ const Switch = ({
   label_style,
   label_class_name,
   labelClassName,
-  loading_state,
   name,
   value = false,
   disabled = false,
@@ -32,9 +31,7 @@ const Switch = ({
   <div
     className={classNames('form-check form-switch', class_name || className)}
     style={style}
-    data-dash-is-loading={
-      (loading_state && loading_state.is_loading) || undefined
-    }
+    data-dash-is-loading={getLoadingState() || undefined}
   >
     <input
       id={id}
@@ -166,24 +163,6 @@ Switch.propTypes = {
    * Disable the Switch.
    **/
   disabled: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

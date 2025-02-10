@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBTable from 'react-bootstrap/Table';
+import {getLoadingState} from '../../private/util';
 
 /**
  * A component for applying Bootstrap styles to HTML tables. Use this as a
@@ -9,23 +10,13 @@ import RBTable from 'react-bootstrap/Table';
  * DataFrame using `dbc.Table.from_dataframe`.
  */
 const Table = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    color,
-    dark,
-    ...otherProps
-  } = props;
+  const {children, className, class_name, color, dark, ...otherProps} = props;
   return (
     <RBTable
       className={class_name || className}
       variant={color || (dark ? 'dark' : undefined)}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBTable>
@@ -115,25 +106,7 @@ Table.propTypes = {
    * Set to True or one of the breakpoints 'sm', 'md', 'lg', 'xl' to make table
    * scroll horizontally at lower breakpoints.
    */
-  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default Table;

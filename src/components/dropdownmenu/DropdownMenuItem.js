@@ -5,6 +5,7 @@ import RBDropdown from 'react-bootstrap/Dropdown';
 
 import Link from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
@@ -12,7 +13,6 @@ import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 const DropdownMenuItem = ({
   children,
   href,
-  loading_state,
   target,
   disabled,
   setProps,
@@ -52,9 +52,7 @@ const DropdownMenuItem = ({
       target={useLink ? target : undefined}
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBDropdown.Item>
@@ -145,24 +143,6 @@ DropdownMenuItem.propTypes = {
    * that this element has been clicked on.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.

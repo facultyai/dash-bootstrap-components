@@ -4,6 +4,7 @@ import {omit} from 'ramda';
 import RBFormLabel from 'react-bootstrap/FormLabel';
 import classNames from 'classnames';
 import {bootstrapTextColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 const alignMap = {
   start: 'align-self-start',
@@ -29,7 +30,6 @@ const Label = ({
   class_name,
   color,
   style,
-  loading_state,
   check,
   align = 'center',
   ...otherProps
@@ -66,9 +66,7 @@ const Label = ({
       className={classes}
       style={!isBootstrapColor ? {color: color, ...style} : style}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBFormLabel>
@@ -208,25 +206,7 @@ Label.propTypes = {
    * muted, light, dark, body, white, black-50, white-50 or any valid CSS color of
    * your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
-  color: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  color: PropTypes.string
 };
 
 export default Label;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCollapse from 'react-bootstrap/Collapse';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Hide or show content with a vertical collapsing animation. Visibility of the
@@ -14,7 +15,6 @@ const Collapse = React.forwardRef(
       children,
       is_open,
       navbar,
-      loading_state,
       className,
       class_name,
       tag,
@@ -30,9 +30,7 @@ const Collapse = React.forwardRef(
         className={class_name || className}
         dimension={dimension}
         {...omit(['setProps'], otherProps)}
-        data-dash-is-loading={
-          (loading_state && loading_state.is_loading) || undefined
-        }
+        data-dash-is-loading={getLoadingState() || undefined}
       >
         <div ref={ref} className={navbar && 'navbar-collapse'}>
           {children}
@@ -88,24 +86,6 @@ Collapse.propTypes = {
    * Set to True when using a collapse inside a navbar.
    */
   navbar: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * The dimension used when collapsing e.g. height will collapse vertically,

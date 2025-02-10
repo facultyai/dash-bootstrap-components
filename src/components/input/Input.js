@@ -1,8 +1,9 @@
-import React, {forwardRef, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {isNil, omit} from 'ramda';
 import isNumeric from 'fast-isnumeric';
 import classNames from 'classnames';
+import {getLoadingState} from '../../private/util';
 
 const convert = val => (isNumeric(val) ? +val : NaN);
 const isEquivalent = (v1, v2) => v1 === v2 || (isNaN(v1) && isNaN(v2));
@@ -26,7 +27,6 @@ const Input = ({
   size,
   html_size,
   setProps,
-  loading_state,
   className,
   class_name,
   autoComplete,
@@ -152,9 +152,7 @@ const Input = ({
       )}
       valid={valid ? 'true' : undefined}
       invalid={invalid ? 'true' : undefined}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       autoComplete={autocomplete || autoComplete}
       autoFocus={autofocus || autoFocus}
       inputMode={inputmode || inputMode}
@@ -587,24 +585,6 @@ Input.propTypes = {
    * of milliseconds.
    */
   debounce: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
 
   /**
    * Used to allow user interactions in this component to be persisted when

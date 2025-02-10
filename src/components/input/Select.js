@@ -30,7 +30,7 @@ const Select = ({
   return (
     <RBFormSelect
       {...omit(
-        ['persistence', 'persistence_type', 'persisted_props', 'loading_state'],
+        ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
       isInvalid={invalid}

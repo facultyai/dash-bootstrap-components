@@ -4,20 +4,13 @@ import classNames from 'classnames';
 import {omit} from 'ramda';
 import RBFormText from 'react-bootstrap/FormText';
 import {bootstrapTextColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 /**
  * Add explanatory text below your input components.
  */
 const FormText = props => {
-  const {
-    children,
-    loading_state,
-    color,
-    style,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
+  const {children, color, style, className, class_name, ...otherProps} = props;
   const isBootstrapColor = bootstrapTextColors.has(color);
   const classes = classNames(
     class_name || className,
@@ -28,9 +21,7 @@ const FormText = props => {
       style={!isBootstrapColor ? {color: color, ...style} : style}
       className={classes}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </RBFormText>
@@ -79,25 +70,7 @@ FormText.propTypes = {
    * muted, light, dark, body, white, black-50, white-50 or any valid CSS color of
    * your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
-  color: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  color: PropTypes.string
 };
 
 export default FormText;
