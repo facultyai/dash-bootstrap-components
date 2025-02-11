@@ -2,8 +2,6 @@ name: Test built package
 
 on:
   pull_request:
-    branches:
-      - main
 
 jobs:
   test-build:
