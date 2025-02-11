@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import {createRoot} from 'react-dom/client';
 
 import Demo from './Demo';
 
-const rootInstance = ReactDOM.render(
-    <Demo />,
-    document.getElementById('react-demo-entry-point')
-);
+const root = createRoot(document.getElementById('react-demo-entry-point'));
+
+root.render(<Demo />);

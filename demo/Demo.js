@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, {useState} from 'react';
+
 import {
   Alert,
   Badge,
@@ -37,29 +39,29 @@ import {
   Tooltip
 } from '../src';
 
-const StateWrapper = ({tag: Tag, ...otherProps}) => {
+function StateWrapper({tag: Tag, ...otherProps}) {
   // helper to mimic setProps functionality
   const [state, setState] = useState(otherProps);
   return <Tag setProps={props => setState({...state, ...props})} {...state} />;
-};
+}
 
-const CollapseComponent = ({children}) => {
+function CollapseComponent({children}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(!isOpen)}>Toggle collapse</Button>
+      <Button setProps={() => setIsOpen(!isOpen)}>Toggle collapse</Button>
       <Collapse is_open={isOpen}>{children}</Collapse>
     </div>
   );
-};
+}
 
 const FadeComponent = ({children}) => {
   const [isIn, setIsIn] = useState(false);
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(!isIn)}>Toggle fade</Button>
+      <Button setProps={() => setIsIn(!isIn)}>Toggle fade</Button>
       <Fade is_in={isIn}>{children}</Fade>
     </div>
   );
@@ -212,7 +214,7 @@ const Demo = () => (
         <Col md={3}>
           <Card>
             <CardBody>
-              <h5 className="card-title">Here's another card</h5>
+              <h5 className="card-title">Here&apos;s another card</h5>
               <p className="card-text">With some text, and a button</p>
               <Button color="success">Click here</Button>
             </CardBody>
@@ -221,7 +223,7 @@ const Demo = () => (
         <Col md={3}>
           <Card>
             <CardBody>
-              <h5 className="card-title">Here's yet another card</h5>
+              <h5 className="card-title">Here&apos;s yet another card</h5>
               <p className="card-text">With some text, and some links</p>
               <CardLink href="https://www.asidatascience.com">
                 External
