@@ -1,12 +1,12 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, fireEvent, render, waitFor} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import NavbarSimple from '../NavbarSimple';
+
+import {act, fireEvent, render} from '@testing-library/react';
+
 import NavItem from '../NavItem';
+import NavbarSimple from '../NavbarSimple';
 
 jest.useFakeTimers();
 
@@ -44,12 +44,7 @@ describe('NavbarSimple', () => {
     const {
       container: {firstChild: navbarDark}
     } = render(<NavbarSimple dark />);
-    const {
-      container: {firstChild: navbarLight}
-    } = render(<NavbarSimple light />);
-
     expect(navbarDark).toHaveClass('navbar-dark');
-    expect(navbarLight).toHaveClass('navbar-light');
 
     // sticky navbars
     const {

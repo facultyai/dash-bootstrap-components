@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import {sanitizeOptions} from '../../private/util';
 import {getLoadingState} from '../../private/util';
@@ -12,7 +13,7 @@ import {getLoadingState} from '../../private/util';
  * Each radio item is rendered as an input and associated label which are
  * siblings of each other.
  */
-const RadioItems = ({
+function RadioItems({
   className,
   class_name,
   style,
@@ -40,7 +41,7 @@ const RadioItems = ({
   value,
   switch: switches,
   options = []
-}) => {
+}) {
   const listItem = option => {
     const checked = option.value === value;
 
@@ -114,7 +115,7 @@ const RadioItems = ({
       {items}
     </div>
   );
-};
+}
 
 RadioItems.propTypes = {
   /**

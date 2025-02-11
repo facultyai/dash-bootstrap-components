@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBBreadcrumb from 'react-bootstrap/Breadcrumb';
 
@@ -8,7 +9,7 @@ import {getLoadingState} from '../../private/util';
 /**
  * Use breadcrumbs to create a navigation breadcrumb in your app.
  */
-const Breadcrumb = ({
+function Breadcrumb({
   items,
   tag,
   class_name,
@@ -17,27 +18,30 @@ const Breadcrumb = ({
   itemClassName,
   item_style,
   ...otherProps
-}) => (
-  <RBBreadcrumb
-    as={tag}
-    data-dash-is-loading={getLoadingState() || undefined}
-    className={class_name || className}
-    {...otherProps}
-  >
-    {(items || []).map((item, idx) => (
-      <RBBreadcrumb.Item
-        key={`${item.value}${idx}`}
-        active={item.active}
-        linkAs={item.href && Link}
-        className={item_class_name || itemClassName}
-        href={item.href}
-        linkProps={item.href && {external_link: item.external_link}}
-      >
-        {item.label}
-      </RBBreadcrumb.Item>
-    ))}
-  </RBBreadcrumb>
-);
+}) {
+  return (
+    <RBBreadcrumb
+      as={tag}
+      data-dash-is-loading={getLoadingState() || undefined}
+      className={class_name || className}
+      {...otherProps}
+    >
+      {(items || []).map((item, idx) => (
+        <RBBreadcrumb.Item
+          key={`${item.value}${idx}`}
+          active={item.active}
+          linkAs={item.href && Link}
+          className={item_class_name || itemClassName}
+          href={item.href}
+          linkProps={item.href && {external_link: item.external_link}}
+          style={item_style}
+        >
+          {item.label}
+        </RBBreadcrumb.Item>
+      ))}
+    </RBBreadcrumb>
+  );
+}
 
 Breadcrumb.propTypes = {
   /**

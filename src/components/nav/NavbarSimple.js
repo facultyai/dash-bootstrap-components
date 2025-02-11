@@ -1,37 +1,36 @@
 import React, {useState} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import RBNavbar from 'react-bootstrap/Navbar';
 import RBContainer from 'react-bootstrap/Container';
-import {bootstrapColors} from '../../private/BootstrapColors';
+import RBNavbar from 'react-bootstrap/Navbar';
 
+import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
 import NavbarToggler from './NavbarToggler';
-import {getLoadingState} from '../../private/util';
 
 /**
  * A self-contained navbar ready for use. If you need more customisability try
  * `Navbar` instead.
  */
-const NavbarSimple = props => {
-  const {
-    children,
-    brand,
-    brand_href,
-    brand_style,
-    brand_external_link,
-    dark,
-    style,
-    className,
-    class_name,
-    fluid = false,
-    color = 'light',
-    light = true,
-    expand = 'md',
-    links_left = false,
-    ...otherProps
-  } = props;
+function NavbarSimple({
+  children,
+  brand,
+  brand_href,
+  brand_style,
+  brand_external_link,
+  dark = true,
+  style,
+  className,
+  class_name,
+  fluid = false,
+  color = 'primary',
+  expand = 'md',
+  links_left = false,
+  ...otherProps
+}) {
   const isBootstrapColor = bootstrapColors.has(color);
 
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -66,7 +65,7 @@ const NavbarSimple = props => {
       </RBContainer>
     </RBNavbar>
   );
-};
+}
 
 NavbarSimple.propTypes = {
   /**
@@ -141,12 +140,6 @@ NavbarSimple.propTypes = {
    * Align the navlinks in the navbar to the left. Default: False.
    */
   links_left: PropTypes.bool,
-
-  /**
-   * Applies the `navbar-light` class to the NavbarSimple, causing text in the
-   * children of the Navbar to use dark colors for contrast / visibility.
-   */
-  light: PropTypes.bool,
 
   /**
    * Applies the `navbar-dark` class to the NavbarSimple, causing text in the

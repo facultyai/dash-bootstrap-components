@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBInputGroup from 'react-bootstrap/InputGroup';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * A component for grouping together inputs and buttons, dropdowns or text.
  */
-const InputGroup = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function InputGroup({children, className, class_name, ...otherProps}) {
   return (
     <RBInputGroup
       className={class_name || className}
@@ -18,7 +19,7 @@ const InputGroup = props => {
       {children}
     </RBInputGroup>
   );
-};
+}
 
 InputGroup.propTypes = {
   /**

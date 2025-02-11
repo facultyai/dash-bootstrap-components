@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, render, fireEvent} from '@testing-library/react';
+
+import {act, fireEvent, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Input from '../Input';
 
 describe('Input', () => {

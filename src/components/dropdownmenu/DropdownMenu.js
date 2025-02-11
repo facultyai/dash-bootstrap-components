@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import RBDropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
 
-import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {DropdownMenuContext} from '../../private/DropdownMenuContext';
 import DropdownToggle from '../../private/DropdownToggle';
 import {getLoadingState} from '../../private/util';
 
@@ -15,12 +15,11 @@ import {getLoadingState} from '../../private/util';
  * DropdownMenu creates an overlay useful for grouping together links and other
  * content to organise navigation or other interactive elements.
  */
-const DropdownMenu = ({
+function DropdownMenu({
   children,
   nav,
   label,
   in_navbar,
-  addon_type,
   size,
   right,
   align_end,
@@ -36,7 +35,7 @@ const DropdownMenu = ({
   disabled = false,
   menu_variant = 'light',
   ...otherProps
-}) => {
+}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const isBootstrapColor = bootstrapColors.has(color) || color === 'link';
   const toggle = () => {
@@ -99,7 +98,7 @@ const DropdownMenu = ({
       </RBDropdown>
     </DropdownMenuContext.Provider>
   );
-};
+}
 
 DropdownMenu.propTypes = {
   /**
@@ -174,14 +173,6 @@ DropdownMenu.propTypes = {
    * Set this to True if the DropdownMenu is inside a navbar. Default: False.
    */
   in_navbar: PropTypes.bool,
-
-  /**
-   * Set this to 'prepend' or 'append' if the DropdownMenu is being used in an input group.
-   */
-  addon_type: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(['prepend', 'append'])
-  ]),
 
   /**
    * Disable the dropdown.

@@ -1,6 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBButton from 'react-bootstrap/Button';
+
 import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
@@ -12,7 +14,7 @@ import {getLoadingState} from '../../private/util';
  * Use the `n_clicks` prop to trigger callbacks when the button has been
  * clicked.
  */
-const Button = ({
+function Button({
   children,
   disabled,
   href,
@@ -26,18 +28,17 @@ const Button = ({
   class_name,
   color,
   outline,
-  onClick,
   rel,
   n_clicks = 0,
   ...otherProps
-}) => {
+}) {
   const incrementClicks = () => {
     if (!disabled && setProps) {
       setProps({n_clicks: n_clicks + 1});
     }
   };
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
 
   if (useLink) {
     // react-bootstrap strips out target prop if tag isn't an anchor element,
@@ -63,7 +64,7 @@ const Button = ({
       {children}
     </RBButton>
   );
-};
+}
 
 Button.propTypes = {
   /**
@@ -189,7 +190,9 @@ Button.propTypes = {
   /**
    * Set the rel attribute when Button is being used as a Link.
    */
-  rel: PropTypes.string
+  rel: PropTypes.string,
+
+  setProps: PropTypes.func
 };
 
 export default Button;

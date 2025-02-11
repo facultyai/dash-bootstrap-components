@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBInputGroup from 'react-bootstrap/InputGroup';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use for wrapping text in InputGroups.
  */
-const InputGroupText = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function InputGroupText({children, className, class_name, ...otherProps}) {
   return (
     <RBInputGroup.Text
       className={class_name || className}
@@ -18,7 +19,7 @@ const InputGroupText = props => {
       {children}
     </RBInputGroup.Text>
   );
-};
+}
 
 InputGroupText.propTypes = {
   /**

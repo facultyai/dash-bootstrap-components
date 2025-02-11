@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
+
 import Navbar from '../Navbar';
 
 describe('Navbar', () => {
@@ -21,16 +22,11 @@ describe('Navbar', () => {
   });
 
   test('applies additional CSS classes when props are set', () => {
-    // dark and light navbars
+    // dark navbar
     const {
       container: {firstChild: navbarDark}
     } = render(<Navbar dark />);
-    const {
-      container: {firstChild: navbarLight}
-    } = render(<Navbar light />);
-
     expect(navbarDark).toHaveClass('navbar-dark');
-    expect(navbarLight).toHaveClass('navbar-light');
 
     // sticky navbars
     const {

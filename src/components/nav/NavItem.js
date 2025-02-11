@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBNavItem from 'react-bootstrap/NavItem';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Create a single item in a `Nav`.
  */
-const NavItem = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function NavItem({children, className, class_name, ...otherProps}) {
   return (
     <RBNavItem
       className={class_name || className}
@@ -18,7 +19,7 @@ const NavItem = props => {
       {children}
     </RBNavItem>
   );
-};
+}
 
 NavItem.propTypes = {
   /**

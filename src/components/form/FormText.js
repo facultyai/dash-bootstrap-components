@@ -1,16 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormText from 'react-bootstrap/FormText';
+
 import {bootstrapTextColors} from '../../private/BootstrapColors';
 import {getLoadingState} from '../../private/util';
 
 /**
  * Add explanatory text below your input components.
  */
-const FormText = props => {
-  const {children, color, style, className, class_name, ...otherProps} = props;
+function FormText({
+  children,
+  color,
+  style,
+  className,
+  class_name,
+  ...otherProps
+}) {
   const isBootstrapColor = bootstrapTextColors.has(color);
   const classes = classNames(
     class_name || className,
@@ -26,7 +34,7 @@ const FormText = props => {
       {children}
     </RBFormText>
   );
-};
+}
 
 FormText.propTypes = {
   /**

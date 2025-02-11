@@ -1,6 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBPagination from 'react-bootstrap/Pagination';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -8,7 +10,7 @@ import {getLoadingState} from '../../private/util';
  * Individual pages should be added as children using the `PaginationItem`
  * component.
  */
-const Pagination = ({
+function Pagination({
   setProps,
   class_name,
   className,
@@ -20,7 +22,7 @@ const Pagination = ({
   first_last = false,
   max_value,
   ...otherProps
-}) => {
+}) {
   // Check max_value is correct value re. step size and if not, change it
   // i.e. min = 1, step = 2, max_value = 4 doesn't work, so need max_value = 5
   if ((max_value - min_value) % step !== 0) {
@@ -145,7 +147,7 @@ const Pagination = ({
       {paginationItems}
     </RBPagination>
   );
-};
+}
 
 Pagination.propTypes = {
   /**
@@ -215,7 +217,12 @@ Pagination.propTypes = {
    * When True, this will display a first and last icon at the beginning
    * and end of the component.
    */
-  first_last: PropTypes.bool
+  first_last: PropTypes.bool,
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Pagination;

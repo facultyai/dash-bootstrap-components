@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBModalFooter from 'react-bootstrap/ModalFooter';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Add a footer to any modal.
  */
-const ModalFooter = props => {
-  const {children, className, class_name, tag, ...otherProps} = props;
+function ModalFooter({children, className, class_name, tag, ...otherProps}) {
   return (
     <RBModalFooter
       as={tag}
@@ -19,7 +20,7 @@ const ModalFooter = props => {
       {children}
     </RBModalFooter>
   );
-};
+}
 
 ModalFooter.propTypes = {
   /**

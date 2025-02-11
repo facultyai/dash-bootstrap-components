@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBPopoverHeader from 'react-bootstrap/PopoverHeader';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Creates a header for use inside the `Popover` component.
  */
-const PopoverHeader = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function PopoverHeader({children, className, class_name, ...otherProps}) {
   return (
     <RBPopoverHeader
       className={class_name || className}
@@ -18,7 +19,7 @@ const PopoverHeader = props => {
       {children}
     </RBPopoverHeader>
   );
-};
+}
 
 PopoverHeader.propTypes = {
   /**

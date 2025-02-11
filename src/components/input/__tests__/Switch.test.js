@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Switch from '../Switch';
 
 describe('Switch', () => {
@@ -28,7 +29,7 @@ describe('Switch', () => {
       rerender
     } = render(<Switch setProps={mockSetProps} />);
 
-    const [input, _] = toggleSwitch.children;
+    const input = toggleSwitch.children[0];
     await user.click(input);
     expect(mockSetProps.mock.calls).toHaveLength(1);
 

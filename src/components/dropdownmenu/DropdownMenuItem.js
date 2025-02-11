@@ -1,29 +1,30 @@
 import React, {useContext} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBDropdown from 'react-bootstrap/Dropdown';
 
-import Link from '../../private/Link';
 import {DropdownMenuContext} from '../../private/DropdownMenuContext';
+import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use DropdownMenuItem to build up the content of a DropdownMenu.
  */
-const DropdownMenuItem = ({
+function DropdownMenuItem({
   children,
   href,
   target,
   disabled,
-  setProps,
   className,
   class_name,
   header,
   divider,
   n_clicks = 0,
   toggle = true,
+  setProps,
   ...otherProps
-}) => {
+}) {
   const context = useContext(DropdownMenuContext);
 
   const handleClick = e => {
@@ -57,7 +58,7 @@ const DropdownMenuItem = ({
       {children}
     </RBDropdown.Item>
   );
-};
+}
 
 DropdownMenuItem.propTypes = {
   /**
@@ -147,7 +148,12 @@ DropdownMenuItem.propTypes = {
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   **/
+  setProps: PropTypes.func
 };
 
 export default DropdownMenuItem;

@@ -1,6 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -10,7 +12,7 @@ import {getLoadingState} from '../../private/util';
  * Each checkbox is rendered as an input / label pair. `Checklist` must be
  * given an `id` to work properly.
  */
-const RadioButton = ({
+function RadioButton({
   className,
   class_name,
   style,
@@ -27,46 +29,48 @@ const RadioButton = ({
   setProps,
   disabled = false,
   value = false
-}) => (
-  <div
-    className={classNames('form-check', class_name || className)}
-    style={style}
-    data-dash-is-loading={getLoadingState() || undefined}
-  >
-    <input
-      id={id}
-      name={name}
-      checked={value}
-      className={classNames(
-        'form-check-input',
-        input_class_name || inputClassName
-      )}
-      disabled={disabled}
-      style={input_style}
-      type="radio"
-      onClick={() => {
-        if (!disabled) {
-          if (setProps) {
-            setProps({value: !value});
-          }
-        }
-      }}
-      onChange={() => {}}
-    />
-    <label
-      id={label_id}
-      style={label_style}
-      className={classNames(
-        label_class_name || labelClassName,
-        'form-check-label',
-        'form-label'
-      )}
-      htmlFor={id}
+}) {
+  return (
+    <div
+      className={classNames('form-check', class_name || className)}
+      style={style}
+      data-dash-is-loading={getLoadingState() || undefined}
     >
-      {label}
-    </label>
-  </div>
-);
+      <input
+        id={id}
+        name={name}
+        checked={value}
+        className={classNames(
+          'form-check-input',
+          input_class_name || inputClassName
+        )}
+        disabled={disabled}
+        style={input_style}
+        type="radio"
+        onClick={() => {
+          if (!disabled) {
+            if (setProps) {
+              setProps({value: !value});
+            }
+          }
+        }}
+        onChange={() => {}}
+      />
+      <label
+        id={label_id}
+        style={label_style}
+        className={classNames(
+          label_class_name || labelClassName,
+          'form-check-label',
+          'form-label'
+        )}
+        htmlFor={id}
+      >
+        {label}
+      </label>
+    </div>
+  );
+}
 
 RadioButton.propTypes = {
   /**

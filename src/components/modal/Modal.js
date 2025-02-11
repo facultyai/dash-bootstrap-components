@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
@@ -9,36 +10,34 @@ import {getLoadingState} from '../../private/util';
  * Create a toggleable dialog using the Modal component. Toggle the visibility
  * with the `is_open` prop.
  */
-const Modal = props => {
-  const {
-    children,
-    is_open,
-    setProps,
-    className,
-    class_name,
-    autoFocus,
-    autofocus,
-    enforceFocus,
-    labelledBy,
-    labelledby,
-    modalClassName,
-    modal_class_name,
-    contentClassName,
-    content_class_name,
-    backdropClassName,
-    backdrop_class_name,
-    tag,
-    fade,
-    style,
-    zindex,
-    zIndex,
-    dialogStyle,
-    dialog_style,
-    contentStyle,
-    content_style,
-    ...otherProps
-  } = props;
-
+function Modal({
+  children,
+  is_open,
+  className,
+  class_name,
+  autoFocus,
+  autofocus,
+  enforceFocus,
+  labelledBy,
+  labelledby,
+  modalClassName,
+  modal_class_name,
+  contentClassName,
+  content_class_name,
+  backdropClassName,
+  backdrop_class_name,
+  tag,
+  fade,
+  style,
+  zindex,
+  zIndex,
+  dialogStyle,
+  dialog_style,
+  contentStyle,
+  content_style,
+  setProps,
+  ...otherProps
+}) {
   const onHide = () => {
     if (setProps) {
       setProps({is_open: false});
@@ -71,7 +70,7 @@ const Modal = props => {
       {children}
     </RBModal>
   );
-};
+}
 
 Modal.propTypes = {
   /**
@@ -255,7 +254,12 @@ Modal.propTypes = {
    *
    * Set the z-index of the modal. Default 1050.
    */
-  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Modal;

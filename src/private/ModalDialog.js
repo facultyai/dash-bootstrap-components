@@ -3,54 +3,67 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import {useBootstrapPrefix} from 'react-bootstrap/ThemeProvider';
+import PropTypes from 'prop-types';
 
-const ModalDialog = React.forwardRef(
-  (
-    {
-      bsPrefix,
-      className,
-      contentClassName,
-      centered,
-      size,
-      fullscreen,
-      children,
-      scrollable,
-      contentStyle,
-      ...props
-    },
-    ref
-  ) => {
-    bsPrefix = useBootstrapPrefix(bsPrefix, 'modal');
-    const dialogClass = `${bsPrefix}-dialog`;
+const ModalDialog = React.forwardRef(function ModalDialog(
+  {
+    className,
+    contentClassName,
+    centered,
+    size,
+    fullscreen,
+    children,
+    scrollable,
+    contentStyle,
+    ...props
+  },
+  ref
+) {
+  const dialogClass = 'modal-dialog';
 
-    const fullScreenClass =
-      typeof fullscreen === 'string'
-        ? `${bsPrefix}-fullscreen-${fullscreen}`
-        : `${bsPrefix}-fullscreen`;
+  const fullScreenClass =
+    typeof fullscreen === 'string'
+      ? `modal-fullscreen-${fullscreen}`
+      : 'modal-fullscreen';
 
-    return (
+  return (
+    <div
+      {...props}
+      ref={ref}
+      className={classNames(
+        dialogClass,
+        className,
+        size && `modal-${size}`,
+        centered && `${dialogClass}-centered`,
+        scrollable && `${dialogClass}-scrollable`,
+        fullscreen && fullScreenClass
+      )}
+    >
       <div
-        {...props}
-        ref={ref}
-        className={classNames(
-          dialogClass,
-          className,
-          size && `${bsPrefix}-${size}`,
-          centered && `${dialogClass}-centered`,
-          scrollable && `${dialogClass}-scrollable`,
-          fullscreen && fullScreenClass
-        )}
+        className={classNames('modal-content', contentClassName)}
+        style={contentStyle}
       >
-        <div
-          className={classNames(`${bsPrefix}-content`, contentClassName)}
-          style={contentStyle}
-        >
-          {children}
-        </div>
+        {children}
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
+
+ModalDialog.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  contentClassName: PropTypes.string,
+  centered: PropTypes.bool,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  fullscreen: PropTypes.oneOf([
+    true,
+    'sm-down',
+    'md-down',
+    'lg-down',
+    'xl-down'
+  ]),
+  scrollable: PropTypes.bool,
+  contentStyle: PropTypes.object
+};
 
 export default ModalDialog;

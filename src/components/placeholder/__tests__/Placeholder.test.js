@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {act, render} from '@testing-library/react';
+
 import Placeholder from '../Placeholder';
 
 jest.useFakeTimers();

@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
+
 import PopoverBody from '../PopoverBody';
 
 describe('PopoverBody', () => {

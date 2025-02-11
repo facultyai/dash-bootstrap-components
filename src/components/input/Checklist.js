@@ -1,7 +1,8 @@
 import React from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {append, includes, without} from 'ramda';
-import classNames from 'classnames';
 
 import {sanitizeOptions} from '../../private/util';
 import {getLoadingState} from '../../private/util';
@@ -13,7 +14,7 @@ import {getLoadingState} from '../../private/util';
  * Each checkbox is rendered as an input / label pair. `Checklist` must be
  * given an `id` to work properly.
  */
-const Checklist = ({
+function Checklist({
   className,
   class_name,
   id,
@@ -41,7 +42,7 @@ const Checklist = ({
   label_class_name,
   value = [],
   options = []
-}) => {
+}) {
   const listItem = option => {
     const checked = includes(option.value, value);
 
@@ -123,7 +124,7 @@ const Checklist = ({
       {items}
     </div>
   );
-};
+}
 
 Checklist.propTypes = {
   /**

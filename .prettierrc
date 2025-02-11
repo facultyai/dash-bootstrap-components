@@ -3,5 +3,8 @@
   "singleQuote": true,
   "bracketSpacing": false,
   "arrowParens": "avoid",
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^@/.*$", "^[./]"],
+  "importOrderSeparation": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

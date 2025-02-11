@@ -1,8 +1,10 @@
 import React from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormLabel from 'react-bootstrap/FormLabel';
-import classNames from 'classnames';
+
 import {bootstrapTextColors} from '../../private/BootstrapColors';
 import {getLoadingState} from '../../private/util';
 
@@ -15,7 +17,7 @@ const alignMap = {
 /**
  * A component for adding labels to inputs in forms with added sizing controls.
  */
-const Label = ({
+function Label({
   children,
   html_for,
   width,
@@ -33,7 +35,7 @@ const Label = ({
   check,
   align = 'center',
   ...otherProps
-}) => {
+}) {
   const isBootstrapColor = bootstrapTextColors.has(color);
 
   // check if column width has been specified, use alignment attribute if so
@@ -71,7 +73,7 @@ const Label = ({
       {children}
     </RBFormLabel>
   );
-};
+}
 
 const stringOrNumberProp = PropTypes.oneOfType([
   PropTypes.number,
@@ -194,6 +196,15 @@ Label.propTypes = {
    * more details.
    */
   xl: columnProps,
+
+  /**
+   * Specify label width on an extra extra large screen
+   *
+   * Valid arguments are boolean, an integer in the range 1-12 inclusive, or a
+   * dictionary with keys 'offset', 'order', 'size'. See the documentation for
+   * more details.
+   */
+  xxl: columnProps,
 
   /**
    * Set vertical alignment of the label, options: 'start', 'center', 'end',

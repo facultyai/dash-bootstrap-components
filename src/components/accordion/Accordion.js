@@ -1,28 +1,28 @@
 import React, {useEffect} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAccordion from 'react-bootstrap/Accordion';
 
-import {parseChildrenToArray, resolveChildProps} from '../../private/util';
 import {AccordionContext} from '../../private/AccordionContext';
+import {parseChildrenToArray, resolveChildProps} from '../../private/util';
 import {getLoadingState} from '../../private/util';
 
 /**
  * A self contained Accordion component. Build up the children using the
  * AccordionItem component.
  */
-const Accordion = props => {
-  let {
-    children,
-    active_item,
-    key,
-    setProps,
-    class_name,
-    className,
-    always_open = false,
-    start_collapsed = false,
-    ...otherProps
-  } = props;
+function Accordion({
+  children,
+  active_item,
+  key,
+  class_name,
+  className,
+  always_open = false,
+  start_collapsed = false,
+  setProps,
+  ...otherProps
+}) {
   children = parseChildrenToArray(children);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const Accordion = props => {
       {items}
     </RBAccordion>
   );
-};
+}
 
 Accordion.dashPersistence = {
   persisted_props: ['active_item'],
@@ -182,7 +182,12 @@ Accordion.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Accordion;

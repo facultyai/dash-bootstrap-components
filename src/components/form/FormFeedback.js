@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormControl from 'react-bootstrap/FormControl';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -9,8 +11,7 @@ import {getLoadingState} from '../../private/util';
  * in a form. Add the form feedback to your layout and set the `valid` or
  * `invalid` props of the associated input to toggle visibility.
  */
-const FormFeedback = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function FormFeedback({children, className, class_name, ...otherProps}) {
   return (
     <RBFormControl.Feedback
       className={class_name || className}
@@ -20,7 +21,7 @@ const FormFeedback = props => {
       {children}
     </RBFormControl.Feedback>
   );
-};
+}
 
 FormFeedback.propTypes = {
   /**

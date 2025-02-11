@@ -1,14 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCard from 'react-bootstrap/Card';
+
 import {getLoadingState} from '../../private/util';
 
 /**
  * Use the CardFooter component to add a footer to any card.
  */
-const CardFooter = props => {
-  const {children, className, class_name, ...otherProps} = props;
+function CardFooter({children, className, class_name, ...otherProps}) {
   return (
     <RBCard.Footer
       data-dash-is-loading={getLoadingState() || undefined}
@@ -18,7 +19,7 @@ const CardFooter = props => {
       {children}
     </RBCard.Footer>
   );
-};
+}
 
 CardFooter.propTypes = {
   /**

@@ -1,11 +1,12 @@
 import React, {cloneElement, useContext} from 'react';
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
-import {map} from 'react-bootstrap/ElementChildren';
+import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import {getLoadingState} from '../../private/util';
+import {map} from 'react-bootstrap/ElementChildren';
 
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 export const ProgressContext = React.createContext({});
 
@@ -32,7 +33,6 @@ function renderProgressBar(
     variant,
     barStyle,
     animated = false,
-    isChild = false,
     visuallyHidden = false,
     striped = false,
     ...props
@@ -63,62 +63,63 @@ function renderProgressBar(
   );
 }
 
-const ProgressBar = React.forwardRef(
-  ({isChild = false, min, max, ...props}, ref) => {
-    if (isChild) {
-      const context = useContext(ProgressContext);
-      return renderProgressBar(
-        {...props, max: max || context.max, min: min || context.min},
-        ref
-      );
-    }
-
-    const {
-      now,
-      label,
-      visuallyHidden,
-      striped,
-      animated,
-      variant,
-      className,
-      children,
-      barStyle,
-      ...wrapperProps
-    } = props;
-
-    min = min === undefined ? 0 : min;
-    max = max === undefined ? 100 : max;
-
-    return (
-      <div
-        ref={ref}
-        {...wrapperProps}
-        className={classNames(className, 'progress')}
-      >
-        <ProgressContext.Provider value={{min, max}}>
-          {children
-            ? map(children, child => cloneElement(child, {isChild: true}))
-            : renderProgressBar(
-                {
-                  min,
-                  now,
-                  max,
-                  label,
-                  visuallyHidden,
-                  striped,
-                  animated,
-                  variant,
-                  barStyle
-                },
-                ref
-              )}
-        </ProgressContext.Provider>
-      </div>
+const ProgressBar = React.forwardRef(function ProgressBar(
+  {isChild = false, min, max, ...props},
+  ref
+) {
+  if (isChild) {
+    const context = useContext(ProgressContext);
+    return renderProgressBar(
+      {...props, max: max || context.max, min: min || context.min},
+      ref
     );
   }
-);
 
-const Progress = ({
+  const {
+    now,
+    label,
+    visuallyHidden,
+    striped,
+    animated,
+    variant,
+    className,
+    children,
+    barStyle,
+    ...wrapperProps
+  } = props;
+
+  min = min === undefined ? 0 : min;
+  max = max === undefined ? 100 : max;
+
+  return (
+    <div
+      ref={ref}
+      {...wrapperProps}
+      className={classNames(className, 'progress')}
+    >
+      <ProgressContext.Provider value={{min, max}}>
+        {children
+          ? map(children, child => cloneElement(child, {isChild: true}))
+          : renderProgressBar(
+              {
+                min,
+                now,
+                max,
+                label,
+                visuallyHidden,
+                striped,
+                animated,
+                variant,
+                barStyle
+              },
+              ref
+            )}
+      </ProgressContext.Provider>
+    </div>
+  );
+});
+
+function Progress({
   children,
   color,
   className,
@@ -127,7 +128,7 @@ const Progress = ({
   bar,
   hide_label = false,
   ...otherProps
-}) => {
+}) {
   const isBootstrapColor = bootstrapColors.has(color);
   return (
     <ProgressBar
@@ -143,6 +144,23 @@ const Progress = ({
       {children}
     </ProgressBar>
   );
+}
+
+ProgressBar.propTypes = {
+  children: PropTypes.node,
+  style: PropTypes.object,
+  class_name: PropTypes.string,
+  className: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  now: PropTypes.number,
+  label: PropTypes.string,
+  visuallyHidden: PropTypes.bool,
+  animated: PropTypes.bool,
+  striped: PropTypes.bool,
+  variant: PropTypes.string,
+  isChild: PropTypes.bool,
+  barStyle: PropTypes.object
 };
 
 Progress.propTypes = {

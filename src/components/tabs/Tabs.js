@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
-import {omit} from 'ramda';
+
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import RBNav from 'react-bootstrap/Nav';
 import RBTab from 'react-bootstrap/Tab';
-import {getLoadingState} from '../../private/util';
 
+import {getLoadingState} from '../../private/util';
 import {
   parseChildrenToArray,
   resolveChildProps,
@@ -16,7 +16,7 @@ import {
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
  * get the currently active tab in a callback.
  */
-const Tabs = ({
+function Tabs({
   children,
   id,
   className,
@@ -25,7 +25,7 @@ const Tabs = ({
   active_tab,
   key,
   setProps
-}) => {
+}) {
   children = parseChildrenToArray(children);
 
   // if active_tab not set initially, choose first tab
@@ -99,27 +99,13 @@ const Tabs = ({
   const tabs =
     children &&
     children.map((child, idx) => {
-      const childProps = resolveChildProps(child);
       const {
-        children,
+        style,
+        className,
+        class_name,
         tab_id,
-        id,
-        label,
-        tab_style,
-        active_tab_style,
-        label_style,
-        active_label_style,
-        tabClassName,
-        tab_class_name,
-        activeTabClassName,
-        active_tab_class_name,
-        labelClassName,
-        label_class_name,
-        activeLabelClassName,
-        active_label_class_name,
-        disabled = false,
-        ...otherProps
-      } = childProps;
+        disabled = false
+      } = resolveChildProps(child);
       const tabId = tab_id || 'tab-' + idx;
 
       return (
@@ -127,10 +113,8 @@ const Tabs = ({
           eventKey={tabId}
           key={tabId}
           disabled={disabled}
-          {...omit(
-            ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
-            otherProps
-          )}
+          style={style}
+          className={class_name || className}
           data-dash-is-loading={getLoadingState() || undefined}
         >
           {child}
@@ -156,7 +140,7 @@ const Tabs = ({
       <RBTab.Content>{tabs}</RBTab.Content>
     </RBTab.Container>
   );
-};
+}
 
 Tabs.dashPersistence = {
   persisted_props: ['active_tab'],
@@ -234,7 +218,12 @@ Tabs.propTypes = {
    * local: window.localStorage, data is kept after the browser quit.
    * session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Tabs;

@@ -1,8 +1,10 @@
 import React from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCol from 'react-bootstrap/Col';
-import classNames from 'classnames';
+
 import {getLoadingState} from '../../private/util';
 
 const alignMap = {
@@ -20,22 +22,20 @@ const alignMap = {
  * (xs, sm, md, lg, xl) to control the width of the columns on different screen
  * sizes to achieve a responsive layout.
  */
-const Col = props => {
-  const {
-    children,
-    width,
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
-    xxl,
-    align,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
-
+function Col({
+  children,
+  width,
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+  xxl,
+  align,
+  className,
+  class_name,
+  ...otherProps
+}) {
   [width, xs, sm, md, lg, xl, xxl].forEach(breakpoint => {
     if (typeof breakpoint === 'object' && breakpoint !== null) {
       breakpoint.span = breakpoint.size;
@@ -60,7 +60,7 @@ const Col = props => {
       {children}
     </RBCol>
   );
-};
+}
 
 const stringOrNumberProp = PropTypes.oneOfType([
   PropTypes.number,

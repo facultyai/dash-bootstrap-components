@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormSelect from 'react-bootstrap/FormSelect';
@@ -9,7 +10,7 @@ import {sanitizeOptions} from '../../private/util';
  * Create a HTML select element with Bootstrap styles. Specify options as a
  * list of dictionaries with keys label, value and disabled.
  */
-const Select = ({
+function Select({
   className,
   class_name,
   html_size,
@@ -20,7 +21,7 @@ const Select = ({
   options = [],
   setProps,
   ...otherProps
-}) => {
+}) {
   const handleChange = e => {
     if (setProps) {
       setProps({value: e.target.value});
@@ -56,7 +57,7 @@ const Select = ({
         ))}
     </RBFormSelect>
   );
-};
+}
 
 Select.dashPersistence = {
   persisted_props: ['value'],
@@ -263,7 +264,12 @@ Select.propTypes = {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  name: PropTypes.string
+  name: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Select;

@@ -1,9 +1,10 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 
-import {PopoverTemplate} from '../../private/OverlayTemplates';
 import Overlay from '../../private/Overlay';
+import {PopoverTemplate} from '../../private/OverlayTemplates';
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -15,24 +16,22 @@ import {getLoadingState} from '../../private/util';
  * of the children.
  */
 
-const Popover = props => {
-  const {
-    children,
-    is_open,
-    className,
-    class_name,
-    style,
-    id,
-    hide_arrow,
-    offset,
-    body,
-    delay = {show: 0, hide: 50},
-    placement = 'right',
-    flip = true,
-    autohide = false,
-    ...otherProps
-  } = props;
-
+function Popover({
+  children,
+  is_open,
+  className,
+  class_name,
+  style,
+  id,
+  hide_arrow,
+  offset,
+  body,
+  delay = {show: 0, hide: 50},
+  placement = 'right',
+  flip = true,
+  autohide = false,
+  ...otherProps
+}) {
   // Calcualte the offset to pass to the popperconfig
   const popperConfig = offset
     ? {
@@ -77,7 +76,7 @@ const Popover = props => {
       </PopoverTemplate>
     </Overlay>
   );
-};
+}
 
 Popover.dashPersistence = {
   persisted_props: ['is_open'],

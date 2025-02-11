@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBListGroup from 'react-bootstrap/ListGroup';
+
 import {getLoadingState} from '../../private/util';
 
 /**
@@ -9,16 +11,15 @@ import {getLoadingState} from '../../private/util';
  * in conjunction with `ListGroupItem`, `ListGroupItemHeading` and
  * `ListGroupItemText`.
  */
-const ListGroup = props => {
-  const {
-    children,
-    className,
-    class_name,
-    flush,
-    tag = 'ul',
-    numbered = false,
-    ...otherProps
-  } = props;
+function ListGroup({
+  children,
+  className,
+  class_name,
+  flush,
+  tag = 'ul',
+  numbered = false,
+  ...otherProps
+}) {
   return (
     <RBListGroup
       className={class_name || className}
@@ -31,7 +32,7 @@ const ListGroup = props => {
       {children}
     </RBListGroup>
   );
-};
+}
 
 ListGroup.propTypes = {
   /**

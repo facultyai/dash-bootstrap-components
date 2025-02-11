@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {act, render, waitFor} from '@testing-library/react';
+
 import Fade from '../Fade';
 
 jest.useFakeTimers();
