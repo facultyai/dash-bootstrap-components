@@ -299,7 +299,7 @@ Modal.propTypes = {
   style: PropTypes.object,
   dialogStyle: PropTypes.object,
   contentStyle: PropTypes.object,
-  zIndex: PropTypes.string,
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   size: PropTypes.string,
   fullscreen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   centered: PropTypes.bool,

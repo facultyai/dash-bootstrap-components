@@ -42,7 +42,7 @@ const DropdownToggle = React.forwardRef(function DropdownToggle(
 
 DropdownToggle.propTypes = {
   as: PropTypes.elementType,
-  children: PropTypes.func,
+  children: PropTypes.node,
   caret: PropTypes.bool,
   split: PropTypes.bool,
   className: PropTypes.string

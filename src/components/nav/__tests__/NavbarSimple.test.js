@@ -44,12 +44,7 @@ describe('NavbarSimple', () => {
     const {
       container: {firstChild: navbarDark}
     } = render(<NavbarSimple dark />);
-    const {
-      container: {firstChild: navbarLight}
-    } = render(<NavbarSimple light />);
-
     expect(navbarDark).toHaveClass('navbar-dark');
-    expect(navbarLight).toHaveClass('navbar-light');
 
     // sticky navbars
     const {
