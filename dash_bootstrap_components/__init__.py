@@ -1,7 +1,5 @@
 """Bootstrap themed components for use in Plotly Dash"""
 
-import os
-
 from dash_bootstrap_components import _components, icons, themes
 from dash_bootstrap_components._components import *  # noqa
 from dash_bootstrap_components._components import Table
@@ -9,9 +7,6 @@ from dash_bootstrap_components._table import _generate_table_from_df
 from dash_bootstrap_components._version import __version__
 
 __all__ = _components.__all__ + ["icons", "themes"]
-
-_current_path = os.path.dirname(os.path.abspath(__file__))
-_METADATA_PATH = os.path.join(_current_path, "_components", "metadata.json")
 
 _js_dist = [
     {
