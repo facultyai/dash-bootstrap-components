@@ -137,4 +137,10 @@ _move-generated-files:
         if file_.name in ("__init__.py", "_table.py", "_version.py", "icons.py", "themes.py"):
             continue
         filename = "__init__.py" if file_.name == "_imports_.py" else file_.name
-        file_.rename(file_.parent / "_components" / filename)
+        new_file = file_.parent / "_components" / filename
+        file_.rename(new_file)
+        # enforce keyword arguments only after the id argument
+        id_pattern = "        id: typing.Optional[str] = None,\n"
+        new_file.write_text(
+            new_file.read_text().replace(id_pattern, f"{id_pattern}{8 * ' '}*,\n")
+        )
