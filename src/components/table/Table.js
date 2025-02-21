@@ -7,16 +7,16 @@ import RBTable from 'react-bootstrap/Table';
 import {getLoadingState} from '../../private/util';
 
 /**
- * A component for applying Bootstrap styles to HTML tables. Use this as a
- * drop-in replacement for `html.Table`, or generate a table from a Pandas
- * DataFrame using `dbc.Table.from_dataframe`.
+ * A component for applying Bootstrap styles to HTML tables. Use this as a drop-in
+ * replacement for `html.Table`, or generate a table from a Pandas DataFrame using
+ * `dbc.Table.from_dataframe`.
  */
 function Table(props) {
-  const {children, className, class_name, color, dark, ...otherProps} = props;
+  const {children, class_name, color, className, ...otherProps} = props;
   return (
     <RBTable
       className={class_name || className}
-      variant={color || (dark ? 'dark' : undefined)}
+      variant={color}
       {...omit(['setProps'], otherProps)}
       data-dash-is-loading={getLoadingState() || undefined}
     >
@@ -27,40 +27,24 @@ function Table(props) {
 
 Table.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this Table
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Table
+   */
+  id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the Table.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the Table.
    */
   class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
 
   /**
    * Specify table size, options: 'sm', 'md', 'lg'
@@ -92,13 +76,6 @@ Table.propTypes = {
   color: PropTypes.string,
 
   /**
-   * **DEPRECATED** - Use color="dark" instead.
-   *
-   * Apply the `table-dark` class for dark cell backgrounds and light text.
-   */
-  dark: PropTypes.bool,
-
-  /**
    * Apply the `table-hover` class which enables a hover state on table rows
    * within the table body.
    */
@@ -108,7 +85,27 @@ Table.propTypes = {
    * Set to True or one of the breakpoints 'sm', 'md', 'lg', 'xl' to make table
    * scroll horizontally at lower breakpoints.
    */
-  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Table.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Table;

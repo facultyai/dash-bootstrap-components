@@ -11,10 +11,11 @@ import {getLoadingState} from '../../private/util';
  */
 function CardImg({
   children,
-  className,
   class_name,
   top,
   bottom,
+  tag,
+  className,
   ...otherProps
 }) {
   return (
@@ -22,6 +23,7 @@ function CardImg({
       data-dash-is-loading={getLoadingState() || undefined}
       className={class_name || className}
       variant={top ? 'top' : bottom ? 'bottom' : null}
+      as={tag}
       {...omit(['setProps'], otherProps)}
     >
       {children}
@@ -31,63 +33,46 @@ function CardImg({
 
 CardImg.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the CardImg
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the CardImg
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * HTML tag to use for the card body, default: div
-   */
-  tag: PropTypes.string,
-
-  /**
-   * Set to True if image is at top of card. This will apply the card-img-top
-   * class which rounds the top corners to match the corners of the card.
-   */
-  top: PropTypes.bool,
-
-  /**
-   * Set to True if image is at bottom of card. This will apply the
-   * card-img-bottom class which rounds the bottom corners to match the corners
-   * of the card.
-   */
-  bottom: PropTypes.bool,
+  id: PropTypes.string,
 
   /**
    * The URI of the embeddable content.
    */
   src: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the CardImg.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the CardImg
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * HTML tag to use for the CardImg, default: img
+   */
+  tag: PropTypes.string,
+
+  /**
+   * If True the card-img-top class will be applied which rounds the top corners of the
+   * image to match the corners of the card.
+   */
+  top: PropTypes.bool,
+
+  /**
+   * If True the card-img-bottom class will be applied which rounds the bottom corners
+   * of the image to match the corners of the card.
+   */
+  bottom: PropTypes.bool,
 
   /**
    * Alternative text in case an image can't be displayed.
@@ -97,7 +82,27 @@ CardImg.propTypes = {
   /**
    * Text to be displayed as a tooltip when hovering
    */
-  title: PropTypes.string
+  title: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the CardImg
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default CardImg;

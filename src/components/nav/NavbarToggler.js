@@ -7,14 +7,14 @@ import RBNavbarToggle from 'react-bootstrap/NavbarToggle';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Use this component to create a navbar toggle to show navlinks when the
- * navbar collapses on smaller screens.
+ * Use this component to create a navbar toggle to show navlinks when the Navbar
+ * collapses on smaller screens.
  */
 function NavbarToggler({
   children,
-  className,
   class_name,
   n_clicks = 0,
+  className,
   setProps,
   ...otherProps
 }) {
@@ -36,39 +36,29 @@ function NavbarToggler({
 
 NavbarToggler.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The children of this component
+   */
+  children: PropTypes.node,
+
+  /**
+   * The ID of the component
    */
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The number of times the NavbarToggler has been clicked.
    */
-  children: PropTypes.node,
+  n_clicks: PropTypes.number,
+
   /**
-   * Defines CSS styles which will override styles previously set.
+   * Additional inline CSS styles to apply to the Component.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the Component
    */
   class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
 
   /**
    * Toggle type, default: button.
@@ -76,10 +66,19 @@ NavbarToggler.propTypes = {
   type: PropTypes.string,
 
   /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
    */
-  n_clicks: PropTypes.number,
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Component
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the button is clicked.

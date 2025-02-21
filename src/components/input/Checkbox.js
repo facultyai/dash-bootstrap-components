@@ -6,31 +6,27 @@ import PropTypes from 'prop-types';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Checklist is a component that encapsulates several checkboxes.
- * The values and labels of the checklist is specified in the `options`
- * property and the checked items are specified with the `value` property.
- * Each checkbox is rendered as an input / label pair. `Checklist` must be
- * given an `id` to work properly.
+ * Render a single checkbox.
  */
 function Checkbox({
-  className,
+  id,
+  value = false,
+  disabled = false,
   class_name,
   style,
-  id,
   label,
   label_id,
   name,
-  setProps,
-  value = false,
-  disabled = false,
-  inputStyle = {},
   input_style = null,
-  inputClassName = '',
   input_class_name = '',
-  labelStyle = {},
   label_style = null,
-  labelClassName = '',
-  label_class_name = ''
+  label_class_name = '',
+  className,
+  inputStyle,
+  inputClassName,
+  labelStyle,
+  labelClassName,
+  setProps
 }) {
   return (
     <div
@@ -73,97 +69,16 @@ function Checkbox({
   );
 }
 
+Checkbox.dashPersistence = {
+  persisted_props: ['value'],
+  persistence_type: 'local'
+};
+
 Checkbox.propTypes = {
   /**
-   * The ID of this component, used to identify dash components in callbacks.
-   * The ID needs to be unique across all of the components in an app.
+   * The ID of the Checkbox.
    */
   id: PropTypes.string,
-
-  /**
-   * The class of the container (div)
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * The class of the container (div)
-   */
-  className: PropTypes.string,
-
-  /**
-   * The style of the container (div)
-   */
-  style: PropTypes.object,
-
-  /**
-   * The style of the <input> checkbox element.
-   */
-  input_style: PropTypes.object,
-
-  /**
-   * **DEPRECATED** Use `input_style` instead.
-   *
-   * The style of the <input> checkbox element.
-   */
-  inputStyle: PropTypes.object,
-
-  /**
-   * The class of the <input> checkbox element
-   */
-  input_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `input_class_name` instead.
-   *
-   * The class of the <input> checkbox element
-   */
-  inputClassName: PropTypes.string,
-
-  /**
-   * The label of the <input> element
-   */
-  label: PropTypes.node,
-
-  /**
-   * The id of the label
-   */
-  label_id: PropTypes.string,
-
-  /**
-   * Inline style arguments to apply to the <label> element for each item.
-   */
-  label_style: PropTypes.object,
-
-  /**
-   * **DEPRECATED** Use `label_style` instead.
-   *
-   * Inline style arguments to apply to the <label> element for each item.
-   */
-  labelStyle: PropTypes.object,
-
-  /**
-   * CSS classes to apply to the <label> element for each item.
-   */
-  label_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `label_class_name` instead.
-   *
-   * CSS classes to apply to the <label> element for each item.
-   */
-  labelClassName: PropTypes.string,
-
-  /**
-   * The name of the control, which is submitted with the form data.
-   */
-  name: PropTypes.string,
-
-  /**
-   * Disable the Checkbox.
-   **/
-  disabled: PropTypes.bool,
 
   /**
    * The value of the input.
@@ -171,12 +86,58 @@ Checkbox.propTypes = {
   value: PropTypes.bool,
 
   /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * Disable the Checkbox.
+   **/
+  disabled: PropTypes.bool,
+
+  /**
+   * A label to display alongside the Checkbox.
+   */
+  label: PropTypes.node,
+
+  /**
+   * Additional CSS classes to apply to the container div.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the container div.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional inline CSS styles to apply to the <input> element.
+   */
+  input_style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the <input> element.
+   */
+  input_class_name: PropTypes.string,
+
+  /**
+   * The ID of the label
+   */
+  label_id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to add to the label.
+   */
+  label_style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the label.
+   */
+  label_class_name: PropTypes.string,
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  name: PropTypes.string,
+
+  /**
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -193,21 +154,51 @@ Checkbox.propTypes = {
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the container div.
+   */
+  className: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `input_style` instead.
+   *
+   * Additional inline CSS styles to apply to the <input> element.
+   */
+  inputStyle: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `input_class_name` instead.
+   *
+   * Additional CSS classes to apply to the <input> element.
+   */
+  inputClassName: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `label_style` instead.
+   *
+   * Additional inline CSS styles to add to the label.
+   */
+  labelStyle: PropTypes.object,
+
+  /**
+   * **DEPRECATED** Use `label_class_name` instead.
+   *
+   * Additional CSS classes to apply to the label.
+   */
+  labelClassName: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.
    */
   setProps: PropTypes.func
-};
-
-Checkbox.dashPersistence = {
-  persisted_props: ['value'],
-  persistence_type: 'local'
 };
 
 export default Checkbox;

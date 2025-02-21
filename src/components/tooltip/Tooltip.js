@@ -14,18 +14,18 @@ import {getLoadingState} from '../../private/util';
  */
 
 function Tooltip({
-  id,
   children,
+  id,
   is_open,
-  className,
-  class_name,
+  trigger = 'hover focus',
   style,
+  class_name,
   delay = {show: 0, hide: 50},
   placement = 'auto',
   flip = true,
   autohide = true,
   fade = true,
-  trigger = 'hover focus',
+  className,
   ...otherProps
 }) {
   return (
@@ -53,45 +53,40 @@ function Tooltip({
 
 Tooltip.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this Tooltip.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Tooltip.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * The id of the element to attach the tooltip to
    */
   target: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+
+  /**
+   * Whether the Tooltip is open or not.
+   */
+  is_open: PropTypes.bool,
+
+  /**
+   * Space separated list of triggers (e.g. "click hover focus legacy"). These
+   * specify ways in which the target component can toggle the tooltip. If
+   * omitted you must toggle the tooltip yourself using callbacks. Options
+   * are:
+   * - "click": toggles the popover when the target is clicked.
+   * - "hover": toggles the popover when the target is hovered over with the
+   * cursor.
+   * - "focus": toggles the popover when the target receives focus
+   * - "legacy": toggles the popover when the target is clicked, but will also
+   * dismiss the popover when the user clicks outside of the popover.
+   *
+   * Default is "hover focus"
+   */
+  trigger: PropTypes.string,
 
   /**
    * How to place the tooltip.
@@ -115,15 +110,15 @@ Tooltip.propTypes = {
   ]),
 
   /**
+   * Control the delay of hide and show events.
+   */
+  delay: PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
+
+  /**
    * Whether to flip the direction of the popover if too close to the container
    * edge, default True.
    */
   flip: PropTypes.bool,
-
-  /**
-   * Control the delay of hide and show events.
-   */
-  delay: PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
 
   /**
    * Optionally hide tooltip when hovering over tooltip content - default True.
@@ -137,25 +132,34 @@ Tooltip.propTypes = {
   fade: PropTypes.bool,
 
   /**
-   * Space separated list of triggers (e.g. "click hover focus legacy"). These
-   * specify ways in which the target component can toggle the tooltip. If
-   * omitted you must toggle the tooltip yourself using callbacks. Options
-   * are:
-   * - "click": toggles the popover when the target is clicked.
-   * - "hover": toggles the popover when the target is hovered over with the
-   * cursor.
-   * - "focus": toggles the popover when the target receives focus
-   * - "legacy": toggles the popover when the target is clicked, but will also
-   * dismiss the popover when the user clicks outside of the popover.
-   *
-   * Default is "hover focus"
+   * Additional inline CSS styles to apply to the Component.
    */
-  trigger: PropTypes.string,
+  style: PropTypes.object,
 
   /**
-   * Whether the Tooltip is open or not.
+   * Additional CSS classes to apply to the Component
    */
-  is_open: PropTypes.bool
+  class_name: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Component
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Tooltip;

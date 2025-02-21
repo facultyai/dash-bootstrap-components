@@ -13,23 +13,17 @@ import {getLoadingState} from '../../private/util';
  */
 function Carousel({
   items,
+  interval,
   style,
   class_name,
-  className,
-  setProps,
-  interval,
   active_index = 0,
   controls = true,
   indicators = true,
+  className,
+  setProps,
   ...otherProps
 }) {
   const slides = items.map(item => {
-    // note - the default 'd-block w-100' is from the examples in the Bootstrap docs.
-    item.imgClassName =
-      typeof item.imgClassName !== 'undefined'
-        ? item.imgClassName
-        : 'd-block w-100';
-
     const useLink = item.href && true;
     const additionalProps = useLink
       ? {
@@ -47,7 +41,10 @@ function Carousel({
       >
         <img
           src={item.src}
-          className={item.img_class_name || item.imgClassName}
+          // the default 'd-block w-100' is from the examples in the Bootstrap docs.
+          className={
+            item.img_class_name || item.imgClassName || 'd-block w-100'
+          }
           style={item.img_style}
           alt={item.alt}
         />
@@ -88,39 +85,15 @@ Carousel.dashPersistence = {
 
 Carousel.propTypes = {
   /**
-   * The ID of the component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The ID of the Carousel.
    */
   id: PropTypes.string,
 
   /**
-   * Defines CSS styles of the carousel container. Will override styles previously set.
-   */
-  style: PropTypes.object,
-
-  /**
-   * Defines the className of the carousel container. Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * efines the className of the carousel container. Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * The items to display on the slides in the carousel
+   * The items to display on the slides in the Carousel.
    */
   items: PropTypes.arrayOf(
     PropTypes.exact({
-      /**
-       * A unique identifier for the slide, used to improve performance by React.js while rendering components
-       * See https://reactjs.org/docs/lists-and-keys.html for more info.
-       */
-      key: PropTypes.string,
       /**
        * The URL of the image
        */
@@ -130,57 +103,61 @@ Carousel.propTypes = {
        */
       alt: PropTypes.string,
       /**
-       * The className for the image.  The default is 'd-block w-100'
-       */
-      img_class_name: PropTypes.string,
-      /**
-       * **DEPRECATED** Use `img_class_name` instead.
-       *
-       * The className for the image.  The default is 'd-block w-100'
-       */
-      imgClassName: PropTypes.string,
-      /**
-       * The style for the image
-       */
-      img_style: PropTypes.object,
-      /**
        * The header of the text on the slide. It is displayed in a <h5> element
        */
       header: PropTypes.string,
       /**
-       * The caption of the item.  The text is displayed in a <p> element
+       * A caption for the item.
        */
       caption: PropTypes.string,
+      /**
+       * Additional inline CSS styles for the image
+       */
+      img_style: PropTypes.object,
+      /**
+       * The className for the image.  The default is 'd-block w-100'
+       */
+      img_class_name: PropTypes.string,
       /**
        * The class name for the header and caption container
        */
       caption_class_name: PropTypes.string,
       /**
+       * Optional hyperlink to add to the item. Item will be rendered as a HTML <a> or
+       * as a Dash-style link depending on whether the link is deemed to be internal or
+       * external. Override this automatic detection with the external_link argument.
+       */
+      href: PropTypes.string,
+      /**
+       * Optional target attribute for the link. Only applies if `href` is set, default
+       * `_self`.
+       */
+      target: PropTypes.string,
+      /**
+       * If True, clicking on the item will behave like a hyperlink. If False, the item
+       * will behave like a dcc.Link component, and can be used in conjunction with
+       * dcc.Location for navigation within a Dash app.
+       */
+      external_link: PropTypes.bool,
+      /**
+       * A unique identifier for the slide, used to improve performance by React.js
+       * while rendering components.
+       *
+       * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info.
+       */
+      key: PropTypes.string,
+      /**
+       * **DEPRECATED** Use `img_class_name` instead.
+       *
+       * The className for the image. The default is 'd-block w-100'
+       */
+      imgClassName: PropTypes.string,
+      /**
        * **DEPRECATED** Use `caption_class_name` instead.
        *
        * The class name for the header and caption container
        */
-      captionClassName: PropTypes.string,
-      /**
-       * Optional hyperlink to add to the item. Item will be rendered as a
-       * HTML <a> or as a Dash-style link depending on whether the link is
-       * deemed to be internal or external. Override this automatic detection
-       * with the external_link argument.
-       */
-      href: PropTypes.string,
-      /**
-       * Optional target attribute for the link. Only applies if `href` is set, default `_self`.
-       */
-      target: PropTypes.string,
-      /**
-       * If true, the browser will treat this as an external link,
-       * forcing a page refresh at the new location. If false,
-       * this just changes the location without triggering a page
-       * refresh. Use this if you are observing dcc.Location, for
-       * instance. Defaults to true for absolute URLs and false
-       * otherwise.
-       */
-      external_link: PropTypes.bool
+      captionClassName: PropTypes.string
     })
   ).isRequired,
 
@@ -188,6 +165,12 @@ Carousel.propTypes = {
    * The current visible slide number
    */
   active_index: PropTypes.number,
+
+  /**
+   * The interval at which the Carousel automatically cycles through the slides. If
+   * None, the Carousel will not automatically cycle.
+   */
+  interval: PropTypes.number,
 
   /**
    * Show the Carousel previous and next arrows for changing the current slide
@@ -200,34 +183,28 @@ Carousel.propTypes = {
   indicators: PropTypes.bool,
 
   /**
-   * Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.
+   * Defines CSS styles of the carousel container. Will override styles previously set.
    */
-  ride: PropTypes.oneOf(['carousel']),
+  style: PropTypes.object,
 
   /**
-   * controls whether the slide animation on the Carousel works or not
+   * Defines the className of the carousel container. Additional CSS classes to apply to the Component
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Enables animation on the Carousel as it transitions between slides.
    */
   slide: PropTypes.bool,
 
   /**
-   * Add `variant="dark"` to the Carousel for darker controls, indicators, and
-   * captions.
+   * Add `variant="dark"` to the Carousel for darker controls, indicators, and captions.
    */
   variant: PropTypes.oneOf(['dark']),
 
   /**
-   *the interval at which the carousel automatically cycles (default: 5000)
-   * If set to None, carousel will not Autoplay (i.e. will not automatically cycle).
-   */
-  interval: PropTypes.number,
-
-  /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -244,11 +221,18 @@ Carousel.propTypes = {
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * efines the className of the carousel container. Additional CSS classes to apply to the Component
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.

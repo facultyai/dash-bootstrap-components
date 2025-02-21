@@ -7,14 +7,14 @@ import RBModalHeader from 'react-bootstrap/ModalHeader';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Add a header to any modal.
+ * Add a header to any Modal.
  */
 function ModalHeader({
   children,
-  className,
+  close_button = true,
   class_name,
   tag,
-  close_button = true,
+  className,
   ...otherProps
 }) {
   return (
@@ -32,32 +32,14 @@ function ModalHeader({
 
 ModalHeader.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this ModalHeader.
    */
   children: PropTypes.node,
-  /**
-   * Defines CSS styles which will override styles previously set.
-   */
-  style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * The ID of the ModalHeader.
    */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Add a close button to the header that can be used to close the modal.
@@ -65,9 +47,31 @@ ModalHeader.propTypes = {
   close_button: PropTypes.bool,
 
   /**
+   * Additional inline CSS styles to apply to the ModalHeader.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the ModalHeader
+   */
+  class_name: PropTypes.string,
+
+  /**
    * HTML tag to use for the ModalHeader, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the ModalHeader
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default ModalHeader;

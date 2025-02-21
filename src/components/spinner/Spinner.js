@@ -17,19 +17,19 @@ import {loadingSelector} from '../../private/util';
 function Spinner({
   children,
   color,
-  spinner_style,
-  spinnerClassName,
-  spinner_class_name,
-  fullscreen,
-  fullscreenClassName,
-  fullscreen_class_name,
-  fullscreen_style,
+  type = 'border',
+  show_initially = true,
   delay_hide = 0,
   delay_show = 0,
-  show_initially = true,
-  type = 'border',
+  spinner_style,
+  spinner_class_name,
+  fullscreen,
+  fullscreen_class_name,
+  fullscreen_style,
   target_components,
   display,
+  spinnerClassName,
+  fullscreenClassName,
   ...otherProps
 }) {
   const ctx = window.dash_component_api?.useDashContext();
@@ -170,50 +170,14 @@ function Spinner({
 
 Spinner.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of this Spinner.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles for the container when fullscreen=True.
+   * The ID of the Spinner
    */
-  fullscreen_style: PropTypes.object,
-
-  /**
-   * Inline CSS styles to apply to the spinner.
-   */
-  spinner_style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  fullscreen_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - use `fullscreen_class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  fullscreenClassName: PropTypes.string,
-
-  /**
-   * CSS class names to apply to the spinner.
-   */
-  spinner_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - use `spinner_class_name` instead.
-   *
-   * CSS class names to apply to the spinner.
-   */
-  spinnerClassName: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Sets the color of the Spinner. Main options are Bootstrap contextual
@@ -242,13 +206,13 @@ Spinner.propTypes = {
   fullscreen: PropTypes.bool,
 
   /**
-   * When using the spinner as a loading spinner, add a time delay (in ms) to
+   * When using the Spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being removed to prevent flickering.
    */
   delay_hide: PropTypes.number,
 
   /**
-   * When using the spinner as a loading spinner, add a time delay (in ms) to
+   * When using the Spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being shown after the component starts loading.
    */
   delay_show: PropTypes.number,
@@ -260,6 +224,32 @@ Spinner.propTypes = {
   show_initially: PropTypes.bool,
 
   /**
+   * Inline CSS styles to apply to the Spinner.
+   */
+  spinner_style: PropTypes.object,
+
+  /**
+   * CSS class names to apply to the Spinner.
+   */
+  spinner_class_name: PropTypes.string,
+
+  /**
+   * Defines CSS styles for the container when fullscreen=True.
+   */
+  fullscreen_style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Component
+   */
+  fullscreen_class_name: PropTypes.string,
+
+  /**
+   * Setting display to  "show" or "hide"  will override the loading state coming from
+   * dash-renderer
+   */
+  display: PropTypes.oneOf(['auto', 'show', 'hide']),
+
+  /**
    * Specify component and prop to trigger showing the loading spinner
    * example: `{"output-container": "children", "grid": ["rowData", "columnDefs]}`
    *
@@ -269,9 +259,23 @@ Spinner.propTypes = {
   ),
 
   /**
-   * Setting display to  "show" or "hide"  will override the loading state coming from dash-renderer
+   * **DEPRECATED** - use `fullscreen_class_name` instead.
+   *
+   * Additional CSS classes to apply to the Component
    */
-  display: PropTypes.oneOf(['auto', 'show', 'hide'])
+  fullscreenClassName: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `spinner_class_name` instead.
+   *
+   * CSS class names to apply to the spinner.
+   */
+  spinnerClassName: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Spinner;

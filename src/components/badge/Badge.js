@@ -14,12 +14,12 @@ import {getLoadingState} from '../../private/util';
 function Badge({
   children,
   href,
-  style,
-  className,
-  class_name,
-  text_color,
   color = 'secondary',
+  text_color,
   n_clicks = 0,
+  style,
+  class_name,
+  className,
   setProps,
   ...otherProps
 }) {
@@ -50,56 +50,47 @@ function Badge({
 
 Badge.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of the Badge.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Badge.
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
+   * Badge color, options: primary, secondary, success, info, warning, danger, link or
+   * any valid CSS color of your choice (e.g. a hex code, a decimal code or a CSS
+   * color name).
    *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * Badge color, options: primary, secondary, success, info, warning, danger,
-   * link or any valid CSS color of
-   * your choice (e.g. a hex code, a decimal code or a CSS color name)
    * Default: secondary.
    */
   color: PropTypes.string,
 
   /**
-   * Badge color, options: primary, secondary, success, info, warning, danger,
-   * link or any valid CSS color of
-   * your choice (e.g. a hex code, a decimal code or a CSS color name)
-   * Default: secondary.
+   * Set the color of the text to one of the Bootstrap contextual colors.
+   *
+   * Options: primary, secondary, success, info, warning, danger, light or dark.
    */
   text_color: PropTypes.string,
+
+  /**
+   * The number of times the Badge has been clicked.
+   */
+  n_clicks: PropTypes.number,
+
+  /**
+   * A URL to link to when the Badge is clicked.
+   */
+  href: PropTypes.string,
+
+  /**
+   * If True, clicking on the Badge will behave like a hyperlink. If False, the Badge
+   * will behave like a dcc.Link component, and can be used in conjunction with
+   * dcc.Location for navigation within a Dash app.
+   */
+  external_link: PropTypes.bool,
 
   /**
    * Make badge "pill" shaped (rounded ends, like a pill). Default: False.
@@ -107,30 +98,19 @@ Badge.propTypes = {
   pill: PropTypes.bool,
 
   /**
-   * Attach link to badge.
+   * Additional inline CSS styles to apply to the Badge..
    */
-  href: PropTypes.string,
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Badge.
+   */
+  class_name: PropTypes.string,
 
   /**
    * HTML tag to use for the Badge. Default: span.
    */
   tag: PropTypes.string,
-
-  /**
-   * If true, the browser will treat this as an external link,
-   * forcing a page refresh at the new location. If false,
-   * this just changes the location without triggering a page
-   * refresh. Use this if you are observing dcc.Location, for
-   * instance. Defaults to true for absolute URLs and false
-   * otherwise.
-   */
-  external_link: PropTypes.bool,
-
-  /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
-   */
-  n_clicks: PropTypes.number,
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.
@@ -141,6 +121,21 @@ Badge.propTypes = {
    * Sets the title attribute of the underlying HTML button.
    */
   title: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Badge.
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.

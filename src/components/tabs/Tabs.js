@@ -13,17 +13,17 @@ import {
 } from '../../private/util';
 
 /**
- * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
- * get the currently active tab in a callback.
+ * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get the
+ * currently active tab in a callback.
  */
 function Tabs({
   children,
   id,
-  className,
-  class_name,
-  style,
   active_tab,
+  style,
+  class_name,
   key,
+  className,
   setProps
 }) {
   children = parseChildrenToArray(children);
@@ -149,40 +149,14 @@ Tabs.dashPersistence = {
 
 Tabs.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this Tabs component. Each child should be a Tab component.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Tabs.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * The tab_id of the currently active tab. If tab_id has not been specified
@@ -192,12 +166,18 @@ Tabs.propTypes = {
   active_tab: PropTypes.string,
 
   /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * Additional inline CSS styles to apply to the Tabs..
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Tabs.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -214,11 +194,26 @@ Tabs.propTypes = {
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Tabs.
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.

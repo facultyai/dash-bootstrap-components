@@ -9,7 +9,7 @@ import {getLoadingState} from '../../private/util';
 /**
  * Use the CardFooter component to add a footer to any card.
  */
-function CardFooter({children, className, class_name, ...otherProps}) {
+function CardFooter({children, class_name, className, ...otherProps}) {
   return (
     <RBCard.Footer
       data-dash-is-loading={getLoadingState() || undefined}
@@ -23,45 +23,48 @@ function CardFooter({children, className, class_name, ...otherProps}) {
 
 CardFooter.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
    * The children of this component
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the component
+   */
+  id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the CardFooter.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the CardFooter
    */
   class_name: PropTypes.string,
 
   /**
+   * HTML tag to use for the card footer, default: div
+   */
+  tag: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+  /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the CardFooter
    */
   className: PropTypes.string,
 
   /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  key: PropTypes.string,
-
-  /**
-   * HTML tag to use for the card footer, default: div
-   */
-  tag: PropTypes.string
+  setProps: PropTypes.func
 };
 
 export default CardFooter;

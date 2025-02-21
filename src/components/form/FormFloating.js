@@ -12,8 +12,8 @@ import {getLoadingState} from '../../private/util';
 function FormFloating({
   children,
   html_for,
-  className,
   class_name,
+  className,
   ...otherProps
 }) {
   return (
@@ -30,45 +30,49 @@ function FormFloating({
 
 FormFloating.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this FormFloating
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the FormFloating
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Set the `for` attribute of the label to bind it to a particular element
    */
-  html_for: PropTypes.string
+  html_for: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the FormFloating.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the FormFloating
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the FormFloating
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default FormFloating;
