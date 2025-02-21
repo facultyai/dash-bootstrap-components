@@ -97,19 +97,19 @@ Link.propTypes = {
   children: PropTypes.node,
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the Link.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Link.
    */
   class_name: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Link.
    */
   className: PropTypes.string,
 

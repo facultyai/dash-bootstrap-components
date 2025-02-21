@@ -42,7 +42,7 @@ const Collapse = React.forwardRef(function Collapse(
 
 Collapse.propTypes = {
   /**
-   * The children of the Collapse..
+   * The children of the Collapse.
    */
   children: PropTypes.node,
 
@@ -68,12 +68,12 @@ Collapse.propTypes = {
   navbar: PropTypes.bool,
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the Collapse.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Collapse.
    */
   class_name: PropTypes.string,
 
@@ -93,7 +93,7 @@ Collapse.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Collapse.
    */
   className: PropTypes.string,
 

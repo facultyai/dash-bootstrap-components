@@ -91,7 +91,7 @@ Select.propTypes = {
    * ```
    * [
    *   {"label": "label1", "value": "value1"},
-   *   {"label": "label2", "value": "value2"}, ...
+   *   {"label": "label2", "value": "value2"},
    * ]
    * ```
    */
@@ -110,7 +110,7 @@ Select.propTypes = {
      * which is equal to
      * [
      *   {label: `label1`, value: `value1`},
-     *   {label: `label2`, value: `value2`}, ...
+     *   {label: `label2`, value: `value2`},
      * ]
      */
     PropTypes.object,

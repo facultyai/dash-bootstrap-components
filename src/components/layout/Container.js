@@ -45,12 +45,12 @@ Container.propTypes = {
   fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the Container.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Container.
    */
   class_name: PropTypes.string,
 
@@ -70,7 +70,7 @@ Container.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Container.
    */
   className: PropTypes.string,
 

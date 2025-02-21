@@ -103,12 +103,12 @@ Button.propTypes = {
   external_link: PropTypes.bool,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Button.
    */
   class_name: PropTypes.string,
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the Button.
    */
   style: PropTypes.object,
 
@@ -184,7 +184,7 @@ Button.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Button
    */
   className: PropTypes.string,
 

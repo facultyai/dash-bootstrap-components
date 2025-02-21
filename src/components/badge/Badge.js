@@ -98,7 +98,7 @@ Badge.propTypes = {
   pill: PropTypes.bool,
 
   /**
-   * Additional inline CSS styles to apply to the Badge..
+   * Additional inline CSS styles to apply to the Badge.
    */
   style: PropTypes.object,
 

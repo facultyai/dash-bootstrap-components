@@ -35,12 +35,12 @@ ModalBody.propTypes = {
   id: PropTypes.string,
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the ModalBody.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the ModalBody.
    */
   class_name: PropTypes.string,
 
@@ -52,7 +52,7 @@ ModalBody.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the ModalBody.
    */
   className: PropTypes.string,
 

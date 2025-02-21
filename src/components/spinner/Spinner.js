@@ -239,7 +239,7 @@ Spinner.propTypes = {
   fullscreen_style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Spinner when fullscreen=True.
    */
   fullscreen_class_name: PropTypes.string,
 
@@ -261,7 +261,7 @@ Spinner.propTypes = {
   /**
    * **DEPRECATED** - use `fullscreen_class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Spinner when fullscreen=True.
    */
   fullscreenClassName: PropTypes.string,
 

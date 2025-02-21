@@ -51,12 +51,12 @@ NavbarToggler.propTypes = {
   n_clicks: PropTypes.number,
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the NavbarToggler.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the NavbarToggler.
    */
   class_name: PropTypes.string,
 
@@ -76,7 +76,7 @@ NavbarToggler.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the NavbarToggler.
    */
   className: PropTypes.string,
 

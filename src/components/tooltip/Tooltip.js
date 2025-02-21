@@ -132,12 +132,12 @@ Tooltip.propTypes = {
   fade: PropTypes.bool,
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the Tooltip.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Tooltip
    */
   class_name: PropTypes.string,
 
@@ -152,7 +152,7 @@ Tooltip.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Tooltip
    */
   className: PropTypes.string,
 

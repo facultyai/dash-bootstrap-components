@@ -8,7 +8,7 @@ import Link from '../../private/Link';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Component for creating Bootstrap carousel.  This component is a slideshow
+ * Carousel. for creating Bootstrap carousel.  This component is a slideshow
  * for cycling through a series of content.
  */
 function Carousel({
@@ -188,7 +188,8 @@ Carousel.propTypes = {
   style: PropTypes.object,
 
   /**
-   * Defines the className of the carousel container. Additional CSS classes to apply to the Component
+   * Defines the className of the carousel container. Additional CSS classes to apply to
+   * the Carousel.
    */
   class_name: PropTypes.string,
 
@@ -230,7 +231,7 @@ Carousel.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * efines the className of the carousel container. Additional CSS classes to apply to the Component
+   * efines the className of the carousel container. Additional CSS classes to apply to the Carousel.
    */
   className: PropTypes.string,
 

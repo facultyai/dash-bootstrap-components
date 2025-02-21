@@ -33,7 +33,7 @@ PopoverHeader.propTypes = {
   id: PropTypes.string,
 
   /**
-   * Additional inline CSS styles to apply to the PopoverHeader..
+   * Additional inline CSS styles to apply to the PopoverHeader.
    */
   style: PropTypes.object,
 

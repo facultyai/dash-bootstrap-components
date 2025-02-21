@@ -200,7 +200,7 @@ Pagination.propTypes = {
   first_last: PropTypes.bool,
 
   /**
-   * Additional inline CSS styles to apply to the Pagination..
+   * Additional inline CSS styles to apply to the Pagination.
    */
   style: PropTypes.object,
 

@@ -153,7 +153,7 @@ Toast.propTypes = {
   color: PropTypes.string,
 
   /**
-   * Additional inline CSS styles to apply to the Toast..
+   * Additional inline CSS styles to apply to the Toast.
    */
   style: PropTypes.object,
 

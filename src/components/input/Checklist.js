@@ -159,7 +159,7 @@ Checklist.propTypes = {
    * ```
    * [
    *   {"label": "label1", "value": "value1"},
-   *   {"label": "label2", "value": "value2"}, ...
+   *   {"label": "label2", "value": "value2"},
    * ]
    * ```
    */

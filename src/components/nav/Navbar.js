@@ -86,12 +86,12 @@ Navbar.propTypes = {
   expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
-   * Additional inline CSS styles to apply to the Component.
+   * Additional inline CSS styles to apply to the Navbar.
    */
   style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Navbar.
    */
   class_name: PropTypes.string,
 
@@ -116,7 +116,7 @@ Navbar.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Navbar.
    */
   className: PropTypes.string,
 

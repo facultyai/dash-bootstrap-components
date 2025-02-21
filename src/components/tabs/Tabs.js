@@ -166,7 +166,7 @@ Tabs.propTypes = {
   active_tab: PropTypes.string,
 
   /**
-   * Additional inline CSS styles to apply to the Tabs..
+   * Additional inline CSS styles to apply to the Tabs.
    */
   style: PropTypes.object,
 

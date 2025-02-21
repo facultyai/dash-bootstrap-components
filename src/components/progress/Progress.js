@@ -227,7 +227,7 @@ Progress.propTypes = {
   striped: PropTypes.bool,
 
   /**
-   * Additional inline CSS styles to apply to the Progress..
+   * Additional inline CSS styles to apply to the Progress.
    */
   style: PropTypes.object,
 

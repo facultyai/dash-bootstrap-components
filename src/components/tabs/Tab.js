@@ -69,31 +69,31 @@ Tab.propTypes = {
   active_label_style: PropTypes.object,
 
   /**
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Tabs.
    */
   class_name: PropTypes.string,
 
   /**
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavItem in the tab.
    */
   tab_class_name: PropTypes.string,
 
   /**
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavItem in the tab when it
    * is active.
    */
   active_tab_class_name: PropTypes.string,
 
   /**
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavLink in the tab.
    */
   label_class_name: PropTypes.string,
 
   /**
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavLink in the tab when
    * it is active.
    */
@@ -110,14 +110,14 @@ Tab.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Component
+   * Additional CSS classes to apply to the Tabs.
    */
   className: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `tab_class_name` instead
    *
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavItem in the tab.
    */
   tabClassName: PropTypes.string,
@@ -125,7 +125,7 @@ Tab.propTypes = {
   /**
    * **DEPRECATED** Use `active_tab_class_name` instead
    *
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavItem in the tab when it
    * is active.
    */
@@ -134,7 +134,7 @@ Tab.propTypes = {
   /**
    * **DEPRECATED** Use `label_class_name` instead
    *
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavLink in the tab.
    */
   labelClassName: PropTypes.string,
@@ -142,7 +142,7 @@ Tab.propTypes = {
   /**
    * **DEPRECATED** Use `active_label_class_name` instead
    *
-   * Additional CSS classes to apply to the Component The classes
+   * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavLink in the tab when
    * it is active.
    */
