@@ -9,7 +9,7 @@ import {getLoadingState} from '../../private/util';
 /**
  * Creates a header for use inside the `Popover` component.
  */
-function PopoverHeader({children, className, class_name, ...otherProps}) {
+function PopoverHeader({children, class_name, className, ...otherProps}) {
   return (
     <RBPopoverHeader
       className={class_name || className}
@@ -23,44 +23,49 @@ function PopoverHeader({children, className, class_name, ...otherProps}) {
 
 PopoverHeader.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The children of this PopoverHeader.
+   */
+  children: PropTypes.node,
+
+  /**
+   * The ID of the PopoverHeader.
    */
   id: PropTypes.string,
 
   /**
-   * The children of this component
-   */
-  children: PropTypes.node,
-  /**
-   * Defines CSS styles which will override styles previously set.
+   * Additional inline CSS styles to apply to the PopoverHeader.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the PopoverHeader.
    */
   class_name: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
+   * HTML tag to use for the PopoverHeader, default: h3
    */
-  className: PropTypes.string,
+  tag: PropTypes.string,
 
   /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
    */
   key: PropTypes.string,
 
   /**
-   * HTML tag to use for the PopoverHeader, default: h3
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the PopoverHeader.
    */
-  tag: PropTypes.string
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default PopoverHeader;

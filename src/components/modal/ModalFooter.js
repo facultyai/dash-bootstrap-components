@@ -7,9 +7,9 @@ import RBModalFooter from 'react-bootstrap/ModalFooter';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Add a footer to any modal.
+ * Add a footer to any Modal.
  */
-function ModalFooter({children, className, class_name, tag, ...otherProps}) {
+function ModalFooter({children, class_name, tag, className, ...otherProps}) {
   return (
     <RBModalFooter
       as={tag}
@@ -24,37 +24,41 @@ function ModalFooter({children, className, class_name, tag, ...otherProps}) {
 
 ModalFooter.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The children of the ModalFooter.
+   */
+  children: PropTypes.node,
+
+  /**
+   * The ID of the ModalFooter.
    */
   id: PropTypes.string,
 
   /**
-   * The children of this component
-   */
-  children: PropTypes.node,
-  /**
-   * Defines CSS styles which will override styles previously set.
+   * Additional inline CSS styles to apply to the ModalFooter.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the ModalFooter
    */
   class_name: PropTypes.string,
 
   /**
+   * HTML tag to use for the ModalFooter, default: div
+   */
+  tag: PropTypes.string,
+
+  /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the ModalFooter
    */
   className: PropTypes.string,
 
   /**
-   * HTML tag to use for the ModalFooter, default: div
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  tag: PropTypes.string
+  setProps: PropTypes.func
 };
 
 export default ModalFooter;

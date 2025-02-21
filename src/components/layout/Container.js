@@ -7,10 +7,9 @@ import RBContainer from 'react-bootstrap/Container';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Containers provide a means to center and horizontally pad your site’s
- * contents.
+ * Containers provide a means to center and horizontally pad your site’s contents.
  */
-function Container({children, className, class_name, tag, ...otherProps}) {
+function Container({children, class_name, tag, className, ...otherProps}) {
   return (
     <RBContainer
       as={tag}
@@ -25,57 +24,60 @@ function Container({children, className, class_name, tag, ...otherProps}) {
 
 Container.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Container
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Container
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
+   * If True the container-fluid class will be applied, and the Container will expand to
+   * fill available space. A non-fluid container resizes responsively to a fixed width
+   * at the different breakpoints.
    *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * If True the container-fluid class will be applied, and the Container will
-   * expand to fill available space. A non-fluid container resizes responsively
-   * to a fixed width at the different breakpoints.
-   *
-   * You can also set the fluid property to one of the Bootstrap breakpoints:
-   * "sm", "md", "lg", "xl" or "xxl", so that the container fluidly expands to
-   * fill the screen until the specified breakpoint, then resize responsively
-   * at higher breakpoints.
+   * You can also set the fluid property to one of the Bootstrap breakpoints: "sm",
+   * "md", "lg", "xl" or "xxl", so that the container fluidly expands to fill the screen
+   * until the specified breakpoint, then resize responsively at higher breakpoints.
    */
   fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
+   * Additional inline CSS styles to apply to the Container.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Container.
+   */
+  class_name: PropTypes.string,
+
+  /**
    * HTML tag to apply the container class to, default: div
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Container.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Container;

@@ -28,13 +28,13 @@ const verticalMap = {
  */
 function Nav({
   children,
-  className,
-  class_name,
   pills,
-  justified,
-  horizontal,
   vertical,
+  horizontal,
+  justified,
   navbar_scroll,
+  class_name,
+  className,
   ...otherProps
 }) {
   const horizontalClass = horizontal && horizontalMap[horizontal];
@@ -64,40 +64,14 @@ function Nav({
 
 Nav.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Nav.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Nav.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Apply pill styling to nav items. Active items will be indicated by a pill.
@@ -105,9 +79,17 @@ Nav.propTypes = {
   pills: PropTypes.bool,
 
   /**
-   * Set to True when using Nav with pills styling inside a CardHeader.
+   * Stack NavItems vertically. Set to True for a vertical Nav on all screen sizes, or
+   * pass one of the Bootstrap breakpoints ('xs', 'sm', 'md', 'lg', 'xl') for a Nav
+   * which is vertical at that breakpoint and above, and horizontal on smaller screens.
    */
-  card: PropTypes.bool,
+  vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
+  /**
+   * Specify the horizontal alignment of the NavItems. Options are 'start', 'center', or
+   * 'end'.
+   */
+  horizontal: PropTypes.oneOf(['start', 'center', 'end', 'between', 'around']),
 
   /**
    * Expand the nav items to fill available horizontal space.
@@ -115,36 +97,56 @@ Nav.propTypes = {
   fill: PropTypes.bool,
 
   /**
-   * Expand the nav items to fill available horizontal space, making sure
-   * every nav item has the same width.
+   * Expand the nav items to fill available horizontal space, making sure every nav item
+   * has the same width.
    */
   justified: PropTypes.bool,
 
   /**
-   * Stack NavItems vertically. Set to True for a vertical Nav on all screen
-   * sizes, or pass one of the Bootstrap breakpoints ('xs', 'sm', 'md', 'lg',
-   * 'xl') for a Nav which is vertical at that breakpoint and above, and
-   * horizontal on smaller screens.
+   * Set to True when using Nav with pills styling inside a CardHeader.
    */
-  vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  card: PropTypes.bool,
 
   /**
-   * Specify the horizontal alignment of the NavItems. Options are 'start',
-   * 'center', or 'end'.
-   */
-  horizontal: PropTypes.oneOf(['start', 'center', 'end', 'between', 'around']),
-
-  /**
-   * Set to True if using Nav in Navbar component. This applies the `navbar-nav`
-   * class to the Nav which uses more lightweight styles to match the parent
-   * Navbar better.
+   * Set to True if using Nav in Navbar component. This applies the `navbar-nav` class
+   * to the Nav which uses more lightweight styles to match the parent Navbar better.
    */
   navbar: PropTypes.bool,
 
   /**
    * Enable vertical scrolling within the toggleable contents of a collapsed Navbar.
    */
-  navbar_scroll: PropTypes.bool
+  navbar_scroll: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the Nav.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Nav
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Nav
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Nav;

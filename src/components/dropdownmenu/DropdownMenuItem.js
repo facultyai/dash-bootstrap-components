@@ -14,14 +14,14 @@ import {getLoadingState} from '../../private/util';
 function DropdownMenuItem({
   children,
   href,
-  target,
-  disabled,
-  className,
+  n_clicks = 0,
   class_name,
+  disabled,
   header,
   divider,
-  n_clicks = 0,
   toggle = true,
+  target,
+  className,
   setProps,
   ...otherProps
 }) {
@@ -62,40 +62,41 @@ function DropdownMenuItem({
 
 DropdownMenuItem.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of this DropdownMenuItem.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the DropdownMenuItem.
+   */
+  id: PropTypes.string,
+
+  /**
+   * A URL to link to, if the DropdownMenuItem is clicked.
+   */
+  href: PropTypes.string,
+
+  /**
+   * If True, clicking on the DropdownMenuItem will behave like a hyperlink. If False,
+   * the DropdownMenuItem will behave like a dcc.Link component, and can be used in
+   * conjunction with dcc.Location for navigation within a Dash app.
+   */
+  external_link: PropTypes.bool,
+
+  /**
+   * The number of times the DropdownMenuItem has been clicked.
+   */
+  n_clicks: PropTypes.number,
+
+  /**
+   * Additional inline CSS styles to apply to the DropdownMenuItem.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the DropdownMenuItem
    */
   class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
 
   /**
    * Style this item as 'active'.
@@ -120,35 +121,29 @@ DropdownMenuItem.propTypes = {
   header: PropTypes.bool,
 
   /**
-   * Pass a URL (relative or absolute) to make the menu entry a link.
-   */
-  href: PropTypes.string,
-
-  /**
    * Whether to toggle the DropdownMenu on click. Default: True.
    */
   toggle: PropTypes.bool,
 
   /**
-   * If true, the browser will treat this as an external link,
-   * forcing a page refresh at the new location. If false,
-   * this just changes the location without triggering a page
-   * refresh. Use this if you are observing dcc.Location, for
-   * instance. Defaults to true for absolute URLs and false
-   * otherwise.
-   */
-  external_link: PropTypes.bool,
-
-  /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
-   */
-  n_clicks: PropTypes.number,
-
-  /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
   target: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the DropdownMenuItem
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.

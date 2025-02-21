@@ -7,9 +7,9 @@ import RBNavItem from 'react-bootstrap/NavItem';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Create a single item in a `Nav`.
+ * Create a single item in a Nav.
  */
-function NavItem({children, className, class_name, ...otherProps}) {
+function NavItem({children, class_name, className, ...otherProps}) {
   return (
     <RBNavItem
       className={class_name || className}
@@ -23,40 +23,44 @@ function NavItem({children, className, class_name, ...otherProps}) {
 
 NavItem.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this NavItem.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the NavItem.
+   */
+  id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the NavItem.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the NavItem.
    */
   class_name: PropTypes.string,
 
   /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the NavItem.
    */
   className: PropTypes.string,
 
   /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  key: PropTypes.string
+  setProps: PropTypes.func
 };
 
 export default NavItem;

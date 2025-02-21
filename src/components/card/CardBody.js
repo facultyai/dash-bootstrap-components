@@ -7,10 +7,9 @@ import RBCard from 'react-bootstrap/Card';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Wrap the content of your `Card` in `CardBody` to apply padding and other
- * styles.
+ * Wrap the content of your `Card` in `CardBody` to apply padding and other styles.
  */
-function CardBody({children, className, class_name, ...otherProps}) {
+function CardBody({children, class_name, className, ...otherProps}) {
   return (
     <RBCard.Body
       data-dash-is-loading={getLoadingState() || undefined}
@@ -24,45 +23,49 @@ function CardBody({children, className, class_name, ...otherProps}) {
 
 CardBody.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this CardBody
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the CardBody
+   */
+  id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the CardBody.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the CardBody
    */
   class_name: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
+   * HTML tag to use for the CardBody, default: div
    */
-  className: PropTypes.string,
+  tag: PropTypes.string,
 
   /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
    */
   key: PropTypes.string,
 
   /**
-   * HTML tag to use for the card body, default: div
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the CardBody
    */
-  tag: PropTypes.string
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default CardBody;

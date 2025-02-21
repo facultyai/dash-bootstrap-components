@@ -11,16 +11,16 @@ import {getLoadingState} from '../../private/util';
  * component.
  */
 function Pagination({
-  setProps,
   class_name,
-  className,
-  min_value = 1,
-  step = 1,
   active_page = 1,
+  min_value = 1,
+  max_value,
+  step = 1,
   fully_expanded = true,
   previous_next = false,
   first_last = false,
-  max_value,
+  className,
+  setProps,
   ...otherProps
 }) {
   // Check max_value is correct value re. step size and if not, change it
@@ -29,7 +29,7 @@ function Pagination({
     max_value = max_value + step - ((max_value - min_value) % step);
   }
 
-  // Functiont o set the active page
+  // Function to set the active page
   const setActivePage = value => {
     if (setProps) {
       setProps({active_page: value});
@@ -151,33 +151,14 @@ function Pagination({
 
 Pagination.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The ID of the Pagination
    */
   id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * The currently active page
    */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - Use class_name instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * Defines CSS styles which will override styles previously set.
-   */
-  style: PropTypes.object,
-
-  /**
-   * Set the size of all page items in the pagination.
-   */
-  size: PropTypes.oneOf(['sm', 'lg']),
+  active_page: PropTypes.number,
 
   /**
    * Minimum (leftmost) value to appear in the pagination.
@@ -197,27 +178,43 @@ Pagination.propTypes = {
   step: PropTypes.number,
 
   /**
-   * The currently active page
+   * Set the size of all page items in the Pagination.
    */
-  active_page: PropTypes.number,
+  size: PropTypes.oneOf(['sm', 'lg']),
 
   /**
-   * When True, this will display all numbers between `min_value` and
-   * `max_value`.
+   * When True, this will display all numbers between `min_value` and `max_value`.
    */
   fully_expanded: PropTypes.bool,
 
   /**
-   * When True, this will display a previous and next icon before and after
-   * the individual page numbers.
+   * When True, this will display a previous and next icon before and after the
+   * individual page numbers.
    */
   previous_next: PropTypes.bool,
 
   /**
-   * When True, this will display a first and last icon at the beginning
-   * and end of the component.
+   * When True, this will display a first and last icon at the beginning and end of the
+   * Pagination.
    */
   first_last: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the Pagination.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Pagination.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - Use class_name instead.
+   *
+   * Additional CSS classes to apply to the Pagination.
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the input changes.

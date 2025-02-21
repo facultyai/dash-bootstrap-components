@@ -11,7 +11,7 @@ import {getLoadingState} from '../../private/util';
  * controlled by the `is_open` prop which can be targetted by callbacks.
  */
 const Fade = React.forwardRef(function Fade(
-  {children, is_in, style, className, class_name, tag, ...otherProps},
+  {children, is_in, style, class_name, tag, className, ...otherProps},
   ref
 ) {
   // set visibility to hidden after transition has completed to hide tooltips
@@ -35,46 +35,30 @@ const Fade = React.forwardRef(function Fade(
 
 Fade.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Fade
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Fade
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Controls whether the children of the Fade component are currently visible
    * or not.
    */
   is_in: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the Fade.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Fade
+   */
+  class_name: PropTypes.string,
 
   /**
    * The duration of the transition, in milliseconds.
@@ -106,7 +90,27 @@ Fade.propTypes = {
   /**
    * HTML tag to use for the fade component. Default: div.
    */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Fade
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Fade;

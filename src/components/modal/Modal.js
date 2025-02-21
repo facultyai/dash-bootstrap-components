@@ -7,34 +7,34 @@ import RBModal from '../../private/Modal';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Create a toggleable dialog using the Modal component. Toggle the visibility
- * with the `is_open` prop.
+ * Create a toggleable dialog using the Modal component. Toggle the visibility with the
+ * `is_open` prop.
  */
 function Modal({
   children,
   is_open,
-  className,
-  class_name,
-  autoFocus,
-  autofocus,
-  enforceFocus,
-  labelledBy,
-  labelledby,
-  modalClassName,
-  modal_class_name,
-  contentClassName,
-  content_class_name,
-  backdropClassName,
-  backdrop_class_name,
-  tag,
   fade,
   style,
+  dialog_style,
+  content_style,
+  class_name,
+  modal_class_name,
+  content_class_name,
+  backdrop_class_name,
+  autofocus,
+  enforceFocus,
+  labelledby,
+  tag,
   zindex,
+  autoFocus,
+  labelledBy,
   zIndex,
   dialogStyle,
-  dialog_style,
   contentStyle,
-  content_style,
+  className,
+  backdropClassName,
+  contentClassName,
+  modalClassName,
   setProps,
   ...otherProps
 }) {
@@ -74,58 +74,14 @@ function Modal({
 
 Modal.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Modal.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Modal.
    */
-  style: PropTypes.object,
-
-  /**
-   * Inline CSS styles to apply to the dialog
-   */
-  dialog_style: PropTypes.object,
-
-  /**
-   * Inline CSS styles to apply to the dialog
-   */
-  dialogStyle: PropTypes.object,
-
-  /**
-   * Inline CSS styles to apply to the content
-   */
-  content_style: PropTypes.object,
-
-  /**
-   * Inline CSS styles to apply to the content
-   */
-  contentStyle: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * HTML tag to use for the Modal, default: div
-   */
-  tag: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Whether modal is currently open.
@@ -144,27 +100,85 @@ Modal.propTypes = {
   scrollable: PropTypes.bool,
 
   /**
+   * Set the size of the modal. Options sm, lg, xl for small, large or extra
+   * large sized modals, or leave undefined for default size.
+   */
+  size: PropTypes.string,
+
+  /**
+   * Includes a modal-backdrop element. Alternatively, specify 'static' for a
+   * backdrop which doesn't close the modal on click.
+   */
+  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['static'])]),
+
+  /**
+   * Renders a fullscreen modal. Specifying a breakpoint will render the modal
+   * as fullscreen below the breakpoint size.
+   */
+  fullscreen: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'])
+  ]),
+
+  /**
+   * Close the modal when escape key is pressed.
+   */
+  keyboard: PropTypes.bool,
+
+  /**
+   * Set to false for a modal that simply appears rather than fades into view.
+   */
+  fade: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the Modal.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Inline CSS styles to apply to the dialog
+   */
+  dialog_style: PropTypes.object,
+
+  /**
+   * Inline CSS styles to apply to the content
+   */
+  content_style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Modal.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * CSS class to apply to the modal.
+   */
+  modal_class_name: PropTypes.string,
+
+  /**
+   * CSS class to apply to the backdrop.
+   */
+  backdrop_class_name: PropTypes.string,
+
+  /**
+   * CSS class to apply to the modal content.
+   */
+  content_class_name: PropTypes.string,
+
+  /**
+   * HTML tag to use for the Modal, default: div
+   */
+  tag: PropTypes.string,
+
+  /**
    * 	Puts the focus on the modal when initialized.
    */
   autofocus: PropTypes.bool,
 
   /**
-   * **DEPRECATED** Use `autofocus` instead
-   *
-   * 	Puts the focus on the modal when initialized.
-   */
-  autoFocus: PropTypes.bool,
-
-  /**
    * 	When true The modal will prevent focus from leaving the Modal while open.
    */
   enforceFocus: PropTypes.bool,
-
-  /**
-   * Set the size of the modal. Options sm, lg, xl for small, large or extra
-   * large sized modals, or leave undefined for default size.
-   */
-  size: PropTypes.string,
 
   /**
    * The ARIA role attribute.
@@ -177,39 +191,30 @@ Modal.propTypes = {
   labelledby: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `labelledby` instead
+   * Set the z-index of the modal. Default 1050.
+   */
+  zindex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
+  /**
+   * **DEPRECATED** Use `dialog_style` instead.
    *
-   * The ARIA labelledby attribute
+   * Inline CSS styles to apply to the dialog
    */
-  labelledBy: PropTypes.string,
+  dialogStyle: PropTypes.object,
 
   /**
-   * Close the modal when escape key is pressed.
-   */
-  keyboard: PropTypes.bool,
-
-  /**
-   * Includes a modal-backdrop element. Alternatively, specify 'static' for a
-   * backdrop which doesn't close the modal on click.
-   */
-  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['static'])]),
-
-  /**
-   * CSS class to apply to the modal.
-   */
-  modal_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `modal_class_name` instead
+   * **DEPRECATED** Use `content_style` instead.
    *
-   * CSS class to apply to the modal.
+   * Inline CSS styles to apply to the content
    */
-  modalClassName: PropTypes.string,
+  contentStyle: PropTypes.object,
 
   /**
-   * CSS class to apply to the backdrop.
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Modal
    */
-  backdrop_class_name: PropTypes.string,
+  className: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `backdrop_class_name` instead
@@ -219,11 +224,6 @@ Modal.propTypes = {
   backdropClassName: PropTypes.string,
 
   /**
-   * CSS class to apply to the modal content.
-   */
-  content_class_name: PropTypes.string,
-
-  /**
    * **DEPRECATED** Use `content_class_name` instead
    *
    * CSS class to apply to the modal content.
@@ -231,23 +231,25 @@ Modal.propTypes = {
   contentClassName: PropTypes.string,
 
   /**
-   * Set to false for a modal that simply appears rather than fades into view.
+   * **DEPRECATED** Use `modal_class_name` instead
+   *
+   * CSS class to apply to the modal.
    */
-  fade: PropTypes.bool,
+  modalClassName: PropTypes.string,
 
   /**
-   * Renders a fullscreen modal. Specifying a breakpoint will render the modal
-   * as fullscreen below the breakpoint size.
+   * **DEPRECATED** Use `autofocus` instead
+   *
+   * 	Puts the focus on the modal when initialized.
    */
-  fullscreen: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(['sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'])
-  ]),
+  autoFocus: PropTypes.bool,
 
   /**
-   * Set the z-index of the modal. Default 1050.
+   * **DEPRECATED** Use `labelledby` instead
+   *
+   * The ARIA labelledby attribute
    */
-  zindex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  labelledBy: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `zindex` instead

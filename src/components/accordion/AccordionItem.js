@@ -11,12 +11,12 @@ import {getLoadingState, stringifyId} from '../../private/util';
  * A component to build up the children of the accordion.
  */
 function AccordionItem({
+  children,
+  id,
   title,
   item_id,
   class_name,
   className,
-  id,
-  children,
   ...otherProps
 }) {
   const {toggle, idx} = useContext(AccordionContext);
@@ -43,46 +43,49 @@ function AccordionItem({
 
 AccordionItem.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The ID of the AccordionItem.
    */
   id: PropTypes.string,
 
   /**
-   * The children of this component
+   * The children of the AccordionItem.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * Text to display in the header of the AccordionItem.
+   */
+  title: PropTypes.node,
+
+  /**
+   * Optional identifier for item used for determining which item is visible if not
+   * specified, and AccordionItem is being used inside Accordion component, the item_id
+   * will be set to "item-i" where i is (zero indexed) position of item in list items
+   * passed to Accordion component.
+   */
+  item_id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the AccordionItem.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the AccordionItem.
    */
   class_name: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the AccordionItem.
    */
   className: PropTypes.string,
 
   /**
-   * The title on display in the collapsed accordion item.
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  title: PropTypes.node,
-
-  /**
-   * Optional identifier for item used for determining which item is visible
-   * if not specified, and AccordionItem is being used inside Accordion component, the itemId
-   * will be set to "item-i" where i is (zero indexed) position of item in list
-   * items pased to Accordion component.
-   */
-  item_id: PropTypes.string
+  setProps: PropTypes.func
 };
 
 export default AccordionItem;

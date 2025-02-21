@@ -30,7 +30,7 @@ const sanitizeOptions = options => {
      * which is equal to
      * [
      *   {label: `label1`, value: `value1`},
-     *   {label: `label2`, value: `value2`}, ...
+     *   {label: `label2`, value: `value2`},
      * ]
      */
     return Object.entries(options).map(([value, label]) => ({

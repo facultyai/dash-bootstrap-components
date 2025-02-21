@@ -16,20 +16,20 @@ import {getLoadingState} from '../../private/util';
  */
 function Button({
   children,
+  n_clicks = 0,
+  color,
+  outline,
   disabled,
   href,
-  setProps,
   target,
   type,
   download,
   name,
   value,
-  className,
   class_name,
-  color,
-  outline,
+  className,
   rel,
-  n_clicks = 0,
+  setProps,
   ...otherProps
 }) {
   const incrementClicks = () => {
@@ -68,66 +68,19 @@ function Button({
 
 Button.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of this Button.
    */
   children: PropTypes.node,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * The ID of the Button.
    */
-  class_name: PropTypes.string,
+  id: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * Defines CSS styles which will override styles previously set.
-   */
-  style: PropTypes.object,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * Pass a URL (relative or absolute) to make the menu entry a link.
-   */
-  href: PropTypes.string,
-
-  /**
-   * If true, the browser will treat this as an external link,
-   * forcing a page refresh at the new location. If false,
-   * this just changes the location without triggering a page
-   * refresh. Use this if you are observing dcc.Location, for
-   * instance. Defaults to true for absolute URLs and false
-   * otherwise.
-   */
-  external_link: PropTypes.bool,
-
-  /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
+   * The number of times the Button has been clicked.
    */
   n_clicks: PropTypes.number,
-
-  /**
-   * Whether button is in active state. Default: False.
-   */
-  active: PropTypes.bool,
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,
@@ -136,28 +89,56 @@ Button.propTypes = {
   color: PropTypes.string,
 
   /**
-   * Disable button (make unclickable). Default: False.
+   * A URL to link to. If this property is set, the Button will behave like a dcc.Link
+   * for relative links, and like an html <a> tag for external links. This can be
+   * overridden with the `external_link` property.
+   */
+  href: PropTypes.string,
+
+  /**
+   * If True, clicking on the Button will behave like a hyperlink. If False, the Button
+   * will behave like a dcc.Link component, and can be used in conjunction with
+   * dcc.Location for navigation within a Dash app.
+   */
+  external_link: PropTypes.bool,
+
+  /**
+   * Additional CSS classes to apply to the Button.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the Button.
+   */
+  style: PropTypes.object,
+
+  /**
+   * If True, the 'active' class is applied to the Button. Default: False.
+   */
+  active: PropTypes.bool,
+
+  /**
+   * If True, the Button will be disabled. Default: False.
    */
   disabled: PropTypes.bool,
 
   /**
-   * Button size, options: 'lg', 'md', 'sm'.
+   * The size of the Button. Options: 'sm', 'md', 'lg'.
    */
   size: PropTypes.string,
 
   /**
-   * Sets the title attribute of the underlying HTML button.
+   * The title of the Button.
    */
   title: PropTypes.string,
 
   /**
-   * Set outline button style, which removes background images and colors for a
-   * lightweight style.
+   * If True, the outline style is applied to the Button. Default: False.
    */
   outline: PropTypes.bool,
 
   /**
-   * Target attribute to pass on to link if using Button as an external link.
+   * The target attribute to pass on to the link. Only applies to external links.
    */
   target: PropTypes.string,
 
@@ -170,7 +151,8 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 
   /**
-   * Indicates that the hyperlink is to be used for downloading a resource.
+   * If the Button is a link, this attribute specifies that the target will be
+   * downloaded.
    */
   download: PropTypes.string,
 
@@ -181,9 +163,8 @@ Button.propTypes = {
   name: PropTypes.string,
 
   /**
-   * Defines the value associated with the button’s name when it’s submitted
-   * with the form data. This value is passed to the server in params when the
-   * form is submitted.
+   * Defines the value associated with the button’s name when it’s submitted with the
+   * form data. This value is passed to the server in params when the form is submitted.
    */
   value: PropTypes.string,
 
@@ -192,6 +173,24 @@ Button.propTypes = {
    */
   rel: PropTypes.string,
 
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Button
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
   setProps: PropTypes.func
 };
 

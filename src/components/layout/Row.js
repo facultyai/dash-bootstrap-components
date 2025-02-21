@@ -25,12 +25,11 @@ const justifyMap = {
 };
 
 /**
- * Row is one of the core layout components in Bootstrap. Build up your layout
- * as a series of rows of columns. Row has arguments for controlling the
- * vertical and horizontal alignment of its children, as well as the spacing
- * between columns.
+ * Row is one of the core layout components in Bootstrap. Build up your layout as a
+ * series of rows of columns. Row has arguments for controlling the vertical and
+ * horizontal alignment of its children, as well as the spacing between columns.
  */
-function Row({children, className, class_name, align, justify, ...otherProps}) {
+function Row({children, class_name, align, justify, className, ...otherProps}) {
   const alignClass = align && alignMap[align];
   const justifyClass = justify && justifyMap[justify];
 
@@ -48,40 +47,24 @@ function Row({children, className, class_name, align, justify, ...otherProps}) {
 
 Row.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Row.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Row.
+   */
+  id: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the Row.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the Row.
    */
   class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
 
   /**
    * Set vertical alignment of columns in this row. Options are 'start',
@@ -90,8 +73,8 @@ Row.propTypes = {
   align: PropTypes.oneOf(['start', 'center', 'end', 'stretch', 'baseline']),
 
   /**
-   * Set horizontal spacing and alignment of columns in this row. Options are
-   * 'start', 'center', 'end', 'around' and 'between'.
+   * Set horizontal spacing and alignment of columns in this row. Options are 'start',
+   * 'center', 'end', 'around' and 'between'.
    */
   justify: PropTypes.oneOf([
     'start',
@@ -100,7 +83,27 @@ Row.propTypes = {
     'around',
     'between',
     'evenly'
-  ])
+  ]),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Row.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Row;

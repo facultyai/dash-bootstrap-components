@@ -15,18 +15,24 @@ import {getLoadingState} from '../../private/util';
  */
 function Alert({
   children,
+  is_open = true,
+  color = 'success',
   dismissable,
+  duration = null,
+  fade,
   style,
   class_name,
   className,
-  fade,
-  color = 'success',
-  is_open = true,
-  duration = null,
   setProps,
   ...otherProps
 }) {
   const timeout = useRef(null);
+
+  const dismiss = () => {
+    if (setProps) {
+      setProps({is_open: false});
+    }
+  };
 
   useEffect(() => {
     if (duration) {
@@ -38,13 +44,7 @@ function Alert({
       }
     }
     return () => clearTimeout(timeout.current);
-  }, [is_open]);
-
-  const dismiss = () => {
-    if (setProps) {
-      setProps({is_open: false});
-    }
-  };
+  }, [is_open, duration]);
 
   const isBootstrapColor = bootstrapColors.has(color);
   return (
@@ -57,7 +57,7 @@ function Alert({
       transition={fade}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       {...omit(
-        ['persistence', 'persisted_props', 'persistence_type', 'setProps'],
+        ['persistence', 'persisted_props', 'persistence_type'],
         otherProps
       )}
       data-dash-is-loading={getLoadingState() || undefined}
@@ -74,62 +74,30 @@ Alert.dashPersistence = {
 
 Alert.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of the Alert.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Alert.
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * Alert color, options: primary, secondary, success, info, warning, danger,
-   * link or any valid CSS color of
-   * your choice (e.g. a hex code, a decimal code or a CSS color name)
-   * Default: secondary.
-   */
-  color: PropTypes.string,
-
-  /**
-   * Whether alert is open. Default: True.
+   * Whether the Alert is open (i.e. visible to the user). Default: True.
    */
   is_open: PropTypes.bool,
 
   /**
-   * If True, a fade animation will be applied when `is_open` is toggled. If
-   * False the Alert will simply appear and disappear.
+   * Alert color, options: primary, secondary, success, info, warning, danger,
+   * link or any valid CSS color of your choice (e.g. a hex code, a decimal code or a CSS color name)
+   *
+   * Default: success.
    */
-  fade: PropTypes.bool,
+  color: PropTypes.string,
 
   /**
-   * If true, add a close button that allows Alert to be dismissed.
+   * If True, add a close button that allows Alert to be dismissed.
    */
   dismissable: PropTypes.bool,
 
@@ -139,12 +107,24 @@ Alert.propTypes = {
   duration: PropTypes.number,
 
   /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * If True, a fade animation will be applied when `is_open` is toggled. If False the
+   * Alert will simply appear and disappear.
+   */
+  fade: PropTypes.bool,
+
+  /**
+   * Additional inline styles to apply to the Alert.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS class to apply to the Alert.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -153,19 +133,33 @@ Alert.propTypes = {
   ]),
 
   /**
-   * Properties whose user interactions will persist after refreshing the
-   * component or the page. Since only `value` is allowed this prop can
-   * normally be ignored.
+   * Properties to persist. Since only `is_open` is supported, this prop can normally be
+   * ignored.
    */
   persisted_props: PropTypes.arrayOf(PropTypes.oneOf(['is_open'])),
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS class to apply to the Alert.
+   */
+  className: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.

@@ -7,10 +7,10 @@ import RBModalBody from 'react-bootstrap/ModalBody';
 import {getLoadingState} from '../../private/util';
 
 /**
- * Use this component to add consistent padding to the body (main content) of
- * your Modals.
+ * Use this component to add consistent padding to the body (main content) of your
+ * Modals.
  */
-function ModalBody({children, className, class_name, tag, ...otherProps}) {
+function ModalBody({children, class_name, tag, className, ...otherProps}) {
   return (
     <RBModalBody
       as={tag}
@@ -25,37 +25,41 @@ function ModalBody({children, className, class_name, tag, ...otherProps}) {
 
 ModalBody.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The children of this component
+   */
+  children: PropTypes.node,
+
+  /**
+   * The ID of the component
    */
   id: PropTypes.string,
 
   /**
-   * The children of this component
-   */
-  children: PropTypes.node,
-  /**
-   * Defines CSS styles which will override styles previously set.
+   * Additional inline CSS styles to apply to the ModalBody.
    */
   style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the ModalBody.
    */
   class_name: PropTypes.string,
 
   /**
+   * HTML tag to use for the ModalBody, default: div
+   */
+  tag: PropTypes.string,
+
+  /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Often used with CSS to style elements with common properties.
+   * Additional CSS classes to apply to the ModalBody.
    */
   className: PropTypes.string,
 
   /**
-   * HTML tag to use for the ModalBody, default: div
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  tag: PropTypes.string
+  setProps: PropTypes.func
 };
 
 export default ModalBody;

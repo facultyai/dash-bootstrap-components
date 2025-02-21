@@ -17,23 +17,22 @@ import {getLoadingState} from '../../private/util';
  */
 function DropdownMenu({
   children,
-  nav,
   label,
-  in_navbar,
-  size,
-  right,
-  align_end,
-  direction,
   color,
+  direction,
+  size,
+  disabled = false,
+  class_name,
+  align_end,
+  in_navbar,
+  nav,
+  caret = true,
+  menu_variant = 'light',
   group,
   toggle_style,
-  toggleClassName,
   toggle_class_name,
   className,
-  class_name,
-  caret = true,
-  disabled = false,
-  menu_variant = 'light',
+  toggleClassName,
   ...otherProps
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -57,19 +56,13 @@ function DropdownMenu({
         disabled={disabled}
         navbar={in_navbar}
         className={class_name || className}
-        drop={
-          direction === 'left'
-            ? 'start'
-            : direction === 'right'
-              ? 'end'
-              : direction
-        }
+        drop={direction}
         onToggle={(show, event) => {
           if (!event || event.source !== 'select') {
             setDropdownOpen(show);
           }
         }}
-        align={align_end ? 'end' : right ? 'end' : 'start'}
+        align={align_end ? 'end' : 'start'}
         {...omit(['setProps'], otherProps)}
         data-dash-is-loading={getLoadingState() || undefined}
       >
@@ -102,40 +95,14 @@ function DropdownMenu({
 
 DropdownMenu.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of the DropdownMenu.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the DropdownMenu.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Label for the DropdownMenu toggle.
@@ -143,19 +110,42 @@ DropdownMenu.propTypes = {
   label: PropTypes.node,
 
   /**
-   * Direction in which to expand the DropdownMenu. Default: 'down'. `left`
-   * and `right` have been deprecated, and `start` and `end` should be used
-   * instead.
+   * Set the color of the DropdownMenu toggle. Available options are: 'primary',
+   * 'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS color
+   * of your choice (e.g. a hex code, a decimal code or a CSS color name).
+   *
+   * Default: 'primary'
    */
-  direction: PropTypes.oneOf([
-    'down',
-    'start',
-    'end',
-    'up',
-    'left',
-    'right',
-    'end'
-  ]),
+  color: PropTypes.string,
+
+  /**
+   * Direction in which to expand the DropdownMenu. Options are 'down', 'start', 'up'
+   * and 'end'.
+   *
+   * Default: 'down'.
+   */
+  direction: PropTypes.oneOf(['down', 'start', 'up', 'end']),
+
+  /**
+   * Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium and 'lg' to
+   * large.
+   */
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+
+  /**
+   * Disable the dropdown.
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the DropdownMenu.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the DropdownMenu
+   */
+  class_name: PropTypes.string,
 
   /**
    * Align the DropdownMenu along the right side of its parent. Default: False.
@@ -163,21 +153,9 @@ DropdownMenu.propTypes = {
   align_end: PropTypes.bool,
 
   /**
-   * **DEPRECATED** Use `align_end` instead.
-   *
-   * Align the DropdownMenu along the right side of its parent. Default: False.
-   */
-  right: PropTypes.bool,
-
-  /**
    * Set this to True if the DropdownMenu is inside a navbar. Default: False.
    */
   in_navbar: PropTypes.bool,
-
-  /**
-   * Disable the dropdown.
-   */
-  disabled: PropTypes.bool,
 
   /**
    * Set this to True if the DropdownMenu is inside a nav for styling consistent
@@ -191,48 +169,52 @@ DropdownMenu.propTypes = {
   caret: PropTypes.bool,
 
   /**
-   * Set the color of the DropdownMenu toggle. Available options are: 'primary',
-   * 'secondary', 'success', 'warning', 'danger', 'info', 'link' or any valid CSS
-   * color of your choice (e.g. a hex code, a decimal code or a CSS color name)
-   * Default: 'primary'
-   */
-  color: PropTypes.string,
-
-  /**
-   * Set `menu_variant="dark"` to create a dark-mode drop down instead
+   * Set `menu_variant="dark"` to create a dark-mode drop down instead.
    */
   menu_variant: PropTypes.oneOf(['light', 'dark']),
 
   /**
-   * Defines CSS styles which will override styles previously set. The styles
-   * set here apply to the DropdownMenu toggle.
+   * Set group to True if the DropdownMenu is inside a ButtonGroup.
+   */
+  group: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the DropdownMenu toggle.
    */
   toggle_style: PropTypes.object,
 
   /**
-   * Often used with CSS to style elements with common properties. The classes
-   * specified with this prop will be applied to the DropdownMenu toggle.
+   * Additional CSS classes to apply to the DropdownMenu.
    */
   toggle_class_name: PropTypes.string,
 
   /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the DropdownMenu
+   */
+  className: PropTypes.string,
+
+  /**
    * **DEPRECATED** Use `toggle_class_name` instead.
    *
-   * Often used with CSS to style elements with common properties. The classes
+   * Additional CSS classes to apply to the DropdownMenu The classes
    * specified with this prop will be applied to the DropdownMenu toggle.
    */
   toggleClassName: PropTypes.string,
 
   /**
-   * Size of the DropdownMenu. 'sm' corresponds to small, 'md' to medium
-   * and 'lg' to large.
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
-
-  /**
-   * Set group to True if the DropdownMenu is inside a ButtonGroup.
-   */
-  group: PropTypes.bool
+  setProps: PropTypes.func
 };
 
 export default DropdownMenu;
