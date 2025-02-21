@@ -140,7 +140,7 @@ _move-generated-files:
         new_file = file_.parent / "_components" / filename
         file_.rename(new_file)
         # enforce keyword arguments only after the id argument
-        id_pattern = "        id: typing.Optional[str] = None,\n"
+        id_pattern = "        id: typing.Optional[typing.Union[str, dict]] = None,\n"
         new_file.write_text(
             new_file.read_text().replace(id_pattern, f"{id_pattern}{8 * ' '}*,\n")
         )
