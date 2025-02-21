@@ -70,7 +70,7 @@ describe('Table', () => {
     // dark table
     const {
       container: {firstChild: tableDark}
-    } = render(<Table dark />);
+    } = render(<Table color="dark" />);
     expect(tableDark).toHaveClass('table-dark');
 
     // table with hover animations
