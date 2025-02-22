@@ -194,11 +194,6 @@ Popover.propTypes = {
   class_name: PropTypes.string,
 
   /**
-   * CSS class to apply to the Popover.
-   */
-  inner_class_name: PropTypes.string,
-
-  /**
    * Used to allow user interactions to be persisted when the page is refreshed.
    * See https://dash.plotly.com/persistence for more details
    */
@@ -237,13 +232,6 @@ Popover.propTypes = {
    * Additional CSS classes to apply to the Popover
    */
   className: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `inner_class_name` instead.
-   *
-   * CSS class to apply to the Popover.
-   */
-  innerClassName: PropTypes.string,
 
   /**
    * Dash-assigned callback that gets fired when the value changes.
