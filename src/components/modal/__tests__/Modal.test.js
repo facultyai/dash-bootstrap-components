@@ -86,8 +86,14 @@ describe('Modal', () => {
       'custom-modal-backdrop'
     );
 
+    // Backdrop style
+    rerender(<Modal is_open backdrop_style={{color: 'red'}} />);
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      color: 'red'
+    });
+
     // Dialog class name
-    rerender(<Modal is_open class_name="custom-modal-dialog" />);
+    rerender(<Modal is_open dialog_class_name="custom-modal-dialog" />);
     expect(document.body.querySelector('.modal-dialog')).toHaveClass(
       'custom-modal-dialog'
     );
@@ -106,10 +112,14 @@ describe('Modal', () => {
     });
 
     // Modal class name
-    rerender(<Modal is_open modal_class_name="custom-modal-class" />);
+    rerender(<Modal is_open class_name="custom-modal-class" />);
     expect(document.body.querySelector('.modal')).toHaveClass(
       'custom-modal-class'
     );
+
+    // Modal style
+    rerender(<Modal is_open style={{color: 'red'}} />);
+    expect(document.body.querySelector('.modal')).toHaveStyle({color: 'red'});
   });
 
   test('sets z-index with zindex and zIndex', () => {
