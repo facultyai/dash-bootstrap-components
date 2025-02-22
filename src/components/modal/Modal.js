@@ -17,8 +17,9 @@ function Modal({
   style,
   dialog_style,
   content_style,
+  backdrop_style,
   class_name,
-  modal_class_name,
+  dialog_class_name,
   content_class_name,
   backdrop_class_name,
   autofocus,
@@ -31,10 +32,11 @@ function Modal({
   zIndex,
   dialogStyle,
   contentStyle,
+  backdropStyle,
   className,
   backdropClassName,
   contentClassName,
-  modalClassName,
+  dialogClassName,
   setProps,
   ...otherProps
 }) {
@@ -48,11 +50,12 @@ function Modal({
     <RBModal
       animation={fade}
       dialogAs={tag}
+      className={class_name || className}
       dialogStyle={dialog_style || dialogStyle}
+      dialogClassName={dialog_class_name || dialogClassName}
       contentStyle={content_style || contentStyle}
-      dialogClassName={class_name || className}
-      className={modal_class_name || modalClassName}
       contentClassName={content_class_name || contentClassName}
+      backdropStyle={backdrop_style || backdropStyle}
       backdropClassName={backdrop_class_name || backdropClassName}
       autoFocus={autofocus || autoFocus}
       enforceFocus={enforceFocus}
@@ -146,22 +149,27 @@ Modal.propTypes = {
   content_style: PropTypes.object,
 
   /**
+   * Inline CSS styles to apply to the backdrop
+   */
+  backdrop_style: PropTypes.object,
+
+  /**
    * Additional CSS classes to apply to the Modal.
    */
   class_name: PropTypes.string,
 
   /**
-   * CSS class to apply to the modal.
+   * Additional CSS classes to apply to the modal.
    */
-  modal_class_name: PropTypes.string,
+  dialog_class_name: PropTypes.string,
 
   /**
-   * CSS class to apply to the backdrop.
+   * Additional CSS classes to apply to the modal-backdrop.
    */
   backdrop_class_name: PropTypes.string,
 
   /**
-   * CSS class to apply to the modal content.
+   * Additional CSS classes to apply to the modal content.
    */
   content_class_name: PropTypes.string,
 
@@ -210,6 +218,13 @@ Modal.propTypes = {
   contentStyle: PropTypes.object,
 
   /**
+   * **DEPRECATED** Use `content_style` instead.
+   *
+   * Inline CSS styles to apply to the backdrop
+   */
+  backdropStyle: PropTypes.object,
+
+  /**
    * **DEPRECATED** Use `class_name` instead.
    *
    * Additional CSS classes to apply to the Modal
@@ -219,23 +234,23 @@ Modal.propTypes = {
   /**
    * **DEPRECATED** Use `backdrop_class_name` instead
    *
-   * CSS class to apply to the backdrop.
+   * Additional CSS classes to apply to the modal-backdrop.
    */
   backdropClassName: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `content_class_name` instead
    *
-   * CSS class to apply to the modal content.
+   * Additional CSS classes to apply to the modal-content.
    */
   contentClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `modal_class_name` instead
+   * **DEPRECATED** Use `dialog_class_name` instead
    *
-   * CSS class to apply to the modal.
+   * Additional CSS classes to apply to the modal-dialog.
    */
-  modalClassName: PropTypes.string,
+  dialogClassName: PropTypes.string,
 
   /**
    * **DEPRECATED** Use `autofocus` instead

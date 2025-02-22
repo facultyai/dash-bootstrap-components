@@ -39,6 +39,7 @@ const Modal = React.forwardRef(function Modal(
     children,
     dialogStyle,
     contentStyle,
+    backdropStyle,
     'data-bs-theme': dataBsTheme,
     'aria-labelledby': ariaLabelledby,
     'aria-describedby': ariaDescribedby,
@@ -219,7 +220,7 @@ const Modal = React.forwardRef(function Modal(
           backdropClassName,
           !animation && 'show'
         )}
-        style={{zIndex}}
+        style={{...backdropStyle, zIndex}}
       />
     ),
     [animation, backdropClassName, zIndex]
@@ -253,8 +254,8 @@ const Modal = React.forwardRef(function Modal(
         {...props}
         onMouseDown={handleDialogMouseDown}
         className={dialogClassName}
-        contentClassName={contentClassName}
         style={dialogStyle}
+        contentClassName={contentClassName}
         contentStyle={contentStyle}
       >
         {children}
@@ -299,6 +300,7 @@ Modal.propTypes = {
   style: PropTypes.object,
   dialogStyle: PropTypes.object,
   contentStyle: PropTypes.object,
+  backdropStyle: PropTypes.object,
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   size: PropTypes.string,
   fullscreen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
