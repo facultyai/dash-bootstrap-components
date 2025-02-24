@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html
 
-PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
+LOGO = "https://placehold.co/100x100"
 
 search_bar = dbc.Row(
     [
@@ -22,13 +22,13 @@ navbar = dbc.Navbar(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row(
                     [
-                        dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                        dbc.Col(html.Img(src=LOGO, height="30px")),
                         dbc.Col(dbc.NavbarBrand("Navbar", className="ms-2")),
                     ],
                     align="center",
                     className="g-0",
                 ),
-                href="https://plotly.com",
+                href="https://placehold.co/",
                 style={"textDecoration": "none"},
             ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
