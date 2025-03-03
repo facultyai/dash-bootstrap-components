@@ -121,4 +121,4 @@ def toggle_collapse(n, is_open):
 
 
 if __name__ == "__main__":
-    app.run_server(port=8888, debug=True)
+    app.run(port=8888, debug=True)

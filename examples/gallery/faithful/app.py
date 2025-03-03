@@ -14,7 +14,7 @@ import pandas as pd
 import plotly.figure_factory as ff
 from dash import Input, Output, dcc, html
 
-DATA = pd.read_csv("https://cdn.opensource.faculty.ai/old-faithful/data.csv")
+DATA = pd.read_csv("data.csv")
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -86,4 +86,4 @@ def make_graph(dropdown_value, checklist_value):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)
+    app.run(debug=True, port=8888)

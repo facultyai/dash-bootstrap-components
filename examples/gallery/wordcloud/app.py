@@ -6,30 +6,27 @@ https://shiny.rstudio.com/gallery/word-cloud.html
 
 import base64
 import io
-from functools import lru_cache
-from urllib.request import urlopen
+from functools import cache
 
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
 from wordcloud import WordCloud
 
-BASE_URL = "https://cdn.opensource.faculty.ai/wordcloud"
-
-DOCUMENT_URLS = {
-    "midsummer": f"{BASE_URL}/a-midsummer-nights-dream.txt",
-    "venice": f"{BASE_URL}/the-merchant-of-venice.txt",
-    "randj": f"{BASE_URL}/romeo-and-juliet.txt",
+DOCUMENT_PATHS = {
+    "midsummer": "data/a-midsummer-nights-dream.txt",
+    "venice": "data/the-merchant-of-venice.txt",
+    "randj": "data/romeo-and-juliet.txt",
 }
 
 
 # use lru_cache to memoise the frequencies
-@lru_cache(maxsize=3)
+@cache
 def load_word_frequencies(book):
-    url = DOCUMENT_URLS[book]
+    path = DOCUMENT_PATHS[book]
     WC = WordCloud(width=1000, height=600)
-    with urlopen(url) as f:
-        text = f.read().decode("utf-8")
+    with open(path) as f:
+        text = f.read()
     return WC.process_text(text)
 
 
@@ -104,6 +101,7 @@ app.layout = dbc.Container(
     ],
 )
 def make_wordcloud(book, min_freq, max_vocab):
+    print(book)
     # filter frequencies based on min_freq and max_vocab
     sorted_frequencies = sorted(
         load_word_frequencies(book).items(), key=lambda x: x[1], reverse=True
@@ -126,4 +124,4 @@ def make_wordcloud(book, min_freq, max_vocab):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)
+    app.run(debug=True, port=8888)

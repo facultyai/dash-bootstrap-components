@@ -124,4 +124,4 @@ app.callback(Output("y-variable", "options"), [Input("x-variable", "value")])(
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)
+    app.run(debug=True, port=8888)

@@ -66,4 +66,4 @@ class DemoLayoutPage:
 if __name__ == "__main__":
     app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
     app.layout = _layout
-    app.run_server(port=8888, debug=True)
+    app.run(port=8888, debug=True)

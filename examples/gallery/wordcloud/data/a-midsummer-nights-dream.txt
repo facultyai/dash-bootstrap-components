@@ -1,0 +1,3115 @@
+﻿***The Project Gutenberg's Etext of Shakespeare's First Folio***
+*******************A Midsommer Nights Dreame********************
+
+This is our 3rd edition of most of these plays.  See the index.
+
+
+Copyright laws are changing all over the world, be sure to check
+the copyright laws for your country before posting these files!!
+
+Please take a look at the important information in this header.
+We encourage you to keep this file on your own disk, keeping an
+electronic path open for the next readers.  Do not remove this.
+
+
+**Welcome To The World of Free Plain Vanilla Electronic Texts**
+
+**Etexts Readable By Both Humans and By Computers, Since 1971**
+
+*These Etexts Prepared By Hundreds of Volunteers and Donations*
+
+Information on contacting Project Gutenberg to get Etexts, and
+further information is included below.  We need your donations.
+
+
+A Midsommer Nights Dreame
+
+by William Shakespeare
+
+July, 2000  [Etext #2242]
+
+
+***The Project Gutenberg's Etext of Shakespeare's First Folio***
+********************A Midsommer Nights Dreame*******************
+
+*****This file should be named 2242.txt or 2242.zip******
+
+Project Gutenberg Etexts are usually created from multiple editions,
+all of which are in the Public Domain in the United States, unless a
+copyright notice is included.  Therefore, we usually do NOT keep any
+of these books in compliance with any particular paper edition.
+
+
+We are now trying to release all our books one month in advance
+of the official release dates, leaving time for better editing.
+
+Please note:  neither this list nor its contents are final till
+midnight of the last day of the month of any such announcement.
+The official release date of all Project Gutenberg Etexts is at
+Midnight, Central Time, of the last day of the stated month.  A
+preliminary version may often be posted for suggestion, comment
+and editing by those who wish to do so.  To be sure you have an
+up to date first edition [xxxxx10x.xxx] please check file sizes
+in the first week of the next month.  Since our ftp program has
+a bug in it that scrambles the date [tried to fix and failed] a
+look at the file size will have to do, but we will try to see a
+new copy has at least one byte more or less.
+
+
+Information about Project Gutenberg (one page)
+
+We produce about two million dollars for each hour we work.  The
+time it takes us, a rather conservative estimate, is fifty hours
+to get any etext selected, entered, proofread, edited, copyright
+searched and analyzed, the copyright letters written, etc.  This
+projected audience is one hundred million readers.  If our value
+per text is nominally estimated at one dollar then we produce $2
+million dollars per hour this year as we release thirty-six text
+files per month, or 432 more Etexts in 1999 for a total of 2000+
+If these reach just 10% of the computerized population, then the
+total should reach over 200 billion Etexts given away this year.
+
+The Goal of Project Gutenberg is to Give Away One Trillion Etext
+Files by December 31, 2001.  [10,000 x 100,000,000 = 1 Trillion]
+This is ten thousand titles each to one hundred million readers,
+which is only ~5% of the present number of computer users.
+
+At our revised rates of production, we will reach only one-third
+of that goal by the end of 2001, or about 3,333 Etexts unless we
+manage to get some real funding; currently our funding is mostly
+from Michael Hart's salary at Carnegie-Mellon University, and an
+assortment of sporadic gifts; this salary is only good for a few
+more years, so we are looking for something to replace it, as we
+don't want Project Gutenberg to be so dependent on one person.
+
+We need your donations more than ever!
+
+
+All donations should be made to "Project Gutenberg/CMU": and are
+tax deductible to the extent allowable by law.  (CMU = Carnegie-
+Mellon University).
+
+For these and other matters, please mail to:
+
+Project Gutenberg
+P. O. Box  2782
+Champaign, IL 61825
+
+When all other email fails. . .try our Executive Director:
+Michael S. Hart <hart@pobox.com>
+hart@pobox.com forwards to hart@prairienet.org and archive.org
+if your mail bounces from archive.org, I will still see it, if
+it bounces from prairienet.org, better resend later on. . . .
+
+We would prefer to send you this information by email.
+
+******
+
+To access Project Gutenberg etexts, use any Web browser
+to view http://promo.net/pg.  This site lists Etexts by
+author and by title, and includes information about how
+to get involved with Project Gutenberg.  You could also
+download our past Newsletters, or subscribe here.  This
+is one of our major sites, please email hart@pobox.com,
+for a more complete list of our various sites.
+
+To go directly to the etext collections, use FTP or any
+Web browser to visit a Project Gutenberg mirror (mirror
+sites are available on 7 continents; mirrors are listed
+at http://promo.net/pg).
+
+Mac users, do NOT point and click, typing works better.
+
+Example FTP session:
+
+ftp sunsite.unc.edu
+login: anonymous
+password: your@login
+cd pub/docs/books/gutenberg
+cd etext90 through etext99
+dir [to see files]
+get or mget [to get files. . .set bin for zip files]
+GET GUTINDEX.??  [to get a year's listing of books, e.g., GUTINDEX.99]
+GET GUTINDEX.ALL [to get a listing of ALL books]
+
+***
+
+**Information prepared by the Project Gutenberg legal advisor**
+
+(Three Pages)
+
+
+***START**THE SMALL PRINT!**FOR PUBLIC DOMAIN ETEXTS**START***
+Why is this "Small Print!" statement here?  You know: lawyers.
+They tell us you might sue us if there is something wrong with
+your copy of this etext, even if you got it for free from
+someone other than us, and even if what's wrong is not our
+fault.  So, among other things, this "Small Print!" statement
+disclaims most of our liability to you.  It also tells you how
+you can distribute copies of this etext if you want to.
+
+*BEFORE!* YOU USE OR READ THIS ETEXT
+By using or reading any part of this PROJECT GUTENBERG-tm
+etext, you indicate that you understand, agree to and accept
+this "Small Print!" statement.  If you do not, you can receive
+a refund of the money (if any) you paid for this etext by
+sending a request within 30 days of receiving it to the person
+you got it from.  If you received this etext on a physical
+medium (such as a disk), you must return it with your request.
+
+ABOUT PROJECT GUTENBERG-TM ETEXTS
+This PROJECT GUTENBERG-tm etext, like most PROJECT GUTENBERG-
+tm etexts, is a "public domain" work distributed by Professor
+Michael S. Hart through the Project Gutenberg Association at
+Carnegie-Mellon University (the "Project").  Among other
+things, this means that no one owns a United States copyright
+on or for this work, so the Project (and you!) can copy and
+distribute it in the United States without permission and
+without paying copyright royalties.  Special rules, set forth
+below, apply if you wish to copy and distribute this etext
+under the Project's "PROJECT GUTENBERG" trademark.
+
+To create these etexts, the Project expends considerable
+efforts to identify, transcribe and proofread public domain
+works.  Despite these efforts, the Project's etexts and any
+medium they may be on may contain "Defects".  Among other
+things, Defects may take the form of incomplete, inaccurate or
+corrupt data, transcription errors, a copyright or other
+intellectual property infringement, a defective or damaged
+disk or other etext medium, a computer virus, or computer
+codes that damage or cannot be read by your equipment.
+
+LIMITED WARRANTY; DISCLAIMER OF DAMAGES
+But for the "Right of Replacement or Refund" described below,
+[1] the Project (and any other party you may receive this
+etext from as a PROJECT GUTENBERG-tm etext) disclaims all
+liability to you for damages, costs and expenses, including
+legal fees, and [2] YOU HAVE NO REMEDIES FOR NEGLIGENCE OR
+UNDER STRICT LIABILITY, OR FOR BREACH OF WARRANTY OR CONTRACT,
+INCLUDING BUT NOT LIMITED TO INDIRECT, CONSEQUENTIAL, PUNITIVE
+OR INCIDENTAL DAMAGES, EVEN IF YOU GIVE NOTICE OF THE
+POSSIBILITY OF SUCH DAMAGES.
+
+If you discover a Defect in this etext within 90 days of
+receiving it, you can receive a refund of the money (if any)
+you paid for it by sending an explanatory note within that
+time to the person you received it from.  If you received it
+on a physical medium, you must return it with your note, and
+such person may choose to alternatively give you a replacement
+copy.  If you received it electronically, such person may
+choose to alternatively give you a second opportunity to
+receive it electronically.
+
+THIS ETEXT IS OTHERWISE PROVIDED TO YOU "AS-IS".  NO OTHER
+WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, ARE MADE TO YOU AS
+TO THE ETEXT OR ANY MEDIUM IT MAY BE ON, INCLUDING BUT NOT
+LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE.
+
+Some states do not allow disclaimers of implied warranties or
+the exclusion or limitation of consequential damages, so the
+above disclaimers and exclusions may not apply to you, and you
+may have other legal rights.
+
+INDEMNITY
+You will indemnify and hold the Project, its directors,
+officers, members and agents harmless from all liability, cost
+and expense, including legal fees, that arise directly or
+indirectly from any of the following that you do or cause:
+[1] distribution of this etext, [2] alteration, modification,
+or addition to the etext, or [3] any Defect.
+
+DISTRIBUTION UNDER "PROJECT GUTENBERG-tm"
+You may distribute copies of this etext electronically, or by
+disk, book or any other medium if you either delete this
+"Small Print!" and all other references to Project Gutenberg,
+or:
+
+[1]  Only give exact copies of it.  Among other things, this
+     requires that you do not remove, alter or modify the
+     etext or this "small print!" statement.  You may however,
+     if you wish, distribute this etext in machine readable
+     binary, compressed, mark-up, or proprietary form,
+     including any form resulting from conversion by word pro-
+     cessing or hypertext software, but only so long as
+     *EITHER*:
+
+     [*]  The etext, when displayed, is clearly readable, and
+          does *not* contain characters other than those
+          intended by the author of the work, although tilde
+          (~), asterisk (*) and underline (_) characters may
+          be used to convey punctuation intended by the
+          author, and additional characters may be used to
+          indicate hypertext links; OR
+
+     [*]  The etext may be readily converted by the reader at
+          no expense into plain ASCII, EBCDIC or equivalent
+          form by the program that displays the etext (as is
+          the case, for instance, with most word processors);
+          OR
+
+     [*]  You provide, or agree to also provide on request at
+          no additional cost, fee or expense, a copy of the
+          etext in its original plain ASCII form (or in EBCDIC
+          or other equivalent proprietary form).
+
+[2]  Honor the etext refund and replacement provisions of this
+     "Small Print!" statement.
+
+[3]  Pay a trademark license fee to the Project of 20% of the
+     net profits you derive calculated using the method you
+     already use to calculate your applicable taxes.  If you
+     don't derive profits, no royalty is due.  Royalties are
+     payable to "Project Gutenberg Association/Carnegie-Mellon
+     University" within the 60 days following each
+     date you prepare (or were legally required to prepare)
+     your annual (or equivalent periodic) tax return.
+
+WHAT IF YOU *WANT* TO SEND MONEY EVEN IF YOU DON'T HAVE TO?
+The Project gratefully accepts contributions in money, time,
+scanning machines, OCR software, public domain etexts, royalty
+free copyright licenses, and every other sort of contribution
+you can think of.  Money should be paid to "Project Gutenberg
+Association / Carnegie-Mellon University".
+
+*END*THE SMALL PRINT! FOR PUBLIC DOMAIN ETEXTS*Ver.04.29.93*END*
+
+
+
+
+
+Project Gutenberg's Etext of Shakespeare's The first Part of
+Henry the Sixt
+
+
+
+
+Executive Director's Notes:
+
+In addition to the notes below, and so you will *NOT* think all
+the spelling errors introduced by the printers of the time have
+been corrected, here are the first few lines of Hamlet, as they
+are presented herein:
+
+  Barnardo. Who's there?
+  Fran. Nay answer me: Stand & vnfold
+your selfe
+
+   Bar. Long liue the King
+
+***
+
+As I understand it, the printers often ran out of certain words
+or letters they had often packed into a "cliche". . .this is the
+original meaning of the term cliche. . .and thus, being unwilling
+to unpack the cliches, and thus you will see some substitutions
+that look very odd. . .such as the exchanges of u for v, v for u,
+above. . .and you may wonder why they did it this way, presuming
+Shakespeare did not actually write the play in this manner. . . .
+
+The answer is that they MAY have packed "liue" into a cliche at a
+time when they were out of "v"'s. . .possibly having used "vv" in
+place of some "w"'s, etc.  This was a common practice of the day,
+as print was still quite expensive, and they didn't want to spend
+more on a wider selection of characters than they had to.
+
+You will find a lot of these kinds of "errors" in this text, as I
+have mentioned in other times and places, many "scholars" have an
+extreme attachment to these errors, and many have accorded them a
+very high place in the "canon" of Shakespeare.  My father read an
+assortment of these made available to him by Cambridge University
+in England for several months in a glass room constructed for the
+purpose.  To the best of my knowledge he read ALL those available
+. . .in great detail. . .and determined from the various changes,
+that Shakespeare most likely did not write in nearly as many of a
+variety of errors we credit him for, even though he was in/famous
+for signing his name with several different spellings.
+
+So, please take this into account when reading the comments below
+made by our volunteer who prepared this file:  you may see errors
+that are "not" errors. . . .
+
+So. . .with this caveat. . .we have NOT changed the canon errors,
+here is the Project Gutenberg Etext of Shakespeare's The first
+Part of Henry the Sixt.
+
+Michael S. Hart
+Project Gutenberg
+Executive Director
+
+
+***
+
+
+Scanner's Notes: What this is and isn't.  This was taken from
+a copy of Shakespeare's first folio and it is as close as I can
+come in ASCII to the printed text.
+
+The elongated S's have been changed to small s's and the
+conjoined ae have been changed to ae.  I have left the spelling,
+punctuation, capitalization as close as possible to the
+printed text.  I have corrected some spelling mistakes (I have put
+together a spelling dictionary devised from the spellings of the
+Geneva Bible and Shakespeare's First Folio and have unified
+spellings according to this template), typo's and expanded
+abbreviations as I have come across them.  Everything within
+brackets [] is what I have added.  So if you don't like that
+you can delete everything within the brackets if you want a
+purer Shakespeare.
+
+Another thing that you should be aware of is that there are textual
+differences between various copies of the first folio.  So there may
+be differences (other than what I have mentioned above) between
+this and other first folio editions.  This is due to the printer's
+habit of setting the type and running off a number of copies and
+then proofing the printed copy and correcting the type and then
+continuing the printing run.  The proof run wasn't thrown away but
+incorporated into the printed copies.  This is just the way it is.
+The text I have used was a composite of more than 30 different
+First Folio editions' best pages.
+
+If you find any scanning errors, out and out typos, punctuation
+errors, or if you disagree with my spelling choices please feel
+free to email me those errors.  I wish to make this the best
+etext possible.  My email address for right now are haradda@aol.com
+and davidr@inconnect.com.  I hope that you enjoy this.
+
+David Reed
+
+A Midsommer Nights Dreame
+
+Actus primus.
+
+Enter Theseus, Hippolita, with others.
+
+  Theseus. Now faire Hippolita, our nuptiall houre
+Drawes on apace: foure happy daies bring in
+Another Moon: but oh, me thinkes, how slow
+This old Moon wanes; She lingers my desires
+Like to a Step-dame, or a Dowager,
+Long withering out a yong mans reuennew
+
+   Hip. Foure daies wil quickly steep the[m]selues in nights
+Foure nights wil quickly dreame away the time:
+And then the Moone, like to a siluer bow,
+Now bent in heauen, shal behold the night
+Of our solemnities
+
+   The. Go Philostrate,
+Stirre vp the Athenian youth to merriments,
+Awake the pert and nimble spirit of mirth,
+Turne melancholy forth to Funerals:
+The pale companion is not for our pompe,
+Hippolita, I woo'd thee with my sword,
+And wonne thy loue, doing thee iniuries:
+But I will wed thee in another key,
+With pompe, with triumph, and with reuelling.
+Enter Egeus and his daughter Hermia, Lysander, and Demetrius.
+
+  Ege. Happy be Theseus, our renowned Duke
+
+   The. Thanks good Egeus: what's the news with thee?
+  Ege. Full of vexation, come I, with complaint
+Against my childe, my daughter Hermia.
+
+Stand forth Demetrius.
+
+My Noble Lord,
+This man hath my consent to marrie her.
+
+Stand forth Lysander.
+
+And my gracious Duke,
+This man hath bewitch'd the bosome of my childe:
+Thou, thou Lysander, thou hast giuen her rimes,
+And interchang'd loue-tokens with my childe:
+Thou hast by Moone-light at her window sung,
+With faining voice, verses of faining loue,
+And stolne the impression of her fantasie,
+With bracelets of thy haire, rings, gawdes, conceits,
+Knackes, trifles, Nose-gaies, sweet meats (messengers
+Of strong preuailment in vnhardned youth)
+With cunning hast thou filch'd my daughters heart,
+Turn'd her obedience (which is due to me)
+To stubborne harshnesse. And my gracious Duke,
+Be it so she will not heere before your Grace,
+Consent to marrie with Demetrius,
+I beg the ancient priuiledge of Athens;
+As she is mine, I may dispose of her;
+Which shall be either to this Gentleman,
+Or to her death, according to our Law,
+Immediately prouided in that case
+
+   The. What say you Hermia? be aduis'd faire Maide,
+To you your Father should be as a God;
+One that compos'd your beauties; yea and one
+To whom you are but as a forme in waxe
+By him imprinted: and within his power,
+To leaue the figure, or disfigure it:
+Demetrius is a worthy Gentleman
+
+   Her. So is Lysander
+
+   The. In himselfe he is.
+But in this kinde, wanting your fathers voyce,
+The other must be held the worthier
+
+   Her. I would my father look'd but with my eyes
+
+   The. Rather your eies must with his iudgment looke
+
+   Her. I do entreat your Grace to pardon me.
+I know not by what power I am made bold,
+Nor how it may concerne my modestie
+In such a presence heere to pleade my thoughts:
+But I beseech your Grace, that I may know
+The worst that may befall me in this case,
+If I refuse to wed Demetrius
+
+   The. Either to dye the death, or to abiure
+For euer the society of men.
+Therefore faire Hermia question your desires,
+Know of your youth, examine well your blood,
+Whether (if you yeeld not to your fathers choice)
+You can endure the liuerie of a Nunne,
+For aye to be in shady Cloister mew'd,
+To liue a barren sister all your life,
+Chanting faint hymnes to the cold fruitlesse Moone,
+Thrice blessed they that master so their blood,
+To vndergo such maiden pilgrimage,
+But earthlier happie is the Rose distil'd,
+Then that which withering on the virgin thorne,
+Growes, liues, and dies, in single blessednesse
+
+   Her. So will I grow, so liue, so die my Lord,
+Ere I will yeeld my virgin Patent vp
+Vnto his Lordship, whose vnwished yoake,
+My soule consents not to giue soueraignty
+
+   The. Take time to pause, and by the next new Moon
+The sealing day betwixt my loue and me,
+For euerlasting bond of fellowship:
+Vpon that day either prepare to dye,
+For disobedience to your fathers will,
+Or else to wed Demetrius as hee would,
+Or on Dianaes Altar to protest
+For aie, austerity, and single life
+
+   Dem. Relent sweet Hermia, and Lysander, yeelde
+Thy crazed title to my certaine right
+
+   Lys. You haue her fathers loue, Demetrius:
+Let me haue Hermiaes: do you marry him
+
+   Egeus. Scornfull Lysander, true, he hath my Loue;
+And what is mine, my loue shall render him.
+And she is mine, and all my right of her,
+I do estate vnto Demetrius
+
+   Lys. I am my Lord, as well deriu'd as he,
+As well possest: my loue is more then his:
+My fortunes euery way as fairely ranck'd
+(If not with vantage) as Demetrius:
+And (which is more then all these boasts can be)
+I am belou'd of beauteous Hermia.
+Why should not I then prosecute my right?
+Demetrius, Ile auouch it to his head,
+Made loue to Nedars daughter, Helena,
+And won her soule: and she (sweet Ladie) dotes,
+Deuoutly dotes, dotes in Idolatry,
+Vpon this spotted and inconstant man
+
+   The. I must confesse, that I haue heard so much,
+And with Demetrius thought to haue spoke thereof:
+But being ouer-full of selfe-affaires,
+My minde did lose it. But Demetrius come,
+And come Egeus, you shall go with me,
+I haue some priuate schooling for you both.
+For you faire Hermia, looke you arme your selfe,
+To fit your fancies to your Fathers will;
+Or else the Law of Athens yeelds you vp
+(Which by no meanes we may extenuate)
+To death, or to a vow of single life.
+Come my Hippolita, what cheare my loue?
+Demetrius and Egeus go along:
+I must imploy you in some businesse
+Against our nuptiall, and conferre with you
+Of something, neerely that concernes your selues
+
+   Ege. With dutie and desire we follow you.
+
+Exeunt.
+
+Manet Lysander and Hermia.
+
+  Lys. How now my loue? Why is your cheek so pale?
+How chance the Roses there do fade so fast?
+  Her. Belike for want of raine, which I could well
+Beteeme them, from the tempest of mine eyes
+
+   Lys. For ought that euer I could reade,
+Could euer heare by tale or historie,
+The course of true loue neuer did run smooth,
+But either it was different in blood
+
+   Her. O crosse! too high to be enthral'd to loue
+
+   Lys. Or else misgraffed, in respect of yeares
+
+   Her. O spight! too old to be ingag'd to yong
+
+   Lys. Or else it stood vpon the choise of merit
+
+   Her. O hell! to choose loue by anothers eie
+
+   Lys. Or if there were a simpathie in choise,
+Warre, death, or sicknesse, did lay siege to it;
+Making it momentarie, as a sound:
+Swift as a shadow, short as any dreame,
+Briefe as the lightning in the collied night,
+That (in a spleene) vnfolds both heauen and earth;
+And ere a man hath power to say, behold,
+The iawes of darkness do deuoure it vp:
+So quicke bright things come to confusion
+
+   Her. If then true Louers haue beene euer crost,
+It stands as an edict in destinie:
+Then let vs teach our triall patience,
+Because it is a customarie crosse,
+As due to loue, as thoughts, and dreames, and sighes,
+Wishes and teares; poore Fancies followers
+
+   Lys. A good perswasion; therefore heare me Hermia,
+I haue a Widdow Aunt, a dowager,
+Of great reuennew, and she hath no childe,
+From Athens is her house remou'd seuen leagues,
+And she respects me, as her onely sonne:
+There gentle Hermia, may I marrie thee,
+And to that place, the sharpe Athenian Law
+Cannot pursue vs. If thou lou'st me, then
+Steale forth thy Fathers house to morrow night:
+And in the wood, a league without the towne,
+(Where I did meete thee once with Helena.
+To do obseruance for a morne of May)
+There will I stay for thee
+
+   Her. My good Lysander,
+I sweare to thee, by Cupids strongest bow,
+By his best arrow with the golden head,
+By the simplicitie of Venus Doues,
+By that which knitteth soules, and prospers loue,
+And by that fire which burn'd the Carthage Queene,
+When the false Troyan vnder saile was seene,
+By all the vowes that euer men haue broke,
+(In number more then euer women spoke)
+In that same place thou hast appointed me,
+To morrow truly will I meete with thee
+
+   Lys. Keepe promise loue: looke here comes Helena.
+Enter Helena.
+
+  Her. God speede faire Helena, whither away?
+  Hel. Cal you me faire? that faire againe vnsay,
+Demetrius loues you faire: O happie faire!
+Your eyes are loadstarres, and your tongues sweete ayre
+More tuneable then Larke to shepheards eare,
+When wheate is greene, when hauthorne buds appeare,
+Sicknesse is catching: O were fauor so,
+Your words I catch, faire Hermia ere I go,
+My eare should catch your voice, my eye, your eye,
+My tongue should catch your tongues sweete melodie,
+Were the world mine, Demetrius being bated,
+The rest Ile giue to be to you translated.
+O teach me how you looke, and with what art
+You sway the motion of Demetrius hart
+
+   Her. I frowne vpon him, yet he loues me still
+
+   Hel. O that your frownes would teach my smiles
+such skil
+
+   Her. I giue him curses, yet he giues me loue
+
+   Hel. O that my prayers could such affection mooue
+
+   Her. The more I hate, the more he followes me
+
+   Hel. The more I loue, the more he hateth me
+
+   Her. His folly Helena is none of mine
+
+   Hel. None but your beauty, wold that fault wer mine
+  Her. Take comfort: he no more shall see my face,
+Lysander and my selfe will flie this place.
+Before the time I did Lysander see,
+Seem'd Athens like a Paradise to mee.
+O then, what graces in my Loue do dwell,
+That he hath turn'd a heauen into hell
+
+   Lys. Helen, to you our mindes we will vnfold,
+To morrow night, when Phoebe doth behold
+Her siluer visage, in the watry glasse,
+Decking with liquid pearle, the bladed grasse
+(A time that Louers flights doth still conceale)
+Through Athens gates, haue we deuis'd to steale
+
+   Her. And in the wood, where often you and I,
+Vpon faint Primrose beds, were wont to lye,
+Emptying our bosomes, of their counsell sweld:
+There my Lysander, and my selfe shall meete,
+And thence from Athens turne away our eyes
+To seeke new friends and strange companions,
+Farwell sweet play-fellow, pray thou for vs,
+And good lucke grant thee thy Demetrius.
+Keepe word Lysander we must starue our sight,
+From louers foode, till morrow deepe midnight.
+
+Exit Hermia.
+
+  Lys. I will my Hermia. Helena adieu,
+As you on him, Demetrius dotes on you.
+
+Exit Lysander.
+
+  Hele. How happy some, ore othersome can be?
+Through Athens I am thought as faire as she.
+But what of that? Demetrius thinkes not so:
+He will not know, what all, but he doth know,
+And as hee erres, doting on Hermias eyes;
+So I, admiring of his qualities:
+Things base and vilde, holding no quantity,
+Loue can transpose to forme and dignity,
+Loue lookes not with the eyes, but with the minde,
+And therefore is wing'd Cupid painted blinde.
+Nor hath loues minde of any iudgement taste:
+Wings and no eyes, figure, vnheedy haste.
+And therefore is Loue said to be a childe,
+Because in choise he is often beguil'd,
+As waggish boyes in game themselues forsweare;
+So the boy Loue is periur'd euery where.
+For ere Demetrius lookt on Hermias eyne,
+He hail'd downe oathes that he was onely mine.
+And when this Haile some heat from Hermia felt,
+So he dissolu'd, and showres of oathes did melt,
+I will goe tell him of faire Hermias flight:
+Then to the wood will he, to morrow night
+Pursue her; and for his intelligence,
+If I haue thankes, it is a deere expence:
+But heerein meane I to enrich my paine,
+To haue his sight thither, and backe againe.
+Enter.
+
+Enter Quince the Carpenter, Snug the Ioyner, Bottome the Weauer,
+Flute
+the bellowes-mender, Snout the Tinker, and Starueling the Taylor.
+
+  Quin. Is all our company heere?
+  Bot. You were best to call them generally, man by
+man according to the scrip
+
+   Qui. Here is the scrowle of euery mans name, which
+is thought fit through all Athens, to play in our Enterlude
+before the Duke and the Dutches, on his wedding
+day at night
+
+   Bot. First, good Peter Quince, say what the play treats
+on: then read the names of the Actors: and so grow on
+to a point
+
+   Quin. Marry our play is the most lamentable comedy,
+and most cruell death of Pyramus and Thisbie
+
+   Bot. A very good peece of worke I assure you, and a
+merry. Now good Peter Quince, call forth your Actors
+by the scrowle. Masters spread your selues
+
+   Quince. Answere as I call you. Nick Bottome the
+Weauer
+
+   Bottome. Ready; name what part I am for, and
+proceed
+
+   Quince. You Nicke Bottome are set downe for Pyramus
+
+   Bot. What is Pyramus, a louer, or a tyrant?
+  Quin. A Louer that kills himselfe most gallantly for
+loue
+
+   Bot. That will aske some teares in the true performing
+of it: if I do it, let the audience looke to their eies:
+I will mooue stormes; I will condole in some measure.
+To the rest yet, my chiefe humour is for a tyrant. I could
+play Ercles rarely, or a part to teare a Cat in, to make all
+split the raging Rocks; and shiuering shocks shall break
+the locks of prison gates, and Phibbus carre shall shine
+from farre, and make and marre the foolish Fates. This
+was lofty. Now name the rest of the Players. This
+is Ercles vaine, a tyrants vaine: a louer is more condoling
+
+   Quin. Francis Flute the Bellowes-mender
+
+   Flu. Heere Peter Quince
+
+   Quin. You must take Thisbie on you
+
+   Flut. What is Thisbie, a wandring Knight?
+  Quin. It is the Lady that Pyramus must loue
+
+   Flut. Nay faith, let not mee play a woman, I haue a
+beard comming
+
+   Qui. That's all one, you shall play it in a Maske, and
+you may speake as small as you will
+
+   Bot. And I may hide my face, let me play Thisbie too:
+Ile speake in a monstrous little voyce; Thisne, Thisne, ah
+Pyramus my louer deare, thy Thisbie deare, and Lady
+deare
+
+   Quin. No no, you must play Pyramus, and Flute, you
+Thisby
+
+   Bot. Well, proceed
+
+   Qu. Robin Starueling the Taylor
+
+   Star. Heere Peter Quince
+
+   Quince. Robin Starueling, you must play Thisbies
+mother?
+Tom Snowt, the Tinker
+
+   Snowt. Heere Peter Quince
+
+   Quin. you, Pyramus father; my self, Thisbies father;
+Snugge the Ioyner, you the Lyons part: and I hope there
+is a play fitted
+
+   Snug. Haue you the Lions part written? pray you if
+be, giue it me, for I am slow of studie
+
+   Quin. You may doe it extemporie, for it is nothing
+but roaring
+
+   Bot. Let mee play the Lyon too, I will roare that I
+will doe any mans heart good to heare me. I will roare,
+that I will make the Duke say, Let him roare againe, let
+him roare againe
+
+   Quin. If you should do it too terribly, you would
+fright the Dutchesse and the Ladies, that they would
+shrike, and that were enough to hang us all
+
+   All. That would hang vs euery mothers sonne
+
+   Bottome. I graunt you friends, if that you should
+fright the Ladies out of their Wittes, they would
+haue no more discretion but to hang vs: but I will aggrauate
+my voyce so, that I will roare you as gently as
+any sucking Doue; I will roare and 'twere any Nightingale
+
+   Quin. You can play no part but Piramus, for Piramus
+is a sweet-fac'd man, a proper man as one shall see in
+a summers day; a most louely Gentleman-like man, therfore
+you must needs play Piramus
+
+   Bot. Well, I will vndertake it. What beard were I
+best to play it in?
+  Quin. Why, what you will
+
+   Bot. I will discharge it, in either your straw-colour
+beard, your orange tawnie beard, your purple in graine
+beard, or your French-crowne colour'd beard, your perfect
+yellow
+
+   Quin. Some of your French Crownes haue no haire
+at all, and then you will play bare-fac'd. But masters here
+are your parts, and I am to intreat you, request you, and
+desire you, to con them by too morrow night: and meet
+me in the palace wood, a mile without the Towne, by
+Moone-light, there we will rehearse: for if we meete in
+the Citie, we shalbe dog'd with company, and our deuises
+knowne. In the meane time, I wil draw a bil of properties,
+such as our play wants. I pray you faile me not
+
+   Bottom. We will meete, and there we may rehearse
+more obscenely and couragiously. Take paines, be perfect,
+adieu
+
+   Quin. At the Dukes oake we meete
+
+   Bot. Enough, hold or cut bow-strings.
+
+Exeunt.
+
+Actus Secundus.
+
+Enter a Fairie at one dore, and Robin goodfellow at another.
+
+  Rob. How now spirit, whether wander you?
+  Fai. Ouer hil, ouer dale, through bush, through briar,
+Ouer parke, ouer pale, through flood, through fire,
+I do wander euerie where, swifter then y Moons sphere;
+And I serue the Fairy Queene, to dew her orbs vpon the green.
+The Cowslips tall, her pensioners bee,
+In their gold coats, spots you see,
+Those be Rubies, Fairie fauors,
+In those freckles, liue their sauors,
+I must go seeke some dew drops heere,
+And hang a pearle in euery cowslips eare.
+Farewell thou Lob of spirits, Ile be gon,
+Our Queene and all her Elues come heere anon
+
+   Rob. The King doth keepe his Reuels here to night,
+Take heed the Queene come not within his sight,
+For Oberon is passing fell and wrath,
+Because that she, as her attendant, hath
+A louely boy stolne from an Indian King,
+She neuer had so sweet a changeling,
+And iealous Oberon would haue the childe
+Knight of his traine, to trace the Forrests wilde.
+But she (perforce) with-holds the loued boy,
+Crownes him with flowers, and makes him all her ioy.
+And now they neuer meete in groue, or greene,
+By fountaine cleere, or spangled star-light sheene,
+But they do square, that all their Elues for feare
+Creepe into Acorne cups and hide them there
+
+   Fai. Either I mistake your shape and making quite,
+Or else you are that shrew'd and knauish spirit
+Cal'd Robin Good-fellow. Are you not hee,
+That frights the maidens of the Villagree,
+Skim milke, and sometimes labour in the querne,
+And bootlesse make the breathlesse huswife cherne,
+And sometime make the drinke to beare no barme,
+Misleade night-wanderers, laughing at their harme,
+Those that Hobgoblin call you, and sweet Pucke,
+You do their worke, and they shall haue good lucke.
+Are not you he?
+  Rob. Thou speak'st aright;
+I am that merrie wanderer of the night:
+I iest to Oberon, and make him smile,
+When I a fat and bean-fed horse beguile,
+Neighing in likenesse of a silly foale,
+And sometime lurke I in a Gossips bole,
+In very likenesse of a roasted crab:
+And when she drinkes, against her lips I bob,
+And on her withered dewlop poure the Ale.
+The wisest Aunt telling the saddest tale,
+Sometime for three-foot stoole, mistaketh me,
+Then slip I from her bum, downe topples she,
+And tailour cries, and fals into a coffe.
+And then the whole quire hold their hips, and loffe,
+And waxen in their mirth, and neeze, and sweare,
+A merrier houre was neuer wasted there.
+But roome Fairy, heere comes Oberon
+
+   Fair. And heere my Mistris:
+Would that he were gone.
+Enter the King of Fairies at one doore with his traine, and the
+Queene at
+another with hers.
+
+  Ob. Ill met by Moone-light.
+Proud Tytania
+
+   Qu. What, iealous Oberon? Fairy skip hence.
+I haue forsworne his bed and companie
+
+   Ob. Tarrie rash Wanton; am not I thy Lord?
+  Qu. Then I must be thy Lady: but I know
+When thou wast stolne away from Fairy Land,
+And in the shape of Corin, sate all day,
+Playing on pipes of Corne, and versing loue
+To amorous Phillida. Why art thou heere
+Come from the farthest steepe of India?
+But that forsooth the bouncing Amazon
+Your buskin'd Mistresse, and your Warrior loue,
+To Theseus must be Wedded; and you come,
+To giue their bed ioy and prosperitie
+
+   Ob. How canst thou thus for shame Tytania.
+Glance at my credite, with Hippolita?
+Knowing I know thy loue to Theseus?
+Didst thou not leade him through the glimmering night
+From Peregenia, whom he rauished?
+And make him with faire Eagles breake his faith
+With Ariadne, and Antiopa?
+  Que. These are the forgeries of iealousie,
+And neuer since the middle Summers spring
+Met we on hil, in dale, forrest, or mead,
+By paued fountaine, or by rushie brooke,
+Or in the beached margent of the sea,
+To dance our ringlets to the whistling Winde,
+But with thy braules thou hast disturb'd our sport.
+Therefore the Windes, piping to vs in vaine,
+As in reuenge, haue suck'd vp from the sea
+Contagious fogges: Which falling in the Land,
+Hath euerie petty Riuer made so proud,
+That they haue ouer-borne their Continents.
+The Oxe hath therefore stretch'd his yoake in vaine,
+The Ploughman lost his sweat, and the greene Corne
+Hath rotted, ere his youth attain'd a beard:
+The fold stands empty in the drowned field,
+And Crowes are fatted with the murrion flocke,
+The nine mens Morris is fild vp with mud,
+And the queint Mazes in the wanton greene,
+For lacke of tread are vndistinguishable.
+The humane mortals want their winter heere,
+No night is now with hymne or caroll blest;
+Therefore the Moone (the gouernesse of floods)
+Pale in her anger, washes all the aire;
+That Rheumaticke diseases doe abound.
+And through this distemperature, we see
+The seasons alter; hoared headed Frosts
+Fall in the fresh lap of the crimson Rose,
+And on old Hyems chinne and Icie crowne,
+An odorous Chaplet of sweet Sommer buds
+Is as in mockry set. The Spring, the Sommer,
+The childing Autumne, angry Winter change
+Their wonted Liueries, and the mazed world,
+By their increase, now knowes not which is which;
+And this same progeny of euills,
+Comes from our debate, from our dissention,
+We are their parents and originall
+
+   Ober. Do you amend it then, it lies in you,
+Why should Titania crosse her Oberon?
+I do but beg a little changeling boy,
+To be my Henchman
+
+   Qu. Set your heart at rest,
+The Fairy land buyes not the childe of me,
+His mother was a Votresse of my Order,
+And in the spiced Indian aire, by night
+Full often hath she gossipt by my side,
+And sat with me on Neptunes yellow sands,
+Marking th' embarked traders on the flood,
+When we haue laught to see the sailes conceiue,
+And grow big bellied with the wanton winde:
+Which she with pretty and with swimming gate,
+Following (her wombe then rich with my yong squire)
+Would imitate, and saile vpon the Land,
+To fetch me trifles, and returne againe,
+As from a voyage, rich with merchandize.
+But she being mortall, of that boy did die,
+And for her sake I doe reare vp her boy,
+And for her sake I will not part with him
+
+   Ob. How long within this wood intend you stay?
+  Qu. Perchance till after Theseus wedding day.
+If you will patiently dance in our Round,
+And see our Moone-light reuels, goe with vs;
+If not, shun me and I will spare your haunts
+
+   Ob. Giue me that boy, and I will goe with thee
+
+   Qu. Not for thy Fairy Kingdome. Fairies away:
+We shall chide downe right, if I longer stay.
+
+Exeunt
+
+   Ob. Wel, go thy way: thou shalt not from this groue,
+Till I torment thee for this iniury.
+My gentle Pucke come hither; thou remembrest
+Since once I sat vpon a promontory,
+And heard a Meare-maide on a Dolphins backe,
+Vttering such dulcet and harmonious breath,
+That the rude sea grew ciuill at her song,
+And certaine starres shot madly from their Spheares,
+To heare the Sea-maids musicke
+
+   Puc. I remember
+
+   Ob. That very time I say (but thou couldst not)
+Flying betweene the cold Moone and the earth,
+Cupid all arm'd; a certaine aime he tooke
+At a faire Vestall, throned by the West,
+And loos'd his loue-shaft smartly from his bow,
+As it should pierce a hundred thousand hearts,
+But I might see young Cupids fiery shaft
+Quencht in the chaste beames of the watry Moone;
+And the imperiall Votresse passed on,
+In maiden meditation, fancy free.
+Yet markt I where the bolt of Cupid fell.
+It fell vpon a little westerne flower;
+Before, milke-white: now purple with loues wound,
+And maidens call it, Loue in idlenesse.
+Fetch me that flower; the hearb I shew'd thee once,
+The iuyce of it, on sleeping eye-lids laid,
+Will make or man or woman madly dote
+Vpon the next liue creature that it sees.
+Fetch me this hearbe, and be thou heere againe,
+Ere the Leuiathan can swim a league
+
+   Pucke. Ile put a girdle about the earth, in forty minutes
+
+   Ober. Hauing once this iuyce,
+Ile watch Titania, when she is asleepe,
+And drop the liquor of it in her eyes:
+The next thing when she waking lookes vpon,
+(Be it on Lyon, Beare, or Wolfe, or Bull,
+On medling Monkey, or on busie Ape)
+Shee shall pursue it, with the soule of loue.
+And ere I take this charme off from her sight,
+(As I can take it with another hearbe)
+Ile make her render vp her Page to me.
+But who comes heere? I am inuisible,
+And I will ouer-heare their conference.
+Enter Demetrius, Helena following him.
+
+  Deme. I loue thee not, therefore pursue me not,
+Where is Lysander, and faire Hermia?
+The one Ile stay, the other stayeth me.
+Thou toldst me they were stolne into this wood;
+And heere am I, and wood within this wood,
+Because I cannot meet my Hermia.
+Hence, get thee gone, and follow me no more
+
+   Hel. You draw me, you hard-hearted Adamant,
+But yet you draw not Iron, for my heart
+Is true as steele. Leaue you your power to draw,
+And I shall haue no power to follow you
+
+   Deme. Do I entice you? do I speake you faire?
+Or rather doe I not in plainest truth,
+Tell you I doe not, nor I cannot loue you?
+  Hel. And euen for that doe I loue thee the more;
+I am your spaniell, and Demetrius,
+The more you beat me, I will fawne on you.
+Vse me but as your spaniell; spurne me, strike me,
+Neglect me, lose me; onely giue me leaue
+(Vnworthy as I am) to follow you.
+What worser place can I beg in your loue,
+(And yet a place of high respect with me)
+Then to be vsed as you doe your dogge
+
+   Dem. Tempt not too much the hatred of my spirit,
+For I am sicke when I do looke on thee
+
+   Hel. And I am sicke when I looke not on you
+
+   Dem. You doe impeach your modesty too much,
+To leaue the Citty, and commit your selfe
+Into the hands of one that loues you not,
+To trust the opportunity of night.
+And the ill counsell of a desert place,
+With the rich worth of your virginity
+
+   Hel. Your vertue is my priuiledge: for that
+It is not night when I doe see your face.
+Therefore I thinke I am not in the night,
+Nor doth this wood lacke worlds of company,
+For you in my respect are all the world.
+Then how can it be said I am alone,
+When all the world is heere to looke on me?
+  Dem. Ile run from thee, and hide me in the brakes,
+And leaue thee to the mercy of wilde beasts
+
+   Hel. The wildest hath not such a heart as you;
+Runne when you will, the story shall be chang'd:
+Apollo flies and Daphne holds the chase;
+The Doue pursues the Griffin, the milde Hinde
+Makes speed to catch the Tyger. Bootlesse speede,
+When cowardise pursues, and valour flies
+
+   Demet. I will not stay thy questions, let me go;
+Or if thou follow me, doe not beleeue,
+But I shall doe thee mischiefe in the wood
+
+   Hel. I, in the Temple, in the Towne, and Field
+You doe me mischiefe. Fye Demetrius,
+Your wrongs doe set a scandall on my sexe:
+We cannot fight for loue, as men may doe;
+We should be woo'd, and were not made to wooe.
+I follow thee, and make a heauen of hell,
+To die vpon the hand I loue so well.
+Enter.
+
+  Ob. Fare thee well Nymph, ere he do leaue this groue,
+Thou shalt flie him, and he shall seeke thy loue.
+Hast thou the flower there? Welcome wanderer.
+Enter Pucke.
+
+  Puck. I there it is
+
+   Ob. I pray thee giue it me.
+I know a banke where the wilde time blowes,
+Where Oxslips and the nodding Violet growes,
+Quite ouer-cannoped with luscious woodbine,
+With sweet muske roses, and with Eglantine;
+There sleepes Tytania, sometime of the night,
+Lul'd in these flowers, with dances and delight:
+And there the snake throwes her enammel'd skinne,
+Weed wide enough to rap a Fairy in.
+And with the iuyce of this Ile streake her eyes,
+And make her full of hatefull fantasies.
+Take thou some of it, and seek through this groue;
+A sweet Athenian Lady is in loue
+With a disdainefull youth: annoint his eyes,
+But doe it when the next thing he espies,
+May be the Lady. Thou shalt know the man,
+By the Athenian garments he hath on.
+Effect it with some care, that he may proue
+More fond on her, then she vpon her loue;
+And looke thou meet me ere the first Cocke crow
+
+   Pu. Feare not my Lord, your seruant shall do so.
+Enter.
+
+Enter Queene of Fairies, with her traine.
+
+  Queen. Come, now a Roundell, and a Fairy song;
+Then for the third part of a minute hence,
+Some to kill Cankers in the muske rose buds,
+Some warre with Reremise, for their leathern wings.
+To make my small Elues coates, and some keepe backe
+The clamorous Owle that nightly hoots and wonders
+At our queint spirits: Sing me now asleepe,
+Then to your offices, and let me rest
+
+   Fairies Sing. You spotted Snakes with double tongue,
+Thorny Hedgehogges be not seene,
+Newts and blinde wormes do no wrong,
+Come not neere our Fairy Queene.
+Philomele with melodie,
+Sing in your sweet Lullaby.
+Lulla, lulla, lullaby, lulla, lulla, lullaby,
+Neuer harme, nor spell, nor charme,
+Come our louely Lady nye,
+So good night with Lullaby
+
+   2.Fairy. Weauing Spiders come not heere,
+Hence you long leg'd Spinners, hence:
+Beetles blacke approach not neere;
+Worme nor Snayle doe no offence.
+Philomele with melody, &c
+
+   1.Fairy. Hence away, now all is well;
+One aloofe, stand Centinell.
+
+Shee sleepes.
+
+Enter Oberon.
+
+  Ober. What thou seest when thou dost wake,
+Do it for thy true Loue take:
+Loue and languish for his sake.
+Be it Ounce, or Catte, or Beare,
+Pard, or Boare with bristled haire,
+In thy eye that shall appeare,
+When thou wak'st, it is thy deare,
+Wake when some vile thing is neere.
+Enter Lisander and Hermia.
+
+  Lis. Faire loue, you faint with wandring in y woods,
+And to speake troth I haue forgot our way:
+Wee'll rest vs Hermia, If you thinke it good,
+And tarry for the comfort of the day
+
+   Her. Be it so Lysander; finde you out a bed,
+For I vpon this banke will rest my head
+
+   Lys. One turfe shall serue as pillow for vs both,
+One heart, one bed, two bosomes, and one troth
+
+   Her. Nay good Lysander, for my sake my deere
+Lie further off yet, doe not lie so neere
+
+   Lys. O take the sence sweet, of my innocence,
+Loue takes the meaning, in loues conference,
+I meane that my heart vnto yours is knit,
+So that but one heart can you make of it.
+Two bosomes interchanged with an oath,
+So then two bosomes, and a single troth.
+Then by your side, no bed-roome me deny,
+For lying so, Hermia, I doe not lye
+
+   Her. Lysander riddles very prettily;
+Now much beshrew my manners and my pride,
+If Hermia meant to say, Lysander lied.
+But gentle friend, for loue and courtesie
+Lie further off, in humane modesty,
+Such separation, as may well be said,
+Becomes a vertuous batchelour, and a maide,
+So farre be distant, and good night sweet friend;
+Thy loue nere alter, till thy sweet life end
+
+   Lys. Amen, amen, to that faire prayer, say I,
+And then end life, when I end loyalty:
+Heere is my bed, sleepe giue thee all his rest
+
+   Her. With halfe that wish, the wishers eyes be prest.
+Enter Pucke. They sleepe.
+
+  Puck. Through the Forest haue I gone,
+But Athenian finde I none,
+One whose eyes I might approue
+This flowers force in stirring loue.
+Nigh and silence: who is heere?
+Weedes of Athens he doth weare:
+This is he (my master said)
+Despised the Athenian maide:
+And heere the maiden sleeping sound,
+On the danke and durty ground.
+Pretty soule, she durst not lye
+Neere this lacke-loue, this kill-curtesie.
+Churle, vpon thy eyes I throw
+All the power this charme doth owe:
+When thou wak'st, let loue forbid
+Sleepe his seate on thy eye-lid.
+So awake when I am gone:
+For I must now to Oberon.
+Enter.
+
+Enter Demetrius and Helena running.
+
+  Hel. Stay, though thou kill me, sweete Demetrius
+
+   De. I charge thee hence, and do not haunt me thus
+
+   Hel. O wilt thou darkling leaue me? do not so
+
+   De. Stay on thy perill, I alone will goe.
+
+Exit Demetrius.
+
+  Hel. O I am out of breath, in this fond chace,
+The more my prayer, the lesser is my grace,
+Happy is Hermia, wheresoere she lies;
+For she hath blessed and attractiue eyes.
+How came her eyes so bright? Not with salt teares.
+If so, my eyes are oftner washt then hers.
+No, no, I am as vgly as a Beare;
+For beasts that meete me, runne away for feare,
+Therefore no maruaile, though Demetrius
+Doe as a monster, flie my presence thus.
+What wicked and dissembling glasse of mine,
+Made me compare with Hermias sphery eyne?
+But who is here? Lysander on the ground;
+Deade or asleepe? I see no bloud, no wound,
+Lysander, if you liue, good sir awake
+
+   Lys. And run through fire I will for thy sweet sake.
+Transparent Helena, nature her shewes art,
+That through thy bosome makes me see thy heart.
+Where is Demetrius? oh how fit a word
+Is that vile name, to perish on my sword!
+  Hel. Do not say so Lysander, say not so:
+What though he loue your Hermia? Lord, what though?
+Yet Hermia still loues you; then be content
+
+   Lys. Content with Hermia? no, I do repent
+The tedious minutes I with her haue spent.
+Not Hermia, but Helena now I loue;
+Who will not change a Rauen for a Doue?
+The will of man is by his reason sway'd:
+And reason saies you are the worthier Maide.
+Things growing are not ripe vntill their season;
+So I being yong, till now ripe not to reason,
+And touching now the point of humane skill,
+Reason becomes the Marshall to my will.
+And leades me to your eyes, where I orelooke
+Loues stories, written in Loues richest booke
+
+   Hel. Wherefore was I to this keene mockery borne?
+When at your hands did I deserue this scorne?
+Ist not enough, ist not enough, yong man,
+That I did neuer, no nor neuer can,
+Deserue a sweete looke from Demetrius eye,
+But you must flout my insufficiency?
+Good troth you do me wrong (good-sooth you do)
+In such disdainfull manner, me to wooe.
+But fare you well; perforce I must confesse,
+I thought you Lord of more true gentlenesse.
+Oh, that a Lady of one man refus'd,
+Should of another therefore be abus'd.
+Enter
+
+   Lys. She sees not Hermia: Hermia sleepe thou there,
+And neuer maist thou come Lysander neere;
+For as a surfeit of the sweetest things
+The deepest loathing to the stomacke brings:
+Or as the heresies that men do leaue,
+Are hated most of those that did deceiue:
+So thou, my surfeit, and my heresie,
+Of all be hated; but the most of me;
+And all my powers addresse your loue and might,
+To honour Helen, and to be her Knight.
+Enter.
+
+  Her. Helpe me Lysander, helpe me; do thy best
+To plucke this crawling serpent from my brest.
+Aye me, for pitty; what a dreame was here?
+Lysander looke, how I do quake with feare:
+Me-thought a serpent eate my heart away,
+And yet sat smiling at his cruell prey.
+Lysander, What remoou'd? Lysander, Lord,
+What, out of hearing, gone? No sound, no word?
+Alacke where are you? speake and if you heare:
+Speake of all loues; I sound almost with feare.
+No, then I well perceiue you are not nye,
+Either death or you Ile finde immediately.
+Enter.
+
+
+Actus Tertius.
+
+Enter the Clownes.
+
+  Bot. Are we all met?
+  Quin. Pat, pat, and here's a maruailous conuenient
+place for our rehearsall. This greene plot shall be our
+stage, this hauthorne brake our tyring house, and we will
+do it in action, as we will do it before the Duke
+
+   Bot. Peter Quince?
+  Peter. What saist thou, bully Bottome?
+  Bot. There are things in this Comedy of Piramus and
+Thisby, that will neuer please. First, Piramus must draw a
+sword to kill himselfe; which the Ladies cannot abide.
+How answere you that?
+  Snout. Berlaken, a parlous feare
+
+   Star. I beleeue we must leaue the killing out, when
+all is done
+
+   Bot. Not a whit, I haue a deuice to make all well.
+Write me a Prologue, and let the Prologue seeme to say,
+we will do no harme with our swords, and that Pyramus
+is not kill'd indeede: and for the more better assurance,
+tell them, that I Piramus am not Piramus, but Bottome the
+Weauer; this will put them out of feare
+
+   Quin. Well, we will haue such a Prologue, and it shall
+be written in eight and sixe
+
+   Bot. No, make it two more, let it be written in eight
+and eight
+
+   Snout. Will not the Ladies be afear'd of the Lyon?
+  Star. I feare it, I promise you
+
+   Bot. Masters, you ought to consider with your selues, to
+bring in (God shield vs) a Lyon among Ladies, is a most
+dreadfull thing. For there is not a more fearefull wilde
+foule then your Lyon liuing: and wee ought to looke
+to it
+
+   Snout. Therefore another Prologue must tell he is not
+a Lyon
+
+   Bot. Nay, you must name his name, and halfe his face
+must be seene through the Lyons necke, and he himselfe
+must speake through, saying thus, or to the same defect;
+Ladies, or faire Ladies, I would wish you, or I would
+request you, or I would entreat you, not to feare, not to
+tremble: my life for yours. If you thinke I come hither
+as a Lyon, it were pitty of my life. No, I am no such
+thing, I am a man as other men are; and there indeed let
+him name his name, and tell him plainly hee is Snug the
+ioyner
+
+   Quin. Well, it shall be so; but there is two hard
+things, that is, to bring the Moone-light into a chamber:
+for you know Piramus and Thisby meete by Moonelight
+
+   Sn. Doth the Moone shine that night wee play our
+play?
+  Bot. A Calender, a Calender, looke in the Almanack,
+finde out Moone-shine, finde out Moone-shine.
+Enter Pucke.
+
+  Quin. Yes, it doth shine that night
+
+   Bot. Why then may you leaue a casement of the great
+chamber window (where we play) open, and the Moone
+may shine in at the casement
+
+   Quin. I, or else one must come in with a bush of thorns
+and a lanthorne, and say he comes to disfigure, or to present
+the person of Moone-shine. Then there is another
+thing, we must haue a wall in the great Chamber; for Piramus
+and Thisby (saies the story) did talke through the
+chinke of a wall
+
+   Sn. You can neuer bring in a wall. What say you
+Bottome?
+  Bot. Some man or other must present wall, and let
+him haue some Plaster, or some Lome, or some rough
+cast about him, to signifie wall; or let him hold his fingers
+thus; and through that cranny shall Piramus and
+Thisby whisper
+
+   Quin. If that may be, then all is well. Come, sit
+downe euery mothers sonne, and rehearse your parts.
+Piramus, you begin; when you haue spoken your speech,
+enter into that Brake, and so euery one according to his
+cue.
+Enter Robin.
+
+  Rob. What hempen home-spuns haue we swaggering
+here,
+So neere the Cradle of the Faierie Queene?
+What, a Play toward? Ile be an auditor,
+An Actor too perhaps, if I see cause
+
+   Quin. Speake Piramus: Thisby stand forth
+
+   Pir. Thisby, the flowers of odious sauors sweete
+
+   Quin. Odours, odours
+
+   Pir. Odours sauors sweete,
+So hath thy breath, my dearest Thisby deare.
+But harke, a voyce: stay thou but here a while,
+And by and by I will to thee appeare.
+
+Exit. Pir.
+
+  Puck. A stranger Piramus, then ere plaid here
+
+   This. Must I speake now?
+  Pet. I marry must you. For you must vnderstand he
+goes but to see a noyse that he heard, and is to come againe
+
+   Thys. Most radiant Piramus, most Lilly white of hue,
+Of colour like the red rose on triumphant bryer,
+Most brisky Iuuenall, and eke most louely Iew,
+As true as truest horse, that yet would neuer tyre,
+Ile meete thee Piramus, at Ninnies toombe
+
+   Pet. Ninus toombe man: why, you must not speake
+that yet; that you answere to Piramus: you speake all
+your part at once, cues and all. Piramus enter, your cue is
+past; it is neuer tyre
+
+   Thys. O, as true as truest horse, that yet would neuer
+tyre:
+  Pir. If I were faire, Thisby I were onely thine
+
+   Pet. O monstrous. O strange. We are hanted; pray
+masters, flye masters, helpe.
+
+The Clownes all Exit.
+
+  Puk. Ile follow you, Ile leade you about a Round,
+Through bogge, through bush, through brake, through bryer,
+Sometime a horse Ile be, sometime a hound:
+A hogge, a headlesse beare, sometime a fire,
+And neigh, and barke, and grunt, and rore, and burne,
+Like horse, hound, hog, beare, fire, at euery turne.
+Enter.
+
+Enter Piramus with the Asse head.
+
+  Bot. Why do they run away? This is a knauery of
+them to make me afeard.
+Enter Snowt
+
+   Sn. O Bottom, thou art chang'd; What doe I see on
+thee?
+  Bot. What do you see? You see an Asse-head of your
+owne, do you?
+Enter Peter Quince.
+
+  Pet. Blesse thee Bottome, blesse thee; thou art translated.
+Enter.
+
+  Bot. I see their knauery; this is to make an asse of me,
+to fright me if they could; but I will not stirre from
+this place, do what they can. I will walke vp and downe
+here, and I will sing that they shall heare I am not afraid.
+The Woosell cocke, so blacke of hew,
+With Orenge-tawny bill.
+The Throstle, with his note so true,
+The Wren and little quill
+
+   Tyta. What Angell wakes me from my flowry bed?
+  Bot. The Finch, the Sparrow, and the Larke,
+The plainsong Cuckow gray;
+Whose note full many a man doth marke,
+And dares not answere, nay.
+For indeede, who would set his wit to so foolish a bird?
+Who would giue a bird the lye, though he cry Cuckow,
+neuer so?
+  Tyta. I pray thee gentle mortall, sing againe,
+Mine eare is much enamored of thy note;
+On the first view to say, to sweare I loue thee.
+So is mine eye enthralled to thy shape.
+And thy faire vertues force (perforce) doth moue me
+
+   Bot. Me-thinkes mistresse, you should haue little
+reason for that: and yet to say the truth, reason and
+loue keepe little company together, nowadayes.
+The more the pittie, that some honest neighbours will
+not make them friends. Nay, I can gleeke vpon occasion
+
+   Tyta. Thou art as wise, as thou art beautifull
+
+   Bot. Not so neither: but if I had wit enough to get
+out of this wood, I haue enough to serue mine owne
+turne
+
+   Tyta. Out of this wood, do not desire to goe,
+Thou shalt remaine here, whether thou wilt or no.
+I am a spirit of no common rate:
+The Summer still doth tend vpon my state,
+And I doe loue thee; therefore goe with me,
+Ile giue thee Fairies to attend on thee;
+And they shall fetch thee Iewels from the deepe,
+And sing, while thou on pressed flowers dost sleepe:
+And I will purge thy mortall grossenesse so,
+That thou shalt like an airie spirit go.
+Enter Pease-blossome, Cobweb, Moth, Mustardseede, and foure
+Fairies.
+
+  Fai. Ready; and I, and I, and I, Where shall we go?
+  Tita. Be kinde and curteous to this Gentleman,
+Hop in his walkes, and gambole in his eies,
+Feede him with Apricocks, and Dewberries,
+With purple Grapes, greene Figs, and Mulberries,
+The honie-bags steale from the humble Bees,
+And for night-tapers crop their waxen thighes,
+And light them at the fierie-Glow-wormes eyes,
+To haue my loue to bed, and to arise:
+And plucke the wings from painted Butterflies,
+To fan the Moone-beames from his sleeping eies.
+Nod to him Elues, and doe him curtesies
+
+   1.Fai. Haile mortall, haile
+
+   2.Fai. Haile
+
+   3.Fai. Haile
+
+   Bot. I cry your worships mercy hartily; I beseech
+your worships name
+
+   Cob. Cobweb
+
+   Bot. I shall desire you of more acquaintance, good
+Master Cobweb: if I cut my finger, I shall make bold
+with you.
+Your name honest Gentleman?
+  Pease. Pease Blossome
+
+   Bot. I pray you commend me to mistresse Squash,
+your mother, and to master Peascod your father. Good
+master Pease-blossome, I shal desire of you more acquaintance
+to. Your name I beseech you sir?
+  Mus. Mustard-seede
+
+   Peas. Pease-blossome
+
+   Bot. Good master Mustard seede, I know your patience
+well: that same cowardly gyant-like Oxe beefe
+hath deuoured many a gentleman of your house. I promise
+you, your kindred hath made my eyes water ere
+now. I desire you more acquaintance, good Master
+Mustard-seede
+
+   Tita. Come waite vpon him, lead him to my bower.
+The Moone me-thinks, lookes with a watrie eie,
+And when she weepes, weepe euerie little flower,
+Lamenting some enforced chastitie.
+Tye vp my louers tongue, bring him silently.
+Enter.
+
+Enter King of Pharies, solus.
+
+  Ob. I wonder if Titania be awak't;
+Then what it was that next came in her eye,
+Which she must dote on, in extremitie.
+Enter Pucke.
+
+Here comes my messenger: how now mad spirit,
+What night-rule now about this haunted groue?
+  Puck. My Mistris with a monster is in loue,
+Neere to her close and consecrated bower,
+While she was in her dull and sleeping hower,
+A crew of patches, rude Mechanicals,
+That worke for bread vpon Athenian stals,
+Were met together to rehearse a Play,
+Intended for great Theseus nuptiall day:
+The shallowest thick-skin of that barren sort,
+Who Piramus presented, in their sport,
+Forsooke his Scene, and entred in a brake,
+When I did him at this aduantage take,
+An Asses nole I fixed on his head.
+Anon his Thisbie must be answered,
+And forth my Mimmick comes: when they him spie,
+As Wilde-geese, that the creeping Fowler eye,
+Or russed-pated choughes, many in sort
+(Rising and cawing at the guns report)
+Seuer themselues, and madly sweepe the skye:
+So at his sight, away his fellowes flye,
+And at our stampe, here ore and ore one fals;
+He murther cries, and helpe from Athens cals.
+Their sense thus weake, lost with their feares thus strong,
+Made senslesse things begin to do them wrong.
+For briars and thornes at their apparell snatch,
+Some sleeues, some hats, from yeelders all things catch,
+I led them on in this distracted feare,
+And left sweete Piramus translated there:
+When in that moment (so it came to passe)
+Tytania waked, and straightway lou'd an Asse
+
+   Ob. This fals out better then I could deuise:
+But hast thou yet lacht the Athenians eyes,
+With the loue iuyce, as I bid thee doe?
+  Rob. I tooke him sleeping (that is finisht to)
+And the Athenian woman by his side,
+That when he wak't, of force she must be eyde.
+Enter Demetrius and Hermia.
+
+  Ob. Stand close, this is the same Athenian
+
+   Rob. This is the woman, but not this the man
+
+   Dem. O why rebuke you him that loues you so?
+Lay breath so bitter on your bitter foe
+
+   Her. Now I but chide, but I should vse thee worse.
+For thou (I feare) hast giuen me cause to curse,
+If thou hast slaine Lysander in his sleepe,
+Being oreshooes in bloud, plunge in the deepe, and kill
+me too:
+The Sunne was not so true vnto the day,
+As he to me. Would he haue stollen away,
+From sleeping Hermia? Ile beleeue as soone
+This whole earth may be bord, and that the Moone
+May through the Center creepe, and so displease
+Her brothers noonetide, with th'Antipodes.
+It cannot be but thou hast murdred him,
+So should a murtherer looke, so dead, so grim
+
+   Dem. So should the murderer looke, and so should I,
+Pierst through the heart with your stearne cruelty:
+Yet you the murderer lookes as bright as cleare,
+As yonder Venus in her glimmering spheare
+
+   Her. What's this to my Lysander? where is he?
+Ah good Demetrius, wilt thou giue him me?
+  Dem. I'de rather giue his carkasse to my hounds
+
+   Her. Out dog, out cur, thou driu'st me past the bounds
+Of maidens patience. Hast thou slaine him then?
+Henceforth be neuer numbred among men.
+Oh, once tell true, euen for my sake,
+Durst thou a lookt vpon him, being awake?
+And hast thou kill'd him sleeping? O braue tutch:
+Could not a worme, an Adder do so much?
+An Adder did it: for with doubler tongue
+Then thine (thou serpent) neuer Adder stung
+
+   Dem. You spend your passion on a mispris'd mood,
+I am not guiltie of Lysanders blood:
+Nor is he dead for ought that I can tell
+
+   Her. I pray thee tell me then that he is well
+
+   Dem. And if I could, what should I get therefore?
+  Her. A priuiledge, neuer to see me more;
+And from thy hated presence part I: see me no more
+Whether he be dead or no.
+Enter.
+
+  Dem. There is no following her in this fierce vaine,
+Here therefore for a while I will remaine.
+So sorrowes heauinesse doth heauier grow:
+For debt that bankrout slip doth sorrow owe,
+Which now in some slight measure it will pay,
+If for his tender here I make some stay.
+
+Lie downe.
+
+  Ob. What hast thou done? Thou hast mistaken quite
+And laid the loue iuyce on some true loues sight:
+Of thy misprision, must perforce ensue
+Some true loue turn'd, and not a false turn'd true
+
+   Rob. Then fate ore-rules, that one man holding troth,
+A million faile, confounding oath on oath
+
+   Ob. About the wood, goe swifter then the winde,
+And Helena of Athens looke thou finde.
+All fancy sicke she is, and pale of cheere,
+With sighes of loue, that costs the fresh bloud deare.
+By some illusion see thou bring her heere,
+Ile charme his eyes against she doth appeare
+
+   Robin. I go, I go, looke how I goe,
+Swifter then arrow from the Tartars bowe.
+Enter.
+
+  Ob. Flower of this purple die,
+Hit with Cupids archery,
+Sinke in apple of his eye,
+When his loue he doth espie,
+Let her shine as gloriously
+As the Venus of the sky.
+When thou wak'st if she be by,
+Beg of her for remedy.
+Enter Pucke.
+
+  Puck. Captaine of our Fairy band,
+Helena is heere at hand,
+And the youth, mistooke by me,
+Pleading for a Louers fee.
+Shall we their fond Pageant see?
+Lord, what fooles these mortals be!
+  Ob. Stand aside: the noyse they make,
+Will cause Demetrius to awake
+
+   Puck. Then will two at once wooe one,
+That must needs be sport alone:
+And those things doe best please me,
+That befall preposterously.
+Enter Lysander and Helena.
+
+  Lys. Why should you think y I should wooe in scorn?
+Scorne and derision neuer comes in teares:
+Looke when I vow I weepe; and vowes so borne,
+In their natiuity all truth appeares.
+How can these things in me, seeme scorne to you?
+Bearing the badge of faith to proue them true
+
+   Hel. You doe aduance your cunning more & more,
+When truth kils truth, O diuelish holy fray!
+These vowes are Hermias. Will you giue her ore?
+Weigh oath with oath, and you will nothing weigh.
+Your vowes to her, and me, (put in two scales)
+Will euen weigh, and both as light as tales
+
+   Lys. I had no iudgement, when to her I swore
+
+   Hel. Nor none in my minde, now you giue her ore
+
+   Lys. Demetrius loues her, and he loues not you.
+
+Awa.
+
+  Dem. O Helen, goddesse, nimph, perfect, diuine,
+To what, my loue, shall I compare thine eyne!
+Christall is muddy, O how ripe in show,
+Thy lips, those kissing cherries, tempting grow!
+That pure congealed white, high Taurus snow,
+Fan'd with the Easterne winde, turnes to a crow,
+When thou holdst vp thy hand. O let me kisse
+This Princesse of pure white, this seale of blisse
+
+   Hell. O spight! O hell! I see you are all bent
+To set against me, for your merriment:
+If you were ciuill, and knew curtesie,
+You would not doe me thus much iniury.
+Can you not hate me, as I know you doe,
+But you must ioyne in soules to mocke me to?
+If you are men, as men you are in show,
+You would not vse a gentle Lady so;
+To vow, and sweare, and superpraise my parts,
+When I am sure you hate me with your hearts.
+You both are Riuals, and loue Hermia;
+And now both Riuals to mocke Helena.
+A trim exploit, a manly enterprize,
+To coniure teares vp in a poore maids eyes,
+With your derision; none of noble sort,
+Would so offend a Virgin, and extort
+A poore soules patience, all to make you sport,
+  Lysa. You are vnkind Demetrius; be not so,
+For you loue Hermia; this you know I know;
+And here with all good will, with all my heart,
+In Hermias loue I yeeld you vp my part;
+And yours of Helena, To me bequeath,
+Whom I do loue, and will do to my death
+
+   Hel. Neuer did mockers wast more idle breth
+
+   Dem. Lysander, keep thy Hermia, I will none:
+If ere I lou'd her, all that loue is gone.
+My heart to her, but as guest-wise soiourn'd,
+And now to Helen it is home return'd,
+There to remaine
+
+   Lys. It is not so
+
+   De. Disparage not the faith thou dost not know,
+Lest to thy perill thou abide it deare.
+Looke where thy Loue comes, yonder is thy deare.
+Enter Hermia.
+
+  Her. Dark night, that from the eye his function takes,
+The eare more quicke of apprehension makes,
+Wherein it doth impaire the seeing sense,
+It paies the hearing double recompence.
+Thou art not by mine eye, Lysander found,
+Mine eare (I thanke it) brought me to that sound.
+But why vnkindly didst thou leaue me so?
+  Lysan. Why should hee stay whom Loue doth presse to go?
+  Her. What loue could presse Lysander from my side?
+  Lys. Lysanders loue (that would not let him bide)
+Faire Helena; who more engilds the night,
+Then all yon fierie oes, and eies of light.
+Why seek'st thou me? Could not this make thee know,
+The hate I bare thee, made me leaue thee so?
+  Her. You speake not as you thinke; it cannot be
+
+   Hel. Loe, she is one of this confederacy,
+Now I perceiue they haue conioyn'd all three,
+To fashion this false sport in spight of me.
+Iniurous Hermia, most vngratefull maid,
+Haue you conspir'd, haue you with these contriu'd
+To baite me, with this foule derision?
+Is all the counsell that we two haue shar'd,
+The sisters vowes, the houres that we haue spent,
+When wee haue chid the hasty footed time,
+For parting vs; O, is all forgot?
+All schooledaies friendship, child-hood innocence?
+We Hermia, like two Artificiall gods,
+Haue with our needles, created both one flower,
+Both on one sampler, sitting on one cushion,
+Both warbling of one song, both in one key:
+As if our hands, our sides, voices, and mindes
+Had beene incorporate. So we grew together,
+Like to a double cherry, seeming parted,
+But yet a vnion in partition,
+Two louely berries molded on one stem,
+So with two seeming bodies, but one heart,
+Two of the first life coats in Heraldry,
+Due but to one and crowned with one crest.
+And will you rent our ancient loue asunder,
+To ioyne with men in scorning your poore friend?
+It is not friendly, 'tis not maidenly.
+Our sexe as well as I, may chide you for it,
+Though I alone doe feele the iniurie
+
+   Her. I am amazed at your passionate words,
+I scorne you not; It seemes that you scorne me
+
+   Hel. Haue you not set Lysander, as in scorne
+To follow me, and praise my eies and face?
+And made your other loue, Demetrius
+(Who euen but now did spurne me with his foote)
+To call me goddesse, nimph, diuine, and rare,
+Precious, celestiall? Wherefore speakes he this
+To her he hates? and wherefore doth Lysander
+Denie your loue (so rich within his soule)
+And tender me (forsooth) affection,
+But by your setting on, by your consent?
+What though I be not so in grace as you,
+So hung vpon with loue, so fortunate?
+(But miserable most, to loue vnlou'd)
+This you should pittie, rather then despise
+
+   Her. I vnderstand not what you meane by this
+
+   Hel. I, doe, perseuer, counterfeit sad lookes,
+Make mouthes vpon me when I turne my backe,
+Winke each at other, hold the sweete iest vp:
+This sport well carried, shall be chronicled.
+If you haue any pittie, grace, or manners,
+You would not make me such an argument:
+But fare ye well, 'tis partly mine owne fault,
+Which death or absence soone shall remedie
+
+   Lys. Stay gentle Helena, heare my excuse,
+My loue, my life, my soule, faire Helena
+
+   Hel. O excellent!
+  Her. Sweete, do not scorne her so
+
+   Dem. If she cannot entreate, I can compell
+
+   Lys. Thou canst compell, no more then she entreate.
+Thy threats haue no more strength then her weak praise.
+Helen, I loue thee, by my life I doe;
+I sweare by that which I will lose for thee,
+To proue him false, that saies I loue thee not
+
+   Dem. I say, I loue thee more then he can do
+
+   Lys. If thou say so, withdraw and proue it too
+
+   Dem. Quick, come
+
+   Her. Lysander, whereto tends all this?
+  Lys. Away, you Ethiope
+
+   Dem. No, no, Sir, seeme to breake loose;
+Take on as you would follow,
+But yet come not: you are a tame man, go
+
+   Lys. Hang off thou cat, thou bur; vile thing let loose,
+Or I will shake thee from me like a serpent
+
+   Her. Why are you growne so rude?
+What change is this sweete Loue?
+  Lys. Thy loue? out tawny Tartar, out;
+Out loathed medicine; O hated poison hence
+
+   Her. Do you not iest?
+  Hel. Yes sooth, and so do you
+
+   Lys. Demetrius: I will keepe my word with thee
+
+   Dem. I would I had your bond: for I perceiue
+A weake bond holds you; Ile not trust your word
+
+   Lys. What, should I hurt her, strike her, kill her dead?
+Although I hate her, Ile not harme her so
+
+   Her. What, can you do me greater harme then hate?
+Hate me, wherefore? O me, what newes my Loue?
+Am not I Hermia? Are not you Lysander?
+I am as faire now, as I was ere while.
+Since night you lou'd me: yet since night you left me.
+Why then you left me (O the gods forbid)
+In earnest, shall I say?
+  Lys. I, by my life;
+And neuer did desire to see thee more.
+Therefore be out of hope, of question, of doubt;
+Be certaine, nothing truer: 'tis no iest,
+That I do hate thee, and loue Helena
+
+   Her. O me, you iugler, you canker blossome,
+You theefe of loue; What, haue you come by night,
+And stolne my loues heart from him?
+  Hel. Fine yfaith:
+Haue you no modesty, no maiden shame,
+No touch of bashfulnesse? What, will you teare
+Impatient answers from my gentle tongue?
+Fie, fie, you counterfeit, you puppet, you
+
+   Her. Puppet? why so? I, that way goes the game.
+Now I perceiue that she hath made compare
+Betweene our statures, she hath vrg'd her height,
+And with her personage, her tall personage,
+Her height (forsooth) she hath preuail'd with him.
+And are you growne so high in his esteeme,
+Because I am so dwarfish, and so low?
+How low am I, thou painted May-pole? Speake,
+How low am I? I am not yet so low,
+But that my nailes can reach vnto thine eyes
+
+   Hel. I pray you though you mocke me, gentlemen,
+Let her not hurt me; I was neuer curst:
+I haue no gift at all in shrewishnesse;
+I am a right maide for my cowardize;
+Let her not strike me: you perhaps may thinke,
+Because she is something lower then my selfe,
+That I can match her
+
+   Her. Lower? harke againe
+
+   Hel. Good Hermia, do not be so bitter with me,
+I euermore did loue you Hermia,
+Did euer keepe your counsels, neuer wronged you,
+Saue that in loue vnto Demetrius,
+I told him of your stealth vnto this wood.
+He followed you, for loue I followed him,
+But he hath chid me hence, and threatned me
+To strike me, spurne me, nay to kill me too;
+And now, so you will let me quiet go,
+To Athens will I beare my folly backe,
+And follow you no further. Let me go.
+You see how simple, and how fond I am
+
+   Her. Why get you gone: who ist that hinders you?
+  Hel. A foolish heart, that I leaue here behinde
+
+   Her. What, with Lysander?
+  Her. With Demetrius
+
+   Lys. Be not afraid, she shall not harme thee Helena
+
+   Dem. No sir, she shall not, though you take her part
+
+   Hel. O when she's angry, she is keene and shrewd,
+She was a vixen when she went to schoole,
+And though she be but little, she is fierce
+
+   Her. Little againe? Nothing but low and little?
+Why will you suffer her to flout me thus?
+Let me come to her
+
+   Lys. Get you gone you dwarfe,
+You minimus, of hindring knot-grasse made,
+You bead, you acorne
+
+   Dem. You are too officious,
+In her behalfe that scornes your seruices.
+Let her alone, speake not of Helena,
+Take not her part. For if thou dost intend
+Neuer so little shew of loue to her,
+Thou shalt abide it
+
+   Lys. Now she holds me not,
+Now follow if thou dar'st, to try whose right,
+Of thine or mine is most in Helena
+
+   Dem. Follow? Nay, Ile goe with thee cheeke by
+iowle.
+
+Exit Lysander and Demetrius.
+
+  Her. You Mistris, all this coyle is long of you.
+Nay, goe not backe
+
+   Hel. I will not trust you I,
+Nor longer stay in your curst companie.
+Your hands then mine, are quicker for a fray,
+My legs are longer though to runne away.
+Enter Oberon and Pucke.
+
+  Ob. This is thy negligence, still thou mistak'st,
+Or else committ'st thy knaueries willingly
+
+   Puck. Beleeue me, King of shadowes, I mistooke,
+Did not you tell me, I should know the man,
+By the Athenian garments he hath on?
+And so farre blamelesse proues my enterprize,
+That I haue nointed an Athenians eies,
+And so farre am I glad, it so did sort,
+As this their iangling I esteeme a sport
+
+   Ob. Thou seest these Louers seeke a place to fight,
+Hie therefore Robin, ouercast the night,
+The starrie Welkin couer thou anon,
+With drooping fogge as blacke as Acheron,
+And lead these testie Riuals so astray,
+As one come not within anothers way.
+Like to Lysander, sometime frame thy tongue,
+Then stirre Demetrius vp with bitter wrong;
+And sometime raile thou like Demetrius;
+And from each other looke thou leade them thus,
+Till ore their browes, death-counterfeiting, sleepe
+With leaden legs, and Battie-wings doth creepe:
+Then crush this hearbe into Lysanders eie,
+Whose liquor hath this vertuous propertie,
+To take from thence all error, with his might,
+and make his eie-bals role with wonted sight.
+When they next wake, all this derision
+Shall seeme a dreame, and fruitless vision,
+And backe to Athens shall the Louers wend
+With league, whose date till death shall neuer end.
+Whiles I in this affaire do thee imploy,
+Ile to my Queene, and beg her Indian Boy;
+And then I will her charmed eie release
+From monsters view, and all things shall be peace
+
+   Puck. My Fairie Lord, this must be done with haste,
+For night-swift Dragons cut the Clouds full fast,
+And yonder shines Auroras harbinger;
+At whose approach Ghosts wandring here and there,
+Troope home to Church-yards; damned spirits all,
+That in crosse-waies and flouds haue buriall,
+Alreadie to their wormie beds are gone;
+For feare least day should looke their shames vpon,
+They wilfully themselues exile from light,
+And must for aye consort with blacke browd night
+
+   Ob. But we are spirits of another sort:
+I, with the mornings loue haue oft made sport,
+And like a Forrester, the groues may tread,
+Euen till the Easterne gate all fierie red,
+Opening on Neptune, With faire blessed beames,
+Turnes into yellow gold, his salt greene streames.
+But not withstanding haste, make no delay:
+We may effect this businesse, yet ere day
+
+   Puck. Vp and downe, vp and downe, I will leade
+them vp and downe: I am fear'd in field and towne.
+Goblin, lead them vp and downe: here comes one.
+Enter Lysander.
+
+  Lys. Where art thou, proud Demetrius?
+Speake thou now
+
+   Rob. Here villaine, drawne & readie. Where art thou?
+  Lys. I will be with thee straight
+
+   Rob. Follow me then to plainer ground.
+Enter Demetrius.
+
+  Dem. Lysander, speake againe;
+Thou runaway, thou coward, art thou fled?
+Speake in some bush: Where dost thou hide thy head?
+  Rob. Thou coward, art thou bragging to the stars,
+Telling the bushes that thou look'st for wars,
+And wilt not come? Come recreant, come thou childe,
+Ile whip thee with a rod. He is defil'd
+That drawes a sword on thee
+
+   Dem. Yea, art thou there?
+  Ro. Follow my voice, we'l try no manhood here.
+Enter.
+
+  Lys. He goes before me, and still dares me on,
+When I come where he cals, then he's gone.
+The Villaine is much lighter heel'd then I:
+I followed fast, but faster he did flye;
+
+shifting places.
+
+That fallen am I in darke vneuen way,
+And here wil rest me. Come thou gentle day:
+
+lye down.
+
+For if but once thou shew me thy gray light,
+Ile finde Demetrius, and reuenge this spight.
+Enter Robin and Demetrius.
+
+  Rob. Ho, ho, ho; coward, why com'st thou not?
+  Dem. Abide me, if thou dar'st. For well I wot,
+Thou runst before me, shifting euery place,
+And dar'st not stand, nor looke me in the face.
+Where art thou?
+  Rob. Come hither, I am here
+
+   Dem. Nay then thou mock'st me; thou shalt buy this
+deere,
+If euer I thy face by day-light see.
+Now goe thy way: faintnesse constraineth me,
+To measure out my length on this cold bed,
+By daies approach looke to be visited.
+Enter Helena.
+
+  Hel. O weary night, O long and tedious night,
+Abate thy houres, shine comforts from the East,
+That I may backe to Athens by day-light,
+From these that my poore companie detest;
+And sleepe that sometime shuts vp sorrowes eie,
+Steale me a while from mine owne companie.
+
+Sleepe.
+
+  Rob. Yet but three? Come one more,
+Two of both kindes makes vp foure.
+Here she comes, curst and sad,
+Cupid is a knauish lad,
+Enter Hermia.
+
+Thus to make poore females mad
+
+   Her. Neuer so wearie, neuer so in woe,
+Bedabbled with the dew, and torne with briars,
+I can no further crawle, no further goe;
+My legs can keepe no pace with my desires.
+Here will I rest me till the breake of day,
+Heauens shield Lysander, if they meane a fray
+
+   Rob. On the ground sleepe sound,
+Ile apply your eie gentle louer, remedy.
+When thou wak'st, thou tak'st
+True delight in the sight of thy former Ladies eye,
+And the Country Prouerb knowne,
+That euery man should take his owne,
+In your waking shall be showne.
+Iacke shall haue Iill, nought shall goe ill.
+The man shall haue his Mare againe, and all shall bee
+well.
+
+They sleepe all the Act.
+
+
+Actus Quartus.
+
+Enter Queene of Fairies, and Clowne, and Fairies, and the King
+behinde
+them.
+
+  Tita. Come, sit thee downe vpon this flowry bed,
+While I thy amiable cheekes doe coy,
+And sticke muske roses in thy sleeke smoothe head,
+And kisse thy faire large eares, my gentle ioy
+
+   Clow. Where's Peaseblossome?
+  Peas. Ready
+
+   Clow. Scratch my head, Pease-blossome. Wher's Mounsieuer
+Cobweb
+
+   Cob. Ready
+
+   Clowne. Mounsieur Cobweb, good Mounsier get your
+weapons in your hand, & kill me a red hipt humble-Bee,
+on the top of a thistle; and good Mounsieur bring mee
+the hony bag. Doe not fret your selfe too much in the
+action, Mounsieur; and good mounsieur haue a care the
+hony bag breake not, I would be loth to haue you ouerflowne
+with a hony-bag signiour. Where's Mounsieur
+Mustardseed?
+  Mus. Ready
+
+   Clo. Giue me your neafe, Mounsieur Mustardseed.
+Pray you leaue your courtesie good Mounsieur
+
+   Mus. What's your will?
+  Clo. Nothing good Mounsieur, but to help Caualery
+Cobweb to scratch. I must to the Barbers Mounsieur, for
+me-thinkes I am maruellous hairy about the face. And I
+am such a tender asse, if my haire do but tickle me, I must
+scratch
+
+   Tita. What, wilt thou heare some musicke, my sweet
+loue
+
+   Clow. I haue a reasonable good eare in musicke. Let
+vs haue the tongs and the bones.
+
+Musicke Tongs, Rurall Musicke.
+
+  Tita. Or say sweete Loue, what thou desirest to eat
+
+   Clowne. Truly a pecke of Prouender; I could munch
+your good dry Oates. Me-thinkes I haue a great desire
+to a bottle of hay: good hay, sweete hay hath no fellow
+
+   Tita. I haue a venturous Fairy,
+That shall seeke the Squirrels hoard,
+And fetch thee new Nuts
+
+   Clown. I had rather haue a handfull or two of dried
+pease. But I pray you let none of your people stirre me, I
+haue an exposition of sleepe come vpon me
+
+   Tyta. Sleepe thou, and I will winde thee in my arms,
+Fairies be gone, and be alwaies away.
+So doth the woodbine, the sweet Honisuckle,
+Gently entwist; the female Iuy so
+Enrings the barky fingers of the Elme.
+O how I loue thee! how I dote on thee!
+Enter Robin goodfellow and Oberon.
+
+  Ob. Welcome good Robin:
+Seest thou this sweet sight?
+Her dotage now I doe begin to pitty.
+For meeting her of late behinde the wood,
+Seeking sweet sauours for this hatefull foole,
+I did vpbraid her, and fall out with her.
+For she his hairy temples then had rounded,
+With coronet of fresh and fragrant flowers.
+And that same dew which somtime on the buds,
+Was wont to swell like round and orient pearles;
+Stood now within the pretty flouriets eyes,
+Like teares that did their owne disgrace bewaile.
+When I had at my pleasure taunted her,
+And she in milde termes beg'd my patience,
+I then did aske of her, her changeling childe,
+Which straight she gaue me, and her fairy sent
+To beare him to my Bower in Fairy Land.
+And now I haue the Boy, I will vndoe
+This hatefull imperfection of her eyes.
+And gentle Pucke, take this transformed scalpe,
+From off the head of this Athenian swaine;
+That he awaking when the other doe,
+May all to Athens backe againe repaire,
+And thinke no more of this nights accidents,
+But as the fierce vexation of dreame.
+But first I will release the Fairy Queene.
+Be thou as thou wast wont to be;
+See as thou wast wont to see.
+Dians bud, or Cupids flower,
+Hath such force and blessed power.
+Now my Titania wake you my sweet Queene
+
+   Tita. My Oberon, what visions haue I seene!
+Me-thought I was enamoured of an asse
+
+   Ob. There lies your loue
+
+   Tita. How came these things to passe?
+Oh, how mine eyes doth loath this visage now!
+  Ob. Silence a while. Robin take off his head:
+Titania, musick call, and strike more dead
+Then common sleepe; of all these, fine the sense
+
+   Tita. Musicke, ho musicke, such as charmeth sleepe.
+
+Musick still.
+
+  Rob. When thou wak'st, with thine owne fooles eies
+peepe
+
+   Ob. Sound musick; come my Queen, take hands with me
+And rocke the ground whereon these sleepers be.
+Now thou and I new in amity,
+And will to morrow midnight, solemnly
+Dance in Duke Theseus house triumphantly,
+And blesse it to all faire posterity.
+There shall the paires of faithfull Louers be
+Wedded, with Theseus, all in iollity
+
+   Rob. Faire King attend, and marke,
+I doe heare the morning Larke,
+  Ob. Then my Queene in silence sad,
+Trip we after the nights shade;
+We the Globe can compasse soone,
+Swifter then the wandering Moone
+
+   Tita. Come my Lord, and in our flight,
+Tell me how it came this night,
+That I sleeping heere was found,
+
+Sleepers Lye still.
+
+With these mortals on the ground.
+
+Exeunt.
+
+Winde Hornes.
+
+Enter Theseus, Egeus, Hippolita and all his traine.
+
+  Thes. Goe one of you, finde out the Forrester,
+For now our obseruation is perform'd;
+And since we haue the vaward of the day,
+My Loue shall heare the musicke of my hounds.
+Vncouple in the Westerne valley, let them goe;
+Dispatch I say, and finde the Forrester.
+We will faire Queene, vp to the Mountains top,
+And marke the musicall confusion
+Of hounds and eccho in coniunction
+
+   Hip. I was with Hercules and Cadmus once.
+When in a wood of Creete they bayed the Beare
+With hounds of Sparta; neuer did I heare
+Such gallant chiding. For besides the groues,
+The skies, the fountaines, euery region neere,
+Seeme all one mutuall cry. I neuer heard
+So musicall a discord, such sweet thunder
+
+   Thes. My hounds are bred out of the Spartan kinde,
+So flew'd, so sanded, and their heads are hung
+With eares that sweepe away the morning dew,
+Crooke kneed, and dew-lapt, like Thessalian Buls,
+Slow in pursuit, but match'd in mouth like bels,
+Each vnder each. A cry more tuneable
+Was neuer hallowed to, nor cheer'd with horne,
+In Creete, in Sparta, nor in Thessaly;
+Iudge when you heare. But soft, what nimphs are these?
+  Egeus. My Lord, this is my daughter heere asleepe,
+And this Lysander, this Demetrius is,
+This Helena, olde Nedars Helena,
+I wonder of this being heere together
+
+   The. No doubt they rose vp early, to obserue
+The right of May; and hearing our intent,
+Came heere in grace of our solemnity.
+But speake Egeus, is not this the day
+That Hermia should giue answer of her choice?
+  Egeus. It is, my Lord
+
+   Thes. Goe bid the hunts-men wake them with their
+hornes.
+
+Hornes and they wake.
+
+Shout within, they all start vp.
+
+  Thes. Good morrow friends: Saint Valentine is past,
+Begin these wood birds but to couple now?
+  Lys. Pardon my Lord
+
+   Thes. I pray you all stand vp.
+I know you two are Riuall enemies.
+How comes this gentle concord in the world,
+That hatred is so farre from iealousie,
+To sleepe by hate, and feare no enmity
+
+   Lys. My Lord, I shall reply amazedly,
+Halfe sleepe, halfe waking. but as yet, I sweare,
+I cannot truly say how I came heere.
+But as I thinke (for truly would I speake)
+And now I doe bethinke me, so it is;
+I came with Hermia hither. Our intent
+Was to be gone from Athens, where we might be
+Without the perill of the Athenian Law
+
+   Ege. Enough, enough, my Lord: you haue enough;
+I beg the Law, the Law, vpon his head:
+They would have stolne away, they would Demetrius,
+Thereby to haue defeated you and me:
+You of your wife, and me of my consent;
+Of my consent, that she should be your wife
+
+   Dem. My Lord, faire Helen told me of their stealth,
+Of this their purpose hither, to this wood,
+And I in furie hither followed them;
+Faire Helena, in fancy followed me.
+But my good Lord, I wot not by what not by what power,
+(But by some power it is) my loue
+To Hermia (melted as the snow)
+Seems to me now as the remembrance of an idle gaude,
+Which in my childehood I did doat vpon:
+And all the faith, the vertue of my heart,
+The obiect and the pleasure of mine eye,
+Is onely Helena. To her, my Lord,
+Was I betroth'd, ere I see Hermia,
+But like a sickenesse did I loath this food,
+But as in health, come to my naturall taste,
+Now doe I wish it, loue it, long for it,
+And will for euermore be true to it
+
+   Thes. Faire Louers, you are fortunately met;
+Of this discourse we shall heare more anon.
+Egeus, I will ouer-beare your will;
+For in the Temple, by and by with vs,
+These couples shall eternally be knit.
+And for the morning now is something worne,
+Our purpos'd hunting shall be set aside.
+Away, with vs to Athens; three and three,
+Wee'll hold a feast in great solemnitie.
+Come Hippolita.
+
+Exit Duke and Lords.
+
+  Dem. These things seeme small & vndistinguishable,
+Like farre off mountaines turned into Clouds
+
+   Her. Me-thinks I see these things with parted eye,
+When euery thing seemes double
+
+   Hel. So me-thinkes:
+And I haue found Demetrius, like a iewell,
+Mine owne, and not mine owne
+
+   Dem. It seemes to mee,
+That yet we sleepe, we dreame. Do not you thinke,
+The Duke was heere, and bid vs follow him?
+  Her. Yea, and my Father
+
+   Hel. And Hippolita
+
+   Lys. And he bid vs follow to the Temple
+
+   Dem. Why then we are awake; lets follow him, and
+by the way let vs recount our dreames.
+
+Bottome wakes.
+
+Exit Louers.
+
+  Clo. When my cue comes, call me, and I will answer.
+My next is, most faire Piramus. Hey ho. Peter Quince?
+Flute the bellowes-mender? Snout the tinker? Starueling?
+Gods my life! Stolne hence, and left me asleepe: I
+haue had a most rare vision. I had a dreame, past the wit
+of man, to say, what dreame it was. Man is but an Asse,
+if he goe about to expound this dreame. Me-thought I
+was, there is no man can tell what. Me-thought I was,
+and me-thought I had. But man is but a patch'd foole,
+if he will offer to say, what me-thought I had. The eye of
+man hath not heard, the eare of man hath not seen, mans
+hand is not able to taste, his tongue to conceiue, nor his
+heart to report, what my dreame was. I will get Peter
+Quince to write a ballet of this dreame, it shall be called
+Bottomes Dreame, because it hath no bottome; and I will
+sing it in the latter end of a play, before the Duke. Peraduenture,
+to make it the more gracious, I shall sing it
+at her death.
+Enter.
+
+Enter Quince, Flute, Thisbie, Snout, and Starueling.
+
+  Quin. Haue you sent to Bottomes house? Is he come
+home yet?
+  Staru. He cannot be heard of. Out of doubt hee is
+transported
+
+   This. If he come not, then the play is mar'd. It goes
+not forward, doth it?
+  Quin. It is not possible: you haue not a man in all
+Athens, able to discharge Piramus but he
+
+   This. No, hee hath simply the best wit of any handycraft
+man in Athens
+
+   Quin. Yea, and the best person too, and hee is a very
+Paramour, for a sweet voyce
+
+   This. You must say, Paragon. A Paramour is (God
+blesse vs) a thing of nought.
+Enter Snug the Ioyner.
+
+  Snug. Masters, the Duke is comming from the Temple,
+and there is two or three Lords & Ladies more married.
+If our sport had gone forward, we had all bin made
+men
+
+   This. O sweet bully Bottome: thus hath he lost sixepence
+a day, during his life; he could not haue scaped sixpence
+a day. And the Duke had not giuen him sixpence
+a day for playing Piramus, Ile be hang'd. He would haue
+deserued it. Sixpence a day in Piramus, or nothing.
+Enter Bottome.
+
+  Bot. Where are these Lads? Where are these hearts?
+  Quin. Bottome, o most couragious day! O most happie
+houre!
+  Bot. Masters, I am to discourse wonders; but ask me
+not what. For if I tell you, I am no true Athenian. I
+will tell you euery thing as it fell out
+
+   Qu. Let vs heare, sweet Bottome
+
+   Bot. Not a word of me: all that I will tell you, is, that
+the Duke hath dined. Get your apparell together, good
+strings to your beards, new ribbands to your pumps,
+meete presently at the Palace, euery man looke ore his
+part: for the short and the long is, our play is preferred:
+In any case let Thisby haue cleane linnen: and let not him
+that playes the Lion, paire his nailes, for they shall hang
+out for the Lions clawes. And most deare Actors, eate
+no Onions, nor Garlicke; for wee are to vtter sweete
+breath, and I doe not doubt but to heare them say, it is a
+sweet Comedy. No more words: away, go away.
+
+Exeunt.
+
+
+Actus Quintus.
+
+Enter Theseus, Hippolita, Egeus and his Lords.
+
+  Hip. 'Tis strange my Theseus, y these louers speake of
+
+   The. More strange then true. I neuer may beleeue
+These anticke fables, nor these Fairy toyes,
+Louers and mad men haue such seething braines,
+Such shaping phantasies, that apprehend more
+Then coole reason euer comprehends.
+The Lunaticke, the Louer, and the Poet,
+Are of imagination all compact.
+One sees more diuels then vaste hell can hold;
+That is the mad man. The Louer, all as franticke,
+Sees Helens beauty in a brow of Egipt.
+The Poets eye in a fine frenzy rolling, doth glance
+From heauen to earth, from earth to heauen.
+And as imagination bodies forth the forms of things
+Vnknowne; the Poets pen turnes them to shapes,
+And giues to aire nothing, a locall habitation,
+And a name. Such tricks hath strong imagination,
+That if it would but apprehend some ioy,
+It comprehends some bringer of that ioy.
+Or in the night, imagining some feare,
+Howe easie is a bush suppos'd a Beare?
+  Hip. But all the storie of the night told ouer,
+And all their minds transfigur'd so together,
+More witnesseth than fancies images,
+And growes to something of great constancie;
+But howsoeuer, strange, and admirable.
+Enter louers, Lysander, Demetrius, Hermia, and Helena.
+
+  The. Heere come the louers, full of ioy and mirth:
+Ioy, gentle friends, ioy and fresh dayes
+Of loue accompany your hearts
+
+   Lys. More then to vs, waite in your royall walkes,
+your boord, your bed
+
+   The. Come now, what maskes, what dances shall
+we haue,
+To weare away this long age of three houres,
+Between our after supper, and bed-time?
+Where is our vsuall manager of mirth?
+What Reuels are in hand? Is there no play,
+To ease the anguish of a torturing houre?
+Call Egeus
+
+   Ege. Heere mighty Theseus
+
+   The. Say, what abridgement haue you for this euening?
+What maske? What musicke? How shall we beguile
+The lazie time, if not with some delight?
+  Ege. There is a breefe how many sports are rife:
+Make choise of which your Highnesse will see first
+
+   Lis. The battell with the Centaurs to be sung
+By an Athenian Eunuch, to the Harpe
+
+   The. Wee'l none of that. That haue I told my Loue
+In glory of my kinsman Hercules
+
+   Lis. The riot of the tipsie Bachanals,
+Tearing the Thracian singer, in their rage?
+  The. That is an old deuice, and it was plaid
+When I from Thebes came last a Conqueror
+
+   Lis. The thrice three Muses, mourning for the death
+of learning, late deceast in beggerie
+
+   The. That is some Satire keene and criticall,
+Not sorting with a nuptiall ceremonie
+
+   Lis. A tedious breefe Scene of yong Piramus,
+And his loue Thisby; very tragicall mirth
+
+   The. Merry and tragicall? Tedious, and briefe? That
+is, hot ice, and wondrous strange snow. How shall wee
+finde the concord of this discord?
+  Ege. A play there is, my Lord, some ten words long,
+Which is as breefe, as I haue knowne a play;
+But by ten words, my Lord, it is too long;
+Which makes it tedious. For in all the play,
+There is not one word apt, one Player fitted.
+And tragicall my noble Lord it is: for Piramus
+Therein doth kill himselfe. Which when I saw
+Rehearst, I must confesse, made mine eyes water:
+But more merrie teares, the passion of loud laughter
+Neuer shed
+
+   Thes. What are they that do play it?
+  Ege. Hard handed men, that worke in Athens heere,
+Which neuer labour'd in their mindes till now;
+And now haue toyled their vnbreathed memories
+With this same play, against your nuptiall
+
+   The. And we will heare it
+
+   Hip. No my noble Lord, it is not for you. I haue heard
+It ouer, and it is nothing, nothing in the world;
+Vnless you can finde sport in their intents,
+Extreamely stretched, and cond with cruell paine,
+To doe you seruice
+
+   Thes. I will heare that play. For neuer any thing
+Can be amisse, when simplenesse and duty tender it.
+Goe bring them in, and take your places, Ladies
+
+   Hip. I loue not to see wretchednesse orecharged;
+And duty in his seruice perishing
+
+   Thes. Why gentle sweet, you shall see no such thing
+
+   Hip. He saies, they can doe nothing in this kinde
+
+   Thes. The kinder we, to giue them thanks for nothing
+Our sport shall be, to take what they mistake;
+And what poore duty cannot doe, noble respect
+Takes it in might, not merit.
+Where I haue come, great Clearkes haue purposed
+To greete me with premeditated welcomes;
+Where I haue seene them shiuer and looke pale,
+Make periods in the midst of sentences,
+Throttle their practiz'd accent in their feares,
+And in conclusion, dumbly haue broke off,
+Not paying me a welcome. Trust me sweete,
+Out of this silence yet, I pickt a welcome:
+And in the modesty of fearefull duty,
+I read as much, as from the ratling tongue
+Of saucy and audacious eloquence.
+Loue therefore, and tongue-tide simplicity,
+In least, speake most, to my capacity
+
+   Egeus. So please your Grace, the Prologue is addrest
+
+   Duke. Let him approach.
+
+Flor. Trum.
+
+Enter the Prologue. Quince.
+
+  Pro. If we offend, it is with our good will.
+That you should thinke, we come not to offend,
+But with good will. To shew our simple skill,
+That is the true beginning of our end.
+Consider then, we come but in despight.
+We do not come, as minding to content you,
+Our true intent is. All for your delight,
+We are not heere. That you should here repent you,
+The Actors are at hand; and by their show,
+You shall know all, that you are like to know
+
+   Thes. This fellow doth not stand vpon points
+
+   Lys. He hath rid his Prologue, like a rough Colt: he
+knowes not the stop. A good morall my lord. it is not
+enough to speake, but to speake true
+
+   Hip. Indeed hee hath plaid on his Prologue, like a
+childe on a Recorder, a sound, but not in gouernment
+
+   Thes. His speech was like a tangled chaine: nothing
+impaired, but all disordered. Who is next?
+
+Tawyer with a Trumpet before them.
+
+Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon.
+
+  Prol. Gentles, perchance you wonder at this show,
+But wonder on, till truth make all things plaine.
+This man is Piramus, if you would know;
+This beauteous Lady, Thisby is certaine.
+This man, with lyme and rough-cast, doth present
+Wall, that vile wall, which did these louers sunder:
+And through walls chink (poor soules) they are content
+To whisper. At the which, let no man wonder.
+This man, with Lanthorne, dog, and bush of thorne,
+Presenteth moone-shine. For if you will know,
+By moone-shine did these Louers thinke no scorne
+To meet at Ninus toombe, there, there to wooe:
+This grizly beast (which Lyon hight by name)
+The trusty Thisby, comming first by night,
+Did scarre away, or rather did affright:
+And as she fled, her mantle she did fall;
+Which Lyon vile with bloody mouth did staine.
+Anon comes Piramus, sweet youth and tall,
+And findes his Thisbies Mantle slaine;
+Whereat, with blade, with bloody blamefull blade,
+He brauely broacht his boiling bloudy breast,
+And Thisby, tarrying in Mulberry shade,
+His dagger drew, and died. For all the rest,
+Let Lyon, Moone-shine, Wall, and Louers twaine,
+At large discourse, while here they doe remaine.
+
+Exit all but Wall.
+
+  Thes. I wonder if the Lion be to speake
+
+   Deme. No wonder, my Lord: one Lion may, when
+many Asses doe.
+
+Exit Lyon, Thisbie, and Mooneshine.
+
+  Wall. In this same Interlude, it doth befall,
+That I, one Snowt (by name) present a wall:
+And such a wall, as I would haue you thinke,
+That had in it a crannied hole or chinke:
+Through which the Louers, Piramus and Thisbie
+Did whisper often, very secretly.
+This loame, this rough-cast, and this stone doth shew,
+That I am that same Wall; the truth is so.
+And this the cranny is, right and sinister,
+Through which the fearfull Louers are to whisper
+
+   Thes. Would you desire Lime and Haire to speake
+better?
+  Deme. It is the wittiest partition, that euer I heard
+discourse, my Lord
+
+   Thes. Pyramus drawes neere the Wall, silence.
+Enter Pyramus.
+
+  Pir. O grim lookt night, o night with hue so blacke,
+O night, which euer art, when day is not:
+O night, o night, alacke, alacke, alacke,
+I feare my Thisbies promise is forgot.
+And thou o wall, thou sweet and louely wall,
+That stands between her fathers ground and mine,
+Thou wall, o Wall, o sweet and louely wall,
+Shew me thy chinke, to blinke through with mine eine.
+Thankes courteous wall. Ioue shield thee well for this.
+But what see I? No Thisbie doe I see.
+O wicked wall, through whom I see no blisse,
+Curst be thy stones for thus deceiuing mee
+
+   Thes. The wall me-thinkes being sensible, should
+curse againe
+
+   Pir. No in truth sir, he should not. Deceiuing me,
+Is Thisbies cue; she is to enter, and I am to spy
+Her through the wall. You shall see it will fall.
+Enter Thisbie.
+
+Pat as I told you; yonder she comes
+
+   This. O wall, full often hast thou heard my mones,
+For parting my faire Piramus, and me
+My cherry lips haue often kist thy stones;
+Thy stones with Lime and Haire knit vp in thee
+
+   Pyra. I see a voyce; now will I to the chinke,
+To spy and I can heare my Thisbies face. Thisbie?
+  This. My Loue thou art, my Loue I thinke
+
+   Pir. Thinke what thou wilt, I am thy Louers grace,
+And like Limander am I trusty still
+
+   This. And like Helen till the Fates me kill
+
+   Pir. Not Shafalus to Procrus was so true
+
+   This. As Shafalus to Procrus, I to you
+
+   Pir. O kisse me through the hole of this vile wall
+
+   This. I kisse the wals hole, not your lips at all
+
+   Pir. Wilt thou at Ninnies tombe meete me straight
+way?
+  This. Tide life, tide death, I come without delay
+
+   Wall. Thus haue I Wall, my part discharged so;
+And being done, thus Wall away doth go.
+
+Exit Clow.
+
+  Du. Now is the morall downe between the two
+Neighbours
+
+   Dem. No remedie my Lord, when Wals are so wilfull,
+to heare without warning
+
+   Dut. This is the silliest stuffe that ere I heard
+
+   Du. The best in this kind are but shadowes, and the
+worst are no worse, if imagination amend them
+
+   Dut. It must be your imagination then, & not theirs
+
+   Duk. If wee imagine no worse of them then they of
+themselues, they may passe for excellent men. Here com
+two noble beasts, in a man and a Lion.
+Enter Lyon and Moone-shine
+
+   Lyon. You Ladies, you (whose gentle harts do feare
+The smallest monstrous mouse that creepes on floore)
+May now perchance, both quake and tremble heere,
+When Lion rough in wildest rage doth roare.
+Then know that I, one Snug the Ioyner am
+A Lion fell, nor else no Lions dam:
+For if I should as Lion come in strife
+Into this place, 'twere pittie of my life
+
+   Du. A verie gentle beast, and of good conscience
+
+   Dem. The verie best at a beast, my Lord, y ere I saw
+
+   Lis. This Lion is a verie Fox for his valor
+
+   Du. True, and a Goose for his discretion
+
+   Dem. Not so my Lord: for his valor cannot carrie
+his discretion, and the fox carries the Goose
+
+   Du. His discretion I am sure cannot carrie his valor:
+for the Goose carries not the Fox. It is well; leaue it to
+his discretion, and let vs hearken to the Moone
+
+   Moone. This Lanthorne doth the horned Moone present
+
+   De. He should haue worne the hornes on his head
+
+   Du. Hee is no crescent, and his hornes are inuisible,
+within the circumference
+
+   Moon. This lanthorne doth the horned Moone present:
+My selfe, the man i'th Moone doth seeme to be
+
+   Du. This is the greatest error of all the rest; the man
+Should be put into the Lanthorne. How is it els the man
+i'th Moone?
+  Dem. He dares not come there for the candle.
+For you see, it is already in snuffe
+
+   Dut. I am wearie of this Moone; would he would
+change
+
+   Du. It appeares by his smal light of discretion, that
+he is in the wane: but yet in courtesie, in all reason, we
+must stay the time
+
+   Lys. Proceed Moone
+
+   Moon. All that I haue to say, is to tell you, that the
+Lanthorne is the Moone; I, the man in the Moone; this
+thorne bush; my thorne bush; and this dog, my dog
+
+   Dem. Why all these should be in the Lanthorne: for
+they are in the Moone. But silence, heere comes Thisby.
+Enter Thisby.
+
+  This. This is old Ninnies tombe: where is my loue?
+  Lyon. Oh.
+
+The Lion roares, Thisby runs off.
+
+  Dem. Well roar'd Lion
+
+   Du. Well run Thisby
+
+   Dut. Well shone Moone.
+Truly the Moone shines with a good grace
+
+   Du. Wel mouz'd Lion
+
+   Dem. And then came Piramus
+
+   Lys. And so the Lion vanisht.
+Enter Piramus.
+
+  Pyr. Sweet Moone, I thank thee for thy sunny beames,
+I thanke thee Moone, for shining now so bright:
+For by thy gracious, golden, glittering beames,
+I trust to taste of truest Thisbies sight.
+But stay: O spight! but marke, poore Knight,
+What dreadful dole is heere?
+Eyes do you see! How can it be!
+O dainty Ducke: O Deere!
+Thy mantle good; what staind with blood!
+Approch you furies fell:
+O Fates! come, come: Cut thred and thrum,
+Quaile, crush, conclude, and quell
+
+   Du. This passion, and the death of a deare friend,
+Would go neere to make a man looke sad
+
+   Dut. Beshrew my heart, but I pittie the man
+
+   Pir. O wherefore Nature, did'st thou Lions frame?
+Since lion vilde hath heere deflour'd my deere:
+Which is: no, no, which was the fairest Dame
+That liu'd, that lou'd, that like'd, that look'd with cheere.
+Come teares, confound: Out sword, and wound
+The pap of Piramus:
+I, that left pap, where heart doth hop;
+Thus dye I, thus, thus, thus.
+Now am I dead, now am I fled, my soule is in the sky,
+Tongue lose thy light, Moone take thy flight,
+Now dye, dye, dye, dye, dye
+
+   Dem. No Die, but an ace for him; for he is but one
+
+   Lis. Lesse then an ace man. For he is dead, he is nothing
+
+   Du. With the helpe of a Surgeon, he might yet recouer,
+and proue an Asse
+
+   Dut. How chance Moone-shine is gone before?
+Thisby comes backe, and findes her Louer.
+Enter Thisby.
+
+  Duke. She wil finde him by starre-light.
+Heere she comes, and her passion ends the play
+
+   Dut. Me thinkes shee should not vse a long one for
+such a Piramus: I hope she will be breefe
+
+   Dem. A Moth wil turne the ballance, which Piramus
+which Thisby is the better
+
+   Lys. She hath spyed him already, with those sweete eyes
+
+   Dem. And thus she meanes, videlicit
+
+   This. Asleepe my Loue? What, dead my Doue?
+O Piramus arise:
+Speake, speake. Quite dumbe? Dead, dead? A tombe
+Must couer thy sweet eyes.
+These Lilly Lips, this cherry nose,
+These yellow Cowslip cheekes
+Are gone, are gone: Louers make mone:
+His eyes were greene as Leekes.
+O Sisters three, come, come to mee,
+With hands as pale as Milke,
+Lay them in gore, since you haue shore
+with sheeres, his thred of silke.
+Tongue not a word: Come trusty sword:
+Come blade, my brest imbrue:
+And farwell friends, thus Thisbie ends;
+Adieu, adieu, adieu
+
+   Duk. Moone-shine & Lion are left to burie the dead
+
+   Deme. I, and Wall too
+
+   Bot. No, I assure you, the wall is downe, that parted
+their Fathers. Will it please you to see the Epilogue, or
+to heare a Bergomask dance, betweene two of our company?
+  Duk. No Epilogue, I pray you; for your play needs
+no excuse. Neuer excuse; for when the plaiers are all
+dead, there need none to be blamed. Marry, if hee that
+writ it had plaid Piramus, and hung himselfe in Thisbies
+garter, it would haue beene a fine Tragedy: and so it is
+truely, and very notably discharg'd. but come, your
+Burgomaske; let your Epilogue alone.
+The iron tongue of midnight hath told twelue.
+Louers to bed, 'tis almost Fairy time.
+I feare we shall out-sleepe the comming morne,
+As much as we this night haue ouer-watcht.
+This palpable grosse play hath well beguil'd
+The heauy gate of night. Sweet friends to bed.
+A fortnight hold we this solemnity.
+In nightly Reuels; and new iollitie.
+
+Exeunt.
+
+Enter Pucke.
+
+  Puck. Now the hungry Lyons rores,
+And the Wolfe beholds the Moone:
+Whilest the heauy ploughman snores,
+All with weary taske fore-done.
+Now the wasted brands doe glow,
+Whil'st the scritch-owle, scritching loud,
+Puts the wretch that lies in woe,
+In remembrance of a shrowd.
+Now it is the time of night,
+That the graues, all gaping wide,
+Euery one lets forth his spright,
+In the Church-way paths to glide,
+And we Fairies, that do runne,
+By the triple Hecates teame,
+From the presence of the Sunne,
+Following darkenesse like a dreame,
+Now are frollicke; not a Mouse
+Shall disturbe this hallowed house.
+I am sent with broome before,
+To sweep the dust behinde the doore.
+Enter King and Queene of Fairies, with their traine.
+
+  Ob. Through the house giue glimmering light,
+By the dead and drowsie fier,
+Euerie Elfe and Fairie spright,
+Hop as light as bird from brier,
+And this Ditty after me, sing and dance it trippinglie,
+  Tita. First rehearse this song by roate,
+To each word a warbling note.
+Hand in hand, with Fairie grace,
+Will we sing and blesse this place.
+
+The Song.
+
+Now vntill the breake of day,
+Through this house each Fairy stray.
+To the best Bride-bed will we,
+Which by vs shall blessed be:
+And the issue there create,
+Euer shall be fortunate:
+So shall all the couples three,
+Euer true in louing be:
+And the blots of Natures hand,
+Shall not in their issue stand.
+Neuer mole, harelip, nor scarre,
+nor mark prodigious, such as are
+Despised in Natiuitie,
+Shall vpon their children be.
+With this field dew consecrate,
+Euery Fairy take his gate,
+And each seuerall chamber blesse,
+Through this Pallace with sweet peace,
+Euer shall in safety rest.
+And the owner of it blest.
+Trip away, make no stay;
+Meet me all by breake of day
+
+   Robin. If we shadowes haue offended,
+Thinke but this (and all is mended)
+That you haue but slumbred heere,
+While these Visions did appeare.
+And this weake and idle theame,
+No more yeelding but a dreame,
+Gentles, doe not reprehend.
+If you pardon, we will mend.
+And as I am an honest Pucke,
+If we haue vnearned lucke,
+Now to scape the Serpents tongue,
+We will make amends ere long:
+Else the Pucke a lyar call.
+So good night vnto you all.
+Giue me your hands, if we be friends,
+And Robin shall restore amends.
+
+FINIS. A MIDSOMMER Nights Dreame.
