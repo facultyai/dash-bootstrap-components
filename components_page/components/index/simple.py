@@ -21,4 +21,4 @@ app.layout = dbc.Container(badge, fluid=True)
 
 # 5. Start the Dash server
 if __name__ == "__main__":
-    app.run_server()
+    app.run()
