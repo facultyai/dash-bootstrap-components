@@ -12,7 +12,7 @@ This is a carousel with slides only.  The default cycle time is 5000ms, but here
 
 ## With controls
 
-Here we add the previous and next controls.  The default is for the slideshow to autoplay after the user manually cycles the first item. Set `ride="carousel"` to start the slideshow on page load.
+Here we add the previous and next controls.
 
 {{example:components/carousel/controls.py:carousel}}
 
