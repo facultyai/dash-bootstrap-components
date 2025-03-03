@@ -102,4 +102,4 @@ def generate_graphs(n):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)
+    app.run(debug=True, port=8888)
