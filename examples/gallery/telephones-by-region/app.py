@@ -10,7 +10,7 @@ import pandas as pd
 import plotly.graph_objs as go
 from dash import Input, Output, dcc, html
 
-data = pd.read_csv("https://cdn.opensource.faculty.ai/world-phones/data.csv")
+data = pd.read_csv("data.csv")
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 

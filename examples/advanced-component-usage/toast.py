@@ -102,6 +102,7 @@ def make_toast(message):
         is_open=True,
         dismissable=True,
         icon="danger",
+        className="mb-2",
     )
 
 
