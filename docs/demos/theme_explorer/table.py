@@ -61,11 +61,11 @@ table = html.Div(
                     dbc.Table(
                         [table_header, table_body],
                         bordered=True,
-                        dark=True,
                         hover=True,
                         responsive=True,
                         striped=True,
                         className="mb-2",
+                        color="dark",
                     ),
                 ),
             ]

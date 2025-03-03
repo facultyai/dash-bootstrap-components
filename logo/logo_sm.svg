@@ -1,0 +1,48 @@
+<svg id="dbclogo-sm" viewBox="-4 -4 54 54" preserveAspectRatio="xMidYMid meet" version="1.1" baseProfile="full"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="background" data-name="background" viewBox="0 0 58 58">
+      <rect width="54" height="54" opacity="1" fill="white" rx="8" ry="8" />
+    </symbol>
+    <symbol id="grid" data-name="grid" viewBox="0 0 46 46">
+      <g opacity="0.6">
+        <line x1="46" y1="7.75" y2="7.75" fill="none" stroke-width="0.5" />
+        <line x1="46" y1="4.25" y2="4.25" fill="none" stroke-width="0.5" />
+        <line x1="46" y1="41.75" y2="41.75" fill="none" stroke-width="0.5" />
+        <line x1="46" y1="38.25" y2="38.25" fill="none" stroke-width="0.5" />
+      </g>
+      <g opacity="0.6">
+        <line x1="7.75" x2="7.75" y2="46" fill="none" stroke-width="0.5" />
+        <line x1="4.25" x2="4.25" y2="46" fill="none" stroke-width="0.5" />
+        <line x1="38.25" y1="46" x2="38.25" fill="none" stroke-width="0.5" />
+        <line x1="41.75" y1="46" x2="41.75" fill="none" stroke-width="0.5" />
+      </g>
+    </symbol>
+    <symbol id="dbc" data-name="dbc" viewBox="0 0 30 30">
+      <rect width="30" height="30" fill="none" />
+      <rect width="30" height="30" opacity="0.1" />
+      <mask id="d-mask">
+        <rect width="30" height="30" fill="black" />
+        <circle cx="7" cy="18.125" r="2.5" stroke="white" stroke-width="2.5" fill="none" />
+        <line x1="9.5" y1="18.125" x2="9.5" y2="8.125" stroke="white" stroke-width="2.5" />
+      </mask>
+      <mask id="b-mask">
+        <rect width="30" height="30" fill="black" />
+        <circle cx="15" cy="18.125" r="2.5" stroke="white" stroke-width="2.5" fill="none" />
+        <line x1="12.5" y1="18.125" x2="12.5" y2="8.125" stroke="white" stroke-width="2.5" />
+      </mask>
+      <g mask="url(#d-mask)">
+        <rect width="30" height="30" fill="black" opacity="0.8" />
+      </g>
+      <g mask="url(#b-mask)">
+        <rect width="30" height="30" fill="black" opacity="0.8" />
+      </g>
+      <circle cx="23" cy="18.125" r="2.5" stroke="black" opacity="0.8" stroke-width="2.5" fill="none"
+        stroke-dasharray="14.14" transform="rotate(18, 23, 18.125)" />
+    </symbol>
+  </defs>
+
+  <use width="58" height="58" xlink:href="#background" href="#background" x="-4" y="-4" />
+  <use width="30" height="30" xlink:href="#dbc" href="#dbc" x="8" y="8" /> <!-- top left place -->
+  <use width="46" height="46" stroke="#0d6efd" xlink:href="#grid" href="#grid" x="0" y="0" />
+</svg>

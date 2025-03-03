@@ -10,7 +10,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html
 
-PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
+LOGO = "https://placehold.co/100x100"
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 # try running the app with one of the Bootswatch themes e.g.
@@ -68,7 +68,7 @@ logo = dbc.Navbar(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row(
                     [
-                        dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                        dbc.Col(html.Img(src=LOGO, height="30px")),
                         dbc.Col(dbc.NavbarBrand("Logo", className="ms-2")),
                     ],
                     align="center",

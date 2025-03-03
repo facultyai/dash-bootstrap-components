@@ -8,7 +8,7 @@ two are used to toggle the collapsing sections in the sidebar. They control the
 collapse component and the CSS that rotates the chevron icon respectively.
 
 For more details on building multi-page Dash applications, check out the Dash
-documentation: https://dash.plot.ly/urls
+documentation: https://dash.plotly.com/urls
 """
 
 import dash

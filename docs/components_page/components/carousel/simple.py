@@ -9,5 +9,4 @@ carousel = dbc.Carousel(
     controls=False,
     indicators=False,
     interval=2000,
-    ride="carousel",
 )
