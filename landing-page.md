@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://dash-bootstrap-components.opensource.faculty.ai/">
-    <img src="https://cdn.opensource.faculty.ai/dbc/assets/logo.svg" alt="dash-bootstrap-components logo" width="200" height="200">
+    <img src="https://cdn.jsdelivr.net/gh/facultyai/dash-bootstrap-components@main/readme-images/logo.png" alt="dash-bootstrap-components logo" width="200" height="200">
   </a>
 </p>
 
