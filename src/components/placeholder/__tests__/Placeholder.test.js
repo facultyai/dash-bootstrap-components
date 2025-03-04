@@ -1,14 +1,28 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {act, render} from '@testing-library/react';
+
 import Placeholder from '../Placeholder';
 
 jest.useFakeTimers();
 
 describe('Placeholder', () => {
+  beforeEach(() => {
+    window.dash_component_api = {
+      useDashContext: jest.fn(() => ({
+        componentPath: [0],
+        useSelector: jest.fn(() => false) // Default behavior
+      }))
+    };
+  });
+
+  afterEach(() => {
+    delete window.dash_component_api;
+  });
+
   test('renders a span with class "placeholder"', () => {
     const placeholder = render(<Placeholder />);
 
@@ -27,9 +41,7 @@ describe('Placeholder', () => {
 
   test("renders its content if object isn't loading", () => {
     const {container: container, rerender} = render(
-      <Placeholder loading_state={{is_loading: false}}>
-        Some placeholder content
-      </Placeholder>
+      <Placeholder>Some placeholder content</Placeholder>
     );
 
     // placeholder is initially visible until we've had time to update based on
@@ -39,14 +51,12 @@ describe('Placeholder', () => {
     expect(container).toHaveTextContent('Some placeholder content');
     expect(container.querySelector('span.placeholder')).toBe(null);
 
-    rerender(
-      <Placeholder loading_state={{is_loading: true}}>
-        Some placeholder content
-      </Placeholder>
-    );
+    window.dash_component_api.useDashContext.mockImplementation(() => ({
+      componentPath: [0],
+      useSelector: jest.fn(() => true)
+    }));
 
-    const overAll = container.firstChild;
-    const placeholder = overAll.lastChild;
+    rerender(<Placeholder>Some placeholder content</Placeholder>);
 
     act(() => jest.advanceTimersByTime(10));
 
@@ -101,7 +111,7 @@ describe('Placeholder', () => {
         firstChild: {lastChild: placeholderGlow}
       }
     } = render(
-      <Placeholder animation="glow" loading_state={{is_loading: true}}>
+      <Placeholder animation="glow">
         <p>Child</p>
       </Placeholder>
     );
@@ -115,7 +125,7 @@ describe('Placeholder', () => {
         firstChild: {lastChild: placeholderSm}
       }
     } = render(
-      <Placeholder size="sm" loading_state={{is_loading: true}}>
+      <Placeholder size="sm">
         <p>Child</p>
       </Placeholder>
     );
@@ -128,10 +138,7 @@ describe('Placeholder', () => {
         firstChild: {lastChild: placeholderStyle}
       }
     } = render(
-      <Placeholder
-        style={{width: '5rem', height: '5rem'}}
-        loading_state={{is_loading: true}}
-      >
+      <Placeholder style={{width: '5rem', height: '5rem'}}>
         <p>Child</p>
       </Placeholder>
     );
@@ -156,5 +163,32 @@ describe('Placeholder', () => {
     expect(placeholderPrimary).toHaveClass('bg-primary');
     expect(placeholderSuccess).toHaveClass('bg-success');
     expect(placeholderDark).toHaveClass('bg-dark');
+  });
+
+  test('display prop overrides loading state', () => {
+    const {container: container, rerender} = render(
+      <Placeholder display="show">Some placeholder content</Placeholder>
+    );
+
+    // placeholder is initially visible until we've had time to update based on
+    // loading state. this can be disabled with show_initially={false}
+    act(() => jest.advanceTimersByTime(10));
+
+    expect(container).toHaveTextContent('Some placeholder content');
+    expect(container.querySelector('span.placeholder')).not.toBe(null);
+
+    window.dash_component_api.useDashContext.mockImplementation(() => ({
+      componentPath: [0],
+      useSelector: jest.fn(() => true)
+    }));
+
+    rerender(
+      <Placeholder display="hide">Some placeholder content</Placeholder>
+    );
+
+    act(() => jest.advanceTimersByTime(10));
+
+    expect(container).toHaveTextContent('Some placeholder content');
+    expect(container.querySelector('span.placeholder')).toBe(null);
   });
 });

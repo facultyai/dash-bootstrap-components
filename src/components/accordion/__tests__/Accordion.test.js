@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {render} from '@testing-library/react';
+
+import {act, render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Accordion from '../Accordion';
 import AccordionItem from '../AccordionItem';
 
@@ -91,7 +92,8 @@ describe('Accordion', () => {
     ).not.toHaveClass('show');
   });
 
-  test('tracks most recently clicked item with "active_item" prop', () => {
+  test('tracks most recently clicked item with "active_item" prop', async () => {
+    const user = userEvent.setup({advanceTimers: jest.advanceTimersByTime});
     const mockSetProps = jest.fn();
     const {container, rerender} = render(
       <Accordion setProps={mockSetProps} active_item="item-0">
@@ -109,9 +111,7 @@ describe('Accordion', () => {
       accordionItems.children[1].querySelector('div.accordion-collapse')
     ).not.toHaveClass('show');
 
-    userEvent.click(
-      accordionItems.children[1].querySelector('h2.accordion-header > button')
-    );
+    await user.click(await screen.findByText('item-title-2'));
     expect(mockSetProps.mock.calls).toHaveLength(1);
 
     rerender(
@@ -120,7 +120,7 @@ describe('Accordion', () => {
         <AccordionItem title="item-title-2">item-content-2</AccordionItem>
       </Accordion>
     );
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(
       accordionItems.children[0].querySelector('div.accordion-collapse')
@@ -130,9 +130,7 @@ describe('Accordion', () => {
     ).toHaveClass('show');
 
     // clicking on an open item closes it
-    userEvent.click(
-      accordionItems.children[1].querySelector('h2.accordion-header > button')
-    );
+    await user.click(await screen.findByText('item-title-2'));
     expect(mockSetProps.mock.calls).toHaveLength(2);
 
     rerender(
@@ -141,7 +139,7 @@ describe('Accordion', () => {
         <AccordionItem title="item-title-2">item-content-2</AccordionItem>
       </Accordion>
     );
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(
       accordionItems.children[0].querySelector('div.accordion-collapse')
@@ -151,7 +149,8 @@ describe('Accordion', () => {
     ).not.toHaveClass('show');
   });
 
-  test('keeps item open with "always_open" prop', () => {
+  test('keeps item open with "always_open" prop', async () => {
+    const user = userEvent.setup({advanceTimers: jest.advanceTimersByTime});
     const mockSetProps = jest.fn();
 
     const {container} = render(
@@ -172,34 +171,31 @@ describe('Accordion', () => {
     ).not.toHaveClass('show');
 
     // Click on the second item
-    userEvent.click(
-      accordionItems.children[1].querySelector('h2.accordion-header > button')
-    );
+    await user.click(await screen.findByText('item-title-2'));
     expect(mockSetProps.mock.calls).toHaveLength(1);
 
-    // Allow the click to take effect
-    jest.runAllTimers();
+    // wait for transition to complete
+    await waitFor(() =>
+      expect(
+        accordionItems.children[1].querySelector('div.accordion-collapse')
+      ).toHaveClass('show')
+    );
 
     // Check just the second item is open
     expect(
       accordionItems.children[0].querySelector('div.accordion-collapse')
     ).not.toHaveClass('show');
-    expect(
-      accordionItems.children[1].querySelector('div.accordion-collapse')
-    ).toHaveClass('show');
 
     // Click on the first item
-    userEvent.click(
-      accordionItems.children[0].querySelector('h2.accordion-header > button')
-    );
+    await user.click(await screen.findByText('item-title-1'));
     expect(mockSetProps.mock.calls).toHaveLength(2);
-    // Allow the click to take effect
-    jest.runAllTimers();
 
     // Check that the first child is now open, and the second remains open
-    expect(
-      accordionItems.children[0].querySelector('div.accordion-collapse')
-    ).toHaveClass('show');
+    await waitFor(() =>
+      expect(
+        accordionItems.children[0].querySelector('div.accordion-collapse')
+      ).toHaveClass('show')
+    );
     expect(
       accordionItems.children[1].querySelector('div.accordion-collapse')
     ).toHaveClass('show');
@@ -224,7 +220,8 @@ describe('Accordion', () => {
     ).toHaveClass('show');
   });
 
-  test('tracks most recently clicked item with "active_item" prop when always_open', () => {
+  test('tracks most recently clicked item with "active_item" prop when always_open', async () => {
+    const user = userEvent.setup({advanceTimers: jest.advanceTimersByTime});
     const mockSetProps = jest.fn();
     const {container, rerender} = render(
       <Accordion setProps={mockSetProps} active_item={['item-0']} always_open>
@@ -248,9 +245,7 @@ describe('Accordion', () => {
     ).not.toHaveClass('show');
 
     // Click the middle option
-    userEvent.click(
-      accordionItems.children[1].querySelector('h2.accordion-header > button')
-    );
+    await user.click(await screen.getByText('item-title-2'));
     expect(mockSetProps.mock.calls).toHaveLength(1);
 
     rerender(
@@ -264,7 +259,7 @@ describe('Accordion', () => {
         <AccordionItem title="item-title-3">item-content-3</AccordionItem>
       </Accordion>
     );
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     // Check first option stayed open, middle option now open but third still
     // closed
@@ -279,9 +274,7 @@ describe('Accordion', () => {
     ).not.toHaveClass('show');
 
     // clicking on 1st item closes it, but keeps second item open and 3rd closed
-    userEvent.click(
-      accordionItems.children[0].querySelector('h2.accordion-header > button')
-    );
+    await user.click(await screen.getByText('item-title-1'));
     expect(mockSetProps.mock.calls).toHaveLength(2);
 
     rerender(
@@ -295,7 +288,7 @@ describe('Accordion', () => {
         <AccordionItem title="item-title-3">item-content-3</AccordionItem>
       </Accordion>
     );
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     // Check that 1 and 3 now closed, and 2 is open
     expect(

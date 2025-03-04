@@ -1,30 +1,15 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import DropdownMenu from '../DropdownMenu';
 import DropdownMenuItem from '../DropdownMenuItem';
 
 describe('DropdownMenuItem', () => {
-  // this is just a little hack to silence a warning that we'll get until we
-  // upgrade to 16.9. See also: https://github.com/facebook/react/pull/14853
-  const originalError = console.error;
-  beforeAll(() => {
-    console.error = (...args) => {
-      if (/Warning.*not wrapped in act/.test(args[0])) {
-        return;
-      }
-      originalError.call(console, ...args);
-    };
-  });
-
-  afterAll(() => {
-    console.error = originalError;
-  });
-
   test('renders a button with class "dropdown-menu-item"', () => {
     const dropdownMenuItem = render(<DropdownMenuItem />);
 
@@ -33,7 +18,8 @@ describe('DropdownMenuItem', () => {
     ).not.toBe(null);
   });
 
-  test('relative links are internal by default', () => {
+  test('relative links are internal by default', async () => {
+    const user = userEvent.setup();
     const dropdownMenuItem = render(
       <DropdownMenuItem href="/relative">Clickable</DropdownMenuItem>
     );
@@ -43,11 +29,13 @@ describe('DropdownMenuItem', () => {
     window.scrollTo = jest.fn();
 
     expect(mockEventListener.mock.calls).toHaveLength(0);
-    userEvent.click(dropdownMenuItem.getByText('Clickable'));
+
+    await user.click(dropdownMenuItem.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(1);
   });
 
-  test('relative links are external with external_link=true', () => {
+  test('relative links are external with external_link=true', async () => {
+    const user = userEvent.setup();
     const dropdownMenuItem = render(
       <DropdownMenuItem href="/relative" external_link>
         Clickable
@@ -59,7 +47,7 @@ describe('DropdownMenuItem', () => {
     window.scrollTo = jest.fn();
 
     expect(mockEventListener.mock.calls).toHaveLength(0);
-    userEvent.click(dropdownMenuItem.getByText('Clickable'));
+    await user.click(dropdownMenuItem.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(0);
   });
 
@@ -73,7 +61,8 @@ describe('DropdownMenuItem', () => {
     );
   });
 
-  test('tracks clicks with n_clicks', () => {
+  test('tracks clicks with n_clicks', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const dropdownMenuItem = render(
       <DropdownMenu>
@@ -83,13 +72,14 @@ describe('DropdownMenuItem', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(dropdownMenuItem.getByText('Clickable'));
+    await user.click(dropdownMenuItem.getByText('Clickable'));
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
   });
 
-  test("doesn't track clicks if disabled", () => {
+  test("doesn't track clicks if disabled", async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const dropdownMenuItem = render(
       <DropdownMenu>
@@ -100,45 +90,46 @@ describe('DropdownMenuItem', () => {
     );
 
     expect(dropdownMenuItem.getByText('Clickable')).toHaveClass('disabled');
-
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(dropdownMenuItem.getByText('Clickable'));
+    await user.click(dropdownMenuItem.getByText('Clickable'));
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
   });
 
-  test('dismisses parent DropdownMenu when clicked', () => {
+  test('dismisses parent DropdownMenu when clicked', async () => {
+    const user = userEvent.setup();
     const dropdownMenu = render(
       <DropdownMenu label="toggle">
         <DropdownMenuItem>Clickable</DropdownMenuItem>
       </DropdownMenu>
     );
 
-    userEvent.click(dropdownMenu.getByText('toggle'));
-
+    await user.click(dropdownMenu.getByText('toggle'));
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
     );
-    userEvent.click(dropdownMenu.getByText('Clickable'));
+
+    await user.click(dropdownMenu.getByText('Clickable'));
     expect(
       dropdownMenu.container.querySelector('.dropdown-menu')
     ).not.toHaveClass('show');
   });
 
-  test("doesn't dismiss parent DropdownMenu when clicked if toggle=false", () => {
+  test("doesn't dismiss parent DropdownMenu when clicked if toggle=false", async () => {
+    const user = userEvent.setup();
     const dropdownMenu = render(
       <DropdownMenu label="toggle">
         <DropdownMenuItem toggle={false}>Clickable</DropdownMenuItem>
       </DropdownMenu>
     );
 
-    userEvent.click(dropdownMenu.getByText('toggle'));
+    await user.click(dropdownMenu.getByText('toggle'));
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
     );
 
-    userEvent.click(dropdownMenu.getByText('Clickable'));
+    await user.click(dropdownMenu.getByText('Clickable'));
     expect(dropdownMenu.container.querySelector('.dropdown-menu')).toHaveClass(
       'show'
     );

@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {render} from '@testing-library/react';
+
+import {act, render} from '@testing-library/react';
+
 import Collapse from '../Collapse';
 
 jest.useFakeTimers();
@@ -44,7 +45,7 @@ describe('Collapse', () => {
       </Collapse>
     );
     expect(collapse.container.querySelector('div.collapsing')).not.toBe(null);
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(collapse.container.querySelector('div.collapse.show')).not.toBe(
       null

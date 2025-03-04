@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Tab from '../Tab';
 import Tabs from '../Tabs';
 
@@ -53,7 +54,8 @@ describe('Tabs', () => {
 
   // TODO: add test with CardHeader component
 
-  test('tracks most recently clicked tab with "active_tab" prop', () => {
+  test('tracks most recently clicked tab with "active_tab" prop', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const {container, getByText, rerender} = render(
       <Tabs setProps={mockSetProps} active_tab="tab-0">
@@ -67,7 +69,7 @@ describe('Tabs', () => {
     expect(nav.children[0].firstChild).toHaveClass('active');
     expect(nav.children[1].firstChild).not.toHaveClass('active');
 
-    userEvent.click(getByText('tab-label-2'));
+    await user.click(getByText('tab-label-2'));
     expect(mockSetProps.mock.calls).toHaveLength(1);
 
     rerender(

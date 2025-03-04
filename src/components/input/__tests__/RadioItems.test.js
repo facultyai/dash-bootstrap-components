@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import RadioItems from '../RadioItems';
 
 describe('RadioItems', () => {
@@ -51,7 +52,9 @@ describe('RadioItems', () => {
     expect(input3.disabled).toEqual(true);
   });
 
-  test('clicking a radio button toggles its status unless disabled', () => {
+  test('clicking a radio button toggles its status unless disabled', async () => {
+    const user = userEvent.setup();
+
     const [child1, child2, child3] = radioItems.container.firstChild.children;
     const input1 = child1.firstChild;
     const input2 = child2.firstChild;
@@ -61,7 +64,7 @@ describe('RadioItems', () => {
     expect(input2.checked).toEqual(false);
     expect(input3.checked).toEqual(false);
 
-    userEvent.click(input1);
+    await user.click(input1);
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     const [{value: value1}] = mockSetProps.mock.calls[0];
@@ -84,7 +87,7 @@ describe('RadioItems', () => {
     expect(input2.checked).toEqual(false);
     expect(input3.checked).toEqual(false);
 
-    userEvent.click(input2);
+    await user.click(input2);
 
     expect(mockSetProps.mock.calls).toHaveLength(2);
     const [{value: value2}] = mockSetProps.mock.calls[1];
@@ -107,7 +110,7 @@ describe('RadioItems', () => {
     expect(input2.checked).toEqual(true);
     expect(input3.checked).toEqual(false);
 
-    userEvent.click(input3);
+    await user.click(input3);
 
     expect(mockSetProps.mock.calls).toHaveLength(2);
     expect(input1.checked).toEqual(false);
@@ -115,7 +118,9 @@ describe('RadioItems', () => {
     expect(input3.checked).toEqual(false);
   });
 
-  test('clicking a label toggles its associated radio status', () => {
+  test('clicking a label toggles its associated radio status', async () => {
+    const user = userEvent.setup();
+
     const label1 = radioItems.getByText('Item 1');
     const label2 = radioItems.getByText('Item 2');
     const label3 = radioItems.getByText('Disabled item');
@@ -129,7 +134,7 @@ describe('RadioItems', () => {
     expect(input2.checked).toEqual(false);
     expect(input3.checked).toEqual(false);
 
-    userEvent.click(label1);
+    await user.click(label1);
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     const [{value: value1}] = mockSetProps.mock.calls[0];
@@ -152,7 +157,7 @@ describe('RadioItems', () => {
     expect(input2.checked).toEqual(false);
     expect(input3.checked).toEqual(false);
 
-    userEvent.click(label2);
+    await user.click(label2);
 
     expect(mockSetProps.mock.calls).toHaveLength(2);
     const [{value: value2}] = mockSetProps.mock.calls[1];
@@ -175,7 +180,7 @@ describe('RadioItems', () => {
     expect(input2.checked).toEqual(true);
     expect(input3.checked).toEqual(false);
 
-    userEvent.click(label3);
+    await user.click(label3);
 
     expect(mockSetProps.mock.calls).toHaveLength(2);
     expect(input1.checked).toEqual(false);

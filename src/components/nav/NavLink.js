@@ -1,28 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import {omit} from 'ramda';
-import classNames from 'classnames';
+
 import {History} from '@plotly/dash-component-plugins';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import Link from '../../private/Link';
+import {getLoadingState} from '../../private/util';
 
 /**
- * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav`
- * directly.
+ * Add a link to a `Nav`. Can be used as a child of `NavItem` or of `Nav` directly.
  */
-const NavLink = props => {
+const NavLink = ({
+  children,
+  href,
+  n_clicks = 0,
+  active = false,
+  disabled = false,
+  class_name,
+  className,
+  setProps,
+  ...otherProps
+}) => {
   const [linkActive, setLinkActive] = useState(false);
-  const {
-    children,
-    disabled,
-    className,
-    class_name,
-    active,
-    loading_state,
-    setProps,
-    n_clicks,
-    href,
-    ...otherProps
-  } = props;
 
   const pathnameToActive = pathname => {
     setLinkActive(
@@ -44,10 +43,7 @@ const NavLink = props => {
 
   const incrementClicks = () => {
     if (!disabled && setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
 
@@ -62,64 +58,33 @@ const NavLink = props => {
       disabled={disabled}
       preOnClick={incrementClicks}
       href={href}
-      {...omit(['n_clicks_timestamp'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      {...otherProps}
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       {children}
     </Link>
   );
 };
 
-NavLink.defaultProps = {
-  active: false,
-  disabled: false,
-  n_clicks: 0,
-  n_clicks_timestamp: -1
-};
-
 NavLink.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the NavLink.
    */
   children: PropTypes.node,
-
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the NavLink.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * The URL of the linked resource.
    */
   href: PropTypes.string,
+
+  /**
+   * The number of times the NavLink has been clicked.
+   */
+  n_clicks: PropTypes.number,
 
   /**
    * Apply 'active' style to this component. Set to "exact" to automatically
@@ -145,50 +110,46 @@ NavLink.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * If true, the browser will treat this as an external link,
-   * forcing a page refresh at the new location. If false,
-   * this just changes the location without triggering a page
-   * refresh. Use this if you are observing dcc.Location, for
-   * instance. Defaults to true for absolute URLs and false
-   * otherwise.
+   * If True, clicking on the NavLink will behave like a hyperlink. If False, the
+   * NavLink will behave like a dcc.Link component, and can be used in conjunction with
+   * dcc.Location for navigation within a Dash app.
    */
   external_link: PropTypes.bool,
 
   /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
+   * Additional inline CSS styles to apply to the NavLink.
    */
-  n_clicks: PropTypes.number,
+  style: PropTypes.object,
 
   /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
+   * Additional CSS classes to apply to the NavLink.
    */
-  n_clicks_timestamp: PropTypes.number,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
+  class_name: PropTypes.string,
 
   /**
    * Target attribute to pass on to the link. Only applies to external links.
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the NavLink.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default NavLink;

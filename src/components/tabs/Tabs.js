@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
-import {omit} from 'ramda';
+
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import RBNav from 'react-bootstrap/Nav';
 import RBTab from 'react-bootstrap/Tab';
 
+import {getLoadingState} from '../../private/util';
 import {
   parseChildrenToArray,
   resolveChildProps,
@@ -12,21 +13,19 @@ import {
 } from '../../private/util';
 
 /**
- * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get
- * get the currently active tab in a callback.
+ * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get the
+ * currently active tab in a callback.
  */
-const Tabs = props => {
-  let {
-    children,
-    id,
-    className,
-    class_name,
-    style,
-    active_tab,
-    key,
-    loading_state,
-    setProps
-  } = props;
+function Tabs({
+  children,
+  id,
+  active_tab,
+  style,
+  class_name,
+  key,
+  className,
+  setProps
+}) {
   children = parseChildrenToArray(children);
 
   // if active_tab not set initially, choose first tab
@@ -100,40 +99,23 @@ const Tabs = props => {
   const tabs =
     children &&
     children.map((child, idx) => {
-      const childProps = resolveChildProps(child);
       const {
-        children,
+        style,
+        className,
+        class_name,
         tab_id,
-        id,
-        label,
-        tab_style,
-        active_tab_style,
-        label_style,
-        active_label_style,
-        tabClassName,
-        tab_class_name,
-        activeTabClassName,
-        active_tab_class_name,
-        labelClassName,
-        label_class_name,
-        activeLabelClassName,
-        active_label_class_name,
-        loading_state,
-        ...otherProps
-      } = childProps;
+        disabled = false
+      } = resolveChildProps(child);
       const tabId = tab_id || 'tab-' + idx;
 
       return (
         <RBTab.Pane
           eventKey={tabId}
           key={tabId}
-          {...omit(
-            ['setProps', 'persistence', 'persistence_type', 'persisted_props'],
-            otherProps
-          )}
-          data-dash-is-loading={
-            (loading_state && loading_state.is_loading) || undefined
-          }
+          disabled={disabled}
+          style={style}
+          className={class_name || className}
+          data-dash-is-loading={getLoadingState() || undefined}
         >
           {child}
         </RBTab.Pane>
@@ -144,9 +126,7 @@ const Tabs = props => {
       key={key}
       activeKey={active_tab}
       onSelect={id => setProps({active_tab: id})}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       <RBNav
         id={id}
@@ -160,49 +140,23 @@ const Tabs = props => {
       <RBTab.Content>{tabs}</RBTab.Content>
     </RBTab.Container>
   );
-};
+}
 
-Tabs.defaultProps = {
+Tabs.dashPersistence = {
   persisted_props: ['active_tab'],
   persistence_type: 'local'
 };
 
 Tabs.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this Tabs component. Each child should be a Tab component.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Tabs.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * The tab_id of the currently active tab. If tab_id has not been specified
@@ -212,30 +166,18 @@ Tabs.propTypes = {
   active_tab: PropTypes.string,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * Additional inline CSS styles to apply to the Tabs.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
+  style: PropTypes.object,
 
   /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * Additional CSS classes to apply to the Tabs.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -252,11 +194,31 @@ Tabs.propTypes = {
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Tabs.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Tabs;

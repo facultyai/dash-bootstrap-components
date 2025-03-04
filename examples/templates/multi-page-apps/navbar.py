@@ -7,7 +7,7 @@ NavLink is set automatically according to the current pathname. To use this
 feature you must install dash-bootstrap-components >= 0.11.0.
 
 For more details on building multi-page Dash applications, check out the Dash
-documentation: https://dash.plot.ly/urls
+documentation: https://dash.plotly.com/urls
 """
 
 import dash
@@ -54,4 +54,4 @@ def render_page_content(pathname):
 
 
 if __name__ == "__main__":
-    app.run_server(port=8888)
+    app.run(port=8888)

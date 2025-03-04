@@ -1,11 +1,12 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
-import ListGroupItem from '../ListGroupItem';
+
 import ListGroup from '../ListGroup';
+import ListGroupItem from '../ListGroupItem';
 
 describe('ListGroup', () => {
   test('renders an unordered list with class "list-group"', () => {

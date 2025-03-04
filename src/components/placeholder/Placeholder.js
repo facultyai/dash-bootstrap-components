@@ -1,67 +1,76 @@
 import React, {useEffect, useRef, useState} from 'react';
-import PropTypes from 'prop-types';
-import RBPlaceholder from 'react-bootstrap/Placeholder';
-import {omit} from 'ramda';
 
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import {equals, omit} from 'ramda';
+import RBPlaceholder from 'react-bootstrap/Placeholder';
+
+import {loadingSelector} from '../../private/util';
 
 /**
  * Use loading Placeholders for your components or pages to indicate
  * something may still be loading.
  */
-const Placeholder = props => {
-  const {
-    children,
-    loading_state,
-    className,
-    class_name,
-    color,
-    button,
-    style,
-    delay_hide,
-    delay_show,
-    show_initially,
-    animation,
-    ...otherProps
-  } = props;
+function Placeholder({
+  children,
+  className,
+  class_name,
+  color,
+  style,
+  animation,
+  delay_hide = 0,
+  delay_show = 0,
+  show_initially = true,
+  button = false,
+  display = 'auto',
+  target_components,
+  ...otherProps
+}) {
+  const ctx = window.dash_component_api?.useDashContext();
+  const loading = ctx
+    ? ctx.useSelector(
+        loadingSelector(ctx.componentPath, target_components),
+        equals
+      )
+    : false;
 
   const [showPlaceholder, setShowPlaceholder] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
 
   useEffect(() => {
-    if (loading_state) {
-      if (loading_state.is_loading) {
-        // if component is currently loading and there's a dismiss timer active
-        // we need to clear it.
-        if (dismissTimer.current) {
-          dismissTimer.current = clearTimeout(dismissTimer.current);
-        }
-        // if component is currently loading but the placeholder is not showing and
-        // there is no timer set to show, then set a timeout to show
-        if (!showPlaceholder && !showTimer.current) {
-          showTimer.current = setTimeout(() => {
-            setShowPlaceholder(true);
-            showTimer.current = null;
-          }, delay_show);
-        }
-      } else {
-        // if component is not currently loading and there's a show timer
-        // active we need to clear it
-        if (showTimer.current) {
-          showTimer.current = clearTimeout(showTimer.current);
-        }
-        // if component is not currently loading and the placeholder is showing and
-        // there's no timer set to dismiss it, then set a timeout to hide it
-        if (showPlaceholder && !dismissTimer.current) {
-          dismissTimer.current = setTimeout(() => {
-            setShowPlaceholder(false);
-            dismissTimer.current = null;
-          }, delay_hide);
-        }
+    if (display === 'show' || display === 'hide') {
+      setShowPlaceholder(display === 'show');
+    } else if (loading) {
+      // if component is currently loading and there's a dismiss timer active
+      // we need to clear it.
+      if (dismissTimer.current) {
+        dismissTimer.current = clearTimeout(dismissTimer.current);
+      }
+      // if component is currently loading but the placeholder is not showing and
+      // there is no timer set to show, then set a timeout to show
+      if (!showPlaceholder && !showTimer.current) {
+        showTimer.current = setTimeout(() => {
+          setShowPlaceholder(true);
+          showTimer.current = null;
+        }, delay_show);
+      }
+    } else {
+      // if component is not currently loading and there's a show timer
+      // active we need to clear it
+      if (showTimer.current) {
+        showTimer.current = clearTimeout(showTimer.current);
+      }
+      // if component is not currently loading and the placeholder is showing and
+      // there's no timer set to dismiss it, then set a timeout to hide it
+      if (showPlaceholder && !dismissTimer.current) {
+        dismissTimer.current = setTimeout(() => {
+          setShowPlaceholder(false);
+          dismissTimer.current = null;
+        }, delay_hide);
       }
     }
-  }, [delay_hide, delay_show, loading_state]);
+  }, [delay_hide, delay_show, loading, showPlaceholder, display]);
 
   // If the placeholder is to be animated, need to add the placeholder class
   // (as this isn't added for some reason)
@@ -93,6 +102,10 @@ const Placeholder = props => {
         {...omit(['setProps'], otherProps)}
       />
     );
+  };
+
+  PlaceholderDiv.propTypes = {
+    finalStyle: PropTypes.object
   };
 
   // Identify if the Placeholder needs an animation - if so it must be placed
@@ -137,74 +150,21 @@ const Placeholder = props => {
   }
 
   return <PlaceholderDiv finalStyle={style} />;
-};
-
-Placeholder._dashprivate_isLoadingComponent = true;
-
-Placeholder.defaultProps = {
-  delay_hide: 0,
-  delay_show: 0,
-  show_initially: true,
-  button: false
-};
+}
 
 Placeholder.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of the Placeholder.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Placeholder.
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
-
-  /**
-   * Changes the animation of the placeholder.
+   * Changes the animation of the Placeholder.
    */
   animation: PropTypes.oneOf(['glow', 'wave']),
 
@@ -215,7 +175,7 @@ Placeholder.propTypes = {
   color: PropTypes.string,
 
   /**
-   * Component size variations. Only valid when `button=false`.
+   * Placeholder size variations. Only valid when `button=false`.
    */
   size: PropTypes.oneOf(['xs', 'sm', 'lg']),
 
@@ -232,8 +192,7 @@ Placeholder.propTypes = {
 
   /**
    * When using the placeholder as a loading placeholder, add a time delay
-   * (in ms) to the placeholder being shown after the loading_state is set to
-   * true.
+   * (in ms) to the placeholder being shown after the lcomponent starts loading.
    */
   delay_show: PropTypes.number,
 
@@ -242,6 +201,16 @@ Placeholder.propTypes = {
    * state has been determined. Default True.
    */
   show_initially: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the Placeholder.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Placeholder
+   */
+  class_name: PropTypes.string,
 
   /**
    * Specify placeholder behaviour on an extra small screen.
@@ -289,7 +258,42 @@ Placeholder.propTypes = {
    * Valid arguments are boolean, an integer in the range 1-12 inclusive.
    * See the documentation for more details.
    */
-  xxl: PropTypes.number
+  xxl: PropTypes.number,
+
+  /**
+   * Specify component and prop to trigger showing the placeholder. Example:
+   * `{"output-container": "children", "grid": ["rowData", "columnDefs]}`
+   *
+   */
+  target_components: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+  ),
+
+  /**
+   * Setting display to  "show" or "hide"  will override the loading state coming from
+   * dash-renderer
+   */
+  display: PropTypes.oneOf(['auto', 'show', 'hide']),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Placeholder
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Placeholder;

@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Pagination from '../Pagination';
 
 describe('Pagination', () => {
@@ -44,7 +45,8 @@ describe('Pagination', () => {
     ).toHaveLength(5);
   });
 
-  test('active props work as expected', () => {
+  test('active props work as expected', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const pagination = render(
       <Pagination setProps={mockSetProps} active_page={2} max_value={5} />
@@ -56,7 +58,7 @@ describe('Pagination', () => {
     );
 
     // add changes to the active one
-    userEvent.click(
+    await user.click(
       pagination.container
         .querySelector('ul.pagination')
         .lastChild.querySelector('a')
@@ -65,7 +67,8 @@ describe('Pagination', () => {
     expect(mockSetProps.mock.calls[0][0].active_page).toBe(5);
   });
 
-  test('first_last works as expected', () => {
+  test('first_last works as expected', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
 
     const pagination = render(
@@ -90,7 +93,7 @@ describe('Pagination', () => {
     ).toHaveTextContent('Last');
 
     // Check first sets the page correctly
-    userEvent.click(
+    await user.click(
       pagination.container
         .querySelector('ul.pagination')
         .firstChild.querySelector('a')
@@ -98,7 +101,7 @@ describe('Pagination', () => {
     expect(mockSetProps.mock.calls[0][0].active_page).toBe(1);
 
     // Check last sets the page correctly
-    userEvent.click(
+    await user.click(
       pagination.container
         .querySelector('ul.pagination')
         .lastChild.querySelector('a')
@@ -106,7 +109,8 @@ describe('Pagination', () => {
     expect(mockSetProps.mock.calls[1][0].active_page).toBe(5);
   });
 
-  test('previous_next works as expected', () => {
+  test('previous_next works as expected', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const pagination = render(
       <Pagination
@@ -130,7 +134,7 @@ describe('Pagination', () => {
     ).toHaveTextContent('Next');
 
     // Check previous sets the page correctly
-    userEvent.click(
+    await user.click(
       pagination.container
         .querySelector('ul.pagination')
         .firstChild.querySelector('a')
@@ -138,7 +142,7 @@ describe('Pagination', () => {
     expect(mockSetProps.mock.calls[0][0].active_page).toBe(2);
 
     // Check next sets the page correctly
-    userEvent.click(
+    await user.click(
       pagination.container
         .querySelector('ul.pagination')
         .lastChild.querySelector('a')

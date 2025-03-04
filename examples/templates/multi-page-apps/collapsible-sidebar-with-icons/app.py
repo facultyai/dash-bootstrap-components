@@ -10,14 +10,14 @@ NavLink is set automatically according to the current pathname. To use this
 feature you must install dash-bootstrap-components >= 0.11.0.
 
 For more details on building multi-page Dash applications, check out the Dash
-documentation: https://dash.plot.ly/urls
+documentation: https://dash.plotly.com/urls
 """
 
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
 
-PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
+LOGO = "https://placehold.co/100x100"
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
 
@@ -27,7 +27,7 @@ sidebar = html.Div(
             [
                 # width: 3rem ensures the logo is the exact width of the
                 # collapsed sidebar (accounting for padding)
-                html.Img(src=PLOTLY_LOGO, style={"width": "3rem"}),
+                html.Img(src=LOGO, style={"width": "3rem"}),
                 html.H2("Sidebar"),
             ],
             className="sidebar-header",
@@ -90,4 +90,4 @@ def render_page_content(pathname):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True)

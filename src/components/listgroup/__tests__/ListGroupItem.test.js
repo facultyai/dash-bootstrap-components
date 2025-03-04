@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import ListGroupItem from '../ListGroupItem';
 
 describe('ListGroupItem', () => {
@@ -52,7 +53,8 @@ describe('ListGroupItem', () => {
     ).toBe(href);
   });
 
-  test('tracks clicks with n_clicks', () => {
+  test('tracks clicks with n_clicks', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const listGroupItem = render(
       <ListGroupItem setProps={mockSetProps}>Clickable</ListGroupItem>
@@ -60,13 +62,14 @@ describe('ListGroupItem', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(listGroupItem.getByText('Clickable'));
+    await user.click(listGroupItem.getByText('Clickable'));
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
   });
 
-  test("doesn't track clicks if disabled", () => {
+  test("doesn't track clicks if disabled", async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const listGroupItem = render(
       <ListGroupItem disabled setProps={mockSetProps}>
@@ -78,12 +81,14 @@ describe('ListGroupItem', () => {
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(listGroupItem.getByText('Clickable'));
+    await user.click(listGroupItem.getByText('Clickable'));
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
   });
 
-  test('relative links are internal by default', () => {
+  test('relative links are internal by default', async () => {
+    const user = userEvent.setup();
+
     const listGroupItem = render(
       <ListGroupItem href="/relative">Clickable</ListGroupItem>
     );
@@ -93,11 +98,12 @@ describe('ListGroupItem', () => {
     window.scrollTo = jest.fn();
 
     expect(mockEventListener.mock.calls).toHaveLength(0);
-    userEvent.click(listGroupItem.getByText('Clickable'));
+    await user.click(listGroupItem.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(1);
   });
 
-  test('relative links are external with external_link=true', () => {
+  test('relative links are external with external_link=true', async () => {
+    const user = userEvent.setup();
     const listGroupItem = render(
       <ListGroupItem href="/relative" external_link>
         Clickable
@@ -109,7 +115,7 @@ describe('ListGroupItem', () => {
     window.scrollTo = jest.fn();
 
     expect(mockEventListener.mock.calls).toHaveLength(0);
-    userEvent.click(listGroupItem.getByText('Clickable'));
+    await user.click(listGroupItem.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(0);
   });
 });

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBFormSelect from 'react-bootstrap/FormSelect';
@@ -6,37 +7,31 @@ import RBFormSelect from 'react-bootstrap/FormSelect';
 import {sanitizeOptions} from '../../private/util';
 
 /**
- * Create a HTML select element with Bootstrap styles. Specify options as a
- * list of dictionaries with keys label, value and disabled.
+ * Create a HTML select element with Bootstrap styles. Specify options as a list of
+ * dictionaries with keys label, value and disabled.
  */
-const Select = props => {
-  const {
-    className,
-    class_name,
-    html_size,
-    valid,
-    invalid,
-    value,
-    ...otherProps
-  } = props;
-
+function Select({
+  options = [],
+  value = '',
+  valid,
+  invalid,
+  class_name,
+  html_size,
+  placeholder = '',
+  className,
+  setProps,
+  ...otherProps
+}) {
   const handleChange = e => {
-    if (props.setProps) {
-      props.setProps({value: e.target.value});
+    if (setProps) {
+      setProps({value: e.target.value});
     }
   };
 
   return (
     <RBFormSelect
       {...omit(
-        [
-          'setProps',
-          'options',
-          'persistence',
-          'persistence_type',
-          'persisted_props',
-          'loading_state'
-        ],
+        ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
       isInvalid={invalid}
@@ -47,10 +42,10 @@ const Select = props => {
       value={value || ''}
     >
       <option value="" disabled hidden>
-        {props.placeholder}
+        {placeholder}
       </option>
-      {props.options &&
-        sanitizeOptions(props.options).map(option => (
+      {options &&
+        sanitizeOptions(options).map(option => (
           <option
             key={option.value}
             value={option.value}
@@ -62,13 +57,11 @@ const Select = props => {
         ))}
     </RBFormSelect>
   );
-};
+}
 
-Select.defaultProps = {
-  value: '',
+Select.dashPersistence = {
   persisted_props: ['value'],
-  persistence_type: 'local',
-  placeholder: ''
+  persistence_type: 'local'
 };
 
 Select.propTypes = {
@@ -98,7 +91,7 @@ Select.propTypes = {
    * ```
    * [
    *   {"label": "label1", "value": "value1"},
-   *   {"label": "label2", "value": "value2"}, ...
+   *   {"label": "label2", "value": "value2"},
    * ]
    * ```
    */
@@ -117,7 +110,7 @@ Select.propTypes = {
      * which is equal to
      * [
      *   {label: `label1`, value: `value1`},
-     *   {label: `label2`, value: `value2`}, ...
+     *   {label: `label2`, value: `value2`},
      * ]
      */
     PropTypes.object,
@@ -160,35 +153,9 @@ Select.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The ID of the Select
    */
   id: PropTypes.string,
-
-  /**
-   * Defines CSS styles which will override styles previously set.
-   */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
 
   /**
    * Placeholder text to display before a selection is made.
@@ -201,13 +168,22 @@ Select.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * This attribute specifies that the user must fill in a value before
-   * submitting a form. It cannot be used when the type attribute is hidden,
-   * image, or a button type (submit, reset, or button). The :optional and
-   * :required CSS pseudo-classes will be applied to the field as appropriate.
-   * required is an HTML boolean attribute - it is enabled by a boolean or
-   * 'required'. Alternative capitalizations `REQUIRED`
-   * are also acccepted.
+   * Additional inline CSS styles to apply to the Select.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Select.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * This attribute specifies that the user must fill in a value before submitting a
+   * form. It cannot be used when the type attribute is hidden, image, or a button type
+   * (submit, reset, or button). The :optional and :required CSS pseudo-classes will be
+   * applied to the field as appropriate. required is an HTML boolean attribute - it is
+   * enabled by a boolean or 'required'. Alternative capitalizations `REQUIRED` are also
+   * acccepted.
    */
   required: PropTypes.oneOfType([
     PropTypes.oneOf(['required', 'REQUIRED']),
@@ -215,37 +191,38 @@ Select.propTypes = {
   ]),
 
   /**
-   * Apply valid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing div with valid=True to display.
+   * Apply valid style to the Input for feedback purposes. This will cause any
+   * FormFeedback in the enclosing div with valid=True to display.
    */
   valid: PropTypes.bool,
 
   /**
-   * Apply invalid style to the Input for feedback purposes. This will cause
-   * any FormFeedback in the enclosing div with valid=False to display.
+   * Apply invalid style to the Input for feedback purposes. This will cause any
+   * FormFeedback in the enclosing div with valid=False to display.
    */
   invalid: PropTypes.bool,
 
   /**
-   * Set the size of the Input. Options: 'sm' (small), 'md' (medium)
-   * or 'lg' (large). Default is 'md'.
+   * Set the size of the Input. Options: 'sm' (small), 'md' (medium) or 'lg' (large).
+   * Default is 'md'.
    */
   size: PropTypes.string,
 
   /**
-   * This represents the number of rows in the select that should be visible at
-   * one time. It will result in the Select being rendered as a scrolling list
-   * box rather than a dropdown.
+   * This represents the number of rows in the select that should be visible at one
+   * time. It will result in the Select being rendered as a scrolling list box rather
+   * than a dropdown.
    */
   html_size: PropTypes.string,
 
   /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * The name of the control, which is submitted with the form data.
+   */
+  name: PropTypes.string,
+
+  /**
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -262,16 +239,31 @@ Select.propTypes = {
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
   persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
 
   /**
-   * The name of the control, which is submitted with the form data.
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
    */
-  name: PropTypes.string
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Select.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Select;

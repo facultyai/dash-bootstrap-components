@@ -1,32 +1,32 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBOffcanvas from 'react-bootstrap/Offcanvas';
+
+import {getLoadingState} from '../../private/util';
 
 /**
  * Create a toggleable hidden sidebar using the Offcanvas component.
  * Toggle the visibility with the `is_open` prop.
  */
-const Offcanvas = props => {
-  const {
-    is_open,
-    setProps,
-    children,
-    loading_state,
-    class_name,
-    className,
-    backdrop,
-    backdrop_class_name,
-    backdropClassName,
-    labelledby,
-    labelledBy,
-    scrollable,
-    autofocus,
-    autoFocus,
-    close_button,
-    title,
-    ...otherProps
-  } = props;
-
+function Offcanvas({
+  children,
+  is_open = false,
+  close_button = true,
+  title,
+  backdrop = true,
+  scrollable,
+  class_name,
+  backdrop_class_name,
+  autofocus,
+  labelledby,
+  className,
+  backdropClassName,
+  autoFocus,
+  labelledBy,
+  setProps,
+  ...otherProps
+}) {
   const onHide = () => {
     if (setProps) {
       setProps({is_open: !is_open});
@@ -53,64 +53,40 @@ const Offcanvas = props => {
       show={is_open}
       onHide={backdrop !== 'static' ? onHide : null}
       backdrop={backdrop || backdrop === 'static'}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       {...otherProps}
     >
       {header}
       <RBOffcanvas.Body>{children}</RBOffcanvas.Body>
     </RBOffcanvas>
   );
-};
-
-Offcanvas.defaultProps = {
-  close_button: true,
-  is_open: false,
-  backdrop: true
-};
+}
 
 Offcanvas.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Offcanvas.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Offcanvas.
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Whether offcanvas is currently open.
    */
-  class_name: PropTypes.string,
+  is_open: PropTypes.bool,
 
   /**
-   * **DEPRECATED** - Use class_name instead.
-   *
-   * Often used with CSS to style elements with common properties.
+   * The header title
    */
-  className: PropTypes.string,
+  title: PropTypes.node,
 
   /**
-   * The ARIA labelledby attribute
+   * Which side of the viewport the offcanvas will appear from.
    */
-  labelledby: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `labelledby` instead
-   *
-   * The ARIA labelledby attribute
-   */
-  labelledBy: PropTypes.string,
+  placement: PropTypes.oneOf(['start', 'end', 'top', 'bottom']),
 
   /**
    * Includes an offcanvas-backdrop element. Alternatively, specify 'static' for a
@@ -119,9 +95,52 @@ Offcanvas.propTypes = {
   backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['static'])]),
 
   /**
+   * Specify whether the Offcanvas should contain a close button
+   * in the header
+   */
+  close_button: PropTypes.bool,
+
+  /**
+   * If True, the offcanvas will close when the escape key is pressed.
+   */
+  keyboard: PropTypes.bool,
+
+  /**
+   * Allow body scrolling while offcanvas is open.
+   */
+  scrollable: PropTypes.bool,
+
+  /**
+   * Additional inline CSS styles to apply to the Offcanvas.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Offcanvas
+   */
+  class_name: PropTypes.string,
+
+  /**
    * CSS class to apply to the backdrop.
    */
   backdrop_class_name: PropTypes.string,
+
+  /**
+   * 	Puts the focus on the offcanvas when initialized.
+   */
+  autofocus: PropTypes.bool,
+
+  /**
+   * The ARIA labelledby attribute
+   */
+  labelledby: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - Use class_name instead.
+   *
+   * Additional CSS classes to apply to the Offcanvas
+   */
+  className: PropTypes.string,
 
   /**
    * **DEPRECATED** - Use backdrop_class_name instead.
@@ -131,31 +150,6 @@ Offcanvas.propTypes = {
   backdropClassName: PropTypes.string,
 
   /**
-   * Close the offcanvas when escape key is pressed.
-   */
-  keyboard: PropTypes.bool,
-
-  /**
-   * Whether offcanvas is currently open.
-   */
-  is_open: PropTypes.bool,
-
-  /**
-   * Which side of the viewport the offcanvas will appear from.
-   */
-  placement: PropTypes.oneOf(['start', 'end', 'top', 'bottom']),
-
-  /**
-   * Allow body scrolling while offcanvas is open.
-   */
-  scrollable: PropTypes.bool,
-
-  /**
-   * 	Puts the focus on the offcanvas when initialized.
-   */
-  autofocus: PropTypes.bool,
-
-  /**
    * **DEPRECATED** Use `autofocus` instead
    *
    * 	Puts the focus on the modal when initialized.
@@ -163,33 +157,16 @@ Offcanvas.propTypes = {
   autoFocus: PropTypes.bool,
 
   /**
-   * The header title
+   * **DEPRECATED** Use `labelledby` instead
+   *
+   * The ARIA labelledby attribute
    */
-  title: PropTypes.node,
+  labelledBy: PropTypes.string,
 
   /**
-   * Specify whether the Component should contain a close button
-   * in the header
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  close_button: PropTypes.bool,
-
-  /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  setProps: PropTypes.func
 };
 
 export default Offcanvas;

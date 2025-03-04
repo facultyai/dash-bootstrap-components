@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {omit} from 'ramda';
 
-import {TooltipTemplate} from '../../private/OverlayTemplates';
+import PropTypes from 'prop-types';
+
 import Overlay from '../../private/Overlay';
+import {TooltipTemplate} from '../../private/OverlayTemplates';
+import {getLoadingState} from '../../private/util';
 
 /**
  * A component for adding tooltips to any element, no callbacks required!
@@ -12,25 +13,30 @@ import Overlay from '../../private/Overlay';
  * component to which the tooltip should be attached)
  */
 
-const Tooltip = props => {
-  const {
-    id,
-    children,
-    is_open,
-    loading_state,
-    className,
-    class_name,
-    style,
-    fade,
-    ...otherProps
-  } = props;
-
+function Tooltip({
+  children,
+  id,
+  is_open,
+  trigger = 'hover focus',
+  style,
+  class_name,
+  delay = {show: 0, hide: 50},
+  placement = 'auto',
+  flip = true,
+  autohide = true,
+  fade = true,
+  className,
+  ...otherProps
+}) {
   return (
     <Overlay
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       defaultShow={is_open}
+      delay={delay}
+      placement={placement}
+      flip={flip}
+      autohide={autohide}
+      trigger={trigger}
       {...otherProps}
       transition={fade}
     >
@@ -43,58 +49,44 @@ const Tooltip = props => {
       </TooltipTemplate>
     </Overlay>
   );
-};
-
-Tooltip.defaultProps = {
-  delay: {show: 0, hide: 50},
-  placement: 'auto',
-  flip: true,
-  autohide: true,
-  fade: true,
-  trigger: 'hover focus'
-};
+}
 
 Tooltip.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this Tooltip.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Tooltip.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * The id of the element to attach the tooltip to
    */
   target: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+
+  /**
+   * Whether the Tooltip is open or not.
+   */
+  is_open: PropTypes.bool,
+
+  /**
+   * Space separated list of triggers (e.g. "click hover focus legacy"). These
+   * specify ways in which the target component can toggle the tooltip. If
+   * omitted you must toggle the tooltip yourself using callbacks. Options
+   * are:
+   * - "click": toggles the popover when the target is clicked.
+   * - "hover": toggles the popover when the target is hovered over with the
+   * cursor.
+   * - "focus": toggles the popover when the target receives focus
+   * - "legacy": toggles the popover when the target is clicked, but will also
+   * dismiss the popover when the user clicks outside of the popover.
+   *
+   * Default is "hover focus"
+   */
+  trigger: PropTypes.string,
 
   /**
    * How to place the tooltip.
@@ -118,15 +110,15 @@ Tooltip.propTypes = {
   ]),
 
   /**
+   * Control the delay of hide and show events.
+   */
+  delay: PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
+
+  /**
    * Whether to flip the direction of the popover if too close to the container
    * edge, default True.
    */
   flip: PropTypes.bool,
-
-  /**
-   * Control the delay of hide and show events.
-   */
-  delay: PropTypes.shape({show: PropTypes.number, hide: PropTypes.number}),
 
   /**
    * Optionally hide tooltip when hovering over tooltip content - default True.
@@ -140,43 +132,34 @@ Tooltip.propTypes = {
   fade: PropTypes.bool,
 
   /**
-   * Space separated list of triggers (e.g. "click hover focus legacy"). These
-   * specify ways in which the target component can toggle the tooltip. If
-   * omitted you must toggle the tooltip yourself using callbacks. Options
-   * are:
-   * - "click": toggles the popover when the target is clicked.
-   * - "hover": toggles the popover when the target is hovered over with the
-   * cursor.
-   * - "focus": toggles the popover when the target receives focus
-   * - "legacy": toggles the popover when the target is clicked, but will also
-   * dismiss the popover when the user clicks outside of the popover.
+   * Additional inline CSS styles to apply to the Tooltip.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Tooltip
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
    *
-   * Default is "hover focus"
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
    */
-  trigger: PropTypes.string,
+  key: PropTypes.string,
 
   /**
-   * Whether the Tooltip is open or not.
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Tooltip
    */
-  is_open: PropTypes.bool,
+  className: PropTypes.string,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * Dash-assigned callback that gets fired when the value changes.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  setProps: PropTypes.func
 };
 
 export default Tooltip;

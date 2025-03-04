@@ -1,28 +1,28 @@
 import React, {useEffect} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBAccordion from 'react-bootstrap/Accordion';
 
-import {parseChildrenToArray, resolveChildProps} from '../../private/util';
 import {AccordionContext} from '../../private/AccordionContext';
+import {parseChildrenToArray, resolveChildProps} from '../../private/util';
+import {getLoadingState} from '../../private/util';
 
 /**
  * A self contained Accordion component. Build up the children using the
  * AccordionItem component.
  */
-const Accordion = props => {
-  let {
-    children,
-    active_item,
-    always_open,
-    start_collapsed,
-    loading_state,
-    key,
-    setProps,
-    class_name,
-    className,
-    ...otherProps
-  } = props;
+function Accordion({
+  children,
+  active_item,
+  always_open = false,
+  start_collapsed = false,
+  class_name,
+  className,
+  key,
+  setProps,
+  ...otherProps
+}) {
   children = parseChildrenToArray(children);
 
   useEffect(() => {
@@ -70,9 +70,7 @@ const Accordion = props => {
   return (
     <RBAccordion
       key={key}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       activeKey={active_item}
       defaultActiveKey={start_collapsed ? null : active_item}
       alwaysOpen={always_open}
@@ -85,63 +83,31 @@ const Accordion = props => {
       {items}
     </RBAccordion>
   );
-};
+}
 
-Accordion.defaultProps = {
+Accordion.dashPersistence = {
   persisted_props: ['active_item'],
-  persistence_type: 'local',
-  start_collapsed: false,
-  always_open: false
+  persistence_type: 'local'
 };
 
 Accordion.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of the Accordion.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Accordion.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * Renders accordion edge-to-edge with its parent container
-   */
-  flush: PropTypes.bool,
+  id: PropTypes.string,
 
   /**
    * The item_id of the currently active item. If item_id has not been specified
    * for the active item, this will default to item-i, where i is the index
    * (starting from 0) of the item.
    *
-   * If `always_open=True`, this needs to be a list of string IDs.
+   * If `always_open=True`, then active_item should be a list item_ids of all the
+   * currently open AccordionItems
    */
   active_item: PropTypes.oneOfType([
     PropTypes.string,
@@ -149,41 +115,33 @@ Accordion.propTypes = {
   ]),
 
   /**
-   * You can make accordion items stay open when another item is opened by
-   * using the always_open prop.
+   * If True, multiple items can be expanded at once.
    */
   always_open: PropTypes.bool,
 
   /**
-   * Set to True for all items to be collapsed initially.
+   * If True, all items will start collapsed.
    */
   start_collapsed: PropTypes.bool,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * If True the Accordion will be rendered edge-to-edge within its parent container.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
+  flush: PropTypes.bool,
 
   /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * Additional inline styles to apply to the Accordion
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS class to apply to the Accordion.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -192,19 +150,38 @@ Accordion.propTypes = {
   ]),
 
   /**
-   * Properties whose user interactions will persist after refreshing the
-   * component or the page. Since only `value` is allowed this prop can
+   * Properties to persist. Since only `active_item` is supported, this prop can
    * normally be ignored.
    */
   persisted_props: PropTypes.arrayOf(PropTypes.oneOf(['active_item'])),
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS class to apply to the Accordion.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Accordion;

@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
+
 import Table from '../Table';
 
 describe('Table', () => {
@@ -69,7 +70,7 @@ describe('Table', () => {
     // dark table
     const {
       container: {firstChild: tableDark}
-    } = render(<Table dark />);
+    } = render(<Table color="dark" />);
     expect(tableDark).toHaveClass('table-dark');
 
     // table with hover animations

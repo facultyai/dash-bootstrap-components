@@ -1,14 +1,28 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {act, render} from '@testing-library/react';
+
 import Spinner from '../Spinner';
 
 jest.useFakeTimers();
 
 describe('Spinner', () => {
+  beforeEach(() => {
+    window.dash_component_api = {
+      useDashContext: jest.fn(() => ({
+        componentPath: [0],
+        useSelector: jest.fn(() => false) // Default behavior
+      }))
+    };
+  });
+
+  afterEach(() => {
+    delete window.dash_component_api;
+  });
+
   test('renders a div with class "border-spinner"', () => {
     const spinner = render(<Spinner />);
 
@@ -19,9 +33,7 @@ describe('Spinner', () => {
 
   test("renders its content if object isn't loading", () => {
     const {container: container, rerender} = render(
-      <Spinner loading_state={{is_loading: false}}>
-        Some spinner content
-      </Spinner>
+      <Spinner>Some spinner content</Spinner>
     );
 
     // spinner is initially visible until we've had time to update based on
@@ -31,12 +43,12 @@ describe('Spinner', () => {
     expect(container).toHaveTextContent('Some spinner content');
     expect(container.querySelector('div.spinner-border')).toBe(null);
 
-    rerender(
-      <Spinner loading_state={{is_loading: true}}>Some spinner content</Spinner>
-    );
+    window.dash_component_api.useDashContext.mockImplementation(() => ({
+      componentPath: [0],
+      useSelector: jest.fn(() => true)
+    }));
 
-    const overAll = container.firstChild;
-    const spinner = overAll.lastChild;
+    rerender(<Spinner>Some spinner content</Spinner>);
 
     act(() => jest.advanceTimersByTime(10));
 
@@ -163,6 +175,31 @@ describe('Spinner', () => {
 
     act(() => jest.advanceTimersByTime(1000));
 
+    expect(container.querySelector('div.spinner-border')).toBe(null);
+  });
+
+  test('display prop overrides loading state', () => {
+    const {container: container, rerender} = render(
+      <Spinner display="show">Some spinner content</Spinner>
+    );
+
+    // spinner is initially visible until we've had time to update based on
+    // loading state. this can be disabled with show_initially={false}
+    act(() => jest.advanceTimersByTime(10));
+
+    expect(container).toHaveTextContent('Some spinner content');
+    expect(container.querySelector('div.spinner-border')).not.toBe(null);
+
+    window.dash_component_api.useDashContext.mockImplementation(() => ({
+      componentPath: [0],
+      useSelector: jest.fn(() => true)
+    }));
+
+    rerender(<Spinner display="hide">Some spinner content</Spinner>);
+
+    act(() => jest.advanceTimersByTime(10));
+
+    expect(container).toHaveTextContent('Some spinner content');
     expect(container.querySelector('div.spinner-border')).toBe(null);
   });
 });

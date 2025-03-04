@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Badge from '../Badge';
 
 describe('Badge', () => {
@@ -56,19 +57,21 @@ describe('Badge', () => {
     expect(badge.getAttribute('href')).toBe(href);
   });
 
-  test('tracks clicks with n_clicks', () => {
+  test('tracks clicks with n_clicks', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const badge = render(<Badge setProps={mockSetProps}>Clickable</Badge>);
 
     expect(mockSetProps.mock.calls).toHaveLength(0);
 
-    userEvent.click(badge.getByText('Clickable'));
+    await user.click(badge.getByText('Clickable'));
 
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].n_clicks).toBe(1);
   });
 
-  test('relative links are internal by default', () => {
+  test('relative links are internal by default', async () => {
+    const user = userEvent.setup();
     const badge = render(<Badge href="/relative">Clickable</Badge>);
 
     const mockEventListener = jest.fn();
@@ -76,11 +79,12 @@ describe('Badge', () => {
     window.scrollTo = jest.fn();
 
     expect(mockEventListener.mock.calls).toHaveLength(0);
-    userEvent.click(badge.getByText('Clickable'));
+    await user.click(badge.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(1);
   });
 
-  test('relative links are external with external_link=true', () => {
+  test('relative links are external with external_link=true', async () => {
+    const user = userEvent.setup();
     const badge = render(
       <Badge href="/relative" external_link>
         Clickable
@@ -92,7 +96,7 @@ describe('Badge', () => {
     window.scrollTo = jest.fn();
 
     expect(mockEventListener.mock.calls).toHaveLength(0);
-    userEvent.click(badge.getByText('Clickable'));
+    await user.click(badge.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(0);
   });
 });

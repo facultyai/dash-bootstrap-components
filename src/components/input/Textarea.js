@@ -1,47 +1,48 @@
 import React, {useEffect, useRef, useState} from 'react';
+
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import classNames from 'classnames';
+
+import {getLoadingState} from '../../private/util';
 
 /**
  * A basic HTML textarea for entering multiline text based on the corresponding
  * component in dash-core-components
  */
-const Textarea = props => {
-  const {
-    value,
-    n_clicks,
-    n_blur,
-    n_submit,
-    setProps,
-    className,
-    class_name,
-    invalid,
-    valid,
-    size,
-    debounce,
-    loading_state,
-    autoFocus,
-    autofocus,
-    maxLength,
-    maxlength,
-    minLength,
-    minlength,
-    readOnly,
-    readonly,
-    accessKey,
-    accesskey,
-    contentEditable,
-    contenteditable,
-    contextMenu,
-    contextmenu,
-    spellCheck,
-    spellcheck,
-    tabIndex,
-    tabindex,
-    submit_on_enter,
-    ...otherProps
-  } = props;
+function Textarea({
+  value = '',
+  n_blur = 0,
+  n_submit = 0,
+  n_clicks = 0,
+  class_name,
+  invalid,
+  valid,
+  size,
+  debounce = false,
+  submit_on_enter = true,
+  autofocus,
+  maxlength,
+  minlength,
+  readonly,
+  accesskey,
+  contenteditable,
+  contextmenu,
+  spellcheck,
+  tabindex,
+  className,
+  accessKey,
+  autoFocus,
+  contentEditable,
+  contextMenu,
+  maxLength,
+  minLength,
+  readOnly,
+  spellCheck,
+  tabIndex,
+  setProps,
+  ...otherProps
+}) {
   const [valueState, setValueState] = useState(value || '');
   const debounceRef = useRef(null);
 
@@ -69,10 +70,7 @@ const Textarea = props => {
 
   const onBlur = e => {
     if (setProps) {
-      const payload = {
-        n_blur: n_blur + 1,
-        n_blur_timestamp: Date.now()
-      };
+      const payload = {n_blur: n_blur + 1};
       if (debounce === true) {
         payload.value = e.target.value;
       }
@@ -83,10 +81,7 @@ const Textarea = props => {
   const onKeyUp = e => {
     if (submit_on_enter && setProps && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault(); // don't create newline if submitting
-      const payload = {
-        n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now()
-      };
+      const payload = {n_submit: n_submit + 1};
       if (debounce === true) {
         payload.value = e.target.value;
       }
@@ -96,10 +91,7 @@ const Textarea = props => {
 
   const onClick = () => {
     if (setProps) {
-      setProps({
-        n_clicks: n_clicks + 1,
-        n_clicks_timestamp: Date.now()
-      });
+      setProps({n_clicks: n_clicks + 1});
     }
   };
 
@@ -129,36 +121,24 @@ const Textarea = props => {
       spellCheck={spellcheck || spellCheck}
       tabIndex={tabindex || tabIndex}
       {...omit(
-        [
-          'n_blur_timestamp',
-          'n_submit_timestamp',
-          'persistence',
-          'persistence_type',
-          'persisted_props'
-        ],
+        ['persistence', 'persistence_type', 'persisted_props'],
         otherProps
       )}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     />
   );
+}
+
+Textarea.dashPersistence = {
+  persisted_props: ['value'],
+  persistence_type: 'local'
 };
 
 Textarea.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The ID of the Textarea
    */
   id: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
 
   /**
    * The value of the textarea
@@ -166,60 +146,32 @@ Textarea.propTypes = {
   value: PropTypes.string,
 
   /**
-   * The element should be automatically focused after the page loaded.
+   * Number of times the input lost focus.
    */
-  autofocus: PropTypes.string,
+  n_blur: PropTypes.number,
 
   /**
-   * **DEPRECATED** Use `autofocus` instead
-   *
-   * The element should be automatically focused after the page loaded.
+   * Number of times the `Enter` key was pressed while the textarea had focus. Only
+   * updates if submit_on_enter is True.
    */
-  autoFocus: PropTypes.string,
+  n_submit: PropTypes.number,
 
   /**
-   * Defines the number of columns in a textarea.
+   * The number of times the TextArea has been clicked.
    */
-  cols: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  n_clicks: PropTypes.number,
 
   /**
-   * Indicates whether the user can interact with the element.
+   * Apply valid style to the Textarea for feedback purposes. This will cause
+   * any FormFeedback in the enclosing div with valid=True to display.
    */
-  disabled: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  valid: PropTypes.bool,
 
   /**
-   * Indicates the form that is the owner of the element.
+   * Apply invalid style to the Textarea for feedback purposes. This will cause
+   * any FormFeedback in the enclosing div with valid=False to display.
    */
-  form: PropTypes.string,
-
-  /**
-   * Defines the maximum number of characters allowed in the element.
-   */
-  maxlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * **DEPRECATED** Use `maxlength` instead
-   *
-   * Defines the maximum number of characters allowed in the element.
-   */
-  maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * Defines the minimum number of characters allowed in the element.
-   */
-  minlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * **DEPRECATED** Use `minlength` instead
-   *
-   * Defines the minimum number of characters allowed in the element.
-   */
-  minLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * Name of the element. For example used by the server to identify the fields in form submits.
-   */
-  name: PropTypes.string,
+  invalid: PropTypes.bool,
 
   /**
    * Provides a hint to the user of what can be entered in the field.
@@ -227,19 +179,98 @@ Textarea.propTypes = {
   placeholder: PropTypes.string,
 
   /**
-   * Indicates whether the element can be edited.
+   * Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'
    */
-  readonly: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(['readOnly', 'readonly', 'READONLY'])
+  size: PropTypes.string,
+
+  /**
+   * Additional inline CSS styles to apply to the Textarea.
+   */
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Textarea
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * Defines a keyboard shortcut to activate or add focus to the element.
+   */
+  accesskey: PropTypes.string,
+
+  /**
+   * The element should be automatically focused after the page loaded.
+   */
+  autofocus: PropTypes.string,
+
+  /**
+   * Indicates whether the element's content is editable.
+   */
+  contenteditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Defines the ID of a <menu> element which will serve as the element's context menu.
+   */
+  contextmenu: PropTypes.string,
+
+  /**
+   * Defines the number of columns in a textarea.
+   */
+  cols: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Defines the text direction. Allowed values are ltr (Left-To-Right) or rtl (Right-To-Left)
+   */
+  dir: PropTypes.string,
+
+  /**
+   * Indicates whether the user can interact with the element.
+   */
+  disabled: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+
+  /**
+   * Defines whether the element can be dragged.
+   */
+  draggable: PropTypes.oneOfType([
+    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
+    PropTypes.oneOf(['true', 'false']),
+    PropTypes.bool
   ]),
 
   /**
-   * **DEPRECATED** Use `readonly` instead
-   *
+   * Indicates the form that is the owner of the element.
+   */
+  form: PropTypes.string,
+
+  /**
+   * Prevents rendering of given element, while keeping child elements, e.g. script elements, active.
+   */
+  hidden: PropTypes.string,
+
+  /**
+   * Defines the language used in the element.
+   */
+  lang: PropTypes.string,
+
+  /**
+   * Defines the maximum number of characters allowed in the element.
+   */
+  maxlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Defines the minimum number of characters allowed in the element.
+   */
+  minlength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Name of the element. For example used by the server to identify the fields in form submits.
+   */
+  name: PropTypes.string,
+
+  /**
    * Indicates whether the element can be edited.
    */
-  readOnly: PropTypes.oneOfType([
+  readonly: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['readOnly', 'readonly', 'READONLY'])
   ]),
@@ -264,83 +295,6 @@ Textarea.propTypes = {
   rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * Indicates whether the text should be wrapped.
-   */
-  wrap: PropTypes.string,
-
-  /**
-   * Defines a keyboard shortcut to activate or add focus to the element.
-   */
-  accesskey: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `accesskey` instead
-   *
-   * Defines a keyboard shortcut to activate or add focus to the element.
-   */
-  accessKey: PropTypes.string,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * Indicates whether the element's content is editable.
-   */
-  contenteditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * **DEPRECATED** Use `contenteditable` instead
-   *
-   * Indicates whether the element's content is editable.
-   */
-  contentEditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * Defines the ID of a <menu> element which will serve as the element's context menu.
-   */
-  contextmenu: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `contextmenu` instead
-   *
-   * Defines the ID of a <menu> element which will serve as the element's context menu.
-   */
-  contextMenu: PropTypes.string,
-
-  /**
-   * Defines the text direction. Allowed values are ltr (Left-To-Right) or rtl (Right-To-Left)
-   */
-  dir: PropTypes.string,
-
-  /**
-   * Defines whether the element can be dragged.
-   */
-  draggable: PropTypes.oneOfType([
-    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
-    PropTypes.oneOf(['true', 'false']),
-    PropTypes.bool
-  ]),
-
-  /**
-   * Prevents rendering of given element, while keeping child elements, e.g. script elements, active.
-   */
-  hidden: PropTypes.string,
-
-  /**
-   * Defines the language used in the element.
-   */
-  lang: PropTypes.string,
-
-  /**
    * Indicates whether spell checking is allowed for the element.
    */
   spellcheck: PropTypes.oneOfType([
@@ -350,32 +304,9 @@ Textarea.propTypes = {
   ]),
 
   /**
-   * **DEPRECATED** Use `spellcheck` instead
-   *
-   * Indicates whether spell checking is allowed for the element.
-   */
-  spellCheck: PropTypes.oneOfType([
-    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
-    PropTypes.oneOf(['true', 'false']),
-    PropTypes.bool
-  ]),
-
-  /**
-   * Defines CSS styles which will override styles previously set.
-   */
-  style: PropTypes.object,
-
-  /**
    * Overrides the browser's default tab order and follows the one specified instead.
    */
   tabindex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /**
-   * **DEPRECATED** Use `tabindex` instead
-   *
-   * Overrides the browser's default tab order and follows the one specified instead.
-   */
-  tabIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Text to be displayed in a tooltip when hovering over the element.
@@ -383,65 +314,15 @@ Textarea.propTypes = {
   title: PropTypes.string,
 
   /**
-   * Dash-assigned callback that gets fired when the value changes.
+   * Indicates whether the text should be wrapped.
    */
-  setProps: PropTypes.func,
+  wrap: PropTypes.string,
 
   /**
-   * Set the size of the Textarea, valid options are 'sm', 'md', or 'lg'
-   */
-  size: PropTypes.string,
-
-  /**
-   * Apply valid style to the Textarea for feedback purposes. This will cause
-   * any FormFeedback in the enclosing div with valid=True to display.
-   */
-  valid: PropTypes.bool,
-
-  /**
-   * Apply invalid style to the Textarea for feedback purposes. This will cause
-   * any FormFeedback in the enclosing div with valid=False to display.
-   */
-  invalid: PropTypes.bool,
-
-  /**
-   * Number of times the input lost focus.
-   */
-  n_blur: PropTypes.number,
-  /**
-   * Last time the input lost focus.
-   */
-  n_blur_timestamp: PropTypes.number,
-
-  /**
-   * Number of times the `Enter` key was pressed while the textarea had focus. Only
-   * updates if submit_on_enter is True.
-   */
-  n_submit: PropTypes.number,
-
-  /**
-   * Last time that `Enter` was pressed. Only updates if submit_on_enter is True.
-   */
-  n_submit_timestamp: PropTypes.number,
-
-  /**
-   * Whether or not the form should increment the n_submit and n_submit_timestamp props
-   * when enter key is pressed. If True, use shift + enter to create a newline. Default: True
+   * Whether or not the form should increment the n_submit prop when enter key is
+   * pressed. If True, use shift + enter to create a newline. Default: True
    */
   submit_on_enter: PropTypes.bool,
-
-  /**
-   * An integer that represents the number of times
-   * that this element has been clicked on.
-   */
-  n_clicks: PropTypes.number,
-
-  /**
-   * An integer that represents the time (in ms since 1970)
-   * at which n_clicks changed. This can be used to tell
-   * which button was changed most recently.
-   */
-  n_clicks_timestamp: PropTypes.number,
 
   /**
    * If true, changes to input will be sent back to the Dash server only on enter or
@@ -449,33 +330,11 @@ Textarea.propTypes = {
    * If debounce is a number, the value will be sent to the server only after the user
    * has stopped typing for that number of milliseconds
    */
-  debounce: PropTypes.bool,
+  debounce: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
-   */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
-
-  /**
-   * Used to allow user interactions in this component to be persisted when
-   * the component - or the page - is refreshed. If `persisted` is truthy and
-   * hasn't changed from its previous value, a `value` that the user has
-   * changed while using the app will keep that change, as long as
-   * the new `value` also matches what was given originally.
-   * Used in conjunction with `persistence_type`.
+   * Used to allow user interactions to be persisted when the page is refreshed.
+   * See https://dash.plotly.com/persistence for more details
    */
   persistence: PropTypes.oneOfType([
     PropTypes.bool,
@@ -492,25 +351,101 @@ Textarea.propTypes = {
 
   /**
    * Where persisted user changes will be stored:
-   * memory: only kept in memory, reset on page refresh.
-   * local: window.localStorage, data is kept after the browser quit.
-   * session: window.sessionStorage, data is cleared once the browser quit.
+   * - memory: only kept in memory, reset on page refresh.
+   * - local: window.localStorage, data is kept after the browser quit.
+   * - session: window.sessionStorage, data is cleared once the browser quit.
    */
-  persistence_type: PropTypes.oneOf(['local', 'session', 'memory'])
-};
+  persistence_type: PropTypes.oneOf(['local', 'session', 'memory']),
 
-Textarea.defaultProps = {
-  n_blur: 0,
-  n_blur_timestamp: -1,
-  n_submit: 0,
-  n_submit_timestamp: -1,
-  n_clicks: 0,
-  n_clicks_timestamp: -1,
-  debounce: false,
-  persisted_props: ['value'],
-  persistence_type: 'local',
-  value: '',
-  submit_on_enter: true
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Textarea
+   */
+  className: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `accesskey` instead
+   *
+   * Defines a keyboard shortcut to activate or add focus to the element.
+   */
+  accessKey: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `autofocus` instead
+   *
+   * The element should be automatically focused after the page loaded.
+   */
+  autoFocus: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `contenteditable` instead
+   *
+   * Indicates whether the element's content is editable.
+   */
+  contentEditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `contextmenu` instead
+   *
+   * Defines the ID of a <menu> element which will serve as the element's context menu.
+   */
+  contextMenu: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `maxlength` instead
+   *
+   * Defines the maximum number of characters allowed in the element.
+   */
+  maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `minlength` instead
+   *
+   * Defines the minimum number of characters allowed in the element.
+   */
+  minLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * **DEPRECATED** Use `readonly` instead
+   *
+   * Indicates whether the element can be edited.
+   */
+  readOnly: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['readOnly', 'readonly', 'READONLY'])
+  ]),
+
+  /**
+   * **DEPRECATED** Use `spellcheck` instead
+   *
+   * Indicates whether spell checking is allowed for the element.
+   */
+  spellCheck: PropTypes.oneOfType([
+    // enumerated property, not a boolean property: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
+    PropTypes.oneOf(['true', 'false']),
+    PropTypes.bool
+  ]),
+
+  /**
+   * **DEPRECATED** Use `tabindex` instead
+   *
+   * Overrides the browser's default tab order and follows the one specified instead.
+   */
+  tabIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Textarea;

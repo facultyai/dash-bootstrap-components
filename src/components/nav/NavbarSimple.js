@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
-import RBNavbar from 'react-bootstrap/Navbar';
 import RBContainer from 'react-bootstrap/Container';
-import {bootstrapColors} from '../../private/BootstrapColors';
+import RBNavbar from 'react-bootstrap/Navbar';
 
+import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 import Nav from './Nav';
 import NavbarBrand from './NavbarBrand';
 import NavbarToggler from './NavbarToggler';
@@ -13,24 +15,22 @@ import NavbarToggler from './NavbarToggler';
  * A self-contained navbar ready for use. If you need more customisability try
  * `Navbar` instead.
  */
-const NavbarSimple = props => {
-  const {
-    children,
-    brand,
-    brand_href,
-    brand_style,
-    brand_external_link,
-    links_left,
-    fluid,
-    color,
-    dark,
-    light,
-    style,
-    loading_state,
-    className,
-    class_name,
-    ...otherProps
-  } = props;
+function NavbarSimple({
+  children,
+  color = 'primary',
+  dark = true,
+  fluid = false,
+  links_left = false,
+  brand,
+  brand_href,
+  brand_external_link,
+  expand = 'md',
+  style,
+  class_name,
+  brand_style,
+  className,
+  ...otherProps
+}) {
   const isBootstrapColor = bootstrapColors.has(color);
 
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -44,10 +44,9 @@ const NavbarSimple = props => {
       color={isBootstrapColor ? color : null}
       style={!isBootstrapColor ? {backgroundColor: color, ...style} : style}
       className={class_name || className}
+      expand={expand}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       <RBContainer fluid={fluid}>
         {brand && (
@@ -66,82 +65,39 @@ const NavbarSimple = props => {
       </RBContainer>
     </RBNavbar>
   );
-};
-
-NavbarSimple.defaultProps = {
-  fluid: false,
-  color: 'light',
-  light: true,
-  expand: 'md',
-  links_left: false
-};
+}
 
 NavbarSimple.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component
+   * The children of this NavbarSimple
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the NavbarSimple
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
+   * Sets the color of the NavbarSimple. Main options are primary, light and dark,
+   * default light.
    *
-   * Often used with CSS to style elements with common properties.
+   * You can also choose one of the other contextual classes provided by Bootstrap
+   * (secondary, success, warning, danger, info, white) or any valid CSS color of your
+   * choice (e.g. a hex code, a decimal code or a CSS color name)
    */
-  className: PropTypes.string,
+  color: PropTypes.string,
 
   /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
+   * Applies the `navbar-dark` class to the NavbarSimple, causing text in the children
+   * of the Navbar to use light colors for contrast / visibility.
    */
-  key: PropTypes.string,
+  dark: PropTypes.bool,
 
   /**
-   * Brand text, to go top left of the navbar.
-   */
-  brand: PropTypes.node,
-
-  /**
-   * Link to attach to brand.
-   */
-  brand_href: PropTypes.string,
-
-  /**
-   * CSS style options for brand.
-   */
-  brand_style: PropTypes.object,
-
-  /**
-   * If true, the browser will treat the brand link as external,
-   * forcing a page refresh at the new location. If false,
-   * this just changes the location without triggering a page
-   * refresh. Use this if you are observing dcc.Location, for
-   * instance. Defaults to true for absolute URLs and false
-   * otherwise.
-   */
-  brand_external_link: PropTypes.bool,
-
-  /**
-   * The contents of the Navbar are wrapped in a container, use fluid=True to
-   * make this container fluid, so that in particular, the contents of the
-   * navbar fill the available horizontal space.
+   * The contents of the Navbar are wrapped in a container, use fluid=True to make this
+   * container fluid, so that in particular, the contents of the navbar fill the
+   * available horizontal space.
    */
   fluid: PropTypes.bool,
 
@@ -151,65 +107,77 @@ NavbarSimple.propTypes = {
   links_left: PropTypes.bool,
 
   /**
-   * Applies the `navbar-light` class to the NavbarSimple, causing text in the
-   * children of the Navbar to use dark colors for contrast / visibility.
+   * Brand (text or dash components) that will be rendered on the top left of the
+   * Navbar.
    */
-  light: PropTypes.bool,
+  brand: PropTypes.node,
 
   /**
-   * Applies the `navbar-dark` class to the NavbarSimple, causing text in the
-   * children of the Navbar to use light colors for contrast / visibility.
+   * A URL to link to when the brand is clicked.
    */
-  dark: PropTypes.bool,
+  brand_href: PropTypes.string,
 
   /**
-   * Fix the navbar's position at the top or bottom of the page, options: top,
-   * bottom
+   * If True, clicking on the brand link will behave like a hyperlink. If False, the
+   * brand link will behave like a dcc.Link component, and can be used in conjunction
+   * with dcc.Location for navigation within a Dash app.
+   */
+  brand_external_link: PropTypes.bool,
+
+  /**
+   * Fix the navbar's position at the top or bottom of the page, options: top, bottom
    */
   fixed: PropTypes.string,
 
   /**
    * Stick the navbar to the top or the bottom of the viewport, options: top, bottom
    *
-   * With `sticky`, the navbar remains in the viewport when you scroll. By
-   * contrast, with `fixed`, the navbar will remain at the top or bottom of
-   * the page.
+   * With `sticky`, the navbar remains in the viewport when you scroll. By contrast,
+   * with `fixed`, the navbar will remain at the top or bottom of the page.
    */
   sticky: PropTypes.string,
 
   /**
-   * Sets the color of the NavbarSimple. Main options are primary, light and dark, default light.
-   *
-   * You can also choose one of the other contextual classes provided by Bootstrap
-   * (secondary, success, warning, danger, info, white) or any valid CSS color of
-   * your choice (e.g. a hex code, a decimal code or a CSS color name)
-   */
-  color: PropTypes.string,
-
-  /**
-   * Specify breakpoint at which to expand the menu bar. Options are: 'xs',
-   * 'sm', 'md', 'lg', or 'xl'. Below this breakpoint the navbar will collapse
-   * and navitems will be placed in a togglable collapse element.
+   * Specify breakpoint at which to expand the menu bar. Options are: 'xs', 'sm', 'md',
+   * 'lg', or 'xl'. Below this breakpoint the navbar will collapse and navitems will be
+   * placed in a togglable collapse element.
    */
   expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * Additional inline CSS styles to apply to the NavbarSimple.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the NavbarSimple
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * CSS style options for brand.
+   */
+  brand_style: PropTypes.object,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the NavbarSimple
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default NavbarSimple;

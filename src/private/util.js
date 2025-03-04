@@ -1,4 +1,4 @@
-import {type} from 'ramda';
+import {any, concat, includes, toPairs, type} from 'ramda';
 
 const parseChildrenToArray = children => {
   if (children && !Array.isArray(children)) {
@@ -10,17 +10,15 @@ const parseChildrenToArray = children => {
 };
 
 const resolveChildProps = child => {
-  // This may need to change in the future if https://github.com/plotly/dash-renderer/issues/84 is addressed
-  if (
-    child.props._dashprivate_layout &&
-    child.props._dashprivate_layout.props
-  ) {
+  if (child.props.componentPath) {
     // props are coming from Dash
-    return child.props._dashprivate_layout.props;
-  } else {
-    // else props are coming from React (e.g. Demo.js, or Tabs.test.js)
-    return child.props;
+    return window.dash_component_api.getLayout([
+      ...child.props.componentPath,
+      'props'
+    ]);
   }
+  // else props are coming from React (e.g. Demo.js, or Tabs.test.js)
+  return child.props;
 };
 
 const sanitizeOptions = options => {
@@ -32,7 +30,7 @@ const sanitizeOptions = options => {
      * which is equal to
      * [
      *   {label: `label1`, value: `value1`},
-     *   {label: `label2`, value: `value2`}, ...
+     *   {label: `label2`, value: `value2`},
      * ]
      */
     return Object.entries(options).map(([value, label]) => ({
@@ -73,4 +71,51 @@ const stringifyId = id => {
   return '{' + parts.join(',') + '}';
 };
 
-export {parseChildrenToArray, resolveChildProps, sanitizeOptions, stringifyId};
+const getLoadingState = () => {
+  const ctx = window.dash_component_api?.useDashContext();
+  if (ctx) {
+    return ctx.useLoading();
+  }
+  return false;
+};
+
+// vendored from dcc.Loading
+const loadingSelector = (componentPath, targetComponents) => state => {
+  let stringPath = JSON.stringify(componentPath);
+  // Remove the last ] for easy match
+  stringPath = stringPath.substring(0, stringPath.length - 1);
+  const loadingChildren = toPairs(state.loading).reduce((acc, [path, load]) => {
+    if (path.startsWith(stringPath) && load.length) {
+      if (
+        targetComponents &&
+        !any(l => {
+          const target = targetComponents[l.id];
+          if (!target) {
+            return false;
+          }
+          if (Array.isArray(target)) {
+            return includes(l.property, target);
+          }
+          return l.property === target;
+        }, load)
+      ) {
+        return acc;
+      }
+      return concat(acc, load);
+    }
+    return acc;
+  }, []);
+  if (loadingChildren.length) {
+    return loadingChildren;
+  }
+  return null;
+};
+
+export {
+  getLoadingState,
+  loadingSelector,
+  parseChildrenToArray,
+  resolveChildProps,
+  sanitizeOptions,
+  stringifyId
+};

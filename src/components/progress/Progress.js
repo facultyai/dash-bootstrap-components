@@ -1,10 +1,12 @@
 import React, {cloneElement, useContext} from 'react';
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
-import {map} from 'react-bootstrap/ElementChildren';
+import PropTypes from 'prop-types';
 import {omit} from 'ramda';
+import {map} from 'react-bootstrap/ElementChildren';
 
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {getLoadingState} from '../../private/util';
 
 export const ProgressContext = React.createContext({});
 
@@ -26,13 +28,13 @@ function renderProgressBar(
     now,
     max,
     label,
-    visuallyHidden,
-    striped,
-    animated,
-    className,
     style,
     variant,
     barStyle,
+    animated = false,
+    visuallyHidden = false,
+    striped = false,
+    className,
     ...props
   },
   ref
@@ -61,7 +63,10 @@ function renderProgressBar(
   );
 }
 
-const ProgressBar = React.forwardRef(({isChild, min, max, ...props}, ref) => {
+const ProgressBar = React.forwardRef(function ProgressBar(
+  {isChild = false, min, max, ...props},
+  ref
+) {
   if (isChild) {
     const context = useContext(ProgressContext);
     return renderProgressBar(
@@ -114,33 +119,26 @@ const ProgressBar = React.forwardRef(({isChild, min, max, ...props}, ref) => {
   );
 });
 
-ProgressBar.defaultProps = {
-  animated: false,
-  isChild: false,
-  visuallyHidden: false,
-  striped: false
-};
-
-const Progress = props => {
-  const {
-    children,
-    loading_state,
-    color,
-    className,
-    class_name,
-    value,
-    hide_label,
-    bar,
-    ...otherProps
-  } = props;
+/**
+ * Component for displaying progress bars, with support for stacked bars, animated
+ * backgrounds, and text labels.
+ */
+function Progress({
+  children,
+  value,
+  color,
+  bar,
+  hide_label = false,
+  class_name,
+  className,
+  ...otherProps
+}) {
   const isBootstrapColor = bootstrapColors.has(color);
   return (
     <ProgressBar
       className={class_name || className}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       now={value}
       isChild={bar}
       variant={isBootstrapColor ? color : null}
@@ -150,54 +148,45 @@ const Progress = props => {
       {children}
     </ProgressBar>
   );
-};
+}
 
-Progress.defaultProps = {
-  hide_label: false
+ProgressBar.propTypes = {
+  children: PropTypes.node,
+  style: PropTypes.object,
+  class_name: PropTypes.string,
+  className: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  now: PropTypes.number,
+  label: PropTypes.string,
+  visuallyHidden: PropTypes.bool,
+  animated: PropTypes.bool,
+  striped: PropTypes.bool,
+  variant: PropTypes.string,
+  isChild: PropTypes.bool,
+  barStyle: PropTypes.object
 };
 
 Progress.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component. Use this to nest progress bars.
+   * The children of this Progress. Use this to nest progress bars.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Progress.
    */
-  style: PropTypes.object,
+  id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * Specify progress, value from min to max inclusive.
    */
-  class_name: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
+   * Adds a label to the progress bar.
    */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
-
-  /**
-   * Set to True when nesting Progress inside another Progress component to
-   * create a multi-progress bar.
-   */
-  bar: PropTypes.bool,
+  label: PropTypes.string,
 
   /**
    * Lower limit for value, default: 0
@@ -210,14 +199,17 @@ Progress.propTypes = {
   max: PropTypes.number,
 
   /**
-   * Specify progress, value from min to max inclusive.
+   * Set color of the progress bar, options: primary, secondary, success,
+   * warning, danger, info or any valid CSS color
+   * of your choice (e.g. a hex code, a decimal code or a CSS color name).
    */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  color: PropTypes.string,
 
   /**
-   * Adds a label to the progress bar.
+   * Set to True when nesting Progress inside another Progress component to
+   * create a multi-progress bar.
    */
-  label: PropTypes.string,
+  bar: PropTypes.bool,
 
   /**
    * Set to True to hide the label.
@@ -235,29 +227,34 @@ Progress.propTypes = {
   striped: PropTypes.bool,
 
   /**
-   * Set color of the progress bar, options: primary, secondary, success,
-   * warning, danger, info or any valid CSS color
-   * of your choice (e.g. a hex code, a decimal code or a CSS color name).
+   * Additional inline CSS styles to apply to the Progress.
    */
-  color: PropTypes.string,
+  style: PropTypes.object,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * Additional CSS classes to apply to the Progress.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  class_name: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Progress.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Progress;

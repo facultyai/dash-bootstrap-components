@@ -19,7 +19,7 @@ restrictions:
 
 - Please **do not** use the issue tracker for personal support requests. Stack
   Overflow ([`plotly-dash`](https://stackoverflow.com/questions/tagged/plotly-dash) tag),
-  or the [Plotly Community Forum](https://community.plot.ly) are better places to get help.
+  or the [Plotly Community Forum](https://community.plotly.com) are better places to get help.
 
 - Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.

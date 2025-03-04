@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Carousel from '../Carousel';
 
 const slides = [
@@ -46,7 +47,8 @@ describe('Carousel', () => {
     expect(items.children[1]).not.toHaveClass('active');
   });
 
-  test('tracks most recently clicked slide with "active_index" prop', () => {
+  test('tracks most recently clicked slide with "active_index" prop', async () => {
+    const user = userEvent.setup();
     const mockSetProps = jest.fn();
     const {container} = render(
       <Carousel items={slides} setProps={mockSetProps} active_index={0} />
@@ -59,7 +61,7 @@ describe('Carousel', () => {
 
     const nextButton = container.querySelector('a.carousel-control-next');
 
-    userEvent.click(nextButton);
+    await user.click(nextButton);
     expect(mockSetProps.mock.calls).toHaveLength(1);
     expect(mockSetProps.mock.calls[0][0].active_index).toBe(1);
   });
@@ -82,7 +84,7 @@ describe('Carousel', () => {
       {
         key: '0',
         src: '',
-        alt: 'z',
+        alt: 'this is the blank one',
         href: 'http://www.example.com',
         target: '_blank'
       },
@@ -99,13 +101,13 @@ describe('Carousel', () => {
         src: '',
         alt: 'z',
         href: 'http://www.example.com'
-      },
-      ...slides
+      }
     ];
 
     const carousel = render(<Carousel items={linkedSlides} />);
     const carouselItems = carousel.container.querySelectorAll('.carousel-item');
     const blankTargetItem = carouselItems[0];
+
     expect(blankTargetItem).toHaveAttribute('target', '_blank');
     expect(blankTargetItem.tagName.toLowerCase()).toEqual('a');
 

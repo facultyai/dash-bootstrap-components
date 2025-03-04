@@ -1,35 +1,35 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import RBPagination from 'react-bootstrap/Pagination';
+
+import {getLoadingState} from '../../private/util';
 
 /**
  * The container for presentational components for building a pagination UI.
  * Individual pages should be added as children using the `PaginationItem`
  * component.
  */
-const Pagination = props => {
-  const {
-    step,
-    active_page,
-    min_value,
-    fully_expanded,
-    previous_next,
-    first_last,
-    setProps,
-    class_name,
-    className,
-    loading_state,
-    ...otherProps
-  } = props;
-
-  let {max_value} = props;
+function Pagination({
+  class_name,
+  active_page = 1,
+  min_value = 1,
+  max_value,
+  step = 1,
+  fully_expanded = true,
+  previous_next = false,
+  first_last = false,
+  className,
+  setProps,
+  ...otherProps
+}) {
   // Check max_value is correct value re. step size and if not, change it
   // i.e. min = 1, step = 2, max_value = 4 doesn't work, so need max_value = 5
   if ((max_value - min_value) % step !== 0) {
     max_value = max_value + step - ((max_value - min_value) % step);
   }
 
-  // Functiont o set the active page
+  // Function to set the active page
   const setActivePage = value => {
     if (setProps) {
       setProps({active_page: value});
@@ -141,54 +141,24 @@ const Pagination = props => {
   return (
     <RBPagination
       className={class_name || className}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
       {...otherProps}
     >
       {paginationItems}
     </RBPagination>
   );
-};
-
-Pagination.defaultProps = {
-  min_value: 1,
-  step: 1,
-  active_page: 1,
-  fully_expanded: true,
-  previous_next: false,
-  first_last: false
-};
+}
 
 Pagination.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
+   * The ID of the Pagination
    */
   id: PropTypes.string,
 
   /**
-   * Often used with CSS to style elements with common properties.
+   * The currently active page
    */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - Use class_name instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * Defines CSS styles which will override styles previously set.
-   */
-  style: PropTypes.object,
-
-  /**
-   * Set the size of all page items in the pagination.
-   */
-  size: PropTypes.oneOf(['sm', 'lg']),
+  active_page: PropTypes.number,
 
   /**
    * Minimum (leftmost) value to appear in the pagination.
@@ -208,45 +178,48 @@ Pagination.propTypes = {
   step: PropTypes.number,
 
   /**
-   * The currently active page
+   * Set the size of all page items in the Pagination.
    */
-  active_page: PropTypes.number,
+  size: PropTypes.oneOf(['sm', 'lg']),
 
   /**
-   * When True, this will display all numbers between `min_value` and
-   * `max_value`.
+   * When True, this will display all numbers between `min_value` and `max_value`.
    */
   fully_expanded: PropTypes.bool,
 
   /**
-   * When True, this will display a previous and next icon before and after
-   * the individual page numbers.
+   * When True, this will display a previous and next icon before and after the
+   * individual page numbers.
    */
   previous_next: PropTypes.bool,
 
   /**
-   * When True, this will display a first and last icon at the beginning
-   * and end of the component.
+   * When True, this will display a first and last icon at the beginning and end of the
+   * Pagination.
    */
   first_last: PropTypes.bool,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * Additional inline CSS styles to apply to the Pagination.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  })
+  style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Pagination.
+   */
+  class_name: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - Use class_name instead.
+   *
+   * Additional CSS classes to apply to the Pagination.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the input changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Pagination;

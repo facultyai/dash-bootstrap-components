@@ -294,21 +294,6 @@ span.hljs-meta {
   }
 }
 
-.dbcd-masthead .btn-outline-secondary {
-  color: #fa7268;
-  border-color: #fa7268;
-}
-
-.dbcd-masthead .btn-outline-secondary:hover {
-  color: #fff;
-  background-color: #fa7268;
-}
-
-.dbcd-masthead .btn-secondary {
-  background-color: #fa7268;
-  border-color: #fa7268;
-}
-
 .dbcd-main.changelog h2 {
   font-size: 1.5rem;
 }

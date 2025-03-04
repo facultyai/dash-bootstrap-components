@@ -1,8 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
+
 import PropTypes from 'prop-types';
-import {omit} from 'ramda';
+import {equals, omit} from 'ramda';
 import RBSpinner from 'react-bootstrap/Spinner';
+
 import {bootstrapColors} from '../../private/BootstrapColors';
+import {loadingSelector} from '../../private/util';
 
 /**
  * Render Bootstrap style loading spinners using only CSS.
@@ -11,62 +14,69 @@ import {bootstrapColors} from '../../private/BootstrapColors';
  * be used like `dash_core_components.Loading` by giving it children. In the
  * latter case the chosen spinner will display while the children are loading.
  */
-const Spinner = props => {
-  const {
-    children,
-    color,
-    loading_state,
-    spinner_style,
-    spinnerClassName,
-    spinner_class_name,
-    fullscreen,
-    fullscreenClassName,
-    fullscreen_class_name,
-    fullscreen_style,
-    delay_hide,
-    delay_show,
-    show_initially,
-    type,
-    ...otherProps
-  } = props;
+function Spinner({
+  children,
+  color,
+  type = 'border',
+  show_initially = true,
+  delay_hide = 0,
+  delay_show = 0,
+  spinner_style,
+  spinner_class_name,
+  fullscreen,
+  fullscreen_class_name,
+  fullscreen_style,
+  target_components,
+  display,
+  spinnerClassName,
+  fullscreenClassName,
+  ...otherProps
+}) {
+  const ctx = window.dash_component_api?.useDashContext();
+  const loading = ctx
+    ? ctx.useSelector(
+        loadingSelector(ctx.componentPath, target_components),
+        equals
+      )
+    : false;
 
   const [showSpinner, setShowSpinner] = useState(show_initially);
   const dismissTimer = useRef();
   const showTimer = useRef();
 
   useEffect(() => {
-    if (loading_state) {
-      if (loading_state.is_loading) {
-        // if component is currently loading and there's a dismiss timer active
-        // we need to clear it.
-        if (dismissTimer.current) {
-          dismissTimer.current = clearTimeout(dismissTimer.current);
-        }
-        // if component is currently loading but the spinner is not showing and
-        // there is no timer set to show, then set a timeout to show
-        if (!showSpinner && !showTimer.current) {
-          showTimer.current = setTimeout(() => {
-            setShowSpinner(true);
-            showTimer.current = null;
-          }, delay_show);
-        }
-      } else {
-        // if component is not currently loading and there's a show timer
-        // active we need to clear it
-        if (showTimer.current) {
-          showTimer.current = clearTimeout(showTimer.current);
-        }
-        // if component is not currently loading and the spinner is showing and
-        // there's no timer set to dismiss it, then set a timeout to hide it
-        if (showSpinner && !dismissTimer.current) {
-          dismissTimer.current = setTimeout(() => {
-            setShowSpinner(false);
-            dismissTimer.current = null;
-          }, delay_hide);
-        }
+    if (display === 'show' || display === 'hide') {
+      setShowSpinner(display === 'show');
+    } else if (loading) {
+      // if component is currently loading and there's a dismiss timer active
+      // we need to clear it.
+      if (dismissTimer.current) {
+        dismissTimer.current = clearTimeout(dismissTimer.current);
+      }
+      // if component is currently loading but the spinner is not showing and
+      // there is no timer set to show, then set a timeout to show
+      if (!showSpinner && !showTimer.current) {
+        showTimer.current = setTimeout(() => {
+          setShowSpinner(true);
+          showTimer.current = null;
+        }, delay_show);
+      }
+    } else {
+      // if component is not currently loading and there's a show timer
+      // active we need to clear it
+      if (showTimer.current) {
+        showTimer.current = clearTimeout(showTimer.current);
+      }
+      // if component is not currently loading and the spinner is showing and
+      // there's no timer set to dismiss it, then set a timeout to hide it
+      if (showSpinner && !dismissTimer.current) {
+        dismissTimer.current = setTimeout(() => {
+          setShowSpinner(false);
+          dismissTimer.current = null;
+        }, delay_hide);
       }
     }
-  }, [delay_hide, delay_show, loading_state]);
+  }, [delay_hide, delay_show, loading, showSpinner, display]);
 
   const isBootstrapColor = bootstrapColors.has(color);
 
@@ -85,15 +95,22 @@ const Spinner = props => {
     ...fullscreen_style
   };
 
-  const SpinnerDiv = ({style}) => (
-    <RBSpinner
-      variant={isBootstrapColor ? color : null}
-      animation={type}
-      style={{color: !isBootstrapColor && color, ...style}}
-      className={spinner_class_name || spinnerClassName}
-      {...omit(['setProps'], otherProps)}
-    />
-  );
+  function SpinnerDiv({style}) {
+    return (
+      <RBSpinner
+        variant={isBootstrapColor ? color : null}
+        animation={type}
+        style={{color: !isBootstrapColor && color, ...style}}
+        className={spinner_class_name || spinnerClassName}
+        {...omit(['setProps'], otherProps)}
+      />
+    );
+  }
+
+  SpinnerDiv.propTypes = {
+    style: PropTypes.object
+  };
+
   // Defaulted styles above to the situation where spinner has no children
   // now include properties if spinner has children
   if (children) {
@@ -149,63 +166,18 @@ const Spinner = props => {
   }
 
   return <SpinnerDiv style={spinner_style} />;
-};
-
-Spinner._dashprivate_isLoadingComponent = true;
-
-Spinner.defaultProps = {
-  delay_hide: 0,
-  delay_show: 0,
-  show_initially: true,
-  type: 'border'
-};
+}
 
 Spinner.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of this Spinner.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles for the container when fullscreen=True.
+   * The ID of the Spinner
    */
-  fullscreen_style: PropTypes.object,
-
-  /**
-   * Inline CSS styles to apply to the spinner.
-   */
-  spinner_style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  fullscreen_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - use `fullscreen_class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  fullscreenClassName: PropTypes.string,
-
-  /**
-   * CSS class names to apply to the spinner.
-   */
-  spinner_class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** - use `spinner_class_name` instead.
-   *
-   * CSS class names to apply to the spinner.
-   */
-  spinnerClassName: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Sets the color of the Spinner. Main options are Bootstrap contextual
@@ -234,14 +206,14 @@ Spinner.propTypes = {
   fullscreen: PropTypes.bool,
 
   /**
-   * When using the spinner as a loading spinner, add a time delay (in ms) to
+   * When using the Spinner as a loading spinner, add a time delay (in ms) to
    * the spinner being removed to prevent flickering.
    */
   delay_hide: PropTypes.number,
 
   /**
-   * When using the spinner as a loading spinner, add a time delay (in ms) to
-   * the spinner being shown after the loading_state is set to true.
+   * When using the Spinner as a loading spinner, add a time delay (in ms) to
+   * the spinner being shown after the component starts loading.
    */
   delay_show: PropTypes.number,
 
@@ -249,7 +221,61 @@ Spinner.propTypes = {
    * Whether the Spinner should show on app start-up before the loading state
    * has been determined. Default True.
    */
-  show_initially: PropTypes.bool
+  show_initially: PropTypes.bool,
+
+  /**
+   * Inline CSS styles to apply to the Spinner.
+   */
+  spinner_style: PropTypes.object,
+
+  /**
+   * CSS class names to apply to the Spinner.
+   */
+  spinner_class_name: PropTypes.string,
+
+  /**
+   * Defines CSS styles for the container when fullscreen=True.
+   */
+  fullscreen_style: PropTypes.object,
+
+  /**
+   * Additional CSS classes to apply to the Spinner when fullscreen=True.
+   */
+  fullscreen_class_name: PropTypes.string,
+
+  /**
+   * Setting display to  "show" or "hide"  will override the loading state coming from
+   * dash-renderer
+   */
+  display: PropTypes.oneOf(['auto', 'show', 'hide']),
+
+  /**
+   * Specify component and prop to trigger showing the loading spinner
+   * example: `{"output-container": "children", "grid": ["rowData", "columnDefs]}`
+   *
+   */
+  target_components: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+  ),
+
+  /**
+   * **DEPRECATED** - use `fullscreen_class_name` instead.
+   *
+   * Additional CSS classes to apply to the Spinner when fullscreen=True.
+   */
+  fullscreenClassName: PropTypes.string,
+
+  /**
+   * **DEPRECATED** - use `spinner_class_name` instead.
+   *
+   * CSS class names to apply to the spinner.
+   */
+  spinnerClassName: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Spinner;

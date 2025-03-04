@@ -1,34 +1,37 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {omit} from 'ramda';
 import RBCollapse from 'react-bootstrap/Collapse';
+
+import {getLoadingState} from '../../private/util';
 
 /**
  * Hide or show content with a vertical collapsing animation. Visibility of the
  * children is controlled by the `is_open` prop which can be targetted by
  * callbacks.
  */
-const Collapse = React.forwardRef((props, ref) => {
-  const {
+const Collapse = React.forwardRef(function Collapse(
+  {
     children,
     is_open,
     navbar,
-    loading_state,
     className,
     class_name,
     tag,
+    dimension = 'height',
     ...otherProps
-  } = props;
-
+  },
+  ref
+) {
   return (
     <RBCollapse
       in={is_open}
       as={tag}
       className={class_name || className}
+      dimension={dimension}
       {...omit(['setProps'], otherProps)}
-      data-dash-is-loading={
-        (loading_state && loading_state.is_loading) || undefined
-      }
+      data-dash-is-loading={getLoadingState() || undefined}
     >
       <div ref={ref} className={navbar && 'navbar-collapse'}>
         {children}
@@ -37,44 +40,16 @@ const Collapse = React.forwardRef((props, ref) => {
   );
 });
 
-Collapse.defaultProps = {dimension: 'height'};
-
 Collapse.propTypes = {
   /**
-   * The ID of this component, used to identify dash components
-   * in callbacks. The ID needs to be unique across all of the
-   * components in an app.
-   */
-  id: PropTypes.string,
-
-  /**
-   * The children of this component.
+   * The children of the Collapse.
    */
   children: PropTypes.node,
 
   /**
-   * Defines CSS styles which will override styles previously set.
+   * The ID of the Collapse.
    */
-  style: PropTypes.object,
-
-  /**
-   * Often used with CSS to style elements with common properties.
-   */
-  class_name: PropTypes.string,
-
-  /**
-   * **DEPRECATED** Use `class_name` instead.
-   *
-   * Often used with CSS to style elements with common properties.
-   */
-  className: PropTypes.string,
-
-  /**
-   * A unique identifier for the component, used to improve
-   * performance by React.js while rendering components
-   * See https://reactjs.org/docs/lists-and-keys.html for more info
-   */
-  key: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Whether collapse is currently open.
@@ -82,33 +57,50 @@ Collapse.propTypes = {
   is_open: PropTypes.bool,
 
   /**
+   * The dimension used when collapsing e.g. height will collapse vertically,
+   * whilst width will collapse horizontally
+   */
+  dimension: PropTypes.oneOf(['height', 'width']),
+
+  /**
    * Set to True when using a collapse inside a navbar.
    */
   navbar: PropTypes.bool,
 
   /**
-   * Object that holds the loading state object coming from dash-renderer
+   * Additional inline CSS styles to apply to the Collapse.
    */
-  loading_state: PropTypes.shape({
-    /**
-     * Determines if the component is loading or not
-     */
-    is_loading: PropTypes.bool,
-    /**
-     * Holds which property is loading
-     */
-    prop_name: PropTypes.string,
-    /**
-     * Holds the name of the component that is loading
-     */
-    component_name: PropTypes.string
-  }),
+  style: PropTypes.object,
 
   /**
-   * The dimension used when collapsing e.g. height will collapse vertically,
-   * whilst width will collapse horizontally
+   * Additional CSS classes to apply to the Collapse.
    */
-  dimension: PropTypes.oneOf(['height', 'width'])
+  class_name: PropTypes.string,
+
+  /**
+   * The HTML tag used for the collapse component.
+   */
+  tag: PropTypes.string,
+
+  /**
+   * A unique identifier for the component, used to improve performance by React.js
+   * while rendering components
+   *
+   * See https://react.dev/learn/rendering-lists#why-does-react-need-keys for more info
+   */
+  key: PropTypes.string,
+
+  /**
+   * **DEPRECATED** Use `class_name` instead.
+   *
+   * Additional CSS classes to apply to the Collapse.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Dash-assigned callback that gets fired when the value changes.
+   */
+  setProps: PropTypes.func
 };
 
 export default Collapse;

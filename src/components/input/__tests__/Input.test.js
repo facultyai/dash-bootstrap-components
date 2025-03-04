@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {act, render, fireEvent} from '@testing-library/react';
+
+import {act, fireEvent, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import Input from '../Input';
 
 describe('Input', () => {
@@ -101,8 +102,9 @@ describe('Input', () => {
       });
     });
 
-    test('dispatches update for each typed character', () => {
-      userEvent.type(inputElement, 'abc');
+    test('dispatches update for each typed character', async () => {
+      const user = userEvent.setup();
+      await user.type(inputElement, 'abc');
 
       expect(mockSetProps.mock.calls).toHaveLength(3);
 
@@ -112,30 +114,22 @@ describe('Input', () => {
       expect(call3).toEqual([{value: 'abc'}]);
     });
 
-    test('track number of blurs with "n_blur" and "n_blur_timestamp"', () => {
-      const before = Date.now();
+    test('track number of blurs with "n_blur"', () => {
       fireEvent.blur(inputElement);
-      const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_blur, n_blur_timestamp}]] = mockSetProps.mock.calls;
+      const [[{n_blur}]] = mockSetProps.mock.calls;
       expect(n_blur).toEqual(1);
-      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_blur_timestamp).toBeLessThanOrEqual(after);
     });
 
-    test('tracks submit with "n_submit" and "n_submit_timestamp"', () => {
-      const before = Date.now();
+    test('tracks submit with "n_submit"', () => {
       fireEvent.keyUp(inputElement, {key: 'Enter', code: 13, charCode: 13});
-      const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_submit, n_submit_timestamp}]] = mockSetProps.mock.calls;
+      const [[{n_submit}]] = mockSetProps.mock.calls;
       expect(n_submit).toEqual(1);
-      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_submit_timestamp).toBeLessThanOrEqual(after);
     });
 
     test("don't increment n_submit if key is not Enter", () => {
@@ -163,34 +157,22 @@ describe('Input', () => {
     });
 
     test('dispatch value on blur if debounce is true', () => {
-      const before = Date.now();
       fireEvent.blur(inputElement);
-      const after = Date.now();
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_blur, n_blur_timestamp, value}]] = mockSetProps.mock.calls;
+      const [[{n_blur, value}]] = mockSetProps.mock.calls;
       expect(n_blur).toEqual(1);
-      expect(n_blur_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_blur_timestamp).toBeLessThanOrEqual(after);
       expect(value).toEqual('some-input-value');
     });
 
     test('dispatch value on submit if debounce is true', () => {
-      const before = Date.now();
-      fireEvent.keyUp(inputElement, {
-        key: 'Enter',
-        code: 13,
-        charCode: 13
-      });
-      const after = Date.now();
+      fireEvent.keyUp(inputElement, {key: 'Enter', code: 13, charCode: 13});
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
 
-      const [[{n_submit, n_submit_timestamp, value}]] = mockSetProps.mock.calls;
+      const [[{n_submit, value}]] = mockSetProps.mock.calls;
       expect(n_submit).toEqual(1);
-      expect(n_submit_timestamp).toBeGreaterThanOrEqual(before);
-      expect(n_submit_timestamp).toBeLessThanOrEqual(after);
       expect(value).toEqual('some-input-value');
     });
   });
@@ -262,7 +244,10 @@ describe('Input', () => {
     });
 
     test('dispatches update for each typed character', () => {
-      userEvent.type(inputElement, '-1e4');
+      fireEvent.input(inputElement, {target: {value: '-'}});
+      fireEvent.input(inputElement, {target: {value: '-1'}});
+      fireEvent.input(inputElement, {target: {value: '-1e'}});
+      fireEvent.input(inputElement, {target: {value: '-1e4'}});
 
       expect(inputElement).toHaveValue(-10000);
       expect(mockSetProps.mock.calls).toHaveLength(2);
@@ -298,7 +283,12 @@ describe('Input', () => {
         <Input type="number" min={0} value={0} setProps={mockSetProps} />
       );
 
-      userEvent.type(input, '-100');
+      // can't use userEvent.type here because it hangs when trying to enter invalid
+      // inputs, instead we simulate typing additional invalid characters with multiple
+      // fireEvent.change calls
+      fireEvent.change(input, {target: {value: '0-'}});
+      fireEvent.change(input, {target: {value: '0-1'}});
+      fireEvent.change(input, {target: {value: '0-12'}});
 
       expect(mockSetProps.mock.calls).toHaveLength(1);
       expect(mockSetProps.mock.calls[0][0]).toEqual({value: NaN});

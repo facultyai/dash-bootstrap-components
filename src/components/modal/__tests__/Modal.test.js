@@ -1,12 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+
+import {act, fireEvent, render, waitFor} from '@testing-library/react';
+
 import Modal from '../Modal';
-import ModalBody from '../ModalBody';
 
 jest.useFakeTimers();
 
@@ -17,20 +16,20 @@ describe('Modal', () => {
     expect(document.body.querySelector('div.modal')).not.toBe(null);
   });
 
-  test('toggle visibility with "is_open"', () => {
+  test('toggle visibility with "is_open"', async () => {
     const {rerender} = render(<Modal />);
 
     expect(document.body.querySelector('.modal')).toBe(null);
 
-    rerender(<Modal is_open />);
-    jest.runAllTimers();
+    await act(async () => rerender(<Modal is_open />));
+    await waitFor(async () =>
+      expect(document.body.querySelector('.modal')).not.toBe(null)
+    );
 
-    expect(document.body.querySelector('.modal')).not.toBe(null);
-
-    rerender(<Modal />);
-    jest.runAllTimers();
-
-    expect(document.body.querySelector('.modal')).toBe(null);
+    await act(async () => rerender(<Modal />));
+    await waitFor(async () =>
+      expect(document.body.querySelector('.modal')).toBe(null)
+    );
   });
 
   test('renders its content', () => {
@@ -87,8 +86,14 @@ describe('Modal', () => {
       'custom-modal-backdrop'
     );
 
+    // Backdrop style
+    rerender(<Modal is_open backdrop_style={{color: 'red'}} />);
+    expect(document.body.querySelector('.modal-backdrop')).toHaveStyle({
+      color: 'red'
+    });
+
     // Dialog class name
-    rerender(<Modal is_open class_name="custom-modal-dialog" />);
+    rerender(<Modal is_open dialog_class_name="custom-modal-dialog" />);
     expect(document.body.querySelector('.modal-dialog')).toHaveClass(
       'custom-modal-dialog'
     );
@@ -107,10 +112,14 @@ describe('Modal', () => {
     });
 
     // Modal class name
-    rerender(<Modal is_open modal_class_name="custom-modal-class" />);
+    rerender(<Modal is_open class_name="custom-modal-class" />);
     expect(document.body.querySelector('.modal')).toHaveClass(
       'custom-modal-class'
     );
+
+    // Modal style
+    rerender(<Modal is_open style={{color: 'red'}} />);
+    expect(document.body.querySelector('.modal')).toHaveStyle({color: 'red'});
   });
 
   test('sets z-index with zindex and zIndex', () => {
@@ -136,19 +145,21 @@ describe('Modal', () => {
   });
 
   describe('backdrop', () => {
-    test('when backdrop is True, clicking will dismiss modal', () => {
+    test('when backdrop is True, clicking will dismiss modal', async () => {
       const mockSetProps = jest.fn();
       const {rerender} = render(<Modal is_open setProps={mockSetProps} />);
 
-      const backdrop = document.body.querySelector('.modal-backdrop');
+      const backdrop = document.querySelector('.modal-backdrop');
       expect(backdrop).not.toBe(null);
 
-      userEvent.click(document.body.querySelector('.modal'));
+      fireEvent.click(backdrop);
 
-      rerender(<Modal {...mockSetProps.mock.calls[0][0]} />);
-      jest.runAllTimers();
-
-      expect(document.body.querySelector('.modal')).toBe(null);
+      await act(async () =>
+        rerender(<Modal {...mockSetProps.mock.calls[0][0]} />)
+      );
+      await waitFor(async () =>
+        expect(document.body.querySelector('.modal')).toBe(null)
+      );
     });
 
     test('when backdrop is False, nothing is rendered', () => {
@@ -164,10 +175,9 @@ describe('Modal', () => {
       const backdrop = document.body.querySelector('.modal-backdrop');
       expect(backdrop).not.toBe(null);
 
-      userEvent.click(document.body.querySelector('.modal'));
+      fireEvent.click(document.body.querySelector('.modal'));
 
       expect(mockSetProps.mock.calls).toHaveLength(0);
-
       expect(document.body.querySelector('.modal')).not.toBe(null);
     });
   });
