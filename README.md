@@ -85,7 +85,7 @@ For more information on how to link local or external CSS, check out the
 With CSS linked, you can start building your app's layout with our Bootstrap
 components. These include layout components for organising the content of your app on the page, as well as UI components like navbars, cards, alerts and many more.
 
-![layout](./readme-images/layout.png)
+![layout](https://cdn.jsdelivr.net/gh/facultyai/dash-bootstrap-components@main/readme-images/layout.png)
 
 See our [_documentation_][docs-components] for a full list of available
 components.
@@ -104,14 +104,11 @@ will pass our linting checks, and how to submit the pull request itself.
 ## Copyright and license
 
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
-2018-2025, and released under the [Apache 2.0 license](./LICENSE)
+2018-2025, and released under the [Apache 2.0 license](https://github.com/facultyai/dash-bootstrap-components/blob/main/LICENSE)
 
 [dash-homepage]: https://dash.plotly.com/
 [dash-docs-external]: https://dash.plotly.com/external-resources
 [bootstrap-homepage]: https://getbootstrap.com/
-[dbc-repo]: https://github.com/facultyai/dash-bootstrap-components
-[reactstrap-homepage]: https://reactstrap.github.io/
-[docs-homepage]: https://dash-bootstrap-components.opensource.faculty.ai
 [docs-components]: https://dash-bootstrap-components.opensource.faculty.ai/l/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [faculty]: https://faculty.ai

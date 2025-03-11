@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "dash-bootstrap-components"
 description = "Bootstrap themed components for use in Plotly Dash"
-readme = "landing-page.md"
+readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
     { name = "Faculty Science Ltd" },
@@ -14,9 +14,7 @@ authors = [
 ]
 maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
 requires-python = ">=3.9, <4"
-dependencies = [
-    "dash==3.0.0rc3",
-]
+dependencies = ["dash==3.0.0rc4"]
 classifiers = [
     "Framework :: Dash",
     "License :: OSI Approved :: Apache Software License",
@@ -42,7 +40,7 @@ path = "dash_bootstrap_components/_version.py"
 [tool.hatch.build.targets.sdist]
 include = [
     "dash_bootstrap_components",
-    "landing-page.md",
+    "README.md",
     "LICENSE",
     "NOTICE.txt",
     "pyproject.toml",
@@ -55,7 +53,7 @@ artifacts = [
 [tool.hatch.build.targets.wheel]
 include = [
     "dash_bootstrap_components",
-    "landing-page.md",
+    "README.md",
     "LICENSE",
     "NOTICE.txt",
     "pyproject.toml",
