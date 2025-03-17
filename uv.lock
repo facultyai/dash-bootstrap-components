@@ -260,7 +260,7 @@ wheels = [
 
 [[package]]
 name = "dash"
-version = "3.0.0rc4"
+version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "flask" },
@@ -274,9 +274,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "werkzeug" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ea/46/9c13b16b44e506c6cb1a6198c5359fa7b8f83dec6a6a95779477d133cc98/dash-3.0.0rc4.tar.gz", hash = "sha256:26b7105b3e37ed145cc268af3d19b1b06029bc7a7132f5b22e8f2d8c257c81c7", size = 7466167 }
+sdist = { url = "https://files.pythonhosted.org/packages/52/9c/2a9f90b55fd9a5e27b89f20c8b52e05db52c49bb99213c0323b9116dbe9f/dash-3.0.0.tar.gz", hash = "sha256:2cbb071836b3ca546dbe38655083908b8be543f3bea9c4bf660b96490d3d4953", size = 7608640 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5f/84/8335ea958c5e667c313ed961299d43dc5aa2a05b6f1aa89114ff90a7e283/dash-3.0.0rc4-py3-none-any.whl", hash = "sha256:2b284a581b62f068b2f0b5998818c16191104a4c40ab07ded41185ca92a874e5", size = 7818169 },
+    { url = "https://files.pythonhosted.org/packages/0e/b1/4538ba05deedd430167bbee3ee1589276994e4a85c9e4d52f467080ecc33/dash-3.0.0-py3-none-any.whl", hash = "sha256:684de3765bdb24f2c5a7b5d9d4dffb02bb122586b08784a394769004af444f03", size = 7951998 },
 ]
 
 [package.optional-dependencies]
@@ -322,7 +322,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "dash", specifier = "==3.0.0rc4" },
+    { name = "dash", specifier = ">=3.0.0" },
     { name = "numpy", marker = "extra == 'pandas'", specifier = ">=2.0.2" },
     { name = "pandas", marker = "extra == 'pandas'", specifier = ">=2.2.3" },
 ]
