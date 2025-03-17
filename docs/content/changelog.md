@@ -6,6 +6,29 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 2.0.0 - 2025/03/14
+
+Version 2.0.0 of dash-bootstrap-components! This version makes various internal updates for compatibility with Dash 3.0.0. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Added
+- Added Label.xxl prop. The logic for this was in place but the prop was not exposed to the Component due to a missing prop-types declaration ([PR 1084](https://github.com/facultyai/dash-bootstrap-components/pull/1084))
+- `Spinner` and `Placeholder` now accept the `target_components` prop which functions like `dcc.Loading` ([PR 1080](https://github.com/facultyai/dash-bootstrap-components/pull/1080))
+- Added `display` prop for `Spinner` and `Placeholder` to force the component to show ([PR 1080](https://github.com/facultyai/dash-bootstrap-components/pull/1080))
+- Added `disabled` prop to `CardLink` ([PR 1084](https://github.com/facultyai/dash-bootstrap-components/pull/1084))
+
+### Changed
+- Made `Modal` styling props consistent. `modal_class_name` and `modalClassName` are renamed to `class_name` and `className` respectively which target the same element as `style`. `class_name` and `className` previously set styles on the modal dialog, which should now be done with `dialog_class_name` and `dialogClassName` respectively. This is consistent with behaviour of `style` and `dialog_style` ([PR 1090](https://github.com/facultyai/dash-bootstrap-components/pull/1090))
+
+### Removed
+- Removed the following props which had no effect: Carousel.ride, DropdownMenu.addon_type, Navbar.light, NavbarSimple.light, Popover.innerClassName, Popover.inner_class_name. ([PR 1088](https://github.com/facultyai/dash-bootstrap-components/pull/1088)) ([PR 1090](https://github.com/facultyai/dash-bootstrap-components/pull/1090))
+- Removed the following deprecated props: DropdownMenu.right, Table.dark ([PR 1084](https://github.com/facultyai/dash-bootstrap-components/pull/1084))
+- All `_timestamp` props. Use callback context instead. ([PR 1082](https://github.com/facultyai/dash-bootstrap-components/pull/1082))
+
+
+## 1.7.1 - 2025/01/16
+
+Version 1.7.1 of dash-bootstrap-components. This version fixes a build issue with version 1.7.0. Thanks to everyone who reported problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
 ## 1.7.0 - 2025/01/15
 
 Version 1.7.0 of dash-bootstrap-components. This version exposes some new props for `Modal`, and `Textarea` to allow users to customise the behaviour of those components, and extends the functionality of the `debounce` prop in `Input` and `Textarea` components. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
