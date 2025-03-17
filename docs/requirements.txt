@@ -1,4 +1,4 @@
-dash==3.0.0rc3
+dash>=3.0.0
 dash_bootstrap_components==2.0.0
 gunicorn
 markdown
