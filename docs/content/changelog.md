@@ -6,7 +6,7 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
-## 2.0.0 - 2025/03/14
+## 2.0.0 - 2025/03/17
 
 Version 2.0.0 of dash-bootstrap-components! This version makes various internal updates for compatibility with Dash 3.0.0 which is now required to use dash-bootstrap-components. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
 
