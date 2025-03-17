@@ -6,9 +6,9 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
-## 2.0.0 - 2025/03/14
+## 2.0.0 - 2025/03/17
 
-Version 2.0.0 of dash-bootstrap-components! This version makes various internal updates for compatibility with Dash 3.0.0. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+Version 2.0.0 of dash-bootstrap-components! This version makes various internal updates for compatibility with Dash 3.0.0 which is now required to use dash-bootstrap-components. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
 
 ### Added
 - Added Label.xxl prop. The logic for this was in place but the prop was not exposed to the Component due to a missing prop-types declaration ([PR 1084](https://github.com/facultyai/dash-bootstrap-components/pull/1084))
@@ -17,6 +17,7 @@ Version 2.0.0 of dash-bootstrap-components! This version makes various internal 
 - Added `disabled` prop to `CardLink` ([PR 1084](https://github.com/facultyai/dash-bootstrap-components/pull/1084))
 
 ### Changed
+- dash-bootstrap-components now requires `dash>=3.0.0`.
 - Made `Modal` styling props consistent. `modal_class_name` and `modalClassName` are renamed to `class_name` and `className` respectively which target the same element as `style`. `class_name` and `className` previously set styles on the modal dialog, which should now be done with `dialog_class_name` and `dialogClassName` respectively. This is consistent with behaviour of `style` and `dialog_style` ([PR 1090](https://github.com/facultyai/dash-bootstrap-components/pull/1090))
 
 ### Removed
