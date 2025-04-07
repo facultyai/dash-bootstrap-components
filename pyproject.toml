@@ -13,7 +13,7 @@ authors = [
     { name = "Tom Begley", email = "tomcbegley@gmail.com" },
 ]
 maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
-requires-python = ">=3.9, <4"
+requires-python = ">=3.9"
 dependencies = [
     "dash>=3.0.0",
 ]
