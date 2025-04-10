@@ -39,7 +39,7 @@ See the [available themes](#available-themes) for more.
 Each theme such as is simply a BootstrapCDN URL stored as a string, so using the themes module is really equivalent to doing something like the following.
 
 ```python
-BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+BS = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
 app = dash.Dash(external_stylesheets=[BS])
 ```
 
@@ -83,7 +83,7 @@ Here's a callback to change the theme:
 clientside_callback(
     " " "
     (switchOn) => {
-       document.documentElement.setAttribute("data-bs-theme", switchOn ? "light" : "dark"); 
+       document.documentElement.setAttribute("data-bs-theme", switchOn ? "light" : "dark");
        return window.dash_clientside.no_update
     }
     " " ",
