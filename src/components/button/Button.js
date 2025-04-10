@@ -30,6 +30,9 @@ function Button({
   className,
   rel,
   setProps,
+  // onClick prop needs to be overridable for dcc.ConfirmDialog
+  // eslint-disable-next-line react/prop-types
+  onClick,
   ...otherProps
 }) {
   const incrementClicks = () => {
@@ -38,7 +41,7 @@ function Button({
     }
   };
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
 
   if (useLink) {
     // react-bootstrap strips out target prop if tag isn't an anchor element,
