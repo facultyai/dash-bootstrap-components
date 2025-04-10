@@ -135,4 +135,18 @@ describe('Button', () => {
     await user.click(button.getByText('Clickable'));
     expect(mockEventListener.mock.calls).toHaveLength(0);
   });
+
+  test('onClick can be overridden', async () => {
+    const user = userEvent.setup();
+    const mockOnClick = jest.fn();
+    const button = render(
+      <Button href="/relative" onClick={mockOnClick}>
+        Clickable
+      </Button>
+    );
+
+    expect(mockOnClick.mock.calls).toHaveLength(0);
+    await user.click(button.getByText('Clickable'));
+    expect(mockOnClick.mock.calls).toHaveLength(1);
+  });
 });
