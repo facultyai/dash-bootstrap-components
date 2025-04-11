@@ -32,6 +32,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
+          registry-url: https://registry.npmjs.org/
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v3
@@ -51,9 +52,9 @@ jobs:
       - name: Build dash-bootstrap-components
         run: just build
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.12.3
