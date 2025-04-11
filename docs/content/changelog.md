@@ -6,6 +6,17 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 2.0.1 - 2025/04/11
+
+This is a pre-release for dash-bootstrap-components version 2.0.1! This version fixes bugs and updates CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Changed
+- Updated CDN links for Bootstrap CSS, Bootswatch CSS, Bootstrap Icons and FontAwesome Icons ([PR 1109](https://github.com/facultyai/dash-bootstrap-components/pull/1109))
+- Dropped upper bound on supported Python versions ([PR 1107](https://github.com/facultyai/dash-bootstrap-components/pull/1107))
+
+### Fixed
+- Fixed regression preventing `dbc.Button` from being used in conjunction with `dcc.ConfirmDialogProvider` ([PR 1111](https://github.com/facultyai/dash-bootstrap-components/pull/1111))
+
 ## 2.0.0 - 2025/03/17
 
 Version 2.0.0 of dash-bootstrap-components! This version makes various internal updates for compatibility with Dash 3.0.0 which is now required to use dash-bootstrap-components. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
