@@ -8,7 +8,7 @@ This page documents notable changes in dash-bootstrap-components releases.
 
 ## 2.0.1 - 2025/04/11
 
-This is a pre-release for dash-bootstrap-components version 2.0.1! This version fixes bugs and updates CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+Version 2.0.1 of dash-bootstrap-components! This version fixes bugs and updates CDN links. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
 
 ### Changed
 - Updated CDN links for Bootstrap CSS, Bootswatch CSS, Bootstrap Icons and FontAwesome Icons ([PR 1109](https://github.com/facultyai/dash-bootstrap-components/pull/1109))
