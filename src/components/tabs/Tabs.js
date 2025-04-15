@@ -147,6 +147,10 @@ Tabs.dashPersistence = {
   persistence_type: 'local'
 };
 
+// Make sure that updates to the Tabs children are properly rendered
+// See https://github.com/facultyai/dash-bootstrap-components/issues/1119
+Tabs.dashChildrenUpdate = true;
+
 Tabs.propTypes = {
   /**
    * The children of this Tabs component. Each child should be a Tab component.
