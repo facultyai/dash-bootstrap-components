@@ -231,7 +231,8 @@ Carousel.propTypes = {
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * efines the className of the carousel container. Additional CSS classes to apply to the Carousel.
+   * Defines the className of the carousel container. Additional CSS classes
+   * to apply to the Carousel.
    */
   className: PropTypes.string,
 

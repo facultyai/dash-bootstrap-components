@@ -210,7 +210,7 @@ Pagination.propTypes = {
   class_name: PropTypes.string,
 
   /**
-   * **DEPRECATED** - Use class_name instead.
+   * **DEPRECATED** Use `class_name` instead.
    *
    * Additional CSS classes to apply to the Pagination.
    */

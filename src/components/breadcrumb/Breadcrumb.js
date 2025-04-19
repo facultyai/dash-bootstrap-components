@@ -112,14 +112,14 @@ Breadcrumb.propTypes = {
   key: PropTypes.string,
 
   /**
-   * **DEPRECATED** - Use class_name instead.
+   * **DEPRECATED** Use `class_name` instead.
    *
    * Additional CSS classes to apply to the Breadcrumb.
    */
   className: PropTypes.string,
 
   /**
-   * **DEPRECATED** - use item_class_name instead.
+   * **DEPRECATED** Use `item_class_name` instead.
    *
    * Additional CSS classes to apply to each item.
    */

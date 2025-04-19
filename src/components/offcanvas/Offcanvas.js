@@ -136,28 +136,28 @@ Offcanvas.propTypes = {
   labelledby: PropTypes.string,
 
   /**
-   * **DEPRECATED** - Use class_name instead.
+   * **DEPRECATED** Use `class_name` instead.
    *
    * Additional CSS classes to apply to the Offcanvas
    */
   className: PropTypes.string,
 
   /**
-   * **DEPRECATED** - Use backdrop_class_name instead.
+   * **DEPRECATED** Use `backdrop_class_name` instead.
    *
    * CSS class to apply to the backdrop.
    */
   backdropClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `autofocus` instead
+   * **DEPRECATED** Use `autofocus` instead.
    *
    * 	Puts the focus on the modal when initialized.
    */
   autoFocus: PropTypes.bool,
 
   /**
-   * **DEPRECATED** Use `labelledby` instead
+   * **DEPRECATED** Use `labelledby` instead.
    *
    * The ARIA labelledby attribute
    */

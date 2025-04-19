@@ -206,68 +206,68 @@ Modal.propTypes = {
   /**
    * **DEPRECATED** Use `dialog_style` instead.
    *
-   * Inline CSS styles to apply to the dialog
+   * Inline CSS styles to apply to the dialog.
    */
   dialogStyle: PropTypes.object,
 
   /**
    * **DEPRECATED** Use `content_style` instead.
    *
-   * Inline CSS styles to apply to the content
+   * Inline CSS styles to apply to the content.
    */
   contentStyle: PropTypes.object,
 
   /**
-   * **DEPRECATED** Use `content_style` instead.
+   * **DEPRECATED** Use `backdrop_style` instead.
    *
-   * Inline CSS styles to apply to the backdrop
+   * Inline CSS styles to apply to the backdrop.
    */
   backdropStyle: PropTypes.object,
 
   /**
    * **DEPRECATED** Use `class_name` instead.
    *
-   * Additional CSS classes to apply to the Modal
+   * Additional CSS classes to apply to the Modal.
    */
   className: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `backdrop_class_name` instead
+   * **DEPRECATED** Use `backdrop_class_name` instead.
    *
    * Additional CSS classes to apply to the modal-backdrop.
    */
   backdropClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `content_class_name` instead
+   * **DEPRECATED** Use `content_class_name` instead.
    *
    * Additional CSS classes to apply to the modal-content.
    */
   contentClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `dialog_class_name` instead
+   * **DEPRECATED** Use `dialog_class_name` instead.
    *
    * Additional CSS classes to apply to the modal-dialog.
    */
   dialogClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `autofocus` instead
+   * **DEPRECATED** Use `autofocus` instead.
    *
    * 	Puts the focus on the modal when initialized.
    */
   autoFocus: PropTypes.bool,
 
   /**
-   * **DEPRECATED** Use `labelledby` instead
+   * **DEPRECATED** Use `labelledby` instead.
    *
    * The ARIA labelledby attribute
    */
   labelledBy: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `zindex` instead
+   * **DEPRECATED** Use `zindex` instead.
    *
    * Set the z-index of the modal. Default 1050.
    */

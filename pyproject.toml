@@ -14,9 +14,7 @@ authors = [
 ]
 maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
 requires-python = ">=3.9"
-dependencies = [
-    "dash>=3.0.3",
-]
+dependencies = ["dash>=3.0.3"]
 classifiers = [
     "Framework :: Dash",
     "License :: OSI Approved :: Apache Software License",
