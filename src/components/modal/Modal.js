@@ -218,7 +218,7 @@ Modal.propTypes = {
   contentStyle: PropTypes.object,
 
   /**
-   * **DEPRECATED** Use `content_style` instead.
+   * **DEPRECATED** Use `backdrop_style` instead.
    *
    * Inline CSS styles to apply to the backdrop
    */

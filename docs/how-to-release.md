@@ -1,6 +1,6 @@
 # How to release dash-bootstrap-components
 
-This is a set of instructions for releasing _dash-bootstrap-components_. The release process is somewhat automated with an [`invoke`](http://docs.pyinvoke.org/en/latest/getting_started.html>) task file. You will need `invoke` and `semver` installed.
+This is a set of instructions for releasing _dash-bootstrap-components_. The release process is somewhat automated with an [`invoke`](https://docs.pyinvoke.org/en/latest/getting-started.html) task file. You will need `invoke` and `semver` installed.
 
 - Run `invoke prerelease <version>`, where `version` is the version number of the release candidate. If you are aiming to release version `0.0.7`, this will be `0.0.7-rc1`. This will automatically bump the version numbers and push a release branch to GitHub.
 
