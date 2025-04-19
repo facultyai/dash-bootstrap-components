@@ -206,7 +206,7 @@ DropdownMenu.propTypes = {
   /**
    * **DEPRECATED** Use `toggle_class_name` instead.
    *
-   * Additional CSS classes to apply to the DropdownMenu The classes
+   * Additional CSS classes to apply to the DropdownMenu. The classes
    * specified with this prop will be applied to the DropdownMenu toggle.
    */
   toggleClassName: PropTypes.string,

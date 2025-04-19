@@ -115,7 +115,7 @@ Tab.propTypes = {
   className: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `tab_class_name` instead
+   * **DEPRECATED** Use `tab_class_name` instead.
    *
    * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavItem in the tab.
@@ -123,7 +123,7 @@ Tab.propTypes = {
   tabClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `active_tab_class_name` instead
+   * **DEPRECATED** Use `active_tab_class_name` instead.
    *
    * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavItem in the tab when it
@@ -132,7 +132,7 @@ Tab.propTypes = {
   activeTabClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `label_class_name` instead
+   * **DEPRECATED** Use `label_class_name` instead.
    *
    * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavLink in the tab.
@@ -140,7 +140,7 @@ Tab.propTypes = {
   labelClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `active_label_class_name` instead
+   * **DEPRECATED** Use `active_label_class_name` instead.
    *
    * Additional CSS classes to apply to the Tabs. The classes
    * specified with this prop will be applied to the NavLink in the tab when

@@ -228,7 +228,7 @@ Toast.propTypes = {
   className: PropTypes.string,
 
   /**
-   * **DEPRECATED** - use `header_class_name` instead
+   * **DEPRECATED** Use `header_class_name` instead.
    *
    * Additional CSS classes to apply to the Toast. The classes
    * specified with this prop will be applied to the header of the toast.
@@ -236,7 +236,7 @@ Toast.propTypes = {
   headerClassName: PropTypes.string,
 
   /**
-   * **DEPRECATED** - use `body_class_name` instead.
+   * **DEPRECATED** Use `body_class_name` instead.
    *
    * Additional CSS classes to apply to the Toast. The classes
    * specified with this prop will be applied to the body of the toast.

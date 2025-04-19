@@ -373,49 +373,49 @@ Textarea.propTypes = {
   className: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `accesskey` instead
+   * **DEPRECATED** Use `accesskey` instead.
    *
    * Defines a keyboard shortcut to activate or add focus to the element.
    */
   accessKey: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `autofocus` instead
+   * **DEPRECATED** Use `autofocus` instead.
    *
    * The element should be automatically focused after the page loaded.
    */
   autoFocus: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `contenteditable` instead
+   * **DEPRECATED** Use `contenteditable` instead.
    *
    * Indicates whether the element's content is editable.
    */
   contentEditable: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * **DEPRECATED** Use `contextmenu` instead
+   * **DEPRECATED** Use `contextmenu` instead.
    *
    * Defines the ID of a <menu> element which will serve as the element's context menu.
    */
   contextMenu: PropTypes.string,
 
   /**
-   * **DEPRECATED** Use `maxlength` instead
+   * **DEPRECATED** Use `maxlength` instead.
    *
    * Defines the maximum number of characters allowed in the element.
    */
   maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * **DEPRECATED** Use `minlength` instead
+   * **DEPRECATED** Use `minlength` instead.
    *
    * Defines the minimum number of characters allowed in the element.
    */
   minLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * **DEPRECATED** Use `readonly` instead
+   * **DEPRECATED** Use `readonly` instead.
    *
    * Indicates whether the element can be edited.
    */
@@ -425,7 +425,7 @@ Textarea.propTypes = {
   ]),
 
   /**
-   * **DEPRECATED** Use `spellcheck` instead
+   * **DEPRECATED** Use `spellcheck` instead.
    *
    * Indicates whether spell checking is allowed for the element.
    */
@@ -436,7 +436,7 @@ Textarea.propTypes = {
   ]),
 
   /**
-   * **DEPRECATED** Use `tabindex` instead
+   * **DEPRECATED** Use `tabindex` instead.
    *
    * Overrides the browser's default tab order and follows the one specified instead.
    */
