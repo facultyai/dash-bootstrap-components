@@ -12,6 +12,20 @@ import {
   stringifyId
 } from '../../private/util';
 
+// eslint-disable-next-line react/prop-types
+function TabPane({children, tabId, ...otherProps}) {
+  return (
+    <RBTab.Pane
+      eventKey={tabId}
+      key={tabId}
+      data-dash-is-loading={getLoadingState() || undefined}
+      {...otherProps}
+    >
+      {children}
+    </RBTab.Pane>
+  );
+}
+
 /**
  * Create Bootstrap styled tabs. Use the `active_tab` property to set, or get the
  * currently active tab in a callback.
@@ -109,16 +123,15 @@ function Tabs({
       const tabId = tab_id || 'tab-' + idx;
 
       return (
-        <RBTab.Pane
-          eventKey={tabId}
+        <TabPane
           key={tabId}
           disabled={disabled}
           style={style}
           className={class_name || className}
-          data-dash-is-loading={getLoadingState() || undefined}
+          tabId={tabId}
         >
           {child}
-        </RBTab.Pane>
+        </TabPane>
       );
     });
   return (
