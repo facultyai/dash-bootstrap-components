@@ -127,7 +127,17 @@ license your work under the terms of the [Apache 2.0 License](../LICENSE).
 
 ## Code guidelines
 
-We use [`uv`](https://docs.astral.sh/uv/) to manage the Python project, and [`just`](https://github.com/casey/just) as a task runner. See their resepctive documentation for details on how to install. To manage the JavaScript package you will also need to install [NodeJS](https://nodejs.org/)
+We use [`uv`](https://docs.astral.sh/uv/) to manage the Python project, and
+[`just`](https://github.com/casey/just) as a task runner. See their respective
+documentation for details on how to install. To manage the JavaScript package
+you will also need to install [NodeJS](https://nodejs.org/).
+
+Once you have installed `uv`, `just` and NodeJS, you can install required
+JavaScript dependencies with `npm`
+
+```sh
+npm install
+```
 
 Python code is linted using `ruff`, JavaScript code is linted using `prettier`. Run the linters with
 
