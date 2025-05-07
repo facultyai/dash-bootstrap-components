@@ -1,8 +1,8 @@
-BOOTSTRAP = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+BOOTSTRAP = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
 
-GRID = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap-grid.min.css"  # noqa
+GRID = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap-grid.min.css"  # noqa
 
-_BOOTSWATCH_BASE = "https://cdn.jsdelivr.net/npm/bootswatch@5.3.5/dist/"
+_BOOTSWATCH_BASE = "https://cdn.jsdelivr.net/npm/bootswatch@5.3.6/dist/"
 
 CERULEAN = _BOOTSWATCH_BASE + "cerulean/bootstrap.min.css"
 COSMO = _BOOTSWATCH_BASE + "cosmo/bootstrap.min.css"
