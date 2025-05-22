@@ -1,26 +1,25 @@
-from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from flask import Flask, redirect, request
 
-from components_page import register_apps as register_component_apps  # noqa
-from demos import register_apps as register_demo_apps  # noqa
-from examples import register_apps as register_example_apps  # noqa
-from markdown_to_html import convert_all_markdown_files  # noqa
-from server import create_server  # noqa
+application = Flask(__name__)
 
-convert_all_markdown_files()
 
-server = create_server()
-component_routes = register_component_apps()
-example_routes = register_example_apps()
-demo_routes = register_demo_apps()
-routes = {**component_routes, **example_routes, **demo_routes}
-application = DispatcherMiddleware(
-    server, {slug: app.server for slug, app in routes.items()}
-)
+# Redirect all routes using wildcard
+@application.route("/", defaults={"path": ""})
+@application.route("/<path:path>")
+def catch_all(path):
+    target_domain = "https://www.dash-bootstrap-components.com"
+    # Reconstruct the full path and query string
+    full_path = request.full_path
+    # Remove trailing '?' if there's no query string
+    if full_path.endswith("?"):
+        full_path = full_path[:-1]
+    return redirect(
+        f"{target_domain}/{path}?{request.query_string.decode()}"
+        if request.query_string
+        else f"{target_domain}/{path}",
+        code=302,
+    )
+
 
 if __name__ == "__main__":
-    import os
-
-    from werkzeug.serving import run_simple
-
-    os.environ["DBC_DOCS_MODE"] = "dev"
-    run_simple("localhost", 8888, application, use_reloader=True)
+    application.run(host="localhost", debug=True, port=8888)
