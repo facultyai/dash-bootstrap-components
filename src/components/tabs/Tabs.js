@@ -161,7 +161,7 @@ Tabs.dashPersistence = {
 };
 
 // Make sure that updates to the Tabs children are properly rendered
-// See https://github.com/facultyai/dash-bootstrap-components/issues/1119
+// See https://github.com/dbc-team/dash-bootstrap-components/issues/1119
 Tabs.dashChildrenUpdate = true;
 
 Tabs.propTypes = {

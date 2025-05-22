@@ -2,7 +2,7 @@
   "name": "dash-bootstrap-components",
   "version": "2.0.4-dev",
   "description": "Bootstrap components for Plotly Dash",
-  "repository": "github:facultyai/dash-bootstrap-components",
+  "repository": "github:dbc-team/dash-bootstrap-components",
   "main": "lib/dash-bootstrap-components.min.js",
   "scripts": {
     "build": "NODE_ENV=production webpack --config=webpack/config.dist.js",
@@ -24,7 +24,7 @@
   ],
   "author": "Faculty <opensource@faculty.ai>",
   "bugs": {
-    "url": "https://github.com/facultyai/dash-bootstrap-components/issues"
+    "url": "https://github.com/dbc-team/dash-bootstrap-components/issues"
   },
   "homepage": "https://www.dash-bootstrap-components.com",
   "license": "Apache-2.0",

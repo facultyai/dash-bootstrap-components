@@ -4,7 +4,7 @@ from dash import html
 from .util import make_subheading
 
 DBC_HOME = "https://www.dash-bootstrap-components.com/"
-DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
+DBC_GITHUB = "https://github.com/dbc-team/dash-bootstrap-components"
 
 navbar_children = [
     dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB, target="_blank")),

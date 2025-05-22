@@ -5,8 +5,8 @@ about: Tell us about a feature you would like to see in Dash Bootstrap Component
 
 Before opening:
 
-- [Search for duplicate or closed issues](https://github.com/facultyai/dash-bootstrap-components/issues?utf8=%E2%9C%93&q=is%3Aissue)
-- Read the [contributing guidelines](https://github.com/facultyai/dash-bootstrap-components/blob/main/.github/CONTRIBUTING.md)
+- [Search for duplicate or closed issues](https://github.com/dbc-team/dash-bootstrap-components/issues?utf8=%E2%9C%93&q=is%3Aissue)
+- Read the [contributing guidelines](https://github.com/dbc-team/dash-bootstrap-components/blob/main/.github/CONTRIBUTING.md)
 
 Feature requests must include:
 

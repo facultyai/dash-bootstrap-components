@@ -76,4 +76,4 @@ The CDN links for icons we include are for [Bootstrap Icons v1.8.1](https://icon
 
 `Select` can only be used to select individual items and doesn't have a multi-select feature. This is due to a limitation with how html renders selects. If you wish to be able to use multi-select, instead use `dash_core_components.Dropdown` with `multi=True` and apply css to style it in-line with Bootstrap styles. You can see an example of how to do this [here](https://github.com/tcbegley/dash-bootstrap-css).
 
-[issue]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md
+[issue]: https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=feature.md
