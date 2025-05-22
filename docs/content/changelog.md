@@ -6,6 +6,18 @@ title: Changelog
 
 This page documents notable changes in dash-bootstrap-components releases.
 
+## 2.0.3 - 2025/05/22
+
+Version 2.0.3 of dash-bootstrap-components! This version fixes a bug in the Tabs component and updates the version requirement for the _dash_ package. We have also updated CDN links for Bootstrap stylesheets. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
+
+### Changed
+- _dash-bootstrap-components_ now requires dash>=3.0.4 ([PR 1129](https://github.com/facultyai/dash-bootstrap-components/pull/1129))
+- Update the version of Bootstrap CDN links to 5.3.6 ([PR 1130](https://github.com/facultyai/dash-bootstrap-components/pull/1130))
+- Update docs domain to dash-bootstrap-components.com ([PR 1133](https://github.com/facultyai/dash-bootstrap-components/pull/1133))
+
+### Fixed
+- Fixed bug that caused an error message when changing the number of children in `Tabs` component ([PR 1128](https://github.com/facultyai/dash-bootstrap-components/pull/1128))
+
 ## 2.0.2 - 2025/04/21
 
 Version 2.0.2 of dash-bootstrap-components! This version fixes a bug in the Tabs component and updates the version requirement for the _dash_ package. A number of docstrings have also been cleaned up and made consistent. Please continue to report problems on our [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues).
