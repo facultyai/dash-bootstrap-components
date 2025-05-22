@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://dash-bootstrap-components.opensource.faculty.ai/">
+  <a href="https://www.dash-bootstrap-components.com/">
     <img src="https://cdn.jsdelivr.net/gh/facultyai/dash-bootstrap-components@main/readme-images/logo.png" alt="dash-bootstrap-components logo" width="200" height="200">
   </a>
 </p>
@@ -9,7 +9,7 @@
 <p align="center">
   Bootstrap components for Plotly Dash
   <br>
-  <a href="https://dash-bootstrap-components.opensource.faculty.ai/">Explore the documentation</a>
+  <a href="https://www.dash-bootstrap-components.com/">Explore the documentation</a>
   ·
   <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md">Report a bug</a>
   ·
@@ -109,7 +109,7 @@ Code and documentation is copyright [Faculty Science Ltd.][faculty]
 [dash-homepage]: https://dash.plotly.com/
 [dash-docs-external]: https://dash.plotly.com/external-resources
 [bootstrap-homepage]: https://getbootstrap.com/
-[docs-components]: https://dash-bootstrap-components.opensource.faculty.ai/l/components
+[docs-components]: https://www.dash-bootstrap-components.com/docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [faculty]: https://faculty.ai
 [bug-report]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md

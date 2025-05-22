@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
-DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
+DBC_DOCS = "https://www.dash-bootstrap-components.com/docs/components/"
 
 
 def make_subheading(label, link):

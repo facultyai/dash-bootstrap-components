@@ -3,7 +3,7 @@ from dash import html
 
 from .util import make_subheading
 
-DBC_HOME = "https://dash-bootstrap-components.opensource.faculty.ai/"
+DBC_HOME = "https://www.dash-bootstrap-components.com/"
 DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
 
 navbar_children = [

@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/facultyai/dash-bootstrap-components/issues"
   },
-  "homepage": "https://dash-bootstrap-components.opensource.faculty.ai",
+  "homepage": "https://www.dash-bootstrap-components.com",
   "license": "Apache-2.0",
   "dependencies": {
     "@plotly/dash-component-plugins": "^1.2.3",

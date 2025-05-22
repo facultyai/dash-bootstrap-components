@@ -14,9 +14,7 @@ authors = [
 ]
 maintainers = [{ name = "Tom Begley", email = "tomcbegley@gmail.com" }]
 requires-python = ">=3.9"
-dependencies = [
-    "dash>=3.0.4",
-]
+dependencies = ["dash>=3.0.4"]
 classifiers = [
     "Framework :: Dash",
     "License :: OSI Approved :: Apache Software License",
@@ -29,7 +27,7 @@ classifiers = [
 dynamic = ["version"]
 
 [project.urls]
-Homepage = "https://dash-bootstrap-components.opensource.faculty.ai/"
+Homepage = "https://www.dash-bootstrap-components.com/"
 Source = "https://github.com/facultyai/dash-bootstrap-components/"
 "Bug Reports" = "https://github.com/facultyai/dash-bootstrap-components/issues"
 
