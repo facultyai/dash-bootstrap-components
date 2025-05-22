@@ -4,7 +4,7 @@ This is a set of instructions for releasing _dash-bootstrap-components_. The rel
 
 - Run `just prerelease <version>`, where `version` is the version number of the release candidate. If you are aiming to release version `0.0.7`, this will be `0.0.7-rc1`. This will automatically bump the version numbers and push a release branch to GitHub.
 
-- Create a pull request with this branch, and document changes in the release in the comment of your pull request. The title and comment of the pull request are used by GitHub Actions to make the release on GitHub. See the other releases or the [changelog](https://dash-bootstrap-components.opensource.faculty.ai/changelog/) for previous release summaries.
+- Create a pull request with this branch, and document changes in the release in the comment of your pull request. The title and comment of the pull request are used by GitHub Actions to make the release on GitHub. See the other releases or the [changelog](https://www.dash-bootstrap-components.com/changelog/) for previous release summaries.
 
 - Merge the pull request. This will trigger a GitHub Action that will build the package and upload to PyPI.
 
