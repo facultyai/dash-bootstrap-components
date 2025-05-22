@@ -22,6 +22,6 @@ For example, a simple application incorporating example above could look like th
 
 {{code-example:components/index/simple.py}}
 
-There is more detail on this in the [Quickstart](/docs/quickstart/) instructions for creating a basic app. Additionally, the [examples](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples) in our GitHub repository demonstrate how multiple components can be combined to create a feature rich application.
+There is more detail on this in the [Quickstart](/docs/quickstart/) instructions for creating a basic app. Additionally, the [examples](https://github.com/dbc-team/dash-bootstrap-components/tree/main/examples) in our GitHub repository demonstrate how multiple components can be combined to create a feature rich application.
 
 For more details on Dash in general, please refer to the [official Dash documentation](https://dash.plotly.com/).

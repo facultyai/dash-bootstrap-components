@@ -12,7 +12,7 @@ lives easier is very much appreciated!
 
 ## Using the issue tracker
 
-The [issue tracker](https://github.com/facultyai/dash-bootstrap-components/issues) is
+The [issue tracker](https://github.com/dbc-team/dash-bootstrap-components/issues) is
 the preferred channel for [bug reports](#bug-reports), [feature requests](#feature-requests)
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
@@ -84,7 +84,7 @@ included in the project:
    # Navigate to the newly cloned directory
    cd dash-bootstrap-components
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/facultyai/dash-bootstrap-components.git
+   git remote add upstream https://github.com/dbc-team/dash-bootstrap-components.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -198,5 +198,5 @@ just build
 By contributing your code, you agree to license your contribution under the
 [Apache 2.0 license](../LICENSE).
 
-[new-bug-report]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md
-[new-feature-request]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md
+[new-bug-report]: https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=bug.md
+[new-feature-request]: https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=feature.md

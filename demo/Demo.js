@@ -95,7 +95,7 @@ const Demo = () => (
     <NavbarSimple
       sticky="top"
       brand="Dash Bootstrap Components"
-      brand_href="https://github.com/facultyai/dash-bootstrap-components"
+      brand_href="https://github.com/dbc-team/dash-bootstrap-components"
     >
       <NavItem>
         <NavLink href="https://www.asidatascience.com">A link</NavLink>

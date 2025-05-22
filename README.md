@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.dash-bootstrap-components.com/">
-    <img src="https://cdn.jsdelivr.net/gh/facultyai/dash-bootstrap-components@main/readme-images/logo.png" alt="dash-bootstrap-components logo" width="200" height="200">
+    <img src="https://cdn.jsdelivr.net/gh/dbc-team/dash-bootstrap-components@main/readme-images/logo.png" alt="dash-bootstrap-components logo" width="200" height="200">
   </a>
 </p>
 
@@ -11,13 +11,13 @@
   <br>
   <a href="https://www.dash-bootstrap-components.com/">Explore the documentation</a>
   ·
-  <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md">Report a bug</a>
+  <a href="https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=bug.md">Report a bug</a>
   ·
-  <a href="https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md">Request a feature</a>
+  <a href="https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=feature.md">Request a feature</a>
   <br>
   <br>
-  <img alt="GitHub Actions" src="https://github.com/facultyai/dash-bootstrap-components/actions/workflows/tests.yml/badge.svg">
-  <img alt="GitHub" src="https://img.shields.io/github/license/facultyai/dash-bootstrap-components">
+  <img alt="GitHub Actions" src="https://github.com/dbc-team/dash-bootstrap-components/actions/workflows/tests.yml/badge.svg">
+  <img alt="GitHub" src="https://img.shields.io/github/license/dbc-team/dash-bootstrap-components">
   <img alt="PyPI" src="https://img.shields.io/pypi/v/dash-bootstrap-components">
   <img alt="Conda (channel only)" src="https://img.shields.io/conda/vn/conda-forge/dash-bootstrap-components">
   <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/dash-bootstrap-components">
@@ -85,7 +85,7 @@ For more information on how to link local or external CSS, check out the
 With CSS linked, you can start building your app's layout with our Bootstrap
 components. These include layout components for organising the content of your app on the page, as well as UI components like navbars, cards, alerts and many more.
 
-![layout](https://cdn.jsdelivr.net/gh/facultyai/dash-bootstrap-components@main/readme-images/layout.png)
+![layout](https://cdn.jsdelivr.net/gh/dbc-team/dash-bootstrap-components@main/readme-images/layout.png)
 
 See our [_documentation_][docs-components] for a full list of available
 components.
@@ -104,7 +104,7 @@ will pass our linting checks, and how to submit the pull request itself.
 ## Copyright and license
 
 Code and documentation is copyright [Faculty Science Ltd.][faculty]
-2018-2025, and released under the [Apache 2.0 license](https://github.com/facultyai/dash-bootstrap-components/blob/main/LICENSE)
+2018-2025, and released under the [Apache 2.0 license](https://github.com/dbc-team/dash-bootstrap-components/blob/main/LICENSE)
 
 [dash-homepage]: https://dash.plotly.com/
 [dash-docs-external]: https://dash.plotly.com/external-resources
@@ -112,6 +112,6 @@ Code and documentation is copyright [Faculty Science Ltd.][faculty]
 [docs-components]: https://www.dash-bootstrap-components.com/docs/components
 [bootstrapcdn]: https://www.bootstrapcdn.com/
 [faculty]: https://faculty.ai
-[bug-report]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=bug.md
-[feature-request]: https://github.com/facultyai/dash-bootstrap-components/issues/new?template=feature.md
-[contribution-guide]: https://github.com/facultyai/dash-bootstrap-components/blob/main/.github/CONTRIBUTING.md
+[bug-report]: https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=bug.md
+[feature-request]: https://github.com/dbc-team/dash-bootstrap-components/issues/new?template=feature.md
+[contribution-guide]: https://github.com/dbc-team/dash-bootstrap-components/blob/main/.github/CONTRIBUTING.md
