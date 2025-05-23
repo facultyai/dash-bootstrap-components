@@ -17,7 +17,7 @@ def catch_all(path):
         f"{target_domain}/{path}?{request.query_string.decode()}"
         if request.query_string
         else f"{target_domain}/{path}",
-        code=302,
+        code=301,
     )
 
 
